@@ -4,7 +4,7 @@ Procedure reference: file-focused-review/v1
 
 Cargo-vet criterion: thirdpass-full-crate-archive-reviewed/v1
 
-Website methodology: https://thirdpass.dev/docs/methodology/cargo-vet#file-focused-review
+Website methodology: https://thirdpass.dev/docs/cargo-vet#file-focused-review
 
 This procedure records how Thirdpass conducts file-focused review records for
 package-relative files. Each accepted review records the selected file paths,
