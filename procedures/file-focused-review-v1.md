@@ -1,16 +1,22 @@
-# Thirdpass Full-Manifest Review v1
+# File-Focused Review v1
 
-Procedure reference: thirdpass-full-manifest-review/v1
+Procedure reference: file-focused-review/v1
 
 Cargo-vet criterion: thirdpass-full-manifest-reviewed
 
-Website methodology: https://thirdpass.dev/docs/methodology/cargo-vet#full-manifest-review
+Website methodology: https://thirdpass.dev/docs/methodology/cargo-vet#file-focused-review
 
-This procedure records that a crate archive has Thirdpass review coverage for
-every regular file in the authoritative crates.io package manifest. Coverage is
-measured by file count, measured text lines, and bytes. A crate version is
-included only when active approved Thirdpass reviews cover 100% of each of those
-measurements with no pending or unreviewed manifest work.
+This procedure records how Thirdpass conducts file-focused review records for
+package-relative files. Each accepted review records the selected file paths,
+file-level security summaries, file-level confidence, review scope, reviewer
+metadata, and agent provenance.
+
+The cargo-vet export composes accepted file-focused review records into a
+package-level audit only when those records cover every regular file in the
+authoritative crates.io package manifest. Coverage is measured by file count,
+measured text lines, and bytes. A crate version is included only when active
+approved Thirdpass reviews cover 100% of each of those measurements with no
+pending or unreviewed manifest work.
 
 The cargo-vet audit criterion records Thirdpass review coverage. It does not by
 itself assert cargo-vet safe-to-run or safe-to-deploy unless an importing project
