@@ -2,7 +2,7 @@
 
 Procedure reference: file-focused-review/v1
 
-Cargo-vet criterion: thirdpass-full-manifest-reviewed
+Cargo-vet criterion: thirdpass-full-crate-archive-reviewed/v1
 
 Website methodology: https://thirdpass.dev/docs/methodology/cargo-vet#file-focused-review
 

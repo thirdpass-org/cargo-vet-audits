@@ -4,11 +4,8 @@ This repository publishes cargo-vet audits backed by Thirdpass review evidence.
 Each audit records that Thirdpass has review coverage for a crate archive against
 the authoritative crates.io package manifest.
 
-The current criterion is:
-
-```toml
-criteria = "thirdpass-full-manifest-reviewed"
-```
+The audit criterion published by this repository is
+`thirdpass-full-crate-archive-reviewed/v1`.
 
 This criterion means the crate archive was reviewed by Thirdpass with 100%
 coverage by files, measured text lines, and bytes. It records Thirdpass review
@@ -30,7 +27,8 @@ review records reported them.
 ## Using this repository
 
 Add this repository as a cargo-vet import source, then decide in your own
-project policy how to treat the `thirdpass-full-manifest-reviewed` criterion.
+project policy how to treat the
+`thirdpass-full-crate-archive-reviewed/v1` criterion.
 
 The audits are generated from Thirdpass coverage data. Manual edits to generated
 files may be overwritten by the next export.
