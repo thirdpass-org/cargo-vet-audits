@@ -1,0 +1,32 @@
+# Thirdpass Full-Manifest Review v1
+
+Procedure reference: thirdpass-full-manifest-review/v1
+
+Cargo-vet criterion: thirdpass-full-manifest-reviewed
+
+Website methodology: https://thirdpass.dev/docs/methodology/cargo-vet#full-manifest-review
+
+This procedure records that a crate archive has Thirdpass review coverage for
+every regular file in the authoritative crates.io package manifest. Coverage is
+measured by file count, measured text lines, and bytes. A crate version is
+included only when active approved Thirdpass reviews cover 100% of each of those
+measurements with no pending or unreviewed manifest work.
+
+The cargo-vet audit criterion records Thirdpass review coverage. It does not by
+itself assert cargo-vet safe-to-run or safe-to-deploy unless an importing project
+chooses to map this criterion to one of those meanings.
+
+Each audit entry points to a machine-readable evidence JSON file. The evidence
+contains the crate target, package hash, manifest inventory, coverage counts,
+review records, reviewed file paths, per-review agent metadata, and per-file
+review outcomes.
+
+Agent provenance is recorded per review record. A single crate version may be
+covered by multiple accepted reviews, and those reviews may use different agent
+names, models, or reasoning efforts. The audit note summarizes the combinations;
+the evidence JSON keeps the per-review and per-file detail.
+
+Runtime and token metrics are provenance metadata. They are included when the
+review record reported them. Older review records or records produced without
+metric reporting may have no runtime or token data; that absence does not reduce
+manifest coverage when the review record itself is active and accepted.
