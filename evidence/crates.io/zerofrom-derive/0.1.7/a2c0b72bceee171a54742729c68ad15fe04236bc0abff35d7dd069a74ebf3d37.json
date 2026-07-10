@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -206,6 +206,10 @@
     {
       "id": "rev_19f30f979e354a489e269ee5298c51ca",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -220,6 +224,7 @@
             "algorithm": "blake3",
             "value": "3faa05d0cc1ab2127bcbc5bcb765e414325ea1bd2a53b9c2d88bb7bcff98ed57"
           },
+          "summary": "Reviewed the lockfile entries for `zerofrom-derive` and its registry dependencies (`proc-macro2`, `quote`, `syn`, `synstructure`, `unicode-ident`). It only records pinned crates and checksums from crates.io, with no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior present in the file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -242,7 +247,8 @@
               "total_tokens": 22415
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml.orig",
@@ -250,6 +256,7 @@
             "algorithm": "blake3",
             "value": "2751e791ee56cc537c5b92efde423741169e04f35562376b6ec0ba61a04e58d6"
           },
+          "summary": "Reviewed this Cargo manifest for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload indicators. It is a standard proc-macro crate declaration with workspace-managed dependencies and local path dev-dependencies, and I found no concrete malicious or supply-chain compromise signals in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -272,7 +279,8 @@
               "total_tokens": 21343
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE",
@@ -280,6 +288,7 @@
             "algorithm": "blake3",
             "value": "4ce40d3c43ba50365f37d4c3676f6c0c2be24a2175f6b36bae13cee04ffea44c"
           },
+          "summary": "Reviewed the LICENSE file, which is a plain Unicode License V3 notice with copyright, permission, warranty, and attribution terms only. I found no concrete indicators of install-time execution, network or credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -302,13 +311,18 @@
               "total_tokens": 21770
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_767780af09ad43feab59f1fd8893a671",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -316,6 +330,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782841248",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed .cargo_vcs_info.json, which contains only crate provenance metadata (a Git SHA-1 and path_in_vcs mapping) and no executable logic. I also checked for any package references to this file and found no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior tied to it.",
       "files": [
         {
           "file_path": ".cargo_vcs_info.json",
@@ -323,15 +338,21 @@
             "algorithm": "blake3",
             "value": "735c3c2072d3ac50bdae8780f62c277edcd04dfb20c96525232a7dcedcc8dc1d"
           },
+          "summary": "Reviewed .cargo_vcs_info.json, which contains only crate provenance metadata (a Git SHA-1 and path_in_vcs mapping) and no executable logic. I also checked for any package references to this file and found no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior tied to it.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_c6b90b8ad68749a59acf269935a9d736",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -339,6 +360,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782841227",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "`src/lib.rs` is a Rust `proc_macro_derive(ZeroFrom)` implementation that generates `ZeroFrom` trait impls from struct and enum syntax, with helper logic for lifetime and generic handling. I checked this file for install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators.\nReviewed the crate manifest for `zerofrom-derive` 0.1.7. It declares a proc-macro library and standard Rust dependencies, and I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `examples/zf_derive.rs`, which is a local Rust example exercising the `ZeroFrom` derive across structs, enums, generics, and `clone`/`may_borrow` annotations. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this target file.\nReviewed `src/visitor.rs`, which is a small `syn` AST visitor that detects whether a type contains local type parameters or non-'static lifetimes, plus unit tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, credential access, dynamic code loading, obfuscation/decoding, or persistence behavior.\nReviewed the target `README.md`, which is a brief crate description for `zerofrom-derive` and a link to ICU4X; it contains no executable content, install hooks, downloads, dynamic loading, obfuscation, secret access, or persistence behavior. I checked the file for supply-chain indicators and found no concrete malicious or suspicious markers.",
       "files": [
         {
           "file_path": "src/lib.rs",
@@ -346,9 +368,11 @@
             "algorithm": "blake3",
             "value": "4fa6695133f84fd4f396d7ea7f2d105107684cada1beb2baf6863b8331db1ba0"
           },
+          "summary": "`src/lib.rs` is a Rust `proc_macro_derive(ZeroFrom)` implementation that generates `ZeroFrom` trait impls from struct and enum syntax, with helper logic for lifetime and generic handling. I checked this file for install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -356,9 +380,11 @@
             "algorithm": "blake3",
             "value": "33977d79815bc6d836f38931272b67ef53c192ed67b524fbcadf73c7035a17fb"
           },
+          "summary": "Reviewed the crate manifest for `zerofrom-derive` 0.1.7. It declares a proc-macro library and standard Rust dependencies, and I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "examples/zf_derive.rs",
@@ -366,9 +392,11 @@
             "algorithm": "blake3",
             "value": "534bae6228b03ac79acd8b369b2bb4c5e3dc8ce1fde98fde7ea4f0de555d7fc3"
           },
+          "summary": "Reviewed `examples/zf_derive.rs`, which is a local Rust example exercising the `ZeroFrom` derive across structs, enums, generics, and `clone`/`may_borrow` annotations. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/visitor.rs",
@@ -376,9 +404,11 @@
             "algorithm": "blake3",
             "value": "cb9a40a7e1ce51921c5896503d014e42f6eb9e32a7b383c930370f978d94ac10"
           },
+          "summary": "Reviewed `src/visitor.rs`, which is a small `syn` AST visitor that detects whether a type contains local type parameters or non-'static lifetimes, plus unit tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, credential access, dynamic code loading, obfuscation/decoding, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "README.md",
@@ -386,9 +416,11 @@
             "algorithm": "blake3",
             "value": "5b04b538f8e21aaf7bdafcea58bf0ece4ef6ff320f74732d40d0bdc3127f4000"
           },
+          "summary": "Reviewed the target `README.md`, which is a brief crate description for `zerofrom-derive` and a link to ICU4X; it contains no executable content, install hooks, downloads, dynamic loading, obfuscation, secret access, or persistence behavior. I checked the file for supply-chain indicators and found no concrete malicious or suspicious markers.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

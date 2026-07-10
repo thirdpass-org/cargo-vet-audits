@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -216,6 +216,10 @@
     {
       "id": "rev_63df6412ad0341d19834938ca251d774",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -223,6 +227,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782850832",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "`src/stream.rs` is a thin Rust adapter that forwards `sval::Stream` methods through object-safe wrapper traits and macros. I reviewed it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.\n`src/value.rs` is a small Rust adapter that erases `sval::Value` behind an object-safe `Value` trait and forwards serialization/conversion calls through trait objects. I reviewed it for install-time execution, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the normalized Cargo manifest for `sval_dynamic` 2.20.0. It is a minimal library manifest with a single `sval` dependency and no build script, install hooks, network/exfiltration settings, dynamic code-loading directives, obfuscation, or persistence-related entries; I found no concrete malicious or supply-chain indicators in this file.\n`src/lib.rs` is a small crate root that only contains documentation, `#![no_std]`, a missing-docs lint, two internal module declarations, and public re-exports for `Stream` and `Value`. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.\nReviewed the target `README.md`, which only contains the crate name, badges/links to GitHub, crates.io, and docs.rs, and a one-line description of object-safe `sval::Stream`/`sval::Value`. No concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence were present in this file.",
       "files": [
         {
           "file_path": "src/stream.rs",
@@ -230,9 +235,11 @@
             "algorithm": "blake3",
             "value": "068f96d20a798ae275e576b05692267560a87392a3abffd7946702bd841e7061"
           },
+          "summary": "`src/stream.rs` is a thin Rust adapter that forwards `sval::Stream` methods through object-safe wrapper traits and macros. I reviewed it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/value.rs",
@@ -240,9 +247,11 @@
             "algorithm": "blake3",
             "value": "87d7da33388ae599cf0699010ae8133b51b0a0851a9fc30dc26669fdf876b7c1"
           },
+          "summary": "`src/value.rs` is a small Rust adapter that erases `sval::Value` behind an object-safe `Value` trait and forwards serialization/conversion calls through trait objects. I reviewed it for install-time execution, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -250,9 +259,11 @@
             "algorithm": "blake3",
             "value": "09c5e3027cef0b5567b7f4b11579966643c6233b1b0cf91a2a1fecd2f97d8a92"
           },
+          "summary": "Reviewed the normalized Cargo manifest for `sval_dynamic` 2.20.0. It is a minimal library manifest with a single `sval` dependency and no build script, install hooks, network/exfiltration settings, dynamic code-loading directives, obfuscation, or persistence-related entries; I found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/lib.rs",
@@ -260,9 +271,11 @@
             "algorithm": "blake3",
             "value": "c375a77916fdf80fe8cf390c2b0cd597ac16a74cf7264059bd120c12a509d122"
           },
+          "summary": "`src/lib.rs` is a small crate root that only contains documentation, `#![no_std]`, a missing-docs lint, two internal module declarations, and public re-exports for `Stream` and `Value`. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "README.md",
@@ -270,15 +283,21 @@
             "algorithm": "blake3",
             "value": "2718f2585457bac130fe6624f1c6efcda8cef3b00c504fb5bbf3637fb587adfe"
           },
+          "summary": "Reviewed the target `README.md`, which only contains the crate name, badges/links to GitHub, crates.io, and docs.rs, and a one-line description of object-safe `sval::Stream`/`sval::Value`. No concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence were present in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_cc3db4ee4c024e308ffc743753a5e291",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -293,6 +312,7 @@
             "algorithm": "blake3",
             "value": "7926a84363988643dbc7bc92d95f72c481291818f2241873c552bdac504f7a4a"
           },
+          "summary": "Reviewed this Cargo.lock entry set for supply-chain indicators in the target file itself. It only records the sval 2.20.0 package and sval_dynamic 2.20.0 depending on sval, with no install hooks, network/exfiltration logic, dynamic code loading, obfuscation, or persistence mechanisms present in the lockfile.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -315,7 +335,8 @@
               "total_tokens": 21190
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml.orig",
@@ -323,6 +344,7 @@
             "algorithm": "blake3",
             "value": "ecd082607388410009b2e14711a19faeb046ca75a538d7b8530523fbc9b66862"
           },
+          "summary": "Reviewed Cargo.toml.orig, which contains only package metadata for `sval_dynamic` 2.20.0 and a local path dependency on `sval`. I checked for install hooks, network or exfiltration settings, credential access, dynamic code loading, obfuscation, and persistence-related directives and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -345,7 +367,8 @@
               "total_tokens": 21166
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-APACHE",
@@ -353,6 +376,7 @@
             "algorithm": "blake3",
             "value": "bc9b8879cf5978632a7be06ee591f28247b4c78fbc0adf6ac40e2d097063c32a"
           },
+          "summary": "Reviewed the Apache 2.0 license text in LICENSE-APACHE and found no concrete supply-chain or malicious indicators. The file is static legal text with no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -375,7 +399,8 @@
               "total_tokens": 23228
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-MIT",
@@ -383,6 +408,7 @@
             "algorithm": "blake3",
             "value": "aa89fc8d0df2c54341624302a1cd80afe6974181aa3f477e2836d4a4fb6b6a34"
           },
+          "summary": "Reviewed the MIT license text in LICENSE-MIT; it is a standard permissive license grant and contains no executable content or indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -405,13 +431,18 @@
               "total_tokens": 21121
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_f739365c4e604d90bb14e6ef2b9d954c",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -419,6 +450,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782850848",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "This file is a small cargo VCS metadata stub containing only the upstream git SHA1 and `path_in_vcs` value. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": ".cargo_vcs_info.json",
@@ -426,9 +458,11 @@
             "algorithm": "blake3",
             "value": "66840fdfc5e7d90cb2d3b24d63e27d03441d4efb61d246c1c1a733a13035304d"
           },
+          "summary": "This file is a small cargo VCS metadata stub containing only the upstream git SHA1 and `path_in_vcs` value. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

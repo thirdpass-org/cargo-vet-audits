@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -524,6 +524,10 @@
     {
       "id": "rev_01bc3c5486e7413ebe142560e3beae96",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -531,6 +535,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783185885",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `ci/before_deploy.ps1`, a short AppVeyor release-packaging script that stages a build artifact, archives it with `7z`, uploads it with `Push-AppveyorArtifact`, and cleans up the temp directory. I found no concrete malicious or supply-chain indicators: no install hooks, secret harvesting, network exfiltration beyond the explicit artifact upload, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `tests/test_iter.rs`, which is a small Rust unit test file validating `Bytes` iterator length and size hints for non-empty and empty buffers. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this target file.\nReviewed `src/buf/mod.rs`, which is a small Rust module index that only declares internal buffer-related submodules and re-exports `Buf`, `BufMut`, `FromBuf`, `Chain`, `IntoBuf`, `Iter`, `Reader`, `Take`, and `Writer`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution paths and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/test_serde.rs`, which contains only serde round-trip tests for `Bytes` and `BytesMut` using static byte literals. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\n`ci/script.sh` is a small CI helper that conditionally runs `cross build` and `cross test` based on `TRAVIS_TAG` and `DISABLE_TESTS`. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
           "file_path": "ci/before_deploy.ps1",
@@ -538,9 +543,11 @@
             "algorithm": "blake3",
             "value": "52213b547c0542096d9a7cf50294b428c5269d6edd2de5790473812adc8b2ad5"
           },
+          "summary": "Reviewed `ci/before_deploy.ps1`, a short AppVeyor release-packaging script that stages a build artifact, archives it with `7z`, uploads it with `Push-AppveyorArtifact`, and cleans up the temp directory. I found no concrete malicious or supply-chain indicators: no install hooks, secret harvesting, network exfiltration beyond the explicit artifact upload, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/test_iter.rs",
@@ -548,9 +555,11 @@
             "algorithm": "blake3",
             "value": "14323175b96cf9b5ae29d8cd77c10f07619b6c13f780218b457800755556df1f"
           },
+          "summary": "Reviewed `tests/test_iter.rs`, which is a small Rust unit test file validating `Bytes` iterator length and size hints for non-empty and empty buffers. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/buf/mod.rs",
@@ -558,9 +567,11 @@
             "algorithm": "blake3",
             "value": "e2bc5bf0c945a6f5745b2089b66144e63ee5f985143ec0a03de6cc9e75da7a27"
           },
+          "summary": "Reviewed `src/buf/mod.rs`, which is a small Rust module index that only declares internal buffer-related submodules and re-exports `Buf`, `BufMut`, `FromBuf`, `Chain`, `IntoBuf`, `Iter`, `Reader`, `Take`, and `Writer`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution paths and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/test_serde.rs",
@@ -568,9 +579,11 @@
             "algorithm": "blake3",
             "value": "015d15aabcef6bec6fef464dc6bafb48e01e7efdf490714255b8c52273591ed4"
           },
+          "summary": "Reviewed `tests/test_serde.rs`, which contains only serde round-trip tests for `Bytes` and `BytesMut` using static byte literals. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "ci/script.sh",
@@ -578,15 +591,21 @@
             "algorithm": "blake3",
             "value": "bfc7782a620c5c174c3fa4a54c132b77a097c053831b2f664481598d68765c55"
           },
+          "summary": "`ci/script.sh` is a small CI helper that conditionally runs `cross build` and `cross test` based on `TRAVIS_TAG` and `DISABLE_TESTS`. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_0b0b5be2804f47e382fd0e5745c1474c",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -594,6 +613,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783185361",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/bytes.rs`, which implements the `Bytes` and `BytesMut` buffer types, their refcounted/shared storage, slicing, splitting, reserving, and freeze/clone logic. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
           "file_path": "src/bytes.rs",
@@ -601,15 +621,21 @@
             "algorithm": "blake3",
             "value": "c4b0f8a1e6fefc7640dde7a3b8e323f0a60c1d01d931d84f88aed5d9254c4532"
           },
+          "summary": "Reviewed `src/bytes.rs`, which implements the `Bytes` and `BytesMut` buffer types, their refcounted/shared storage, slicing, splitting, reserving, and freeze/clone logic. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_1ded4420876c484c96cf2730ab8edd93",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -617,6 +643,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783185820",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed tests/test_from_buf.rs, which is a small Rust test module that exercises Buf collection from std::io::Cursor into Vec<u8>, Bytes, and BytesMut using fixed in-memory byte strings. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, or persistence mechanisms.\nReviewed `ci/before_deploy.sh`, a short Travis CI release-packaging script that creates a temporary staging directory, ensures `Cargo.lock`, builds a Rust binary with `cross rustc`, archives the built artifact, and removes the stage directory. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `ci/install.sh`, a CI bootstrap script that installs Rust tooling and `cross` by downloading and piping remote shell scripts into `sh`. I checked for install hooks, secret harvesting, network exfiltration, obfuscation, and persistence; the concrete concern is the script’s direct remote code execution path, with no other malicious indicators visible in this file.\nReviewed `src/debug.rs`, which is a small `fmt::Debug` wrapper for byte slices that formats bytes as escaped ASCII/hex output. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found none in this file.\nReviewed `tests/test_reader.rs`, which contains two straightforward unit tests for `bytes::Buf::chain(...).reader()` using in-memory `Cursor` values and `Read`/`BufRead` methods. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "tests/test_from_buf.rs",
@@ -624,9 +651,11 @@
             "algorithm": "blake3",
             "value": "234925792e66f9c27eb727deec0ce1f76651d7644728ceaa3df3f036d13c518c"
           },
+          "summary": "Reviewed tests/test_from_buf.rs, which is a small Rust test module that exercises Buf collection from std::io::Cursor into Vec<u8>, Bytes, and BytesMut using fixed in-memory byte strings. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, or persistence mechanisms.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "ci/before_deploy.sh",
@@ -634,9 +663,11 @@
             "algorithm": "blake3",
             "value": "152078026a784dfb2b2970b746ff597576fc3962fca4b8b080fe4b8837596267"
           },
+          "summary": "Reviewed `ci/before_deploy.sh`, a short Travis CI release-packaging script that creates a temporary staging directory, ensures `Cargo.lock`, builds a Rust binary with `cross rustc`, archives the built artifact, and removes the stage directory. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "ci/install.sh",
@@ -644,9 +675,42 @@
             "algorithm": "blake3",
             "value": "20ffd151e92310b5199ff7c071dbef6cfa4b5616e43a759e4b33ea4471e93359"
           },
+          "summary": "Reviewed `ci/install.sh`, a CI bootstrap script that installs Rust tooling and `cross` by downloading and piping remote shell scripts into `sh`. I checked for install hooks, secret harvesting, network exfiltration, obfuscation, and persistence; the concrete concern is the script’s direct remote code execution path, with no other malicious indicators visible in this file.",
           "security_summary": "medium",
           "confidence": "high",
-          "comment_count": 2
+          "comment_count": 2,
+          "comments": [
+            {
+              "comment": "This block resolves the newest `cross` tag from a live GitHub repository and then pipes another remote installer (`https://japaric.github.io/trust/install.sh`) into `sh` with that mutable tag. That means the script executes third-party code at install time without pinning or integrity verification, so a compromised release, repo, or hosting path could inject arbitrary commands into the build host.",
+              "security": "medium",
+              "complexity": "low",
+              "selection": {
+                "start": {
+                  "line": 17,
+                  "character": 5
+                },
+                "end": {
+                  "line": 28,
+                  "character": 36
+                }
+              }
+            },
+            {
+              "comment": "This line executes a network-fetched shell script from `https://sh.rustup.rs` directly through `sh` during setup. If that endpoint, TLS path, or fetched content is compromised, the install step can run arbitrary code in the CI environment before the build starts, which is a classic supply-chain execution risk.",
+              "security": "medium",
+              "complexity": "low",
+              "selection": {
+                "start": {
+                  "line": 4,
+                  "character": 5
+                },
+                "end": {
+                  "line": 5,
+                  "character": 60
+                }
+              }
+            }
+          ]
         },
         {
           "file_path": "src/debug.rs",
@@ -654,9 +718,11 @@
             "algorithm": "blake3",
             "value": "714bd88047d5937adc5b7a2bd4ad7083669354b7799d27b6a21316dabde8f34e"
           },
+          "summary": "Reviewed `src/debug.rs`, which is a small `fmt::Debug` wrapper for byte slices that formats bytes as escaped ASCII/hex output. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found none in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/test_reader.rs",
@@ -664,15 +730,21 @@
             "algorithm": "blake3",
             "value": "5f2fdb366b6f3fe10726e328980629551e2f18d9d6b024cdc7bd24d5e7c21b94"
           },
+          "summary": "Reviewed `tests/test_reader.rs`, which contains two straightforward unit tests for `bytes::Buf::chain(...).reader()` using in-memory `Cursor` values and `Read`/`BufRead` methods. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_2078070e475d44419e01adc42863f23e",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -680,6 +752,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783185522",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/buf/buf.rs`, which is a standard Rust `Buf` trait and adapter implementation for byte reading, cursor advancement, numeric decoding, chaining, and iterator/reader wrappers. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation pipelines, or persistence behavior.\nReviewed `benches/bytes.rs`, which contains Rust benchmark routines for `Bytes`/`BytesMut` allocation, slicing, cloning, and formatting behavior. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation/deobfuscation, persistence tampering, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.\n`tests/test_chain.rs` contains straightforward unit tests for chaining, iterating, and vectored reads over `Bytes`, `BytesMut`, and `IoVec`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering and found no concrete malicious or supply-chain indicators.\nReviewed `src/buf/chain.rs`, which is a straightforward buffer-adapter implementation that chains two `Buf`/`BufMut` values and forwards read/write operations between them. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/buf/into_buf.rs`, which only defines the `IntoBuf` trait and straightforward conversions from byte/string-like values into `Buf` cursors or small inline buffers. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/buf/buf.rs",
@@ -687,9 +760,11 @@
             "algorithm": "blake3",
             "value": "022be50745e9bf4c4ee2878684e845a42af9f4860fd25d2c0c7179e9c510ac3d"
           },
+          "summary": "Reviewed `src/buf/buf.rs`, which is a standard Rust `Buf` trait and adapter implementation for byte reading, cursor advancement, numeric decoding, chaining, and iterator/reader wrappers. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation pipelines, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "benches/bytes.rs",
@@ -697,9 +772,11 @@
             "algorithm": "blake3",
             "value": "17837a91b3ce473ec30f332f3ad5e57ac60d4d445f2b7efbdfc97dca5953f324"
           },
+          "summary": "Reviewed `benches/bytes.rs`, which contains Rust benchmark routines for `Bytes`/`BytesMut` allocation, slicing, cloning, and formatting behavior. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation/deobfuscation, persistence tampering, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/test_chain.rs",
@@ -707,9 +784,11 @@
             "algorithm": "blake3",
             "value": "558409b765adea32c94cd360b5baaab9590999325d290c51cde1736195f254e4"
           },
+          "summary": "`tests/test_chain.rs` contains straightforward unit tests for chaining, iterating, and vectored reads over `Bytes`, `BytesMut`, and `IoVec`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/buf/chain.rs",
@@ -717,9 +796,11 @@
             "algorithm": "blake3",
             "value": "feab4b69c14d6e0e2889d06216656ab7a74ae3ff63d7bb49587f3777a6735893"
           },
+          "summary": "Reviewed `src/buf/chain.rs`, which is a straightforward buffer-adapter implementation that chains two `Buf`/`BufMut` values and forwards read/write operations between them. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/buf/into_buf.rs",
@@ -727,15 +808,21 @@
             "algorithm": "blake3",
             "value": "f3266337b8d877d05ed1d3a549826b9985ba54c6f8770ef6b8979dabc0a50c45"
           },
+          "summary": "Reviewed `src/buf/into_buf.rs`, which only defines the `IntoBuf` trait and straightforward conversions from byte/string-like values into `Buf` cursors or small inline buffers. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_33820997d0c548e28698ddba20c4db92",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -750,6 +837,7 @@
             "algorithm": "blake3",
             "value": "7c24c8d6b1b2e23a9299904060a46e4d496a0b28ef3ce959a6e54ca1d39b8f6a"
           },
+          "summary": "Reviewed Cargo.toml.orig for the bytes 0.4.12 crate, which contains package metadata, dependency declarations, and feature flags only. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -772,7 +860,8 @@
               "total_tokens": 21620
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE",
@@ -780,6 +869,7 @@
             "algorithm": "blake3",
             "value": "7ed218d2928b1ff56267b33a04541b5f99462e73df04c7e9675e54c72bf449c3"
           },
+          "summary": "Reviewed the LICENSE file, which contains a standard MIT license grant and warranty disclaimer only. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found none in this target file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -802,7 +892,8 @@
               "total_tokens": 21144
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "ci/tsan",
@@ -810,6 +901,7 @@
             "algorithm": "blake3",
             "value": "216cde7713665caa848626b8b29a1e99863bc55de28c157ef8f1e5067b4e66cb"
           },
+          "summary": "Reviewed `ci/tsan`, a ThreadSanitizer suppressions list for `bytes`, and found only documented race suppressions for known false positives in `Arc`, `std` runtime paths, test harness code, and `pthread_cond_destroy`. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -832,13 +924,18 @@
               "total_tokens": 32581
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_72989ac600094b2a9d2c6fbe96ca46d3",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -846,6 +943,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783185725",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/buf/writer.rs`, which is a small `BufMut` adapter implementing `io::Write` by copying input bytes into an underlying buffer and exposing simple accessors. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the `README.md` for the `bytes` crate; it only contains package description, dependency/usage examples, optional Serde feature instructions, and license text. No concrete malicious or supply-chain indicators were found in the README, and I found no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence instructions in this file.\nReviewed `src/lib.rs`, which is the crate root for the `bytes` library and only declares documentation, extern crates, feature-gated modules, and public re-exports. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/buf/from_buf.rs`, which only defines the `FromBuf` trait plus straightforward implementations for `Vec<u8>`, `Bytes`, and `BytesMut` that convert an input buffer into owned in-memory bytes. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `tests/test_debug.rs`, which is a deterministic unit test for `bytes::Bytes` debug formatting over the full byte range. I found no concrete malicious or supply-chain indicators: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
       "files": [
         {
           "file_path": "src/buf/writer.rs",
@@ -853,9 +951,11 @@
             "algorithm": "blake3",
             "value": "f5c44fea31cba9bde586f3dd1562fc12ecb679acd5195dcdf3cf65a0fa111187"
           },
+          "summary": "Reviewed `src/buf/writer.rs`, which is a small `BufMut` adapter implementing `io::Write` by copying input bytes into an underlying buffer and exposing simple accessors. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "README.md",
@@ -863,9 +963,11 @@
             "algorithm": "blake3",
             "value": "4c196e21f7643295999666a667e7d3cc86820786276511a4ab43cf6a21100335"
           },
+          "summary": "Reviewed the `README.md` for the `bytes` crate; it only contains package description, dependency/usage examples, optional Serde feature instructions, and license text. No concrete malicious or supply-chain indicators were found in the README, and I found no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence instructions in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/lib.rs",
@@ -873,9 +975,11 @@
             "algorithm": "blake3",
             "value": "8b57fd9610576eba5af3057077b9c352fabc333ec8534cc7f1daeb52336d2db4"
           },
+          "summary": "Reviewed `src/lib.rs`, which is the crate root for the `bytes` library and only declares documentation, extern crates, feature-gated modules, and public re-exports. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/buf/from_buf.rs",
@@ -883,9 +987,11 @@
             "algorithm": "blake3",
             "value": "f8295484930b317e0b7ac8399591955c65ae6de4a3cc30f9598f13cc4757bb02"
           },
+          "summary": "Reviewed `src/buf/from_buf.rs`, which only defines the `FromBuf` trait plus straightforward implementations for `Vec<u8>`, `Bytes`, and `BytesMut` that convert an input buffer into owned in-memory bytes. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/test_debug.rs",
@@ -893,15 +999,21 @@
             "algorithm": "blake3",
             "value": "c5dba871f1a3f926f5ac4015427f661503a251212601f2166f3c886a27389ca5"
           },
+          "summary": "Reviewed `tests/test_debug.rs`, which is a deterministic unit test for `bytes::Bytes` debug formatting over the full byte range. I found no concrete malicious or supply-chain indicators: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_7d0dfcdc5504497c8a399f9c559e311e",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -909,6 +1021,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783185913",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `tests/test_take.rs`, which contains a single regression test for `Buf::take` ensuring a `Cursor` over a byte string does not overrun when given a size larger than the buffer. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.\nReviewed `.cargo_vcs_info.json`, which only records a Git SHA1 provenance hash for the crate source. I found no concrete malicious or supply-chain indicators in this target file, and it contains none of the checked behaviors: install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.",
       "files": [
         {
           "file_path": "tests/test_take.rs",
@@ -916,9 +1029,11 @@
             "algorithm": "blake3",
             "value": "fd13917af2f08afb7f1dad9dfe3bdf299eacf6145d99d70b6655826303de6ea3"
           },
+          "summary": "Reviewed `tests/test_take.rs`, which contains a single regression test for `Buf::take` ensuring a `Cursor` over a byte string does not overrun when given a size larger than the buffer. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".cargo_vcs_info.json",
@@ -926,15 +1041,21 @@
             "algorithm": "blake3",
             "value": "a842b42282f63ad95b694a6d44c62fda9b52229a6729e60f98db7e7e85f8dca6"
           },
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records a Git SHA1 provenance hash for the crate source. I found no concrete malicious or supply-chain indicators in this target file, and it contains none of the checked behaviors: install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_d77035d735b24a9280ecca674aa1854e",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -942,6 +1063,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783185658",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "`src/buf/take.rs` defines a small `Take<T>` `Buf` adapter that limits reads from an underlying buffer and forwards accessors plus `advance()` with a bounds assertion. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators, and found none.\nI reviewed the target Cargo manifest for install-time hooks, build scripts, unusual dependencies, and any signs of network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence. The file is a normal crate manifest for `bytes` 0.4.12 with standard dependencies and feature flags, and I found no concrete supply-chain or malicious indicators in this target file.\nReviewed `src/buf/iter.rs`, which implements a small `Buf` iterator wrapper exposing `into_inner`, `get_ref`, `get_mut`, `next`, and `size_hint`. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `src/buf/reader.rs`, which is a small `Buf`-to-`io::Read`/`io::BufRead` adapter exposing `get_ref`, `get_mut`, `into_inner`, `read`, `fill_buf`, and `consume`. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `src/buf/vec_deque.rs`, which is a small `Buf` implementation for `std::collections::VecDeque<u8>` plus a unit test. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden execution paths; none were present in this file.",
       "files": [
         {
           "file_path": "src/buf/take.rs",
@@ -949,9 +1071,11 @@
             "algorithm": "blake3",
             "value": "2e0967ed6b3419adda37ed854984e46fe325ad97ba7d69a2c78933a7e03c73a7"
           },
+          "summary": "`src/buf/take.rs` defines a small `Take<T>` `Buf` adapter that limits reads from an underlying buffer and forwards accessors plus `advance()` with a bounds assertion. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators, and found none.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -959,9 +1083,11 @@
             "algorithm": "blake3",
             "value": "c2f605bf8017fe0d6411a670b2699c8e641be0aa60d950db0373ed320f5c0666"
           },
+          "summary": "I reviewed the target Cargo manifest for install-time hooks, build scripts, unusual dependencies, and any signs of network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence. The file is a normal crate manifest for `bytes` 0.4.12 with standard dependencies and feature flags, and I found no concrete supply-chain or malicious indicators in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/buf/iter.rs",
@@ -969,9 +1095,11 @@
             "algorithm": "blake3",
             "value": "5bd5eadbd303b234f5bed17768380f381e1e5d06f5138c66e8dc6c8b3e1ac759"
           },
+          "summary": "Reviewed `src/buf/iter.rs`, which implements a small `Buf` iterator wrapper exposing `into_inner`, `get_ref`, `get_mut`, `next`, and `size_hint`. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/buf/reader.rs",
@@ -979,9 +1107,11 @@
             "algorithm": "blake3",
             "value": "00e0bc5ef0e23aeefc0b11bc647c71e58aa0ae39c71be7b57bb362e118aaec49"
           },
+          "summary": "Reviewed `src/buf/reader.rs`, which is a small `Buf`-to-`io::Read`/`io::BufRead` adapter exposing `get_ref`, `get_mut`, `into_inner`, `read`, `fill_buf`, and `consume`. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/buf/vec_deque.rs",
@@ -989,15 +1119,21 @@
             "algorithm": "blake3",
             "value": "92c35e484240876d50329bee5c4bcdd4d38fefbd2da2bf094762d30f7f4fdef3"
           },
+          "summary": "Reviewed `src/buf/vec_deque.rs`, which is a small `Buf` implementation for `std::collections::VecDeque<u8>` plus a unit test. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden execution paths; none were present in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_f48dc0be06b442009c83b229507d6d81",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -1005,6 +1141,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783185411",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "`tests/test_bytes.rs` is a unit test suite for `Bytes` and `BytesMut`, covering slicing, splitting, reserving, `unsplit`, iterator behavior, and a small threaded stress test. I checked it for install-time execution, network or exfiltration paths, credential or secret access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.\nReviewed `src/buf/buf_mut.rs`, which defines the `BufMut` trait and its in-memory adaptors for writing bytes and numeric primitives into buffers. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors, and the unsafe code is limited to buffer writes and cursor advancement typical for this API.",
       "files": [
         {
           "file_path": "tests/test_bytes.rs",
@@ -1012,9 +1149,11 @@
             "algorithm": "blake3",
             "value": "e76e8998b98f17c44fe485a96cdc05519e9ca6220093be5ac089ca4097538277"
           },
+          "summary": "`tests/test_bytes.rs` is a unit test suite for `Bytes` and `BytesMut`, covering slicing, splitting, reserving, `unsplit`, iterator behavior, and a small threaded stress test. I checked it for install-time execution, network or exfiltration paths, credential or secret access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/buf/buf_mut.rs",
@@ -1022,15 +1161,21 @@
             "algorithm": "blake3",
             "value": "a8085ce5e1730348e32889e9b7d1690021f95ee43261b2c3b0a01482eccc233c"
           },
+          "summary": "Reviewed `src/buf/buf_mut.rs`, which defines the `BufMut` trait and its in-memory adaptors for writing bytes and numeric primitives into buffers. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors, and the unsafe code is limited to buffer writes and cursor advancement typical for this API.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_f56c29166e6f4ba3a440f9f65bd417aa",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -1038,6 +1183,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783185592",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/either.rs`, which is a small trait-impl adapter that forwards `Buf` and `BufMut` methods through `either::Either` to the underlying branch. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\n`CHANGELOG.md` is a plain release-history document for `bytes` 0.4.0 through 0.4.12, listing added features and fixes. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/test_buf_mut.rs`, which contains unit tests for `BufMut` behavior on `Vec` and `BytesMut`, including a few `unsafe` test blocks for mutation APIs. I found no concrete indicators of malicious supply-chain behavior: no install hooks, network or exfiltration logic, credential or secret access, dynamic code loading, obfuscation/deobfuscation, persistence, or other hidden execution paths in this file.\nReviewed `src/serde.rs`, which only defines Serde `Serialize`/`Deserialize` adapters for `Bytes` and `BytesMut` via straightforward byte/string/sequence conversions. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/test_buf.rs`, which contains straightforward unit tests for `bytes::Buf` cursor behavior (`remaining`, `bytes`, `advance`, integer reads, underflow panic, and `bytes_vec`). I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this target file.",
       "files": [
         {
           "file_path": "src/either.rs",
@@ -1045,9 +1191,11 @@
             "algorithm": "blake3",
             "value": "cb8114cbee2485588b9d074bffd36b44d5341868dcf622c92ed4321a79822052"
           },
+          "summary": "Reviewed `src/either.rs`, which is a small trait-impl adapter that forwards `Buf` and `BufMut` methods through `either::Either` to the underlying branch. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "CHANGELOG.md",
@@ -1055,9 +1203,11 @@
             "algorithm": "blake3",
             "value": "d49c3495a2a6f0222e03059854dcce3e2f3a29838799d8648a07b3b33442a032"
           },
+          "summary": "`CHANGELOG.md` is a plain release-history document for `bytes` 0.4.0 through 0.4.12, listing added features and fixes. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/test_buf_mut.rs",
@@ -1065,9 +1215,11 @@
             "algorithm": "blake3",
             "value": "3c6313387d820d4649de9b69617e21caaf4a71524f9b8a606eab128179380984"
           },
+          "summary": "Reviewed `tests/test_buf_mut.rs`, which contains unit tests for `BufMut` behavior on `Vec` and `BytesMut`, including a few `unsafe` test blocks for mutation APIs. I found no concrete indicators of malicious supply-chain behavior: no install hooks, network or exfiltration logic, credential or secret access, dynamic code loading, obfuscation/deobfuscation, persistence, or other hidden execution paths in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/serde.rs",
@@ -1075,9 +1227,11 @@
             "algorithm": "blake3",
             "value": "7d5d8f58cc46164e083ea9d5996bd4e9e74576e4a362f1159286cc90ac30b127"
           },
+          "summary": "Reviewed `src/serde.rs`, which only defines Serde `Serialize`/`Deserialize` adapters for `Bytes` and `BytesMut` via straightforward byte/string/sequence conversions. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/test_buf.rs",
@@ -1085,9 +1239,11 @@
             "algorithm": "blake3",
             "value": "fe4c5cae8a7512faeee2a731c70ecd554e1d3f8a2e085bc806b1ed264cb6087d"
           },
+          "summary": "Reviewed `tests/test_buf.rs`, which contains straightforward unit tests for `bytes::Buf` cursor behavior (`remaining`, `bytes`, `advance`, integer reads, underflow panic, and `bytes_vec`). I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

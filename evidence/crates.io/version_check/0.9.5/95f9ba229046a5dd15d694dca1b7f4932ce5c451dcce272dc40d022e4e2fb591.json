@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -248,6 +248,10 @@
     {
       "id": "rev_068da73c872e46bdbd0237f8558f1cb9",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -262,6 +266,7 @@
             "algorithm": "blake3",
             "value": "c1a134533c4dfb1b522234651d50d4c561ae25cff22c2a986dafe8e302bda7f7"
           },
+          "summary": "Reviewed the target `.gitignore`, which only ignores `target` and `Cargo.lock`. I found no concrete supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior present here.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -284,7 +289,8 @@
               "total_tokens": 21001
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml.orig",
@@ -292,6 +298,7 @@
             "algorithm": "blake3",
             "value": "90e3f2fe5c1c2606a05d90cdd7fbffa216e32c8bad58de6dbbaff8c6f2a392ca"
           },
+          "summary": "Reviewed this Cargo manifest for install-time hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence behavior. It only declares package metadata and an empty dependency section, with no concrete malicious or supply-chain indicators in the target file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -314,7 +321,8 @@
               "total_tokens": 21093
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-APACHE",
@@ -322,6 +330,7 @@
             "algorithm": "blake3",
             "value": "bc9b8879cf5978632a7be06ee591f28247b4c78fbc0adf6ac40e2d097063c32a"
           },
+          "summary": "Reviewed the Apache 2.0 license text in LICENSE-APACHE. It contains only standard legal terms and boilerplate; I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found none.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -344,7 +353,8 @@
               "total_tokens": 23152
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-MIT",
@@ -352,6 +362,7 @@
             "algorithm": "blake3",
             "value": "99660c2eaadeba8a3278e21b15374fe31eaa671a71550ab0e4cb8735b4abb5c5"
           },
+          "summary": "Reviewed the MIT license text in LICENSE-MIT. It is a standard permissive license notice and contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -374,13 +385,18 @@
               "total_tokens": 21155
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_679bb90ea79f44f192466c60f046c287",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -388,6 +404,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782818513",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed the CI workflow in `.github/workflows/ci.yml`, which runs standard checkout, Rust toolchain installation, and cargo tests across a matrix of platforms/toolchains. I found no concrete indicators of install hooks, hidden downloads, network exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed the crate manifest in Cargo.toml for install-time execution, build scripts, dependency-triggered code paths, network/exfiltration hooks, credential access, dynamic code loading, obfuscation, and persistence mechanisms. The manifest is minimal: it declares a library crate with `build = false`, no dependencies, and no install hooks or other suspicious supply-chain indicators.\nReviewed the `.cargo_vcs_info.json` metadata file, which only records a Git SHA1 and an empty `path_in_vcs` value. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed the Travis CI configuration in `.travis.yml`; it only declares a Rust build matrix for `1.0.0`, `stable`, `beta`, and `nightly` and does not contain install hooks, shell commands, network/exfiltration steps, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in this file.",
       "files": [
         {
           "file_path": ".github/workflows/ci.yml",
@@ -395,9 +412,11 @@
             "algorithm": "blake3",
             "value": "79088dd87bd8263a2dfcb0ea05edff664d1595f492bd52c7911008a061e2d8c2"
           },
+          "summary": "Reviewed the CI workflow in `.github/workflows/ci.yml`, which runs standard checkout, Rust toolchain installation, and cargo tests across a matrix of platforms/toolchains. I found no concrete indicators of install hooks, hidden downloads, network exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -405,9 +424,11 @@
             "algorithm": "blake3",
             "value": "70ad295702c36256850de76681329879d7438b2fec934dafb0e0428dee9f61c1"
           },
+          "summary": "Reviewed the crate manifest in Cargo.toml for install-time execution, build scripts, dependency-triggered code paths, network/exfiltration hooks, credential access, dynamic code loading, obfuscation, and persistence mechanisms. The manifest is minimal: it declares a library crate with `build = false`, no dependencies, and no install hooks or other suspicious supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".cargo_vcs_info.json",
@@ -415,9 +436,11 @@
             "algorithm": "blake3",
             "value": "9cc0effb3c8f875fd574ff1a69d22f0d36d8ced5edee8ae55122ebadb892f0c5"
           },
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records a Git SHA1 and an empty `path_in_vcs` value. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".travis.yml",
@@ -425,15 +448,21 @@
             "algorithm": "blake3",
             "value": "00a59b73acdb3118c5d13577b1736c5d85cfb8883bf3019829c7ae1117320b23"
           },
+          "summary": "Reviewed the Travis CI configuration in `.travis.yml`; it only declares a Rust build matrix for `1.0.0`, `stable`, `beta`, and `nightly` and does not contain install hooks, shell commands, network/exfiltration steps, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_72f4dd713ff34e848fdccd54ce165fc8",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -441,6 +470,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782818461",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/lib.rs`, which implements rustc version/date/channel detection by invoking the local `rustc --verbose --version` command and parsing its stdout. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution beyond the documented compiler probe, and found no concrete malicious or supply-chain indicators.\nReviewed `src/version.rs`, which implements the `Version` type plus parsing, comparison, formatting, and unit tests for Rust compiler version strings. I checked for install-time execution, network/exfiltration, credential or environment access, dynamic code loading, obfuscation, persistence, and other supply-chain compromise indicators, and found none in this file.\nReviewed `src/date.rs`, which implements a small `Date` wrapper with parsing, comparison helpers, and display formatting for `YYYY-MM-DD` strings. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess use; none are present in this file.\nReviewed `src/channel.rs`, which only defines a `Channel` wrapper plus parsing, channel checks, and `Display` formatting for Rust release-channel strings. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed `README.md`, which documents a small Rust crate that checks `rustc` version/date by invoking the local compiler via `RUSTC` or `rustc`. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, hidden downloads, obfuscation, persistence, or other supply-chain payload execution in this file.",
       "files": [
         {
           "file_path": "src/lib.rs",
@@ -448,9 +478,11 @@
             "algorithm": "blake3",
             "value": "a0ce830b09d8a79fd3fa1dfadf4a2513e8cac594950291ba10871a15b66dbc90"
           },
+          "summary": "Reviewed `src/lib.rs`, which implements rustc version/date/channel detection by invoking the local `rustc --verbose --version` command and parsing its stdout. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution beyond the documented compiler probe, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/version.rs",
@@ -458,9 +490,11 @@
             "algorithm": "blake3",
             "value": "d0a5883397a0a2bb8b7fb2f59da2c371054849ce20987e7f0f7b245d646edad3"
           },
+          "summary": "Reviewed `src/version.rs`, which implements the `Version` type plus parsing, comparison, formatting, and unit tests for Rust compiler version strings. I checked for install-time execution, network/exfiltration, credential or environment access, dynamic code loading, obfuscation, persistence, and other supply-chain compromise indicators, and found none in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/date.rs",
@@ -468,9 +502,11 @@
             "algorithm": "blake3",
             "value": "d1dbdf2e47a51ef84dae21eda0f9c767838a2cfc200a7e7607457c73c0309ce7"
           },
+          "summary": "Reviewed `src/date.rs`, which implements a small `Date` wrapper with parsing, comparison helpers, and display formatting for `YYYY-MM-DD` strings. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess use; none are present in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/channel.rs",
@@ -478,9 +514,11 @@
             "algorithm": "blake3",
             "value": "8a0dc0927358402966be56bbe5245b35f5302c58b9ba49fc532d0432c4056972"
           },
+          "summary": "Reviewed `src/channel.rs`, which only defines a `Channel` wrapper plus parsing, channel checks, and `Display` formatting for Rust release-channel strings. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "README.md",
@@ -488,9 +526,11 @@
             "algorithm": "blake3",
             "value": "1bfa2985ae849d246ff936db39df81f03c9fe3e08d89a6f718e734cb76d14edf"
           },
+          "summary": "Reviewed `README.md`, which documents a small Rust crate that checks `rustc` version/date by invoking the local compiler via `RUSTC` or `rustc`. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, hidden downloads, obfuscation, persistence, or other supply-chain payload execution in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -227,6 +227,10 @@
     {
       "id": "rev_9401beb576524fa8a3eff22e8ca42a66",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -241,6 +245,7 @@
             "algorithm": "blake3",
             "value": "84308072076443b127af792b394b8178aa2799d7be17b5a638c0c3c4c2f4aa3d"
           },
+          "summary": "Reviewed the crate metadata in Cargo.toml.orig. It only declares package info, a platform-specific libc dependency, and a test target; I found no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -263,7 +268,8 @@
               "total_tokens": 21308
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-Apache",
@@ -271,6 +277,7 @@
             "algorithm": "blake3",
             "value": "4d4ccb54a4bf3a1c4121afdee0775052fec5f248b0e13545c3cf50c09aaaa799"
           },
+          "summary": "Reviewed the Apache 2.0 license text in `LICENSE-Apache`. It is a standard legal notice and I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -293,7 +300,8 @@
               "total_tokens": 22385
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-MIT",
@@ -301,6 +309,7 @@
             "algorithm": "blake3",
             "value": "e480a096775fb0c68dff23accd3fe29f21f8363b7f6441aa7274d41a4f0fa3e9"
           },
+          "summary": "Reviewed the MIT license text in LICENSE-MIT; it contains only standard copyright and permission terms and no code, install hooks, network/exfiltration paths, credential access, dynamic loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -323,13 +332,18 @@
               "total_tokens": 21229
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_9f3a361a49e34ed6b7669349a0020321",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -337,6 +351,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782860500",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "This Apple-specific helper queries `task_threads`, deallocates the returned Mach thread port rights and kernel-allocated list, and returns the current thread count. I checked this target file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.\nReviewed the crate manifest in `Cargo.toml` for install-time hooks, hidden subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. The file is a minimal package manifest for a small thread-counting library and does not declare build scripts, proc-macro/plugin behavior, unusual metadata, or other concrete supply-chain indicators.\nReviewed `src/freebsd.rs`, which exposes a small FreeBSD-only `num_threads()` helper that queries `sysctl` for the current process and returns the thread count when the kernel response matches the expected pid and struct size. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed this AIX-specific helper that opens `/proc/<pid>/status`, reads the first 16 bytes, and extracts the `pr_nlwp` thread count. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration, secret harvesting, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed `src/lib.rs`, which is a small public wrapper exposing `num_threads()` and `is_single_threaded()` via OS-specific implementations. I checked this target file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in the file itself.",
       "files": [
         {
           "file_path": "src/apple.rs",
@@ -344,9 +359,11 @@
             "algorithm": "blake3",
             "value": "b28a22986daa29cd911ecf0accf56a448a72c6ad69ef2905b5f11a5686874649"
           },
+          "summary": "This Apple-specific helper queries `task_threads`, deallocates the returned Mach thread port rights and kernel-allocated list, and returns the current thread count. I checked this target file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -354,9 +371,11 @@
             "algorithm": "blake3",
             "value": "779486d19b0c675950fdefda561611fdbe5199156bfbee73ea931fc91cbd2a36"
           },
+          "summary": "Reviewed the crate manifest in `Cargo.toml` for install-time hooks, hidden subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. The file is a minimal package manifest for a small thread-counting library and does not declare build scripts, proc-macro/plugin behavior, unusual metadata, or other concrete supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/freebsd.rs",
@@ -364,9 +383,11 @@
             "algorithm": "blake3",
             "value": "3702ba19bec4d38a8b837664bd1082741b1e4b36769f0823193e34bdb42c3af5"
           },
+          "summary": "Reviewed `src/freebsd.rs`, which exposes a small FreeBSD-only `num_threads()` helper that queries `sysctl` for the current process and returns the thread count when the kernel response matches the expected pid and struct size. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/aix.rs",
@@ -374,9 +395,11 @@
             "algorithm": "blake3",
             "value": "ee476fc9e817ca77cc9199526c595222970f48b1f1a03ef83bf1f776c1691d0b"
           },
+          "summary": "Reviewed this AIX-specific helper that opens `/proc/<pid>/status`, reads the first 16 bytes, and extracts the `pr_nlwp` thread count. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration, secret harvesting, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/lib.rs",
@@ -384,15 +407,21 @@
             "algorithm": "blake3",
             "value": "0b4ecf02eea19c10d9ab34a98519952adc0a9725c550f8bf83bc2436bb7942c6"
           },
+          "summary": "Reviewed `src/lib.rs`, which is a small public wrapper exposing `num_threads()` and `is_single_threaded()` via OS-specific implementations. I checked this target file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in the file itself.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_b3f695ce2981472a861745d3a6e01de5",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -400,6 +429,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782860541",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/linux.rs`, which contains a small Linux-only helper that reads `/proc/self/stat` and parses the thread-count field into `Option<NonZeroUsize>`. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators.\nReviewed the target `.cargo_vcs_info.json`, which only records a git SHA1 and an empty `path_in_vcs` field. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/imp.rs`, which is a tiny fallback implementation returning `None` from `num_threads()` when no OS-specific backend applies. I checked this target file for install-time execution, subprocess spawning, network or credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/linux.rs",
@@ -407,9 +437,11 @@
             "algorithm": "blake3",
             "value": "1bbfed2442f78f066ae41892014e3eaa0009f28edb7b0e2d0573f22484b035ec"
           },
+          "summary": "Reviewed `src/linux.rs`, which contains a small Linux-only helper that reads `/proc/self/stat` and parses the thread-count field into `Option<NonZeroUsize>`. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".cargo_vcs_info.json",
@@ -417,9 +449,11 @@
             "algorithm": "blake3",
             "value": "869cb2283644172e5eb47b39d1a350d06a2072dd01ee48d6d56f67c7cb9b574a"
           },
+          "summary": "Reviewed the target `.cargo_vcs_info.json`, which only records a git SHA1 and an empty `path_in_vcs` field. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/imp.rs",
@@ -427,9 +461,11 @@
             "algorithm": "blake3",
             "value": "0573ca62ecd08449547a5b5e7ff1975e9bdfc385df4f1f25abbbcdbe6fbcc57f"
           },
+          "summary": "Reviewed `src/imp.rs`, which is a tiny fallback implementation returning `None` from `num_threads()` when no OS-specific backend applies. I checked this target file for install-time execution, subprocess spawning, network or credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

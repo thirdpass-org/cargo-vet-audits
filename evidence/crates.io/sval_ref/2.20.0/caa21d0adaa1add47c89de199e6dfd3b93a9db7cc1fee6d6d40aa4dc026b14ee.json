@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -205,6 +205,10 @@
     {
       "id": "rev_9050f7796f0b4a36b8d7c68c16a58f88",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -219,6 +223,7 @@
             "algorithm": "blake3",
             "value": "c950ac912a751c8b896f84cfd4cb21ea2f888f46c5eb55dab52add4d40db3cce"
           },
+          "summary": "Reviewed `Cargo.lock`, which is a normal Cargo package lockfile pinning `itoa`, `ryu`, `sval`, `sval_fmt`, `sval_ref`, and `sval_test` from crates.io with checksums and dependency links. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators in this file and found none.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -241,7 +246,8 @@
               "total_tokens": 21655
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml.orig",
@@ -249,6 +255,7 @@
             "algorithm": "blake3",
             "value": "ca3784c706c779be693d0ca2e4f30ca2a66b9890d5913fb5c78c742b1900abc2"
           },
+          "summary": "Reviewed the `sval_ref` manifest in `Cargo.toml.orig`, which only declares package metadata, feature flags, and local path dependencies on `sval` and `sval_test`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -271,7 +278,8 @@
               "total_tokens": 21204
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-APACHE",
@@ -279,6 +287,7 @@
             "algorithm": "blake3",
             "value": "bc9b8879cf5978632a7be06ee591f28247b4c78fbc0adf6ac40e2d097063c32a"
           },
+          "summary": "Reviewed the Apache 2.0 license text in LICENSE-APACHE. It is a standard legal notice only; I found no install-time hooks, network or exfiltration behavior, dynamic code loading, obfuscation, persistence, or other supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -301,7 +310,8 @@
               "total_tokens": 23190
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-MIT",
@@ -309,6 +319,7 @@
             "algorithm": "blake3",
             "value": "aa89fc8d0df2c54341624302a1cd80afe6974181aa3f477e2836d4a4fb6b6a34"
           },
+          "summary": "Reviewed the MIT license text in LICENSE-MIT. It is a standard permissive license notice and contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -331,13 +342,18 @@
               "total_tokens": 21084
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_f1942a6bdc0b4ed3b84e192bc76807c7",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -345,6 +361,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782850146",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/seq.rs`, which only implements `ValueRef` serialization for slices, fixed-size arrays, tuples up to 16 elements, and `Vec` behind `alloc`, plus compatibility tests. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution paths and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/lib.rs`, which is a small `no_std` Rust wrapper implementing `ValueRef` forwarding and `Ref` adapters for `sval` streaming. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the normalized `Cargo.toml` for `sval_ref` 2.20.0 and found a plain library manifest with `build = false`, no install hooks, no scripts, no workspace or proc-macro setup, and only local crate dependencies/features. I checked for evidence of network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution and found none in this file.\nReviewed the target README.md, which only describes the `sval_ref` crate as a variant of `sval::Value` for types with internal references. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence signals, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the target `.cargo_vcs_info.json`, which contains only Cargo VCS metadata (`git.sha1` and `path_in_vcs`) and no executable content. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence indicators in this file and found none.",
       "files": [
         {
           "file_path": "src/seq.rs",
@@ -352,9 +369,11 @@
             "algorithm": "blake3",
             "value": "6a1882afe18e5fbca4ba83869d7883be73be2c6864dfaa2b5b857c03bed87787"
           },
+          "summary": "Reviewed `src/seq.rs`, which only implements `ValueRef` serialization for slices, fixed-size arrays, tuples up to 16 elements, and `Vec` behind `alloc`, plus compatibility tests. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution paths and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/lib.rs",
@@ -362,9 +381,11 @@
             "algorithm": "blake3",
             "value": "a346ba51e4f3d9dd60e50a666fe0a0b9ef97e0c7373fe76119d2220acde58446"
           },
+          "summary": "Reviewed `src/lib.rs`, which is a small `no_std` Rust wrapper implementing `ValueRef` forwarding and `Ref` adapters for `sval` streaming. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -372,9 +393,11 @@
             "algorithm": "blake3",
             "value": "60295864792ab7a7414747dfa8ab982777faebe12b9c5745b296928cc8e2f7da"
           },
+          "summary": "Reviewed the normalized `Cargo.toml` for `sval_ref` 2.20.0 and found a plain library manifest with `build = false`, no install hooks, no scripts, no workspace or proc-macro setup, and only local crate dependencies/features. I checked for evidence of network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution and found none in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "README.md",
@@ -382,9 +405,11 @@
             "algorithm": "blake3",
             "value": "6d42d14016d5984aaabb4fa7f70e91f78a6d1f0a99496a623be13a1b570c5448"
           },
+          "summary": "Reviewed the target README.md, which only describes the `sval_ref` crate as a variant of `sval::Value` for types with internal references. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence signals, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".cargo_vcs_info.json",
@@ -392,9 +417,11 @@
             "algorithm": "blake3",
             "value": "92a5fcfb9d40022dc38fde82111d2b96a00c1af8b87c737a6cb070f23eb7271b"
           },
+          "summary": "Reviewed the target `.cargo_vcs_info.json`, which contains only Cargo VCS metadata (`git.sha1` and `path_in_vcs`) and no executable content. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence indicators in this file and found none.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

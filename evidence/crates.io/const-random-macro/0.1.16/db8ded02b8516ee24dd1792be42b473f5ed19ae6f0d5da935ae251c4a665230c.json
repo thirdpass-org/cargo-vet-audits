@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -183,6 +183,10 @@
     {
       "id": "rev_847ef4404fde467a9bcf314c7e53f93a",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -197,6 +201,7 @@
             "algorithm": "blake3",
             "value": "b4d0a93de534e29c5a27e3ad5d60532f9f338a0fa02c011ba1850ef9c218a129"
           },
+          "summary": "Reviewed the crate manifest in Cargo.toml.orig for install-time hooks, hidden execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. The file only declares package metadata for a proc-macro crate and ordinary dependencies (`getrandom`, `tiny-keccak`, `once_cell`); no concrete malicious or supply-chain indicators were present in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -219,7 +224,8 @@
               "total_tokens": 20962
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-APACHE",
@@ -227,6 +233,7 @@
             "algorithm": "blake3",
             "value": "bc9b8879cf5978632a7be06ee591f28247b4c78fbc0adf6ac40e2d097063c32a"
           },
+          "summary": "`LICENSE-APACHE` contains the standard Apache License 2.0 text and nothing executable or script-like. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -249,7 +256,8 @@
               "total_tokens": 23975
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-MIT",
@@ -257,6 +265,7 @@
             "algorithm": "blake3",
             "value": "d73b6615c0f35773e7252a777972c1d56de35fd7c63df16c028a746e4fe06761"
           },
+          "summary": "Reviewed the MIT license text in LICENSE-MIT. It is a standard permissive license notice and contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -279,13 +288,18 @@
               "total_tokens": 21126
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_e2e4fc544c8c4afd8d7b7f89ffed5355",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -293,6 +307,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783195159",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "`src/span.rs` is a small helper for deterministic/random byte generation in a proc-macro context: it derives bytes from a compile-time `CONST_RANDOM_SEED` value or `getrandom`, then mixes in the call-site span via SHAKE to produce numeric outputs. I found no concrete indicators of install hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence, or other hidden payload execution in this file.\nReviewed `src/lib.rs`, a small procedural macro that generates constant random numeric literals and byte arrays from its macro input. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the normalized `Cargo.toml` for install-time hooks, build scripts, subprocess launches, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms. The manifest only declares a proc-macro crate with ordinary Rust dependencies (`getrandom`, `once_cell`, `tiny-keccak`) and no concrete malicious or supply-chain indicators were found in this file.\nI reviewed .cargo_vcs_info.json, which only records the crate's Git SHA1 and VCS path metadata. It contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior, so I found no concrete supply-chain indicators in this target file.",
       "files": [
         {
           "file_path": "src/span.rs",
@@ -300,9 +315,11 @@
             "algorithm": "blake3",
             "value": "c1c50fdded66aeb345d8486b6f27169eacdd33a199eeb8f7fd5871ea35d5c73e"
           },
+          "summary": "`src/span.rs` is a small helper for deterministic/random byte generation in a proc-macro context: it derives bytes from a compile-time `CONST_RANDOM_SEED` value or `getrandom`, then mixes in the call-site span via SHAKE to produce numeric outputs. I found no concrete indicators of install hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence, or other hidden payload execution in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/lib.rs",
@@ -310,9 +327,11 @@
             "algorithm": "blake3",
             "value": "8368e3fb3d116d04f6f57f44bb45b514eb65bf3c14a245497b2fe6f5d66a6490"
           },
+          "summary": "Reviewed `src/lib.rs`, a small procedural macro that generates constant random numeric literals and byte arrays from its macro input. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -320,9 +339,11 @@
             "algorithm": "blake3",
             "value": "adfef73156737929e84d2e63a262a40a83462c5eddfa6dbb73ce9b3b7d9e49cc"
           },
+          "summary": "Reviewed the normalized `Cargo.toml` for install-time hooks, build scripts, subprocess launches, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms. The manifest only declares a proc-macro crate with ordinary Rust dependencies (`getrandom`, `once_cell`, `tiny-keccak`) and no concrete malicious or supply-chain indicators were found in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".cargo_vcs_info.json",
@@ -330,9 +351,11 @@
             "algorithm": "blake3",
             "value": "979052c2b9954b512b162ff55e3772dfc5f666d6597093c594a9b947b17a5c2a"
           },
+          "summary": "I reviewed .cargo_vcs_info.json, which only records the crate's Git SHA1 and VCS path metadata. It contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior, so I found no concrete supply-chain indicators in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

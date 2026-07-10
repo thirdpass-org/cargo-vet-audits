@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -511,6 +511,10 @@
     {
       "id": "rev_1056f9ea64254b93bd7506e18cb37a7b",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -518,6 +522,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783190890",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/ffi_utils.rs`, which contains small cross-platform FFI helpers for timezone handling plus tests that validate an Android C string constant and a fixed-size timezone buffer. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed `.github/workflows/rust.yml`, which defines a broad CI matrix for Rust, wasm, Haiku, Android, formatting, and audit jobs. I checked for install-time execution, hidden subprocesses, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
           "file_path": "src/ffi_utils.rs",
@@ -525,9 +530,11 @@
             "algorithm": "blake3",
             "value": "0feaf8e60f80c73d4ec75a504cfbe1cbdc7f7ba6ec82bea1e6cb10578bc778a7"
           },
+          "summary": "Reviewed `src/ffi_utils.rs`, which contains small cross-platform FFI helpers for timezone handling plus tests that validate an Android C string constant and a fixed-size timezone buffer. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".github/workflows/rust.yml",
@@ -535,15 +542,21 @@
             "algorithm": "blake3",
             "value": "4e591c625c15c49d039ac7987c5177526a09cddd4ac416c8d4e9266d81b67d00"
           },
+          "summary": "Reviewed `.github/workflows/rust.yml`, which defines a broad CI matrix for Rust, wasm, Haiku, Android, formatting, and audit jobs. I checked for install-time execution, hidden subprocesses, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_471508a1c14240fbb740599730d2aa1a",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -551,6 +564,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783191026",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `README.md`, which is a normal crate overview and usage guide for `iana-time-zone` with a simple example and MSRV/license notes. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `src/tz_ohos.rs`, a small OpenHarmony-specific FFI wrapper that calls the platform `time_service_ndk` library to fetch the system timezone and convert it to a Rust `String`. I checked for install-time hooks, network/exfiltration, credential or environment harvesting, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the GitHub Actions workflow in .github/workflows/zizmor.yaml: it runs on push and pull_request, checks out the repository, installs uv, executes `uvx zizmor --format sarif .`, and uploads the SARIF report. I found no concrete malicious or supply-chain indicators in this file; there were no install-time hooks, hidden subprocess chains, credential harvesting, exfiltration, obfuscation, persistence, or unexpected dynamic code-loading behaviors beyond the explicit security scanner invocation.\nReviewed `src/tz_wasm32_emscripten.rs`, which exposes a small wasm-only timezone lookup that calls Emscripten's `emscripten_run_script_string` to evaluate `Intl.DateTimeFormat().resolvedOptions().timeZone` and convert the returned C string into Rust. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, hidden downloads, dynamic code loading beyond the fixed timezone query, obfuscation, or persistence behavior.\nReviewed `src/tz_android.rs`, which only resolves the Android timezone property via `AndroidSystemProperties` and caches the handle with `Once`. I found no concrete indicators of install-time execution, network/exfiltration, secret access, dynamic code loading, obfuscation, or persistence in this file.",
       "files": [
         {
           "file_path": "README.md",
@@ -558,9 +572,11 @@
             "algorithm": "blake3",
             "value": "2d5cddb6ac599aaa1fef6c25985bb35a30accea4fe7c4ed6c6d99d9e176941c8"
           },
+          "summary": "Reviewed `README.md`, which is a normal crate overview and usage guide for `iana-time-zone` with a simple example and MSRV/license notes. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/tz_ohos.rs",
@@ -568,9 +584,11 @@
             "algorithm": "blake3",
             "value": "d7778d75f3adcd1721d3695e293240573fd0b8f4a5be72930600f15321d50fb9"
           },
+          "summary": "Reviewed `src/tz_ohos.rs`, a small OpenHarmony-specific FFI wrapper that calls the platform `time_service_ndk` library to fetch the system timezone and convert it to a Rust `String`. I checked for install-time hooks, network/exfiltration, credential or environment harvesting, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".github/workflows/zizmor.yaml",
@@ -578,9 +596,11 @@
             "algorithm": "blake3",
             "value": "23c0803873c18d21f3c1c4baaa7920278c683ce4eba4bab73ab2b920853a1a1f"
           },
+          "summary": "Reviewed the GitHub Actions workflow in .github/workflows/zizmor.yaml: it runs on push and pull_request, checks out the repository, installs uv, executes `uvx zizmor --format sarif .`, and uploads the SARIF report. I found no concrete malicious or supply-chain indicators in this file; there were no install-time hooks, hidden subprocess chains, credential harvesting, exfiltration, obfuscation, persistence, or unexpected dynamic code-loading behaviors beyond the explicit security scanner invocation.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/tz_wasm32_emscripten.rs",
@@ -588,9 +608,11 @@
             "algorithm": "blake3",
             "value": "b2bfbe5ddd5beb3546bec8836e9dff6c8b846a5b1aaab78011c14f5233bcaf91"
           },
+          "summary": "Reviewed `src/tz_wasm32_emscripten.rs`, which exposes a small wasm-only timezone lookup that calls Emscripten's `emscripten_run_script_string` to evaluate `Intl.DateTimeFormat().resolvedOptions().timeZone` and convert the returned C string into Rust. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, hidden downloads, dynamic code loading beyond the fixed timezone query, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/tz_android.rs",
@@ -598,15 +620,21 @@
             "algorithm": "blake3",
             "value": "eeb18ab834fdcdc0d0a63cf51a10318408600a7c1fcc77f85755de145e52ab40"
           },
+          "summary": "Reviewed `src/tz_android.rs`, which only resolves the Android timezone property via `AndroidSystemProperties` and caches the handle with `Once`. I found no concrete indicators of install-time execution, network/exfiltration, secret access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_4e19c58b09ec4da6b22f739a74ab4cb3",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -614,6 +642,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783191182",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/tz_windows.rs`, which is a small Windows-only timezone helper that instantiates `Calendar`, reads the system time zone, and converts `windows_core::Error` into the crate’s error type. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `examples/get_timezone_loop.rs`, a small example binary that repeatedly calls `iana_time_zone::get_timezone()` once per second and prints the result. I checked for install-time hooks, network/exfiltration, credential or secret access, dynamic code loading, obfuscation, persistence, and other hidden subprocess behavior; none are present in this file.\nReviewed `.github/dependabot.yml`, which only configures Dependabot to check Cargo dependencies and GitHub Actions daily. I found no concrete malicious or supply-chain indicators in this file, and it does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\n`src/platform.rs` is a tiny platform stub: it always returns `GetTimezoneError::OsError` from `get_timezone_inner()` and otherwise emits a compile-time error for unsupported non-`fallback` builds. I checked for install hooks, subprocesses, network/exfiltration, secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\n`src/tz_aix.rs` is a small timezone helper that reads the `TZ` environment variable and returns it as the current timezone. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/tz_windows.rs",
@@ -621,9 +650,11 @@
             "algorithm": "blake3",
             "value": "0d0459e22528015ed3393d0df8c6d44444aa7177219fa77f4f91d6a20323fadb"
           },
+          "summary": "Reviewed `src/tz_windows.rs`, which is a small Windows-only timezone helper that instantiates `Calendar`, reads the system time zone, and converts `windows_core::Error` into the crate’s error type. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "examples/get_timezone_loop.rs",
@@ -631,9 +662,11 @@
             "algorithm": "blake3",
             "value": "248593642529176db4ab78b9caf7ef378cc1961801ae46073422bf9581a77901"
           },
+          "summary": "Reviewed `examples/get_timezone_loop.rs`, a small example binary that repeatedly calls `iana_time_zone::get_timezone()` once per second and prints the result. I checked for install-time hooks, network/exfiltration, credential or secret access, dynamic code loading, obfuscation, persistence, and other hidden subprocess behavior; none are present in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".github/dependabot.yml",
@@ -641,9 +674,11 @@
             "algorithm": "blake3",
             "value": "b4243a959081bcc8b7d313702c52d3161b9c5835db73f976385a67b25515daf3"
           },
+          "summary": "Reviewed `.github/dependabot.yml`, which only configures Dependabot to check Cargo dependencies and GitHub Actions daily. I found no concrete malicious or supply-chain indicators in this file, and it does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/platform.rs",
@@ -651,9 +686,11 @@
             "algorithm": "blake3",
             "value": "d8d83c637037f5283c39680f8313834f4385b5a64f5199416796cc9bbd1d1f43"
           },
+          "summary": "`src/platform.rs` is a tiny platform stub: it always returns `GetTimezoneError::OsError` from `get_timezone_inner()` and otherwise emits a compile-time error for unsupported non-`fallback` builds. I checked for install hooks, subprocesses, network/exfiltration, secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/tz_aix.rs",
@@ -661,15 +698,21 @@
             "algorithm": "blake3",
             "value": "ee079a607013e2f6bd3f3d72c33b3268aac5ef698c82ed1aa34670db629a053e"
           },
+          "summary": "`src/tz_aix.rs` is a small timezone helper that reads the `TZ` environment variable and returns it as the current timezone. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_609337f0d8b04804afe05148585a7f0b",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -677,6 +720,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783191302",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/tz_haiku.rs`, which is a tiny wrapper that calls `iana_time_zone_haiku::get_timezone()` and maps `None` to `GetTimezoneError::OsError`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.\nReviewed `src/tz_wasm32_wasi.rs`, which only resolves the timezone by reading the `TZ` environment variable and falling back to `Etc/UTC`. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `.clippy.toml`, which only configures Clippy lint policy (`avoid-breaking-exported-api = true`) and the minimum supported Rust version (`msrv = \"1.62.0\"`). I found no concrete malicious or supply-chain indicators in this file, and it contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
           "file_path": "src/tz_haiku.rs",
@@ -684,9 +728,11 @@
             "algorithm": "blake3",
             "value": "27610b236d497394c707fd6e9d471f532ee0708b823e3709805613362b5ac0dc"
           },
+          "summary": "Reviewed `src/tz_haiku.rs`, which is a tiny wrapper that calls `iana_time_zone_haiku::get_timezone()` and maps `None` to `GetTimezoneError::OsError`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/tz_wasm32_wasi.rs",
@@ -694,9 +740,11 @@
             "algorithm": "blake3",
             "value": "766fbf46c324ab0f64d87454a9619389eb69f64d001fc520b6e0c13b066cb5d5"
           },
+          "summary": "Reviewed `src/tz_wasm32_wasi.rs`, which only resolves the timezone by reading the `TZ` environment variable and falling back to `Etc/UTC`. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".clippy.toml",
@@ -704,15 +752,21 @@
             "algorithm": "blake3",
             "value": "d446bc85a4faf6682eaa68cf2a989c52066a5769f4c64c1651bca746affb4b8f"
           },
+          "summary": "Reviewed `.clippy.toml`, which only configures Clippy lint policy (`avoid-breaking-exported-api = true`) and the minimum supported Rust version (`msrv = \"1.62.0\"`). I found no concrete malicious or supply-chain indicators in this file, and it contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_7d1fd4dc3edb42a3b1267c740f63e60d",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -720,6 +774,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783190959",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `CHANGELOG.md`, which is a plain ASCII release-notes file listing version history and GitHub release links. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload-like content; none were present in this file.\nReviewed `src/tz_linux.rs`, which reads local timezone configuration from `/etc/localtime`, `/etc/timezone`, and OpenWRT `/etc/config/system` using filesystem-only parsing. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nReviewed the Darwin-specific timezone lookup wrapper in `src/tz_darwin.rs`, including its CoreFoundation FFI path that resets and copies the system timezone and then converts it to UTF-8 with length bounds. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/lib.rs`, which is a small Rust library entrypoint that conditionally includes platform-specific timezone lookup modules and exposes `get_timezone()`. I found no concrete indicators of malicious or supply-chain behavior in this file: no install hooks, no network or exfiltration logic, no credential access, no dynamic code loading, no obfuscation, and no persistence/tampering behavior.\nReviewed the Cargo manifest for `iana-time-zone` 0.1.65. It is a standard library crate declaration with `build = false`, no install hooks or scripts, and only normal platform-gated dependencies; I found no concrete indicators of network exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
       "files": [
         {
           "file_path": "CHANGELOG.md",
@@ -727,9 +782,11 @@
             "algorithm": "blake3",
             "value": "7e835791990a191ca663823837b2ab6e4c955bf6e3f7d3399908acb0cac273ba"
           },
+          "summary": "Reviewed `CHANGELOG.md`, which is a plain ASCII release-notes file listing version history and GitHub release links. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload-like content; none were present in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/tz_linux.rs",
@@ -737,9 +794,11 @@
             "algorithm": "blake3",
             "value": "dec46720afe81fd6432a499185fe58537af64f09882745decf4cf7066d33f8e0"
           },
+          "summary": "Reviewed `src/tz_linux.rs`, which reads local timezone configuration from `/etc/localtime`, `/etc/timezone`, and OpenWRT `/etc/config/system` using filesystem-only parsing. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/tz_darwin.rs",
@@ -747,9 +806,11 @@
             "algorithm": "blake3",
             "value": "a6b91fce2806c2ca310e6e677aca7e89e23381fb7d271054da754b26de7a4be6"
           },
+          "summary": "Reviewed the Darwin-specific timezone lookup wrapper in `src/tz_darwin.rs`, including its CoreFoundation FFI path that resets and copies the system timezone and then converts it to UTF-8 with length bounds. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/lib.rs",
@@ -757,9 +818,11 @@
             "algorithm": "blake3",
             "value": "a8d46e2a3e9ac06f3f1f921a4fcf8e3cb004086ae20614057f52c68f0dc703a8"
           },
+          "summary": "Reviewed `src/lib.rs`, which is a small Rust library entrypoint that conditionally includes platform-specific timezone lookup modules and exposes `get_timezone()`. I found no concrete indicators of malicious or supply-chain behavior in this file: no install hooks, no network or exfiltration logic, no credential access, no dynamic code loading, no obfuscation, and no persistence/tampering behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -767,15 +830,21 @@
             "algorithm": "blake3",
             "value": "aeeccf5fafeec979477985305f875fd248566d52135090afc9eb00abf437ade3"
           },
+          "summary": "Reviewed the Cargo manifest for `iana-time-zone` 0.1.65. It is a standard library crate declaration with `build = false`, no install hooks or scripts, and only normal platform-gated dependencies; I found no concrete indicators of network exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_bdd1587d87754b36856cb0056747a2f8",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -790,6 +859,7 @@
             "algorithm": "blake3",
             "value": "61a52e764acf7867d7fb96df12cf9dd87e3aa196ea11cbcd032054e2e16fc1ae"
           },
+          "summary": "Reviewed the .clang-format configuration file, which only sets standard formatting options (Google base style, indent width, column limit, and C++ include/tab rules). I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence triggers; none are present in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -812,7 +882,8 @@
               "total_tokens": 20915
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".gitignore",
@@ -820,6 +891,7 @@
             "algorithm": "blake3",
             "value": "c1a134533c4dfb1b522234651d50d4c561ae25cff22c2a986dafe8e302bda7f7"
           },
+          "summary": "Reviewed the target `.gitignore`, which only ignores the Rust build output directory and the lockfile. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -842,7 +914,8 @@
               "total_tokens": 21153
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.lock",
@@ -850,6 +923,7 @@
             "algorithm": "blake3",
             "value": "662ce6b89091c39d689d7fa1d532fc6a812a4d8992c2213a7a6ccbbb78774516"
           },
+          "summary": "Reviewed Cargo.lock, a generated dependency lockfile pinning crates.io registry packages for iana-time-zone 0.1.65 and its OS/test/wasm-related dependencies. I found no concrete supply-chain indicators in this file: no install hooks, git or path dependencies, network or secret-access behavior, dynamic code loading, obfuscation, or persistence entries.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -872,7 +946,8 @@
               "total_tokens": 91332
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml.orig",
@@ -880,6 +955,7 @@
             "algorithm": "blake3",
             "value": "4126efe13907c79f6b25fc1f552b0232197d1b7dae5e5926b09fdd310f87c712"
           },
+          "summary": "This is the Cargo manifest for `iana-time-zone` 0.1.65, defining platform-gated Rust dependencies for Android, Apple, Windows, wasm32, and Haiku plus dev-dependencies. I checked this file for install hooks, build scripts, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -902,7 +978,8 @@
               "total_tokens": 21703
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-APACHE",
@@ -910,6 +987,7 @@
             "algorithm": "blake3",
             "value": "78034de92bbb71926c7e46646c66044ed7d1241ee57388b050f4494a62389647"
           },
+          "summary": "Reviewed `LICENSE-APACHE`, which is a plain Apache 2.0 license notice with attribution text only. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload-bearing content, and found none.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -932,13 +1010,18 @@
               "total_tokens": 23509
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_c4b40126343541d3b7ab03b44891cfc6",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -946,6 +1029,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783190834",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed this autogenerated `windows_bindings.rs` file, which defines Windows.Globalization.Calendar COM bindings and vtables. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none were present, and the file is limited to generated interface wrappers and method forwards.",
       "files": [
         {
           "file_path": "src/windows_bindings.rs",
@@ -953,15 +1037,21 @@
             "algorithm": "blake3",
             "value": "20359d37cc543730a959e962ae399112c5a5cccd75d741c7cd2ce723768c9d6a"
           },
+          "summary": "Reviewed this autogenerated `windows_bindings.rs` file, which defines Windows.Globalization.Calendar COM bindings and vtables. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none were present, and the file is limited to generated interface wrappers and method forwards.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_c7a1f2e484134a388e78cfab8427ddee",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -976,6 +1066,7 @@
             "algorithm": "blake3",
             "value": "76c52f597195f29de7983204efcc03ac82080a081f959eb1780e754d1c62edf3"
           },
+          "summary": "Reviewed the MIT license text in LICENSE-MIT. It is a standard permissive license notice with no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -998,13 +1089,18 @@
               "total_tokens": 20900
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_db3bcc7944384c3188185f36310a99e2",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -1012,6 +1108,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783191257",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/tz_freebsd.rs`, which only reads `/var/db/zoneinfo`, trims trailing whitespace, and returns the timezone string. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `.cargo_vcs_info.json`, which only records the crate’s VCS commit SHA and an empty `path_in_vcs` field. I found no concrete malicious or supply-chain indicators in this file, and it does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed the example binary in `examples/get_timezone.rs`; it only calls `iana_time_zone::get_timezone()` and prints the returned value, with no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior present in the file.\nReviewed `bindings.txt`, which is a tiny static bindgen configuration that only directs output to `src/windows_bindings.rs` and filters `Windows.Globalization.Calendar`. I found no concrete malicious or supply-chain indicators in this file, and there were no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors present.\nReviewed `deny.toml`, which only declares license policy for the crate (`Apache-2.0`, `MIT`, `Unicode-3.0`) and a private-package ignore rule. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
       "files": [
         {
           "file_path": "src/tz_freebsd.rs",
@@ -1019,9 +1116,11 @@
             "algorithm": "blake3",
             "value": "9b0ce6c0fba8a18431fe64c015fe58e035bf822614075886961c7bd2617c1a2a"
           },
+          "summary": "Reviewed `src/tz_freebsd.rs`, which only reads `/var/db/zoneinfo`, trims trailing whitespace, and returns the timezone string. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".cargo_vcs_info.json",
@@ -1029,9 +1128,11 @@
             "algorithm": "blake3",
             "value": "b373373857c0df505f40f0e5736e0b78dbaf435063ed2b34a8697c9986a1efe0"
           },
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the crate’s VCS commit SHA and an empty `path_in_vcs` field. I found no concrete malicious or supply-chain indicators in this file, and it does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "examples/get_timezone.rs",
@@ -1039,9 +1140,11 @@
             "algorithm": "blake3",
             "value": "1326678940fa4a3f9fade2bb4db39a100487d839c02157e1816cb2eb7e9588a1"
           },
+          "summary": "Reviewed the example binary in `examples/get_timezone.rs`; it only calls `iana_time_zone::get_timezone()` and prints the returned value, with no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior present in the file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "bindings.txt",
@@ -1049,9 +1152,11 @@
             "algorithm": "blake3",
             "value": "77b94e4d51f605c87b9b87de1fd5d9a67b7f9cef084ce626041d520f3b939cfc"
           },
+          "summary": "Reviewed `bindings.txt`, which is a tiny static bindgen configuration that only directs output to `src/windows_bindings.rs` and filters `Windows.Globalization.Calendar`. I found no concrete malicious or supply-chain indicators in this file, and there were no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors present.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "deny.toml",
@@ -1059,15 +1164,21 @@
             "algorithm": "blake3",
             "value": "b9e229cd0625592d0c6e3cb4c1c038cdd2bc441ad721e0a4dcd55fe1e4172c6d"
           },
+          "summary": "Reviewed `deny.toml`, which only declares license policy for the crate (`Apache-2.0`, `MIT`, `Unicode-3.0`) and a private-package ignore rule. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_e0813c510b0d416da17b288fe96d95c8",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -1075,6 +1186,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783191101",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `examples/stress-test.rs`, a small concurrency stress test that spawns 10 threads, repeatedly calls `iana_time_zone::get_timezone()`, and checks an atomic counter. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload behavior in this file.\nReviewed `src/tz_netbsd.rs`, which only resolves `/etc/localtime`, converts the symlink target to a string, and strips a known zoneinfo prefix to derive the timezone. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/tz_illumos.rs`, which is a small Illumos-specific helper that opens `/etc/default/init`, scans for a `TZ=` line, and returns the configured timezone string. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none were present in this file.\nReviewed `src/tz_wasm32_unknown.rs`, which is a small wasm32 timezone helper that reads `Intl.DateTimeFormat().resolvedOptions().timeZone` through `wasm_bindgen` and returns it as a string. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed the release workflow in `.github/workflows/release.yml`, which publishes the crate on `v*` tags using `rust-lang/crates-io-auth-action` to obtain a crates.io token and then runs `cargo publish`. I found no concrete indicators of malicious supply-chain behavior in this file: no install hooks, secret harvesting, hidden downloads, dynamic code loading, obfuscation, or persistence mechanisms beyond the expected release publish flow.",
       "files": [
         {
           "file_path": "examples/stress-test.rs",
@@ -1082,9 +1194,11 @@
             "algorithm": "blake3",
             "value": "3bf0dfc7714cb4fc536d9d7c3b5e2824b1aaf6e2f48ef9ab443d9ae6ce0458cf"
           },
+          "summary": "Reviewed `examples/stress-test.rs`, a small concurrency stress test that spawns 10 threads, repeatedly calls `iana_time_zone::get_timezone()`, and checks an atomic counter. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/tz_netbsd.rs",
@@ -1092,9 +1206,11 @@
             "algorithm": "blake3",
             "value": "7b64624d60947b8415400a4ec30fe9e28b85885d98ae78a0d6dc0dec12a8eda1"
           },
+          "summary": "Reviewed `src/tz_netbsd.rs`, which only resolves `/etc/localtime`, converts the symlink target to a string, and strips a known zoneinfo prefix to derive the timezone. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/tz_illumos.rs",
@@ -1102,9 +1218,11 @@
             "algorithm": "blake3",
             "value": "cc777b709d3c167f6d59b9318733d2fa4eb1b06343aa7fecec8238587e58bd9d"
           },
+          "summary": "Reviewed `src/tz_illumos.rs`, which is a small Illumos-specific helper that opens `/etc/default/init`, scans for a `TZ=` line, and returns the configured timezone string. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none were present in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/tz_wasm32_unknown.rs",
@@ -1112,9 +1230,11 @@
             "algorithm": "blake3",
             "value": "cf5a91de2e39e0f74242e0f706c906ee58166ed15d17a8ca407a84953dc5f724"
           },
+          "summary": "Reviewed `src/tz_wasm32_unknown.rs`, which is a small wasm32 timezone helper that reads `Intl.DateTimeFormat().resolvedOptions().timeZone` through `wasm_bindgen` and returns it as a string. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".github/workflows/release.yml",
@@ -1122,9 +1242,11 @@
             "algorithm": "blake3",
             "value": "45804d5fb12fdd4980cae19d1cd7f9c573f0479188dc0f74008900f212d8fecc"
           },
+          "summary": "Reviewed the release workflow in `.github/workflows/release.yml`, which publishes the crate on `v*` tags using `rust-lang/crates-io-auth-action` to obtain a crates.io token and then runs `cargo publish`. I found no concrete indicators of malicious supply-chain behavior in this file: no install hooks, secret harvesting, hidden downloads, dynamic code loading, obfuscation, or persistence mechanisms beyond the expected release publish flow.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

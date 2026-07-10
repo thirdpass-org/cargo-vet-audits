@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -249,6 +249,10 @@
     {
       "id": "rev_1d0a5eb0e26048668a2cef22ddb61f11",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -256,6 +260,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782842979",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/lib.rs`, which implements the crate's core WyRand-based RNG, range helpers, slice filling, and optional `std`/`alloc`-gated APIs. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none were present in this file.\n`tests/smoke.rs` is a Rust test suite for `fastrand` covering random integer, float, character, choice, fill, and seeding behavior. I reviewed it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/global_rng.rs`, which implements a thread-local global RNG facade with seed initialization, random value helpers, and platform-gated entropy sourcing via `getrandom` on wasm or a local hash-based fallback elsewhere. I checked for install-time execution, network or exfiltration, credential/secret access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
           "file_path": "src/lib.rs",
@@ -263,9 +268,11 @@
             "algorithm": "blake3",
             "value": "f81d7ffe46bb0e09d67918f88d9a331e6a4cb3f825d9cc05aabb57999a0594c7"
           },
+          "summary": "Reviewed `src/lib.rs`, which implements the crate's core WyRand-based RNG, range helpers, slice filling, and optional `std`/`alloc`-gated APIs. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none were present in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/smoke.rs",
@@ -273,9 +280,11 @@
             "algorithm": "blake3",
             "value": "b1e0222da7174aa65d02f84d3bb20d4871f98c93938163cdda8f26e8152beda2"
           },
+          "summary": "`tests/smoke.rs` is a Rust test suite for `fastrand` covering random integer, float, character, choice, fill, and seeding behavior. I reviewed it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/global_rng.rs",
@@ -283,15 +292,21 @@
             "algorithm": "blake3",
             "value": "0048c31590bd25940b4a106568b0bd8d0812c0791501e820ea234e8916fe87af"
           },
+          "summary": "Reviewed `src/global_rng.rs`, which implements a thread-local global RNG facade with seed initialization, random value helpers, and platform-gated entropy sourcing via `getrandom` on wasm or a local hash-based fallback elsewhere. I checked for install-time execution, network or exfiltration, credential/secret access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_800cb98666a346ac9fcbac6c52231d65",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -306,6 +321,7 @@
             "algorithm": "blake3",
             "value": "6e0a565ed839aeccca7564f4119c96706babe525ad28b5af47d3894136ae93a7"
           },
+          "summary": "Cargo.lock is a standard dependency lockfile for fastrand 2.4.1 and its registry dependencies. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious signals in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -328,7 +344,8 @@
               "total_tokens": 55712
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml.orig",
@@ -336,6 +353,7 @@
             "algorithm": "blake3",
             "value": "c6c2695a250a582fedba6d2f4b2a0eef6c736969825318c141d9ca4e6c75aa81"
           },
+          "summary": "Reviewed the package manifest in `Cargo.toml.orig` for install-time hooks, hidden subprocess execution, credential or environment access, network/exfiltration, dynamic code loading, obfuscation, and persistence behavior. The file is a standard `fastrand` crate manifest with feature flags and normal Rust dependencies; no concrete malicious or supply-chain indicators were found.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -358,7 +376,8 @@
               "total_tokens": 21346
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-APACHE",
@@ -366,6 +385,7 @@
             "algorithm": "blake3",
             "value": "bc9b8879cf5978632a7be06ee591f28247b4c78fbc0adf6ac40e2d097063c32a"
           },
+          "summary": "Reviewed the Apache 2.0 license text in LICENSE-APACHE and found only standard licensing terms. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and none are present in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -388,7 +408,8 @@
               "total_tokens": 23209
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-MIT",
@@ -396,6 +417,7 @@
             "algorithm": "blake3",
             "value": "e236a4d5f14aab8594aa14bb1c7e535f9531925b1fc21d4ab21d322da13cd108"
           },
+          "summary": "The target file is a standard MIT license grant and disclaimer. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -418,13 +440,18 @@
               "total_tokens": 20864
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_959860d3865e4447ada82db3281766ef",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -432,6 +459,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782843047",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `CHANGELOG.md`, which is a plain release history for fastrand 1.0.0 through 2.4.1. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, network/exfiltration references, credential access, dynamic code loading, obfuscation, or persistence behavior described here.\n`benches/bench.rs` is a Rust benchmark harness comparing `fastrand` against `wyhash` across shuffle, integer, float, and buffer-fill benchmarks. I checked it for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.\nReviewed the crate manifest in `Cargo.toml` for install-time execution, build hooks, hidden subprocesses, network/exfiltration behavior, dynamic code loading, obfuscation, and persistence tampering. The file is a normal Rust package manifest for `fastrand` 2.4.1 with no `build.rs`, no `build` script, and no manifest entries that would execute code or fetch remote payloads.\nReviewed `README.md`, which is a normal crate overview for a random number generator with examples, feature notes, and license information. I checked it for install hooks, hidden execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in the file.\nReviewed `tests/char.rs`, which is a unit test that samples `fastrand::char` across several Unicode ranges, including control characters and codepoints near the surrogate boundary and Unicode max, to verify coverage and inclusion behavior. I found no concrete malicious or supply-chain indicators in this file; it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
           "file_path": "CHANGELOG.md",
@@ -439,9 +467,11 @@
             "algorithm": "blake3",
             "value": "f2e99c233c3d082fc7736bb9c1b076a67bff4e937a94e119ee68ffda88fe38cc"
           },
+          "summary": "Reviewed `CHANGELOG.md`, which is a plain release history for fastrand 1.0.0 through 2.4.1. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, network/exfiltration references, credential access, dynamic code loading, obfuscation, or persistence behavior described here.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "benches/bench.rs",
@@ -449,9 +479,11 @@
             "algorithm": "blake3",
             "value": "8479b56aa9df14802c6d7c73d33aa6b19ea5a51a783e35bae22476a90fd48a52"
           },
+          "summary": "`benches/bench.rs` is a Rust benchmark harness comparing `fastrand` against `wyhash` across shuffle, integer, float, and buffer-fill benchmarks. I checked it for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -459,9 +491,11 @@
             "algorithm": "blake3",
             "value": "1940426b57ecff56c986cbc3f276c217c8be190fae28503fbb152922d0eca27a"
           },
+          "summary": "Reviewed the crate manifest in `Cargo.toml` for install-time execution, build hooks, hidden subprocesses, network/exfiltration behavior, dynamic code loading, obfuscation, and persistence tampering. The file is a normal Rust package manifest for `fastrand` 2.4.1 with no `build.rs`, no `build` script, and no manifest entries that would execute code or fetch remote payloads.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "README.md",
@@ -469,9 +503,11 @@
             "algorithm": "blake3",
             "value": "ab15763300d6b23b256485f9118d5484420c604359a801f73ebb57d3263b6fd5"
           },
+          "summary": "Reviewed `README.md`, which is a normal crate overview for a random number generator with examples, feature notes, and license information. I checked it for install hooks, hidden execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in the file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/char.rs",
@@ -479,15 +515,21 @@
             "algorithm": "blake3",
             "value": "74f71538175c764df1b7a78efab3e239fd6665b341ca339535f95bffdffb6b67"
           },
+          "summary": "Reviewed `tests/char.rs`, which is a unit test that samples `fastrand::char` across several Unicode ranges, including control characters and codepoints near the surrogate boundary and Unicode max, to verify coverage and inclusion behavior. I found no concrete malicious or supply-chain indicators in this file; it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_da09b1561437410da5a54a51e2eaec72",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -495,6 +537,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782843063",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `.cargo_vcs_info.json`, which only records the source VCS SHA1 and an empty `path_in_vcs` field. It contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior, so no concrete supply-chain compromise indicators were found in this file.",
       "files": [
         {
           "file_path": ".cargo_vcs_info.json",
@@ -502,9 +545,11 @@
             "algorithm": "blake3",
             "value": "378c31ca58200701c1418d58f9fa9c22c98e669bd58f3d63038ec7d5dcd516f2"
           },
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the source VCS SHA1 and an empty `path_in_vcs` field. It contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior, so no concrete supply-chain compromise indicators were found in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

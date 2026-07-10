@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -271,6 +271,10 @@
     {
       "id": "rev_391a6ddd524f4238a500b243668e3667",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -278,6 +282,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782850982",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/to_value.rs`, which is a small `sval` adapter that streams `fmt::Debug` and `fmt::Display` values through `write!` into an `sval::Stream`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed this crate manifest for install-time execution, build scripts, dependency tricks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. The file is a normal library package manifest for `sval_fmt` with `build = false`, a single `src/lib.rs` target, and plain dependencies on `itoa`, `ryu`, and `sval`; no concrete malicious or supply-chain indicators were found.\nReviewed `src/to_fmt.rs`, which is a small `sval::Value` to `fmt::Debug`/`fmt::Display` adapter with a transparent wrapper, a borrowed cast helper, and formatter bridging logic. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none were present in this file.\n`src/lib.rs` is a small `no_std` Rust crate entry point that re-exports formatter/value conversion modules and an optional `alloc`-gated string helper. I reviewed it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/tags.rs`, which only defines a handful of static `sval::Tag` constants and re-exports `NUMBER` for formatting categories. I found no concrete malicious or supply-chain indicators in this file: no install hooks, subprocess execution, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
           "file_path": "src/to_value.rs",
@@ -285,9 +290,11 @@
             "algorithm": "blake3",
             "value": "f76d36322e68fa80c9c33f3c899c5a1e744262c540f257d87974e58812efcbe0"
           },
+          "summary": "Reviewed `src/to_value.rs`, which is a small `sval` adapter that streams `fmt::Debug` and `fmt::Display` values through `write!` into an `sval::Stream`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -295,9 +302,11 @@
             "algorithm": "blake3",
             "value": "6519211123d7ba7e4863000f5cfe644fd9adb677980f871d896e8533777d0b9a"
           },
+          "summary": "Reviewed this crate manifest for install-time execution, build scripts, dependency tricks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. The file is a normal library package manifest for `sval_fmt` with `build = false`, a single `src/lib.rs` target, and plain dependencies on `itoa`, `ryu`, and `sval`; no concrete malicious or supply-chain indicators were found.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/to_fmt.rs",
@@ -305,9 +314,11 @@
             "algorithm": "blake3",
             "value": "d3825c1e8f1bc8a2a7ac943212e27c785e50121b85c15e87c7b6a0a239a1321c"
           },
+          "summary": "Reviewed `src/to_fmt.rs`, which is a small `sval::Value` to `fmt::Debug`/`fmt::Display` adapter with a transparent wrapper, a borrowed cast helper, and formatter bridging logic. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none were present in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/lib.rs",
@@ -315,9 +326,11 @@
             "algorithm": "blake3",
             "value": "4ab815bf28791f44a16c805b7af4b65d54c80221b09dbe6dbbf1c6b3d3d09a98"
           },
+          "summary": "`src/lib.rs` is a small `no_std` Rust crate entry point that re-exports formatter/value conversion modules and an optional `alloc`-gated string helper. I reviewed it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/tags.rs",
@@ -325,15 +338,21 @@
             "algorithm": "blake3",
             "value": "afdac089fcf976f6516ac3ce646bd0a7ce3638236a2f268546fccd2e8a59af64"
           },
+          "summary": "Reviewed `src/tags.rs`, which only defines a handful of static `sval::Tag` constants and re-exports `NUMBER` for formatting categories. I found no concrete malicious or supply-chain indicators in this file: no install hooks, subprocess execution, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_5fbb1dc761154fa4b8ee93477ef10656",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -341,6 +360,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782850896",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/token_write.rs`, which defines the `TokenWrite` formatting trait plus a small `write_escape_debug` helper and tests for escaping text. I checked for install hooks, subprocess or network activity, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\n`src/writer.rs` is a pure formatting/serialization adapter that implements `TokenWrite` and `sval::Stream` for turning structured values into debug-like text output. I reviewed it for install hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/token_write.rs",
@@ -348,9 +368,11 @@
             "algorithm": "blake3",
             "value": "2f6ab23f03f0e5206d9c05983eb5c74c532de30f9cbdb3b73b647a3118bde823"
           },
+          "summary": "Reviewed `src/token_write.rs`, which defines the `TokenWrite` formatting trait plus a small `write_escape_debug` helper and tests for escaping text. I checked for install hooks, subprocess or network activity, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/writer.rs",
@@ -358,15 +380,21 @@
             "algorithm": "blake3",
             "value": "47bd620b1d97b83ea22d08d14c6ca6d514f17ac4f390a84556cbb96797809c22"
           },
+          "summary": "`src/writer.rs` is a pure formatting/serialization adapter that implements `TokenWrite` and `sval::Stream` for turning structured values into debug-like text output. I reviewed it for install hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_81da9defb1cb43dcbdc4f1b906f2e948",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -381,6 +409,7 @@
             "algorithm": "blake3",
             "value": "15982483647e7002e21074e2a5c39f35c69002dc98c8c0dde6f764a0353ccab1"
           },
+          "summary": "Reviewed the generated Cargo.lock for `sval_fmt` 2.20.0. It only pins `itoa`, `ryu`, `sval`, and the local crate dependency graph, and I found no install hooks, git/path overrides, network or exfiltration endpoints, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -403,7 +432,8 @@
               "total_tokens": 33047
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml.orig",
@@ -411,6 +441,7 @@
             "algorithm": "blake3",
             "value": "49e9a8e0a066c61ec07004e20c4dab5717bf56a9087c825d761eea4b5498a20d"
           },
+          "summary": "Reviewed the package manifest in Cargo.toml.orig, which declares a normal Rust library crate with metadata, feature flags, and dependencies on `sval`, `ryu`, and `itoa`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -433,7 +464,8 @@
               "total_tokens": 21815
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-APACHE",
@@ -441,6 +473,7 @@
             "algorithm": "blake3",
             "value": "bc9b8879cf5978632a7be06ee591f28247b4c78fbc0adf6ac40e2d097063c32a"
           },
+          "summary": "Reviewed the Apache 2.0 license text in LICENSE-APACHE and checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms; it contains only standard licensing terms and no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -463,7 +496,8 @@
               "total_tokens": 23207
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-MIT",
@@ -471,6 +505,7 @@
             "algorithm": "blake3",
             "value": "aa89fc8d0df2c54341624302a1cd80afe6974181aa3f477e2836d4a4fb6b6a34"
           },
+          "summary": "Reviewed the MIT license text in LICENSE-MIT. It is a standard permissive license notice and contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -493,13 +528,18 @@
               "total_tokens": 21153
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_86e9201a9d494e8c84fa51dcc0fb0e62",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -507,6 +547,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782851034",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/to_write.rs`, which is a small formatting adapter that streams a `sval::Value` into either a plain `fmt::Write` or a `TokenWrite` wrapper. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/to_string.rs`, which is a small helper that formats a `sval::Value` into a `String` via `crate::stream_to_write` and returns the result. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed README.md, which is a brief package description for `sval_fmt` and only contains badges plus a short statement that it provides `std::fmt`-based formatting for `sval::Value`. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.\nReviewed `.cargo_vcs_info.json`, which contains only crate provenance metadata (`git.sha1` and `path_in_vcs`). I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
           "file_path": "src/to_write.rs",
@@ -514,9 +555,11 @@
             "algorithm": "blake3",
             "value": "9ef7e5a5b5574260a617cd4f416b904abc45d4e8d3d13224f85b3ba5cdeb5bae"
           },
+          "summary": "Reviewed `src/to_write.rs`, which is a small formatting adapter that streams a `sval::Value` into either a plain `fmt::Write` or a `TokenWrite` wrapper. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/to_string.rs",
@@ -524,9 +567,11 @@
             "algorithm": "blake3",
             "value": "76f03527d87a423aa4c1ff661573f422392fc066a1f55c60b0fa126dfe003a31"
           },
+          "summary": "Reviewed `src/to_string.rs`, which is a small helper that formats a `sval::Value` into a `String` via `crate::stream_to_write` and returns the result. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "README.md",
@@ -534,9 +579,11 @@
             "algorithm": "blake3",
             "value": "ecf04d8ee8aa242b3454235b60963850835f6fc754d135d71968033ea1b8675c"
           },
+          "summary": "Reviewed README.md, which is a brief package description for `sval_fmt` and only contains badges plus a short statement that it provides `std::fmt`-based formatting for `sval::Value`. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".cargo_vcs_info.json",
@@ -544,9 +591,11 @@
             "algorithm": "blake3",
             "value": "78fecb5d64ba57402790418ac4876f5fd1e34be065d373bd0c9b02b1f9761019"
           },
+          "summary": "Reviewed `.cargo_vcs_info.json`, which contains only crate provenance metadata (`git.sha1` and `path_in_vcs`). I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

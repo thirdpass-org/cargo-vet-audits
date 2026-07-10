@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -382,6 +382,10 @@
     {
       "id": "rev_2a90192bfb5f4b2c805ef4a84ace9768",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -396,6 +400,7 @@
             "algorithm": "blake3",
             "value": "9d69eedbd37bcd5fd242bc6a4984b99fb67dc35b5dcbe09776acaf99164fdd3d"
           },
+          "summary": "Reviewed the crate metadata in `.cargo_vcs_info.json`, which only records the source git SHA and path in VCS. No install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms are present in this target file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -418,7 +423,8 @@
               "total_tokens": 21031
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.lock",
@@ -426,6 +432,7 @@
             "algorithm": "blake3",
             "value": "177c1169b8e91c638e443eb6bde5985bf4ddd8ab12973723a8417962b05a3b05"
           },
+          "summary": "Cargo.lock is an auto-generated dependency lockfile for axum-core 0.5.6 that enumerates crates.io packages and checksums for the crate and its transitive dependencies. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -448,13 +455,18 @@
               "total_tokens": 38070
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_3bf1d77eaa4b426fab9b15592db8b58d",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -462,6 +474,7 @@
       "review_scope": "target_file_full",
       "created_at": "1780425761",
       "thirdpass_version": "0.4.3",
+      "agent_summary": "Reviewed `src/extract/request_parts.rs`, which implements benign axum request extractors for `Request`, `Parts`, `Method`, `Uri`, `Version`, `HeaderMap`, `BytesMut`, `Bytes`, `String`, `Extensions`, and `Body`, plus a small test. I checked for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, persistence, subprocess use, and other hidden payload execution, and found no concrete malicious or supply-chain indicators.\nReviewed `src/extract/default_body_limit.rs`, which implements the `DefaultBodyLimit` layer/service for Axum request body size limits. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution, and found no concrete malicious or supply-chain indicators in this file.\nI reviewed `src/response/append_headers.rs`, which defines the `AppendHeaders` response wrapper for appending HTTP headers by iterating over caller-provided key/value pairs and inserting them into the response. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/extract/rejection.rs`, which defines Axum body-buffering rejection types and conversions between boxed errors and specific rejection enums. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators; none were present in this file.\nThis file defines a small extension trait for `http::request::Parts` that forwards `extract` and `extract_with_state` to `FromRequestParts`, plus compile-time tests. I reviewed it for install hooks, subprocesses, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence, and found no concrete supply-chain or malicious indicators.",
       "files": [
         {
           "file_path": "src/extract/request_parts.rs",
@@ -469,9 +482,11 @@
             "algorithm": "blake3",
             "value": "a8aed1f42f652abf8f9ddaad5754339212aeb1396aaf6d9f2bb27eae52e168c0"
           },
+          "summary": "Reviewed `src/extract/request_parts.rs`, which implements benign axum request extractors for `Request`, `Parts`, `Method`, `Uri`, `Version`, `HeaderMap`, `BytesMut`, `Bytes`, `String`, `Extensions`, and `Body`, plus a small test. I checked for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, persistence, subprocess use, and other hidden payload execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/extract/default_body_limit.rs",
@@ -479,9 +494,11 @@
             "algorithm": "blake3",
             "value": "e5cbb14735f73df9a644a2c1ebdc0e9aec9b13a6fd0d609ca7e6442675b6bd8d"
           },
+          "summary": "Reviewed `src/extract/default_body_limit.rs`, which implements the `DefaultBodyLimit` layer/service for Axum request body size limits. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/response/append_headers.rs",
@@ -489,9 +506,11 @@
             "algorithm": "blake3",
             "value": "034c6e9c8e6310ddf0f2acb3b6c6b7cb414332647e4fabfd6bb43a88d8727657"
           },
+          "summary": "I reviewed `src/response/append_headers.rs`, which defines the `AppendHeaders` response wrapper for appending HTTP headers by iterating over caller-provided key/value pairs and inserting them into the response. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/extract/rejection.rs",
@@ -499,9 +518,11 @@
             "algorithm": "blake3",
             "value": "76450727478e21d139299d0394295d0a319d65faa053143c50d217b87ebea51d"
           },
+          "summary": "Reviewed `src/extract/rejection.rs`, which defines Axum body-buffering rejection types and conversions between boxed errors and specific rejection enums. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators; none were present in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/ext_traits/request_parts.rs",
@@ -509,15 +530,21 @@
             "algorithm": "blake3",
             "value": "cd45b94534ce12507ca3fa747d47927362f669f972f6e46f9274c48b4b201ac6"
           },
+          "summary": "This file defines a small extension trait for `http::request::Parts` that forwards `extract` and `extract_with_state` to `FromRequestParts`, plus compile-time tests. I reviewed it for install hooks, subprocesses, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence, and found no concrete supply-chain or malicious indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_5408a2a0125f4a93969083e97257dac8",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -525,6 +552,7 @@
       "review_scope": "target_file_full",
       "created_at": "1780425846",
       "thirdpass_version": "0.4.3",
+      "agent_summary": "Reviewed `src/extract/tuple.rs`, which contains Rust trait impls and tests for extracting tuple request parts/body values in axum-core. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the changelog for evidence of install-time hooks, network or credential access, hidden downloads, dynamic code loading, obfuscation, or persistence behavior. The file is a plain release-history document describing version changes and deprecations, and it contains no concrete malicious or supply-chain indicators.\nReviewed `src/macros.rs`, which defines internal Rust macros for rejection logging/response conversion, tuple expansion, and `Deref` delegation, plus a small unit test module. I checked for install-time execution, hidden subprocesses, network or credential access, dynamic code loading, obfuscation/decoding pipelines, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
           "file_path": "src/extract/tuple.rs",
@@ -532,9 +560,11 @@
             "algorithm": "blake3",
             "value": "6b0d025211166e20494419e0f7a306286517ffe3bd2d087135b880ce9e809bcb"
           },
+          "summary": "Reviewed `src/extract/tuple.rs`, which contains Rust trait impls and tests for extracting tuple request parts/body values in axum-core. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "CHANGELOG.md",
@@ -542,9 +572,11 @@
             "algorithm": "blake3",
             "value": "9c9a8a57e94c9ebda24e2de4d220935aae3b83ccf8d31b012bf66b377be195c2"
           },
+          "summary": "Reviewed the changelog for evidence of install-time hooks, network or credential access, hidden downloads, dynamic code loading, obfuscation, or persistence behavior. The file is a plain release-history document describing version changes and deprecations, and it contains no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/macros.rs",
@@ -552,15 +584,21 @@
             "algorithm": "blake3",
             "value": "3d495c73ef1937ed343be1d4d405660b31d6548c641d33f20466c6d3bbd9f01c"
           },
+          "summary": "Reviewed `src/macros.rs`, which defines internal Rust macros for rejection logging/response conversion, tuple expansion, and `Deref` delegation, plus a small unit test module. I checked for install-time execution, hidden subprocesses, network or credential access, dynamic code loading, obfuscation/decoding pipelines, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_7bea1985065146da8ba1e0911c68c3f2",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -568,6 +606,7 @@
       "review_scope": "target_file_full",
       "created_at": "1780425667",
       "thirdpass_version": "0.4.3",
+      "agent_summary": "Reviewed the `LICENSE` file only. It contains standard MIT license text and no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise signals.\nReviewed `src/extract/from_ref.rs`, which defines a small `FromRef` trait and a blanket `impl` that clones the input value. I checked this file for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nI reviewed `src/body.rs`, which implements HTTP body wrappers, stream conversion, and a small `try_downcast` helper. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential or secret access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/ext_traits/request.rs`, which defines the `RequestExt` trait and its implementations for request extraction helpers and body-limiting behavior. I checked for install-time hooks, network or credential access, hidden subprocesses, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/response/into_response.rs`, which is a pure response-conversion module for `axum-core` implementing `IntoResponse` across status codes, headers, bodies, and tuple combinations. I checked for install-time hooks, network/exfiltration, credential or secret access, dynamic code loading, obfuscation/packing, persistence tampering, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "LICENSE",
@@ -575,9 +614,11 @@
             "algorithm": "blake3",
             "value": "212c4b60147cc939bd406d52fb6fec70dfb87462bdb78114cd341602a4dbae2d"
           },
+          "summary": "Reviewed the `LICENSE` file only. It contains standard MIT license text and no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise signals.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/extract/from_ref.rs",
@@ -585,9 +626,11 @@
             "algorithm": "blake3",
             "value": "cfc4be55ce80ff85e1862e0032cfd3623c62a20e1ad183c6e646d5974a7aa5c7"
           },
+          "summary": "Reviewed `src/extract/from_ref.rs`, which defines a small `FromRef` trait and a blanket `impl` that clones the input value. I checked this file for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/body.rs",
@@ -595,9 +638,11 @@
             "algorithm": "blake3",
             "value": "4850cd0f1551509163f4374d2565d022563fca2533229d62bf4dce108919b9c2"
           },
+          "summary": "I reviewed `src/body.rs`, which implements HTTP body wrappers, stream conversion, and a small `try_downcast` helper. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential or secret access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/ext_traits/request.rs",
@@ -605,9 +650,11 @@
             "algorithm": "blake3",
             "value": "653dc2a2bb9b8c2c7cdc495f5f54ac4abb5d42ea5ce25228d3e6a2b51f470e2a"
           },
+          "summary": "Reviewed `src/ext_traits/request.rs`, which defines the `RequestExt` trait and its implementations for request extraction helpers and body-limiting behavior. I checked for install-time hooks, network or credential access, hidden subprocesses, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/response/into_response.rs",
@@ -615,15 +662,21 @@
             "algorithm": "blake3",
             "value": "bd3b285cddb8709af6d5ca75d8549ddc967fcc247da505baa8639af1a854b0c2"
           },
+          "summary": "Reviewed `src/response/into_response.rs`, which is a pure response-conversion module for `axum-core` implementing `IntoResponse` across status codes, headers, bodies, and tuple combinations. I checked for install-time hooks, network/exfiltration, credential or secret access, dynamic code loading, obfuscation/packing, persistence tampering, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_9e4764da66a3483da3d655519721f171",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -631,6 +684,7 @@
       "review_scope": "target_file_full",
       "created_at": "1780425810",
       "thirdpass_version": "0.4.3",
+      "agent_summary": "Reviewed `src/response/into_response_parts.rs`, which defines axum response-part conversion traits and implementations for headers, extensions, tuples, options, and error-to-response translation. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/error.rs`, which is a small error-wrapper type for axum that stores a boxed error and forwards `Display` and `StdError::source`. I checked for install-time hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/response/mod.rs`, which is a small response/error wrapper module for axum: it re-exports response traits and defines `Response`, `Result`, and `ErrorResponse` conversions. I checked for install hooks, subprocess or network activity, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/extract/mod.rs`, which defines axum request extractor traits, type aliases, and blanket implementations for converting requests and parts into extractors. I checked for install-time execution, secret or credential access, network/exfiltration, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators, and found no concrete malicious behavior in this file.\nReviewed the crate manifest in `Cargo.toml.orig`, which declares the `axum-core` package, its dependencies, optional features, and dev-dependencies. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
           "file_path": "src/response/into_response_parts.rs",
@@ -638,9 +692,11 @@
             "algorithm": "blake3",
             "value": "d23cee20fe383cd434b2fcc130a243f21d4cc29b7b0ea6b9607186d40a0fd34e"
           },
+          "summary": "Reviewed `src/response/into_response_parts.rs`, which defines axum response-part conversion traits and implementations for headers, extensions, tuples, options, and error-to-response translation. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/error.rs",
@@ -648,9 +704,11 @@
             "algorithm": "blake3",
             "value": "d93c4769ceffb019153daf1de876063b60b8e6ba7fc856b88e95f500402a38b2"
           },
+          "summary": "Reviewed `src/error.rs`, which is a small error-wrapper type for axum that stores a boxed error and forwards `Display` and `StdError::source`. I checked for install-time hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/response/mod.rs",
@@ -658,9 +716,11 @@
             "algorithm": "blake3",
             "value": "e68c37c7de810830815cc989c269f0ba00ab55dd921fbb98da50512dc1c0beda"
           },
+          "summary": "Reviewed `src/response/mod.rs`, which is a small response/error wrapper module for axum: it re-exports response traits and defines `Response`, `Result`, and `ErrorResponse` conversions. I checked for install hooks, subprocess or network activity, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/extract/mod.rs",
@@ -668,9 +728,11 @@
             "algorithm": "blake3",
             "value": "0a310d221359fa980c1c5fa7c1d96712358e8cf2e6e02b3802852c586d8af952"
           },
+          "summary": "Reviewed `src/extract/mod.rs`, which defines axum request extractor traits, type aliases, and blanket implementations for converting requests and parts into extractors. I checked for install-time execution, secret or credential access, network/exfiltration, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators, and found no concrete malicious behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml.orig",
@@ -678,15 +740,21 @@
             "algorithm": "blake3",
             "value": "2e8aaa4b36a53deb5dae72889cbf0b562b85a5c613686adb08a58f4da6b4943e"
           },
+          "summary": "Reviewed the crate manifest in `Cargo.toml.orig`, which declares the `axum-core` package, its dependencies, optional features, and dev-dependencies. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_ad79abb21bf4433c8760a50fefbb5b67",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -694,6 +762,7 @@
       "review_scope": "target_file_full",
       "created_at": "1780425712",
       "thirdpass_version": "0.4.3",
+      "agent_summary": "Reviewed the `README.md` for `axum-core` and found only project documentation: badges, crate description, MSRV, contribution, and license notes. No concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence were present in this file.\nReviewed the generated `Cargo.toml` for `axum-core` 0.5.6, focusing on install-time hooks, subprocess execution, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence. The manifest is a standard dependency declaration with lint settings and optional features only; no concrete malicious or supply-chain indicators were found in this file.\nReviewed `src/lib.rs`, which is a small crate root that only declares modules, re-exports types, and sets a couple of Clippy/test attributes. I checked for install-time execution, hidden subprocess or network activity, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/ext_traits/mod.rs`, which only declares two submodules and contains test-only `FromRequestParts` implementations for state extraction. I checked for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/extract/option.rs`, which only defines optional extractor traits and `Option<T>` passthrough impls for request parts/body extraction in `axum-core`. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
           "file_path": "README.md",
@@ -701,9 +770,11 @@
             "algorithm": "blake3",
             "value": "2f775823a15d8b49af3ba17091cfc4ce77801dd11a4faa99e31a8a6dbca0c6c1"
           },
+          "summary": "Reviewed the `README.md` for `axum-core` and found only project documentation: badges, crate description, MSRV, contribution, and license notes. No concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence were present in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -711,9 +782,11 @@
             "algorithm": "blake3",
             "value": "729babfcefef0ba23360edd21abb2d6f237eb2854a3bec72db5ae5d826591e37"
           },
+          "summary": "Reviewed the generated `Cargo.toml` for `axum-core` 0.5.6, focusing on install-time hooks, subprocess execution, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence. The manifest is a standard dependency declaration with lint settings and optional features only; no concrete malicious or supply-chain indicators were found in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/lib.rs",
@@ -721,9 +794,11 @@
             "algorithm": "blake3",
             "value": "25b7faa5b780d5ca296352d87d66a13be3cafd3eb0665a52982a7af2aca198ac"
           },
+          "summary": "Reviewed `src/lib.rs`, which is a small crate root that only declares modules, re-exports types, and sets a couple of Clippy/test attributes. I checked for install-time execution, hidden subprocess or network activity, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/ext_traits/mod.rs",
@@ -731,9 +806,11 @@
             "algorithm": "blake3",
             "value": "5e3f0a16fba7c104e52cfc1f84057a68bd974c9c0ae8032b619e946d8d2530f9"
           },
+          "summary": "Reviewed `src/ext_traits/mod.rs`, which only declares two submodules and contains test-only `FromRequestParts` implementations for state extraction. I checked for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/extract/option.rs",
@@ -741,9 +818,11 @@
             "algorithm": "blake3",
             "value": "b35ff90e58e50a9649f01ab98ef6b31fe487fb2e8fd4f07a3916ce640badac07"
           },
+          "summary": "Reviewed `src/extract/option.rs`, which only defines optional extractor traits and `Option<T>` passthrough impls for request parts/body extraction in `axum-core`. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

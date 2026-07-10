@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -217,6 +217,10 @@
     {
       "id": "rev_5124e590582e41a8b785300b9cb82cd6",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -224,6 +228,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782840978",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/lib.rs`, which implements the `Yokeable` proc-macro derive and generates trait impls with lifetime/type checks plus a few controlled `transmute`-based conversions. I found no concrete indicators of install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `examples/yoke_derive.rs`, which is a compile-time test/example file full of `#[derive(Yokeable)]` struct and enum definitions plus type assertions in `main`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
       "files": [
         {
           "file_path": "src/lib.rs",
@@ -231,9 +236,11 @@
             "algorithm": "blake3",
             "value": "48e5a927b74c7d90618d177b078daba85023e4667a1082433b9eb6618017253c"
           },
+          "summary": "Reviewed `src/lib.rs`, which implements the `Yokeable` proc-macro derive and generates trait impls with lifetime/type checks plus a few controlled `transmute`-based conversions. I found no concrete indicators of install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "examples/yoke_derive.rs",
@@ -241,15 +248,21 @@
             "algorithm": "blake3",
             "value": "1989e45bb3e6bd67a315638a6123669e54f12e4171c0447e03e83628a16c196d"
           },
+          "summary": "Reviewed `examples/yoke_derive.rs`, which is a compile-time test/example file full of `#[derive(Yokeable)]` struct and enum definitions plus type assertions in `main`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_5466398a92e4447eb0226f40574d7c26",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -257,6 +270,7 @@
       "review_scope": "target_file_full",
       "created_at": "1782841055",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/visitor.rs`, a `syn` visitor used by the derive logic to detect lifetime/type-parameter usage and bound lifetimes for yoke-related analysis. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.\nReviewed the crate manifest in Cargo.toml for install-time hooks, build scripts, dependency redirects, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior. The file only declares a normal proc-macro library with standard crates.io dependencies and lint settings; no concrete malicious or supply-chain indicators were found in the manifest.\n`src/lifetimes.rs` is a small `syn`/`proc_macro2` helper module that rewrites lifetime parameters in Rust types and includes tests for that transformation. I reviewed it for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed README.md, which is a short project description for the `yoke-derive` crate and a link to ICU4X resources. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the Cargo VCS metadata in .cargo_vcs_info.json; it only records a source git SHA1 and the in-repo path for the crate, with no executable content. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this target file.",
       "files": [
         {
           "file_path": "src/visitor.rs",
@@ -264,9 +278,11 @@
             "algorithm": "blake3",
             "value": "cad358c36f92607c8dd3e91d6f7b11bf62e1f73e01dcc7d93b98b718a1c85e12"
           },
+          "summary": "Reviewed `src/visitor.rs`, a `syn` visitor used by the derive logic to detect lifetime/type-parameter usage and bound lifetimes for yoke-related analysis. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -274,9 +290,11 @@
             "algorithm": "blake3",
             "value": "fe28493e05946ac926994c09c75d35f73b1b41e0d6fc690b6be597be94f5a179"
           },
+          "summary": "Reviewed the crate manifest in Cargo.toml for install-time hooks, build scripts, dependency redirects, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior. The file only declares a normal proc-macro library with standard crates.io dependencies and lint settings; no concrete malicious or supply-chain indicators were found in the manifest.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/lifetimes.rs",
@@ -284,9 +302,11 @@
             "algorithm": "blake3",
             "value": "132eb53d945dfeab3c13e052be33f303a8409f1c5278340a90e5b3d70aa00a0f"
           },
+          "summary": "`src/lifetimes.rs` is a small `syn`/`proc_macro2` helper module that rewrites lifetime parameters in Rust types and includes tests for that transformation. I reviewed it for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "README.md",
@@ -294,9 +314,11 @@
             "algorithm": "blake3",
             "value": "4ad81c35055bc9a3bf2540d4f0af3c58c2f66c8ae73d30c5c6f37bb3448f13cb"
           },
+          "summary": "Reviewed README.md, which is a short project description for the `yoke-derive` crate and a link to ICU4X resources. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".cargo_vcs_info.json",
@@ -304,15 +326,21 @@
             "algorithm": "blake3",
             "value": "d0fb1956b65710ce73ccbb9f6a57c854716987f992095220ee1d210d4612c631"
           },
+          "summary": "Reviewed the Cargo VCS metadata in .cargo_vcs_info.json; it only records a source git SHA1 and the in-repo path for the crate, with no executable content. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_7183bc5e5706429db96510d11bc6cd79",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -327,6 +355,7 @@
             "algorithm": "blake3",
             "value": "f9c244c4304bd0f29f0eeabdfb7742a37fdd68230bb47bd1f7058a212f3543a6"
           },
+          "summary": "Reviewed the Cargo.lock entries for yoke-derive 0.8.2 and its transitive crates; it only pins normal crates.io registry dependencies with checksums and no git/path sources, install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence indicators were present in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -349,7 +378,8 @@
               "total_tokens": 33586
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml.orig",
@@ -357,6 +387,7 @@
             "algorithm": "blake3",
             "value": "3f4369ea6d34a38b31742fd5854446125efd24721b58d01a048b55fe0d7956a8"
           },
+          "summary": "Reviewed `Cargo.toml.orig` for supply-chain indicators in the manifest: it declares a normal `yoke-derive` proc-macro crate with workspace-managed metadata and local dev-dependencies, and I found no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -379,7 +410,8 @@
               "total_tokens": 21744
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE",
@@ -387,6 +419,7 @@
             "algorithm": "blake3",
             "value": "4ce40d3c43ba50365f37d4c3676f6c0c2be24a2175f6b36bae13cee04ffea44c"
           },
+          "summary": "The target file is a plain Unicode license notice for ICU/Unicode content, with copyright, permission, disclaimer, and attribution text only. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found none.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -409,7 +442,8 @@
               "total_tokens": 21450
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

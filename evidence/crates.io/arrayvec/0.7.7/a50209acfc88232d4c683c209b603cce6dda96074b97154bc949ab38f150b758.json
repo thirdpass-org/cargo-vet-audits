@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -347,6 +347,10 @@
     {
       "id": "rev_2577bf0c57f547d68411489923cdf2e3",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -361,6 +365,7 @@
             "algorithm": "blake3",
             "value": "ac0ea8919af649a8b109f31bd7ca1cbba529afff7eaed33da2d98bfabef25aaf"
           },
+          "summary": "The target file is a standard `.gitignore` listing compiled artifacts, executables, and Cargo-generated paths (`/Cargo.lock`, `/target`). I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -383,7 +388,8 @@
               "total_tokens": 20745
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.lock",
@@ -391,6 +397,7 @@
             "algorithm": "blake3",
             "value": "abd9fe0337257eca141b70d85625039fa97c51b0f85070b95acefeeedb63afd4"
           },
+          "summary": "Reviewed Cargo.lock for arrayvec 0.7.7 and its pinned transitive dependencies. I found no concrete malicious or supply-chain indicators in this file: no install hooks, git/path sources, network or secret-access behavior, dynamic code loading, obfuscation, or persistence markers were present.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -413,7 +420,8 @@
               "total_tokens": 22387
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml.orig",
@@ -421,6 +429,7 @@
             "algorithm": "blake3",
             "value": "f83d5472903fed3b5cc99a9d2ed9b3ac0d1bc1cb1dd10343182274a608670458"
           },
+          "summary": "Reviewed the package manifest in Cargo.toml.orig for install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence. The file only declares crate metadata, optional dependencies, benches, features, and release/docs settings, with no concrete indicators of malicious or supply-chain behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -443,7 +452,8 @@
               "total_tokens": 21306
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-APACHE",
@@ -451,6 +461,7 @@
             "algorithm": "blake3",
             "value": "bc9b8879cf5978632a7be06ee591f28247b4c78fbc0adf6ac40e2d097063c32a"
           },
+          "summary": "Reviewed the Apache-2.0 license text in LICENSE-APACHE and found no concrete supply-chain or malicious indicators; it is a standard license document with no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -473,7 +484,8 @@
               "total_tokens": 23199
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-MIT",
@@ -481,6 +493,7 @@
             "algorithm": "blake3",
             "value": "8503516ef0c6b96df6df9298e571ba7b1a45bbc44c4b11bb886cdffcac6b64d0"
           },
+          "summary": "Reviewed `LICENSE-MIT`, which is a standard MIT license grant and disclaimer for the crate. It contains no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or other executable behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -503,13 +516,18 @@
               "total_tokens": 21171
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_2d2db486c042460da31590963001b29e",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -517,6 +535,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783186302",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/array_string.rs`, which implements a fixed-capacity UTF-8 string type with constructors, push/pop/truncate/remove, formatting, and optional serde/borsh/zeroize support. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed the changelog for arrayvec releases and found only release-note content about versioned fixes and feature additions. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.\nReviewed this generated `Cargo.toml` manifest for install-time execution, build hooks, hidden downloads, credential access, obfuscation, and persistence behavior. It declares a normal library package with `build = false`, no build script, no install hooks, and only optional crates plus dev-dependencies; I found no concrete malicious or supply-chain indicators in this file.\nReviewed the GitHub Actions workflow for standard CI behavior: it checks out the repo, installs Rust toolchains, builds/tests across several Rust versions, runs a nostd target job, and exercises Miri. I found no concrete malicious or supply-chain indicators in this file, and no install hooks, network exfiltration, credential harvesting, dynamic code loading, obfuscation, or persistence behavior.\n`benches/arraystring.rs` is a straightforward benchmark harness for `ArrayString` push and `try_push` behavior, using fixed in-memory strings and tight loops. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/array_string.rs",
@@ -524,9 +543,11 @@
             "algorithm": "blake3",
             "value": "351fe385f9cd201a58e4bb4af74d1ec8002d905b86243c20252058e15ce0da45"
           },
+          "summary": "Reviewed `src/array_string.rs`, which implements a fixed-capacity UTF-8 string type with constructors, push/pop/truncate/remove, formatting, and optional serde/borsh/zeroize support. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "CHANGELOG.md",
@@ -534,9 +555,11 @@
             "algorithm": "blake3",
             "value": "ab0c7e1fd303f0641c65114cf9029a0ff2cdbee6242d4c24c2318e3edf38a866"
           },
+          "summary": "Reviewed the changelog for arrayvec releases and found only release-note content about versioned fixes and feature additions. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -544,9 +567,11 @@
             "algorithm": "blake3",
             "value": "aa650ed90b1d936c00a9b964c2e687ba12f9f87dcaa6b3d7be73622965d8c01e"
           },
+          "summary": "Reviewed this generated `Cargo.toml` manifest for install-time execution, build hooks, hidden downloads, credential access, obfuscation, and persistence behavior. It declares a normal library package with `build = false`, no build script, no install hooks, and only optional crates plus dev-dependencies; I found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".github/workflows/ci.yml",
@@ -554,9 +579,11 @@
             "algorithm": "blake3",
             "value": "84b9e6be77b46d96d2fc23a408c66ac2caf3032edf4197208766063aa9ac9422"
           },
+          "summary": "Reviewed the GitHub Actions workflow for standard CI behavior: it checks out the repo, installs Rust toolchains, builds/tests across several Rust versions, runs a nostd target job, and exercises Miri. I found no concrete malicious or supply-chain indicators in this file, and no install hooks, network exfiltration, credential harvesting, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "benches/arraystring.rs",
@@ -564,15 +591,21 @@
             "algorithm": "blake3",
             "value": "b442b90943d360e611c964decbfd16a51920668133129bd1c6a05e50d0a5661b"
           },
+          "summary": "`benches/arraystring.rs` is a straightforward benchmark harness for `ArrayString` push and `try_push` behavior, using fixed in-memory strings and tight loops. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_44b0d92d99fa4c63815f52a501e1c92c",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -580,6 +613,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783186419",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/lib.rs`, which is the crate root for `arrayvec` and only contains documentation, feature gates, type aliases, capacity-check macros, and module/public re-exports. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/errors.rs`, which only defines a `CapacityError` type plus `Display`/`Debug`/`Error` implementations and a string constant. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed the README for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior. It is a normal crate README with badges, a brief description of a fixed-capacity vector, API documentation links, and license text; no concrete malicious or supply-chain indicators were found.\nReviewed `src/utils.rs`, which only defines a small generic helper for constructing `MaybeUninit` values and arrays. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nThe target file is a small Cargo VCS provenance record containing only a Git SHA1 and an empty `path_in_vcs` field. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none.",
       "files": [
         {
           "file_path": "src/lib.rs",
@@ -587,9 +621,11 @@
             "algorithm": "blake3",
             "value": "86d68e19292629dec0cba64d955c91ff5e46dba8a932972618b7416413416d0f"
           },
+          "summary": "Reviewed `src/lib.rs`, which is the crate root for `arrayvec` and only contains documentation, feature gates, type aliases, capacity-check macros, and module/public re-exports. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/errors.rs",
@@ -597,9 +633,11 @@
             "algorithm": "blake3",
             "value": "ab1c80c19edaea1bd882557d27a1e37f439b61d828aa937d208e9fb4698664c1"
           },
+          "summary": "Reviewed `src/errors.rs`, which only defines a `CapacityError` type plus `Display`/`Debug`/`Error` implementations and a string constant. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "README.md",
@@ -607,9 +645,11 @@
             "algorithm": "blake3",
             "value": "8b5c6b07ee05082cc1217c027dd4ec9e44e8f95e5969efd57b499e61c058cb7c"
           },
+          "summary": "Reviewed the README for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior. It is a normal crate README with badges, a brief description of a fixed-capacity vector, API documentation links, and license text; no concrete malicious or supply-chain indicators were found.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/utils.rs",
@@ -617,9 +657,11 @@
             "algorithm": "blake3",
             "value": "5ab44d2863b195b1b136372330fc962a6b950da10a31c7b0b9b492d5c4d21518"
           },
+          "summary": "Reviewed `src/utils.rs`, which only defines a small generic helper for constructing `MaybeUninit` values and arrays. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".cargo_vcs_info.json",
@@ -627,15 +669,21 @@
             "algorithm": "blake3",
             "value": "2fa5ea27eb33c5fe8ab4c5a3fbf7e72c2d5c7113238e9dec85451378095c2855"
           },
+          "summary": "The target file is a small Cargo VCS provenance record containing only a Git SHA1 and an empty `path_in_vcs` field. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_7fbb7dee9ed3452f92bc056ef3ed40ce",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -643,6 +691,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783186218",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/arrayvec.rs`, a fixed-capacity `ArrayVec` implementation with unsafe pointer and memory-management internals plus optional `serde`, `zeroize`, `borsh`, and `std::io::Write` support. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, or persistence tampering.",
       "files": [
         {
           "file_path": "src/arrayvec.rs",
@@ -650,15 +699,21 @@
             "algorithm": "blake3",
             "value": "edfe9a1035419d8fb03115b38d03a34b5c5705590cc47763e9ce330e5da642f2"
           },
+          "summary": "Reviewed `src/arrayvec.rs`, a fixed-capacity `ArrayVec` implementation with unsafe pointer and memory-management internals plus optional `serde`, `zeroize`, `borsh`, and `std::io::Write` support. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, or persistence tampering.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_8ccadbb685774ea1baf66260a1ab91d2",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -666,6 +721,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783186362",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/char.rs`, which only contains a small UTF-8 character encoder and self-tests. I checked for install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution and found no concrete malicious or supply-chain indicators.\nReviewed `src/arrayvec_impl.rs`, which defines an internal `ArrayVecImpl` trait for slice access, push/pop, and truncation using raw pointers and `unsafe` bounds checks. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `tests/serde.rs`, which is a pure serde test module for `ArrayVec` and `ArrayString` serialization/deserialization behavior. I checked for install hooks, network or exfiltration paths, credential or secret access, dynamic code loading, obfuscation, persistence, and other hidden execution triggers; none are present in this file.\nReviewed `benches/extend.rs`, which is a Bencher benchmark harness for `arrayvec::ArrayVec` extension paths (`extend`, `write`, and `try_extend_from_slice`) over fixed in-memory data. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\n`tests/borsh.rs` is a feature-gated test module that checks Borsh serialization and round-trip deserialization for `ArrayVec` and `ArrayString` using only local in-memory values and assertions. I reviewed it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/char.rs",
@@ -673,9 +729,11 @@
             "algorithm": "blake3",
             "value": "5abd70790c8cfbc3e4474d7812b1d67582f9320d80d4ba3e702b34347da68ede"
           },
+          "summary": "Reviewed `src/char.rs`, which only contains a small UTF-8 character encoder and self-tests. I checked for install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/arrayvec_impl.rs",
@@ -683,9 +741,11 @@
             "algorithm": "blake3",
             "value": "a437c397dcf31962d27dad109450033d59127b2df50ec2a54274044a7f745c7a"
           },
+          "summary": "Reviewed `src/arrayvec_impl.rs`, which defines an internal `ArrayVecImpl` trait for slice access, push/pop, and truncation using raw pointers and `unsafe` bounds checks. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/serde.rs",
@@ -693,9 +753,11 @@
             "algorithm": "blake3",
             "value": "6d0a3366dce26a147c86e82f2857f97959c113e054186b545475458084572f01"
           },
+          "summary": "Reviewed `tests/serde.rs`, which is a pure serde test module for `ArrayVec` and `ArrayString` serialization/deserialization behavior. I checked for install hooks, network or exfiltration paths, credential or secret access, dynamic code loading, obfuscation, persistence, and other hidden execution triggers; none are present in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "benches/extend.rs",
@@ -703,9 +765,11 @@
             "algorithm": "blake3",
             "value": "3afbb0d37f7100157793ba750d09a40afe6e86c3b8892ee37ed69d4723bc15ac"
           },
+          "summary": "Reviewed `benches/extend.rs`, which is a Bencher benchmark harness for `arrayvec::ArrayVec` extension paths (`extend`, `write`, and `try_extend_from_slice`) over fixed in-memory data. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/borsh.rs",
@@ -713,15 +777,21 @@
             "algorithm": "blake3",
             "value": "40b58896aa1bdaab99c0627685a443006322af5e0ae623f150edd77b8c010ab5"
           },
+          "summary": "`tests/borsh.rs` is a feature-gated test module that checks Borsh serialization and round-trip deserialization for `ArrayVec` and `ArrayString` using only local in-memory values and assertions. I reviewed it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_d9e51879e45f4e9da0be2c251f9d182f",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -729,6 +799,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783186237",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `tests/tests.rs`, which is a unit test suite for `ArrayVec` and `ArrayString` covering capacity handling, iteration, drop behavior, string conversion, drain/retain, and const constructors. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "tests/tests.rs",
@@ -736,9 +807,11 @@
             "algorithm": "blake3",
             "value": "fc75981da94609303d6c3928fd4af802a6ab7c93ea6bdfe358a18d1df77056cf"
           },
+          "summary": "Reviewed `tests/tests.rs`, which is a unit test suite for `ArrayVec` and `ArrayString` covering capacity handling, iteration, drop behavior, string conversion, drain/retain, and const constructors. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

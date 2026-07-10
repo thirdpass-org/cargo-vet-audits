@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -195,6 +195,10 @@
     {
       "id": "rev_8b1870fbf85942dea928b63aa37ad2b2",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -202,6 +206,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783193966",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the package git SHA1 (`7c10669a67324208a153343928a29b89302fe75e`). No concrete malicious or supply-chain indicators were found in this target file, and it contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
           "file_path": ".cargo_vcs_info.json",
@@ -209,15 +214,21 @@
             "algorithm": "blake3",
             "value": "2dd94c4517f0a07c00215bf31be4dfe05840faa06ab9f2d53d11a7065068b461"
           },
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the package git SHA1 (`7c10669a67324208a153343928a29b89302fe75e`). No concrete malicious or supply-chain indicators were found in this target file, and it contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_e534d15b18734687a59d6003d454fe3a",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -225,6 +236,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783193951",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "`src/lib.rs` is a pure Rust pointer-metadata helper library: it defines `Pointee`, raw-pointer part extraction/reassembly, and `DynMetadata` utilities, plus tests. I reviewed it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the README.md documentation for ptr_meta, which describes the crate’s Pointee/metadata usage for sized types, DST-last-field structs, and trait objects. I found no concrete malicious or supply-chain indicators in the README: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms described.\nReviewed the `ptr_meta` README-style documentation in `crates-io.md`, which describes `Pointee` usage for sized types, DST-backed structs, and trait objects. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.\nReviewed the normalized Rust package manifest in `Cargo.toml`. It only declares package metadata, a single pinned `ptr_meta_derive` dependency, and a `std` feature flag; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\n`src/impls.rs` only defines a `Pointee` implementation for `dyn Any`, wiring its associated `Metadata` type to `DynMetadata<dyn Any>`. I checked this file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/lib.rs",
@@ -232,9 +244,11 @@
             "algorithm": "blake3",
             "value": "499f4e6de03a50d173f6dee4f6737f166327673a620d7ccc60ab38693b53296b"
           },
+          "summary": "`src/lib.rs` is a pure Rust pointer-metadata helper library: it defines `Pointee`, raw-pointer part extraction/reassembly, and `DynMetadata` utilities, plus tests. I reviewed it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "README.md",
@@ -242,9 +256,11 @@
             "algorithm": "blake3",
             "value": "16b7f5bbf740c08e2360b685a5761d7e16a72350fbbb86daf5bf719ead04f0c2"
           },
+          "summary": "Reviewed the README.md documentation for ptr_meta, which describes the crate’s Pointee/metadata usage for sized types, DST-last-field structs, and trait objects. I found no concrete malicious or supply-chain indicators in the README: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms described.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "crates-io.md",
@@ -252,9 +268,11 @@
             "algorithm": "blake3",
             "value": "7107fb2b1c7008a967264af8597466daa2e35cab0fa02f619c65486c2d2993d4"
           },
+          "summary": "Reviewed the `ptr_meta` README-style documentation in `crates-io.md`, which describes `Pointee` usage for sized types, DST-backed structs, and trait objects. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -262,9 +280,11 @@
             "algorithm": "blake3",
             "value": "cf103717fbc2699b59fdc23796a216986fe5a8c35df43e127d483fd0727d0b29"
           },
+          "summary": "Reviewed the normalized Rust package manifest in `Cargo.toml`. It only declares package metadata, a single pinned `ptr_meta_derive` dependency, and a `std` feature flag; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/impls.rs",
@@ -272,15 +292,21 @@
             "algorithm": "blake3",
             "value": "df844a2c3def9ce214060eb4e51667a0c73eafc3173923c3fbe61f4098da0da3"
           },
+          "summary": "`src/impls.rs` only defines a `Pointee` implementation for `dyn Any`, wiring its associated `Metadata` type to `DynMetadata<dyn Any>`. I checked this file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_f2e26d1ee18a4c15b01c81f17e6abed8",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -295,6 +321,7 @@
             "algorithm": "blake3",
             "value": "247cec9384ec43222da08459f085ec5de03e0e459cbe159204a94e8c940b2877"
           },
+          "summary": "Reviewed `Cargo.toml.orig`, which is a standard Rust package manifest for `ptr_meta` 0.1.4 with metadata, one local path dependency, and a small feature table. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -317,7 +344,8 @@
               "total_tokens": 21230
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE",
@@ -325,6 +353,7 @@
             "algorithm": "blake3",
             "value": "c8c23edb4703eda0c2b7bc59caa65c3f574593429da03aedcd071e8d4ed642d7"
           },
+          "summary": "Reviewed the LICENSE file only; it is a standard MIT-style license text and contains no code, install hooks, network activity, secret access, dynamic loading, obfuscation, or persistence behavior to indicate supply-chain compromise.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -347,7 +376,8 @@
               "total_tokens": 21198
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

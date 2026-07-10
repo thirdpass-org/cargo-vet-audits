@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -293,6 +293,10 @@
     {
       "id": "rev_540d13797dcb4ac8b1fc517bb5720b2d",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -300,6 +304,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783194321",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "`src/attributes.rs` is a procedural-macro attribute parser for `archive`/`archive_attr` metadata, converting nested Rust attributes into typed fields and rejecting duplicates or malformed inputs. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/lib.rs`, which is the public entrypoint for the `Archive`, `Serialize`, and `Deserialize` procedural macros and only dispatches parsed `DeriveInput` into internal derive modules after a small receiver-rewrite step. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential/secret access, dynamic loading of remote code, obfuscation/deobfuscation, or persistence/tampering logic.\nReviewed the crate manifest for install-time hooks, build scripts, unusual dependency sources, dynamic loading, network/exfiltration, credential access, obfuscation, and persistence mechanisms. This `Cargo.toml` only declares a proc-macro library with standard `proc-macro2`, `quote`, and `syn` dependencies and no concrete malicious or supply-chain indicators were found.\nReviewed `src/with.rs`, which is a small Rust helper module for parsing `#[with(...)]` field attributes and generating typed wrapper expressions for rkyv. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators.\nReviewed src/serde/respan.rs, a small token-stream utility that recursively reapplies spans to proc_macro2 groups and tokens. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/attributes.rs",
@@ -307,9 +312,11 @@
             "algorithm": "blake3",
             "value": "c6dd686474910066d1b434ffa934cca6350343767f12e090a9d0a5122b7e7a0d"
           },
+          "summary": "`src/attributes.rs` is a procedural-macro attribute parser for `archive`/`archive_attr` metadata, converting nested Rust attributes into typed fields and rejecting duplicates or malformed inputs. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/lib.rs",
@@ -317,9 +324,11 @@
             "algorithm": "blake3",
             "value": "c549d3cf56be9d759d5cc5f567ca781ac2a623734278834da71c61de10ee5dce"
           },
+          "summary": "Reviewed `src/lib.rs`, which is the public entrypoint for the `Archive`, `Serialize`, and `Deserialize` procedural macros and only dispatches parsed `DeriveInput` into internal derive modules after a small receiver-rewrite step. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential/secret access, dynamic loading of remote code, obfuscation/deobfuscation, or persistence/tampering logic.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -327,9 +336,11 @@
             "algorithm": "blake3",
             "value": "0d964998b0955bf9a5ddc90ea1a58a9c174fc90306b8c2dc6badde4c6afab2cb"
           },
+          "summary": "Reviewed the crate manifest for install-time hooks, build scripts, unusual dependency sources, dynamic loading, network/exfiltration, credential access, obfuscation, and persistence mechanisms. This `Cargo.toml` only declares a proc-macro library with standard `proc-macro2`, `quote`, and `syn` dependencies and no concrete malicious or supply-chain indicators were found.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/with.rs",
@@ -337,9 +348,11 @@
             "algorithm": "blake3",
             "value": "b2c0d2495f4ea230fabe7d7cd7d84021d1903deb6bd2aef9de2c751746e90ba7"
           },
+          "summary": "Reviewed `src/with.rs`, which is a small Rust helper module for parsing `#[with(...)]` field attributes and generating typed wrapper expressions for rkyv. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/serde/respan.rs",
@@ -347,15 +360,21 @@
             "algorithm": "blake3",
             "value": "7b027b2edc56086d0039a4d8e1ab2e3c55ad3eea0034431f80bb35b850ce0c0e"
           },
+          "summary": "Reviewed src/serde/respan.rs, a small token-stream utility that recursively reapplies spans to proc_macro2 groups and tokens. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_69e1ac07e9984aceb134cc3cea22fc2e",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -363,6 +382,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783194360",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "`src/util.rs` contains two small helper functions: one parses a comma-separated `where`-clause string into `syn` predicates and appends them, and the other strips Rust raw-identifier prefixes. I checked this file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nThe target file is only package VCS metadata, containing a git commit SHA and the path in the original repository. I checked it for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `src/serde/mod.rs`, which is only a two-line module declaration re-exporting `receiver` and `respan`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence/tampering logic.",
       "files": [
         {
           "file_path": "src/util.rs",
@@ -370,9 +390,11 @@
             "algorithm": "blake3",
             "value": "44d9a88250455848c07a311f8bc0faed3562310f1052640b551a250f8967ec7d"
           },
+          "summary": "`src/util.rs` contains two small helper functions: one parses a comma-separated `where`-clause string into `syn` predicates and appends them, and the other strips Rust raw-identifier prefixes. I checked this file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".cargo_vcs_info.json",
@@ -380,9 +402,11 @@
             "algorithm": "blake3",
             "value": "bff71ae130206d8d7405a8219640b8923d2cf6f3a9296f2ee41c98b21e68ff9c"
           },
+          "summary": "The target file is only package VCS metadata, containing a git commit SHA and the path in the original repository. I checked it for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/serde/mod.rs",
@@ -390,15 +414,21 @@
             "algorithm": "blake3",
             "value": "5673b0b5fb16aa3dcadd5bb45b84d6b1c9a2ad574d5f0b9d4270782c5b5d7cfb"
           },
+          "summary": "Reviewed `src/serde/mod.rs`, which is only a two-line module declaration re-exporting `receiver` and `respan`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence/tampering logic.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_715ef62b8d694d76bc39f453e8d5ffeb",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -406,6 +436,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783194264",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/serde/receiver.rs`, a pure Rust AST-rewrite helper that walks `syn` types, paths, expressions, and generics to replace `Self` receivers with the concrete input type. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/decoding pipelines, subprocess execution, or persistence/tampering behavior.\nReviewed `src/deserialize.rs`, which is a procedural macro implementation that generates `Deserialize` impls for structs and enums using `syn`/`quote`. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.\nI reviewed `src/repr.rs`, which only parses and re-emits Rust `repr` attributes for the derive macro, including validation of allowed base representations and modifiers. I found no concrete malicious or supply-chain indicators and no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `src/serialize.rs`, which generates `Serialize` impls for structs, enums, and rejects unions in the `rkyv_derive` proc-macro. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
           "file_path": "src/serde/receiver.rs",
@@ -413,9 +444,11 @@
             "algorithm": "blake3",
             "value": "d634be1b29798dca61db668a37b56c5063a4361c6f0211ab5028227a2968d6ba"
           },
+          "summary": "Reviewed `src/serde/receiver.rs`, a pure Rust AST-rewrite helper that walks `syn` types, paths, expressions, and generics to replace `Self` receivers with the concrete input type. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/decoding pipelines, subprocess execution, or persistence/tampering behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/deserialize.rs",
@@ -423,9 +456,11 @@
             "algorithm": "blake3",
             "value": "a8e6e433e1880899a8016a23fe9049fb4aeabf65899eb41c356c03279eec5f8e"
           },
+          "summary": "Reviewed `src/deserialize.rs`, which is a procedural macro implementation that generates `Deserialize` impls for structs and enums using `syn`/`quote`. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/repr.rs",
@@ -433,9 +468,11 @@
             "algorithm": "blake3",
             "value": "107026cb11425d30d919b0207c6f839a2bf974253d25903b69bafc6285097c52"
           },
+          "summary": "I reviewed `src/repr.rs`, which only parses and re-emits Rust `repr` attributes for the derive macro, including validation of allowed base representations and modifiers. I found no concrete malicious or supply-chain indicators and no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/serialize.rs",
@@ -443,15 +480,21 @@
             "algorithm": "blake3",
             "value": "edbddaa9a7f5ba21dd611c35c91193695506718420c36cf2f8ae37e66c6d0096"
           },
+          "summary": "Reviewed `src/serialize.rs`, which generates `Serialize` impls for structs, enums, and rejects unions in the `rkyv_derive` proc-macro. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_98617a77b80141d98a6490b02aaccf39",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -466,6 +509,7 @@
             "algorithm": "blake3",
             "value": "ca09f14325f5566e8fca8bbc3fa816a755718f7da2e47e08995478eedac1fe78"
           },
+          "summary": "Reviewed Cargo.lock for rkyv_derive 0.7.46, which only pins normal registry dependencies (proc-macro2, quote, syn, and unicode-ident) with checksums. In this file I found no indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -488,7 +532,8 @@
               "total_tokens": 21782
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml.orig",
@@ -496,6 +541,7 @@
             "algorithm": "blake3",
             "value": "72da29107859e0c101b533bab0dabfdc57342504fc694b875c98011c17cd1f3c"
           },
+          "summary": "Reviewed `Cargo.toml.orig`, which is a minimal Cargo manifest for the `rkyv_derive` proc-macro crate with workspace-managed metadata, three workspace dependencies, and feature flags only. I found no concrete indicators of install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -518,7 +564,8 @@
               "total_tokens": 21482
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE",
@@ -526,6 +573,7 @@
             "algorithm": "blake3",
             "value": "c8c23edb4703eda0c2b7bc59caa65c3f574593429da03aedcd071e8d4ed642d7"
           },
+          "summary": "Reviewed the LICENSE text, which is a standard MIT license grant and warranty disclaimer. I checked this target for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload-like content, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -548,7 +596,8 @@
               "total_tokens": 21163
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/serde/LICENSE",
@@ -556,6 +605,7 @@
             "algorithm": "blake3",
             "value": "1856c2623d218444033abde955599484f8879d8805fa75ba6eae21a4196ef4ff"
           },
+          "summary": "Reviewed `src/serde/LICENSE`, which is a plain MIT license grant and disclaimer. It contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -578,13 +628,18 @@
               "total_tokens": 21174
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_ddbf38aee18540788f783e5f3b6b70d3",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -592,6 +647,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783194205",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/archive.rs`, a proc-macro implementation that generates archive types, resolvers, and comparison/copy-safe impls for structs and enums. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
       "files": [
         {
           "file_path": "src/archive.rs",
@@ -599,9 +655,11 @@
             "algorithm": "blake3",
             "value": "717d71fb2e01ae7975a412a85535b2bf74c42bc2fc100d153307c0f4cebcb8be"
           },
+          "summary": "Reviewed `src/archive.rs`, a proc-macro implementation that generates archive types, resolvers, and comparison/copy-safe impls for structs and enums. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -655,6 +655,10 @@
     {
       "id": "rev_00369db87a11467f9944258c4903e7c1",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -662,6 +666,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783327702",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/external_trait_impls/rayon/helpers.rs`, which only defines a small Rayon helper that collects a parallel iterator into a `LinkedList<Vec<_>>` and returns the total length. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed a feature-gated default hasher wrapper that delegates `BuildHasher`/`Hasher` operations to `foldhash::fast::RandomState` for `HashMap` and `HashSet`. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `benches/with_capacity.rs`, a Criterion benchmark that repeatedly constructs `HashMap::with_capacity` at fixed capacities and black-boxes the result to keep the work measurable. I found no concrete indicators of install hooks, network or exfiltration, secret access, dynamic code loading, obfuscation, persistence, or other hidden payload behavior in this file.",
       "files": [
         {
           "file_path": "src/external_trait_impls/rayon/helpers.rs",
@@ -669,6 +674,7 @@
             "algorithm": "blake3",
             "value": "196d87eb8a84468700f427f6e93c955d287751cb9cc335f4c634f2d95c3a18a9"
           },
+          "summary": "Reviewed `src/external_trait_impls/rayon/helpers.rs`, which only defines a small Rayon helper that collects a parallel iterator into a `LinkedList<Vec<_>>` and returns the total length. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -691,7 +697,8 @@
               "total_tokens": 22171
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/hasher.rs",
@@ -699,6 +706,7 @@
             "algorithm": "blake3",
             "value": "be5921777d10e5a2827aa8a89cf6026d897716aff291b954b149205d5778a70e"
           },
+          "summary": "Reviewed a feature-gated default hasher wrapper that delegates `BuildHasher`/`Hasher` operations to `foldhash::fast::RandomState` for `HashMap` and `HashSet`. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -721,7 +729,8 @@
               "total_tokens": 22687
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "benches/with_capacity.rs",
@@ -729,6 +738,7 @@
             "algorithm": "blake3",
             "value": "277b13f203b2d72264ca5f5e705edd6537c4bceae2c35159d78f0ceb49fa142a"
           },
+          "summary": "Reviewed `benches/with_capacity.rs`, a Criterion benchmark that repeatedly constructs `HashMap::with_capacity` at fixed capacities and black-boxes the result to keep the work measurable. I found no concrete indicators of install hooks, network or exfiltration, secret access, dynamic code loading, obfuscation, persistence, or other hidden payload behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -751,13 +761,18 @@
               "total_tokens": 22643
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_196768067fc043b7b858637c53c55bd0",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -765,6 +780,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783328209",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed src/scopeguard.rs, which implements a small ScopeGuard helper that stores a value plus a drop closure and uses ptr::read inside into_inner to move the fields out safely. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.\nReviewed the SSE2 control-group helper in `src/control/group/sse2.rs`, which only defines aligned tag loading/storing and SIMD bitmask/match transformations for hash table control bytes. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\n`src/control/group/mod.rs` is a small cfg-driven dispatcher that selects one of several architecture-specific `Group` implementations (`sse2`, `neon`, `lsx`, or `generic`) and re-exports their bitmask types. I checked it for install-time hooks, network or credential access, dynamic code loading, obfuscation/decoding, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
           "file_path": "src/scopeguard.rs",
@@ -772,6 +788,7 @@
             "algorithm": "blake3",
             "value": "300cbf2e3b7a785084c931058ee9a5f47bddc59ca34c902339a13bb45f3a10af"
           },
+          "summary": "Reviewed src/scopeguard.rs, which implements a small ScopeGuard helper that stores a value plus a drop closure and uses ptr::read inside into_inner to move the fields out safely. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -794,7 +811,8 @@
               "total_tokens": 22781
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/control/group/sse2.rs",
@@ -802,6 +820,7 @@
             "algorithm": "blake3",
             "value": "7d27bccf9f54394d0d5ce083257469598341b5ae03cf36f5f41f8971357867ed"
           },
+          "summary": "Reviewed the SSE2 control-group helper in `src/control/group/sse2.rs`, which only defines aligned tag loading/storing and SIMD bitmask/match transformations for hash table control bytes. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -824,7 +843,8 @@
               "total_tokens": 24021
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/control/group/mod.rs",
@@ -832,6 +852,7 @@
             "algorithm": "blake3",
             "value": "56ba6bf4d152f5f9d7fd81aae128b51dc70cbeddf0b73928e1a856ce6b8bdc0b"
           },
+          "summary": "`src/control/group/mod.rs` is a small cfg-driven dispatcher that selects one of several architecture-specific `Group` implementations (`sse2`, `neon`, `lsx`, or `generic`) and re-exports their bitmask types. I checked it for install-time hooks, network or credential access, dynamic code loading, obfuscation/decoding, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -854,13 +875,18 @@
               "total_tokens": 22784
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_2590184725204dc1b3b3e249547d25f8",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -868,6 +894,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783327778",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/set.rs`, which implements `HashSet` as a thin `HashMap` wrapper with iterator, entry, and set-algebra APIs. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
       "files": [
         {
           "file_path": "src/set.rs",
@@ -875,6 +902,7 @@
             "algorithm": "blake3",
             "value": "de69c9c99bcf0f27d3aa8413151788e4091dcfee27c45745a931505b8a760aa6"
           },
+          "summary": "Reviewed `src/set.rs`, which implements `HashSet` as a thin `HashMap` wrapper with iterator, entry, and set-algebra APIs. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -897,13 +925,18 @@
               "total_tokens": 158480
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_36215b62ade8456890325a5e63b4e20f",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -911,6 +944,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783327882",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "`LICENSE-APACHE` contains the standard Apache License 2.0 text and boilerplate appendix. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.\nReviewed `src/external_trait_impls/rayon/table.rs`, which only defines Rayon parallel iterator wrappers and `par_drain`/`into_par_iter` forwarding for `HashTable` plus unit tests. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed this module index file, which only declares internal Rayon-related submodules (`helpers`, `map`, `raw`, `set`, `table`). I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed the generated Cargo manifest for `hashbrown` 0.17.1. It defines a normal library crate with optional features, tests, benches, and dependencies, and I found no concrete evidence of install hooks, build-script execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\n`src/rustc_entry.rs` is a normal Rust module implementing `HashMap` entry APIs (`rustc_entry`, `rustc_try_insert`, occupied/vacant entry helpers, and iterator adapters). I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "LICENSE-APACHE",
@@ -918,6 +952,7 @@
             "algorithm": "blake3",
             "value": "bc9b8879cf5978632a7be06ee591f28247b4c78fbc0adf6ac40e2d097063c32a"
           },
+          "summary": "`LICENSE-APACHE` contains the standard Apache License 2.0 text and boilerplate appendix. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -940,7 +975,8 @@
               "total_tokens": 24225
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/external_trait_impls/rayon/table.rs",
@@ -948,6 +984,7 @@
             "algorithm": "blake3",
             "value": "90dcb2fb36504733622f40e8a1123969385dea9c9b8998a17e83c59875db0d81"
           },
+          "summary": "Reviewed `src/external_trait_impls/rayon/table.rs`, which only defines Rayon parallel iterator wrappers and `par_drain`/`into_par_iter` forwarding for `HashTable` plus unit tests. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -970,7 +1007,8 @@
               "total_tokens": 24141
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/external_trait_impls/rayon/mod.rs",
@@ -978,6 +1016,7 @@
             "algorithm": "blake3",
             "value": "19b27090c9e493ddce6b33fa5e4595cd0ba89565dad0698f5b70d675b77ba1c9"
           },
+          "summary": "Reviewed this module index file, which only declares internal Rayon-related submodules (`helpers`, `map`, `raw`, `set`, `table`). I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1000,7 +1039,8 @@
               "total_tokens": 33792
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -1008,6 +1048,7 @@
             "algorithm": "blake3",
             "value": "6492ba24d8490d5f33af36960b3e8ade009696d7ee96aef0062728afd319d975"
           },
+          "summary": "Reviewed the generated Cargo manifest for `hashbrown` 0.17.1. It defines a normal library crate with optional features, tests, benches, and dependencies, and I found no concrete evidence of install hooks, build-script execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1030,7 +1071,8 @@
               "total_tokens": 23534
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/rustc_entry.rs",
@@ -1038,6 +1080,7 @@
             "algorithm": "blake3",
             "value": "79a5736ed3f63e5774b4b2d6e53c42eb5684c0effbe5c2b2f9389f849810d2e6"
           },
+          "summary": "`src/rustc_entry.rs` is a normal Rust module implementing `HashMap` entry APIs (`rustc_entry`, `rustc_try_insert`, occupied/vacant entry helpers, and iterator adapters). I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1060,13 +1103,18 @@
               "total_tokens": 44162
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_384d1474ae6645fc9b33b54d93f322ac",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -1074,6 +1122,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783328262",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "This file implements a small `BitMask` helper and iterator for set-bit traversal, with an ARM-specific byte-swap fallback for trailing-zero handling. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.\n`benches/general_ops.rs` is a Criterion benchmark harness for `hashbrown` that exercises `HashMap`/`HashSet` operations across synthetic key distributions and uses a local atomic side effect to keep drop behavior observable. I reviewed it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence and found no concrete malicious or supply-chain indicators.\nReviewed `clippy.toml`, which only sets `doc-valid-idents` for a few project-specific terms (`CppCon`, `SwissTable`, `SipHash`, `HashDoS`). I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
       "files": [
         {
           "file_path": "src/control/bitmask.rs",
@@ -1081,6 +1130,7 @@
             "algorithm": "blake3",
             "value": "7e2218c484fc544afec44cfe3e592c01b359fa77790f331ee0fdfdc3764533b7"
           },
+          "summary": "This file implements a small `BitMask` helper and iterator for set-bit traversal, with an ARM-specific byte-swap fallback for trailing-zero handling. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1103,7 +1153,8 @@
               "total_tokens": 23488
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "benches/general_ops.rs",
@@ -1111,6 +1162,7 @@
             "algorithm": "blake3",
             "value": "a48ff0ce0e96b9f353ef883fe65a66ccb9d3255cf7af45272d2449cec5481a00"
           },
+          "summary": "`benches/general_ops.rs` is a Criterion benchmark harness for `hashbrown` that exercises `HashMap`/`HashSet` operations across synthetic key distributions and uses a local atomic side effect to keep drop behavior observable. I reviewed it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1133,7 +1185,8 @@
               "total_tokens": 41135
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "clippy.toml",
@@ -1141,6 +1194,7 @@
             "algorithm": "blake3",
             "value": "1043a938f1f67892c016d738eca2621fc93684e3eb278e35bb5eacf9f8c3e3a1"
           },
+          "summary": "Reviewed `clippy.toml`, which only sets `doc-valid-idents` for a few project-specific terms (`CppCon`, `SwissTable`, `SipHash`, `HashDoS`). I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1163,13 +1217,18 @@
               "total_tokens": 22175
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_5434842a82f9410d8edec5be24f412e1",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -1177,6 +1236,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783328394",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `benches/set_ops.rs`, which is a Criterion benchmark for `HashSet` union, intersection, xor, and subtraction operators plus their assignment forms. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution paths and found no concrete malicious or supply-chain indicators in this file.\n`src/macros.rs` contains two compile-time helper macros (`cfg_if!` and `default_fn!`) for conditional item expansion and specialization support. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "benches/set_ops.rs",
@@ -1184,6 +1244,7 @@
             "algorithm": "blake3",
             "value": "153c005a40d20de73e5f215e634ee8feb1a62248274cd08b42ec50de14c0bf60"
           },
+          "summary": "Reviewed `benches/set_ops.rs`, which is a Criterion benchmark for `HashSet` union, intersection, xor, and subtraction operators plus their assignment forms. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution paths and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1206,7 +1267,8 @@
               "total_tokens": 24017
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/macros.rs",
@@ -1214,6 +1276,7 @@
             "algorithm": "blake3",
             "value": "60d788d7e4a0640c6622f8550f41add70799dd9e40ca6bb0512a83bb64d2f021"
           },
+          "summary": "`src/macros.rs` contains two compile-time helper macros (`cfg_if!` and `default_fn!`) for conditional item expansion and specialization support. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1236,13 +1299,18 @@
               "total_tokens": 23075
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_553c0a9b062c4fd78c9a0c6b51b6cf5b",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -1250,6 +1318,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783328355",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed the Rayon parallel-iteration and drain adapters for `RawTable` in `src/external_trait_impls/rayon/raw.rs`. The file only bridges internal iterators into Rayon producers and manages allocation/drop paths; I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.\nReviewed `src/lib.rs`, the crate root for hashbrown, which only defines module wiring, public re-exports, a fallback `Equivalent` trait, and `TryReserveError` formatting. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nThis file only conditionally exposes the `rayon` and `serde` external trait-implementation submodules behind feature flags. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.\n`Cross.toml` is a small cross-compilation config that only pins a container image for the `loongarch64-unknown-linux-gnu` target. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.\nThis Cargo.lock is a generated dependency snapshot for hashbrown and its dev-dependencies, with crates.io registry sources and checksums throughout. I found no concrete malicious or supply-chain indicators in the lockfile, and no install hooks, git/path overrides, network or exfiltration references, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
           "file_path": "src/external_trait_impls/rayon/raw.rs",
@@ -1257,6 +1326,7 @@
             "algorithm": "blake3",
             "value": "d6b50d7eb358c0e48347b36bfea65d83070d5058d85057df897cba1719e34cc8"
           },
+          "summary": "Reviewed the Rayon parallel-iteration and drain adapters for `RawTable` in `src/external_trait_impls/rayon/raw.rs`. The file only bridges internal iterators into Rayon producers and manages allocation/drop paths; I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1279,7 +1349,8 @@
               "total_tokens": 39699
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/lib.rs",
@@ -1287,6 +1358,7 @@
             "algorithm": "blake3",
             "value": "252722d12eb1c398dc905746c8e342440828d775556fa5f01e8c402419e94beb"
           },
+          "summary": "Reviewed `src/lib.rs`, the crate root for hashbrown, which only defines module wiring, public re-exports, a fallback `Equivalent` trait, and `TryReserveError` formatting. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1309,7 +1381,8 @@
               "total_tokens": 24185
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/external_trait_impls/mod.rs",
@@ -1317,6 +1390,7 @@
             "algorithm": "blake3",
             "value": "9ee2cc39aa681abab7871cb8a1180f196f43dafac1ba24aa308a938b770126f6"
           },
+          "summary": "This file only conditionally exposes the `rayon` and `serde` external trait-implementation submodules behind feature flags. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1339,7 +1413,8 @@
               "total_tokens": 22667
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cross.toml",
@@ -1347,6 +1422,7 @@
             "algorithm": "blake3",
             "value": "9c03ef5d8762c6403d93b81baaf3d1b1a8f41f96a54fd73fc5898bf4e0025a39"
           },
+          "summary": "`Cross.toml` is a small cross-compilation config that only pins a container image for the `loongarch64-unknown-linux-gnu` target. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1369,7 +1445,8 @@
               "total_tokens": 22414
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.lock",
@@ -1377,6 +1454,7 @@
             "algorithm": "blake3",
             "value": "078e18ea0f780da906938964d416d0f22802bb881eea5fe29ad7f115c0913248"
           },
+          "summary": "This Cargo.lock is a generated dependency snapshot for hashbrown and its dev-dependencies, with crates.io registry sources and checksums throughout. I found no concrete malicious or supply-chain indicators in the lockfile, and no install hooks, git/path overrides, network or exfiltration references, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1399,13 +1477,18 @@
               "total_tokens": 59691
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_6ac257d8f4ca44a7ba48838ac394f331",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -1413,6 +1496,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783327939",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "`src/raw.rs` is the core `hashbrown` raw hash-table implementation, with allocation, probing, insertion/removal, iteration, rehashing, and test helpers built around unsafe pointer arithmetic. I checked this file for install-time execution, subprocess spawning, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/raw.rs",
@@ -1420,6 +1504,7 @@
             "algorithm": "blake3",
             "value": "c59900ae484eb129a2b28a1ae42b48b0ec8e28a111ba1439c2a46fb15e7ea2e4"
           },
+          "summary": "`src/raw.rs` is the core `hashbrown` raw hash-table implementation, with allocation, probing, insertion/removal, iteration, rehashing, and test helpers built around unsafe pointer arithmetic. I checked this file for install-time execution, subprocess spawning, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1442,13 +1527,18 @@
               "total_tokens": 124413
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_6d9711a08dfc4568922da08d1d2fd954",
       "public_user_id": "2ee444d4-6b14-8749-8b17-ecfb496ce536",
+      "reviewer": {
+        "public_user_id": "2ee444d4-6b14-8749-8b17-ecfb496ce536",
+        "official": false
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.5",
       "agent_reasoning_effort": "high",
@@ -1456,6 +1546,7 @@
       "review_scope": "target_file_full",
       "created_at": "1778764205",
       "thirdpass_version": "0.3.2",
+      "agent_summary": "Reviewed the generic control-group implementation for supply-chain indicators. The file contains low-level hash table tag scanning logic with no install-time execution, subprocess use, network access, dynamic payload loading, obfuscation, credential access, or persistence behavior.\nThe file only declares internal modules and re-exports control-byte helper types for hashbrown. I found no install-time execution, subprocess use, network access, obfuscation, dynamic loading, credential access, or persistence behavior in this file.\nReviewed tests/equivalent_trait.rs for supply-chain compromise indicators. The file contains straightforward Rust tests for hashbrown::Equivalent behavior and shows no install-time execution, credential access, network exfiltration, obfuscation, or dynamic payload loading.\nReviewed tests/rayon.rs for supply-chain compromise indicators. The file contains ordinary Rust tests comparing sequential and Rayon parallel collection behavior, with no install-time execution, network access, subprocesses, secret harvesting, obfuscation, or dynamic payload loading.",
       "files": [
         {
           "file_path": "src/control/group/generic.rs",
@@ -1463,9 +1554,11 @@
             "algorithm": "blake3",
             "value": "65b29b50debcc4968809927189a4bda7e3b1c3cf6afaec00cac88f4ac75477f6"
           },
+          "summary": "Reviewed the generic control-group implementation for supply-chain indicators. The file contains low-level hash table tag scanning logic with no install-time execution, subprocess use, network access, dynamic payload loading, obfuscation, credential access, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/control/mod.rs",
@@ -1473,9 +1566,11 @@
             "algorithm": "blake3",
             "value": "6bc2db16db2d6e864a2111c115b970f6cf4c47042be2e1b148327d7ff1b87829"
           },
+          "summary": "The file only declares internal modules and re-exports control-byte helper types for hashbrown. I found no install-time execution, subprocess use, network access, obfuscation, dynamic loading, credential access, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/equivalent_trait.rs",
@@ -1483,9 +1578,11 @@
             "algorithm": "blake3",
             "value": "6d5ac9c75e49122ec03750c9164511708730c1d7af60a8a796cc5f5be616ec81"
           },
+          "summary": "Reviewed tests/equivalent_trait.rs for supply-chain compromise indicators. The file contains straightforward Rust tests for hashbrown::Equivalent behavior and shows no install-time execution, credential access, network exfiltration, obfuscation, or dynamic payload loading.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/rayon.rs",
@@ -1493,15 +1590,21 @@
             "algorithm": "blake3",
             "value": "b45d45786dcd6945939dce4e46d5598719fe9220656c83d17497f84545161181"
           },
+          "summary": "Reviewed tests/rayon.rs for supply-chain compromise indicators. The file contains ordinary Rust tests comparing sequential and Rayon parallel collection behavior, with no install-time execution, network access, subprocesses, secret harvesting, obfuscation, or dynamic payload loading.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_8712d0d83d4349649504b255c382e6d9",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -1509,6 +1612,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783328437",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "`src/map.rs` implements hashbrown's `HashMap` core: constructors, lookup/entry APIs, iterators, and allocator-focused tests. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/map.rs",
@@ -1516,6 +1620,7 @@
             "algorithm": "blake3",
             "value": "261f7056c9456d06046758dc1d35c39d4564dbebcd560dc152ceaf550e80981e"
           },
+          "summary": "`src/map.rs` implements hashbrown's `HashMap` core: constructors, lookup/entry APIs, iterators, and allocator-focused tests. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1538,13 +1643,18 @@
               "total_tokens": 85841
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_a1796f986f0e476f9e712a390a7fc773",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -1552,6 +1662,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783327575",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `CHANGELOG.md`, which is a plain release-history document for `hashbrown` versions and related change notes. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/set.rs`, which contains a deterministic `HashSet<Vec<char>>` property-style test that inserts and removes randomly generated strings. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed the LSX-specific `Group` helper in `src/control/group/lsx.rs`, which uses LoongArch SIMD intrinsics to load, store, and classify hash-table control tags. I found no concrete malicious or supply-chain indicators in this file; there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
           "file_path": "CHANGELOG.md",
@@ -1559,6 +1670,7 @@
             "algorithm": "blake3",
             "value": "39109fe9f3d33793c94285e0906252df7961266c32f3dbac8dc0b8811bf2301d"
           },
+          "summary": "Reviewed `CHANGELOG.md`, which is a plain release-history document for `hashbrown` versions and related change notes. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1581,7 +1693,8 @@
               "total_tokens": 24873
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/set.rs",
@@ -1589,6 +1702,7 @@
             "algorithm": "blake3",
             "value": "f7257571983289769310035457b96cc41ecd416192294788b5e70a48444534b7"
           },
+          "summary": "Reviewed `tests/set.rs`, which contains a deterministic `HashSet<Vec<char>>` property-style test that inserts and removes randomly generated strings. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1611,7 +1725,8 @@
               "total_tokens": 22747
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/control/group/lsx.rs",
@@ -1619,6 +1734,7 @@
             "algorithm": "blake3",
             "value": "6c15f693a78df4a5071a0e5d2637ae6e9b2a9a4438bdaee5df68790f6506647d"
           },
+          "summary": "Reviewed the LSX-specific `Group` helper in `src/control/group/lsx.rs`, which uses LoongArch SIMD intrinsics to load, store, and classify hash-table control tags. I found no concrete malicious or supply-chain indicators in this file; there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1641,13 +1757,18 @@
               "total_tokens": 23923
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_a89505d44faf454fbd95902fb3dfe65e",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -1655,6 +1776,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783327659",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "This file implements Rayon parallel iterator and extension traits for `HashMap` (`par_iter`, `par_keys`, `par_values`, `par_drain`, `par_eq`, and `ParallelExtend`) using `RawParIter`/`RawParDrain` wrappers plus tests. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.\nReviewed `src/alloc.rs`, which only conditionally re-exports allocator traits/types and provides a thin `Global` allocator wrapper around standard allocation APIs. I found no concrete malicious or supply-chain indicators: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed this benchmark file, which measures `HashMap::insert` versus `insert_unique_unchecked` on a fixed set of generated string keys. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.\nReviewed `src/control/group/neon.rs`, which implements NEON-accelerated control-byte group operations for hash table tag scanning and conversion. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence/tampering logic.\nReviewed `benches/bench.rs`, which is a minimal Criterion benchmark entrypoint that wires four local benchmark modules into `criterion_group!` and `criterion_main!`. I found no concrete supply-chain or malicious indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
           "file_path": "src/external_trait_impls/rayon/map.rs",
@@ -1662,6 +1784,7 @@
             "algorithm": "blake3",
             "value": "20b55581dce94c4157bc5a1c7ceee525d2f313ffe3a05b5d5e4aba0a2ce14c68"
           },
+          "summary": "This file implements Rayon parallel iterator and extension traits for `HashMap` (`par_iter`, `par_keys`, `par_values`, `par_drain`, `par_eq`, and `ParallelExtend`) using `RawParIter`/`RawParDrain` wrappers plus tests. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1684,7 +1807,8 @@
               "total_tokens": 57063
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/alloc.rs",
@@ -1692,6 +1816,7 @@
             "algorithm": "blake3",
             "value": "5955105c6d899b250ce2f4c6529ebfe0c35bb194b4ff5d08ecb6332e82c62a7f"
           },
+          "summary": "Reviewed `src/alloc.rs`, which only conditionally re-exports allocator traits/types and provides a thin `Global` allocator wrapper around standard allocation APIs. I found no concrete malicious or supply-chain indicators: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1714,7 +1839,8 @@
               "total_tokens": 23460
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "benches/insert_unique_unchecked.rs",
@@ -1722,6 +1848,7 @@
             "algorithm": "blake3",
             "value": "dd0d201034a107c1e2b9248573b4bd2761fbd5baa4e5d1745134352d477995ec"
           },
+          "summary": "Reviewed this benchmark file, which measures `HashMap::insert` versus `insert_unique_unchecked` on a fixed set of generated string keys. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1744,7 +1871,8 @@
               "total_tokens": 22294
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/control/group/neon.rs",
@@ -1752,6 +1880,7 @@
             "algorithm": "blake3",
             "value": "e403f0d8fea944c83657e8e8ede207238f14426f1554b2b6ba0f832e41ff523e"
           },
+          "summary": "Reviewed `src/control/group/neon.rs`, which implements NEON-accelerated control-byte group operations for hash table tag scanning and conversion. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence/tampering logic.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1774,7 +1903,8 @@
               "total_tokens": 23397
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "benches/bench.rs",
@@ -1782,6 +1912,7 @@
             "algorithm": "blake3",
             "value": "638fd49a94ba27c25e1a1646d94240146e8ca11d86355af28ff898f80a84fd26"
           },
+          "summary": "Reviewed `benches/bench.rs`, which is a minimal Criterion benchmark entrypoint that wires four local benchmark modules into `criterion_group!` and `criterion_main!`. I found no concrete supply-chain or malicious indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1804,13 +1935,18 @@
               "total_tokens": 22268
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_d4b04116fa0a474fb75f12cca00562b2",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -1818,6 +1954,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783328011",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/external_trait_impls/rayon/set.rs`, which contains Rayon parallel-iterator and parallel-extend implementations for `HashSet` plus unit tests. I found no concrete malicious or supply-chain indicators: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation/decoding pipelines, or persistence/environment-tampering behavior in this file.\nReviewed the target .cargo_vcs_info.json metadata file, which only records an upstream git SHA and an empty path_in_vcs value. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed the README for this crate, which documents the hashbrown hash map implementation, usage, feature flags, and licensing. I found no concrete malicious or supply-chain indicators and no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence instructions in this file.\nReviewed `LICENSE-MIT`, which is plain MIT license text granting permissions and disclaiming warranty. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload indicators, and found none.",
       "files": [
         {
           "file_path": "src/external_trait_impls/rayon/set.rs",
@@ -1825,6 +1962,7 @@
             "algorithm": "blake3",
             "value": "ebf3861228d0caaf0c0abd5c706359980327b28c4caf3f9c73cee3af94191b8b"
           },
+          "summary": "Reviewed `src/external_trait_impls/rayon/set.rs`, which contains Rayon parallel-iterator and parallel-extend implementations for `HashSet` plus unit tests. I found no concrete malicious or supply-chain indicators: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation/decoding pipelines, or persistence/environment-tampering behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1847,7 +1985,8 @@
               "total_tokens": 73368
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".cargo_vcs_info.json",
@@ -1855,6 +1994,7 @@
             "algorithm": "blake3",
             "value": "c62ec47a2018eb035fa8a686cd4d6fe3673a66f3080ce43f33903294126f5256"
           },
+          "summary": "Reviewed the target .cargo_vcs_info.json metadata file, which only records an upstream git SHA and an empty path_in_vcs value. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1877,7 +2017,8 @@
               "total_tokens": 22285
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "README.md",
@@ -1885,6 +2026,7 @@
             "algorithm": "blake3",
             "value": "57c855f52591de929ab4f88b8b3d6ca8e949adf868db5ff09e44ad4d5690d4ee"
           },
+          "summary": "Reviewed the README for this crate, which documents the hashbrown hash map implementation, usage, feature flags, and licensing. I found no concrete malicious or supply-chain indicators and no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence instructions in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1907,7 +2049,8 @@
               "total_tokens": 23041
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-MIT",
@@ -1915,6 +2058,7 @@
             "algorithm": "blake3",
             "value": "d73b6615c0f35773e7252a777972c1d56de35fd7c63df16c028a746e4fe06761"
           },
+          "summary": "Reviewed `LICENSE-MIT`, which is plain MIT license text granting permissions and disclaiming warranty. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload indicators, and found none.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1937,13 +2081,18 @@
               "total_tokens": 22278
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_da9f419289764bf7a5c48d8f356488c2",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -1951,6 +2100,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783327901",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/util.rs`, which only defines internal branch-prediction helpers and a pointer-casting utility. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
       "files": [
         {
           "file_path": "src/util.rs",
@@ -1958,6 +2108,7 @@
             "algorithm": "blake3",
             "value": "ac280e52427caba3e0eb1a48117ebbe178d7e95e8d808270cad7e413b6cbfdca"
           },
+          "summary": "Reviewed `src/util.rs`, which only defines internal branch-prediction helpers and a pointer-casting utility. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -1980,13 +2131,18 @@
               "total_tokens": 22466
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_dc31534b052542b8bc64c1ba045d1b0f",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -1994,6 +2150,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783328458",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/control/tag.rs`, which only defines the `Tag` control-byte helper, formatting, and a slice fill routine for hash table metadata. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.",
       "files": [
         {
           "file_path": "src/control/tag.rs",
@@ -2001,6 +2158,7 @@
             "algorithm": "blake3",
             "value": "c26debb5b18a198b34b2996bacff9a43fdbd5b1196a5db77dabb545fe1701147"
           },
+          "summary": "Reviewed `src/control/tag.rs`, which only defines the `Tag` control-byte helper, formatting, and a slice fill routine for hash table metadata. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -2023,13 +2181,18 @@
               "total_tokens": 23003
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_e9ae168eb9464542b846b98671210a5d",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -2037,6 +2200,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783328135",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `.gitignore`, which only ignores the Rust build output directory, backup `.rs.bk` files, and `Cargo.lock`. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed the `Cargo.toml.orig` manifest for `hashbrown` 0.17.1, including package metadata, dependencies, features, benchmarks, and docs settings. I found no concrete indicators of install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `src/raw_entry.rs`, which implements `HashMap` raw-entry builders and occupied/vacant entry operations plus unit tests. I checked this file for install-time execution, network or credential access, hidden downloads, dynamic code loading, obfuscation, and persistence/tampering behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `src/external_trait_impls/serde.rs`, which implements Serde serialization/deserialization for `HashMap` and `HashSet` with a capped size hint to limit allocation. I found no concrete malicious or supply-chain indicators: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `tests/hasher.rs`, a small test module that checks `HashSet` behavior with several hashers (default, `RandomState`, and two trivial custom hashers) to confirm lookup correctness. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
       "files": [
         {
           "file_path": ".gitignore",
@@ -2044,6 +2208,7 @@
             "algorithm": "blake3",
             "value": "277f1e24b74b9003068bfa85be01ff3c7c819c73a5335d24dde2c3c01f237940"
           },
+          "summary": "Reviewed `.gitignore`, which only ignores the Rust build output directory, backup `.rs.bk` files, and `Cargo.lock`. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -2066,7 +2231,8 @@
               "total_tokens": 22187
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml.orig",
@@ -2074,6 +2240,7 @@
             "algorithm": "blake3",
             "value": "0ce678c5ec3335ba08e5bc9078fdc1340f5be155baa1274c8c6bda9657baec67"
           },
+          "summary": "Reviewed the `Cargo.toml.orig` manifest for `hashbrown` 0.17.1, including package metadata, dependencies, features, benchmarks, and docs settings. I found no concrete indicators of install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -2096,7 +2263,8 @@
               "total_tokens": 23238
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/raw_entry.rs",
@@ -2104,6 +2272,7 @@
             "algorithm": "blake3",
             "value": "37d0a29ce6585ec7f9f58b17daca48c23281b9dd5aef146c849dace2a2184daf"
           },
+          "summary": "Reviewed `src/raw_entry.rs`, which implements `HashMap` raw-entry builders and occupied/vacant entry operations plus unit tests. I checked this file for install-time execution, network or credential access, hidden downloads, dynamic code loading, obfuscation, and persistence/tampering behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -2126,7 +2295,8 @@
               "total_tokens": 82382
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "src/external_trait_impls/serde.rs",
@@ -2134,6 +2304,7 @@
             "algorithm": "blake3",
             "value": "bcb0ca15824879b6603a37ec2934c9f1f0b38888ac081e2d2b4c785f53ff351a"
           },
+          "summary": "Reviewed `src/external_trait_impls/serde.rs`, which implements Serde serialization/deserialization for `HashMap` and `HashSet` with a capped size hint to limit allocation. I found no concrete malicious or supply-chain indicators: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -2156,7 +2327,8 @@
               "total_tokens": 40105
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/hasher.rs",
@@ -2164,6 +2336,7 @@
             "algorithm": "blake3",
             "value": "19bb1c16cfa0156b6a4ab2c979d8608cd6e9151d7e69e9b6400b421b49a113fb"
           },
+          "summary": "Reviewed `tests/hasher.rs`, a small test module that checks `HashSet` behavior with several hashers (default, `RandomState`, and two trivial custom hashers) to confirm lookup correctness. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -2186,13 +2359,18 @@
               "total_tokens": 22538
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_eccc4d5f736d44139e26381020c8a91a",
       "public_user_id": "2ee444d4-6b14-8749-8b17-ecfb496ce536",
+      "reviewer": {
+        "public_user_id": "2ee444d4-6b14-8749-8b17-ecfb496ce536",
+        "official": false
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.5",
       "agent_reasoning_effort": "high",
@@ -2200,6 +2378,7 @@
       "review_scope": "target_file_full",
       "created_at": "1778766121",
       "thirdpass_version": "0.3.2",
+      "agent_summary": "The file is a Rust test that constructs a deterministic hash map scenario to verify behavior after a caught panic in BuildHasher during reserve. I found no install-time execution, credential access, network activity, hidden downloads, obfuscation, persistence, or other concrete supply-chain compromise indicators in this file.\nThe file contains serde token-order tests for hashbrown HashMap and HashSet using a deterministic FNV hasher. I found no install-time execution, hidden code loading, credential access, exfiltration, obfuscation, persistence, or other supply-chain compromise indicators in this file.",
       "files": [
         {
           "file_path": "tests/hasher_unwind.rs",
@@ -2207,9 +2386,11 @@
             "algorithm": "blake3",
             "value": "c4a70cee6ddffcce49d64103eb9b4f4c9693152b2150ab4edd23f8b411dd293c"
           },
+          "summary": "The file is a Rust test that constructs a deterministic hash map scenario to verify behavior after a caught panic in BuildHasher during reserve. I found no install-time execution, credential access, network activity, hidden downloads, obfuscation, persistence, or other concrete supply-chain compromise indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "tests/serde.rs",
@@ -2217,15 +2398,21 @@
             "algorithm": "blake3",
             "value": "13285db4ced69686625b8165ee5f8836a49f3b3813f3c927e9f363ae21ba37ae"
           },
+          "summary": "The file contains serde token-order tests for hashbrown HashMap and HashSet using a deterministic FNV hasher. I found no install-time execution, hidden code loading, credential access, exfiltration, obfuscation, persistence, or other supply-chain compromise indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_ef5a401054f54677a3c8756de0a75125",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -2233,6 +2420,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783327744",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "`src/table.rs` is the core `HashTable` implementation in hashbrown, covering lookup, insertion, entry APIs, iterators, and unsafe internal bucket access. I checked it for install hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/table.rs",
@@ -2240,6 +2428,7 @@
             "algorithm": "blake3",
             "value": "6bf36ceb926ae34db67d03564f386fba3510eb822d800a4681c5734017872c24"
           },
+          "summary": "`src/table.rs` is the core `HashTable` implementation in hashbrown, covering lookup, insertion, entry APIs, iterators, and unsafe internal bucket access. I checked it for install hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -2262,7 +2451,8 @@
               "total_tokens": 137632
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }

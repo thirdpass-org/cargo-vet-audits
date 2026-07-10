@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
   "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
@@ -215,6 +215,10 @@
     {
       "id": "rev_15b4af4bb52f4b44ae94ed7d8f8aa244",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -222,6 +226,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783195101",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `src/lib.rs`, which is a tiny `no_std` crate entrypoint that only re-exports the `const_random!` procedural macro. I checked this file for install hooks, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the target file.",
       "files": [
         {
           "file_path": "src/lib.rs",
@@ -229,15 +234,21 @@
             "algorithm": "blake3",
             "value": "9d4455fe358d128be4c9a2e67e9ccf653d6616f5ebad7b72627784b7c53f6d71"
           },
+          "summary": "Reviewed `src/lib.rs`, which is a tiny `no_std` crate entrypoint that only re-exports the `const_random!` procedural macro. I checked this file for install hooks, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_45214999266948eb82abcbf61f5d67a0",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "medium",
@@ -245,6 +256,7 @@
       "review_scope": "target_file_full",
       "created_at": "1783195085",
       "thirdpass_version": "0.6.0",
+      "agent_summary": "Reviewed `tests/tests.rs`, which is a small test suite exercising the `const_random!` macro with primitive integers, an array, and a type-inference check. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/decoding pipelines, or persistence behavior.\nReviewed the GitHub Actions workflow in `.github/workflows/rust.yml`, which only checks out the repository, installs the Rust nightly toolchain, builds the crate, and runs the test suite twice (once with `CONST_RANDOM_SEED=testSeed`). I found no concrete indicators of install hooks, credential access, network/exfiltration, dynamic code loading, obfuscation, or persistence in this file.\nReviewed the package manifest for install-time hooks, build scripts, dependency-based code execution, network/exfiltration indicators, credential access, obfuscation, and persistence behaviors. This Cargo.toml only declares a basic library package with one macro dependency and no `build.rs`, script hooks, or other suspicious manifest-level behavior.\nReviewed `README.md`, which documents compile-time random constant generation and the optional `CONST_RANDOM_SEED` environment variable for deterministic builds. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden supply-chain behavior in this file.\nReviewed `.cargo_vcs_info.json`, which only contains a source-control SHA1 and an empty `path_in_vcs` field. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
       "files": [
         {
           "file_path": "tests/tests.rs",
@@ -252,9 +264,11 @@
             "algorithm": "blake3",
             "value": "2246e4fc05ca7204700072b132be8d8ad423694164ed4e3f88a5cf3009a3299d"
           },
+          "summary": "Reviewed `tests/tests.rs`, which is a small test suite exercising the `const_random!` macro with primitive integers, an array, and a type-inference check. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/decoding pipelines, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".github/workflows/rust.yml",
@@ -262,9 +276,11 @@
             "algorithm": "blake3",
             "value": "79d6948dc921f81e9e22027a554d64fcdbee3ce9859a3bccf0ccd03b8919b457"
           },
+          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/rust.yml`, which only checks out the repository, installs the Rust nightly toolchain, builds the crate, and runs the test suite twice (once with `CONST_RANDOM_SEED=testSeed`). I found no concrete indicators of install hooks, credential access, network/exfiltration, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml",
@@ -272,9 +288,11 @@
             "algorithm": "blake3",
             "value": "e2b078838308ef1439c59b265f0e4988ddea3d5af0b5cf2726ee54a53476d233"
           },
+          "summary": "Reviewed the package manifest for install-time hooks, build scripts, dependency-based code execution, network/exfiltration indicators, credential access, obfuscation, and persistence behaviors. This Cargo.toml only declares a basic library package with one macro dependency and no `build.rs`, script hooks, or other suspicious manifest-level behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "README.md",
@@ -282,9 +300,11 @@
             "algorithm": "blake3",
             "value": "9bfc03b8fea840273bcb2cd718fe5aa73a500d92c5cdf1c98a4fde0e9efe63b5"
           },
+          "summary": "Reviewed `README.md`, which documents compile-time random constant generation and the optional `CONST_RANDOM_SEED` environment variable for deterministic builds. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden supply-chain behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": ".cargo_vcs_info.json",
@@ -292,15 +312,21 @@
             "algorithm": "blake3",
             "value": "a4012f0143886d3c9ac2574ffc579631bfd4a6edc4c6288badc275d379afa168"
           },
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only contains a source-control SHA1 and an empty `path_in_vcs` field. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     },
     {
       "id": "rev_a60d5871e58c4b3eb483053cc3b734bc",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
@@ -315,6 +341,7 @@
             "algorithm": "blake3",
             "value": "c1a134533c4dfb1b522234651d50d4c561ae25cff22c2a986dafe8e302bda7f7"
           },
+          "summary": "Reviewed the repository .gitignore, which only ignores `target` and `Cargo.lock`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence triggers, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -337,7 +364,8 @@
               "total_tokens": 21044
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "Cargo.toml.orig",
@@ -345,6 +373,7 @@
             "algorithm": "blake3",
             "value": "959d0db979251a90472d29b5e1fbf10e8b25df1ca8edd18c5aca019af09df80c"
           },
+          "summary": "Reviewed Cargo.toml.orig, which is a standard package manifest for const-random 0.1.18 with basic metadata and a single path dependency on const-random-macro. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -367,7 +396,8 @@
               "total_tokens": 21348
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-APACHE",
@@ -375,6 +405,7 @@
             "algorithm": "blake3",
             "value": "bc9b8879cf5978632a7be06ee591f28247b4c78fbc0adf6ac40e2d097063c32a"
           },
+          "summary": "Reviewed the Apache 2.0 license text in `LICENSE-APACHE`; it is a standard legal notice and contains no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence mechanisms, or other executable content to indicate supply-chain compromise.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -397,7 +428,8 @@
               "total_tokens": 23153
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         },
         {
           "file_path": "LICENSE-MIT",
@@ -405,6 +437,7 @@
             "algorithm": "blake3",
             "value": "d73b6615c0f35773e7252a777972c1d56de35fd7c63df16c028a746e4fe06761"
           },
+          "summary": "Reviewed the MIT license text in `LICENSE-MIT`; it contains only standard permission and warranty boilerplate and no executable content. I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
           "security_summary": "none",
           "confidence": "high",
           "agent_run_metrics": {
@@ -427,7 +460,8 @@
               "total_tokens": 21116
             }
           },
-          "comment_count": 0
+          "comment_count": 0,
+          "comments": []
         }
       ]
     }
