@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589449",
+  "latest_reviewed_at": "1784058973",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -304,50 +310,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 4,
-      "file_record_count": 19,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 5,
+      "file_record_count": 22,
+      "file_record_count_with_metrics": 22
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 22,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 19,
-    "duration_ms_total": 55367,
-    "attempts_total": 3,
+    "file_records_with_metrics": 22,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 338863,
+    "attempts_total": 22,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 22,
+    "last_token_usage_records": 22,
     "total_token_usage": {
-      "input_tokens": 107711,
-      "cached_input_tokens": 84992,
-      "output_tokens": 1853,
-      "reasoning_output_tokens": 751,
-      "total_tokens": 109564
+      "input_tokens": 643126,
+      "cached_input_tokens": 542464,
+      "output_tokens": 11287,
+      "reasoning_output_tokens": 5916,
+      "total_tokens": 654413
     },
     "last_token_usage": {
-      "input_tokens": 107711,
-      "cached_input_tokens": 84992,
-      "output_tokens": 1853,
-      "reasoning_output_tokens": 751,
-      "total_tokens": 109564
+      "input_tokens": 643126,
+      "cached_input_tokens": 542464,
+      "output_tokens": 11287,
+      "reasoning_output_tokens": 5916,
+      "total_tokens": 654413
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_20d10ad8cac24b83b52e159041c50b99",
+      "id": "rev_1155b95ed19445f3a319b6498c840059",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -355,34 +353,218 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782861724",
+      "created_at": "1784058973",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/imp/scalar.rs`, which is a straightforward Adler-32 scalar checksum implementation plus unit tests. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed the target `Cargo.toml` for install-time execution, build hooks, hidden subprocesses, network or secret access, dynamic code loading, obfuscation, and persistence mechanisms. It is a straightforward Rust manifest for a SIMD Adler-32 library and I found no concrete malicious or supply-chain indicators; no build script, install hook, or suspicious dependency/configuration is declared here.\nReviewed the scheduled GitHub Actions fuzz workflow in `.github/workflows/fuzz.yaml`, which checks out the repo, installs a nightly Rust toolchain and `cargo-fuzz`, optionally downloads a corpus archive from `nightly.link`, runs `cargo fuzz`, and uploads artifacts. I did not find concrete indicators of install-time compromise, secret harvesting, exfiltration beyond the explicit corpus fetch, hidden dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed the publish workflow for install-time execution, secret usage, network/exfiltration, dynamic code loading, obfuscation, and persistence behavior. It appears to be a standard release pipeline that logs into crates.io, runs `cargo release`, and pushes tags/commits; I found no concrete malicious or supply-chain compromise indicators in this file.\nReviewed `src/imp/mod.rs`, which only declares architecture-specific Adler-32 implementation modules and selects one at runtime via ordered CPU-feature dispatch with a scalar fallback. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload behavior in this file.",
       "files": [
         {
-          "file_path": "src/imp/scalar.rs",
+          "file_path": "src/imp/sse2.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "800fae33c9169b074f8613ab9b2fc6b6ae7c429e8230183444e3796473023f48"
+            "value": "ac4775d9d559e84aa2c72482620a025dd54f21f432e88e0d29f029d547a15545"
           },
-          "summary": "Reviewed `src/imp/scalar.rs`, which is a straightforward Adler-32 scalar checksum implementation plus unit tests. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed `src/imp/sse2.rs`, which implements a CPU-feature-gated SSE2 Adler-32 update path plus tests. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15728,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058914388,
+            "finished_at_unix_ms": 1784058930116,
+            "total_token_usage": {
+              "input_tokens": 26161,
+              "cached_input_tokens": 21248,
+              "output_tokens": 502,
+              "reasoning_output_tokens": 305,
+              "total_tokens": 26663
+            },
+            "last_token_usage": {
+              "input_tokens": 26161,
+              "cached_input_tokens": 21248,
+              "output_tokens": 502,
+              "reasoning_output_tokens": 305,
+              "total_tokens": 26663
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "Cargo.toml",
+          "file_path": "src/imp/ssse3.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "1dfc60c6184a52f07238c4cb6f9ae990a0d1fe7bd5e23c881d71e52c9076d3cb"
+            "value": "6ac8e77c0b9e5ddadbc76b1d290a34a41ec20487f3a4a3c59ff2fdd9fddf2e4f"
           },
-          "summary": "Reviewed the target `Cargo.toml` for install-time execution, build hooks, hidden subprocesses, network or secret access, dynamic code loading, obfuscation, and persistence mechanisms. It is a straightforward Rust manifest for a SIMD Adler-32 library and I found no concrete malicious or supply-chain indicators; no build script, install hook, or suspicious dependency/configuration is declared here.",
+          "summary": "Reviewed `src/imp/ssse3.rs`, which is an SSSE3-accelerated Adler-32 update implementation with CPU-feature gating and unit tests. I found no concrete signs of install-time execution, network or credential access, dynamic code loading, obfuscation, persistence, or other supply-chain malicious behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13610,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058930117,
+            "finished_at_unix_ms": 1784058943727,
+            "total_token_usage": {
+              "input_tokens": 26106,
+              "cached_input_tokens": 21248,
+              "output_tokens": 503,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 26609
+            },
+            "last_token_usage": {
+              "input_tokens": 26106,
+              "cached_input_tokens": 21248,
+              "output_tokens": 503,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 26609
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/imp/wasm.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "46a91e4bfd87678091cd98e920de6fd38879d14574a652ff8ac4ce378cca42ab"
+          },
+          "summary": "This file is a deterministic WebAssembly SIMD Adler-32 implementation that chooses a target-specific update routine and includes unit tests for zero, repeated, random, and Wikipedia sample inputs. I checked it for install hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence mechanisms and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14941,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058943728,
+            "finished_at_unix_ms": 1784058958669,
+            "total_token_usage": {
+              "input_tokens": 26050,
+              "cached_input_tokens": 21248,
+              "output_tokens": 518,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 26568
+            },
+            "last_token_usage": {
+              "input_tokens": 26050,
+              "cached_input_tokens": 21248,
+              "output_tokens": 518,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 26568
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "25a9ac21a0cc4b15117d9db5863a7e297f14c642fbf850b3b31511f89fa171de"
+          },
+          "summary": "`src/lib.rs` is a straightforward Adler-32 hashing library with runtime CPU feature selection, checksum state management, and optional `std` reader/bufreader helpers. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14871,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058958669,
+            "finished_at_unix_ms": 1784058973541,
+            "total_token_usage": {
+              "input_tokens": 40332,
+              "cached_input_tokens": 34944,
+              "output_tokens": 561,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 40893
+            },
+            "last_token_usage": {
+              "input_tokens": 40332,
+              "cached_input_tokens": 34944,
+              "output_tokens": 561,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 40893
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_1b037244ce4648adb4d9694c2539ad14",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784053168",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "712a274c2adfd00952355e09d36598555eab1cc7f4d8a87bda0e2384ad5265c1"
+          },
+          "summary": "Reviewed the Cargo VCS metadata file, which only records a Git commit SHA (`0b94f6a278f5662f24d311c9c1f16bcf272b7f43`) and an empty `path_in_vcs` value. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12960,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053098359,
+            "finished_at_unix_ms": 1784053111319,
+            "total_token_usage": {
+              "input_tokens": 36668,
+              "cached_input_tokens": 33408,
+              "output_tokens": 530,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 37198
+            },
+            "last_token_usage": {
+              "input_tokens": 36668,
+              "cached_input_tokens": 33408,
+              "output_tokens": 530,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 37198
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/build.yaml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "26ca13b69369afeed1e77b51ce2090eeddfb68c1ee9871209354c107ba253c6b"
+          },
+          "summary": "Reviewed `.github/workflows/build.yaml`, which defines GitHub Actions CI jobs for clippy, docs, cross-platform tests, MSRV, no-std, and Miri. I checked the workflow for install-time execution, credential/secret access, network exfiltration, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12960,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053111320,
+            "finished_at_unix_ms": 1784053124280,
+            "total_token_usage": {
+              "input_tokens": 26370,
+              "cached_input_tokens": 21248,
+              "output_tokens": 508,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 26878
+            },
+            "last_token_usage": {
+              "input_tokens": 26370,
+              "cached_input_tokens": 21248,
+              "output_tokens": 508,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 26878
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -392,9 +574,29 @@
             "algorithm": "blake3",
             "value": "03426f9212fc4c19f7f8b6185c30b50b1f0cee5110c4bfae2a907161f18a2cc5"
           },
-          "summary": "Reviewed the scheduled GitHub Actions fuzz workflow in `.github/workflows/fuzz.yaml`, which checks out the repo, installs a nightly Rust toolchain and `cargo-fuzz`, optionally downloads a corpus archive from `nightly.link`, runs `cargo fuzz`, and uploads artifacts. I did not find concrete indicators of install-time compromise, secret harvesting, exfiltration beyond the explicit corpus fetch, hidden dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed the GitHub Actions fuzzing workflow in `.github/workflows/fuzz.yaml`, which schedules nightly fuzz runs, installs the Rust toolchain and `cargo-fuzz`, downloads a corpus archive, runs fuzz targets, and uploads artifacts. I did not find concrete malicious or supply-chain indicators in this file: there are no install hooks, secret or credential harvesting, hidden execution of downloaded content, obfuscation, persistence, or other exfiltration behavior beyond the explicit corpus download.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15400,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053124281,
+            "finished_at_unix_ms": 1784053139681,
+            "total_token_usage": {
+              "input_tokens": 24485,
+              "cached_input_tokens": 21248,
+              "output_tokens": 660,
+              "reasoning_output_tokens": 431,
+              "total_tokens": 25145
+            },
+            "last_token_usage": {
+              "input_tokens": 24485,
+              "cached_input_tokens": 21248,
+              "output_tokens": 660,
+              "reasoning_output_tokens": 431,
+              "total_tokens": 25145
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -404,21 +606,61 @@
             "algorithm": "blake3",
             "value": "0f6d45f0e1259cb0dfbf1d0976642c0d1d7aa1323a7b68920aa131debbddb86f"
           },
-          "summary": "Reviewed the publish workflow for install-time execution, secret usage, network/exfiltration, dynamic code loading, obfuscation, and persistence behavior. It appears to be a standard release pipeline that logs into crates.io, runs `cargo release`, and pushes tags/commits; I found no concrete malicious or supply-chain compromise indicators in this file.",
+          "summary": "Reviewed the GitHub Actions publish workflow in .github/workflows/publish.yaml. It is a standard release pipeline that checks out the repo, configures git identity, installs cargo-release, logs in to crates.io with a secret token, runs a locked release command, and pushes the resulting tags/changes; I did not find concrete indicators of hidden install hooks, exfiltration, credential harvesting beyond the expected publish token use, dynamic code loading, obfuscation, or persistence.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15937,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053139681,
+            "finished_at_unix_ms": 1784053155619,
+            "total_token_usage": {
+              "input_tokens": 24305,
+              "cached_input_tokens": 23296,
+              "output_tokens": 561,
+              "reasoning_output_tokens": 334,
+              "total_tokens": 24866
+            },
+            "last_token_usage": {
+              "input_tokens": 24305,
+              "cached_input_tokens": 23296,
+              "output_tokens": 561,
+              "reasoning_output_tokens": 334,
+              "total_tokens": 24866
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/imp/mod.rs",
+          "file_path": ".rustfmt.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "191e45580f98287370396efb5432ac65d4628000320a610a47d52c8a0ad05b77"
+            "value": "cc0728bb6995c88278fcc8df24764cea01c5add9889dd32986ec67dc54711d50"
           },
-          "summary": "Reviewed `src/imp/mod.rs`, which only declares architecture-specific Adler-32 implementation modules and selects one at runtime via ordered CPU-feature dispatch with a scalar fallback. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload behavior in this file.",
+          "summary": "Reviewed the target `.rustfmt.toml`, which only sets Rust formatting options (`max_width = 90`, `tab_spaces = 2`). I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12666,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053155620,
+            "finished_at_unix_ms": 1784053168286,
+            "total_token_usage": {
+              "input_tokens": 24099,
+              "cached_input_tokens": 21248,
+              "output_tokens": 314,
+              "reasoning_output_tokens": 118,
+              "total_tokens": 24413
+            },
+            "last_token_usage": {
+              "input_tokens": 24099,
+              "cached_input_tokens": 21248,
+              "output_tokens": 314,
+              "reasoning_output_tokens": 118,
+              "total_tokens": 24413
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -434,7 +676,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589449",
       "thirdpass_version": "0.6.0",
@@ -538,7 +780,7 @@
       ]
     },
     {
-      "id": "rev_2ba0319ac7d54d72981948a0b3479890",
+      "id": "rev_703bb424c90e451ba2c6486f69d713e4",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -546,202 +788,105 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782861771",
+      "created_at": "1784055515",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed LICENSE.md, which contains a plain MIT license grant and warranty disclaimer. No concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse were present in this target file.\nReviewed `CHANGELOG.md`, which is a brief release-notes file describing version 0.3.3 feature and performance changes. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.\nReviewed `.cargo_vcs_info.json`, which only records a git commit SHA and an empty `path_in_vcs` field. I checked it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed the target `.rustfmt.toml`, which only sets formatting options (`max_width = 90`, `tab_spaces = 2`). I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
       "files": [
-        {
-          "file_path": "LICENSE.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0356a107537d1be679a0b933e2e57ce90ada51b372db9a33395bbbc3de3e6054"
-          },
-          "summary": "Reviewed LICENSE.md, which contains a plain MIT license grant and warranty disclaimer. No concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse were present in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": "CHANGELOG.md",
           "file_hash": {
             "algorithm": "blake3",
             "value": "fb5b5b7536188c0a3bb3537e4f382f8a1072900b7c724cb9b51f0db3e5b82482"
           },
-          "summary": "Reviewed `CHANGELOG.md`, which is a brief release-notes file describing version 0.3.3 feature and performance changes. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.",
+          "summary": "CHANGELOG.md is a short release note for version 0.3.3 describing a new `Adler32::from_checksum` feature and a scalar performance improvement. I checked this target file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14873,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055448658,
+            "finished_at_unix_ms": 1784055463531,
+            "total_token_usage": {
+              "input_tokens": 24210,
+              "cached_input_tokens": 21248,
+              "output_tokens": 415,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 24625
+            },
+            "last_token_usage": {
+              "input_tokens": 24210,
+              "cached_input_tokens": 21248,
+              "output_tokens": 415,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 24625
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "712a274c2adfd00952355e09d36598555eab1cc7f4d8a87bda0e2384ad5265c1"
+            "value": "1dfc60c6184a52f07238c4cb6f9ae990a0d1fe7bd5e23c881d71e52c9076d3cb"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records a git commit SHA and an empty `path_in_vcs` field. I checked it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed the normalized Cargo manifest for simd-adler32 0.3.9. It only declares package metadata, feature flags, a library target, and dev-dependencies; I found no install hooks, network or exfiltration logic, dynamic code loading, obfuscation, or persistence controls in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11546,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055463531,
+            "finished_at_unix_ms": 1784055475078,
+            "total_token_usage": {
+              "input_tokens": 24525,
+              "cached_input_tokens": 21248,
+              "output_tokens": 438,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 24963
+            },
+            "last_token_usage": {
+              "input_tokens": 24525,
+              "cached_input_tokens": 21248,
+              "output_tokens": 438,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 24963
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".rustfmt.toml",
+          "file_path": "LICENSE.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "cc0728bb6995c88278fcc8df24764cea01c5add9889dd32986ec67dc54711d50"
+            "value": "0356a107537d1be679a0b933e2e57ce90ada51b372db9a33395bbbc3de3e6054"
           },
-          "summary": "Reviewed the target `.rustfmt.toml`, which only sets formatting options (`max_width = 90`, `tab_spaces = 2`). I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
+          "summary": "Reviewed the MIT license text in LICENSE.md. It contains only standard permissive license terms and no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_61542fc2ecbf40218c01ae60d28627fa",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782861584",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/imp/avx512.rs`, which is a conditional AVX-512 Adler-32 update implementation with feature detection, SIMD arithmetic, and unit tests. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.\nReviewed `src/imp/sse2.rs`, which is a SIMD-accelerated Adler-32 update path with CPU feature gating and unit tests. I checked for install-time hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/imp/wasm.rs`, which is a WASM SIMD-backed Adler-32 implementation with feature-gated dispatch and unit tests. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none were present in this file.\nReviewed `src/imp/ssse3.rs`, which is an SSSE3-accelerated Adler-32 checksum implementation with CPU feature gating, SIMD arithmetic, and self-tests. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/imp/avx2.rs`, which is a CPU-feature-gated AVX2 Adler-32 update implementation plus tests. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none were present in this file.",
-      "files": [
-        {
-          "file_path": "src/imp/avx512.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "15586423ce904b76bab27fe76baa0343fd6e2beebe8f3cd6b6fe1c8ca321c73b"
+          "agent_run_metrics": {
+            "duration_ms": 11955,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055475079,
+            "finished_at_unix_ms": 1784055487034,
+            "total_token_usage": {
+              "input_tokens": 24323,
+              "cached_input_tokens": 21248,
+              "output_tokens": 310,
+              "reasoning_output_tokens": 144,
+              "total_tokens": 24633
+            },
+            "last_token_usage": {
+              "input_tokens": 24323,
+              "cached_input_tokens": 21248,
+              "output_tokens": 310,
+              "reasoning_output_tokens": 144,
+              "total_tokens": 24633
+            }
           },
-          "summary": "Reviewed `src/imp/avx512.rs`, which is a conditional AVX-512 Adler-32 update implementation with feature detection, SIMD arithmetic, and unit tests. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/imp/sse2.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ac4775d9d559e84aa2c72482620a025dd54f21f432e88e0d29f029d547a15545"
-          },
-          "summary": "Reviewed `src/imp/sse2.rs`, which is a SIMD-accelerated Adler-32 update path with CPU feature gating and unit tests. I checked for install-time hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/imp/wasm.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "46a91e4bfd87678091cd98e920de6fd38879d14574a652ff8ac4ce378cca42ab"
-          },
-          "summary": "Reviewed `src/imp/wasm.rs`, which is a WASM SIMD-backed Adler-32 implementation with feature-gated dispatch and unit tests. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/imp/ssse3.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6ac8e77c0b9e5ddadbc76b1d290a34a41ec20487f3a4a3c59ff2fdd9fddf2e4f"
-          },
-          "summary": "Reviewed `src/imp/ssse3.rs`, which is an SSSE3-accelerated Adler-32 checksum implementation with CPU feature gating, SIMD arithmetic, and self-tests. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/imp/avx2.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "75889f9c9be04f7a2eda3bc410af0531419e412b04e4a8ebf8752d49f438078f"
-          },
-          "summary": "Reviewed `src/imp/avx2.rs`, which is a CPU-feature-gated AVX2 Adler-32 update implementation plus tests. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_798c6dd52d384b1aa066f875ea693a7a",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782861657",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the GitHub Actions workflow in `.github/workflows/build.yaml`. It defines standard Rust CI jobs for clippy, docs, cross-target tests, MSRV, no-std, and Miri, and I found no concrete signs of install-time compromise, secret harvesting, network/exfiltration, hidden downloads beyond normal dependency installs, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `src/imp/neon.rs`, which implements a Neon-accelerated Adler-32 update path and associated tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.\nReviewed `src/hash.rs`, which only defines `Adler32Hash` implementations for byte slices, `&str`, and fixed-size byte arrays by feeding inputs into `Adler32` and returning `finish()`. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.\nReviewed `src/lib.rs`, which contains the public Adler-32 hasher API plus `std`-gated reader and bufread helpers. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `README.md`, which is documentation for a SIMD-accelerated Adler-32 Rust crate with usage examples, feature/support tables, performance benchmarks, and a short safety note. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, no network or exfiltration logic, no credential access, no dynamic code loading, no obfuscation, and no persistence behavior described.",
-      "files": [
-        {
-          "file_path": ".github/workflows/build.yaml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "26ca13b69369afeed1e77b51ce2090eeddfb68c1ee9871209354c107ba253c6b"
-          },
-          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/build.yaml`. It defines standard Rust CI jobs for clippy, docs, cross-target tests, MSRV, no-std, and Miri, and I found no concrete signs of install-time compromise, secret harvesting, network/exfiltration, hidden downloads beyond normal dependency installs, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/imp/neon.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "996ea3663d2ed1957e08adfa49281441011bdcb2a5ae363ffa5377ab42c29d66"
-          },
-          "summary": "Reviewed `src/imp/neon.rs`, which implements a Neon-accelerated Adler-32 update path and associated tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/hash.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5683fbb846b209e70fd9f29ccc28744650a6604d6d7d7007373c0f503ae9053c"
-          },
-          "summary": "Reviewed `src/hash.rs`, which only defines `Adler32Hash` implementations for byte slices, `&str`, and fixed-size byte arrays by feeding inputs into `Adler32` and returning `finish()`. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "25a9ac21a0cc4b15117d9db5863a7e297f14c642fbf850b3b31511f89fa171de"
-          },
-          "summary": "Reviewed `src/lib.rs`, which contains the public Adler-32 hasher API plus `std`-gated reader and bufread helpers. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -751,9 +896,238 @@
             "algorithm": "blake3",
             "value": "b719365da4e5e85270cdcb39555c2044da088b5b6cb5202d4304147b890176d2"
           },
-          "summary": "Reviewed `README.md`, which is documentation for a SIMD-accelerated Adler-32 Rust crate with usage examples, feature/support tables, performance benchmarks, and a short safety note. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, no network or exfiltration logic, no credential access, no dynamic code loading, no obfuscation, and no persistence behavior described.",
+          "summary": "Reviewed the README for simd-adler32, which documents the crate’s Adler-32 API, feature support, benchmarks, safety notes, and contribution info. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14383,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055487035,
+            "finished_at_unix_ms": 1784055501418,
+            "total_token_usage": {
+              "input_tokens": 25552,
+              "cached_input_tokens": 21248,
+              "output_tokens": 467,
+              "reasoning_output_tokens": 267,
+              "total_tokens": 26019
+            },
+            "last_token_usage": {
+              "input_tokens": 25552,
+              "cached_input_tokens": 21248,
+              "output_tokens": 467,
+              "reasoning_output_tokens": 267,
+              "total_tokens": 26019
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/hash.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5683fbb846b209e70fd9f29ccc28744650a6604d6d7d7007373c0f503ae9053c"
+          },
+          "summary": "Reviewed `src/hash.rs`, which only provides `Adler32Hash` implementations for byte slices, strings, and fixed-size byte arrays using `Adler32::new()`, `write()`, and `finish()`. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13627,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055501419,
+            "finished_at_unix_ms": 1784055515046,
+            "total_token_usage": {
+              "input_tokens": 39051,
+              "cached_input_tokens": 33920,
+              "output_tokens": 546,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 39597
+            },
+            "last_token_usage": {
+              "input_tokens": 39051,
+              "cached_input_tokens": 33920,
+              "output_tokens": 546,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 39597
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_89eb54a6ec504cffb3c2593503dfb981",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784057388",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/imp/avx2.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "75889f9c9be04f7a2eda3bc410af0531419e412b04e4a8ebf8752d49f438078f"
+          },
+          "summary": "Reviewed the AVX2-specific Adler-32 implementation and its tests. The file only performs CPU feature gating and in-process SIMD checksum arithmetic; I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24127,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057300004,
+            "finished_at_unix_ms": 1784057324132,
+            "total_token_usage": {
+              "input_tokens": 25979,
+              "cached_input_tokens": 21248,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 26411
+            },
+            "last_token_usage": {
+              "input_tokens": 25979,
+              "cached_input_tokens": 21248,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 26411
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/imp/avx512.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "15586423ce904b76bab27fe76baa0343fd6e2beebe8f3cd6b6fe1c8ca321c73b"
+          },
+          "summary": "`src/imp/avx512.rs` implements an AVX512-accelerated Adler-32 update path with runtime CPU feature detection plus unit tests. I checked this target file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15783,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057324132,
+            "finished_at_unix_ms": 1784057339916,
+            "total_token_usage": {
+              "input_tokens": 27241,
+              "cached_input_tokens": 21248,
+              "output_tokens": 581,
+              "reasoning_output_tokens": 367,
+              "total_tokens": 27822
+            },
+            "last_token_usage": {
+              "input_tokens": 27241,
+              "cached_input_tokens": 21248,
+              "output_tokens": 581,
+              "reasoning_output_tokens": 367,
+              "total_tokens": 27822
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/imp/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "191e45580f98287370396efb5432ac65d4628000320a610a47d52c8a0ad05b77"
+          },
+          "summary": "Reviewed src/imp/mod.rs, which only exposes architecture-specific Adler-32 implementations and chooses a runtime fallback via CPU-feature-dependent dispatch. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14016,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057339917,
+            "finished_at_unix_ms": 1784057353933,
+            "total_token_usage": {
+              "input_tokens": 24337,
+              "cached_input_tokens": 21248,
+              "output_tokens": 588,
+              "reasoning_output_tokens": 391,
+              "total_tokens": 24925
+            },
+            "last_token_usage": {
+              "input_tokens": 24337,
+              "cached_input_tokens": 21248,
+              "output_tokens": 588,
+              "reasoning_output_tokens": 391,
+              "total_tokens": 24925
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/imp/neon.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "996ea3663d2ed1957e08adfa49281441011bdcb2a5ae363ffa5377ab42c29d66"
+          },
+          "summary": "Reviewed the NEON-specific Adler-32 implementation in `src/imp/neon.rs`, including the `unsafe` SIMD block and the test harness. It appears to be a local checksum accelerator only, with no concrete indicators of install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18224,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057353933,
+            "finished_at_unix_ms": 1784057372158,
+            "total_token_usage": {
+              "input_tokens": 26267,
+              "cached_input_tokens": 21248,
+              "output_tokens": 464,
+              "reasoning_output_tokens": 263,
+              "total_tokens": 26731
+            },
+            "last_token_usage": {
+              "input_tokens": 26267,
+              "cached_input_tokens": 21248,
+              "output_tokens": 464,
+              "reasoning_output_tokens": 263,
+              "total_tokens": 26731
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/imp/scalar.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "800fae33c9169b074f8613ab9b2fc6b6ae7c429e8230183444e3796473023f48"
+          },
+          "summary": "Reviewed `src/imp/scalar.rs`, which contains a straightforward Adler-32 scalar accumulator plus unit tests. I checked for install-time execution, secret access, network/exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15889,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057372158,
+            "finished_at_unix_ms": 1784057388048,
+            "total_token_usage": {
+              "input_tokens": 39354,
+              "cached_input_tokens": 34432,
+              "output_tokens": 536,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 39890
+            },
+            "last_token_usage": {
+              "input_tokens": 39354,
+              "cached_input_tokens": 34432,
+              "output_tokens": 536,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 39890
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

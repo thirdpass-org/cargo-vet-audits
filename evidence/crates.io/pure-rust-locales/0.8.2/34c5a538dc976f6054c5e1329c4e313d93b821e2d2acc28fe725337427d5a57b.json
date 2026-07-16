@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591405",
+  "latest_reviewed_at": "1784058020",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -184,50 +190,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 3,
-      "file_record_count": 7,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 4,
+      "file_record_count": 11,
+      "file_record_count_with_metrics": 11
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 11,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 7,
-    "duration_ms_total": 47305,
-    "attempts_total": 4,
+    "file_records_with_metrics": 11,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 198461,
+    "attempts_total": 11,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 11,
+    "last_token_usage_records": 11,
     "total_token_usage": {
-      "input_tokens": 86672,
-      "cached_input_tokens": 70656,
-      "output_tokens": 1568,
-      "reasoning_output_tokens": 799,
-      "total_tokens": 88240
+      "input_tokens": 360709,
+      "cached_input_tokens": 310400,
+      "output_tokens": 5633,
+      "reasoning_output_tokens": 2753,
+      "total_tokens": 366342
     },
     "last_token_usage": {
-      "input_tokens": 86672,
-      "cached_input_tokens": 70656,
-      "output_tokens": 1568,
-      "reasoning_output_tokens": 799,
-      "total_tokens": 88240
+      "input_tokens": 360709,
+      "cached_input_tokens": 310400,
+      "output_tokens": 5633,
+      "reasoning_output_tokens": 2753,
+      "total_tokens": 366342
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_691e89dfe1d94e269e97e80f3a75fc67",
+      "id": "rev_19f1bbcb4fa04ba885da7baad7ffe551",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -235,58 +233,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783191410",
+      "created_at": "1784058020",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the `Cargo.toml` manifest for install-time hooks, build scripts, hidden subprocess execution, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior. The file is a normal library manifest with `build = false`, no scripts or binaries, and only an optional `defmt` dependency; I found no concrete malicious or supply-chain indicators in the manifest.\nReviewed the `README.md` as a plain package description for `pure-rust-locales`, including the external badge links and the short usage notes. I found no concrete indicators of install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `tests/simple_test.rs`, which contains only two straightforward unit tests for locale formatting constants and `Locale` parsing. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution in this file.\nReviewed `tests/checksum.rs`, which is a small Rust test that runs `cargo run -p generate-api -- --check`, captures stdout/stderr, and fails if the generated `lib.rs` differs. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/macros.rs`, a small unit test that exercises `pure_rust_locales::locale_match` with a French-Belgian locale and asserts formatting constants. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "196185c09181393ca3e1366d3519215eceae36bd0c41bbf0efb454cd2ea1d82a"
-          },
-          "summary": "Reviewed the `Cargo.toml` manifest for install-time hooks, build scripts, hidden subprocess execution, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior. The file is a normal library manifest with `build = false`, no scripts or binaries, and only an optional `defmt` dependency; I found no concrete malicious or supply-chain indicators in the manifest.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "11ae94fddcb9fef58681545a2f4932f5467093e2ac7c8b6a5e973e0d9335f235"
-          },
-          "summary": "Reviewed the `README.md` as a plain package description for `pure-rust-locales`, including the external badge links and the short usage notes. I found no concrete indicators of install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/simple_test.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d979be57df224c26f9be4f3682078b5be69295606e69ea947776fc1d5a9c094a"
-          },
-          "summary": "Reviewed `tests/simple_test.rs`, which contains only two straightforward unit tests for locale formatting constants and `Locale` parsing. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": "tests/checksum.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "2bc5b7ac8b2c5383a2ec4459c71891215a77f9665698576002a74fe230f88680"
           },
-          "summary": "Reviewed `tests/checksum.rs`, which is a small Rust test that runs `cargo run -p generate-api -- --check`, captures stdout/stderr, and fails if the generated `lib.rs` differs. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `tests/checksum.rs`, which is a test harness that runs a fixed local `cargo run -p generate-api -- --check` command, captures its output, and asserts success. I found no concrete indicators of install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24814,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057963292,
+            "finished_at_unix_ms": 1784057988106,
+            "total_token_usage": {
+              "input_tokens": 24236,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 314,
+              "total_tokens": 24759
+            },
+            "last_token_usage": {
+              "input_tokens": 24236,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 314,
+              "total_tokens": 24759
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -296,9 +277,110 @@
             "algorithm": "blake3",
             "value": "7395cb2d634bf9daeb948aaf72b092b1b08515d9c667f6d8a8d4e5dbefbc6f87"
           },
-          "summary": "Reviewed `tests/macros.rs`, a small unit test that exercises `pure_rust_locales::locale_match` with a French-Belgian locale and asserts formatting constants. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `tests/macros.rs`, which contains a single unit test asserting `pure_rust_locales::locale_match!` returns expected French-Belgian locale formatting values. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18885,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057988107,
+            "finished_at_unix_ms": 1784058006992,
+            "total_token_usage": {
+              "input_tokens": 24204,
+              "cached_input_tokens": 21248,
+              "output_tokens": 359,
+              "reasoning_output_tokens": 158,
+              "total_tokens": 24563
+            },
+            "last_token_usage": {
+              "input_tokens": 24204,
+              "cached_input_tokens": 21248,
+              "output_tokens": 359,
+              "reasoning_output_tokens": 158,
+              "total_tokens": 24563
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/simple_test.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d979be57df224c26f9be4f3682078b5be69295606e69ea947776fc1d5a9c094a"
+          },
+          "summary": "The target file contains straightforward unit tests for locale formatting and string-to-Locale parsing in `pure_rust_locales`. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13536,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058006992,
+            "finished_at_unix_ms": 1784058020529,
+            "total_token_usage": {
+              "input_tokens": 24268,
+              "cached_input_tokens": 23296,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 24649
+            },
+            "last_token_usage": {
+              "input_tokens": 24268,
+              "cached_input_tokens": 23296,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 24649
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_72098f0b977b444d8499656fbfa86bf4",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056255",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7781d0decf0a5ea500d9c0732353b03da28a20ff722917024b43471390f3c6ae"
+          },
+          "summary": "`src/lib.rs` is a `no_std` locale data module: it defines locale constants, a `Locale` enum, and straightforward `Display`/`FromStr`/`TryFrom` match logic. I checked it for install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 57658,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056197922,
+            "finished_at_unix_ms": 1784056255581,
+            "total_token_usage": {
+              "input_tokens": 128247,
+              "cached_input_tokens": 108160,
+              "output_tokens": 1335,
+              "reasoning_output_tokens": 436,
+              "total_tokens": 129582
+            },
+            "last_token_usage": {
+              "input_tokens": 128247,
+              "cached_input_tokens": 108160,
+              "output_tokens": 1335,
+              "reasoning_output_tokens": 436,
+              "total_tokens": 129582
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -314,7 +396,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591405",
       "thirdpass_version": "0.6.0",
@@ -450,7 +532,7 @@
       ]
     },
     {
-      "id": "rev_b8e57d0b632f4361b2ec6a1ba6834b18",
+      "id": "rev_d4f3002dbf3d4392ac4abae5d7f930de",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -458,42 +540,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783191339",
+      "created_at": "1784054059",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/lib.rs` is a large generated Rust locale table for `pure-rust-locales`, consisting of constant locale metadata plus `Display`/`FromStr`/`TryFrom` mappings for locale enums. I reviewed it for install hooks, subprocess execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7781d0decf0a5ea500d9c0732353b03da28a20ff722917024b43471390f3c6ae"
-          },
-          "summary": "`src/lib.rs` is a large generated Rust locale table for `pure-rust-locales`, consisting of constant locale metadata plus `Display`/`FromStr`/`TryFrom` mappings for locale enums. I reviewed it for install hooks, subprocess execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_e4a488072c374b2a85a5b248de8fdd9c",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783191424",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the target `.cargo_vcs_info.json`, which contains only Cargo VCS provenance metadata (`git.sha1` and an empty `path_in_vcs`). I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload indicators, and found no concrete malicious or supply-chain compromise signs in this file.",
       "files": [
         {
           "file_path": ".cargo_vcs_info.json",
@@ -501,9 +552,93 @@
             "algorithm": "blake3",
             "value": "3e3c68fa6d45802dca124f42d7a8d035d939036c65c0b4169bfd31723e992a5e"
           },
-          "summary": "Reviewed the target `.cargo_vcs_info.json`, which contains only Cargo VCS provenance metadata (`git.sha1` and an empty `path_in_vcs`). I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload indicators, and found no concrete malicious or supply-chain compromise signs in this file.",
+          "summary": "This `.cargo_vcs_info.json` only records a source-control SHA and an empty `path_in_vcs` field. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain signals.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11715,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054022824,
+            "finished_at_unix_ms": 1784054034539,
+            "total_token_usage": {
+              "input_tokens": 24137,
+              "cached_input_tokens": 21248,
+              "output_tokens": 458,
+              "reasoning_output_tokens": 259,
+              "total_tokens": 24595
+            },
+            "last_token_usage": {
+              "input_tokens": 24137,
+              "cached_input_tokens": 21248,
+              "output_tokens": 458,
+              "reasoning_output_tokens": 259,
+              "total_tokens": 24595
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "196185c09181393ca3e1366d3519215eceae36bd0c41bbf0efb454cd2ea1d82a"
+          },
+          "summary": "This is a normalized Cargo manifest for `pure-rust-locales` 0.8.2 defining package metadata, an explicit library target, test targets, and one optional `defmt` dependency. I checked this file for install hooks, build scripts, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13427,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054034540,
+            "finished_at_unix_ms": 1784054047967,
+            "total_token_usage": {
+              "input_tokens": 24620,
+              "cached_input_tokens": 21248,
+              "output_tokens": 585,
+              "reasoning_output_tokens": 371,
+              "total_tokens": 25205
+            },
+            "last_token_usage": {
+              "input_tokens": 24620,
+              "cached_input_tokens": 21248,
+              "output_tokens": 585,
+              "reasoning_output_tokens": 371,
+              "total_tokens": 25205
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "11ae94fddcb9fef58681545a2f4932f5467093e2ac7c8b6a5e973e0d9335f235"
+          },
+          "summary": "Reviewed the README.md, which is a short crate description for `pure-rust-locales` and only documents its locale API scope and a consumer example. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11121,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054047968,
+            "finished_at_unix_ms": 1784054059089,
+            "total_token_usage": {
+              "input_tokens": 24325,
+              "cached_input_tokens": 23296,
+              "output_tokens": 424,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 24749
+            },
+            "last_token_usage": {
+              "input_tokens": 24325,
+              "cached_input_tokens": 23296,
+              "output_tokens": 424,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 24749
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

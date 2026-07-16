@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783588826",
+  "latest_reviewed_at": "1784059423",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -282,50 +288,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 5,
-      "file_record_count": 18,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 2,
-      "file_record_count_with_metrics": 2
+      "review_count": 5,
+      "file_record_count": 20,
+      "file_record_count_with_metrics": 20
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 20,
-    "file_records_with_metrics": 2,
-    "file_records_without_metrics": 18,
-    "duration_ms_total": 62370,
-    "attempts_total": 2,
+    "file_records_with_metrics": 20,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 377656,
+    "attempts_total": 20,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 2,
-    "last_token_usage_records": 2,
+    "total_token_usage_records": 20,
+    "last_token_usage_records": 20,
     "total_token_usage": {
-      "input_tokens": 44538,
-      "cached_input_tokens": 32768,
-      "output_tokens": 1183,
-      "reasoning_output_tokens": 601,
-      "total_tokens": 45721
+      "input_tokens": 722117,
+      "cached_input_tokens": 617344,
+      "output_tokens": 10655,
+      "reasoning_output_tokens": 4961,
+      "total_tokens": 732772
     },
     "last_token_usage": {
-      "input_tokens": 44538,
-      "cached_input_tokens": 32768,
-      "output_tokens": 1183,
-      "reasoning_output_tokens": 601,
-      "total_tokens": 45721
+      "input_tokens": 722117,
+      "cached_input_tokens": 617344,
+      "output_tokens": 10655,
+      "reasoning_output_tokens": 4961,
+      "total_tokens": 732772
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_1242734604fe4a9c8eb8dec9b908c402",
+      "id": "rev_14d6a943118047f1afae11549d8400ce",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -333,22 +331,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783186076",
+      "created_at": "1784056107",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "I reviewed `src/ty/path.rs`, which defines a small Rust `Path` type for type/namespace segments, plus constructors, formatting, and tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, secret access, dynamic code loading, obfuscation/decoding pipelines, or persistence behavior.\nReviewed `src/interner.rs`, which implements a generic in-memory interner with symbol wrappers, lookup, and resolution plus unit tests. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `src/ty/variant.rs`, which defines the `TypeDefVariant` and `Variant` data structures plus serde/scale/portable conversion helpers for enum metadata. I checked for install-time hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.\nReviewed README.md, which is purely documentation for the `scale-info` crate: it explains the `TypeInfo` trait, type registry concepts, supported built-in/user-defined type shapes, feature flags, and a known generic-compact-field issue. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/ty/fields.rs`, which defines the `Field` metadata type, its portable conversion, constructors, and accessors. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior in this file.",
       "files": [
         {
-          "file_path": "src/ty/path.rs",
+          "file_path": "src/impls.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "b13faa1ee89ba13958edc4741ebb3ff9e5676ea5013d9a05fdd15f3a53b0c96a"
+            "value": "8451924b2d6386e39e44277719f1c92c5df2646e1ff83230c1fde3c02a92e2f9"
           },
-          "summary": "I reviewed `src/ty/path.rs`, which defines a small Rust `Path` type for type/namespace segments, plus constructors, formatting, and tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, secret access, dynamic code loading, obfuscation/decoding pipelines, or persistence behavior.",
+          "summary": "Reviewed `src/impls.rs`, which contains `TypeInfo` implementations for core Rust/std and `bitvec` types, including arrays, tuples, options, results, maps, ranges, and `PhantomData` metadata. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14734,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056027196,
+            "finished_at_unix_ms": 1784056041931,
+            "total_token_usage": {
+              "input_tokens": 41202,
+              "cached_input_tokens": 34944,
+              "output_tokens": 498,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 41700
+            },
+            "last_token_usage": {
+              "input_tokens": 41202,
+              "cached_input_tokens": 34944,
+              "output_tokens": 498,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 41700
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -358,183 +375,29 @@
             "algorithm": "blake3",
             "value": "8cb54efa30a2d1f2a89225105a294a1292809abf5604e193025518cd06c99814"
           },
-          "summary": "Reviewed `src/interner.rs`, which implements a generic in-memory interner with symbol wrappers, lookup, and resolution plus unit tests. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "`src/interner.rs` defines a small generic interning structure with symbol wrappers, insertion/lookup, and unit tests; I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload indicators. No concrete malicious or supply-chain indicators were found in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/ty/variant.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a5d9fc1864e1d15dbc6dc5c480d430a1969174153e037d26d867a4a6ff50db04"
+          "agent_run_metrics": {
+            "duration_ms": 20029,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056041931,
+            "finished_at_unix_ms": 1784056061961,
+            "total_token_usage": {
+              "input_tokens": 40110,
+              "cached_input_tokens": 35456,
+              "output_tokens": 811,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 40921
+            },
+            "last_token_usage": {
+              "input_tokens": 40110,
+              "cached_input_tokens": 35456,
+              "output_tokens": 811,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 40921
+            }
           },
-          "summary": "Reviewed `src/ty/variant.rs`, which defines the `TypeDefVariant` and `Variant` data structures plus serde/scale/portable conversion helpers for enum metadata. I checked for install-time hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1e543783cb2945584c43d7ec6db5d72bcfc95c686956b53314e7473219fee88d"
-          },
-          "summary": "Reviewed README.md, which is purely documentation for the `scale-info` crate: it explains the `TypeInfo` trait, type registry concepts, supported built-in/user-defined type shapes, feature flags, and a known generic-compact-field issue. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/ty/fields.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "21a84125065a24c34e1fc68b5326083283c446ababef905a672c0205b0f468a8"
-          },
-          "summary": "Reviewed `src/ty/fields.rs`, which defines the `Field` metadata type, its portable conversion, constructors, and accessors. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_2efad184ee524f33897352e8142fcfc0",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783186189",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/prelude.rs` is a small compatibility prelude that conditionally re-exports items from `std`, `core`, or `alloc` based on the `std` feature. I checked it for hidden execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `src/utils.rs`, which contains a small ASCII-only Rust identifier validator. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the target metadata file, which only records the source git SHA1 for the crate snapshot. No concrete malicious or supply-chain indicators were found in this file; it contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": "src/prelude.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4c6e6d9313e7b1ebd7fbed5586c279022c4696ea415bc3f3987349b34ab58809"
-          },
-          "summary": "`src/prelude.rs` is a small compatibility prelude that conditionally re-exports items from `std`, `core`, or `alloc` based on the `std` feature. I checked it for hidden execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/utils.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "73da916373d1daa832f877f25a3c94d88d3305419d0be1e30ab8f04ce74f3f42"
-          },
-          "summary": "Reviewed `src/utils.rs`, which contains a small ASCII-only Rust identifier validator. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "21d67640bbdbd4c3222dc6227faaa4f37b5dddc152c8f84c1345b03379b5b499"
-          },
-          "summary": "Reviewed the target metadata file, which only records the source git SHA1 for the crate snapshot. No concrete malicious or supply-chain indicators were found in this file; it contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_6140c881c7a043ba825323b98ada8197",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783186004",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/build.rs`, which is a Rust type-builder module for constructing `Type`, `Field`, and `Variant` metadata. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nI reviewed `src/tests.rs`, which contains Rust unit tests for `scale-info` type metadata across primitives, collections, phantom-data handling, tuples, arrays, generic structs, and enum index mapping. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, or hidden subprocess execution.\n`src/registry.rs` defines the `Registry` and `PortableRegistry` data structures for collecting type metadata and converting it into a serializable form. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "src/build.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5dad5bab474190c478fa90e9d60b7446855593a619917cb05ae50914ad481996"
-          },
-          "summary": "Reviewed `src/build.rs`, which is a Rust type-builder module for constructing `Type`, `Field`, and `Variant` metadata. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/tests.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e3ea87cabc8f9debe12076c783add5eb9b3d1e7ae4b436c814508a6edfc56805"
-          },
-          "summary": "I reviewed `src/tests.rs`, which contains Rust unit tests for `scale-info` type metadata across primitives, collections, phantom-data handling, tuples, arrays, generic structs, and enum index mapping. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/registry.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "904fc5e04e6618dbd5cc9fe4db92e5f9f4ea5b827a073f624a9c25ddf6e71e96"
-          },
-          "summary": "`src/registry.rs` defines the `Registry` and `PortableRegistry` data structures for collecting type metadata and converting it into a serializable form. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_b2f0df0c7e3045eb9ff59e92c024d1c8",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783186152",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/meta_type.rs` is a small Rust metadata wrapper that stores a `TypeInfo` function pointer and a `TypeId` for comparison, hashing, and formatting. I checked it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/lib.rs`, which is the crate root for `scale-info` and contains documentation, macro helpers, module declarations, and trait/type metadata APIs. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise patterns in this file.\nReviewed `src/ty/composite.rs`, which defines the `TypeDefComposite` data structure plus serde/scale derives, portable conversion, constructor, and field accessor logic. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the crate manifest in Cargo.toml: it is a standard Rust package metadata file for `scale-info` 1.0.0 with dependency declarations and feature flags only. I checked for install-time hooks, hidden execution entrypoints, network or exfiltration wiring, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/form.rs`, which defines the `Form` trait plus the `MetaForm` and `PortableForm` marker enums and their type aliases under feature gating. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/meta_type.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "68c84589cc8fce058292e0a02528106ba0c4bcb625849a398e1f61184eda6fcf"
-          },
-          "summary": "`src/meta_type.rs` is a small Rust metadata wrapper that stores a `TypeInfo` function pointer and a `TypeId` for comparison, hashing, and formatting. I checked it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -544,9 +407,174 @@
             "algorithm": "blake3",
             "value": "600817dff97f724d43d5b0e60785c3a2813a533f71a98362913780652863b925"
           },
-          "summary": "Reviewed `src/lib.rs`, which is the crate root for `scale-info` and contains documentation, macro helpers, module declarations, and trait/type metadata APIs. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise patterns in this file.",
+          "summary": "`src/lib.rs` is the crate root for a Rust library that defines documentation, macro helpers (`tuple_meta_type!`, `named_type_params!`, `type_params!`), trait exports, and the `TypeInfo`/`StaticTypeInfo` API. I checked this file for install-time execution, subprocess or network activity, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload indicators, and found no concrete malicious or supply-chain behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17569,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056061961,
+            "finished_at_unix_ms": 1784056079531,
+            "total_token_usage": {
+              "input_tokens": 42572,
+              "cached_input_tokens": 28800,
+              "output_tokens": 620,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 43192
+            },
+            "last_token_usage": {
+              "input_tokens": 42572,
+              "cached_input_tokens": 28800,
+              "output_tokens": 620,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 43192
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/meta_type.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "68c84589cc8fce058292e0a02528106ba0c4bcb625849a398e1f61184eda6fcf"
+          },
+          "summary": "Reviewed `src/meta_type.rs`, which defines a small `MetaType` wrapper around a `TypeId` and a function pointer used to retrieve compile-time type metadata at runtime. I checked for install-time hooks, network or exfiltration behavior, hidden dynamic code loading, obfuscation/deobfuscation, persistence tampering, and secret harvesting; none are present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11325,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056079531,
+            "finished_at_unix_ms": 1784056090857,
+            "total_token_usage": {
+              "input_tokens": 24776,
+              "cached_input_tokens": 21248,
+              "output_tokens": 355,
+              "reasoning_output_tokens": 152,
+              "total_tokens": 25131
+            },
+            "last_token_usage": {
+              "input_tokens": 24776,
+              "cached_input_tokens": 21248,
+              "output_tokens": 355,
+              "reasoning_output_tokens": 152,
+              "total_tokens": 25131
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/prelude.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4c6e6d9313e7b1ebd7fbed5586c279022c4696ea415bc3f3987349b34ab58809"
+          },
+          "summary": "Reviewed `src/prelude.rs`, a small conditional re-export module for `std`, `core`, and `alloc` used to provide a stable prelude across `std` and `no_std` builds. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16875,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056090858,
+            "finished_at_unix_ms": 1784056107734,
+            "total_token_usage": {
+              "input_tokens": 24367,
+              "cached_input_tokens": 21248,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 232,
+              "total_tokens": 24810
+            },
+            "last_token_usage": {
+              "input_tokens": 24367,
+              "cached_input_tokens": 21248,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 232,
+              "total_tokens": 24810
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_39a597acef1943b5a8790fcba876bc28",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784057877",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/registry.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "904fc5e04e6618dbd5cc9fe4db92e5f9f4ea5b827a073f624a9c25ddf6e71e96"
+          },
+          "summary": "Reviewed src/registry.rs, which implements a type registry and portable serialization helpers for scale-info. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence/tampering behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 26263,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057814140,
+            "finished_at_unix_ms": 1784057840404,
+            "total_token_usage": {
+              "input_tokens": 57510,
+              "cached_input_tokens": 49152,
+              "output_tokens": 649,
+              "reasoning_output_tokens": 268,
+              "total_tokens": 58159
+            },
+            "last_token_usage": {
+              "input_tokens": 57510,
+              "cached_input_tokens": 49152,
+              "output_tokens": 649,
+              "reasoning_output_tokens": 268,
+              "total_tokens": 58159
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/tests.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e3ea87cabc8f9debe12076c783add5eb9b3d1e7ae4b436c814508a6edfc56805"
+          },
+          "summary": "Reviewed `src/tests.rs`, which contains unit tests for `TypeInfo`/type-metadata behavior across primitives, collections, phantom types, arrays, tuples, structs, and enums. I found no concrete signs of install hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, persistence tampering, or other supply-chain malware indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13327,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057840404,
+            "finished_at_unix_ms": 1784057853732,
+            "total_token_usage": {
+              "input_tokens": 40621,
+              "cached_input_tokens": 34944,
+              "output_tokens": 528,
+              "reasoning_output_tokens": 217,
+              "total_tokens": 41149
+            },
+            "last_token_usage": {
+              "input_tokens": 40621,
+              "cached_input_tokens": 34944,
+              "output_tokens": 528,
+              "reasoning_output_tokens": 217,
+              "total_tokens": 41149
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -556,9 +584,110 @@
             "algorithm": "blake3",
             "value": "9fc6060ea487f1ad62b85f9ec52d2f3a0ef4f40bdbb80164db9e24a11ff8dd54"
           },
-          "summary": "Reviewed `src/ty/composite.rs`, which defines the `TypeDefComposite` data structure plus serde/scale derives, portable conversion, constructor, and field accessor logic. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/ty/composite.rs`, which defines the `TypeDefComposite` data structure and its serde/portable conversion helpers. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12533,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057853732,
+            "finished_at_unix_ms": 1784057866266,
+            "total_token_usage": {
+              "input_tokens": 24752,
+              "cached_input_tokens": 23296,
+              "output_tokens": 484,
+              "reasoning_output_tokens": 276,
+              "total_tokens": 25236
+            },
+            "last_token_usage": {
+              "input_tokens": 24752,
+              "cached_input_tokens": 23296,
+              "output_tokens": 484,
+              "reasoning_output_tokens": 276,
+              "total_tokens": 25236
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/ty/fields.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "21a84125065a24c34e1fc68b5326083283c446ababef905a672c0205b0f468a8"
+          },
+          "summary": "Reviewed `src/ty/fields.rs`, which defines the `Field<T>` data structure plus constructors and accessors for metadata serialization. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence changes, or hidden subprocess execution.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11370,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057866267,
+            "finished_at_unix_ms": 1784057877638,
+            "total_token_usage": {
+              "input_tokens": 25331,
+              "cached_input_tokens": 21248,
+              "output_tokens": 409,
+              "reasoning_output_tokens": 210,
+              "total_tokens": 25740
+            },
+            "last_token_usage": {
+              "input_tokens": 25331,
+              "cached_input_tokens": 21248,
+              "output_tokens": 409,
+              "reasoning_output_tokens": 210,
+              "total_tokens": 25740
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_50b9afdc7c2342ad849326afcfba9558",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784053894",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "21d67640bbdbd4c3222dc6227faaa4f37b5dddc152c8f84c1345b03379b5b499"
+          },
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package git SHA for Cargo provenance. I checked it for any install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10214,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053797965,
+            "finished_at_unix_ms": 1784053808179,
+            "total_token_usage": {
+              "input_tokens": 24087,
+              "cached_input_tokens": 21248,
+              "output_tokens": 326,
+              "reasoning_output_tokens": 146,
+              "total_tokens": 24413
+            },
+            "last_token_usage": {
+              "input_tokens": 24087,
+              "cached_input_tokens": 21248,
+              "output_tokens": 326,
+              "reasoning_output_tokens": 146,
+              "total_tokens": 24413
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -568,9 +697,93 @@
             "algorithm": "blake3",
             "value": "389c7a77ad14cc31419aceb28fcaa896d6ecff1291c0f0a9538dd6a6019c8d67"
           },
-          "summary": "Reviewed the crate manifest in Cargo.toml: it is a standard Rust package metadata file for `scale-info` 1.0.0 with dependency declarations and feature flags only. I checked for install-time hooks, hidden execution entrypoints, network or exfiltration wiring, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the crate manifest for `scale-info` 1.0.0, which only declares package metadata, feature flags, and normal registry dependencies. I found no evidence in this file of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11500,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053808180,
+            "finished_at_unix_ms": 1784053819681,
+            "total_token_usage": {
+              "input_tokens": 24530,
+              "cached_input_tokens": 21248,
+              "output_tokens": 448,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 24978
+            },
+            "last_token_usage": {
+              "input_tokens": 24530,
+              "cached_input_tokens": 21248,
+              "output_tokens": 448,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 24978
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1e543783cb2945584c43d7ec6db5d72bcfc95c686956b53314e7473219fee88d"
+          },
+          "summary": "Reviewed README.md, which is a documentation file describing the `scale-info` Rust crate's `TypeInfo`, registry, encoding, and feature set. I checked for install hooks, credential access, network/exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14958,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053819682,
+            "finished_at_unix_ms": 1784053834641,
+            "total_token_usage": {
+              "input_tokens": 26013,
+              "cached_input_tokens": 21248,
+              "output_tokens": 526,
+              "reasoning_output_tokens": 335,
+              "total_tokens": 26539
+            },
+            "last_token_usage": {
+              "input_tokens": 26013,
+              "cached_input_tokens": 21248,
+              "output_tokens": 526,
+              "reasoning_output_tokens": 335,
+              "total_tokens": 26539
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/build.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5dad5bab474190c478fa90e9d60b7446855593a619917cb05ae50914ad481996"
+          },
+          "summary": "Reviewed `src/build.rs`, which defines typed builder APIs for `Type`, `Field`, and `Variant` metadata construction. I checked for install-time hooks, subprocess execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 36116,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053834641,
+            "finished_at_unix_ms": 1784053870757,
+            "total_token_usage": {
+              "input_tokens": 57301,
+              "cached_input_tokens": 50176,
+              "output_tokens": 665,
+              "reasoning_output_tokens": 289,
+              "total_tokens": 57966
+            },
+            "last_token_usage": {
+              "input_tokens": 57301,
+              "cached_input_tokens": 50176,
+              "output_tokens": 665,
+              "reasoning_output_tokens": 289,
+              "total_tokens": 57966
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -580,51 +793,29 @@
             "algorithm": "blake3",
             "value": "09167a812a6e71f51a6f6cf8bcb4fce1eac8cc658686daf1e8d7a09ee305ba85"
           },
-          "summary": "Reviewed `src/form.rs`, which defines the `Form` trait plus the `MetaForm` and `PortableForm` marker enums and their type aliases under feature gating. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "`src/form.rs` defines the `Form` trait plus the `MetaForm` and `PortableForm` marker enums and their associated type mappings. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_b58e8c7bee0e4b908cdf236e881323c7",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783185949",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "This file defines the `Type`, `TypeParameter`, and `TypeDef*` metadata structures plus portable-conversion helpers for scale-info. I reviewed it for install hooks, subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `src/impls.rs`, which is a Rust trait-implementation file defining `TypeInfo` metadata for primitives, containers, ranges, `PhantomData`, and optional `bitvec` types. I checked for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/ty/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9ffb3e1494392ba766064ce84266b6e9253a4c394bddc67e614742f6b3dfb036"
+          "agent_run_metrics": {
+            "duration_ms": 23441,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053870758,
+            "finished_at_unix_ms": 1784053894200,
+            "total_token_usage": {
+              "input_tokens": 24756,
+              "cached_input_tokens": 23296,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 25203
+            },
+            "last_token_usage": {
+              "input_tokens": 24756,
+              "cached_input_tokens": 23296,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 25203
+            }
           },
-          "summary": "This file defines the `Type`, `TypeParameter`, and `TypeDef*` metadata structures plus portable-conversion helpers for scale-info. I reviewed it for install hooks, subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/impls.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8451924b2d6386e39e44277719f1c92c5df2646e1ff83230c1fde3c02a92e2f9"
-          },
-          "summary": "Reviewed `src/impls.rs`, which is a Rust trait-implementation file defining `TypeInfo` metadata for primitives, containers, ranges, `PhantomData`, and optional `bitvec` types. I checked for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
@@ -640,7 +831,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783588826",
       "thirdpass_version": "0.6.0",
@@ -704,6 +895,151 @@
               "output_tokens": 528,
               "reasoning_output_tokens": 346,
               "total_tokens": 23738
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_eed8f73f58514484be095e91df0921ad",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059423",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/ty/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9ffb3e1494392ba766064ce84266b6e9253a4c394bddc67e614742f6b3dfb036"
+          },
+          "summary": "Reviewed `src/ty/mod.rs`, which defines SCALE type metadata structs/enums (`Type`, `TypeParameter`, `TypeDef*`) and their conversion/helpers. I checked this file for install-time hooks, network or secret exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 29431,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059348354,
+            "finished_at_unix_ms": 1784059377786,
+            "total_token_usage": {
+              "input_tokens": 123991,
+              "cached_input_tokens": 109184,
+              "output_tokens": 1090,
+              "reasoning_output_tokens": 378,
+              "total_tokens": 125081
+            },
+            "last_token_usage": {
+              "input_tokens": 123991,
+              "cached_input_tokens": 109184,
+              "output_tokens": 1090,
+              "reasoning_output_tokens": 378,
+              "total_tokens": 125081
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/ty/path.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b13faa1ee89ba13958edc4741ebb3ff9e5676ea5013d9a05fdd15f3a53b0c96a"
+          },
+          "summary": "Reviewed `src/ty/path.rs`, which defines the `Path` type, its Rust-identifier validation, formatting, and unit tests. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise patterns in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15395,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059377787,
+            "finished_at_unix_ms": 1784059393182,
+            "total_token_usage": {
+              "input_tokens": 25741,
+              "cached_input_tokens": 23296,
+              "output_tokens": 420,
+              "reasoning_output_tokens": 219,
+              "total_tokens": 26161
+            },
+            "last_token_usage": {
+              "input_tokens": 25741,
+              "cached_input_tokens": 23296,
+              "output_tokens": 420,
+              "reasoning_output_tokens": 219,
+              "total_tokens": 26161
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/ty/variant.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a5d9fc1864e1d15dbc6dc5c480d430a1969174153e037d26d867a4a6ff50db04"
+          },
+          "summary": "Reviewed `src/ty/variant.rs`, which only defines enum metadata types (`TypeDefVariant` and `Variant`) plus accessors and portable-conversion logic. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behaviors.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14617,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059393182,
+            "finished_at_unix_ms": 1784059407800,
+            "total_token_usage": {
+              "input_tokens": 25504,
+              "cached_input_tokens": 21248,
+              "output_tokens": 388,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 25892
+            },
+            "last_token_usage": {
+              "input_tokens": 25504,
+              "cached_input_tokens": 21248,
+              "output_tokens": 388,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 25892
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/utils.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "73da916373d1daa832f877f25a3c94d88d3305419d0be1e30ab8f04ce74f3f42"
+          },
+          "summary": "Reviewed `src/utils.rs`, which contains a small helper for validating whether a string is an ASCII Rust identifier by checking the first byte and remaining characters. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15589,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059407801,
+            "finished_at_unix_ms": 1784059423390,
+            "total_token_usage": {
+              "input_tokens": 24415,
+              "cached_input_tokens": 23296,
+              "output_tokens": 365,
+              "reasoning_output_tokens": 170,
+              "total_tokens": 24780
+            },
+            "last_token_usage": {
+              "input_tokens": 24415,
+              "cached_input_tokens": 23296,
+              "output_tokens": 365,
+              "reasoning_output_tokens": 170,
+              "total_tokens": 24780
             }
           },
           "comment_count": 0,

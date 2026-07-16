@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591961",
+  "latest_reviewed_at": "1784052738",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -170,43 +176,35 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 2,
-      "file_record_count": 6,
-      "file_record_count_with_metrics": 6
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 0
+      "review_count": 4,
+      "file_record_count": 14,
+      "file_record_count_with_metrics": 14
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 10,
-    "file_records_with_metrics": 6,
-    "file_records_without_metrics": 4,
-    "duration_ms_total": 70461,
-    "attempts_total": 6,
+    "reviewed_file_records": 14,
+    "file_records_with_metrics": 14,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 199940,
+    "attempts_total": 14,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 6,
-    "last_token_usage_records": 6,
+    "total_token_usage_records": 14,
+    "last_token_usage_records": 14,
     "total_token_usage": {
-      "input_tokens": 126856,
-      "cached_input_tokens": 107520,
-      "output_tokens": 2343,
-      "reasoning_output_tokens": 1222,
-      "total_tokens": 129199
+      "input_tokens": 390588,
+      "cached_input_tokens": 338432,
+      "output_tokens": 6654,
+      "reasoning_output_tokens": 3523,
+      "total_tokens": 397242
     },
     "last_token_usage": {
-      "input_tokens": 126856,
-      "cached_input_tokens": 107520,
-      "output_tokens": 2343,
-      "reasoning_output_tokens": 1222,
-      "total_tokens": 129199
+      "input_tokens": 390588,
+      "cached_input_tokens": 338432,
+      "output_tokens": 6654,
+      "reasoning_output_tokens": 3523,
+      "total_tokens": 397242
     },
     "model_context_windows": []
   },
@@ -221,7 +219,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591944",
       "thirdpass_version": "0.6.0",
@@ -398,7 +396,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591961",
       "thirdpass_version": "0.6.0",
@@ -438,7 +436,7 @@
       ]
     },
     {
-      "id": "rev_c76fd7fa9de84ee98e29b46577942137",
+      "id": "rev_5a67944d3e0447458dc2d70426a5809e",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -446,22 +444,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782850625",
+      "created_at": "1784046708",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which implements a `serde::Serialize` to `std::fmt::Debug` adapter plus tests. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.\nReviewed the crate manifest for install-time hooks, build scripts, dynamic code loading, network or exfiltration behavior, credential access, obfuscation, and persistence mechanisms. This `Cargo.toml` is a straightforward library manifest with `build = false`, no `build.rs`, no scripts/hooks, and no suspicious dependency or configuration patterns that indicate supply-chain compromise.\nReviewed `README.md`, which only documents `serde_fmt` as a Rust helper for converting `serde::Serialize` values into `std::fmt::Debug` output and shows Cargo usage examples. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed .cargo_vcs_info.json, which contains only crate provenance metadata (a git SHA1 and an empty path_in_vcs). I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain signals in this file.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "9f124d004e7369df35d034961dba1cdb2b6cd330c6de213094567e32ff0d3e65"
+            "value": "79cc81cecaa61c499b986cb697c937fdea096adcabf1d739411c9060f7b97a59"
           },
-          "summary": "Reviewed `src/lib.rs`, which implements a `serde::Serialize` to `std::fmt::Debug` adapter plus tests. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed .cargo_vcs_info.json, which only records the package's VCS commit SHA and empty path metadata. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17170,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046636064,
+            "finished_at_unix_ms": 1784046653235,
+            "total_token_usage": {
+              "input_tokens": 24155,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 24556
+            },
+            "last_token_usage": {
+              "input_tokens": 24155,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 24556
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -471,9 +488,29 @@
             "algorithm": "blake3",
             "value": "7d583b99e1eef8fc5590869ddf7ef6895cb0382bec6c7497e6a47feb1a337163"
           },
-          "summary": "Reviewed the crate manifest for install-time hooks, build scripts, dynamic code loading, network or exfiltration behavior, credential access, obfuscation, and persistence mechanisms. This `Cargo.toml` is a straightforward library manifest with `build = false`, no `build.rs`, no scripts/hooks, and no suspicious dependency or configuration patterns that indicate supply-chain compromise.",
+          "summary": "Reviewed the package manifest for `serde_fmt` 1.1.0. It declares a small `no_std`-oriented library with normal serde dependencies and no build script, install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in the manifest.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16729,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046653236,
+            "finished_at_unix_ms": 1784046669965,
+            "total_token_usage": {
+              "input_tokens": 24413,
+              "cached_input_tokens": 21248,
+              "output_tokens": 580,
+              "reasoning_output_tokens": 384,
+              "total_tokens": 24993
+            },
+            "last_token_usage": {
+              "input_tokens": 24413,
+              "cached_input_tokens": 21248,
+              "output_tokens": 580,
+              "reasoning_output_tokens": 384,
+              "total_tokens": 24993
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -483,21 +520,206 @@
             "algorithm": "blake3",
             "value": "abfeb2e07e12f74883de000493bfc5ef60241c4e5754d926d0240b481d30db04"
           },
-          "summary": "Reviewed `README.md`, which only documents `serde_fmt` as a Rust helper for converting `serde::Serialize` values into `std::fmt::Debug` output and shows Cargo usage examples. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed the README for `serde_fmt`, which is a short usage-and-installation document showing how to add the crate to `Cargo.toml`, enable `no_std`, and call `serde_fmt::to_debug`. I found no concrete malicious or supply-chain indicators in this file; it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15668,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046669966,
+            "finished_at_unix_ms": 1784046685635,
+            "total_token_usage": {
+              "input_tokens": 24533,
+              "cached_input_tokens": 21248,
+              "output_tokens": 498,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 25031
+            },
+            "last_token_usage": {
+              "input_tokens": 24533,
+              "cached_input_tokens": 21248,
+              "output_tokens": 498,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 25031
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9f124d004e7369df35d034961dba1cdb2b6cd330c6de213094567e32ff0d3e65"
+          },
+          "summary": "`src/lib.rs` is a serde-to-`std::fmt` adapter that renders `Serialize` values through `Debug`/`Display` implementations and includes unit tests for formatting consistency. I checked for install-time hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22372,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046685635,
+            "finished_at_unix_ms": 1784046708008,
+            "total_token_usage": {
+              "input_tokens": 58826,
+              "cached_input_tokens": 52736,
+              "output_tokens": 767,
+              "reasoning_output_tokens": 366,
+              "total_tokens": 59593
+            },
+            "last_token_usage": {
+              "input_tokens": 58826,
+              "cached_input_tokens": 52736,
+              "output_tokens": 767,
+              "reasoning_output_tokens": 366,
+              "total_tokens": 59593
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_e78e79f864de433b89ef8860270f4b39",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052738",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "79cc81cecaa61c499b986cb697c937fdea096adcabf1d739411c9060f7b97a59"
           },
-          "summary": "Reviewed .cargo_vcs_info.json, which contains only crate provenance metadata (a git SHA1 and an empty path_in_vcs). I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain signals in this file.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only contains Cargo VCS metadata (`git.sha1` and `path_in_vcs`). I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16004,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052681192,
+            "finished_at_unix_ms": 1784052697197,
+            "total_token_usage": {
+              "input_tokens": 24133,
+              "cached_input_tokens": 21248,
+              "output_tokens": 396,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 24529
+            },
+            "last_token_usage": {
+              "input_tokens": 24133,
+              "cached_input_tokens": 21248,
+              "output_tokens": 396,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 24529
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7d583b99e1eef8fc5590869ddf7ef6895cb0382bec6c7497e6a47feb1a337163"
+          },
+          "summary": "This Cargo.toml is an autogenerated crates.io manifest for `serde_fmt` 1.1.0, containing only package metadata, library settings, and normal `serde_core`/test dependencies. I checked for install hooks, build scripts, network or exfiltration behavior, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12440,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052697197,
+            "finished_at_unix_ms": 1784052709638,
+            "total_token_usage": {
+              "input_tokens": 24423,
+              "cached_input_tokens": 23296,
+              "output_tokens": 501,
+              "reasoning_output_tokens": 297,
+              "total_tokens": 24924
+            },
+            "last_token_usage": {
+              "input_tokens": 24423,
+              "cached_input_tokens": 23296,
+              "output_tokens": 501,
+              "reasoning_output_tokens": 297,
+              "total_tokens": 24924
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "abfeb2e07e12f74883de000493bfc5ef60241c4e5754d926d0240b481d30db04"
+          },
+          "summary": "Reviewed the README for `serde_fmt`, which is a short usage/install document for converting `serde::Serialize` values into `std::fmt::Debug` and documenting Rust version and Cargo feature configuration. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11727,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052709639,
+            "finished_at_unix_ms": 1784052721366,
+            "total_token_usage": {
+              "input_tokens": 24504,
+              "cached_input_tokens": 19200,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24926
+            },
+            "last_token_usage": {
+              "input_tokens": 24504,
+              "cached_input_tokens": 19200,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24926
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9f124d004e7369df35d034961dba1cdb2b6cd330c6de213094567e32ff0d3e65"
+          },
+          "summary": "src/lib.rs is a no_std-compatible formatter adapter that turns `Serialize` values into `Debug`/`Display` output via local serializer wrappers, with tests for formatting consistency and error handling. I checked for install-time hooks, subprocess or network activity, secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17369,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052721367,
+            "finished_at_unix_ms": 1784052738736,
+            "total_token_usage": {
+              "input_tokens": 58745,
+              "cached_input_tokens": 50688,
+              "output_tokens": 746,
+              "reasoning_output_tokens": 337,
+              "total_tokens": 59491
+            },
+            "last_token_usage": {
+              "input_tokens": 58745,
+              "cached_input_tokens": 50688,
+              "output_tokens": 746,
+              "reasoning_output_tokens": 337,
+              "total_tokens": 59491
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

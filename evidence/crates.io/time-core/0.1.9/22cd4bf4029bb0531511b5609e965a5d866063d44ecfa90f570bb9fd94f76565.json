@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591727",
+  "latest_reviewed_at": "1784055419",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -171,44 +177,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 6,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 3,
+      "file_record_count": 10,
+      "file_record_count_with_metrics": 10
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 10,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 6,
-    "duration_ms_total": 49524,
-    "attempts_total": 4,
+    "file_records_with_metrics": 10,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 133541,
+    "attempts_total": 10,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 10,
+    "last_token_usage_records": 10,
     "total_token_usage": {
-      "input_tokens": 96158,
-      "cached_input_tokens": 80768,
-      "output_tokens": 1565,
-      "reasoning_output_tokens": 742,
-      "total_tokens": 97723
+      "input_tokens": 263036,
+      "cached_input_tokens": 225536,
+      "output_tokens": 4541,
+      "reasoning_output_tokens": 2481,
+      "total_tokens": 267577
     },
     "last_token_usage": {
-      "input_tokens": 96158,
-      "cached_input_tokens": 80768,
-      "output_tokens": 1565,
-      "reasoning_output_tokens": 742,
-      "total_tokens": 97723
+      "input_tokens": 263036,
+      "cached_input_tokens": 225536,
+      "output_tokens": 4541,
+      "reasoning_output_tokens": 2481,
+      "total_tokens": 267577
     },
     "model_context_windows": []
   },
@@ -223,7 +221,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591727",
       "thirdpass_version": "0.6.0",
@@ -359,7 +357,7 @@
       ]
     },
     {
-      "id": "rev_6e9ecbe0f99145faa90e62b847a5ff20",
+      "id": "rev_ef6d3a8303224fc786dc9bd362fe32cb",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -367,22 +365,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782860831",
+      "created_at": "1784053139",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/unit.rs` is a pure Rust type-level time-unit module: it declares unit structs/enums and compile-time conversion/comparison traits via macros. I reviewed the full file for install-time hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed the normalized `Cargo.toml` for `time-core` 0.1.9 and found no concrete supply-chain indicators: there are no install/build hooks, no dependencies pulling in remote or opaque code, no dynamic execution paths, and no references to credential access, network exfiltration, obfuscation, or persistence mechanisms in the manifest.\nReviewed `src/util.rs`, which contains only pure calendar/date utility functions for leap-year, days-in-year, weeks-in-year, and days-in-month calculations. I checked for install hooks, subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\n`src/hint.rs` contains only compiler hint helpers (`cold_path`, `likely`, `unlikely`) that influence branch prediction and inlining. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/lib.rs`, which is a minimal `no_std` crate root that only declares documentation favicon/logo URLs and exposes three internal modules. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
       "files": [
         {
-          "file_path": "src/unit.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "20698f52823e24ae63ce776e5c3b9b9f33a9233c75f9d6a65792dc6684d5d5a9"
+            "value": "78eb3ef4290ecabb3578c5a601279db185cc40559b2f04c8755388d2714fd65d"
           },
-          "summary": "`src/unit.rs` is a pure Rust type-level time-unit module: it declares unit structs/enums and compile-time conversion/comparison traits via macros. I reviewed the full file for install-time hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package's VCS provenance (`sha1` and `path_in_vcs`). It contains no executable logic and showed no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14535,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053070526,
+            "finished_at_unix_ms": 1784053085062,
+            "total_token_usage": {
+              "input_tokens": 24127,
+              "cached_input_tokens": 21248,
+              "output_tokens": 480,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 24607
+            },
+            "last_token_usage": {
+              "input_tokens": 24127,
+              "cached_input_tokens": 21248,
+              "output_tokens": 480,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 24607
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -392,21 +409,29 @@
             "algorithm": "blake3",
             "value": "800994d373ccdd36ea1c8531a4c6efcbf1d3c43f28cc6c00e3dc59a88f01f188"
           },
-          "summary": "Reviewed the normalized `Cargo.toml` for `time-core` 0.1.9 and found no concrete supply-chain indicators: there are no install/build hooks, no dependencies pulling in remote or opaque code, no dynamic execution paths, and no references to credential access, network exfiltration, obfuscation, or persistence mechanisms in the manifest.",
+          "summary": "Reviewed the crate manifest in `Cargo.toml`, which contains package metadata, feature flags, library configuration, and lint settings only. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/util.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "701f86bfd2244e35bf806b7e4902122f34b0293931049b984a7e0203e6f11686"
+          "agent_run_metrics": {
+            "duration_ms": 11879,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053085062,
+            "finished_at_unix_ms": 1784053096942,
+            "total_token_usage": {
+              "input_tokens": 25105,
+              "cached_input_tokens": 21248,
+              "output_tokens": 454,
+              "reasoning_output_tokens": 271,
+              "total_tokens": 25559
+            },
+            "last_token_usage": {
+              "input_tokens": 25105,
+              "cached_input_tokens": 21248,
+              "output_tokens": 454,
+              "reasoning_output_tokens": 271,
+              "total_tokens": 25559
+            }
           },
-          "summary": "Reviewed `src/util.rs`, which contains only pure calendar/date utility functions for leap-year, days-in-year, weeks-in-year, and days-in-month calculations. I checked for install hooks, subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -416,9 +441,29 @@
             "algorithm": "blake3",
             "value": "6e67403ce7ba450cd0a90d84da395723c5bfaf691333e636ec9615399732a2f6"
           },
-          "summary": "`src/hint.rs` contains only compiler hint helpers (`cold_path`, `likely`, `unlikely`) that influence branch prediction and inlining. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/hint.rs`, which contains only small compiler-hint helpers (`cold_path`, `likely`, `unlikely`) and a dead-code allowance. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13587,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053096942,
+            "finished_at_unix_ms": 1784053110530,
+            "total_token_usage": {
+              "input_tokens": 24390,
+              "cached_input_tokens": 21248,
+              "output_tokens": 460,
+              "reasoning_output_tokens": 267,
+              "total_tokens": 24850
+            },
+            "last_token_usage": {
+              "input_tokens": 24390,
+              "cached_input_tokens": 21248,
+              "output_tokens": 460,
+              "reasoning_output_tokens": 267,
+              "total_tokens": 24850
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -428,16 +473,68 @@
             "algorithm": "blake3",
             "value": "46ef9631323ec19c756b8276f100f98cb69bd1f69494bdcd3514c7c74eaf2373"
           },
-          "summary": "Reviewed `src/lib.rs`, which is a minimal `no_std` crate root that only declares documentation favicon/logo URLs and exposes three internal modules. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed the crate root `src/lib.rs`, which only sets `no_std`, adds documentation metadata, and exposes the `hint`, `unit`, and `util` modules. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13096,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053110531,
+            "finished_at_unix_ms": 1784053123627,
+            "total_token_usage": {
+              "input_tokens": 24152,
+              "cached_input_tokens": 21248,
+              "output_tokens": 468,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 24620
+            },
+            "last_token_usage": {
+              "input_tokens": 24152,
+              "cached_input_tokens": 21248,
+              "output_tokens": 468,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 24620
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/unit.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "20698f52823e24ae63ce776e5c3b9b9f33a9233c75f9d6a65792dc6684d5d5a9"
+          },
+          "summary": "`src/unit.rs` defines const-generic time unit types plus compile-time conversion and ordering helpers for nanosecond through week units. I checked the file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16012,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053123627,
+            "finished_at_unix_ms": 1784053139640,
+            "total_token_usage": {
+              "input_tokens": 43314,
+              "cached_input_tokens": 38528,
+              "output_tokens": 617,
+              "reasoning_output_tokens": 331,
+              "total_tokens": 43931
+            },
+            "last_token_usage": {
+              "input_tokens": 43314,
+              "cached_input_tokens": 38528,
+              "output_tokens": 617,
+              "reasoning_output_tokens": 331,
+              "total_tokens": 43931
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_bb3cedbe85e447e29342d303964006c4",
+      "id": "rev_f6b4eaecfe67465e9242e677438437ba",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -445,22 +542,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782860845",
+      "created_at": "1784055419",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "The target file is a small Cargo VCS metadata JSON containing only a git SHA-1 and the package path in version control. I checked it for install-time execution cues, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/util.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "78eb3ef4290ecabb3578c5a601279db185cc40559b2f04c8755388d2714fd65d"
+            "value": "701f86bfd2244e35bf806b7e4902122f34b0293931049b984a7e0203e6f11686"
           },
-          "summary": "The target file is a small Cargo VCS metadata JSON containing only a git SHA-1 and the package path in version control. I checked it for install-time execution cues, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/util.rs`, which contains pure calendar utility functions for leap-year, days-in-year, ISO week, and days-in-month calculations. I found no concrete indicators of install-time execution, subprocess spawning, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14908,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055404646,
+            "finished_at_unix_ms": 1784055419555,
+            "total_token_usage": {
+              "input_tokens": 25790,
+              "cached_input_tokens": 21248,
+              "output_tokens": 497,
+              "reasoning_output_tokens": 312,
+              "total_tokens": 26287
+            },
+            "last_token_usage": {
+              "input_tokens": 25790,
+              "cached_input_tokens": 21248,
+              "output_tokens": 497,
+              "reasoning_output_tokens": 312,
+              "total_tokens": 26287
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

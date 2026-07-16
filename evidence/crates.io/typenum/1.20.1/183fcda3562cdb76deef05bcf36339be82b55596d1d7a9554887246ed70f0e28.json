@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590837",
+  "latest_reviewed_at": "1784063445",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -344,44 +350,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 10,
-      "file_record_count": 19,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 2,
-      "file_record_count": 7,
-      "file_record_count_with_metrics": 7
+      "review_count": 13,
+      "file_record_count": 31,
+      "file_record_count_with_metrics": 31
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 26,
-    "file_records_with_metrics": 7,
-    "file_records_without_metrics": 19,
-    "duration_ms_total": 92997,
-    "attempts_total": 7,
+    "reviewed_file_records": 31,
+    "file_records_with_metrics": 31,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 502671,
+    "attempts_total": 31,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 7,
-    "last_token_usage_records": 7,
+    "total_token_usage_records": 31,
+    "last_token_usage_records": 31,
     "total_token_usage": {
-      "input_tokens": 149337,
-      "cached_input_tokens": 125696,
-      "output_tokens": 2643,
-      "reasoning_output_tokens": 1324,
-      "total_tokens": 151980
+      "input_tokens": 1222968,
+      "cached_input_tokens": 1024640,
+      "output_tokens": 16342,
+      "reasoning_output_tokens": 7715,
+      "total_tokens": 1239310
     },
     "last_token_usage": {
-      "input_tokens": 149337,
-      "cached_input_tokens": 125696,
-      "output_tokens": 2643,
-      "reasoning_output_tokens": 1324,
-      "total_tokens": 151980
+      "input_tokens": 1222968,
+      "cached_input_tokens": 1024640,
+      "output_tokens": 16342,
+      "reasoning_output_tokens": 7715,
+      "total_tokens": 1239310
     },
     "model_context_windows": []
   },
@@ -396,7 +394,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590806",
       "thirdpass_version": "0.6.0",
@@ -564,7 +562,7 @@
       ]
     },
     {
-      "id": "rev_459664386dbb4c7d9e719bffdc0727b4",
+      "id": "rev_2e597d3ef72a422abc9555783d852ca7",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -572,124 +570,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782781243",
+      "created_at": "1784051672",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/gen.rs`, which only declares three sibling modules (`consts`, `generic_const_mappings` behind a feature flag, and `op`). I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
       "files": [
         {
-          "file_path": "src/gen.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "fecad6889b1c98e72886abbb32321929e104f54bff1e83ecfe6f8210ffc9217f"
+            "value": "714981379bf459fd0c110877f54fbfa0557712f2ca4c333d08766624b6d01ad6"
           },
-          "summary": "Reviewed `src/gen.rs`, which only declares three sibling modules (`consts`, `generic_const_mappings` behind a feature flag, and `op`). I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "summary": "Reviewed the Cargo VCS metadata file, which only records the package git SHA1 and an empty `path_in_vcs` value. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_7be7999e85cf4a219eece44f8e6d8450",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782781078",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed src/private.rs, which is a doc-hidden internal type-level arithmetic/comparison module for typenum with a small inversion test. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential or secret access, dynamic code loading, obfuscation/packing, or persistence behavior.\nReviewed `src/type_operators.rs`, which defines type-level operator traits, comparison helpers, and `cmp!`/pow-related implementations for numeric types. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise signals in this file.",
-      "files": [
-        {
-          "file_path": "src/private.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0ef289414a46179a09c68a8efae8e3ae10a6a5106d460bcce0e11ece75520840"
+          "agent_run_metrics": {
+            "duration_ms": 10383,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051603788,
+            "finished_at_unix_ms": 1784051614172,
+            "total_token_usage": {
+              "input_tokens": 24099,
+              "cached_input_tokens": 21248,
+              "output_tokens": 325,
+              "reasoning_output_tokens": 132,
+              "total_tokens": 24424
+            },
+            "last_token_usage": {
+              "input_tokens": 24099,
+              "cached_input_tokens": 21248,
+              "output_tokens": 325,
+              "reasoning_output_tokens": 132,
+              "total_tokens": 24424
+            }
           },
-          "summary": "Reviewed src/private.rs, which is a doc-hidden internal type-level arithmetic/comparison module for typenum with a small inversion test. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential or secret access, dynamic code loading, obfuscation/packing, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/type_operators.rs",
+          "file_path": "CHANGELOG.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "6d898198493eed953348cc31f1a20da1e9108a4583f3c67aaade376ca11f0300"
+            "value": "3b0d289e14a3e9c94899879ae29c5163d7ead85fb6d0484bf2d2977372e29bf7"
           },
-          "summary": "Reviewed `src/type_operators.rs`, which defines type-level operator traits, comparison helpers, and `cmp!`/pow-related implementations for numeric types. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise signals in this file.",
+          "summary": "Reviewed `CHANGELOG.md`, which is a plain release-history document listing typenum versions, dates, and feature/fix notes. I found no concrete supply-chain indicators in this file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_865a01d3f38d48fbb3a663cc159bb4fd",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782781019",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/int.rs` is a pure Rust type-level signed integer implementation: it defines `PInt`, `NInt`, and `Z0` plus arithmetic, comparison, power, gcd, min/max, and `ToInt` trait impls, with unit tests at the end. I checked for install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "src/int.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8d9964e65d8ee96f9fed54411c186a0726b25f228e68c2595bd50a97e764bb0a"
+          "agent_run_metrics": {
+            "duration_ms": 16896,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051614173,
+            "finished_at_unix_ms": 1784051631069,
+            "total_token_usage": {
+              "input_tokens": 25982,
+              "cached_input_tokens": 21760,
+              "output_tokens": 515,
+              "reasoning_output_tokens": 329,
+              "total_tokens": 26497
+            },
+            "last_token_usage": {
+              "input_tokens": 25982,
+              "cached_input_tokens": 21760,
+              "output_tokens": 515,
+              "reasoning_output_tokens": 329,
+              "total_tokens": 26497
+            }
           },
-          "summary": "`src/int.rs` is a pure Rust type-level signed integer implementation: it defines `PInt`, `NInt`, and `Z0` plus arithmetic, comparison, power, gcd, min/max, and `ToInt` trait impls, with unit tests at the end. I checked for install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_9b936114a145486d8ad2dea101179186",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782781229",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/marker_traits.rs`, which only defines sealed marker traits and numeric conversion interfaces for typenum types. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the normalized Cargo manifest for `typenum` 1.20.1. It only declares package metadata, two opt-in features, a docs.rs/playground config, a library target, one test target, and an optional `scale-info` dependency; I found no install hooks, build script, network or exfiltration configuration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `src/operator_aliases.rs`, which is a pure Rust type-alias module for arithmetic, comparison, and bitwise operator associated types. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed README.md for supply-chain abuse indicators. It is a standard crate overview for a Rust type-level number library, with badges, documentation links, usage examples, and licensing text; I found no concrete signs of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution behavior in this file.\nReviewed the target `.cargo_vcs_info.json`, which is just Cargo provenance metadata containing a git SHA and empty `path_in_vcs`. I also checked for package references that would execute, load, or treat this file as a payload, and found no concrete malicious indicators: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence tied to this file.",
-      "files": [
-        {
-          "file_path": "src/marker_traits.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "fc5e59e8518c317c9385ac10058f8a334036451cf96d6a60ac3d3be9a908162c"
-          },
-          "summary": "Reviewed `src/marker_traits.rs`, which only defines sealed marker traits and numeric conversion interfaces for typenum types. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -699,21 +646,29 @@
             "algorithm": "blake3",
             "value": "782b3d4f703e8847b13456289b8dba8ab2150c9d83ecb5f252a99d788705f053"
           },
-          "summary": "Reviewed the normalized Cargo manifest for `typenum` 1.20.1. It only declares package metadata, two opt-in features, a docs.rs/playground config, a library target, one test target, and an optional `scale-info` dependency; I found no install hooks, build script, network or exfiltration configuration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed the normalized Cargo manifest for `typenum` 1.20.1. It defines package metadata, feature flags, docs/playground settings, a library target, a test target, and one optional dependency, with no install hooks, build scripts, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/operator_aliases.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c654f725efa0ca0d4e31b28c976d2abd376bc1376076afd3745de5548b8935c4"
+          "agent_run_metrics": {
+            "duration_ms": 14291,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051631070,
+            "finished_at_unix_ms": 1784051645361,
+            "total_token_usage": {
+              "input_tokens": 24581,
+              "cached_input_tokens": 21248,
+              "output_tokens": 614,
+              "reasoning_output_tokens": 417,
+              "total_tokens": 25195
+            },
+            "last_token_usage": {
+              "input_tokens": 24581,
+              "cached_input_tokens": 21248,
+              "output_tokens": 614,
+              "reasoning_output_tokens": 417,
+              "total_tokens": 25195
+            }
           },
-          "summary": "Reviewed `src/operator_aliases.rs`, which is a pure Rust type-alias module for arithmetic, comparison, and bitwise operator associated types. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -723,21 +678,709 @@
             "algorithm": "blake3",
             "value": "c13a693310bc22c4e4dc9d0abca60939a91d6c36a34a6f0b3cc0d3580522a713"
           },
-          "summary": "Reviewed README.md for supply-chain abuse indicators. It is a standard crate overview for a Rust type-level number library, with badges, documentation links, usage examples, and licensing text; I found no concrete signs of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution behavior in this file.",
+          "summary": "Reviewed the README for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence; it is a standard crate overview and usage document with only static links and examples, and no concrete malicious or supply-chain indicators were found.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11433,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051645362,
+            "finished_at_unix_ms": 1784051656795,
+            "total_token_usage": {
+              "input_tokens": 24714,
+              "cached_input_tokens": 13056,
+              "output_tokens": 425,
+              "reasoning_output_tokens": 242,
+              "total_tokens": 25139
+            },
+            "last_token_usage": {
+              "input_tokens": 24714,
+              "cached_input_tokens": 13056,
+              "output_tokens": 425,
+              "reasoning_output_tokens": 242,
+              "total_tokens": 25139
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
+        {
+          "file_path": "src/array.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "71cd572ea64c755fadd54f4534fbd67a6b1dde7db24a83db35ec7e8bb1c7db82"
+          },
+          "summary": "`src/array.rs` defines type-level array structs/macros and arithmetic trait implementations for `typenum`, with no install hooks, subprocesses, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior visible in the file. I reviewed the macro, arithmetic impls, and helper types for supply-chain indicators and found no concrete malicious patterns.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15898,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051656796,
+            "finished_at_unix_ms": 1784051672694,
+            "total_token_usage": {
+              "input_tokens": 40653,
+              "cached_input_tokens": 34944,
+              "output_tokens": 529,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 41182
+            },
+            "last_token_usage": {
+              "input_tokens": 40653,
+              "cached_input_tokens": 34944,
+              "output_tokens": 529,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 41182
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_2ef80e3628234248adcccc89ebad76b4",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059657",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/int.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8d9964e65d8ee96f9fed54411c186a0726b25f228e68c2595bd50a97e764bb0a"
+          },
+          "summary": "Reviewed `src/int.rs`, which defines typenum's type-level signed integer types, arithmetic/comparison traits, formatting, and conversion helpers. I found no concrete malicious or supply-chain indicators in this file; it contains only static type-level arithmetic logic and tests, with no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or subprocess execution.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20618,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059637098,
+            "finished_at_unix_ms": 1784059657717,
+            "total_token_usage": {
+              "input_tokens": 110494,
+              "cached_input_tokens": 94464,
+              "output_tokens": 806,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 111300
+            },
+            "last_token_usage": {
+              "input_tokens": 110494,
+              "cached_input_tokens": 94464,
+              "output_tokens": 806,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 111300
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_349ca79417354808ad74adfd9abd92e2",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056468",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/gen/consts.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "40a99dc0a74abe041220e97115e6b3f6bfd7ae6ccbb2c9a9708765386c16afa5"
+          },
+          "summary": "Reviewed the generated type-alias table in `src/gen/consts.rs`, which only re-exports bit/int markers and defines numeric aliases. I found no concrete malicious or supply-chain indicators and no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 28149,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056440631,
+            "finished_at_unix_ms": 1784056468781,
+            "total_token_usage": {
+              "input_tokens": 65987,
+              "cached_input_tokens": 54784,
+              "output_tokens": 906,
+              "reasoning_output_tokens": 421,
+              "total_tokens": 66893
+            },
+            "last_token_usage": {
+              "input_tokens": 65987,
+              "cached_input_tokens": 54784,
+              "output_tokens": 906,
+              "reasoning_output_tokens": 421,
+              "total_tokens": 66893
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_3a6eabc10f7c4a0d97725efc44987b3e",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058172",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/gen/generic_const_mappings.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b7797172379195fd23e3e09ec384bbfce39bc14803bfadd5bfa1160796417385"
+          },
+          "summary": "Reviewed `src/gen/generic_const_mappings.rs`, a generated Rust module that maps const generic `usize` values to typenum `U*` types via `Const<N>` and `ToUInt` impls. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocesses, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18480,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058153628,
+            "finished_at_unix_ms": 1784058172108,
+            "total_token_usage": {
+              "input_tokens": 56335,
+              "cached_input_tokens": 49152,
+              "output_tokens": 684,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 57019
+            },
+            "last_token_usage": {
+              "input_tokens": 56335,
+              "cached_input_tokens": 49152,
+              "output_tokens": 684,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 57019
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_439bcad9a8f44f7a83e21208ecca05f0",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784062016",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/type_operators.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6d898198493eed953348cc31f1a20da1e9108a4583f3c67aaade376ca11f0300"
+          },
+          "summary": "Reviewed `src/type_operators.rs`, which defines typenum's type-level operators and macro-backed `Pow` implementations for integers and floats plus unit tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 27575,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061988637,
+            "finished_at_unix_ms": 1784062016213,
+            "total_token_usage": {
+              "input_tokens": 79234,
+              "cached_input_tokens": 68992,
+              "output_tokens": 870,
+              "reasoning_output_tokens": 371,
+              "total_tokens": 80104
+            },
+            "last_token_usage": {
+              "input_tokens": 79234,
+              "cached_input_tokens": 68992,
+              "output_tokens": 870,
+              "reasoning_output_tokens": 371,
+              "total_tokens": 80104
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_5c92cdfbf4e841b3a201ac74fe9c07be",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784045664",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "714981379bf459fd0c110877f54fbfa0557712f2ca4c333d08766624b6d01ad6"
           },
-          "summary": "Reviewed the target `.cargo_vcs_info.json`, which is just Cargo provenance metadata containing a git SHA and empty `path_in_vcs`. I also checked for package references that would execute, load, or treat this file as a payload, and found no concrete malicious indicators: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence tied to this file.",
+          "summary": "Reviewed the Cargo VCS metadata in `.cargo_vcs_info.json`; it only records the source git SHA and an empty `path_in_vcs`, with no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior present in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10575,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045597999,
+            "finished_at_unix_ms": 1784045608574,
+            "total_token_usage": {
+              "input_tokens": 23990,
+              "cached_input_tokens": 21248,
+              "output_tokens": 318,
+              "reasoning_output_tokens": 131,
+              "total_tokens": 24308
+            },
+            "last_token_usage": {
+              "input_tokens": 23990,
+              "cached_input_tokens": 21248,
+              "output_tokens": 318,
+              "reasoning_output_tokens": 131,
+              "total_tokens": 24308
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3b0d289e14a3e9c94899879ae29c5163d7ead85fb6d0484bf2d2977372e29bf7"
+          },
+          "summary": "Reviewed `CHANGELOG.md`, which is a plain release-history document for typenum. It contains version notes only; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12250,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045608575,
+            "finished_at_unix_ms": 1784045620825,
+            "total_token_usage": {
+              "input_tokens": 25759,
+              "cached_input_tokens": 21248,
+              "output_tokens": 442,
+              "reasoning_output_tokens": 259,
+              "total_tokens": 26201
+            },
+            "last_token_usage": {
+              "input_tokens": 25759,
+              "cached_input_tokens": 21248,
+              "output_tokens": 442,
+              "reasoning_output_tokens": 259,
+              "total_tokens": 26201
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "782b3d4f703e8847b13456289b8dba8ab2150c9d83ecb5f252a99d788705f053"
+          },
+          "summary": "This is the normalized Cargo manifest for the `typenum` crate, defining package metadata, feature flags, library/test targets, and one optional dependency (`scale-info`). I checked it for install-time hooks, network or secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16984,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045620826,
+            "finished_at_unix_ms": 1784045637811,
+            "total_token_usage": {
+              "input_tokens": 24454,
+              "cached_input_tokens": 21248,
+              "output_tokens": 576,
+              "reasoning_output_tokens": 383,
+              "total_tokens": 25030
+            },
+            "last_token_usage": {
+              "input_tokens": 24454,
+              "cached_input_tokens": 21248,
+              "output_tokens": 576,
+              "reasoning_output_tokens": 383,
+              "total_tokens": 25030
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c13a693310bc22c4e4dc9d0abca60939a91d6c36a34a6f0b3cc0d3580522a713"
+          },
+          "summary": "Reviewed the README for typenum, which is a standard crate overview covering type-level numbers, import usage, examples, error-message tooling, and licensing. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11812,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045637812,
+            "finished_at_unix_ms": 1784045649624,
+            "total_token_usage": {
+              "input_tokens": 24552,
+              "cached_input_tokens": 21248,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 240,
+              "total_tokens": 24989
+            },
+            "last_token_usage": {
+              "input_tokens": 24552,
+              "cached_input_tokens": 21248,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 240,
+              "total_tokens": 24989
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/array.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "71cd572ea64c755fadd54f4534fbd67a6b1dde7db24a83db35ec7e8bb1c7db82"
+          },
+          "summary": "Reviewed `src/array.rs`, which implements typenum's type-level array types (`ATerm`, `TArr`) and arithmetic traits/macros for compile-time length, add, sub, mul, div, rem, partial div, and negation. I checked for install-time hooks, network or exfiltration logic, credential access, hidden downloads, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14707,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045649625,
+            "finished_at_unix_ms": 1784045664333,
+            "total_token_usage": {
+              "input_tokens": 40580,
+              "cached_input_tokens": 34944,
+              "output_tokens": 512,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 41092
+            },
+            "last_token_usage": {
+              "input_tokens": 40580,
+              "cached_input_tokens": 34944,
+              "output_tokens": 512,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 41092
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_5d0655086d0b4836aa953620fa7bd8ef",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784060989",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "917aad35d7579713fb304ec0a0c5dbdcacea4b3d8f20240982e4a8c27137bb72"
+          },
+          "summary": "Reviewed `src/lib.rs`, which defines typenum’s no_std type-level number API, marker structs, ordering adapters, and assertion macros. I found no concrete indicators of install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16013,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060899151,
+            "finished_at_unix_ms": 1784060915165,
+            "total_token_usage": {
+              "input_tokens": 25369,
+              "cached_input_tokens": 21248,
+              "output_tokens": 458,
+              "reasoning_output_tokens": 276,
+              "total_tokens": 25827
+            },
+            "last_token_usage": {
+              "input_tokens": 25369,
+              "cached_input_tokens": 21248,
+              "output_tokens": 458,
+              "reasoning_output_tokens": 276,
+              "total_tokens": 25827
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/marker_traits.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "fc5e59e8518c317c9385ac10058f8a334036451cf96d6a60ac3d3be9a908162c"
+          },
+          "summary": "Reviewed `src/marker_traits.rs`, which defines the crate’s sealed marker traits and their associated conversion constants/methods for bits, unsigned integers, signed integers, type arrays, and power-of-two types. I checked for install-time hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14926,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060915165,
+            "finished_at_unix_ms": 1784060930091,
+            "total_token_usage": {
+              "input_tokens": 41434,
+              "cached_input_tokens": 34944,
+              "output_tokens": 572,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 42006
+            },
+            "last_token_usage": {
+              "input_tokens": 41434,
+              "cached_input_tokens": 34944,
+              "output_tokens": 572,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 42006
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/operator_aliases.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c654f725efa0ca0d4e31b28c976d2abd376bc1376076afd3745de5548b8935c4"
+          },
+          "summary": "Reviewed `src/operator_aliases.rs`, which is a pure Rust alias module exporting type-level operator shorthands and documentation examples. I found no concrete indicators of install-time execution, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16318,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060930092,
+            "finished_at_unix_ms": 1784060946410,
+            "total_token_usage": {
+              "input_tokens": 41945,
+              "cached_input_tokens": 34944,
+              "output_tokens": 504,
+              "reasoning_output_tokens": 211,
+              "total_tokens": 42449
+            },
+            "last_token_usage": {
+              "input_tokens": 41945,
+              "cached_input_tokens": 34944,
+              "output_tokens": 504,
+              "reasoning_output_tokens": 211,
+              "total_tokens": 42449
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/private.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0ef289414a46179a09c68a8efae8e3ae10a6a5106d460bcce0e11ece75520840"
+          },
+          "summary": "Reviewed `src/private.rs`, which defines typenum's internal type-level traits and helper impls for inversion, trimming, comparisons, division, and other arithmetic primitives. I checked for install-time hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 25154,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060946411,
+            "finished_at_unix_ms": 1784060971565,
+            "total_token_usage": {
+              "input_tokens": 58832,
+              "cached_input_tokens": 52736,
+              "output_tokens": 565,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 59397
+            },
+            "last_token_usage": {
+              "input_tokens": 58832,
+              "cached_input_tokens": 52736,
+              "output_tokens": 565,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 59397
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/tuple.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3b8d113984ca7893590d34d433143b82baf8e7d5e44bb16ab65366255ebe31f3"
+          },
+          "summary": "Reviewed `src/tuple.rs`, which contains macro-generated `Len`, `Index`, and `IndexMut` implementations for tuples up to 12 elements plus unit tests. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17779,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060971566,
+            "finished_at_unix_ms": 1784060989346,
+            "total_token_usage": {
+              "input_tokens": 25590,
+              "cached_input_tokens": 21760,
+              "output_tokens": 515,
+              "reasoning_output_tokens": 325,
+              "total_tokens": 26105
+            },
+            "last_token_usage": {
+              "input_tokens": 25590,
+              "cached_input_tokens": 21760,
+              "output_tokens": 515,
+              "reasoning_output_tokens": 325,
+              "total_tokens": 26105
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_6bd415b0e6d5416381d3c39b41577bd1",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784062833",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/uint.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "813c8b9d0c2dedf1b8d37ede379ac782bac04ea4f995073a54a969b5d7b5bb96"
+          },
+          "summary": "`src/uint.rs` is a pure Rust type-level unsigned-integer implementation with trait impls for arithmetic, bitwise ops, comparison, shifts, powers, gcd, and binary formatting. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19104,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062814146,
+            "finished_at_unix_ms": 1784062833250,
+            "total_token_usage": {
+              "input_tokens": 89718,
+              "cached_input_tokens": 72576,
+              "output_tokens": 710,
+              "reasoning_output_tokens": 216,
+              "total_tokens": 90428
+            },
+            "last_token_usage": {
+              "input_tokens": 89718,
+              "cached_input_tokens": 72576,
+              "output_tokens": 710,
+              "reasoning_output_tokens": 216,
+              "total_tokens": 90428
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_8ed99a4d5f12465d94e70fa63781d9d4",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784063445",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/generated.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4bd229490261b10ff7eb152e3cfb1436575fb840f348ff45f3d25cf9d93811e5"
+          },
+          "summary": "Reviewed this generated Rust test file, which contains type-level arithmetic and comparison assertions for typenum. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20310,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063425091,
+            "finished_at_unix_ms": 1784063445401,
+            "total_token_usage": {
+              "input_tokens": 60230,
+              "cached_input_tokens": 52224,
+              "output_tokens": 693,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 60923
+            },
+            "last_token_usage": {
+              "input_tokens": 60230,
+              "cached_input_tokens": 52224,
+              "output_tokens": 693,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 60923
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -753,7 +1396,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590837",
       "thirdpass_version": "0.6.0",
@@ -825,7 +1468,7 @@
       ]
     },
     {
-      "id": "rev_d53e8840e30e431ba865b69886b7e80c",
+      "id": "rev_d752936ebe434539991e95d6c84e6f57",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -833,12 +1476,92 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782781038",
+      "created_at": "1784054398",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/gen/op.rs` is a generated Rust macro implementation for type-level operator parsing and evaluation in `typenum`, with extensive documentation examples and no runtime code paths. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+      "files": [
+        {
+          "file_path": "src/bit.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3a47cc11f09ffe755007c092fb08d6819bed5e4ee30c94de8a63f3544712614a"
+          },
+          "summary": "`src/bit.rs` defines the crate's type-level `B0` and `B1` bits, with trait impls for boolean-like operators, comparison, min/max, and unit tests. I checked this file for install-time hooks, subprocess or network activity, credential/secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14112,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054372250,
+            "finished_at_unix_ms": 1784054386362,
+            "total_token_usage": {
+              "input_tokens": 40442,
+              "cached_input_tokens": 34944,
+              "output_tokens": 609,
+              "reasoning_output_tokens": 290,
+              "total_tokens": 41051
+            },
+            "last_token_usage": {
+              "input_tokens": 40442,
+              "cached_input_tokens": 34944,
+              "output_tokens": 609,
+              "reasoning_output_tokens": 290,
+              "total_tokens": 41051
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/gen.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "fecad6889b1c98e72886abbb32321929e104f54bff1e83ecfe6f8210ffc9217f"
+          },
+          "summary": "src/gen.rs is a small module घोषणation file that only exposes `consts`, conditionally exposes `generic_const_mappings` behind the `const-generics` feature, and exposes `op`. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12045,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054386363,
+            "finished_at_unix_ms": 1784054398409,
+            "total_token_usage": {
+              "input_tokens": 24076,
+              "cached_input_tokens": 21248,
+              "output_tokens": 426,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24502
+            },
+            "last_token_usage": {
+              "input_tokens": 24076,
+              "cached_input_tokens": 21248,
+              "output_tokens": 426,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24502
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_f6c5cb0968244fe4b8a58a0731fffb45",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058201",
+      "thirdpass_version": "0.6.0",
       "files": [
         {
           "file_path": "src/gen/op.rs",
@@ -846,207 +1569,29 @@
             "algorithm": "blake3",
             "value": "7472e27249fd24d830e071cf2be782c7d17d45905f7ad5da6a10435034dd11b4"
           },
-          "summary": "`src/gen/op.rs` is a generated Rust macro implementation for type-level operator parsing and evaluation in `typenum`, with extensive documentation examples and no runtime code paths. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/gen/op.rs`, which is a generated Rust macro implementation for parsing and evaluating type-level operator expressions in `typenum`. I checked for install-time hooks, subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_df8446b33c314060ae8077f46ca9cd44",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782780902",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/generated.rs`, which is a generated Rust test suite exercising typenum arithmetic, bitwise, comparison, and sign/abs operations with type-level assertions. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential/secret access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-      "files": [
-        {
-          "file_path": "tests/generated.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4bd229490261b10ff7eb152e3cfb1436575fb840f348ff45f3d25cf9d93811e5"
+          "agent_run_metrics": {
+            "duration_ms": 23862,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058177366,
+            "finished_at_unix_ms": 1784058201229,
+            "total_token_usage": {
+              "input_tokens": 74581,
+              "cached_input_tokens": 52736,
+              "output_tokens": 688,
+              "reasoning_output_tokens": 315,
+              "total_tokens": 75269
+            },
+            "last_token_usage": {
+              "input_tokens": 74581,
+              "cached_input_tokens": 52736,
+              "output_tokens": 688,
+              "reasoning_output_tokens": 315,
+              "total_tokens": 75269
+            }
           },
-          "summary": "Reviewed `tests/generated.rs`, which is a generated Rust test suite exercising typenum arithmetic, bitwise, comparison, and sign/abs operations with type-level assertions. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential/secret access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_f153d48e4a504e5ba6ea2e6a5e1f5b10",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782781155",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/array.rs`, which defines type-level array structures and arithmetic trait implementations (`Add`, `Sub`, `Mul`, `Div`, `Rem`, `Neg`, and fold/length helpers) for `typenum`. I checked for install-time hooks, network or exfiltration, credential or environment access, hidden dynamic code loading, obfuscation/decoding, persistence, and other supply-chain behaviors, and found no concrete malicious indicators in this file.\nReviewed `src/bit.rs`, which defines the `B0` and `B1` type-level bit structs plus their trait impls for bit operations, comparison, min/max, and test-only construction checks. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nReviewed `CHANGELOG.md`, which is a plain release history for typenum versions and feature changes. I found no concrete signs of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.\nReviewed `src/tuple.rs`, which contains macro-generated trait implementations for tuple `Len`, `Index`, and `IndexMut` support plus unit tests. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\n`src/lib.rs` is the crate root for a `no_std` type-level arithmetic library, containing public re-exports, marker/type-operator trait plumbing, and sealed trait definitions. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/array.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "71cd572ea64c755fadd54f4534fbd67a6b1dde7db24a83db35ec7e8bb1c7db82"
-          },
-          "summary": "Reviewed `src/array.rs`, which defines type-level array structures and arithmetic trait implementations (`Add`, `Sub`, `Mul`, `Div`, `Rem`, `Neg`, and fold/length helpers) for `typenum`. I checked for install-time hooks, network or exfiltration, credential or environment access, hidden dynamic code loading, obfuscation/decoding, persistence, and other supply-chain behaviors, and found no concrete malicious indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/bit.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3a47cc11f09ffe755007c092fb08d6819bed5e4ee30c94de8a63f3544712614a"
-          },
-          "summary": "Reviewed `src/bit.rs`, which defines the `B0` and `B1` type-level bit structs plus their trait impls for bit operations, comparison, min/max, and test-only construction checks. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "CHANGELOG.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3b0d289e14a3e9c94899879ae29c5163d7ead85fb6d0484bf2d2977372e29bf7"
-          },
-          "summary": "Reviewed `CHANGELOG.md`, which is a plain release history for typenum versions and feature changes. I found no concrete signs of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/tuple.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3b8d113984ca7893590d34d433143b82baf8e7d5e44bb16ab65366255ebe31f3"
-          },
-          "summary": "Reviewed `src/tuple.rs`, which contains macro-generated trait implementations for tuple `Len`, `Index`, and `IndexMut` support plus unit tests. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "917aad35d7579713fb304ec0a0c5dbdcacea4b3d8f20240982e4a8c27137bb72"
-          },
-          "summary": "`src/lib.rs` is the crate root for a `no_std` type-level arithmetic library, containing public re-exports, marker/type-operator trait plumbing, and sealed trait definitions. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_f560696241554febb91346117f784619",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782780991",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "I reviewed `src/uint.rs`, which defines typenum’s recursive `UTerm`/`UInt` type-level unsigned integers and their trait implementations for arithmetic, comparison, bit operations, division, gcd, square root, logarithm, bit access, bit setting, and integer conversion. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, secret access, dynamic code loading, obfuscation/deobfuscation pipelines, or persistence/tampering behavior.",
-      "files": [
-        {
-          "file_path": "src/uint.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "813c8b9d0c2dedf1b8d37ede379ac782bac04ea4f995073a54a969b5d7b5bb96"
-          },
-          "summary": "I reviewed `src/uint.rs`, which defines typenum’s recursive `UTerm`/`UInt` type-level unsigned integers and their trait implementations for arithmetic, comparison, bit operations, division, gcd, square root, logarithm, bit access, bit setting, and integer conversion. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, secret access, dynamic code loading, obfuscation/deobfuscation pipelines, or persistence/tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_fb2874a28b9b4266a25fbdc0330875f9",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782780921",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/gen/consts.rs`, which is a generated Rust source file containing only type aliases for numeric constants and marker types. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "src/gen/consts.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "40a99dc0a74abe041220e97115e6b3f6bfd7ae6ccbb2c9a9708765386c16afa5"
-          },
-          "summary": "Reviewed `src/gen/consts.rs`, which is a generated Rust source file containing only type aliases for numeric constants and marker types. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_fc55cfe5ef3c47dabb142807742f8548",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782780954",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the generated Rust mapping module in `src/gen/generic_const_mappings.rs`, which defines the `U<const N: usize>` type alias, `Const<N>`, `ToUInt`, and a large set of compile-time `Const<N> -> U<N>` implementations. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise patterns in this file.",
-      "files": [
-        {
-          "file_path": "src/gen/generic_const_mappings.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b7797172379195fd23e3e09ec384bbfce39bc14803bfadd5bfa1160796417385"
-          },
-          "summary": "Reviewed the generated Rust mapping module in `src/gen/generic_const_mappings.rs`, which defines the `U<const N: usize>` type alias, `Const<N>`, `ToUInt`, and a large set of compile-time `Const<N> -> U<N>` implementations. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise patterns in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

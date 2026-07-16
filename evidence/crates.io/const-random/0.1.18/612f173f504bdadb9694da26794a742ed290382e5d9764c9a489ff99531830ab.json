@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591657",
+  "latest_reviewed_at": "1784056383",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -170,50 +176,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 6,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 3,
+      "file_record_count": 10,
+      "file_record_count_with_metrics": 10
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 10,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 6,
-    "duration_ms_total": 64803,
-    "attempts_total": 4,
+    "file_records_with_metrics": 10,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 152490,
+    "attempts_total": 10,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 10,
+    "last_token_usage_records": 10,
     "total_token_usage": {
-      "input_tokens": 85192,
-      "cached_input_tokens": 70656,
-      "output_tokens": 1469,
-      "reasoning_output_tokens": 698,
-      "total_tokens": 86661
+      "input_tokens": 231352,
+      "cached_input_tokens": 200192,
+      "output_tokens": 4442,
+      "reasoning_output_tokens": 2481,
+      "total_tokens": 235794
     },
     "last_token_usage": {
-      "input_tokens": 85192,
-      "cached_input_tokens": 70656,
-      "output_tokens": 1469,
-      "reasoning_output_tokens": 698,
-      "total_tokens": 86661
+      "input_tokens": 231352,
+      "cached_input_tokens": 200192,
+      "output_tokens": 4442,
+      "reasoning_output_tokens": 2481,
+      "total_tokens": 235794
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_15b4af4bb52f4b44ae94ed7d8f8aa244",
+      "id": "rev_1cba45460b3d4c3db3406f52ea29a20a",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -221,42 +219,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783195101",
+      "created_at": "1784056383",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is a tiny `no_std` crate entrypoint that only re-exports the `const_random!` procedural macro. I checked this file for install hooks, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the target file.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9d4455fe358d128be4c9a2e67e9ccf653d6616f5ebad7b72627784b7c53f6d71"
-          },
-          "summary": "Reviewed `src/lib.rs`, which is a tiny `no_std` crate entrypoint that only re-exports the `const_random!` procedural macro. I checked this file for install hooks, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_45214999266948eb82abcbf61f5d67a0",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783195085",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/tests.rs`, which is a small test suite exercising the `const_random!` macro with primitive integers, an array, and a type-inference check. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/decoding pipelines, or persistence behavior.\nReviewed the GitHub Actions workflow in `.github/workflows/rust.yml`, which only checks out the repository, installs the Rust nightly toolchain, builds the crate, and runs the test suite twice (once with `CONST_RANDOM_SEED=testSeed`). I found no concrete indicators of install hooks, credential access, network/exfiltration, dynamic code loading, obfuscation, or persistence in this file.\nReviewed the package manifest for install-time hooks, build scripts, dependency-based code execution, network/exfiltration indicators, credential access, obfuscation, and persistence behaviors. This Cargo.toml only declares a basic library package with one macro dependency and no `build.rs`, script hooks, or other suspicious manifest-level behavior.\nReviewed `README.md`, which documents compile-time random constant generation and the optional `CONST_RANDOM_SEED` environment variable for deterministic builds. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden supply-chain behavior in this file.\nReviewed `.cargo_vcs_info.json`, which only contains a source-control SHA1 and an empty `path_in_vcs` field. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
       "files": [
         {
           "file_path": "tests/tests.rs",
@@ -264,9 +231,78 @@
             "algorithm": "blake3",
             "value": "2246e4fc05ca7204700072b132be8d8ad423694164ed4e3f88a5cf3009a3299d"
           },
-          "summary": "Reviewed `tests/tests.rs`, which is a small test suite exercising the `const_random!` macro with primitive integers, an array, and a type-inference check. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/decoding pipelines, or persistence behavior.",
+          "summary": "`tests/tests.rs` is a small test module for the `const_random!` macro, checking generated values for several integer types, arrays, and type inference behavior. I reviewed it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13874,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056369872,
+            "finished_at_unix_ms": 1784056383746,
+            "total_token_usage": {
+              "input_tokens": 24817,
+              "cached_input_tokens": 21248,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 284,
+              "total_tokens": 25300
+            },
+            "last_token_usage": {
+              "input_tokens": 24817,
+              "cached_input_tokens": 21248,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 284,
+              "total_tokens": 25300
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_202287ccfa824683a14eebf99d653090",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054296",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a4012f0143886d3c9ac2574ffc579631bfd4a6edc4c6288badc275d379afa168"
+          },
+          "summary": "Reviewed .cargo_vcs_info.json, which only records Cargo VCS provenance metadata (a git SHA and an empty path_in_vcs). I found no indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15280,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054222483,
+            "finished_at_unix_ms": 1784054237764,
+            "total_token_usage": {
+              "input_tokens": 24158,
+              "cached_input_tokens": 21248,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 302,
+              "total_tokens": 24651
+            },
+            "last_token_usage": {
+              "input_tokens": 24158,
+              "cached_input_tokens": 21248,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 302,
+              "total_tokens": 24651
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -276,9 +312,29 @@
             "algorithm": "blake3",
             "value": "79d6948dc921f81e9e22027a554d64fcdbee3ce9859a3bccf0ccd03b8919b457"
           },
-          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/rust.yml`, which only checks out the repository, installs the Rust nightly toolchain, builds the crate, and runs the test suite twice (once with `CONST_RANDOM_SEED=testSeed`). I found no concrete indicators of install hooks, credential access, network/exfiltration, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/rust.yml`, which only checks out the repository, installs a Rust nightly toolchain, and runs `cargo build`/`cargo test` twice (once with a fixed `CONST_RANDOM_SEED`). I found no concrete indicators of install-time compromise, secret access, network exfiltration, hidden downloads, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17355,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054237765,
+            "finished_at_unix_ms": 1784054255121,
+            "total_token_usage": {
+              "input_tokens": 24251,
+              "cached_input_tokens": 21248,
+              "output_tokens": 548,
+              "reasoning_output_tokens": 334,
+              "total_tokens": 24799
+            },
+            "last_token_usage": {
+              "input_tokens": 24251,
+              "cached_input_tokens": 21248,
+              "output_tokens": 548,
+              "reasoning_output_tokens": 334,
+              "total_tokens": 24799
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -288,9 +344,29 @@
             "algorithm": "blake3",
             "value": "e2b078838308ef1439c59b265f0e4988ddea3d5af0b5cf2726ee54a53476d233"
           },
-          "summary": "Reviewed the package manifest for install-time hooks, build scripts, dependency-based code execution, network/exfiltration indicators, credential access, obfuscation, and persistence behaviors. This Cargo.toml only declares a basic library package with one macro dependency and no `build.rs`, script hooks, or other suspicious manifest-level behavior.",
+          "summary": "Reviewed the normalized Cargo.toml for install hooks, build scripts, dependency-based code execution, network/exfiltration settings, credential access, dynamic code loading, obfuscation, and persistence behavior. The file only contains standard package metadata for the `const-random` crate and a versioned dependency on `const-random-macro`; no concrete malicious or supply-chain indicators were found in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13628,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054255121,
+            "finished_at_unix_ms": 1784054268750,
+            "total_token_usage": {
+              "input_tokens": 24371,
+              "cached_input_tokens": 21248,
+              "output_tokens": 484,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 24855
+            },
+            "last_token_usage": {
+              "input_tokens": 24371,
+              "cached_input_tokens": 21248,
+              "output_tokens": 484,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 24855
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -300,21 +376,61 @@
             "algorithm": "blake3",
             "value": "9bfc03b8fea840273bcb2cd718fe5aa73a500d92c5cdf1c98a4fde0e9efe63b5"
           },
-          "summary": "Reviewed `README.md`, which documents compile-time random constant generation and the optional `CONST_RANDOM_SEED` environment variable for deterministic builds. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden supply-chain behavior in this file.",
+          "summary": "Reviewed the README for this crate’s compile-time random constant generator and its deterministic-seed behavior via `CONST_RANDOM_SEED`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12404,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054268751,
+            "finished_at_unix_ms": 1784054281155,
+            "total_token_usage": {
+              "input_tokens": 24291,
+              "cached_input_tokens": 23296,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 24776
+            },
+            "last_token_usage": {
+              "input_tokens": 24291,
+              "cached_input_tokens": 23296,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 24776
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "a4012f0143886d3c9ac2574ffc579631bfd4a6edc4c6288badc275d379afa168"
+            "value": "9d4455fe358d128be4c9a2e67e9ccf653d6616f5ebad7b72627784b7c53f6d71"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only contains a source-control SHA1 and an empty `path_in_vcs` field. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "summary": "Reviewed src/lib.rs, which is a no_std shim that only re-exports const_random_macro::const_random and documents supported constant types. I found no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence logic in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15146,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054281156,
+            "finished_at_unix_ms": 1784054296302,
+            "total_token_usage": {
+              "input_tokens": 24272,
+              "cached_input_tokens": 21248,
+              "output_tokens": 480,
+              "reasoning_output_tokens": 295,
+              "total_tokens": 24752
+            },
+            "last_token_usage": {
+              "input_tokens": 24272,
+              "cached_input_tokens": 21248,
+              "output_tokens": 480,
+              "reasoning_output_tokens": 295,
+              "total_tokens": 24752
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -330,7 +446,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591657",
       "thirdpass_version": "0.6.0",

@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -47,8 +53,8 @@
       "reviewed_percent": 100.0
     }
   },
-  "highest_severity": "none",
-  "latest_reviewed_at": "1783589652",
+  "highest_severity": "medium",
+  "latest_reviewed_at": "1784063076",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -500,50 +506,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 10,
-      "file_record_count": 34,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 2,
-      "file_record_count": 6,
-      "file_record_count_with_metrics": 6
+      "review_count": 12,
+      "file_record_count": 45,
+      "file_record_count_with_metrics": 45
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 40,
-    "file_records_with_metrics": 6,
-    "file_records_without_metrics": 34,
-    "duration_ms_total": 111930,
-    "attempts_total": 6,
+    "reviewed_file_records": 45,
+    "file_records_with_metrics": 45,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 811734,
+    "attempts_total": 45,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 6,
-    "last_token_usage_records": 6,
+    "total_token_usage_records": 45,
+    "last_token_usage_records": 45,
     "total_token_usage": {
-      "input_tokens": 186436,
-      "cached_input_tokens": 162176,
-      "output_tokens": 3973,
-      "reasoning_output_tokens": 1884,
-      "total_tokens": 190409
+      "input_tokens": 1452259,
+      "cached_input_tokens": 1264256,
+      "output_tokens": 27357,
+      "reasoning_output_tokens": 15556,
+      "total_tokens": 1479616
     },
     "last_token_usage": {
-      "input_tokens": 186436,
-      "cached_input_tokens": 162176,
-      "output_tokens": 3973,
-      "reasoning_output_tokens": 1884,
-      "total_tokens": 190409
+      "input_tokens": 1452259,
+      "cached_input_tokens": 1264256,
+      "output_tokens": 27357,
+      "reasoning_output_tokens": 15556,
+      "total_tokens": 1479616
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_204d7ee8dc6048b49bf0fe937555870d",
+      "id": "rev_308bc1ad3b97470c8b0fbeb5311f475f",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -551,100 +549,169 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782849534",
+      "created_at": "1784060153",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/stream.rs`, which defines the `Stream` trait, forwarding adapters, and default streaming helpers for structured data. I checked for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/stream.rs",
+          "file_path": "examples/tags.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "baafc066ccbf2fa70ef07c9b5c04a181eef301ed62803b00b5094430b67608b5"
+            "value": "0a99d99ba9dd51fc38b396bcd4d9d555ba9861530aa6e46c37a28e491a0fb424"
           },
-          "summary": "Reviewed `src/stream.rs`, which defines the `Stream` trait, forwarding adapters, and default streaming helpers for structured data. I checked for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed this example stream implementation, which defines a UNIX_TIMESTAMP tag and prints tagged u64 values as RFC3339 timestamps. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_391b2fc4ddc54b829eab298617673ac5",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782849891",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `CODE_OF_CONDUCT.md`, which is a standard Contributor Covenant policy document. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain or malicious behaviors, and found no concrete indicators of those in this file.\nReviewed the normalized `Cargo.toml` for the `sval` crate. It only declares package metadata, a library target, examples, one optional macro dependency, and a dev dependency; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence tampering in this file.\nReviewed the GitHub Actions workflow in `.github/workflows/flatten.yml`. It only checks out the repository, installs Rust toolchains and `cargo-hack`, then runs test/check matrix jobs for the `flatten` crate and its bench/embedded targets; I found no concrete indicators of install hooks, secret harvesting, network exfiltration, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed the GitHub Actions workflow at `.github/workflows/serde.yml`, which runs CI for the `serde` and embedded build matrices by checking out the repository, installing Rust toolchains, installing `cargo-hack`, and running cargo test/check commands. I did not find concrete malicious or supply-chain indicators in this file: there are no install hooks beyond the expected CI steps, no credential or secret access, no network/exfiltration logic, no dynamic code loading, no obfuscation, and no persistence or environment tampering.\nReviewed the GitHub Actions workflow in `.github/workflows/dynamic.yml`, which defines CI jobs for the `dynamic` crate using `actions/checkout`, `rustup`, and `cargo hack` test/check invocations. I found no concrete indicators of malicious behavior in this file: no secret harvesting, no exfiltration, no hidden downloads beyond standard tool installation, no dynamic code loading, no obfuscation, and no persistence or environment tampering.",
-      "files": [
-        {
-          "file_path": "CODE_OF_CONDUCT.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cc5e50547a0c3d9d42b1895e495b324647a40ee688463fb23964a22a8e2b4245"
+          "agent_run_metrics": {
+            "duration_ms": 29927,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060059174,
+            "finished_at_unix_ms": 1784060089101,
+            "total_token_usage": {
+              "input_tokens": 25225,
+              "cached_input_tokens": 21248,
+              "output_tokens": 439,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 25664
+            },
+            "last_token_usage": {
+              "input_tokens": 25225,
+              "cached_input_tokens": 21248,
+              "output_tokens": 439,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 25664
+            }
           },
-          "summary": "Reviewed `CODE_OF_CONDUCT.md`, which is a standard Contributor Covenant policy document. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain or malicious behaviors, and found no concrete indicators of those in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "Cargo.toml",
+          "file_path": "examples/value_derive.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "f9076bbbff2ecd16065c6fefdecbb9e6b3be3829e42cca3952ab5feab225a3d6"
+            "value": "75281529cd091e48cf7a68cb1f3e2bc01bae9be15a17875874842691579ddb2e"
           },
-          "summary": "Reviewed the normalized `Cargo.toml` for the `sval` crate. It only declares package metadata, a library target, examples, one optional macro dependency, and a dev dependency; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence tampering in this file.",
+          "summary": "Reviewed this example Rust program, which derives `Value` for two local structs and streams sample instances through a local `stream` helper. I found no concrete malicious or supply-chain indicators in the target file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16371,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060089102,
+            "finished_at_unix_ms": 1784060105473,
+            "total_token_usage": {
+              "input_tokens": 24245,
+              "cached_input_tokens": 21248,
+              "output_tokens": 403,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 24648
+            },
+            "last_token_usage": {
+              "input_tokens": 24245,
+              "cached_input_tokens": 21248,
+              "output_tokens": 403,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 24648
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".github/workflows/flatten.yml",
+          "file_path": "src/data.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "836c5c08181a1684d15f0847fc5e6b9adf71f220643cbe72d646b0dc8b6dad68"
+            "value": "0096d93130f7fec6e3e7cbc6e326bc3ba9c95338179b2188707c8eb1f3b11b1e"
           },
-          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/flatten.yml`. It only checks out the repository, installs Rust toolchains and `cargo-hack`, then runs test/check matrix jobs for the `flatten` crate and its bench/embedded targets; I found no concrete indicators of install hooks, secret harvesting, network exfiltration, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed `src/data.rs`, which defines the package's `Label`, `Tag`, and `Index` data types plus a few `Value` impls and tests. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden payload execution paths, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19790,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060105474,
+            "finished_at_unix_ms": 1784060125265,
+            "total_token_usage": {
+              "input_tokens": 58810,
+              "cached_input_tokens": 52224,
+              "output_tokens": 642,
+              "reasoning_output_tokens": 266,
+              "total_tokens": 59452
+            },
+            "last_token_usage": {
+              "input_tokens": 58810,
+              "cached_input_tokens": 52224,
+              "output_tokens": 642,
+              "reasoning_output_tokens": 266,
+              "total_tokens": 59452
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".github/workflows/serde.yml",
+          "file_path": "src/data/binary.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "9177d28075998de3e4c97464744419c079527c11929d855958ce1d9e5ed72296"
+            "value": "7d94ba730d55069955ed84b15967027ee6e607cd845cb98660f69225a153ddc6"
           },
-          "summary": "Reviewed the GitHub Actions workflow at `.github/workflows/serde.yml`, which runs CI for the `serde` and embedded build matrices by checking out the repository, installing Rust toolchains, installing `cargo-hack`, and running cargo test/check commands. I did not find concrete malicious or supply-chain indicators in this file: there are no install hooks beyond the expected CI steps, no credential or secret access, no network/exfiltration logic, no dynamic code loading, no obfuscation, and no persistence or environment tampering.",
+          "summary": "`src/data/binary.rs` defines transparent `BinarySlice` and `BinaryArray` wrappers that expose `[u8]` and `[u8; N]` as binary streamable values, plus a small test confirming the casts. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13037,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060125265,
+            "finished_at_unix_ms": 1784060138303,
+            "total_token_usage": {
+              "input_tokens": 24911,
+              "cached_input_tokens": 21248,
+              "output_tokens": 502,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 25413
+            },
+            "last_token_usage": {
+              "input_tokens": 24911,
+              "cached_input_tokens": 21248,
+              "output_tokens": 502,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 25413
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".github/workflows/dynamic.yml",
+          "file_path": "src/data/map.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "85dc52b733a46d9b701bc97cc643030a77788f8dbda5c8f36929414a667b7a17"
+            "value": "d846a2b40da3e24bd6dec3c4dc01d0b81171c95c98a4e81dd298d7eb5ffc9679"
           },
-          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/dynamic.yml`, which defines CI jobs for the `dynamic` crate using `actions/checkout`, `rustup`, and `cargo hack` test/check invocations. I found no concrete indicators of malicious behavior in this file: no secret harvesting, no exfiltration, no hidden downloads beyond standard tool installation, no dynamic code loading, no obfuscation, and no persistence or environment tampering.",
+          "summary": "Reviewed `src/data/map.rs`, which defines a transparent `MapSlice` adapter plus `Value` implementations for slice, `BTreeMap`, and `HashMap` that stream map entries into a `Stream`. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14788,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060138303,
+            "finished_at_unix_ms": 1784060153091,
+            "total_token_usage": {
+              "input_tokens": 24789,
+              "cached_input_tokens": 23296,
+              "output_tokens": 481,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 25270
+            },
+            "last_token_usage": {
+              "input_tokens": 24789,
+              "cached_input_tokens": 23296,
+              "output_tokens": 481,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 25270
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -660,7 +727,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589652",
       "thirdpass_version": "0.6.0",
@@ -700,7 +767,7 @@
       ]
     },
     {
-      "id": "rev_569e96fb96f742388d89a5a0337ed6de",
+      "id": "rev_45f216415f4d4c838a5e7242a7ccb16d",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -708,77 +775,48 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782849810",
+      "created_at": "1784063076",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/data/map.rs`, which defines a transparent `MapSlice` wrapper and `Value` streaming implementations for slices, `BTreeMap`, and `HashMap`. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution; none are present in this file.\nReviewed the GitHub Actions workflow in `.github/workflows/buffer.yml`. It defines CI jobs for testing, benchmarking, MSRV, embedded, and Miri using `actions/checkout`, `rustup`, and `cargo install cargo-hack`; I found no concrete indicators of install-time compromise, secret harvesting, network exfiltration, hidden downloads, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `src/data/tags.rs`, which is a documentation-only Rust module defining built-in `Tag` constants for `Option`, `()`, numeric text, constant-size values, identifiers, and offsets. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the GitHub Actions workflow in `.github/workflows/sval.yml`, which runs Rust test/build jobs across Linux, macOS, and Windows, plus embedded and Miri checks. I checked for install-time hooks, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the GitHub Actions workflow in `.github/workflows/nested.yml`, which runs Rust test/bench/MSRV/embedded jobs via `actions/checkout`, `rustup`, and `cargo hack`. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/data/map.rs",
+          "file_path": "src/value.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "d846a2b40da3e24bd6dec3c4dc01d0b81171c95c98a4e81dd298d7eb5ffc9679"
+            "value": "389fb8cc189225b8034dc05ccb00f313ba159be79b0f341fc406a697a475fff9"
           },
-          "summary": "Reviewed `src/data/map.rs`, which defines a transparent `MapSlice` wrapper and `Value` streaming implementations for slices, `BTreeMap`, and `HashMap`. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution; none are present in this file.",
+          "summary": "`src/value.rs` defines the `Value` trait plus forwarding and default conversion helpers for streaming structured data into a `Stream`. I checked this file for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".github/workflows/buffer.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5476e903812ec22c886bbfc093cc60fdfaedd4e4a62e869e0b4bf4948f2aa797"
+          "agent_run_metrics": {
+            "duration_ms": 16851,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063059508,
+            "finished_at_unix_ms": 1784063076360,
+            "total_token_usage": {
+              "input_tokens": 58518,
+              "cached_input_tokens": 49664,
+              "output_tokens": 694,
+              "reasoning_output_tokens": 323,
+              "total_tokens": 59212
+            },
+            "last_token_usage": {
+              "input_tokens": 58518,
+              "cached_input_tokens": 49664,
+              "output_tokens": 694,
+              "reasoning_output_tokens": 323,
+              "total_tokens": 59212
+            }
           },
-          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/buffer.yml`. It defines CI jobs for testing, benchmarking, MSRV, embedded, and Miri using `actions/checkout`, `rustup`, and `cargo install cargo-hack`; I found no concrete indicators of install-time compromise, secret harvesting, network exfiltration, hidden downloads, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/data/tags.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ae1aad87843fd54282ec6a395cb9e80c6211ce0d2adb3fb7a6004045b9bf065a"
-          },
-          "summary": "Reviewed `src/data/tags.rs`, which is a documentation-only Rust module defining built-in `Tag` constants for `Option`, `()`, numeric text, constant-size values, identifiers, and offsets. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".github/workflows/sval.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "414e9110964ad943d3db92db724b0074f564603b07d74a39957de4ffc2e59cda"
-          },
-          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/sval.yml`, which runs Rust test/build jobs across Linux, macOS, and Windows, plus embedded and Miri checks. I checked for install-time hooks, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".github/workflows/nested.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1dd227e7587dd0d9b659ee8570d3a4cd7b560689593ccf563721be18a1440923"
-          },
-          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/nested.yml`, which runs Rust test/bench/MSRV/embedded jobs via `actions/checkout`, `rustup`, and `cargo hack`. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_609dc6355d07460886e983a5412afa00",
+      "id": "rev_4b93a1d67fde446f83e3f8a01ac19fb2",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -786,12 +824,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782849738",
+      "created_at": "1784062359",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is the crate root for a `no_std` serialization library exposing traits, reexports, and two small helper functions. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `examples/tags.rs`, which is a small `sval` example showing a custom `UNIX_TIMESTAMP` tag and a `MyStream` formatter that prints tagged `u64` values as RFC3339 timestamps. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/data/binary.rs`, which defines transparent wrappers for streaming `&[u8]` and `[u8; N]` as binary values plus simple `Debug`, `AsRef`, and `Value` implementations. I checked for install-time execution, hidden subprocess or network activity, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/data/number.rs`, which implements numeric `Value` conversions and tagged number streaming via `fmt::Display` for serialization. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.\nReviewed `examples/extract_field.rs`, a small Rust example that streams a `Value` implementation to extract an `i32` field and demonstrates it with a local `MyData` struct. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
           "file_path": "src/lib.rs",
@@ -799,123 +836,29 @@
             "algorithm": "blake3",
             "value": "cfaf9692f00c8dcb9daeb6bbfe9d646db72d4132c437d3eaaf10413dc7fdb099"
           },
-          "summary": "Reviewed `src/lib.rs`, which is the crate root for a `no_std` serialization library exposing traits, reexports, and two small helper functions. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/lib.rs`, which is the crate root for a no_std streaming-serialization API exposing `stream`, `stream_computed`, `Result`, and re-exports for the `Value`/`Stream` traits and internal modules. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, or other supply-chain payload behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/tags.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0a99d99ba9dd51fc38b396bcd4d9d555ba9861530aa6e46c37a28e491a0fb424"
+          "agent_run_metrics": {
+            "duration_ms": 32460,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062315431,
+            "finished_at_unix_ms": 1784062347891,
+            "total_token_usage": {
+              "input_tokens": 25055,
+              "cached_input_tokens": 23296,
+              "output_tokens": 624,
+              "reasoning_output_tokens": 414,
+              "total_tokens": 25679
+            },
+            "last_token_usage": {
+              "input_tokens": 25055,
+              "cached_input_tokens": 23296,
+              "output_tokens": 624,
+              "reasoning_output_tokens": 414,
+              "total_tokens": 25679
+            }
           },
-          "summary": "Reviewed `examples/tags.rs`, which is a small `sval` example showing a custom `UNIX_TIMESTAMP` tag and a `MyStream` formatter that prints tagged `u64` values as RFC3339 timestamps. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/data/binary.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7d94ba730d55069955ed84b15967027ee6e607cd845cb98660f69225a153ddc6"
-          },
-          "summary": "Reviewed `src/data/binary.rs`, which defines transparent wrappers for streaming `&[u8]` and `[u8; N]` as binary values plus simple `Debug`, `AsRef`, and `Value` implementations. I checked for install-time execution, hidden subprocess or network activity, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/data/number.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "050356a70bfae701659931dbc05ff453b8e5f597ce4dfe785f331ca5e5938377"
-          },
-          "summary": "Reviewed `src/data/number.rs`, which implements numeric `Value` conversions and tagged number streaming via `fmt::Display` for serialization. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/extract_field.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "46f09217c24871124062ce8cfff6e8a63461dde2ec232084a735f335f4ebbfeb"
-          },
-          "summary": "Reviewed `examples/extract_field.rs`, a small Rust example that streams a `Value` implementation to extract an `i32` field and demonstrates it with a local `MyData` struct. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_76a104cdc5a140bf93de0a3d8d96960a",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782849968",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `.github/workflows/ref.yml`, which defines CI jobs for test, MSRV, and embedded builds using `actions/checkout`, `rustup`, and `cargo-hack`. I checked for install-time execution beyond normal CI setup, secret or environment harvesting, network/exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed this GitHub Actions workflow for the `json` package. It only runs standard Rust CI steps (checkout, `rustup default nightly`, `cargo install cargo-hack`, feature-powerset tests/builds for `./json`, `./json/test`, and `./json/bench`) and I did not find concrete indicators of install-time backdoors, secret access, network exfiltration, dynamic payload loading, obfuscation, or persistence behavior.\nReviewed the target Rust example in examples/stream/simple.rs. It only implements a `sval::Stream` that prints primitive values, strings, and sequence delimiters to stdout; I found no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed the GitHub Actions workflow in `.github/workflows/fmt.yml`, which runs Rust formatting/test checks on push and pull request events using `actions/checkout`, `rustup`, and `cargo install cargo-hack`. I found no concrete indicators of supply-chain compromise or malicious behavior in this file: no install hooks, network exfiltration, credential harvesting, dynamic code loading, obfuscation, or persistence mechanisms were present.\nReviewed `src/result.rs`, which only defines a small `Error` type, its `Display`/`Error` impls, and an `error<T>()` helper that returns `Err(Error::new())`. I found no concrete supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": ".github/workflows/ref.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5cfafb2deda182db2cd87406c555b9a886bd59ad917af2eae1089910d3e9398e"
-          },
-          "summary": "Reviewed `.github/workflows/ref.yml`, which defines CI jobs for test, MSRV, and embedded builds using `actions/checkout`, `rustup`, and `cargo-hack`. I checked for install-time execution beyond normal CI setup, secret or environment harvesting, network/exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".github/workflows/json.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c672281f5fd4176714dba1e55a0d9a72361bcdb05144e7e4dc005f182bb405b2"
-          },
-          "summary": "Reviewed this GitHub Actions workflow for the `json` package. It only runs standard Rust CI steps (checkout, `rustup default nightly`, `cargo install cargo-hack`, feature-powerset tests/builds for `./json`, `./json/test`, and `./json/bench`) and I did not find concrete indicators of install-time backdoors, secret access, network exfiltration, dynamic payload loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/stream/simple.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "400b7d9289143d0420cf60c60e7f49a26e2f24f2dab79da7a03f4930b700a294"
-          },
-          "summary": "Reviewed the target Rust example in examples/stream/simple.rs. It only implements a `sval::Stream` that prints primitive values, strings, and sequence delimiters to stdout; I found no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".github/workflows/fmt.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8c5e0a77967a91671a94a3e20d87a75472a7095a28edccec641ec36ae787238b"
-          },
-          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/fmt.yml`, which runs Rust formatting/test checks on push and pull request events using `actions/checkout`, `rustup`, and `cargo install cargo-hack`. I found no concrete indicators of supply-chain compromise or malicious behavior in this file: no install hooks, network exfiltration, credential harvesting, dynamic code loading, obfuscation, or persistence mechanisms were present.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -925,16 +868,36 @@
             "algorithm": "blake3",
             "value": "4209c4109522e3499a1aca2ed3fc6cf8787a84437896bb11a665a3f2a2fd0cc7"
           },
-          "summary": "Reviewed `src/result.rs`, which only defines a small `Error` type, its `Display`/`Error` impls, and an `error<T>()` helper that returns `Err(Error::new())`. I found no concrete supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/result.rs`, which only defines a minimal `Error` type, its `Display`/`std::error::Error` impl, and an `error<T>()` helper that returns `Err(Error::new())`. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12004,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062347892,
+            "finished_at_unix_ms": 1784062359896,
+            "total_token_usage": {
+              "input_tokens": 24262,
+              "cached_input_tokens": 21248,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 24709
+            },
+            "last_token_usage": {
+              "input_tokens": 24262,
+              "cached_input_tokens": 21248,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 24709
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_7f366d868128448eb116cb2c079197fc",
+      "id": "rev_5531e5b1333b4fa3b1554a08b2d85a00",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -942,12 +905,188 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782850071",
+      "created_at": "1784061377",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the target `.cargo_vcs_info.json`, which only contains a git SHA-1 reference and an empty `path_in_vcs` field. No concrete malicious or supply-chain indicators were found in this file, and there was no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.\nReviewed this module wrapper, which only contains a brief comment and a `pub mod simple;` declaration to share a stream example across multiple examples. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+      "files": [
+        {
+          "file_path": "src/data/number.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "050356a70bfae701659931dbc05ff453b8e5f597ce4dfe785f331ca5e5938377"
+          },
+          "summary": "Reviewed `src/data/number.rs`, which only defines numeric `Value`/`Stream` helpers and a `stream_number` function that emits `tags::NUMBER` via `fmt::Display`. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11894,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061284424,
+            "finished_at_unix_ms": 1784061296318,
+            "total_token_usage": {
+              "input_tokens": 25051,
+              "cached_input_tokens": 23296,
+              "output_tokens": 462,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 25513
+            },
+            "last_token_usage": {
+              "input_tokens": 25051,
+              "cached_input_tokens": 23296,
+              "output_tokens": 462,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 25513
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/data/option.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a342ead4f3b165d54da50412698fa10241871f6d1392ed7e25f9624816d4f405"
+          },
+          "summary": "Reviewed src/data/option.rs, which only defines Null and implements Value for Option<T> by tagging Some/None and forwarding conversions to the inner value. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found none in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17911,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061296319,
+            "finished_at_unix_ms": 1784061314230,
+            "total_token_usage": {
+              "input_tokens": 25259,
+              "cached_input_tokens": 21248,
+              "output_tokens": 470,
+              "reasoning_output_tokens": 279,
+              "total_tokens": 25729
+            },
+            "last_token_usage": {
+              "input_tokens": 25259,
+              "cached_input_tokens": 21248,
+              "output_tokens": 470,
+              "reasoning_output_tokens": 279,
+              "total_tokens": 25729
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/data/seq.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8ea63302066a2b743e8a7df6b5d806836e78860cd2f060545e9b7a1e29023dba"
+          },
+          "summary": "`src/data/seq.rs` appears to be a pure serialization support module for slices, arrays, tuples, and standard collections, plus a small test for array tagging. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15586,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061314231,
+            "finished_at_unix_ms": 1784061329817,
+            "total_token_usage": {
+              "input_tokens": 42282,
+              "cached_input_tokens": 35968,
+              "output_tokens": 558,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 42840
+            },
+            "last_token_usage": {
+              "input_tokens": 42282,
+              "cached_input_tokens": 35968,
+              "output_tokens": 558,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 42840
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/data/tags.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ae1aad87843fd54282ec6a395cb9e80c6211ce0d2adb3fb7a6004045b9bf065a"
+          },
+          "summary": "Reviewed `src/data/tags.rs`, which only defines built-in `Tag` constants and their documentation strings for Option variants, unit, number formatting, constant-size values, and identifier/offset labels. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16940,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061329818,
+            "finished_at_unix_ms": 1784061346758,
+            "total_token_usage": {
+              "input_tokens": 38192,
+              "cached_input_tokens": 35968,
+              "output_tokens": 508,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 38700
+            },
+            "last_token_usage": {
+              "input_tokens": 38192,
+              "cached_input_tokens": 35968,
+              "output_tokens": 508,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 38700
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/data/text.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a526bdc21dee2ac15e61692a227c9c8b5dc1993840254cc4e487ae6565404bb5"
+          },
+          "summary": "Reviewed `src/data/text.rs`, which implements `sval::Value` adapters for `fmt::Display`, `str`, `char`, and `String` along with unit tests. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 31122,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061346758,
+            "finished_at_unix_ms": 1784061377881,
+            "total_token_usage": {
+              "input_tokens": 40557,
+              "cached_input_tokens": 34432,
+              "output_tokens": 686,
+              "reasoning_output_tokens": 387,
+              "total_tokens": 41243
+            },
+            "last_token_usage": {
+              "input_tokens": 40557,
+              "cached_input_tokens": 34432,
+              "output_tokens": 686,
+              "reasoning_output_tokens": 387,
+              "total_tokens": 41243
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_6c893bb522944b3492c53621531fdef8",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052693",
+      "thirdpass_version": "0.6.0",
       "files": [
         {
           "file_path": ".cargo_vcs_info.json",
@@ -955,21 +1094,753 @@
             "algorithm": "blake3",
             "value": "62addc1889900da0d3c00be055a7484d7b3b3e6692dfcde89be645c386606806"
           },
-          "summary": "Reviewed the target `.cargo_vcs_info.json`, which only contains a git SHA-1 reference and an empty `path_in_vcs` field. No concrete malicious or supply-chain indicators were found in this file, and there was no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
+          "summary": "Reviewed the crate metadata file `.cargo_vcs_info.json`, which only records the source git SHA and an empty `path_in_vcs` field. No concrete malicious or supply-chain indicators were found in this file; it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15108,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052616277,
+            "finished_at_unix_ms": 1784052631386,
+            "total_token_usage": {
+              "input_tokens": 24124,
+              "cached_input_tokens": 21248,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 24553
+            },
+            "last_token_usage": {
+              "input_tokens": 24124,
+              "cached_input_tokens": 21248,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 24553
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "examples/stream/mod.rs",
+          "file_path": ".github/workflows/buffer.yml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "1cff7c8d6bee80bb1d633dddb8bb3e5a35f0e4aa4b3721f17098af1df1734cc2"
+            "value": "5476e903812ec22c886bbfc093cc60fdfaedd4e4a62e869e0b4bf4948f2aa797"
           },
-          "summary": "Reviewed this module wrapper, which only contains a brief comment and a `pub mod simple;` declaration to share a stream example across multiple examples. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the GitHub Actions workflow in .github/workflows/buffer.yml, which defines Rust CI jobs for testing, benchmarking, MSRV checks, embedded builds, and Miri runs. I found no concrete indicators of supply-chain compromise or malicious behavior in the workflow: no install hooks beyond standard tool setup, no credential or secret access, no exfiltration or remote payload execution, no obfuscation, and no persistence changes.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14825,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052631387,
+            "finished_at_unix_ms": 1784052646212,
+            "total_token_usage": {
+              "input_tokens": 24789,
+              "cached_input_tokens": 21248,
+              "output_tokens": 517,
+              "reasoning_output_tokens": 305,
+              "total_tokens": 25306
+            },
+            "last_token_usage": {
+              "input_tokens": 24789,
+              "cached_input_tokens": 21248,
+              "output_tokens": 517,
+              "reasoning_output_tokens": 305,
+              "total_tokens": 25306
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/derive.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "edf75cc746f20c92ace6408f0ebdc89c442a860e39cd78080ed139006e17ff02"
+          },
+          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/derive.yml`, which runs Rust test matrices for the `derive` crate via `cargo hack` on push and pull_request. I checked for install-time hooks, network or exfiltration steps, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16595,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052646213,
+            "finished_at_unix_ms": 1784052662808,
+            "total_token_usage": {
+              "input_tokens": 24278,
+              "cached_input_tokens": 21248,
+              "output_tokens": 491,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 24769
+            },
+            "last_token_usage": {
+              "input_tokens": 24278,
+              "cached_input_tokens": 21248,
+              "output_tokens": 491,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 24769
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/dynamic.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "85dc52b733a46d9b701bc97cc643030a77788f8dbda5c8f36929414a667b7a17"
+          },
+          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/dynamic.yml`, which defines three CI jobs for Rust testing and MSRV/embedded checks using `actions/checkout`, `rustup`, and `cargo hack`. I found no concrete indicators of install-time compromise, credential/secret access, network exfiltration, hidden downloads, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16408,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052662809,
+            "finished_at_unix_ms": 1784052679218,
+            "total_token_usage": {
+              "input_tokens": 37791,
+              "cached_input_tokens": 35968,
+              "output_tokens": 669,
+              "reasoning_output_tokens": 366,
+              "total_tokens": 38460
+            },
+            "last_token_usage": {
+              "input_tokens": 37791,
+              "cached_input_tokens": 35968,
+              "output_tokens": 669,
+              "reasoning_output_tokens": 366,
+              "total_tokens": 38460
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/flatten.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "836c5c08181a1684d15f0847fc5e6b9adf71f220643cbe72d646b0dc8b6dad68"
+          },
+          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/flatten.yml`, which runs Rust feature-powerset, minimal-versions, MSRV, and embedded-target checks via `cargo hack` and toolchain setup. I found no concrete malicious or supply-chain indicators in the workflow: there are no install hooks beyond standard CI setup, no credential access, no exfiltration or network-behavior code, no dynamic code loading or obfuscation, and no persistence or environment-tampering steps.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14179,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052679219,
+            "finished_at_unix_ms": 1784052693398,
+            "total_token_usage": {
+              "input_tokens": 24800,
+              "cached_input_tokens": 21248,
+              "output_tokens": 584,
+              "reasoning_output_tokens": 352,
+              "total_tokens": 25384
+            },
+            "last_token_usage": {
+              "input_tokens": 24800,
+              "cached_input_tokens": 21248,
+              "output_tokens": 584,
+              "reasoning_output_tokens": 352,
+              "total_tokens": 25384
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_6ef804e83ddb44d8b337691bfcc5948e",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784057142",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".github/workflows/sval.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "414e9110964ad943d3db92db724b0074f564603b07d74a39957de4ffc2e59cda"
+          },
+          "summary": "Reviewed the GitHub Actions workflow for `sval` CI jobs that check multiple Rust toolchains and targets via `cargo hack`, `cargo test`, and `cargo miri`. I found no concrete indicators of install-time compromise, secret harvesting, network exfiltration, hidden downloads, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14383,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057065416,
+            "finished_at_unix_ms": 1784057079799,
+            "total_token_usage": {
+              "input_tokens": 24734,
+              "cached_input_tokens": 21248,
+              "output_tokens": 513,
+              "reasoning_output_tokens": 315,
+              "total_tokens": 25247
+            },
+            "last_token_usage": {
+              "input_tokens": 24734,
+              "cached_input_tokens": 21248,
+              "output_tokens": 513,
+              "reasoning_output_tokens": 315,
+              "total_tokens": 25247
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/test.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5e90faade6b82a2646f20651db6a50b5e4e552c87632d1c7ef748874376a6649"
+          },
+          "summary": "Reviewed `.github/workflows/test.yml`, which defines CI jobs for Rust feature-powerset testing and an MSRV check. I checked for install-time hooks, credential or secret access, network/exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the workflow itself.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19259,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057079800,
+            "finished_at_unix_ms": 1784057099059,
+            "total_token_usage": {
+              "input_tokens": 24367,
+              "cached_input_tokens": 21248,
+              "output_tokens": 522,
+              "reasoning_output_tokens": 329,
+              "total_tokens": 24889
+            },
+            "last_token_usage": {
+              "input_tokens": 24367,
+              "cached_input_tokens": 21248,
+              "output_tokens": 522,
+              "reasoning_output_tokens": 329,
+              "total_tokens": 24889
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CODE_OF_CONDUCT.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cc5e50547a0c3d9d42b1895e495b324647a40ee688463fb23964a22a8e2b4245"
+          },
+          "summary": "`CODE_OF_CONDUCT.md` is a standard Contributor Covenant policy document describing community standards, moderation responsibilities, scope, enforcement, and attribution. I checked it for install-time execution, credential access, network/exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12629,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057099059,
+            "finished_at_unix_ms": 1784057111689,
+            "total_token_usage": {
+              "input_tokens": 24672,
+              "cached_input_tokens": 21248,
+              "output_tokens": 365,
+              "reasoning_output_tokens": 171,
+              "total_tokens": 25037
+            },
+            "last_token_usage": {
+              "input_tokens": 24672,
+              "cached_input_tokens": 21248,
+              "output_tokens": 365,
+              "reasoning_output_tokens": 171,
+              "total_tokens": 25037
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f9076bbbff2ecd16065c6fefdecbb9e6b3be3829e42cca3952ab5feab225a3d6"
+          },
+          "summary": "Reviewed the generated Cargo.toml for `sval` 2.20.0. It only defines package metadata, feature flags, library/example targets, and ordinary dependencies; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10444,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057111689,
+            "finished_at_unix_ms": 1784057122134,
+            "total_token_usage": {
+              "input_tokens": 24436,
+              "cached_input_tokens": 23296,
+              "output_tokens": 358,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 24794
+            },
+            "last_token_usage": {
+              "input_tokens": 24436,
+              "cached_input_tokens": 23296,
+              "output_tokens": 358,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 24794
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "bca76941b10130efdf4685e851a6d58c2c076ef01c8653f3afe9ccb25a380345"
+          },
+          "summary": "README.md is a long-form project overview and usage guide for the `sval` Rust serialization framework, with code examples, trait explanations, and ecosystem links. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19865,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057122134,
+            "finished_at_unix_ms": 1784057142000,
+            "total_token_usage": {
+              "input_tokens": 119093,
+              "cached_input_tokens": 102656,
+              "output_tokens": 809,
+              "reasoning_output_tokens": 230,
+              "total_tokens": 119902
+            },
+            "last_token_usage": {
+              "input_tokens": 119093,
+              "cached_input_tokens": 102656,
+              "output_tokens": 809,
+              "reasoning_output_tokens": 230,
+              "total_tokens": 119902
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_7948f20775b44fae80fc77945d8ba846",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046687",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "62addc1889900da0d3c00be055a7484d7b3b3e6692dfcde89be645c386606806"
+          },
+          "summary": "This target is a small Cargo VCS metadata JSON file that records the source git SHA1 and an empty `path_in_vcs` value. I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in the file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16709,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046578545,
+            "finished_at_unix_ms": 1784046595255,
+            "total_token_usage": {
+              "input_tokens": 24137,
+              "cached_input_tokens": 21248,
+              "output_tokens": 515,
+              "reasoning_output_tokens": 334,
+              "total_tokens": 24652
+            },
+            "last_token_usage": {
+              "input_tokens": 24137,
+              "cached_input_tokens": 21248,
+              "output_tokens": 515,
+              "reasoning_output_tokens": 334,
+              "total_tokens": 24652
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/buffer.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5476e903812ec22c886bbfc093cc60fdfaedd4e4a62e869e0b4bf4948f2aa797"
+          },
+          "summary": "`.github/workflows/buffer.yml` is a GitHub Actions workflow that checks, benchmarks, builds for MSRV and embedded targets, and runs Miri against the `buffer` crate using `actions/checkout`, `rustup`, and `cargo-hack`. I reviewed it for install-time execution, credential or secret access, network exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13485,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046595256,
+            "finished_at_unix_ms": 1784046608741,
+            "total_token_usage": {
+              "input_tokens": 25163,
+              "cached_input_tokens": 23296,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 25652
+            },
+            "last_token_usage": {
+              "input_tokens": 25163,
+              "cached_input_tokens": 23296,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 25652
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/derive.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "edf75cc746f20c92ace6408f0ebdc89c442a860e39cd78080ed139006e17ff02"
+          },
+          "summary": "Reviewed the `derive` GitHub Actions workflow: it checks out the repository, installs the nightly Rust toolchain, installs `cargo-hack`, and runs the derive crate test matrix. I found one supply-chain execution risk in the unpinned `cargo install cargo-hack` step; I did not see hidden downloads, credential harvesting, exfiltration, obfuscation, or persistence in this file.",
+          "security_summary": "medium",
+          "confidence": "medium",
+          "agent_run_metrics": {
+            "duration_ms": 43642,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046608742,
+            "finished_at_unix_ms": 1784046652385,
+            "total_token_usage": {
+              "input_tokens": 37685,
+              "cached_input_tokens": 33920,
+              "output_tokens": 2603,
+              "reasoning_output_tokens": 2193,
+              "total_tokens": 40288
+            },
+            "last_token_usage": {
+              "input_tokens": 37685,
+              "cached_input_tokens": 33920,
+              "output_tokens": 2603,
+              "reasoning_output_tokens": 2193,
+              "total_tokens": 40288
+            }
+          },
+          "comment_count": 1,
+          "comments": [
+            {
+              "comment": "This step downloads and executes `cargo-hack` from crates.io at CI runtime without a version or checksum pin. Because `cargo install` builds the package before the tests run, a compromised or typosquatted release would get arbitrary code execution in the GitHub Actions runner; pinning the tool version or vendoring it would remove that supply-chain execution path.",
+              "security": "medium",
+              "complexity": "low",
+              "selection": {
+                "start": {
+                  "line": 19,
+                  "character": 7
+                },
+                "end": {
+                  "line": 20,
+                  "character": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "file_path": ".github/workflows/dynamic.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "85dc52b733a46d9b701bc97cc643030a77788f8dbda5c8f36929414a667b7a17"
+          },
+          "summary": "Reviewed this GitHub Actions workflow for the `dynamic` crate. It only performs standard checkout, Rust toolchain setup, and `cargo hack` test/check jobs, and I found no concrete signs of install-time compromise, secret harvesting, network exfiltration, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17730,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046652385,
+            "finished_at_unix_ms": 1784046670116,
+            "total_token_usage": {
+              "input_tokens": 24557,
+              "cached_input_tokens": 23296,
+              "output_tokens": 659,
+              "reasoning_output_tokens": 466,
+              "total_tokens": 25216
+            },
+            "last_token_usage": {
+              "input_tokens": 24557,
+              "cached_input_tokens": 23296,
+              "output_tokens": 659,
+              "reasoning_output_tokens": 466,
+              "total_tokens": 25216
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/flatten.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "836c5c08181a1684d15f0847fc5e6b9adf71f220643cbe72d646b0dc8b6dad68"
+          },
+          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/flatten.yml`. It only checks out the repo, installs Rust toolchains and `cargo-hack`, and runs feature-powerset builds/tests for the `flatten` crates; I found no concrete indicators of install-time hooks, secret harvesting, network exfiltration, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17099,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046670117,
+            "finished_at_unix_ms": 1784046687216,
+            "total_token_usage": {
+              "input_tokens": 24526,
+              "cached_input_tokens": 19200,
+              "output_tokens": 540,
+              "reasoning_output_tokens": 338,
+              "total_tokens": 25066
+            },
+            "last_token_usage": {
+              "input_tokens": 24526,
+              "cached_input_tokens": 19200,
+              "output_tokens": 540,
+              "reasoning_output_tokens": 338,
+              "total_tokens": 25066
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_81b60c09b4034b6791473139808aa0ff",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784055182",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".github/workflows/fmt.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8c5e0a77967a91671a94a3e20d87a75472a7095a28edccec641ec36ae787238b"
+          },
+          "summary": "Reviewed the GitHub Actions workflow at `.github/workflows/fmt.yml`, which runs Rust formatting-related matrix checks with `actions/checkout`, `rustup`, and `cargo hack` on `push` and `pull_request`. I found no concrete indicators of install-time compromise, network exfiltration, credential access, hidden dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12891,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055103408,
+            "finished_at_unix_ms": 1784055116300,
+            "total_token_usage": {
+              "input_tokens": 24394,
+              "cached_input_tokens": 21248,
+              "output_tokens": 466,
+              "reasoning_output_tokens": 259,
+              "total_tokens": 24860
+            },
+            "last_token_usage": {
+              "input_tokens": 24394,
+              "cached_input_tokens": 21248,
+              "output_tokens": 466,
+              "reasoning_output_tokens": 259,
+              "total_tokens": 24860
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/json.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c672281f5fd4176714dba1e55a0d9a72361bcdb05144e7e4dc005f182bb405b2"
+          },
+          "summary": "Reviewed the `.github/workflows/json.yml` GitHub Actions workflow, which runs Rust feature-powerset checks for the `json` crate and its tests/benches on push and pull_request. I checked for install hooks, secret harvesting, network/exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13572,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055116301,
+            "finished_at_unix_ms": 1784055129874,
+            "total_token_usage": {
+              "input_tokens": 24653,
+              "cached_input_tokens": 21248,
+              "output_tokens": 508,
+              "reasoning_output_tokens": 300,
+              "total_tokens": 25161
+            },
+            "last_token_usage": {
+              "input_tokens": 24653,
+              "cached_input_tokens": 21248,
+              "output_tokens": 508,
+              "reasoning_output_tokens": 300,
+              "total_tokens": 25161
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/nested.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1dd227e7587dd0d9b659ee8570d3a4cd7b560689593ccf563721be18a1440923"
+          },
+          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/nested.yml`, which runs Rust test, bench, MSRV, and embedded CI jobs via `cargo hack` after checking out the repo and installing toolchains. I found no concrete malicious or supply-chain indicators in this file: no hidden install hooks, no credential or secret access, no network exfiltration, no dynamic code loading, no obfuscation, and no persistence/tampering behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18019,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055129874,
+            "finished_at_unix_ms": 1784055147893,
+            "total_token_usage": {
+              "input_tokens": 24770,
+              "cached_input_tokens": 21760,
+              "output_tokens": 822,
+              "reasoning_output_tokens": 596,
+              "total_tokens": 25592
+            },
+            "last_token_usage": {
+              "input_tokens": 24770,
+              "cached_input_tokens": 21760,
+              "output_tokens": 822,
+              "reasoning_output_tokens": 596,
+              "total_tokens": 25592
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/ref.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5cfafb2deda182db2cd87406c555b9a886bd59ad917af2eae1089910d3e9398e"
+          },
+          "summary": "The target file is a GitHub Actions workflow that runs Rust CI jobs for testing, MSRV checks, and an embedded target build. I reviewed it for install-time hooks, network or credential exfiltration, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18963,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055147894,
+            "finished_at_unix_ms": 1784055166857,
+            "total_token_usage": {
+              "input_tokens": 24543,
+              "cached_input_tokens": 23296,
+              "output_tokens": 556,
+              "reasoning_output_tokens": 362,
+              "total_tokens": 25099
+            },
+            "last_token_usage": {
+              "input_tokens": 24543,
+              "cached_input_tokens": 23296,
+              "output_tokens": 556,
+              "reasoning_output_tokens": 362,
+              "total_tokens": 25099
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/serde.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9177d28075998de3e4c97464744419c079527c11929d855958ce1d9e5ed72296"
+          },
+          "summary": "This GitHub Actions workflow runs Rust CI jobs for feature-powerset testing, minimal-version testing, MSRV checks, and an embedded target build using checkout, rustup, and cargo-hack. I found no concrete indicators of install-time abuse, secret access, network exfiltration, dynamic code loading, obfuscation, or persistence in the workflow.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15868,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055166858,
+            "finished_at_unix_ms": 1784055182726,
+            "total_token_usage": {
+              "input_tokens": 24568,
+              "cached_input_tokens": 21248,
+              "output_tokens": 720,
+              "reasoning_output_tokens": 525,
+              "total_tokens": 25288
+            },
+            "last_token_usage": {
+              "input_tokens": 24568,
+              "cached_input_tokens": 21248,
+              "output_tokens": 720,
+              "reasoning_output_tokens": 525,
+              "total_tokens": 25288
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_8ee9027284ee4ded8cbe92443481335f",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784063054",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/stream.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "baafc066ccbf2fa70ef07c9b5c04a181eef301ed62803b00b5094430b67608b5"
+          },
+          "summary": "Reviewed src/stream.rs, which defines the Stream trait, its default forwarding helpers, blanket forwarding impls, and a small Computed wrapper for lifetime adaptation. I checked for install hooks, hidden subprocess execution, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24090,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063030434,
+            "finished_at_unix_ms": 1784063054524,
+            "total_token_usage": {
+              "input_tokens": 66554,
+              "cached_input_tokens": 46208,
+              "output_tokens": 1218,
+              "reasoning_output_tokens": 667,
+              "total_tokens": 67772
+            },
+            "last_token_usage": {
+              "input_tokens": 66554,
+              "cached_input_tokens": 46208,
+              "output_tokens": 1218,
+              "reasoning_output_tokens": 667,
+              "total_tokens": 67772
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -985,7 +1856,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589604",
       "thirdpass_version": "0.6.0",
@@ -1153,7 +2024,7 @@
       ]
     },
     {
-      "id": "rev_c4d1740329ee47238c5c92b46ee1550f",
+      "id": "rev_bae678d9fba24c108417fce68f6fddf3",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1161,100 +2032,137 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782849663",
+      "created_at": "1784058822",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `README.md`, which is a long project overview for the Rust serialization framework `sval` with usage examples and API documentation. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain indicators in the file.\nReviewed `src/data/seq.rs`, which implements `Value` streaming for slices, arrays, tuples, and common sequence/set collections behind `alloc`/`std` feature gates. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.\nReviewed `src/data/text.rs`, which implements `sval::Value` support for `fmt::Display`, `char`, `str`, and optionally `String`, plus a small test module. I found no concrete supply-chain or malicious indicators in this file: no install hooks, subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.\nReviewed `src/data/option.rs`, which implements `Value` handling for `Null` and `Option<T>` by emitting structured tags and forwarding primitive conversions. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential or environment access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
-          "file_path": "README.md",
+          "file_path": "asset/logo.svg",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "bca76941b10130efdf4685e851a6d58c2c076ef01c8653f3afe9ccb25a380345"
+            "value": "b79e7a6ec1f8f7332a9739bd71ff62f6f8c39b319eed28fbe3cdec3fcf125f48"
           },
-          "summary": "Reviewed `README.md`, which is a long project overview for the Rust serialization framework `sval` with usage examples and API documentation. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain indicators in the file.",
+          "summary": "Reviewed the SVG logo asset and found only static vector paths, a simple style block, and a standard SVG 1.1 DOCTYPE reference. I checked for install-time behavior, script execution, external resource loads, network/exfiltration, credential access, obfuscation, and persistence mechanisms, and found none in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19909,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058737480,
+            "finished_at_unix_ms": 1784058757390,
+            "total_token_usage": {
+              "input_tokens": 25997,
+              "cached_input_tokens": 19200,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 26404
+            },
+            "last_token_usage": {
+              "input_tokens": 25997,
+              "cached_input_tokens": 19200,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 26404
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/data/seq.rs",
+          "file_path": "examples/extract_field.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "8ea63302066a2b743e8a7df6b5d806836e78860cd2f060545e9b7a1e29023dba"
+            "value": "46f09217c24871124062ce8cfff6e8a63461dde2ec232084a735f335f4ebbfeb"
           },
-          "summary": "Reviewed `src/data/seq.rs`, which implements `Value` streaming for slices, arrays, tuples, and common sequence/set collections behind `alloc`/`std` feature gates. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.",
+          "summary": "Reviewed `examples/extract_field.rs`, a small Rust example that streams a `sval` value to extract an `i32` field by name and asserts the result in `main`. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21331,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058757391,
+            "finished_at_unix_ms": 1784058778722,
+            "total_token_usage": {
+              "input_tokens": 38326,
+              "cached_input_tokens": 33920,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 114,
+              "total_tokens": 38745
+            },
+            "last_token_usage": {
+              "input_tokens": 38326,
+              "cached_input_tokens": 33920,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 114,
+              "total_tokens": 38745
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/data/text.rs",
+          "file_path": "examples/stream/mod.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "a526bdc21dee2ac15e61692a227c9c8b5dc1993840254cc4e487ae6565404bb5"
+            "value": "1cff7c8d6bee80bb1d633dddb8bb3e5a35f0e4aa4b3721f17098af1df1734cc2"
           },
-          "summary": "Reviewed `src/data/text.rs`, which implements `sval::Value` support for `fmt::Display`, `char`, `str`, and optionally `String`, plus a small test module. I found no concrete supply-chain or malicious indicators in this file: no install hooks, subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
+          "summary": "Reviewed `examples/stream/mod.rs`, which only contains a short module declaration (`pub mod simple;`) and a comment explaining it exists to share the stream across examples. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14018,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058778723,
+            "finished_at_unix_ms": 1784058792741,
+            "total_token_usage": {
+              "input_tokens": 24073,
+              "cached_input_tokens": 21248,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 24452
+            },
+            "last_token_usage": {
+              "input_tokens": 24073,
+              "cached_input_tokens": 21248,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 24452
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/data/option.rs",
+          "file_path": "examples/stream/simple.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "a342ead4f3b165d54da50412698fa10241871f6d1392ed7e25f9624816d4f405"
+            "value": "400b7d9289143d0420cf60c60e7f49a26e2f24f2dab79da7a03f4930b700a294"
           },
-          "summary": "Reviewed `src/data/option.rs`, which implements `Value` handling for `Null` and `Option<T>` by emitting structured tags and forwarding primitive conversions. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential or environment access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `examples/stream/simple.rs`, which is a small `sval::Stream` example that formats streamed values to stdout using `print!` and `escape_debug()`. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_c886b8df60d54a98b99c077380a91e91",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782850044",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the GitHub Actions workflow in `.github/workflows/test.yml`, which runs Rust CI jobs with `actions/checkout`, `rustup`, and `cargo hack` against the `./test` workspace. I did not find concrete malicious or supply-chain indicators in this file: there are no hidden install hooks, credential harvesting, exfiltration calls, dynamic code loading, obfuscation, or persistence/tampering steps.\nReviewed this example binary, which just derives `Value` for two local structs and streams them to a local `MyStream` implementation before printing a newline. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nThe target file is a small Rust example that streams a few hardcoded values to stdout via `stream::simple::MyStream` and then prints newlines. I checked for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the GitHub Actions workflow in `.github/workflows/derive.yml`, which checks out the repo, selects the nightly Rust toolchain, installs `cargo-hack`, and runs feature-powerset test jobs in the `derive` subcrate. I did not find concrete indicators of malicious or supply-chain behavior in this file: no hidden downloads beyond the explicit tool install, no secret harvesting, no network exfiltration, no obfuscation or dynamic payload loading, and no persistence or environment tampering.\nReviewed `asset/logo.svg`, which is a static vector logo made of a simple XML/SVG header, one inline style block, and two filled path elements. I checked for install-time hooks, external/network references, script execution, credential access, hidden downloads, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": ".github/workflows/test.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5e90faade6b82a2646f20651db6a50b5e4e552c87632d1c7ef748874376a6649"
+          "agent_run_metrics": {
+            "duration_ms": 18414,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058792742,
+            "finished_at_unix_ms": 1784058811156,
+            "total_token_usage": {
+              "input_tokens": 37399,
+              "cached_input_tokens": 35456,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 37892
+            },
+            "last_token_usage": {
+              "input_tokens": 37399,
+              "cached_input_tokens": 35456,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 37892
+            }
           },
-          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/test.yml`, which runs Rust CI jobs with `actions/checkout`, `rustup`, and `cargo hack` against the `./test` workspace. I did not find concrete malicious or supply-chain indicators in this file: there are no hidden install hooks, credential harvesting, exfiltration calls, dynamic code loading, obfuscation, or persistence/tampering steps.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/value_derive.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "75281529cd091e48cf7a68cb1f3e2bc01bae9be15a17875874842691579ddb2e"
-          },
-          "summary": "Reviewed this example binary, which just derives `Value` for two local structs and streams them to a local `MyStream` implementation before printing a newline. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -1264,93 +2172,29 @@
             "algorithm": "blake3",
             "value": "5b962b63bbd6a8a0c6d2d4b3e253d3741eb6d7bd20e20fe385dc3618752b7d54"
           },
-          "summary": "The target file is a small Rust example that streams a few hardcoded values to stdout via `stream::simple::MyStream` and then prints newlines. I checked for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "`examples/stream_simple.rs` is a small example program that streams a few sample values through `stream::simple::MyStream` and prints separators to stdout. I reviewed it for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".github/workflows/derive.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "edf75cc746f20c92ace6408f0ebdc89c442a860e39cd78080ed139006e17ff02"
+          "agent_run_metrics": {
+            "duration_ms": 11688,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058811157,
+            "finished_at_unix_ms": 1784058822846,
+            "total_token_usage": {
+              "input_tokens": 24238,
+              "cached_input_tokens": 21248,
+              "output_tokens": 417,
+              "reasoning_output_tokens": 211,
+              "total_tokens": 24655
+            },
+            "last_token_usage": {
+              "input_tokens": 24238,
+              "cached_input_tokens": 21248,
+              "output_tokens": 417,
+              "reasoning_output_tokens": 211,
+              "total_tokens": 24655
+            }
           },
-          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/derive.yml`, which checks out the repo, selects the nightly Rust toolchain, installs `cargo-hack`, and runs feature-powerset test jobs in the `derive` subcrate. I did not find concrete indicators of malicious or supply-chain behavior in this file: no hidden downloads beyond the explicit tool install, no secret harvesting, no network exfiltration, no obfuscation or dynamic payload loading, and no persistence or environment tampering.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "asset/logo.svg",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b79e7a6ec1f8f7332a9739bd71ff62f6f8c39b319eed28fbe3cdec3fcf125f48"
-          },
-          "summary": "Reviewed `asset/logo.svg`, which is a static vector logo made of a simple XML/SVG header, one inline style block, and two filled path elements. I checked for install-time hooks, external/network references, script execution, credential access, hidden downloads, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_f37688d90c2741b79bdf74a08b9297a2",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782849593",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/data.rs`, which defines the crate’s `Label`, `Tag`, and `Index` data types plus their trait impls and tests. I checked this file for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload behavior; none were present.",
-      "files": [
-        {
-          "file_path": "src/data.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0096d93130f7fec6e3e7cbc6e326bc3ba9c95338179b2188707c8eb1f3b11b1e"
-          },
-          "summary": "Reviewed `src/data.rs`, which defines the crate’s `Label`, `Tag`, and `Index` data types plus their trait impls and tests. I checked this file for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload behavior; none were present.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_fcdf4c98f5b44758980dc09de993e1d6",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782849568",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "I reviewed `src/value.rs`, which defines the `Value` trait, its default conversion helpers, and macro-based forwarding impls for references and `Box<T>`. I checked for install-time hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/value.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "389fb8cc189225b8034dc05ccb00f313ba159be79b0f341fc406a697a475fff9"
-          },
-          "summary": "I reviewed `src/value.rs`, which defines the `Value` trait, its default conversion helpers, and macro-based forwarding impls for references and `Box<T>`. I checked for install-time hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

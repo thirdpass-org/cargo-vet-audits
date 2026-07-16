@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590414",
+  "latest_reviewed_at": "1784056299",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -161,50 +167,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 7,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 2,
-      "file_record_count_with_metrics": 2
+      "review_count": 3,
+      "file_record_count": 9,
+      "file_record_count_with_metrics": 9
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 9,
-    "file_records_with_metrics": 2,
-    "file_records_without_metrics": 7,
-    "duration_ms_total": 33788,
-    "attempts_total": 2,
+    "file_records_with_metrics": 9,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 140714,
+    "attempts_total": 9,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 2,
-    "last_token_usage_records": 2,
+    "total_token_usage_records": 9,
+    "last_token_usage_records": 9,
     "total_token_usage": {
-      "input_tokens": 41712,
-      "cached_input_tokens": 35328,
-      "output_tokens": 728,
-      "reasoning_output_tokens": 355,
-      "total_tokens": 42440
+      "input_tokens": 286375,
+      "cached_input_tokens": 240896,
+      "output_tokens": 4324,
+      "reasoning_output_tokens": 2208,
+      "total_tokens": 290699
     },
     "last_token_usage": {
-      "input_tokens": 41712,
-      "cached_input_tokens": 35328,
-      "output_tokens": 728,
-      "reasoning_output_tokens": 355,
-      "total_tokens": 42440
+      "input_tokens": 286375,
+      "cached_input_tokens": 240896,
+      "output_tokens": 4324,
+      "reasoning_output_tokens": 2208,
+      "total_tokens": 290699
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_4bf9b0e191a94d009188c51b4791d6e3",
+      "id": "rev_abe3567ebf594c12ab09038185823011",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -212,54 +210,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783193158",
+      "created_at": "1784056299",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `.cargo_vcs_info.json`, which only records the upstream git SHA1 and path in VCS for the crate source. I found no concrete supply-chain indicators in this file: it contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed this file as a documentation/example page for `bytecheck` demonstrating `CheckBytes` validation on simple Rust types and byte arrays. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in the target file.",
-      "files": [
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1a291c00756e06bebcebd04a314aa866bf8756ffb32d6213dfba0f3684784f87"
-          },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the upstream git SHA1 and path in VCS for the crate source. I found no concrete supply-chain indicators in this file: it contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "crates-io.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f5edd77380c4a039cdd4add734d8926b54cdabb304a8d5a3dae5f1a9272566e4"
-          },
-          "summary": "Reviewed this file as a documentation/example page for `bytecheck` demonstrating `CheckBytes` validation on simple Rust types and byte arrays. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_990da745de914c5f8ea1a8c4c9e7ee8e",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783193129",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is the crate’s main Rust source implementing `CheckBytes` validation for primitives, tuples, arrays, strings, ranges, nonzero types, and related error types. I found no concrete indicators of malicious or supply-chain behavior in this file: no install hooks, subprocess or network activity, credential/secret access, dynamic code loading, obfuscation, or persistence logic.\nReviewed the Cargo manifest for `bytecheck` 0.6.12. It only declares package metadata, normal dependency versions, and feature flags; I found no install hooks, build scripts, remote sources, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\n`build.rs` is a small Cargo build script that reads the `TARGET` environment variable, derives atomic feature flags from the target triple, and emits `cargo:rustc-cfg` directives. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed src/uuid.rs, which only implements byte validation for uuid::Uuid by delegating to the underlying uuid::Bytes checker and includes a unit test. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior in this target file and found no concrete malicious or supply-chain indicators.\nReviewed the README for `bytecheck`, which documents the crate as a Rust type-validation framework and shows ordinary usage examples. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators in this file, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/lib.rs",
@@ -267,33 +222,29 @@
             "algorithm": "blake3",
             "value": "066a4e0fdfefea752337cf6b28d3b993a857b787d38746874a62a6f8214e2700"
           },
-          "summary": "Reviewed `src/lib.rs`, which is the crate’s main Rust source implementing `CheckBytes` validation for primitives, tuples, arrays, strings, ranges, nonzero types, and related error types. I found no concrete indicators of malicious or supply-chain behavior in this file: no install hooks, subprocess or network activity, credential/secret access, dynamic code loading, obfuscation, or persistence logic.",
+          "summary": "Reviewed `src/lib.rs`, which implements the crate's `CheckBytes` validation trait and error types for primitives, tuples, arrays, strings, ranges, and nonzero integers. I checked this file for install-time hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c61311e142f2dc1dfe45cb50a8e509e52593ca95b1e0499456c5359718deecdf"
+          "agent_run_metrics": {
+            "duration_ms": 20750,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056261125,
+            "finished_at_unix_ms": 1784056281876,
+            "total_token_usage": {
+              "input_tokens": 83069,
+              "cached_input_tokens": 71552,
+              "output_tokens": 904,
+              "reasoning_output_tokens": 383,
+              "total_tokens": 83973
+            },
+            "last_token_usage": {
+              "input_tokens": 83069,
+              "cached_input_tokens": 71552,
+              "output_tokens": 904,
+              "reasoning_output_tokens": 383,
+              "total_tokens": 83973
+            }
           },
-          "summary": "Reviewed the Cargo manifest for `bytecheck` 0.6.12. It only declares package metadata, normal dependency versions, and feature flags; I found no install hooks, build scripts, remote sources, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "build.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7b05d9262670dffd8ac1d0091ce753f6a9000a5a2fdc15a971ce7edca90448f0"
-          },
-          "summary": "`build.rs` is a small Cargo build script that reads the `TARGET` environment variable, derives atomic feature flags from the target triple, and emits `cargo:rustc-cfg` directives. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -303,21 +254,29 @@
             "algorithm": "blake3",
             "value": "58d841116a96dc617604daa0235660b94dfe6e3639ebb2e3cf3c2c820c9ced8d"
           },
-          "summary": "Reviewed src/uuid.rs, which only implements byte validation for uuid::Uuid by delegating to the underlying uuid::Bytes checker and includes a unit test. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior in this target file and found no concrete malicious or supply-chain indicators.",
+          "summary": "`src/uuid.rs` contains a small `CheckBytes` implementation for `uuid::Uuid` that forwards validation to `uuid::Bytes` and includes a unit test. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9fce6655753dd44daded8984d58915bfd32740697a58bf4997c7cca0530a7364"
+          "agent_run_metrics": {
+            "duration_ms": 18022,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056281876,
+            "finished_at_unix_ms": 1784056299898,
+            "total_token_usage": {
+              "input_tokens": 24333,
+              "cached_input_tokens": 21248,
+              "output_tokens": 479,
+              "reasoning_output_tokens": 277,
+              "total_tokens": 24812
+            },
+            "last_token_usage": {
+              "input_tokens": 24333,
+              "cached_input_tokens": 21248,
+              "output_tokens": 479,
+              "reasoning_output_tokens": 277,
+              "total_tokens": 24812
+            }
           },
-          "summary": "Reviewed the README for `bytecheck`, which documents the crate as a Rust type-validation framework and shows ordinary usage examples. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators in this file, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
@@ -333,7 +292,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590414",
       "thirdpass_version": "0.6.0",
@@ -397,6 +356,183 @@
               "output_tokens": 308,
               "reasoning_output_tokens": 132,
               "total_tokens": 21111
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_f9b286e4e606495c837621a6895cf779",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054132",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1a291c00756e06bebcebd04a314aa866bf8756ffb32d6213dfba0f3684784f87"
+          },
+          "summary": "Reviewed .cargo_vcs_info.json, which only records VCS provenance metadata (`git.sha1` and `path_in_vcs`) for the crate. I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12612,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054064183,
+            "finished_at_unix_ms": 1784054076795,
+            "total_token_usage": {
+              "input_tokens": 24141,
+              "cached_input_tokens": 21248,
+              "output_tokens": 486,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 24627
+            },
+            "last_token_usage": {
+              "input_tokens": 24141,
+              "cached_input_tokens": 21248,
+              "output_tokens": 486,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 24627
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c61311e142f2dc1dfe45cb50a8e509e52593ca95b1e0499456c5359718deecdf"
+          },
+          "summary": "Reviewed the published Cargo.toml for bytecheck 0.6.12, which only declares package metadata, dependency versions, and feature flags. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14140,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054076796,
+            "finished_at_unix_ms": 1784054090936,
+            "total_token_usage": {
+              "input_tokens": 24427,
+              "cached_input_tokens": 21248,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 232,
+              "total_tokens": 24849
+            },
+            "last_token_usage": {
+              "input_tokens": 24427,
+              "cached_input_tokens": 21248,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 232,
+              "total_tokens": 24849
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9fce6655753dd44daded8984d58915bfd32740697a58bf4997c7cca0530a7364"
+          },
+          "summary": "Reviewed the README for the bytecheck crate, which describes the library and shows a Rust usage example. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12336,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054090937,
+            "finished_at_unix_ms": 1784054103273,
+            "total_token_usage": {
+              "input_tokens": 25097,
+              "cached_input_tokens": 13056,
+              "output_tokens": 420,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 25517
+            },
+            "last_token_usage": {
+              "input_tokens": 25097,
+              "cached_input_tokens": 13056,
+              "output_tokens": 420,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 25517
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "build.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7b05d9262670dffd8ac1d0091ce753f6a9000a5a2fdc15a971ce7edca90448f0"
+          },
+          "summary": "Reviewed `build.rs`, which only inspects the `TARGET` environment variable to emit `cargo:rustc-cfg` flags for atomic-support feature gating across architectures. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16294,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054103274,
+            "finished_at_unix_ms": 1784054119568,
+            "total_token_usage": {
+              "input_tokens": 24474,
+              "cached_input_tokens": 21248,
+              "output_tokens": 402,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 24876
+            },
+            "last_token_usage": {
+              "input_tokens": 24474,
+              "cached_input_tokens": 21248,
+              "output_tokens": 402,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 24876
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "crates-io.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f5edd77380c4a039cdd4add734d8926b54cdabb304a8d5a3dae5f1a9272566e4"
+          },
+          "summary": "Reviewed this documentation file and its embedded Rust example, which demonstrates `bytecheck::CheckBytes` validating byte slices for a struct containing `u32`, `char`, and `bool` fields. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12772,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054119569,
+            "finished_at_unix_ms": 1784054132341,
+            "total_token_usage": {
+              "input_tokens": 39122,
+              "cached_input_tokens": 35968,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 184,
+              "total_tokens": 39605
+            },
+            "last_token_usage": {
+              "input_tokens": 39122,
+              "cached_input_tokens": 35968,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 184,
+              "total_tokens": 39605
             }
           },
           "comment_count": 0,

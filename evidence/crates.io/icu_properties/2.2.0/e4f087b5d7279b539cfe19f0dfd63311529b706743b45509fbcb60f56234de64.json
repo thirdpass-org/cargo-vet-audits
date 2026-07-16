@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589725",
+  "latest_reviewed_at": "1784061216",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -271,50 +277,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 6,
-      "file_record_count": 16,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 9,
+      "file_record_count": 24,
+      "file_record_count_with_metrics": 24
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 19,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 16,
-    "duration_ms_total": 39054,
-    "attempts_total": 3,
+    "reviewed_file_records": 24,
+    "file_records_with_metrics": 24,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 446326,
+    "attempts_total": 24,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 24,
+    "last_token_usage_records": 24,
     "total_token_usage": {
-      "input_tokens": 78727,
-      "cached_input_tokens": 57984,
-      "output_tokens": 1291,
-      "reasoning_output_tokens": 632,
-      "total_tokens": 80018
+      "input_tokens": 1123325,
+      "cached_input_tokens": 937856,
+      "output_tokens": 15095,
+      "reasoning_output_tokens": 7029,
+      "total_tokens": 1138420
     },
     "last_token_usage": {
-      "input_tokens": 78727,
-      "cached_input_tokens": 57984,
-      "output_tokens": 1291,
-      "reasoning_output_tokens": 632,
-      "total_tokens": 80018
+      "input_tokens": 1123325,
+      "cached_input_tokens": 937856,
+      "output_tokens": 15095,
+      "reasoning_output_tokens": 7029,
+      "total_tokens": 1138420
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_5cc5a1aa9ad24d23b7be7c595d566e76",
+      "id": "rev_1a9e7edda9e14c18a5290977ccd3dc75",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -322,34 +320,154 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782839079",
+      "created_at": "1784059966",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/code_point_set.rs` is a Rust module that defines Unicode code point set wrappers and the `BinaryProperty` trait for ICU property data access, with constructors, containment checks, and range iteration over provider-backed sets. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution and found no concrete malicious or supply-chain indicators.\n`src/code_point_map.rs` is a normal ICU4X Unicode property wrapper around code point trie/map data, with constructors, borrowed accessors, range iterators, and conversion helpers. I checked the file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/decoding, and persistence/tampering, and found no concrete malicious or supply-chain indicators.\nI reviewed the manifest in `Cargo.toml` for install-time hooks, build script activation, hidden execution paths, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence. The file appears to be a standard autogenerated Rust crate manifest with feature flags and dependency declarations only, and I found no concrete malicious or supply-chain indicators in this target file.\nReviewed `src/harfbuzz.rs`, which is a small feature-gated adapter layer that maps ICU4X script, general category, and mirroring data into `harfbuzz_traits` interfaces. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\n`src/emoji.rs` is a normal ICU4X Rust wrapper around emoji/UnicodeSet data, with constructors, borrowed/owned conversions, and membership query helpers. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/code_point_set.rs",
+          "file_path": "src/provider/names.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "45222ba76f3aa284d4c6516e9eaff331af94cbaa69b7bdff9284b7a4a16b3ff9"
+            "value": "7c84494f506ac46febc1b2d1eb24991291eb2fddc358823ae520e81f19889682"
           },
-          "summary": "`src/code_point_set.rs` is a Rust module that defines Unicode code point set wrappers and the `BinaryProperty` trait for ICU property data access, with constructors, containment checks, and range iteration over provider-backed sets. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/provider/names.rs`, which defines ICU4X provider data markers and serialized map structs for Unicode property-name lookup tables. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network or exfiltration logic, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17421,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059908343,
+            "finished_at_unix_ms": 1784059925765,
+            "total_token_usage": {
+              "input_tokens": 41912,
+              "cached_input_tokens": 34944,
+              "output_tokens": 513,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 42425
+            },
+            "last_token_usage": {
+              "input_tokens": 41912,
+              "cached_input_tokens": 34944,
+              "output_tokens": 513,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 42425
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/code_point_map.rs",
+          "file_path": "src/runtime.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "9adc1a87a7051046d0c33c0794f8dd108a9f55aec9cc20ef1fff3c2ffaa7e6b6"
+            "value": "6f79eb37863fefe32844394ecae724a1b24a2bc6cd1cf9f9514046d045275de5"
           },
-          "summary": "`src/code_point_map.rs` is a normal ICU4X Unicode property wrapper around code point trie/map data, with constructors, borrowed accessors, range iterators, and conversion helpers. I checked the file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/decoding, and persistence/tampering, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed src/runtime.rs, which is a crate-private runtime lookup layer that maps ECMA-262 and Unicode property names to ICU4X property constructors for binary, string, enumerated, mask, and numeric properties. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18038,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059925765,
+            "finished_at_unix_ms": 1784059943804,
+            "total_token_usage": {
+              "input_tokens": 67202,
+              "cached_input_tokens": 55808,
+              "output_tokens": 717,
+              "reasoning_output_tokens": 307,
+              "total_tokens": 67919
+            },
+            "last_token_usage": {
+              "input_tokens": 67202,
+              "cached_input_tokens": 55808,
+              "output_tokens": 717,
+              "reasoning_output_tokens": 307,
+              "total_tokens": 67919
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/script.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8b28aa4b11ce2f29260285bc993be9a0e239f91f45dee1801e02d1abc4ca905c"
+          },
+          "summary": "Reviewed src/script.rs, which implements Script and Script_Extensions lookup wrappers and iterators over baked Unicode property data. I found no install-time hooks, subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22286,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059943805,
+            "finished_at_unix_ms": 1784059966092,
+            "total_token_usage": {
+              "input_tokens": 63563,
+              "cached_input_tokens": 52736,
+              "output_tokens": 713,
+              "reasoning_output_tokens": 342,
+              "total_tokens": 64276
+            },
+            "last_token_usage": {
+              "input_tokens": 63563,
+              "cached_input_tokens": 52736,
+              "output_tokens": 713,
+              "reasoning_output_tokens": 342,
+              "total_tokens": 64276
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_32a5d44a4be84713bc7f5aa546d90c78",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052240",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9e14a5f2ff6b0e8e4da98ec1b8c76907883f8861bdb969fe3c2fe4a588acd579"
+          },
+          "summary": "Reviewed .cargo_vcs_info.json, which only records Cargo VCS provenance metadata (a git SHA and the path_in_vcs). I found no indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12621,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052156674,
+            "finished_at_unix_ms": 1784052169296,
+            "total_token_usage": {
+              "input_tokens": 24170,
+              "cached_input_tokens": 21248,
+              "output_tokens": 444,
+              "reasoning_output_tokens": 256,
+              "total_tokens": 24614
+            },
+            "last_token_usage": {
+              "input_tokens": 24170,
+              "cached_input_tokens": 21248,
+              "output_tokens": 444,
+              "reasoning_output_tokens": 256,
+              "total_tokens": 24614
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -359,75 +477,29 @@
             "algorithm": "blake3",
             "value": "74226f2089f3ed37b1b64e74df59baf194c1e07cebf7293f5285b202d3ec1d71"
           },
-          "summary": "I reviewed the manifest in `Cargo.toml` for install-time hooks, build script activation, hidden execution paths, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence. The file appears to be a standard autogenerated Rust crate manifest with feature flags and dependency declarations only, and I found no concrete malicious or supply-chain indicators in this target file.",
+          "summary": "Reviewed the normalized Cargo manifest for icu_properties 2.2.0. It defines package metadata, feature flags, dependencies, and lint settings only; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/harfbuzz.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1b8a48744a57f78c61390d4dca13debfedc672016798dd0c405e9180e8595a2e"
+          "agent_run_metrics": {
+            "duration_ms": 11878,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052169297,
+            "finished_at_unix_ms": 1784052181175,
+            "total_token_usage": {
+              "input_tokens": 25293,
+              "cached_input_tokens": 21248,
+              "output_tokens": 475,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 25768
+            },
+            "last_token_usage": {
+              "input_tokens": 25293,
+              "cached_input_tokens": 21248,
+              "output_tokens": 475,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 25768
+            }
           },
-          "summary": "Reviewed `src/harfbuzz.rs`, which is a small feature-gated adapter layer that maps ICU4X script, general category, and mirroring data into `harfbuzz_traits` interfaces. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/emoji.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "81f0f5b0ec17f7a90628344074df9168aa9358217d6fde2ebdf024a77da0d5d7"
-          },
-          "summary": "`src/emoji.rs` is a normal ICU4X Rust wrapper around emoji/UnicodeSet data, with constructors, borrowed/owned conversions, and membership query helpers. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_7ca7565ea15e4f28bc890b62476ff09a",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782839139",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/bidi.rs` contains ICU4X bidi property definitions and feature-gated adapters for `unicode_bidi`, plus compact `AsULE` packing/unpacking for the property enum. I checked it for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.\nReviewed src/lib.rs, which is a crate root for ICU4X `icu_properties` that only declares modules, re-exports types, and gates `alloc`/`harfbuzz_traits` features. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `README.md`, which documents the `icu_properties` crate APIs and usage examples for Unicode property access. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.\nReviewed `.cargo_vcs_info.json`, which only records the package's VCS commit SHA and source path mapping. I found no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-      "files": [
-        {
-          "file_path": "src/bidi.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "da2146c9ae620ddbd68157d9bb927111bc79f2d55fd00dbdfc805ff6dee8c362"
-          },
-          "summary": "`src/bidi.rs` contains ICU4X bidi property definitions and feature-gated adapters for `unicode_bidi`, plus compact `AsULE` packing/unpacking for the property enum. I checked it for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c4bf1d834298ab71fdef5d9329fbd3e3b1aee0ed283a5d1f6644fc187f62ad02"
-          },
-          "summary": "Reviewed src/lib.rs, which is a crate root for ICU4X `icu_properties` that only declares modules, re-exports types, and gates `alloc`/`harfbuzz_traits` features. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -437,21 +509,336 @@
             "algorithm": "blake3",
             "value": "694fb2ab7122d11e2b5659415eefde9210dac45d648ed6c4ebc7f75b2e74e884"
           },
-          "summary": "Reviewed `README.md`, which documents the `icu_properties` crate APIs and usage examples for Unicode property access. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
+          "summary": "Reviewed README.md, which is standard ICU4X crate documentation describing Unicode property APIs and usage examples. I found no concrete malicious or supply-chain indicators in this file, and it contains no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14968,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052181176,
+            "finished_at_unix_ms": 1784052196145,
+            "total_token_usage": {
+              "input_tokens": 24606,
+              "cached_input_tokens": 21248,
+              "output_tokens": 375,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 24981
+            },
+            "last_token_usage": {
+              "input_tokens": 24606,
+              "cached_input_tokens": 21248,
+              "output_tokens": 375,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 24981
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/bidi.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "9e14a5f2ff6b0e8e4da98ec1b8c76907883f8861bdb969fe3c2fe4a588acd579"
+            "value": "da2146c9ae620ddbd68157d9bb927111bc79f2d55fd00dbdfc805ff6dee8c362"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package's VCS commit SHA and source path mapping. I found no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "summary": "Reviewed src/bidi.rs, which defines ICU bidi property types, bitpacking/ULE conversion, and optional unicode_bidi enum mappings. I checked for install-time hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13338,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052196146,
+            "finished_at_unix_ms": 1784052209484,
+            "total_token_usage": {
+              "input_tokens": 27110,
+              "cached_input_tokens": 23296,
+              "output_tokens": 511,
+              "reasoning_output_tokens": 315,
+              "total_tokens": 27621
+            },
+            "last_token_usage": {
+              "input_tokens": 27110,
+              "cached_input_tokens": 23296,
+              "output_tokens": 511,
+              "reasoning_output_tokens": 315,
+              "total_tokens": 27621
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/code_point_map.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9adc1a87a7051046d0c33c0794f8dd108a9f55aec9cc20ef1fff3c2ffaa7e6b6"
+          },
+          "summary": "Reviewed src/code_point_map.rs, which defines ICU4X code-point map wrappers and the EnumeratedProperty trait for loading and querying Unicode property data. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence; no concrete malicious or supply-chain indicators were found.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 30751,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052209485,
+            "finished_at_unix_ms": 1784052240236,
+            "total_token_usage": {
+              "input_tokens": 84447,
+              "cached_input_tokens": 71040,
+              "output_tokens": 885,
+              "reasoning_output_tokens": 393,
+              "total_tokens": 85332
+            },
+            "last_token_usage": {
+              "input_tokens": 84447,
+              "cached_input_tokens": 71040,
+              "output_tokens": 885,
+              "reasoning_output_tokens": 393,
+              "total_tokens": 85332
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_401ad415c3e14056ac3d24c16e745a9e",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056861",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/names.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c5b469ec8c3fe346174095b31120e2a0df8c18329915c4483d34a507b1f060e7"
+          },
+          "summary": "Reviewed `src/names.rs`, which implements ICU property name/value lookup helpers, borrowed/owned wrappers, and compile-time macro wiring for generated property tables. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 27115,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056834662,
+            "finished_at_unix_ms": 1784056861777,
+            "total_token_usage": {
+              "input_tokens": 169178,
+              "cached_input_tokens": 147456,
+              "output_tokens": 1069,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 170247
+            },
+            "last_token_usage": {
+              "input_tokens": 169178,
+              "cached_input_tokens": 147456,
+              "output_tokens": 1069,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 170247
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_75a6fce59b044dbca0e3a87fec6099dc",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054862",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/code_point_set.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "45222ba76f3aa284d4c6516e9eaff331af94cbaa69b7bdff9284b7a4a16b3ff9"
+          },
+          "summary": "Reviewed `src/code_point_set.rs`, which defines the `CodePointSetData` and `CodePointSetDataBorrowed` wrappers plus unit tests for Unicode property set lookup and range iteration. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15956,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054807213,
+            "finished_at_unix_ms": 1784054823169,
+            "total_token_usage": {
+              "input_tokens": 42338,
+              "cached_input_tokens": 35456,
+              "output_tokens": 475,
+              "reasoning_output_tokens": 179,
+              "total_tokens": 42813
+            },
+            "last_token_usage": {
+              "input_tokens": 42338,
+              "cached_input_tokens": 35456,
+              "output_tokens": 475,
+              "reasoning_output_tokens": 179,
+              "total_tokens": 42813
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/emoji.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "81f0f5b0ec17f7a90628344074df9168aa9358217d6fde2ebdf024a77da0d5d7"
+          },
+          "summary": "Reviewed src/emoji.rs, which is a Rust wrapper around ICU emoji set data with constructors, borrowed/owned conversion helpers, and membership checks. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11833,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054823170,
+            "finished_at_unix_ms": 1784054835003,
+            "total_token_usage": {
+              "input_tokens": 25966,
+              "cached_input_tokens": 21248,
+              "output_tokens": 425,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 26391
+            },
+            "last_token_usage": {
+              "input_tokens": 25966,
+              "cached_input_tokens": 21248,
+              "output_tokens": 425,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 26391
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/harfbuzz.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1b8a48744a57f78c61390d4dca13debfedc672016798dd0c405e9180e8595a2e"
+          },
+          "summary": "Reviewed `src/harfbuzz.rs`, which is straightforward ICU4X-to-`harfbuzz_traits` adapter code implementing script, general category, and mirroring lookups plus data constructors. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12672,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054835004,
+            "finished_at_unix_ms": 1784054847676,
+            "total_token_usage": {
+              "input_tokens": 25856,
+              "cached_input_tokens": 21248,
+              "output_tokens": 504,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 26360
+            },
+            "last_token_usage": {
+              "input_tokens": 25856,
+              "cached_input_tokens": 21248,
+              "output_tokens": 504,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 26360
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c4bf1d834298ab71fdef5d9329fbd3e3b1aee0ed283a5d1f6644fc187f62ad02"
+          },
+          "summary": "src/lib.rs is the crate root for `icu_properties`, with `no_std` gating, public module re-exports, and crate-level documentation. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15146,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054847678,
+            "finished_at_unix_ms": 1784054862824,
+            "total_token_usage": {
+              "input_tokens": 26975,
+              "cached_input_tokens": 19200,
+              "output_tokens": 698,
+              "reasoning_output_tokens": 405,
+              "total_tokens": 27673
+            },
+            "last_token_usage": {
+              "input_tokens": 26975,
+              "cached_input_tokens": 19200,
+              "output_tokens": 698,
+              "reasoning_output_tokens": 405,
+              "total_tokens": 27673
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_7f8a27894ee2403295bc3e8f0a345293",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784061216",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/trievalue.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "672d0719ea9bf88e1453df803db481351b32b1f498a0fc3cff7e06622550b4b5"
+          },
+          "summary": "`src/trievalue.rs` is a set of `TrieValue` and `AsULE` conversions for ICU property types, including packed encodings for `GeneralCategoryGroup` and `BidiMirroringGlyph`. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17582,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061198737,
+            "finished_at_unix_ms": 1784061216320,
+            "total_token_usage": {
+              "input_tokens": 41193,
+              "cached_input_tokens": 33408,
+              "output_tokens": 618,
+              "reasoning_output_tokens": 313,
+              "total_tokens": 41811
+            },
+            "last_token_usage": {
+              "input_tokens": 41193,
+              "cached_input_tokens": 33408,
+              "output_tokens": 618,
+              "reasoning_output_tokens": 313,
+              "total_tokens": 41811
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -467,7 +854,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589725",
       "thirdpass_version": "0.6.0",
@@ -571,7 +958,7 @@
       ]
     },
     {
-      "id": "rev_88d3c927022e404c8c6bb5a38b6d97c3",
+      "id": "rev_92f89ba2159d4930a98c7ee19c5217eb",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -579,12 +966,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782838844",
+      "created_at": "1784058550",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/props.rs` is a Rust source module that defines ICU4X Unicode property newtypes, enums, constant tables, conversion helpers, and unit tests for property-name completeness. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/props.rs",
@@ -592,16 +978,36 @@
             "algorithm": "blake3",
             "value": "7aa2fb46abdab463e7a1f6a1ccd86be0efeb4aa1dfa32401dff550b5e0ea574b"
           },
-          "summary": "`src/props.rs` is a Rust source module that defines ICU4X Unicode property newtypes, enums, constant tables, conversion helpers, and unit tests for property-name completeness. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/props.rs`, which is a large ICU4X property-definition module containing enum/newtype declarations, constant tables, macro helpers, and test-only completeness checks. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential/secret access, dynamic code loading, obfuscation/packing, or persistence/tampering behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 37082,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058513194,
+            "finished_at_unix_ms": 1784058550277,
+            "total_token_usage": {
+              "input_tokens": 137914,
+              "cached_input_tokens": 121984,
+              "output_tokens": 1508,
+              "reasoning_output_tokens": 476,
+              "total_tokens": 139422
+            },
+            "last_token_usage": {
+              "input_tokens": 137914,
+              "cached_input_tokens": 121984,
+              "output_tokens": 1508,
+              "reasoning_output_tokens": 476,
+              "total_tokens": 139422
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_8d85bfeb65e348c9992ae1be8956feaf",
+      "id": "rev_a84a00ace3d44acda1ecd10517e48b02",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -609,41 +1015,176 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782838931",
+      "created_at": "1784046224",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/names.rs`, which is a Rust lookup layer for ICU property parsing and value-to-name mappings backed by provider data and compile-time singletons. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential or secret access, dynamic code loading, obfuscation/deobfuscation, or persistence/environment-tampering behavior.\nReviewed `src/runtime.rs`, which is a Unicode property dispatch module for ICU4X: it defines property enums and maps ECMA-262 property names to typed data constructors. I found no concrete malicious or supply-chain indicators in this file; the checked areas did not show install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
       "files": [
         {
-          "file_path": "src/names.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "c5b469ec8c3fe346174095b31120e2a0df8c18329915c4483d34a507b1f060e7"
+            "value": "9e14a5f2ff6b0e8e4da98ec1b8c76907883f8861bdb969fe3c2fe4a588acd579"
           },
-          "summary": "Reviewed `src/names.rs`, which is a Rust lookup layer for ICU property parsing and value-to-name mappings backed by provider data and compile-time singletons. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential or secret access, dynamic code loading, obfuscation/deobfuscation, or persistence/environment-tampering behavior.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the crate's VCS commit SHA and original path in the upstream repository. No concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence were present in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12342,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046147851,
+            "finished_at_unix_ms": 1784046160193,
+            "total_token_usage": {
+              "input_tokens": 24125,
+              "cached_input_tokens": 21248,
+              "output_tokens": 391,
+              "reasoning_output_tokens": 206,
+              "total_tokens": 24516
+            },
+            "last_token_usage": {
+              "input_tokens": 24125,
+              "cached_input_tokens": 21248,
+              "output_tokens": 391,
+              "reasoning_output_tokens": 206,
+              "total_tokens": 24516
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/runtime.rs",
+          "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "6f79eb37863fefe32844394ecae724a1b24a2bc6cd1cf9f9514046d045275de5"
+            "value": "74226f2089f3ed37b1b64e74df59baf194c1e07cebf7293f5285b202d3ec1d71"
           },
-          "summary": "Reviewed `src/runtime.rs`, which is a Unicode property dispatch module for ICU4X: it defines property enums and maps ECMA-262 property names to typed data constructors. I found no concrete malicious or supply-chain indicators in this file; the checked areas did not show install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "summary": "Reviewed the generated Cargo.toml for install-time hooks, build scripts, dependency-driven code execution, network or credential access, obfuscation, and persistence tampering. The manifest is a standard ICU4X package declaration with ordinary feature flags and dependencies, and I found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18710,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046160194,
+            "finished_at_unix_ms": 1784046178904,
+            "total_token_usage": {
+              "input_tokens": 25339,
+              "cached_input_tokens": 21248,
+              "output_tokens": 702,
+              "reasoning_output_tokens": 517,
+              "total_tokens": 26041
+            },
+            "last_token_usage": {
+              "input_tokens": 25339,
+              "cached_input_tokens": 21248,
+              "output_tokens": 702,
+              "reasoning_output_tokens": 517,
+              "total_tokens": 26041
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "694fb2ab7122d11e2b5659415eefde9210dac45d648ed6c4ebc7f75b2e74e884"
+          },
+          "summary": "Reviewed the README for `icu_properties` and found only documentation describing Unicode property APIs, example Rust snippets, and a Harfbuzz feature note. It does not contain install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12921,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046178905,
+            "finished_at_unix_ms": 1784046191826,
+            "total_token_usage": {
+              "input_tokens": 24917,
+              "cached_input_tokens": 23296,
+              "output_tokens": 394,
+              "reasoning_output_tokens": 204,
+              "total_tokens": 25311
+            },
+            "last_token_usage": {
+              "input_tokens": 24917,
+              "cached_input_tokens": 23296,
+              "output_tokens": 394,
+              "reasoning_output_tokens": 204,
+              "total_tokens": 25311
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/bidi.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "da2146c9ae620ddbd68157d9bb927111bc79f2d55fd00dbdfc805ff6dee8c362"
+          },
+          "summary": "Reviewed src/bidi.rs, which defines the bidi mirroring glyph bitpacked type, paired bracket enum, and feature-gated conversions for Unicode bidi classes. I checked for install-time hooks, subprocess or network access, credential/secret reads, dynamic code loading, obfuscation, and persistence behavior; none were present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18084,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046191827,
+            "finished_at_unix_ms": 1784046209911,
+            "total_token_usage": {
+              "input_tokens": 30003,
+              "cached_input_tokens": 21760,
+              "output_tokens": 801,
+              "reasoning_output_tokens": 409,
+              "total_tokens": 30804
+            },
+            "last_token_usage": {
+              "input_tokens": 30003,
+              "cached_input_tokens": 21760,
+              "output_tokens": 801,
+              "reasoning_output_tokens": 409,
+              "total_tokens": 30804
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/code_point_map.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9adc1a87a7051046d0c33c0794f8dd108a9f55aec9cc20ef1fff3c2ffaa7e6b6"
+          },
+          "summary": "Reviewed `src/code_point_map.rs`, which defines Unicode code-point map wrappers, borrowed accessors, range iterators, and conversion helpers for ICU property data. I checked for install-time execution, subprocesses, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none were present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14289,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046209912,
+            "finished_at_unix_ms": 1784046224202,
+            "total_token_usage": {
+              "input_tokens": 43407,
+              "cached_input_tokens": 36480,
+              "output_tokens": 516,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 43923
+            },
+            "last_token_usage": {
+              "input_tokens": 43407,
+              "cached_input_tokens": 36480,
+              "output_tokens": 516,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 43923
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_9846104a1f9c457aa9bd6793b10b1e65",
+      "id": "rev_f020b1a3685d4a8ca0e823e61ad2652b",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -651,66 +1192,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782839002",
+      "created_at": "1784059901",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/trievalue.rs`, which contains ICU4X `TrieValue` and `AsULE` conversion implementations for property enums and packed trie storage values. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network or exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation pipelines, or persistence/environment tampering behavior.\nReviewed `src/script.rs`, which implements ICU4X Script and Script_Extensions data wrappers and lookup helpers over compiled/provider-backed property tables. I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed src/provider/names.rs, which defines ICU property-name data marker types and serialized map structs for property name lookup. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/trievalue.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "672d0719ea9bf88e1453df803db481351b32b1f498a0fc3cff7e06622550b4b5"
-          },
-          "summary": "Reviewed `src/trievalue.rs`, which contains ICU4X `TrieValue` and `AsULE` conversion implementations for property enums and packed trie storage values. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network or exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation pipelines, or persistence/environment tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/script.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8b28aa4b11ce2f29260285bc993be9a0e239f91f45dee1801e02d1abc4ca905c"
-          },
-          "summary": "Reviewed `src/script.rs`, which implements ICU4X Script and Script_Extensions data wrappers and lookup helpers over compiled/provider-backed property tables. I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/provider/names.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7c84494f506ac46febc1b2d1eb24991291eb2fddc358823ae520e81f19889682"
-          },
-          "summary": "Reviewed src/provider/names.rs, which defines ICU property-name data marker types and serialized map structs for property name lookup. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_a0d4d624a7914b2d8ff5e76824daac8a",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782838873",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/provider.rs` is a static ICU4X data-provider definition file: it exports property marker types, baked-data wiring, and the `ScriptWithExtensionsProperty` trie/extension containers. I checked this target for install-time execution, subprocess spawning, network or exfiltration paths, secret/environment access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/provider.rs",
@@ -718,9 +1204,29 @@
             "algorithm": "blake3",
             "value": "70b8171d0e24345ab18a3580e556b3a3bed120af818a4048d65e9b46821c0b6f"
           },
-          "summary": "`src/provider.rs` is a static ICU4X data-provider definition file: it exports property marker types, baked-data wiring, and the `ScriptWithExtensionsProperty` trie/extension containers. I checked this target for install-time execution, subprocess spawning, network or exfiltration paths, secret/environment access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "summary": "`src/provider.rs` is a Rust data-definition module for ICU4X Unicode property providers, exposing marker types, enums, and helper methods for code point sets, code point maps, Unicode sets, and script-with-extensions data. I checked it for install-time execution, subprocess or network access, credential/secret access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 52239,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059849177,
+            "finished_at_unix_ms": 1784059901416,
+            "total_token_usage": {
+              "input_tokens": 69084,
+              "cached_input_tokens": 54272,
+              "output_tokens": 1070,
+              "reasoning_output_tokens": 383,
+              "total_tokens": 70154
+            },
+            "last_token_usage": {
+              "input_tokens": 69084,
+              "cached_input_tokens": 54272,
+              "output_tokens": 1070,
+              "reasoning_output_tokens": 383,
+              "total_tokens": 70154
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

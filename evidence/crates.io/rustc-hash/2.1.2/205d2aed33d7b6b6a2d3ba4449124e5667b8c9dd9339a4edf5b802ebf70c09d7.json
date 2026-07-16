@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591352",
+  "latest_reviewed_at": "1784055803",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -214,50 +220,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 9,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 5
+      "review_count": 3,
+      "file_record_count": 14,
+      "file_record_count_with_metrics": 14
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 14,
-    "file_records_with_metrics": 5,
-    "file_records_without_metrics": 9,
-    "duration_ms_total": 69953,
-    "attempts_total": 5,
+    "file_records_with_metrics": 14,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 211809,
+    "attempts_total": 14,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 5,
-    "last_token_usage_records": 5,
+    "total_token_usage_records": 14,
+    "last_token_usage_records": 14,
     "total_token_usage": {
-      "input_tokens": 105608,
-      "cached_input_tokens": 80128,
-      "output_tokens": 2046,
-      "reasoning_output_tokens": 1084,
-      "total_tokens": 107654
+      "input_tokens": 359094,
+      "cached_input_tokens": 297728,
+      "output_tokens": 6057,
+      "reasoning_output_tokens": 3069,
+      "total_tokens": 365151
     },
     "last_token_usage": {
-      "input_tokens": 105608,
-      "cached_input_tokens": 80128,
-      "output_tokens": 2046,
-      "reasoning_output_tokens": 1084,
-      "total_tokens": 107654
+      "input_tokens": 359094,
+      "cached_input_tokens": 297728,
+      "output_tokens": 6057,
+      "reasoning_output_tokens": 3069,
+      "total_tokens": 365151
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_413ff2a0113745f48338ce2dea84caf7",
+      "id": "rev_2e558f02cf214c9fa32a222407280abd",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -265,12 +263,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783177082",
+      "created_at": "1784055803",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `README.md`, which describes the `rustc-hash` crate as a fast non-cryptographic hasher, its `FxHashMap`/`FxHashSet` aliases, and the `no_std` usage toggle. I checked for install-time execution, hidden loading, network/exfiltration, credential access, obfuscation, and persistence behavior in this file and found no concrete malicious or supply-chain indicators.\nReviewed CHANGELOG.md, which is a release-history document for rustc-hash 2.1.2 through earlier versions. It contains only version notes and links to project PRs; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed the target metadata file `.cargo_vcs_info.json`, which only records a git SHA1 and an empty `path_in_vcs` field. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nCODE_OF_CONDUCT.md is a static policy document that only points to the Rust Code of Conduct page. I checked this file for install hooks, network/exfiltration, secret access, dynamic code loading, obfuscation, persistence, and other payload-like behavior, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "README.md",
@@ -278,45 +275,125 @@
             "algorithm": "blake3",
             "value": "4ecc021e7e2159c64d1f151ca47bb844c42087bda5aa96005337380fe977da2a"
           },
-          "summary": "Reviewed `README.md`, which describes the `rustc-hash` crate as a fast non-cryptographic hasher, its `FxHashMap`/`FxHashSet` aliases, and the `no_std` usage toggle. I checked for install-time execution, hidden loading, network/exfiltration, credential access, obfuscation, and persistence behavior in this file and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed README.md, which is plain package documentation for the rustc-hash crate: it describes the FxHasher/FxHashMap/FxHashSet API, performance rationale, and no_std usage. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators in this file and found none.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 23395,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055733467,
+            "finished_at_unix_ms": 1784055756863,
+            "total_token_usage": {
+              "input_tokens": 37828,
+              "cached_input_tokens": 33408,
+              "output_tokens": 438,
+              "reasoning_output_tokens": 132,
+              "total_tokens": 38266
+            },
+            "last_token_usage": {
+              "input_tokens": 37828,
+              "cached_input_tokens": 33408,
+              "output_tokens": 438,
+              "reasoning_output_tokens": 132,
+              "total_tokens": 38266
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "CHANGELOG.md",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "b3c154cf680a5ff0b5f9573348e2c4e8e6554036ec95bde21c93c2562e5c9f74"
+            "value": "da498b5f5ebc9863c9ed01e40e71964bd8345272f4fafe24181841a2811d7fc5"
           },
-          "summary": "Reviewed CHANGELOG.md, which is a release-history document for rustc-hash 2.1.2 through earlier versions. It contains only version notes and links to project PRs; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed `src/lib.rs`, which implements the `FxHasher`/`FxBuildHasher` hashing logic and its unit tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential or secret access, dynamic code loading, obfuscation/deobfuscation, or persistence/env-tampering behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16321,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055756864,
+            "finished_at_unix_ms": 1784055773186,
+            "total_token_usage": {
+              "input_tokens": 44100,
+              "cached_input_tokens": 35456,
+              "output_tokens": 549,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 44649
+            },
+            "last_token_usage": {
+              "input_tokens": 44100,
+              "cached_input_tokens": 35456,
+              "output_tokens": 549,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 44649
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/random_state.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "9345ab13b59c0de96672b3a5c5674712abc92cf7354039e850f47c89af0b01b5"
+            "value": "944707f3ff0205188e7dcad5e4737917871b3c8125f208da87963c242ab0552f"
           },
-          "summary": "Reviewed the target metadata file `.cargo_vcs_info.json`, which only records a git SHA1 and an empty `path_in_vcs` field. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/random_state.rs`, which defines `FxRandomState` and related `HashMap`/`HashSet` aliases backed by `FxHasher`, with thread-local seeding from `rand::thread_rng()` and a monotonic increment to vary map iteration order. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16903,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055773186,
+            "finished_at_unix_ms": 1784055790090,
+            "total_token_usage": {
+              "input_tokens": 24962,
+              "cached_input_tokens": 21248,
+              "output_tokens": 539,
+              "reasoning_output_tokens": 325,
+              "total_tokens": 25501
+            },
+            "last_token_usage": {
+              "input_tokens": 24962,
+              "cached_input_tokens": 21248,
+              "output_tokens": 539,
+              "reasoning_output_tokens": 325,
+              "total_tokens": 25501
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "CODE_OF_CONDUCT.md",
+          "file_path": "src/seeded_state.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "a804e0a2448af924f81229e780369eb43bbc6c8dee30bb2a3c1c4a6ff8641897"
+            "value": "bdb2c4b52a59a1f29906dd4a406d66129d453eb8be5474438dd3dd7748a4a3a9"
           },
-          "summary": "CODE_OF_CONDUCT.md is a static policy document that only points to the Rust Code of Conduct page. I checked this file for install hooks, network/exfiltration, secret access, dynamic code loading, obfuscation, persistence, and other payload-like behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/seeded_state.rs`, which defines `FxSeededState` and its `BuildHasher` implementation for seeded `HashMap`/`HashSet` use. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13122,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055790090,
+            "finished_at_unix_ms": 1784055803213,
+            "total_token_usage": {
+              "input_tokens": 24694,
+              "cached_input_tokens": 21248,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 256,
+              "total_tokens": 25155
+            },
+            "last_token_usage": {
+              "input_tokens": 24694,
+              "cached_input_tokens": 21248,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 256,
+              "total_tokens": 25155
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -332,7 +409,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591352",
       "thirdpass_version": "0.6.0",
@@ -500,7 +577,7 @@
       ]
     },
     {
-      "id": "rev_8d6a4ba6b15d4f4391681c9f90690265",
+      "id": "rev_88ed6286f17e477a8c601c26a4add276",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -508,34 +585,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783177027",
+      "created_at": "1784053533",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which implements the `rustc_hash` Fx hasher, build-hasher aliases, and unit tests. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\n`src/random_state.rs` defines `FxRandomState`, a small helper for seeding `HashMap`/`HashSet` hashers with a thread-local random seed and incrementing it per construction. I reviewed it for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.\nI reviewed `.github/workflows/rust.yml`, a GitHub Actions CI workflow that checks out the repository and runs Rust formatting, docs, clippy, test, and Miri cross-target jobs. I did not find concrete malicious or supply-chain indicators in this file: no install hooks, secret or credential harvesting, hidden network exfiltration, dynamic payload loading, obfuscation, or persistence behavior beyond standard Rust toolchain setup in CI.\n`src/seeded_state.rs` defines a small `FxSeededState` wrapper for constructing seeded `FxHasher` instances and type aliases for seeded `HashMap`/`HashSet` usage. I checked this file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed the crate manifest in Cargo.toml for install-time hooks, hidden subprocesses, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence tampering. The file is a normal library manifest for a hashing crate with an optional `rand` dependency and no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "da498b5f5ebc9863c9ed01e40e71964bd8345272f4fafe24181841a2811d7fc5"
+            "value": "9345ab13b59c0de96672b3a5c5674712abc92cf7354039e850f47c89af0b01b5"
           },
-          "summary": "Reviewed `src/lib.rs`, which implements the `rustc_hash` Fx hasher, build-hasher aliases, and unit tests. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records a source-control SHA1 and an empty `path_in_vcs` value. No concrete malicious or supply-chain indicators were found in this file; it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/random_state.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "944707f3ff0205188e7dcad5e4737917871b3c8125f208da87963c242ab0552f"
+          "agent_run_metrics": {
+            "duration_ms": 14088,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053461155,
+            "finished_at_unix_ms": 1784053475243,
+            "total_token_usage": {
+              "input_tokens": 24129,
+              "cached_input_tokens": 21248,
+              "output_tokens": 414,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 24543
+            },
+            "last_token_usage": {
+              "input_tokens": 24129,
+              "cached_input_tokens": 21248,
+              "output_tokens": 414,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 24543
+            }
           },
-          "summary": "`src/random_state.rs` defines `FxRandomState`, a small helper for seeding `HashMap`/`HashSet` hashers with a thread-local random seed and incrementing it per construction. I reviewed it for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -545,21 +629,93 @@
             "algorithm": "blake3",
             "value": "36deea3f45ac9c1fe6a10a309a5602be55dadf625b59ce3d4c95533b086f416b"
           },
-          "summary": "I reviewed `.github/workflows/rust.yml`, a GitHub Actions CI workflow that checks out the repository and runs Rust formatting, docs, clippy, test, and Miri cross-target jobs. I did not find concrete malicious or supply-chain indicators in this file: no install hooks, secret or credential harvesting, hidden network exfiltration, dynamic payload loading, obfuscation, or persistence behavior beyond standard Rust toolchain setup in CI.",
+          "summary": "Reviewed the GitHub Actions workflow for Rust CI. It contains standard checkout, toolchain setup, formatting, docs, clippy, and test jobs, and I did not find concrete indicators of install hooks, network or secret exfiltration, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11633,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053475244,
+            "finished_at_unix_ms": 1784053486878,
+            "total_token_usage": {
+              "input_tokens": 24731,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 25132
+            },
+            "last_token_usage": {
+              "input_tokens": 24731,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 25132
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/seeded_state.rs",
+          "file_path": "CHANGELOG.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "bdb2c4b52a59a1f29906dd4a406d66129d453eb8be5474438dd3dd7748a4a3a9"
+            "value": "b3c154cf680a5ff0b5f9573348e2c4e8e6554036ec95bde21c93c2562e5c9f74"
           },
-          "summary": "`src/seeded_state.rs` defines a small `FxSeededState` wrapper for constructing seeded `FxHasher` instances and type aliases for seeded `HashMap`/`HashSet` usage. I checked this file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed CHANGELOG.md, which is a release-notes file listing version history and brief change notes for rustc-hash 2.1.2 through 1.2.0. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain payloads in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15718,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053486879,
+            "finished_at_unix_ms": 1784053502598,
+            "total_token_usage": {
+              "input_tokens": 24510,
+              "cached_input_tokens": 21248,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24932
+            },
+            "last_token_usage": {
+              "input_tokens": 24510,
+              "cached_input_tokens": 21248,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24932
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CODE_OF_CONDUCT.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a804e0a2448af924f81229e780369eb43bbc6c8dee30bb2a3c1c4a6ff8641897"
+          },
+          "summary": "Reviewed `CODE_OF_CONDUCT.md`, which only points readers to the Rust project’s external conduct policy and contains no executable content. I found no concrete indicators of install-time execution, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16757,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053502599,
+            "finished_at_unix_ms": 1784053519356,
+            "total_token_usage": {
+              "input_tokens": 24121,
+              "cached_input_tokens": 21248,
+              "output_tokens": 339,
+              "reasoning_output_tokens": 152,
+              "total_tokens": 24460
+            },
+            "last_token_usage": {
+              "input_tokens": 24121,
+              "cached_input_tokens": 21248,
+              "output_tokens": 339,
+              "reasoning_output_tokens": 152,
+              "total_tokens": 24460
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -569,9 +725,29 @@
             "algorithm": "blake3",
             "value": "e059600075e9e1c10921bfb5c068a609b6679fe1425401d661d0d9247e88b4af"
           },
-          "summary": "Reviewed the crate manifest in Cargo.toml for install-time hooks, hidden subprocesses, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence tampering. The file is a normal library manifest for a hashing crate with an optional `rand` dependency and no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed the manifest for `rustc-hash` 2.1.2, including package metadata, feature flags, and dependency declarations. It contains a standard library crate configuration with an optional `rand` dependency and no install hooks, build scripts, network/exfiltration code, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13919,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053519357,
+            "finished_at_unix_ms": 1784053533277,
+            "total_token_usage": {
+              "input_tokens": 24411,
+              "cached_input_tokens": 21248,
+              "output_tokens": 448,
+              "reasoning_output_tokens": 241,
+              "total_tokens": 24859
+            },
+            "last_token_usage": {
+              "input_tokens": 24411,
+              "cached_input_tokens": 21248,
+              "output_tokens": 448,
+              "reasoning_output_tokens": 241,
+              "total_tokens": 24859
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

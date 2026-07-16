@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590319",
+  "latest_reviewed_at": "1784057635",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -269,50 +275,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 3,
-      "file_record_count": 15,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 4,
+      "file_record_count": 19,
+      "file_record_count_with_metrics": 19
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 19,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 15,
-    "duration_ms_total": 54484,
-    "attempts_total": 4,
+    "file_records_with_metrics": 19,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 311311,
+    "attempts_total": 19,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 19,
+    "last_token_usage_records": 19,
     "total_token_usage": {
-      "input_tokens": 84244,
-      "cached_input_tokens": 70144,
-      "output_tokens": 1603,
-      "reasoning_output_tokens": 822,
-      "total_tokens": 85847
+      "input_tokens": 553635,
+      "cached_input_tokens": 483200,
+      "output_tokens": 10202,
+      "reasoning_output_tokens": 5744,
+      "total_tokens": 563837
     },
     "last_token_usage": {
-      "input_tokens": 84244,
-      "cached_input_tokens": 70144,
-      "output_tokens": 1603,
-      "reasoning_output_tokens": 822,
-      "total_tokens": 85847
+      "input_tokens": 553635,
+      "cached_input_tokens": 483200,
+      "output_tokens": 10202,
+      "reasoning_output_tokens": 5744,
+      "total_tokens": 563837
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_3bc55930bf52440d94458cfcd3758267",
+      "id": "rev_1338fb64e95143f08d6516b9151bf1bb",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -320,22 +318,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783177156",
+      "created_at": "1784055852",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed this GitHub Actions workflow, which runs Rust formatting, clippy, audit, deny, docs, tests, and coverage jobs. I checked for install hooks, secret access, network exfiltration, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.\n`mk/cargo.sh` is a build wrapper that configures Rust/Cargo environment variables for cross-compilation targets, optional coverage instrumentation, and then invokes `cargo` followed by local coverage post-processing. I checked it for install-time hooks, network or exfiltration behavior, credential/secret access, hidden downloads or dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators.\nI reviewed `tests/tests.rs`, which contains straightforward unit tests for `untrusted::Input` behavior such as debug formatting, cloning/copying, byte reads, end-of-input handling, and basic size assumptions. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed `README.md`, which documents the `untrusted.rs` Rust parsing crate, its no-std/no-unsafe design, usage, examples, testing, and contribution policy. I found no concrete supply-chain indicators in the file: no install hooks, hidden execution, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence instructions.\nReviewed `src/reader.rs`, which implements a small read-only `Reader` cursor over `Input` with byte-peeking, bounded reads, skipping, and partial-read helpers. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior; none are present in this file.",
       "files": [
         {
-          "file_path": ".github/workflows/ci.yml",
+          "file_path": "deny.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "b4e6de2802a08554d98177cc76c0a62f4e54a3c0e9f74f61ac8c2ecaeaed835f"
+            "value": "9bbf0249007cdeeedf81f15244d4607372b1ad37eaeba2a18eb472bff4bc2d08"
           },
-          "summary": "Reviewed this GitHub Actions workflow, which runs Rust formatting, clippy, audit, deny, docs, tests, and coverage jobs. I checked for install hooks, secret access, network exfiltration, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `deny.toml`, which is a static cargo-deny policy file that restricts advisories, licenses, dependency sources, and wildcard bans. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13226,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055752486,
+            "finished_at_unix_ms": 1784055765713,
+            "total_token_usage": {
+              "input_tokens": 24114,
+              "cached_input_tokens": 21248,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24521
+            },
+            "last_token_usage": {
+              "input_tokens": 24114,
+              "cached_input_tokens": 21248,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24521
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -345,111 +362,93 @@
             "algorithm": "blake3",
             "value": "6ba44094b9b64253d60a070d2fe772638d72f4cbc2a3c099e7ea3837795a5aa7"
           },
-          "summary": "`mk/cargo.sh` is a build wrapper that configures Rust/Cargo environment variables for cross-compilation targets, optional coverage instrumentation, and then invokes `cargo` followed by local coverage post-processing. I checked it for install-time hooks, network or exfiltration behavior, credential/secret access, hidden downloads or dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `mk/cargo.sh`, a Bash wrapper that sets cross-compilation and coverage-related Cargo environment variables before delegating to `cargo \"$@\"` and post-processing coverage artifacts with `llvm-profdata`/`llvm-cov`. I found no concrete indicators of install-time hooks, secret harvesting, network or exfiltration behavior, dynamic code loading, obfuscation, or persistence tampering in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15976,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055765713,
+            "finished_at_unix_ms": 1784055781690,
+            "total_token_usage": {
+              "input_tokens": 25866,
+              "cached_input_tokens": 21248,
+              "output_tokens": 671,
+              "reasoning_output_tokens": 467,
+              "total_tokens": 26537
+            },
+            "last_token_usage": {
+              "input_tokens": 25866,
+              "cached_input_tokens": 21248,
+              "output_tokens": 671,
+              "reasoning_output_tokens": 467,
+              "total_tokens": 26537
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/tests.rs",
+          "file_path": "mk/install-build-tools.sh",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "a180c65e3badd5e08ddad910770b1e66b1bc4f13ce30d60d5d8961a2e1612bdb"
+            "value": "6964892a07bc925f7a7e00b3d05155e59a14a3e30b5ca3cb513832f10719d057"
           },
-          "summary": "I reviewed `tests/tests.rs`, which contains straightforward unit tests for `untrusted::Input` behavior such as debug formatting, cloning/copying, byte reads, end-of-input handling, and basic size assumptions. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "summary": "Reviewed a Bash helper that installs target-specific build dependencies such as cross-compilers, clang/llvm, Android NDK components, and wasm-bindgen-cli based on the Rust target and feature flags. I found no concrete indicators of install-time payload execution, credential access, data exfiltration, hidden downloads beyond expected package installation, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 29081,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055781690,
+            "finished_at_unix_ms": 1784055810772,
+            "total_token_usage": {
+              "input_tokens": 39463,
+              "cached_input_tokens": 34432,
+              "output_tokens": 892,
+              "reasoning_output_tokens": 592,
+              "total_tokens": 40355
+            },
+            "last_token_usage": {
+              "input_tokens": 39463,
+              "cached_input_tokens": 34432,
+              "output_tokens": 892,
+              "reasoning_output_tokens": 592,
+              "total_tokens": 40355
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "bbb423450b2468a1e90ffa6b22f036637424b2b03fd8899ad2e9e8f99036095e"
-          },
-          "summary": "Reviewed `README.md`, which documents the `untrusted.rs` Rust parsing crate, its no-std/no-unsafe design, usage, examples, testing, and contribution policy. I found no concrete supply-chain indicators in the file: no install hooks, hidden execution, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence instructions.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/reader.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "777a14d5ad6c863ea641fd8891f78a8d3fa7302cae3b1bdb550374d795f0a62e"
-          },
-          "summary": "Reviewed `src/reader.rs`, which implements a small read-only `Reader` cursor over `Input` with byte-peeking, bounded reads, skipping, and partial-read helpers. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_e2352828d7484766a3e421b0154f1f8a",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783177325",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `mk/runner`, a small Bash wrapper that scans arguments for a `*/deps/*` executable, sets `LLVM_PROFILE_FILE`, optionally appends the executable path to `RING_BUILD_EXECUTABLE_LIST`, and then execs the command. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `deny.toml`, which is a Cargo-deny policy file that only sets advisory, license, ban, and source restrictions. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload execution indicators, and found none in this file.\nReviewed `LICENSE.txt`, which contains a standard permissive license notice and disclaimer text only. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the package VCS metadata in `.cargo_vcs_info.json`, which only records a Git SHA1 for the source snapshot. No concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence were present in this file.\nReviewed `rustfmt.toml`, which is a plain Rust formatting configuration setting edition, line width, Unix newlines, import reordering, and field-init shorthand. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-      "files": [
         {
           "file_path": "mk/runner",
           "file_hash": {
             "algorithm": "blake3",
             "value": "b4c722d669c03299911b06a5a6ffdbf3b3d8fb94f130bdbf0823cfa9ac00f3d8"
           },
-          "summary": "Reviewed `mk/runner`, a small Bash wrapper that scans arguments for a `*/deps/*` executable, sets `LLVM_PROFILE_FILE`, optionally appends the executable path to `RING_BUILD_EXECUTABLE_LIST`, and then execs the command. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed the `mk/runner` shell wrapper that finds a Cargo test executable under `/deps`, derives `LLVM_PROFILE_FILE`, optionally appends the executable path to `RING_BUILD_EXECUTABLE_LIST`, and then executes the passed command. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "deny.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9bbf0249007cdeeedf81f15244d4607372b1ad37eaeba2a18eb472bff4bc2d08"
+          "agent_run_metrics": {
+            "duration_ms": 26951,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055810772,
+            "finished_at_unix_ms": 1784055837724,
+            "total_token_usage": {
+              "input_tokens": 64395,
+              "cached_input_tokens": 59264,
+              "output_tokens": 1159,
+              "reasoning_output_tokens": 662,
+              "total_tokens": 65554
+            },
+            "last_token_usage": {
+              "input_tokens": 64395,
+              "cached_input_tokens": 59264,
+              "output_tokens": 1159,
+              "reasoning_output_tokens": 662,
+              "total_tokens": 65554
+            }
           },
-          "summary": "Reviewed `deny.toml`, which is a Cargo-deny policy file that only sets advisory, license, ban, and source restrictions. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload execution indicators, and found none in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "LICENSE.txt",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "eeef93ef389716df9dba7897de750bb5ddea8a737fc3863504b37557a233f2e2"
-          },
-          "summary": "Reviewed `LICENSE.txt`, which contains a standard permissive license notice and disclaimer text only. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "76c73f4783c69d3edbd0c25b78987a174b00d81e5ee8561a99e99f6c56a6ef39"
-          },
-          "summary": "Reviewed the package VCS metadata in `.cargo_vcs_info.json`, which only records a Git SHA1 for the source snapshot. No concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -459,16 +458,36 @@
             "algorithm": "blake3",
             "value": "2fcb136c01be9a8c177db7e928e2210e619a5069f7462ef57fd2fabc8acd49e7"
           },
-          "summary": "Reviewed `rustfmt.toml`, which is a plain Rust formatting configuration setting edition, line width, Unix newlines, import reordering, and field-init shorthand. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `rustfmt.toml`, which is a Rust formatting configuration setting edition, line width, newline style, import ordering, and field init shorthand. I found no concrete supply-chain or malicious indicators in this file; there are no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms here.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14911,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055837725,
+            "finished_at_unix_ms": 1784055852637,
+            "total_token_usage": {
+              "input_tokens": 24078,
+              "cached_input_tokens": 23296,
+              "output_tokens": 320,
+              "reasoning_output_tokens": 125,
+              "total_tokens": 24398
+            },
+            "last_token_usage": {
+              "input_tokens": 24078,
+              "cached_input_tokens": 23296,
+              "output_tokens": 320,
+              "reasoning_output_tokens": 125,
+              "total_tokens": 24398
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_e3951353d64443d3b0ffe67088e82803",
+      "id": "rev_35f8862d194e42a3ace83359a0991b74",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -476,34 +495,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783177259",
+      "created_at": "1784057635",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `mk/install-build-tools.sh`, a Bash helper that conditionally installs cross-compilation toolchains, Android NDK components, and matching `wasm-bindgen-cli`/LLVM packages based on the Rust target and feature flags. I checked for install hooks, network or exfiltration behavior, credential access, hidden downloads or dynamic code loading, obfuscation, and persistence tampering; no concrete malicious or supply-chain indicators were found in this file.\nReviewed `src/input.rs`, which is a small `Input<'a>` wrapper around byte slices with length/emptiness accessors, a whole-input `read_all` helper, and a debug formatter that intentionally omits the underlying value to avoid leaking secrets. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/lib.rs`, which is a small `no_std` library exporting parser helpers (`Input`, `Reader`, `EndOfInput`) and a `read_all_optional` wrapper that enforces full consumption of parsed input. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.\nReviewed `src/no_panic.rs`, which is a small slice wrapper exposing only bounds-checked accessors and a less-safe slice getter. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nReviewed this Cargo manifest for install-time hooks, dependency-driven execution, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior. It is a minimal library manifest with package metadata and a benchmark profile only; no concrete malicious or supply-chain indicators are present in the target file.",
       "files": [
-        {
-          "file_path": "mk/install-build-tools.sh",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6964892a07bc925f7a7e00b3d05155e59a14a3e30b5ca3cb513832f10719d057"
-          },
-          "summary": "Reviewed `mk/install-build-tools.sh`, a Bash helper that conditionally installs cross-compilation toolchains, Android NDK components, and matching `wasm-bindgen-cli`/LLVM packages based on the Rust target and feature flags. I checked for install hooks, network or exfiltration behavior, credential access, hidden downloads or dynamic code loading, obfuscation, and persistence tampering; no concrete malicious or supply-chain indicators were found in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": "src/input.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "5b1a58eccb056e4922a06acafb9951e38d585efdc854198a9cdf505bff73a52f"
           },
-          "summary": "Reviewed `src/input.rs`, which is a small `Input<'a>` wrapper around byte slices with length/emptiness accessors, a whole-input `read_all` helper, and a debug formatter that intentionally omits the underlying value to avoid leaking secrets. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed `src/input.rs`, which defines a small `Input<'a>` wrapper over byte slices plus safe length/empty accessors, read-all enforcement, and a debug formatter that omits the underlying bytes to avoid leaking secrets. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12646,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057560878,
+            "finished_at_unix_ms": 1784057573524,
+            "total_token_usage": {
+              "input_tokens": 24895,
+              "cached_input_tokens": 21248,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 25342
+            },
+            "last_token_usage": {
+              "input_tokens": 24895,
+              "cached_input_tokens": 21248,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 25342
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -513,9 +539,29 @@
             "algorithm": "blake3",
             "value": "716568e2d20dd28e8a0d6cc0e5c400d3596ab7b82b32ebf1f5c248c2435238da"
           },
-          "summary": "Reviewed `src/lib.rs`, which is a small `no_std` library exporting parser helpers (`Input`, `Reader`, `EndOfInput`) and a `read_all_optional` wrapper that enforces full consumption of parsed input. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.",
+          "summary": "Reviewed `src/lib.rs`, which defines the crate’s `no_std` parsing API (`Input`, `Reader`, and `read_all_optional`) and only contains local control flow for consuming an input to completion. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise patterns in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12723,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057573525,
+            "finished_at_unix_ms": 1784057586248,
+            "total_token_usage": {
+              "input_tokens": 25440,
+              "cached_input_tokens": 21248,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 25877
+            },
+            "last_token_usage": {
+              "input_tokens": 25440,
+              "cached_input_tokens": 21248,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 25877
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -525,9 +571,174 @@
             "algorithm": "blake3",
             "value": "bfcfdaa0bcde25cb18ee9a7da359113ca28b4d59e7e94c1db30beffb7e87982c"
           },
-          "summary": "Reviewed `src/no_panic.rs`, which is a small slice wrapper exposing only bounds-checked accessors and a less-safe slice getter. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
+          "summary": "Reviewed `src/no_panic.rs`, which defines a small `Slice<'a>` wrapper over `&[u8]` with bounds-checked accessors and no executable setup code. I checked for install-time execution, network or credential access, dynamic code loading, obfuscation/deobfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15708,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057586249,
+            "finished_at_unix_ms": 1784057601958,
+            "total_token_usage": {
+              "input_tokens": 24309,
+              "cached_input_tokens": 21248,
+              "output_tokens": 491,
+              "reasoning_output_tokens": 291,
+              "total_tokens": 24800
+            },
+            "last_token_usage": {
+              "input_tokens": 24309,
+              "cached_input_tokens": 21248,
+              "output_tokens": 491,
+              "reasoning_output_tokens": 291,
+              "total_tokens": 24800
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/reader.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "777a14d5ad6c863ea641fd8891f78a8d3fa7302cae3b1bdb550374d795f0a62e"
+          },
+          "summary": "`src/reader.rs` implements a small forward-only `Reader`/`EndOfInput` API for consuming `Input` bytes, with bounds-checked reads, skipping, and partial-read tracking. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18295,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057601958,
+            "finished_at_unix_ms": 1784057620253,
+            "total_token_usage": {
+              "input_tokens": 55044,
+              "cached_input_tokens": 47616,
+              "output_tokens": 824,
+              "reasoning_output_tokens": 400,
+              "total_tokens": 55868
+            },
+            "last_token_usage": {
+              "input_tokens": 55044,
+              "cached_input_tokens": 47616,
+              "output_tokens": 824,
+              "reasoning_output_tokens": 400,
+              "total_tokens": 55868
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/tests.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a180c65e3badd5e08ddad910770b1e66b1bc4f13ce30d60d5d8961a2e1612bdb"
+          },
+          "summary": "Reviewed tests/tests.rs, which contains unit tests for untrusted::Input and Reader behavior such as debug formatting, cloning/copying, read_all semantics, slice conversion, const construction, and size assumptions. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14887,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057620254,
+            "finished_at_unix_ms": 1784057635142,
+            "total_token_usage": {
+              "input_tokens": 25567,
+              "cached_input_tokens": 23296,
+              "output_tokens": 598,
+              "reasoning_output_tokens": 391,
+              "total_tokens": 26165
+            },
+            "last_token_usage": {
+              "input_tokens": 25567,
+              "cached_input_tokens": 23296,
+              "output_tokens": 598,
+              "reasoning_output_tokens": 391,
+              "total_tokens": 26165
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_55f5aff45b044e2e8678d0f8c1512fe0",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784053553",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "76c73f4783c69d3edbd0c25b78987a174b00d81e5ee8561a99e99f6c56a6ef39"
+          },
+          "summary": "I reviewed `.cargo_vcs_info.json`, which is a small Cargo VCS metadata file containing only a Git commit hash. It showed no concrete signs of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11143,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053471329,
+            "finished_at_unix_ms": 1784053482472,
+            "total_token_usage": {
+              "input_tokens": 24121,
+              "cached_input_tokens": 21248,
+              "output_tokens": 368,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 24489
+            },
+            "last_token_usage": {
+              "input_tokens": 24121,
+              "cached_input_tokens": 21248,
+              "output_tokens": 368,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 24489
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/ci.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b4e6de2802a08554d98177cc76c0a62f4e54a3c0e9f74f61ac8c2ecaeaed835f"
+          },
+          "summary": "Reviewed `.github/workflows/ci.yml`, which defines Rust CI jobs for formatting, linting, audit/deny checks, docs, tests, coverage, and Codecov reporting. I checked for install-time hooks, credential access, network exfiltration, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this workflow.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19078,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053482473,
+            "finished_at_unix_ms": 1784053501552,
+            "total_token_usage": {
+              "input_tokens": 25414,
+              "cached_input_tokens": 21248,
+              "output_tokens": 719,
+              "reasoning_output_tokens": 509,
+              "total_tokens": 26133
+            },
+            "last_token_usage": {
+              "input_tokens": 25414,
+              "cached_input_tokens": 21248,
+              "output_tokens": 719,
+              "reasoning_output_tokens": 509,
+              "total_tokens": 26133
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -537,9 +748,93 @@
             "algorithm": "blake3",
             "value": "6d0fd38067a25f9fe6923c7ea36949add6c2ad4a7b935c63494851ff678a4feb"
           },
-          "summary": "Reviewed this Cargo manifest for install-time hooks, dependency-driven execution, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior. It is a minimal library manifest with package metadata and a benchmark profile only; no concrete malicious or supply-chain indicators are present in the target file.",
+          "summary": "Reviewed the crate manifest for install-time hooks, dependency indirection, dynamic code loading, network/exfiltration, credential access, obfuscation, and persistence behavior. This Cargo.toml only declares package metadata and a bench profile for the `untrusted` crate; it contains no scripts, build.rs, unusual dependencies, or other concrete supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18742,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053501553,
+            "finished_at_unix_ms": 1784053520295,
+            "total_token_usage": {
+              "input_tokens": 37234,
+              "cached_input_tokens": 33408,
+              "output_tokens": 481,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 37715
+            },
+            "last_token_usage": {
+              "input_tokens": 37234,
+              "cached_input_tokens": 33408,
+              "output_tokens": 481,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 37715
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "LICENSE.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "eeef93ef389716df9dba7897de750bb5ddea8a737fc3863504b37557a233f2e2"
+          },
+          "summary": "Reviewed `LICENSE.txt`, which contains a standard permissive license notice and warranty disclaimer only. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15176,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053520296,
+            "finished_at_unix_ms": 1784053535472,
+            "total_token_usage": {
+              "input_tokens": 24178,
+              "cached_input_tokens": 21248,
+              "output_tokens": 306,
+              "reasoning_output_tokens": 136,
+              "total_tokens": 24484
+            },
+            "last_token_usage": {
+              "input_tokens": 24178,
+              "cached_input_tokens": 21248,
+              "output_tokens": 306,
+              "reasoning_output_tokens": 136,
+              "total_tokens": 24484
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "bbb423450b2468a1e90ffa6b22f036637424b2b03fd8899ad2e9e8f99036095e"
+          },
+          "summary": "README.md is a standard project overview for the `untrusted.rs` parsing library, describing its purpose, documentation links, examples, contribution notes, and CI status. I checked the file for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18284,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053535473,
+            "finished_at_unix_ms": 1784053553757,
+            "total_token_usage": {
+              "input_tokens": 25273,
+              "cached_input_tokens": 21760,
+              "output_tokens": 479,
+              "reasoning_output_tokens": 289,
+              "total_tokens": 25752
+            },
+            "last_token_usage": {
+              "input_tokens": 25273,
+              "cached_input_tokens": 21760,
+              "output_tokens": 479,
+              "reasoning_output_tokens": 289,
+              "total_tokens": 25752
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -555,7 +850,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590319",
       "thirdpass_version": "0.6.0",

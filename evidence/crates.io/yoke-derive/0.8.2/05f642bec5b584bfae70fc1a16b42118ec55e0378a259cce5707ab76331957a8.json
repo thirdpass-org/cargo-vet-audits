@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590905",
+  "latest_reviewed_at": "1784054983",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -172,50 +178,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 7,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 4,
+      "file_record_count": 15,
+      "file_record_count_with_metrics": 15
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 10,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 7,
-    "duration_ms_total": 43371,
-    "attempts_total": 3,
+    "reviewed_file_records": 15,
+    "file_records_with_metrics": 15,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 266098,
+    "attempts_total": 15,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 15,
+    "last_token_usage_records": 15,
     "total_token_usage": {
-      "input_tokens": 75153,
-      "cached_input_tokens": 53888,
-      "output_tokens": 1627,
-      "reasoning_output_tokens": 809,
-      "total_tokens": 76780
+      "input_tokens": 675447,
+      "cached_input_tokens": 572032,
+      "output_tokens": 8713,
+      "reasoning_output_tokens": 3903,
+      "total_tokens": 684160
     },
     "last_token_usage": {
-      "input_tokens": 75153,
-      "cached_input_tokens": 53888,
-      "output_tokens": 1627,
-      "reasoning_output_tokens": 809,
-      "total_tokens": 76780
+      "input_tokens": 675447,
+      "cached_input_tokens": 572032,
+      "output_tokens": 8713,
+      "reasoning_output_tokens": 3903,
+      "total_tokens": 684160
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_5124e590582e41a8b785300b9cb82cd6",
+      "id": "rev_132ed5c427fd4aaa8d8e6759379da6af",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -223,64 +221,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782840978",
+      "created_at": "1784046386",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which implements the `Yokeable` proc-macro derive and generates trait impls with lifetime/type checks plus a few controlled `transmute`-based conversions. I found no concrete indicators of install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `examples/yoke_derive.rs`, which is a compile-time test/example file full of `#[derive(Yokeable)]` struct and enum definitions plus type assertions in `main`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "48e5a927b74c7d90618d177b078daba85023e4667a1082433b9eb6618017253c"
+            "value": "d0fb1956b65710ce73ccbb9f6a57c854716987f992095220ee1d210d4612c631"
           },
-          "summary": "Reviewed `src/lib.rs`, which implements the `Yokeable` proc-macro derive and generates trait impls with lifetime/type checks plus a few controlled `transmute`-based conversions. I found no concrete indicators of install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the package's source VCS commit SHA and path in the upstream repository. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/yoke_derive.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1989e45bb3e6bd67a315638a6123669e54f12e4171c0447e03e83628a16c196d"
+          "agent_run_metrics": {
+            "duration_ms": 13102,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046310687,
+            "finished_at_unix_ms": 1784046323789,
+            "total_token_usage": {
+              "input_tokens": 36616,
+              "cached_input_tokens": 25728,
+              "output_tokens": 455,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 37071
+            },
+            "last_token_usage": {
+              "input_tokens": 36616,
+              "cached_input_tokens": 25728,
+              "output_tokens": 455,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 37071
+            }
           },
-          "summary": "Reviewed `examples/yoke_derive.rs`, which is a compile-time test/example file full of `#[derive(Yokeable)]` struct and enum definitions plus type assertions in `main`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_5466398a92e4447eb0226f40574d7c26",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782841055",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/visitor.rs`, a `syn` visitor used by the derive logic to detect lifetime/type-parameter usage and bound lifetimes for yoke-related analysis. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.\nReviewed the crate manifest in Cargo.toml for install-time hooks, build scripts, dependency redirects, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior. The file only declares a normal proc-macro library with standard crates.io dependencies and lint settings; no concrete malicious or supply-chain indicators were found in the manifest.\n`src/lifetimes.rs` is a small `syn`/`proc_macro2` helper module that rewrites lifetime parameters in Rust types and includes tests for that transformation. I reviewed it for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed README.md, which is a short project description for the `yoke-derive` crate and a link to ICU4X resources. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the Cargo VCS metadata in .cargo_vcs_info.json; it only records a source git SHA1 and the in-repo path for the crate, with no executable content. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this target file.",
-      "files": [
-        {
-          "file_path": "src/visitor.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cad358c36f92607c8dd3e91d6f7b11bf62e1f73e01dcc7d93b98b718a1c85e12"
-          },
-          "summary": "Reviewed `src/visitor.rs`, a `syn` visitor used by the derive logic to detect lifetime/type-parameter usage and bound lifetimes for yoke-related analysis. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -290,21 +265,29 @@
             "algorithm": "blake3",
             "value": "fe28493e05946ac926994c09c75d35f73b1b41e0d6fc690b6be597be94f5a179"
           },
-          "summary": "Reviewed the crate manifest in Cargo.toml for install-time hooks, build scripts, dependency redirects, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior. The file only declares a normal proc-macro library with standard crates.io dependencies and lint settings; no concrete malicious or supply-chain indicators were found in the manifest.",
+          "summary": "Reviewed the normalized Cargo manifest for the `yoke-derive` proc-macro crate. It only declares package metadata, a local proc-macro library target, and ordinary Rust dependencies; I found no install hooks, network or exfiltration behavior, dynamic code loading, obfuscation, or persistence logic in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lifetimes.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "132eb53d945dfeab3c13e052be33f303a8409f1c5278340a90e5b3d70aa00a0f"
+          "agent_run_metrics": {
+            "duration_ms": 10353,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046323790,
+            "finished_at_unix_ms": 1784046334143,
+            "total_token_usage": {
+              "input_tokens": 24856,
+              "cached_input_tokens": 21248,
+              "output_tokens": 424,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 25280
+            },
+            "last_token_usage": {
+              "input_tokens": 24856,
+              "cached_input_tokens": 21248,
+              "output_tokens": 424,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 25280
+            }
           },
-          "summary": "`src/lifetimes.rs` is a small `syn`/`proc_macro2` helper module that rewrites lifetime parameters in Rust types and includes tests for that transformation. I reviewed it for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -314,21 +297,93 @@
             "algorithm": "blake3",
             "value": "4ad81c35055bc9a3bf2540d4f0af3c58c2f66c8ae73d30c5c6f37bb3448f13cb"
           },
-          "summary": "Reviewed README.md, which is a short project description for the `yoke-derive` crate and a link to ICU4X resources. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the README for `yoke-derive`, which is a short package description and a link out to the ICU4X project. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11030,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046334144,
+            "finished_at_unix_ms": 1784046345174,
+            "total_token_usage": {
+              "input_tokens": 24193,
+              "cached_input_tokens": 23296,
+              "output_tokens": 366,
+              "reasoning_output_tokens": 179,
+              "total_tokens": 24559
+            },
+            "last_token_usage": {
+              "input_tokens": 24193,
+              "cached_input_tokens": 23296,
+              "output_tokens": 366,
+              "reasoning_output_tokens": 179,
+              "total_tokens": 24559
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "examples/yoke_derive.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "d0fb1956b65710ce73ccbb9f6a57c854716987f992095220ee1d210d4612c631"
+            "value": "1989e45bb3e6bd67a315638a6123669e54f12e4171c0447e03e83628a16c196d"
           },
-          "summary": "Reviewed the Cargo VCS metadata in .cargo_vcs_info.json; it only records a source git SHA1 and the in-repo path for the crate, with no executable content. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this target file.",
+          "summary": "Reviewed `examples/yoke_derive.rs`, which is a compile-time example exercising `#[derive(Yokeable)]` across structs, enums, lifetimes, and generic edge cases. I found no concrete malicious or supply-chain indicators: there are no install hooks, subprocess launches, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in the file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21999,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046345175,
+            "finished_at_unix_ms": 1784046367174,
+            "total_token_usage": {
+              "input_tokens": 101348,
+              "cached_input_tokens": 90368,
+              "output_tokens": 927,
+              "reasoning_output_tokens": 307,
+              "total_tokens": 102275
+            },
+            "last_token_usage": {
+              "input_tokens": 101348,
+              "cached_input_tokens": 90368,
+              "output_tokens": 927,
+              "reasoning_output_tokens": 307,
+              "total_tokens": 102275
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "48e5a927b74c7d90618d177b078daba85023e4667a1082433b9eb6618017253c"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a `proc_macro` derive implementation for `Yokeable` that generates lifetime-correct `unsafe` trait impls using `syn`/`quote` and compile-time checks. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, hidden dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19757,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046367174,
+            "finished_at_unix_ms": 1784046386932,
+            "total_token_usage": {
+              "input_tokens": 66931,
+              "cached_input_tokens": 55808,
+              "output_tokens": 786,
+              "reasoning_output_tokens": 380,
+              "total_tokens": 67717
+            },
+            "last_token_usage": {
+              "input_tokens": 66931,
+              "cached_input_tokens": 55808,
+              "output_tokens": 786,
+              "reasoning_output_tokens": 380,
+              "total_tokens": 67717
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -344,7 +399,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590905",
       "thirdpass_version": "0.6.0",
@@ -440,6 +495,264 @@
               "output_tokens": 353,
               "reasoning_output_tokens": 168,
               "total_tokens": 21450
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_e80e9963604a4a9f89b9285a754753c3",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052417",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d0fb1956b65710ce73ccbb9f6a57c854716987f992095220ee1d210d4612c631"
+          },
+          "summary": "Reviewed the Cargo VCS metadata in `.cargo_vcs_info.json`, which only records the source git SHA and the path-in-VCS for this crate. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14657,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052322472,
+            "finished_at_unix_ms": 1784052337130,
+            "total_token_usage": {
+              "input_tokens": 24142,
+              "cached_input_tokens": 21248,
+              "output_tokens": 343,
+              "reasoning_output_tokens": 148,
+              "total_tokens": 24485
+            },
+            "last_token_usage": {
+              "input_tokens": 24142,
+              "cached_input_tokens": 21248,
+              "output_tokens": 343,
+              "reasoning_output_tokens": 148,
+              "total_tokens": 24485
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "fe28493e05946ac926994c09c75d35f73b1b41e0d6fc690b6be597be94f5a179"
+          },
+          "summary": "Reviewed the `yoke-derive` 0.8.2 manifest. It only declares a proc-macro library, one example, and ordinary Rust dependencies; I checked for install hooks, build scripts, network or exfiltration settings, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17642,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052337130,
+            "finished_at_unix_ms": 1784052354772,
+            "total_token_usage": {
+              "input_tokens": 24842,
+              "cached_input_tokens": 21248,
+              "output_tokens": 506,
+              "reasoning_output_tokens": 305,
+              "total_tokens": 25348
+            },
+            "last_token_usage": {
+              "input_tokens": 24842,
+              "cached_input_tokens": 21248,
+              "output_tokens": 506,
+              "reasoning_output_tokens": 305,
+              "total_tokens": 25348
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4ad81c35055bc9a3bf2540d4f0af3c58c2f66c8ae73d30c5c6f37bb3448f13cb"
+          },
+          "summary": "Reviewed the README for `yoke-derive`, which only describes the crate as providing `Yokeable` derives and links to project information. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11929,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052354774,
+            "finished_at_unix_ms": 1784052366703,
+            "total_token_usage": {
+              "input_tokens": 24188,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 169,
+              "total_tokens": 24544
+            },
+            "last_token_usage": {
+              "input_tokens": 24188,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 169,
+              "total_tokens": 24544
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/yoke_derive.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1989e45bb3e6bd67a315638a6123669e54f12e4171c0447e03e83628a16c196d"
+          },
+          "summary": "Reviewed `examples/yoke_derive.rs`, which is a Rust example exercising `Yokeable` derive coverage across structs, enums, lifetimes, generics, and manual covariance annotations. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24259,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052366705,
+            "finished_at_unix_ms": 1784052390964,
+            "total_token_usage": {
+              "input_tokens": 103413,
+              "cached_input_tokens": 92928,
+              "output_tokens": 856,
+              "reasoning_output_tokens": 277,
+              "total_tokens": 104269
+            },
+            "last_token_usage": {
+              "input_tokens": 103413,
+              "cached_input_tokens": 92928,
+              "output_tokens": 856,
+              "reasoning_output_tokens": 277,
+              "total_tokens": 104269
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "48e5a927b74c7d90618d177b078daba85023e4667a1082433b9eb6618017253c"
+          },
+          "summary": "Reviewed the proc-macro derive implementation for `Yokeable` in `src/lib.rs`. The file only performs local lifetime/type analysis and emits Rust trait impls via `syn`/`quote`; I found no concrete indicators of install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 26192,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052390965,
+            "finished_at_unix_ms": 1784052417157,
+            "total_token_usage": {
+              "input_tokens": 62418,
+              "cached_input_tokens": 55296,
+              "output_tokens": 771,
+              "reasoning_output_tokens": 355,
+              "total_tokens": 63189
+            },
+            "last_token_usage": {
+              "input_tokens": 62418,
+              "cached_input_tokens": 55296,
+              "output_tokens": 771,
+              "reasoning_output_tokens": 355,
+              "total_tokens": 63189
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_fbc08ab527c04f8a95cc9289415b40af",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054983",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/lifetimes.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "132eb53d945dfeab3c13e052be33f303a8409f1c5278340a90e5b3d70aa00a0f"
+          },
+          "summary": "Reviewed `src/lifetimes.rs`, a small proc-macro helper module that constructs lifetimes/idents and rewrites lifetime occurrences inside `syn::Type` values, plus unit tests for raw and nested lifetime cases. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 30020,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054931725,
+            "finished_at_unix_ms": 1784054961745,
+            "total_token_usage": {
+              "input_tokens": 24995,
+              "cached_input_tokens": 19200,
+              "output_tokens": 445,
+              "reasoning_output_tokens": 234,
+              "total_tokens": 25440
+            },
+            "last_token_usage": {
+              "input_tokens": 24995,
+              "cached_input_tokens": 19200,
+              "output_tokens": 445,
+              "reasoning_output_tokens": 234,
+              "total_tokens": 25440
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/visitor.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cad358c36f92607c8dd3e91d6f7b11bf62e1f73e01dcc7d93b98b718a1c85e12"
+          },
+          "summary": "`src/visitor.rs` is a Rust `syn::Visit` implementation that scans types, type paths, and bound lifetimes to detect uses of the target lifetime/type parameters and to compute the underscore prefix for `yoke`-style bound lifetimes. I checked it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21787,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054961746,
+            "finished_at_unix_ms": 1784054983534,
+            "total_token_usage": {
+              "input_tokens": 82352,
+              "cached_input_tokens": 70528,
+              "output_tokens": 851,
+              "reasoning_output_tokens": 336,
+              "total_tokens": 83203
+            },
+            "last_token_usage": {
+              "input_tokens": 82352,
+              "cached_input_tokens": 70528,
+              "output_tokens": 851,
+              "reasoning_output_tokens": 336,
+              "total_tokens": 83203
             }
           },
           "comment_count": 0,

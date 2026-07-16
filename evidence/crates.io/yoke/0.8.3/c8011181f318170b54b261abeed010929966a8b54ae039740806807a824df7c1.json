@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589883",
+  "latest_reviewed_at": "1784057022",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -260,50 +266,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 4,
-      "file_record_count": 15,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 5,
+      "file_record_count": 23,
+      "file_record_count_with_metrics": 23
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 18,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 15,
-    "duration_ms_total": 60648,
-    "attempts_total": 3,
+    "reviewed_file_records": 23,
+    "file_records_with_metrics": 23,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 405351,
+    "attempts_total": 23,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 23,
+    "last_token_usage_records": 23,
     "total_token_usage": {
-      "input_tokens": 64614,
-      "cached_input_tokens": 50432,
-      "output_tokens": 1838,
-      "reasoning_output_tokens": 1270,
-      "total_tokens": 66452
+      "input_tokens": 813488,
+      "cached_input_tokens": 697728,
+      "output_tokens": 12884,
+      "reasoning_output_tokens": 7127,
+      "total_tokens": 826372
     },
     "last_token_usage": {
-      "input_tokens": 64614,
-      "cached_input_tokens": 50432,
-      "output_tokens": 1838,
-      "reasoning_output_tokens": 1270,
-      "total_tokens": 66452
+      "input_tokens": 813488,
+      "cached_input_tokens": 697728,
+      "output_tokens": 12884,
+      "reasoning_output_tokens": 7127,
+      "total_tokens": 826372
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_2fbd775c55cb4cc4a5c2c87053d6a257",
+      "id": "rev_2e3981ee77274c4b99388b9b19287c97",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -311,34 +309,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782840899",
+      "created_at": "1784046380",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/either.rs`, which defines the `EitherCart` enum and its `Deref`, `StableDeref`, and `CloneableCart` implementations for ICU4X cart polymorphism. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors.\nReviewed `src/lib.rs`, which is a crate root for ICU4X/yoke that only declares crate attributes, feature-gated module imports, and public re-exports. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nI reviewed `README.md`, which is a plain crate description for `yoke` explaining zero-copy lifetime erasure and linking to ICU4X. I checked it for install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence cues, and found no concrete malicious or supply-chain indicators in the file.\nReviewed src/zero_from.rs, which only adds a generic Yoke::attach_to_zero_copy_cart helper that zero-copies a cart into Yokeable output via ZeroFrom. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `src/utils.rs`, which contains a small helper that performs an `unsafe` lifetime cast for `Yokeable::transform_mut` and immediately invokes a caller-provided closure. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
       "files": [
         {
-          "file_path": "src/either.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "9d1e2b0413c3cc2bd3d5d77ef7cc769eba8156526c5422bea7209c1088b1466b"
+            "value": "d1dfe3ea7ef350e3db89b8f8644e75cf075688605b42a7b8d4f4acd18ea0818e"
           },
-          "summary": "Reviewed `src/either.rs`, which defines the `EitherCart` enum and its `Deref`, `StableDeref`, and `CloneableCart` implementations for ICU4X cart polymorphism. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors.",
+          "summary": "Reviewed .cargo_vcs_info.json, which contains only VCS provenance metadata (`git.sha1` and `path_in_vcs`) for the crate. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12699,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046304641,
+            "finished_at_unix_ms": 1784046317341,
+            "total_token_usage": {
+              "input_tokens": 24097,
+              "cached_input_tokens": 21248,
+              "output_tokens": 363,
+              "reasoning_output_tokens": 168,
+              "total_tokens": 24460
+            },
+            "last_token_usage": {
+              "input_tokens": 24097,
+              "cached_input_tokens": 21248,
+              "output_tokens": 363,
+              "reasoning_output_tokens": 168,
+              "total_tokens": 24460
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/lib.rs",
+          "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "ca3768bea326bdf763260012e49003ba1f19481b8aaad2ff1b7171aed5e0863d"
+            "value": "72b6e5c35507e08ae457087f05b263d2781b55192199a3e5b54dadcdfd434c42"
           },
-          "summary": "Reviewed `src/lib.rs`, which is a crate root for ICU4X/yoke that only declares crate attributes, feature-gated module imports, and public re-exports. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed the generated Cargo.toml for yoke 0.8.3, focusing on install-time hooks, build scripts, dependency sources, dynamic loading, network/exfiltration paths, obfuscation, and persistence settings. The manifest is a conventional crate declaration with no concrete malicious or supply-chain indicators in those areas.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13184,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046317342,
+            "finished_at_unix_ms": 1784046330526,
+            "total_token_usage": {
+              "input_tokens": 25083,
+              "cached_input_tokens": 21248,
+              "output_tokens": 546,
+              "reasoning_output_tokens": 364,
+              "total_tokens": 25629
+            },
+            "last_token_usage": {
+              "input_tokens": 25083,
+              "cached_input_tokens": 21248,
+              "output_tokens": 546,
+              "reasoning_output_tokens": 364,
+              "total_tokens": 25629
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -348,40 +385,100 @@
             "algorithm": "blake3",
             "value": "359dc01ea0bc9ebc16c9e97dfadfaf6b6f2fbcbbe324ae16fdaf245b3e8c4f20"
           },
-          "summary": "I reviewed `README.md`, which is a plain crate description for `yoke` explaining zero-copy lifetime erasure and linking to ICU4X. I checked it for install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence cues, and found no concrete malicious or supply-chain indicators in the file.",
+          "summary": "Reviewed the yoke README, which documents the crate's Yoke zero-copy lifetime-erasure API and points readers to ICU4X. The file is purely descriptive and I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in it.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10958,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046330527,
+            "finished_at_unix_ms": 1784046341485,
+            "total_token_usage": {
+              "input_tokens": 24984,
+              "cached_input_tokens": 21760,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 25403
+            },
+            "last_token_usage": {
+              "input_tokens": 24984,
+              "cached_input_tokens": 21760,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 25403
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/zero_from.rs",
+          "file_path": "src/cartable_ptr.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "7dad36fc543a9dc00525c1cf818eefe7dd18b9b2909ef2cb61f8447df79870e6"
+            "value": "ed3902c28cf4573e8f7513914409f27972710303efe4f325beb69e9997f92a3d"
           },
-          "summary": "Reviewed src/zero_from.rs, which only adds a generic Yoke::attach_to_zero_copy_cart helper that zero-copies a cart into Yokeable output via ZeroFrom. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/cartable_ptr.rs`, which implements sentinel-backed optional pointer wrappers for `&T`, `Box<T>`, `Rc<T>`, and `Arc<T>` plus tests for drop/cloning behavior. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16519,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046341486,
+            "finished_at_unix_ms": 1784046358005,
+            "total_token_usage": {
+              "input_tokens": 42478,
+              "cached_input_tokens": 35456,
+              "output_tokens": 556,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 43034
+            },
+            "last_token_usage": {
+              "input_tokens": 42478,
+              "cached_input_tokens": 35456,
+              "output_tokens": 556,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 43034
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/utils.rs",
+          "file_path": "src/either.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "d91557cf45d4a6dbee8a1d91d85afd09a8445b7774af205ed6b3329c4bec477f"
+            "value": "9d1e2b0413c3cc2bd3d5d77ef7cc769eba8156526c5422bea7209c1088b1466b"
           },
-          "summary": "Reviewed `src/utils.rs`, which contains a small helper that performs an `unsafe` lifetime cast for `Yokeable::transform_mut` and immediately invokes a caller-provided closure. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
+          "summary": "Reviewed `src/either.rs`, which defines a simple `EitherCart` enum wrapper plus `Deref`, `StableDeref`, and `CloneableCart` implementations for polymorphic carts. I found no concrete indicators of install-time execution, network exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22341,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046358006,
+            "finished_at_unix_ms": 1784046380347,
+            "total_token_usage": {
+              "input_tokens": 24774,
+              "cached_input_tokens": 21248,
+              "output_tokens": 394,
+              "reasoning_output_tokens": 193,
+              "total_tokens": 25168
+            },
+            "last_token_usage": {
+              "input_tokens": 24774,
+              "cached_input_tokens": 21248,
+              "output_tokens": 394,
+              "reasoning_output_tokens": 193,
+              "total_tokens": 25168
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_6a9e7bb5cfce49ea9ce0248e069f372d",
+      "id": "rev_48c5dcf160de47118406aececc829a7b",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -389,22 +486,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782840828",
+      "created_at": "1784057022",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the crate manifest for `yoke` 0.8.3. It is a standard library manifest with feature flags, library/test targets, and normal dependency declarations; I found no install hooks, build-script execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence/tampering behavior in this file.\nReviewed `src/yokeable.rs`, which defines the `Yokeable` unsafe trait and extensive safety documentation for lifetime-transmuting APIs. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.\n`src/macro_impls.rs` contains macro helpers and `unsafe impl` blocks for `Yokeable` over copy types, `Option<T>`, tuples, and arrays, using pointer casts and `ManuallyDrop` to preserve covariance semantics. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/bincode.rs`, which is a unit test for `Yoke`/`Yokeable` behavior around borrowing deserialized `bincode` data from an `Rc<[u8]>`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.\nReviewed `src/kinda_sorta_dangling.rs`, which is a small internal Rust wrapper around `MaybeUninit` and `ManuallyDrop` for controlled drop semantics. I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "Cargo.toml",
+          "file_path": "src/yoke.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "72b6e5c35507e08ae457087f05b263d2781b55192199a3e5b54dadcdfd434c42"
+            "value": "ae520afcbb749ad858a7038298d400c893cac52bddd08f32e69be7565fdd3564"
           },
-          "summary": "Reviewed the crate manifest for `yoke` 0.8.3. It is a standard library manifest with feature flags, library/test targets, and normal dependency declarations; I found no install hooks, build-script execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence/tampering behavior in this file.",
+          "summary": "Reviewed src/yoke.rs, which implements the `Yoke` container API for attaching yokeable data to backing carts, projecting/mapping it, cloning it, and wrapping or erasing carts, with unsafe lifetime-management code and extensive safety docs/tests. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 36109,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056904806,
+            "finished_at_unix_ms": 1784056940916,
+            "total_token_usage": {
+              "input_tokens": 196827,
+              "cached_input_tokens": 168960,
+              "output_tokens": 1340,
+              "reasoning_output_tokens": 560,
+              "total_tokens": 198167
+            },
+            "last_token_usage": {
+              "input_tokens": 196827,
+              "cached_input_tokens": 168960,
+              "output_tokens": 1340,
+              "reasoning_output_tokens": 560,
+              "total_tokens": 198167
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -414,21 +530,61 @@
             "algorithm": "blake3",
             "value": "0ef6fdebe47b21e2ef1174c88e30c228df22d04c152d716d813cc35d20bac820"
           },
-          "summary": "Reviewed `src/yokeable.rs`, which defines the `Yokeable` unsafe trait and extensive safety documentation for lifetime-transmuting APIs. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/yokeable.rs`, which defines the unsafe `Yokeable` trait plus lifetime-casting impls for `Cow`, references, `Vec`, and `PhantomData`. I checked this file for install-time hooks, network or exfiltration behavior, credential access, hidden downloads, obfuscation, persistence, or other payload execution and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 34640,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056940917,
+            "finished_at_unix_ms": 1784056975557,
+            "total_token_usage": {
+              "input_tokens": 42820,
+              "cached_input_tokens": 38016,
+              "output_tokens": 720,
+              "reasoning_output_tokens": 407,
+              "total_tokens": 43540
+            },
+            "last_token_usage": {
+              "input_tokens": 42820,
+              "cached_input_tokens": 38016,
+              "output_tokens": 720,
+              "reasoning_output_tokens": 407,
+              "total_tokens": 43540
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/macro_impls.rs",
+          "file_path": "src/zero_from.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "21b8bcec28ab5277945135be4bd0b0fe2608a2ef57677a44787c441efe8434b1"
+            "value": "7dad36fc543a9dc00525c1cf818eefe7dd18b9b2909ef2cb61f8447df79870e6"
           },
-          "summary": "`src/macro_impls.rs` contains macro helpers and `unsafe impl` blocks for `Yokeable` over copy types, `Option<T>`, tuples, and arrays, using pointer casts and `ManuallyDrop` to preserve covariance semantics. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/zero_from.rs`, which contains a single `Yoke::attach_to_zero_copy_cart` helper that zero-copies a cart into a `Yoke` via `ZeroFrom` and `attach_to_cart`. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13290,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056975558,
+            "finished_at_unix_ms": 1784056988849,
+            "total_token_usage": {
+              "input_tokens": 24497,
+              "cached_input_tokens": 21248,
+              "output_tokens": 490,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 24987
+            },
+            "last_token_usage": {
+              "input_tokens": 24497,
+              "cached_input_tokens": 21248,
+              "output_tokens": 490,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 24987
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -438,9 +594,287 @@
             "algorithm": "blake3",
             "value": "92a68363aa959922efcb4803d2181804fdfa7807430a1f04b95b5f636ec700fa"
           },
-          "summary": "Reviewed `tests/bincode.rs`, which is a unit test for `Yoke`/`Yokeable` behavior around borrowing deserialized `bincode` data from an `Rc<[u8]>`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.",
+          "summary": "`tests/bincode.rs` is a deterministic unit test that exercises `Yoke` attachment and `bincode` deserialization against fixed in-memory bytes, then verifies borrowed-to-owned transitions on a small `Bar` value. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18206,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056988849,
+            "finished_at_unix_ms": 1784057007056,
+            "total_token_usage": {
+              "input_tokens": 24887,
+              "cached_input_tokens": 21248,
+              "output_tokens": 472,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 25359
+            },
+            "last_token_usage": {
+              "input_tokens": 24887,
+              "cached_input_tokens": 21248,
+              "output_tokens": 472,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 25359
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/miri.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5eb21187310ec9b5cb5ebd0aaf51a7fadf9ed2e0a6cc0452ef53598a0485ad7f"
+          },
+          "summary": "Reviewed `tests/miri.rs`, which is a small Miri regression test for `Yoke::attach_to_cart` and does not contain install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15119,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057007056,
+            "finished_at_unix_ms": 1784057022176,
+            "total_token_usage": {
+              "input_tokens": 24400,
+              "cached_input_tokens": 21760,
+              "output_tokens": 561,
+              "reasoning_output_tokens": 271,
+              "total_tokens": 24961
+            },
+            "last_token_usage": {
+              "input_tokens": 24400,
+              "cached_input_tokens": 21760,
+              "output_tokens": 561,
+              "reasoning_output_tokens": 271,
+              "total_tokens": 24961
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_b2883090d0af4403a2588c94a9aa66c9",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052395",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d1dfe3ea7ef350e3db89b8f8644e75cf075688605b42a7b8d4f4acd18ea0818e"
+          },
+          "summary": ".cargo_vcs_info.json contains only Cargo VCS metadata (a git SHA and the source path in the upstream repository). I checked this target file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14470,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052322601,
+            "finished_at_unix_ms": 1784052337072,
+            "total_token_usage": {
+              "input_tokens": 24205,
+              "cached_input_tokens": 21248,
+              "output_tokens": 509,
+              "reasoning_output_tokens": 318,
+              "total_tokens": 24714
+            },
+            "last_token_usage": {
+              "input_tokens": 24205,
+              "cached_input_tokens": 21248,
+              "output_tokens": 509,
+              "reasoning_output_tokens": 318,
+              "total_tokens": 24714
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "72b6e5c35507e08ae457087f05b263d2781b55192199a3e5b54dadcdfd434c42"
+          },
+          "summary": "Reviewed the crate manifest for `yoke` 0.8.3. It defines a normal library package with feature flags and dependencies only; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15427,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052337072,
+            "finished_at_unix_ms": 1784052352500,
+            "total_token_usage": {
+              "input_tokens": 25098,
+              "cached_input_tokens": 21248,
+              "output_tokens": 554,
+              "reasoning_output_tokens": 372,
+              "total_tokens": 25652
+            },
+            "last_token_usage": {
+              "input_tokens": 25098,
+              "cached_input_tokens": 21248,
+              "output_tokens": 554,
+              "reasoning_output_tokens": 372,
+              "total_tokens": 25652
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "359dc01ea0bc9ebc16c9e97dfadfaf6b6f2fbcbbe324ae16fdaf245b3e8c4f20"
+          },
+          "summary": "Reviewed the README documentation for yoke, which describes the Yoke<Y, C> zero-copy lifetime-erasure API and links to ICU4X resources. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence triggers, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11567,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052352501,
+            "finished_at_unix_ms": 1784052364069,
+            "total_token_usage": {
+              "input_tokens": 24609,
+              "cached_input_tokens": 21248,
+              "output_tokens": 357,
+              "reasoning_output_tokens": 155,
+              "total_tokens": 24966
+            },
+            "last_token_usage": {
+              "input_tokens": 24609,
+              "cached_input_tokens": 21248,
+              "output_tokens": 357,
+              "reasoning_output_tokens": 155,
+              "total_tokens": 24966
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/cartable_ptr.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ed3902c28cf4573e8f7513914409f27972710303efe4f325beb69e9997f92a3d"
+          },
+          "summary": "This file defines the `CartableOptionPointer` niche-pointer wrapper and the raw pointer conversion, drop, and clone paths for `&T`, `Box<T>`, `Rc<T>`, and `Arc<T>`. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16796,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052364070,
+            "finished_at_unix_ms": 1784052380866,
+            "total_token_usage": {
+              "input_tokens": 42743,
+              "cached_input_tokens": 37504,
+              "output_tokens": 718,
+              "reasoning_output_tokens": 417,
+              "total_tokens": 43461
+            },
+            "last_token_usage": {
+              "input_tokens": 42743,
+              "cached_input_tokens": 37504,
+              "output_tokens": 718,
+              "reasoning_output_tokens": 417,
+              "total_tokens": 43461
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/either.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9d1e2b0413c3cc2bd3d5d77ef7cc769eba8156526c5422bea7209c1088b1466b"
+          },
+          "summary": "Reviewed `src/either.rs`, which defines the `EitherCart` enum and its `Deref`, `StableDeref`, and `CloneableCart` impls for combining two cart types. No concrete malicious or supply-chain indicators were found; I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and none were present.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14857,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052380868,
+            "finished_at_unix_ms": 1784052395725,
+            "total_token_usage": {
+              "input_tokens": 24758,
+              "cached_input_tokens": 21248,
+              "output_tokens": 503,
+              "reasoning_output_tokens": 295,
+              "total_tokens": 25261
+            },
+            "last_token_usage": {
+              "input_tokens": 24758,
+              "cached_input_tokens": 21248,
+              "output_tokens": 503,
+              "reasoning_output_tokens": 295,
+              "total_tokens": 25261
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_c6130930353846dba9cf2a94ff98eced",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054990",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/erased.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cb0260c048e9a657e97773bb3fb6d1270f4a394b8c536362658b6e10649844bc"
+          },
+          "summary": "Reviewed `src/erased.rs`, which only defines an empty `ErasedDestructor` marker trait and three type aliases for type-erased `Arc`, `Rc`, and `Box` carts. I checked this file for install-time execution, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10508,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054911723,
+            "finished_at_unix_ms": 1784054922232,
+            "total_token_usage": {
+              "input_tokens": 24465,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 197,
+              "total_tokens": 24866
+            },
+            "last_token_usage": {
+              "input_tokens": 24465,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 197,
+              "total_tokens": 24866
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -450,9 +884,125 @@
             "algorithm": "blake3",
             "value": "85baf4ae5ec1a90ab04fc744284735791b10c552565232b048d8dbc4dc734f4a"
           },
-          "summary": "Reviewed `src/kinda_sorta_dangling.rs`, which is a small internal Rust wrapper around `MaybeUninit` and `ManuallyDrop` for controlled drop semantics. I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/kinda_sorta_dangling.rs`, which defines a small `KindaSortaDangling<T>` wrapper around `MaybeUninit`/`ManuallyDrop` to control drop and reference semantics for ICU4X internals. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10776,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054922232,
+            "finished_at_unix_ms": 1784054933008,
+            "total_token_usage": {
+              "input_tokens": 25154,
+              "cached_input_tokens": 21248,
+              "output_tokens": 434,
+              "reasoning_output_tokens": 213,
+              "total_tokens": 25588
+            },
+            "last_token_usage": {
+              "input_tokens": 25154,
+              "cached_input_tokens": 21248,
+              "output_tokens": 434,
+              "reasoning_output_tokens": 213,
+              "total_tokens": 25588
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ca3768bea326bdf763260012e49003ba1f19481b8aaad2ff1b7171aed5e0863d"
+          },
+          "summary": "Reviewed the crate root `src/lib.rs`, which is a thin ICU4X library entry point that sets `no_std`/lint attributes, declares internal modules, and re-exports `Yoke`/`Yokeable`. I checked for install-time hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24305,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054933009,
+            "finished_at_unix_ms": 1784054957314,
+            "total_token_usage": {
+              "input_tokens": 24844,
+              "cached_input_tokens": 21248,
+              "output_tokens": 557,
+              "reasoning_output_tokens": 345,
+              "total_tokens": 25401
+            },
+            "last_token_usage": {
+              "input_tokens": 24844,
+              "cached_input_tokens": 21248,
+              "output_tokens": 557,
+              "reasoning_output_tokens": 345,
+              "total_tokens": 25401
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/macro_impls.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "21b8bcec28ab5277945135be4bd0b0fe2608a2ef57677a44787c441efe8434b1"
+          },
+          "summary": "Reviewed `src/macro_impls.rs`, which defines `Yokeable` macro implementations for copy types and covariance-based wrapper types using explicit unsafe pointer casts and `ManuallyDrop`. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14861,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054957315,
+            "finished_at_unix_ms": 1784054972177,
+            "total_token_usage": {
+              "input_tokens": 40104,
+              "cached_input_tokens": 34432,
+              "output_tokens": 567,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 40671
+            },
+            "last_token_usage": {
+              "input_tokens": 40104,
+              "cached_input_tokens": 34432,
+              "output_tokens": 567,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 40671
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/utils.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d91557cf45d4a6dbee8a1d91d85afd09a8445b7774af205ed6b3329c4bec477f"
+          },
+          "summary": "Reviewed `src/utils.rs`, which contains a single `transform_mut_yokeable` helper that performs an `unsafe` lifetime cast and immediately applies a caller-provided closure. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18071,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054972178,
+            "finished_at_unix_ms": 1784054990250,
+            "total_token_usage": {
+              "input_tokens": 38047,
+              "cached_input_tokens": 34432,
+              "output_tokens": 585,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 38632
+            },
+            "last_token_usage": {
+              "input_tokens": 38047,
+              "cached_input_tokens": 34432,
+              "output_tokens": 585,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 38632
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -468,7 +1018,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589883",
       "thirdpass_version": "0.6.0",
@@ -566,102 +1116,6 @@
               "total_tokens": 21378
             }
           },
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_d3a05e0f4dd24fdfb13c668ab7a2cb04",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782840738",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/yoke.rs` is a Rust library module implementing the `Yoke` abstraction for lifetime-erased borrowed data, cart attachment, projection, mutation, cloning, and cart wrapping. I reviewed it for install-time execution, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/cartable_ptr.rs`, which defines the `CartablePointerLike`/`CartableOptionPointer` pointer-wrapping machinery for `&T`, `Box<T>`, `Rc<T>`, and `Arc<T>`, plus tests for drop/refcount behavior. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence logic.",
-      "files": [
-        {
-          "file_path": "src/yoke.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ae520afcbb749ad858a7038298d400c893cac52bddd08f32e69be7565fdd3564"
-          },
-          "summary": "`src/yoke.rs` is a Rust library module implementing the `Yoke` abstraction for lifetime-erased borrowed data, cart attachment, projection, mutation, cloning, and cart wrapping. I reviewed it for install-time execution, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/cartable_ptr.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ed3902c28cf4573e8f7513914409f27972710303efe4f325beb69e9997f92a3d"
-          },
-          "summary": "Reviewed `src/cartable_ptr.rs`, which defines the `CartablePointerLike`/`CartableOptionPointer` pointer-wrapping machinery for `&T`, `Box<T>`, `Rc<T>`, and `Arc<T>`, plus tests for drop/refcount behavior. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence logic.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_f9c38c3b446e4be38280066a05765054",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782840939",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/erased.rs`, which only defines an empty `ErasedDestructor` trait and three type aliases for `Arc`, `Rc`, and `Box`-backed erased cart types used by ICU4X. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/miri.rs`, which is a small Miri regression test that creates a `Yoke` from an in-memory `Vec<u8>` and exercises `attach_to_cart`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed .cargo_vcs_info.json, which contains only a Git commit SHA and the VCS path for the crate source. I found no evidence in this file of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
-      "files": [
-        {
-          "file_path": "src/erased.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cb0260c048e9a657e97773bb3fb6d1270f4a394b8c536362658b6e10649844bc"
-          },
-          "summary": "Reviewed `src/erased.rs`, which only defines an empty `ErasedDestructor` trait and three type aliases for `Arc`, `Rc`, and `Box`-backed erased cart types used by ICU4X. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/miri.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5eb21187310ec9b5cb5ebd0aaf51a7fadf9ed2e0a6cc0452ef53598a0485ad7f"
-          },
-          "summary": "Reviewed `tests/miri.rs`, which is a small Miri regression test that creates a `Yoke` from an in-memory `Vec<u8>` and exercises `attach_to_cart`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d1dfe3ea7ef350e3db89b8f8644e75cf075688605b42a7b8d4f4acd18ea0818e"
-          },
-          "summary": "Reviewed .cargo_vcs_info.json, which contains only a Git commit SHA and the VCS path for the crate source. I found no evidence in this file of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

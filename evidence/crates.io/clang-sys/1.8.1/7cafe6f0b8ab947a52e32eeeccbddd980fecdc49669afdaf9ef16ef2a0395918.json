@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589388",
+  "latest_reviewed_at": "1784060444",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -303,44 +309,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 6,
-      "file_record_count": 19,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 6,
+      "file_record_count": 22,
+      "file_record_count_with_metrics": 22
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 22,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 19,
-    "duration_ms_total": 52509,
-    "attempts_total": 3,
+    "file_records_with_metrics": 22,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 375694,
+    "attempts_total": 22,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 22,
+    "last_token_usage_records": 22,
     "total_token_usage": {
-      "input_tokens": 62465,
-      "cached_input_tokens": 52992,
-      "output_tokens": 1214,
-      "reasoning_output_tokens": 626,
-      "total_tokens": 63679
+      "input_tokens": 713519,
+      "cached_input_tokens": 618624,
+      "output_tokens": 13067,
+      "reasoning_output_tokens": 7402,
+      "total_tokens": 726586
     },
     "last_token_usage": {
-      "input_tokens": 62465,
-      "cached_input_tokens": 52992,
-      "output_tokens": 1214,
-      "reasoning_output_tokens": 626,
-      "total_tokens": 63679
+      "input_tokens": 713519,
+      "cached_input_tokens": 618624,
+      "output_tokens": 13067,
+      "reasoning_output_tokens": 7402,
+      "total_tokens": 726586
     },
     "model_context_windows": []
   },
@@ -355,7 +353,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589388",
       "thirdpass_version": "0.6.0",
@@ -459,7 +457,7 @@
       ]
     },
     {
-      "id": "rev_194fd4edfdd745e8ae7805b7063477fe",
+      "id": "rev_4995dfdade7342db8ec6b9c820685160",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -467,41 +465,48 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783175208",
+      "created_at": "1784059112",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the release-history text in `CHANGELOG.md`, which only lists versioned changelog entries and notes about platform/library behavior. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload indicators, and found no concrete malicious or supply-chain compromise signals in this file.\nReviewed `tests/build.rs`, which is a test harness for the clang-sys build logic that synthesizes temporary ELF/PE headers, mutates environment variables, and mocks command execution to verify libclang search behavior. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
-          "file_path": "CHANGELOG.md",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "2672f6cf8dcb78e3099cb73761b905567600834d43854ba76559f333a7ec0524"
+            "value": "495e7aa11de3e291b445e46870211e2b6304e9cdcc8b779a305e313b1fee93f9"
           },
-          "summary": "Reviewed the release-history text in `CHANGELOG.md`, which only lists versioned changelog entries and notes about platform/library behavior. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload indicators, and found no concrete malicious or supply-chain compromise signals in this file.",
+          "summary": "`src/lib.rs` appears to be a Rust FFI binding layer for `libclang`, consisting of type aliases, helper macros, enums, structs, and `extern \"C\"` function declarations. I reviewed it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/build.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c12af71e7d6a5f0acb29f6e1866651f4be2f39ccab5c3f5d353b7d58a8dacb21"
+          "agent_run_metrics": {
+            "duration_ms": 22134,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059090230,
+            "finished_at_unix_ms": 1784059112365,
+            "total_token_usage": {
+              "input_tokens": 62123,
+              "cached_input_tokens": 52224,
+              "output_tokens": 896,
+              "reasoning_output_tokens": 397,
+              "total_tokens": 63019
+            },
+            "last_token_usage": {
+              "input_tokens": 62123,
+              "cached_input_tokens": 52224,
+              "output_tokens": 896,
+              "reasoning_output_tokens": 397,
+              "total_tokens": 63019
+            }
           },
-          "summary": "Reviewed `tests/build.rs`, which is a test harness for the clang-sys build logic that synthesizes temporary ELF/PE headers, mutates environment variables, and mocks command execution to verify libclang search behavior. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_38388b9c3dc4478ca3d78fbbf28fa739",
+      "id": "rev_750d8768df43428cabf3992c5f2a36f0",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -509,130 +514,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783175286",
+      "created_at": "1784057547",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`build/common.rs` is a build-script helper for locating `libclang`, including wrapper functions around `llvm-config` and `xcode-select`, environment-variable checks, and filesystem glob searches. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence tampering.\nReviewed `src/link.rs`, which is a libclang linking shim that conditionally exposes either dynamic runtime loading via `libloading` or direct extern bindings. I checked it for install-time hooks, network/exfiltration, credential or environment harvesting, hidden downloads, dynamic code loading beyond local library resolution, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `build/dynamic.rs`, which locates and validates local `libclang` shared libraries, then emits Cargo link directives based on the discovered filename and platform. I checked for install hooks, subprocess execution, network or exfiltration, credential access, dynamic code loading from remote/untrusted sources, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/support.rs`, which is a local helper for locating `clang`, invoking `clang`/`llvm-config`/`xcodebuild`, and parsing version and header search paths from their output. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "build/common.rs",
+          "file_path": "build/macros.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "615cf20efb18d639de26e1e823962cf254505eea154ccf87e8a697a77bd4efc8"
+            "value": "8a269e33de7b633bc34908c2279e791cd1bdcdd7989b4a596a311c7b5a7cea1a"
           },
-          "summary": "`build/common.rs` is a build-script helper for locating `libclang`, including wrapper functions around `llvm-config` and `xcode-select`, environment-variable checks, and filesystem glob searches. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence tampering.",
+          "summary": "Reviewed build/macros.rs, which only defines Rust macros for test-time target detection overrides via `_CLANG_SYS_TEST` and related environment variables. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload behavior and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/link.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0319fedb09c959850f0999b8f20721a27019fbdb0cf23c70a993fbf9e4895fd6"
+          "agent_run_metrics": {
+            "duration_ms": 17758,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057505726,
+            "finished_at_unix_ms": 1784057523485,
+            "total_token_usage": {
+              "input_tokens": 24433,
+              "cached_input_tokens": 21248,
+              "output_tokens": 350,
+              "reasoning_output_tokens": 154,
+              "total_tokens": 24783
+            },
+            "last_token_usage": {
+              "input_tokens": 24433,
+              "cached_input_tokens": 21248,
+              "output_tokens": 350,
+              "reasoning_output_tokens": 154,
+              "total_tokens": 24783
+            }
           },
-          "summary": "Reviewed `src/link.rs`, which is a libclang linking shim that conditionally exposes either dynamic runtime loading via `libloading` or direct extern bindings. I checked it for install-time hooks, network/exfiltration, credential or environment harvesting, hidden downloads, dynamic code loading beyond local library resolution, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "build/dynamic.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "02cd4bb98fdcb70f1b94463685494ab80b6658710a31afba22c85f4aaedb6196"
-          },
-          "summary": "Reviewed `build/dynamic.rs`, which locates and validates local `libclang` shared libraries, then emits Cargo link directives based on the discovered filename and platform. I checked for install hooks, subprocess execution, network or exfiltration, credential access, dynamic code loading from remote/untrusted sources, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/support.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2f7f801a6b00349ebe707e56970db2799edd390ab379f3554b11d4d73e3c3a16"
-          },
-          "summary": "Reviewed `src/support.rs`, which is a local helper for locating `clang`, invoking `clang`/`llvm-config`/`xcodebuild`, and parsing version and header search paths from their output. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_3f18b7d47c864359a16206ed47d6b7a3",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783175451",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/header.h`, a minimal C header containing only an include guard and a single `add(int a, int b)` function declaration. No concrete malicious or supply-chain indicators were found in the file, and it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `clippy.toml`, which only configures Clippy documentation identifiers by allowing `FreeBSD`. I checked this target file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators and found none.",
-      "files": [
-        {
-          "file_path": "tests/header.h",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1094ac38e48fd602a2cc7c9f10ec925dc05baa4c836e90a5b483fa8d91391362"
-          },
-          "summary": "Reviewed `tests/header.h`, a minimal C header containing only an include guard and a single `add(int a, int b)` function declaration. No concrete malicious or supply-chain indicators were found in the file, and it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "clippy.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9376eb39daf143135a04071431f6b5e6ca85df37f5869f187b416be9a44236e6"
-          },
-          "summary": "Reviewed `clippy.toml`, which only configures Clippy documentation identifiers by allowing `FreeBSD`. I checked this target file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators and found none.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_4c8cad0b9b83414a99b78b4f6976fa19",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783175359",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed LICENSE.txt, which contains the standard Apache License 2.0 text only. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `build/static.rs`, which contains the static-linking path for clang-sys: it locates libclang/LLVM static libraries, prints Cargo link directives, and adds platform-specific system libs. I found no concrete malicious or supply-chain indicators in this file, and I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior.\nI reviewed the target README.md, which documents the clang-sys crate’s purpose, supported libclang versions, environment variables, and build/link/runtime loading behavior. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior described or implied beyond ordinary libclang linkage instructions.\nReviewed `Cargo.toml` for install-time hooks, hidden execution paths, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence. The manifest is a normal Rust package declaration for `clang-sys` with a `build.rs` entry and standard dependencies/features, and I found no concrete malicious or supply-chain indicators in this file itself.\nReviewed `build.rs`, which is a feature-gated Cargo build script that either links libclang dynamically/statistically or, under the `runtime` feature, copies a few internal helper source files into `OUT_DIR`. I found no concrete indicators of supply-chain compromise in this file: no install hooks, network or exfiltration behavior, secret harvesting, dynamic code loading, obfuscation, or persistence/tampering.",
-      "files": [
-        {
-          "file_path": "LICENSE.txt",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "56d01dbc3e7fd656bee3aa33048b76cf49097b326a0b1831dce9af5b9d1ce709"
-          },
-          "summary": "Reviewed LICENSE.txt, which contains the standard Apache License 2.0 text only. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -642,52 +558,68 @@
             "algorithm": "blake3",
             "value": "1d9207daef8743fcaeb19365208675f3bcb9b97be6607b7b525621258ed417ae"
           },
-          "summary": "Reviewed `build/static.rs`, which contains the static-linking path for clang-sys: it locates libclang/LLVM static libraries, prints Cargo link directives, and adds platform-specific system libs. I found no concrete malicious or supply-chain indicators in this file, and I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior.",
+          "summary": "`build/static.rs` is a build-time helper that locates static `libclang`/LLVM libraries and emits Cargo link directives for them. I checked it for install-time execution, subprocess spawning, network or secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12161,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057523485,
+            "finished_at_unix_ms": 1784057535647,
+            "total_token_usage": {
+              "input_tokens": 25206,
+              "cached_input_tokens": 21248,
+              "output_tokens": 444,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 25650
+            },
+            "last_token_usage": {
+              "input_tokens": 25206,
+              "cached_input_tokens": 21248,
+              "output_tokens": 444,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 25650
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "README.md",
+          "file_path": "clippy.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "906cb9f0bea4552695f85340502a04272c153973e1c1dd1f38e99d43474700cf"
+            "value": "9376eb39daf143135a04071431f6b5e6ca85df37f5869f187b416be9a44236e6"
           },
-          "summary": "I reviewed the target README.md, which documents the clang-sys crate’s purpose, supported libclang versions, environment variables, and build/link/runtime loading behavior. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior described or implied beyond ordinary libclang linkage instructions.",
+          "summary": "Reviewed `clippy.toml`, which only configures Clippy’s `doc-valid-idents` list to accept `FreeBSD` as a documented identifier. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "55fbf345744f3c75d1b4e59a94ab6bdd94a66630da19ecb5d0650075e522a27d"
+          "agent_run_metrics": {
+            "duration_ms": 12321,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057535648,
+            "finished_at_unix_ms": 1784057547970,
+            "total_token_usage": {
+              "input_tokens": 24068,
+              "cached_input_tokens": 21248,
+              "output_tokens": 349,
+              "reasoning_output_tokens": 154,
+              "total_tokens": 24417
+            },
+            "last_token_usage": {
+              "input_tokens": 24068,
+              "cached_input_tokens": 21248,
+              "output_tokens": 349,
+              "reasoning_output_tokens": 154,
+              "total_tokens": 24417
+            }
           },
-          "summary": "Reviewed `Cargo.toml` for install-time hooks, hidden execution paths, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence. The manifest is a normal Rust package declaration for `clang-sys` with a `build.rs` entry and standard dependencies/features, and I found no concrete malicious or supply-chain indicators in this file itself.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "build.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ef68b9ef8f23f0ed65388a3b7f391548073e9282ddabb40c9f07f77e17f9b15d"
-          },
-          "summary": "Reviewed `build.rs`, which is a feature-gated Cargo build script that either links libclang dynamically/statistically or, under the `runtime` feature, copies a few internal helper source files into `OUT_DIR`. I found no concrete indicators of supply-chain compromise in this file: no install hooks, network or exfiltration behavior, secret harvesting, dynamic code loading, obfuscation, or persistence/tampering.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_9e07c299bd2f4be39f33f48a87aa9abf",
+      "id": "rev_cae060daa55a42e5a1f508aa45d389bd",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -695,52 +627,137 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783175104",
+      "created_at": "1784060444",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/lib.rs` is a large Rust FFI binding surface for `libclang`, defining C-style enums, structs, callbacks, and `extern` declarations. I reviewed it for install-time execution, subprocess spawning, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": "src/link.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "495e7aa11de3e291b445e46870211e2b6304e9cdcc8b779a305e313b1fee93f9"
+            "value": "0319fedb09c959850f0999b8f20721a27019fbdb0cf23c70a993fbf9e4895fd6"
           },
-          "summary": "`src/lib.rs` is a large Rust FFI binding surface for `libclang`, defining C-style enums, structs, callbacks, and `extern` declarations. I reviewed it for install-time execution, subprocess spawning, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/link.rs`, which defines the `clang-sys` runtime/static linking macros and TLS-backed `libclang` loader helpers. I checked for install-time execution, network or credential access, hidden downloads, dynamic code loading beyond local `libclang` symbol resolution, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 23727,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060359434,
+            "finished_at_unix_ms": 1784060383162,
+            "total_token_usage": {
+              "input_tokens": 43165,
+              "cached_input_tokens": 34432,
+              "output_tokens": 837,
+              "reasoning_output_tokens": 431,
+              "total_tokens": 44002
+            },
+            "last_token_usage": {
+              "input_tokens": 43165,
+              "cached_input_tokens": 34432,
+              "output_tokens": 837,
+              "reasoning_output_tokens": 431,
+              "total_tokens": 44002
+            }
+          },
           "comment_count": 0,
           "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_cf46b6288f524ffbb26fb6f63b2e2bd1",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783175425",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the CI workflow in `.github/workflows/ci.yml`, which only sets up checkout, LLVM/Clang, Rust toolchains, and runs `cargo test`/`cargo run` across a small matrix. I found no concrete indicators of malicious supply-chain behavior in this file: no install hooks, secret access, network exfiltration, dynamic code loading, obfuscation, or persistence/tampering logic.\n`tests/lib.rs` is a straightforward Rust test harness for `clang-sys` that creates a Clang index, parses a local header, and optionally loads/unloads the library under the `runtime` feature. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators in this file.\n`build/macros.rs` defines small Rust macros that gate target-OS/arch/pointer-width/env checks behind test-only environment variables such as `_CLANG_SYS_TEST_*`. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the manual GitHub Actions workflow in `.github/workflows/ssh.yml`, which checks out the repository, installs LLVM and Rust, and then starts an explicit `action-tmate` SSH session for the selected OS. I found no concrete indicators of install-hook abuse, credential harvesting, covert network exfiltration, dynamic code loading, obfuscation, or persistence beyond the workflow's clearly signposted interactive SSH behavior.\nReviewed `.cargo_vcs_info.json`, which only records the package git SHA (`cf3874b2480b9ca12f367a54a4835dd2920847de`) and an empty `path_in_vcs`. No concrete malicious or supply-chain indicators were found in this file; there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior present here.",
-      "files": [
+        },
         {
-          "file_path": ".github/workflows/ci.yml",
+          "file_path": "src/support.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "4bc9b8b5dcc9271e06a5728193b8030c4913fb6bbabcf260683edbf056528288"
+            "value": "2f7f801a6b00349ebe707e56970db2799edd390ab379f3554b11d4d73e3c3a16"
           },
-          "summary": "Reviewed the CI workflow in `.github/workflows/ci.yml`, which only sets up checkout, LLVM/Clang, Rust toolchains, and runs `cargo test`/`cargo run` across a small matrix. I found no concrete indicators of malicious supply-chain behavior in this file: no install hooks, secret access, network exfiltration, dynamic code loading, obfuscation, or persistence/tampering logic.",
+          "summary": "Reviewed `src/support.rs`, which contains clang discovery and parsing helpers that invoke local tools like `llvm-config`, `xcodebuild`, and `clang` to read version and include-search-path output. I found no concrete indicators of install-time execution, network or exfiltration, credential access, hidden downloads, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13763,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060383162,
+            "finished_at_unix_ms": 1784060396926,
+            "total_token_usage": {
+              "input_tokens": 40565,
+              "cached_input_tokens": 35456,
+              "output_tokens": 533,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 41098
+            },
+            "last_token_usage": {
+              "input_tokens": 40565,
+              "cached_input_tokens": 35456,
+              "output_tokens": 533,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 41098
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/build.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c12af71e7d6a5f0acb29f6e1866651f4be2f39ccab5c3f5d353b7d58a8dacb21"
+          },
+          "summary": "Reviewed tests/build.rs, which is a Rust test harness that fabricates temporary filesystem layouts and environment state to exercise clang discovery logic. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14249,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060396927,
+            "finished_at_unix_ms": 1784060411177,
+            "total_token_usage": {
+              "input_tokens": 42663,
+              "cached_input_tokens": 35456,
+              "output_tokens": 608,
+              "reasoning_output_tokens": 313,
+              "total_tokens": 43271
+            },
+            "last_token_usage": {
+              "input_tokens": 42663,
+              "cached_input_tokens": 35456,
+              "output_tokens": 608,
+              "reasoning_output_tokens": 313,
+              "total_tokens": 43271
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/header.h",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1094ac38e48fd602a2cc7c9f10ec925dc05baa4c836e90a5b483fa8d91391362"
+          },
+          "summary": "Reviewed `tests/header.h`, which only declares a single `add(int,int)` function behind a normal include guard. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12342,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060411177,
+            "finished_at_unix_ms": 1784060423520,
+            "total_token_usage": {
+              "input_tokens": 24107,
+              "cached_input_tokens": 23296,
+              "output_tokens": 387,
+              "reasoning_output_tokens": 195,
+              "total_tokens": 24494
+            },
+            "last_token_usage": {
+              "input_tokens": 24107,
+              "cached_input_tokens": 23296,
+              "output_tokens": 387,
+              "reasoning_output_tokens": 195,
+              "total_tokens": 24494
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -750,21 +767,287 @@
             "algorithm": "blake3",
             "value": "0c38f6fc49323641960a120b37292e42f6c446e8ddaff53fede75c28c47121c6"
           },
-          "summary": "`tests/lib.rs` is a straightforward Rust test harness for `clang-sys` that creates a Clang index, parses a local header, and optionally loads/unloads the library under the `runtime` feature. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `tests/lib.rs`, which contains Rust test helpers that create a clang index, parse `tests/header.h`, and exercise `support::Clang::find` plus optional runtime library loading. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20762,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060423520,
+            "finished_at_unix_ms": 1784060444283,
+            "total_token_usage": {
+              "input_tokens": 24335,
+              "cached_input_tokens": 23296,
+              "output_tokens": 389,
+              "reasoning_output_tokens": 187,
+              "total_tokens": 24724
+            },
+            "last_token_usage": {
+              "input_tokens": 24335,
+              "cached_input_tokens": 23296,
+              "output_tokens": 389,
+              "reasoning_output_tokens": 187,
+              "total_tokens": 24724
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_d411629d9f4a4696babda76f3c6b32c2",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784055747",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "LICENSE.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "56d01dbc3e7fd656bee3aa33048b76cf49097b326a0b1831dce9af5b9d1ce709"
+          },
+          "summary": "`LICENSE.txt` contains the standard Apache License 2.0 text and was reviewed for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms. No concrete malicious or supply-chain indicators were found in the file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10762,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055666529,
+            "finished_at_unix_ms": 1784055677291,
+            "total_token_usage": {
+              "input_tokens": 26334,
+              "cached_input_tokens": 21248,
+              "output_tokens": 360,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 26694
+            },
+            "last_token_usage": {
+              "input_tokens": 26334,
+              "cached_input_tokens": 21248,
+              "output_tokens": 360,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 26694
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "build/macros.rs",
+          "file_path": "README.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "8a269e33de7b633bc34908c2279e791cd1bdcdd7989b4a596a311c7b5a7cea1a"
+            "value": "906cb9f0bea4552695f85340502a04272c153973e1c1dd1f38e99d43474700cf"
           },
-          "summary": "`build/macros.rs` defines small Rust macros that gate target-OS/arch/pointer-width/env checks behind test-only environment variables such as `_CLANG_SYS_TEST_*`. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "README.md is project documentation for clang-sys, describing libclang bindings, supported versions, environment variables, and dynamic/static/runtime linking behavior. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16448,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055677292,
+            "finished_at_unix_ms": 1784055693741,
+            "total_token_usage": {
+              "input_tokens": 40426,
+              "cached_input_tokens": 35456,
+              "output_tokens": 606,
+              "reasoning_output_tokens": 325,
+              "total_tokens": 41032
+            },
+            "last_token_usage": {
+              "input_tokens": 40426,
+              "cached_input_tokens": 35456,
+              "output_tokens": 606,
+              "reasoning_output_tokens": 325,
+              "total_tokens": 41032
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "build.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ef68b9ef8f23f0ed65388a3b7f391548073e9282ddabb40c9f07f77e17f9b15d"
+          },
+          "summary": "build.rs is a conventional Cargo build script that either links libclang dynamically/statically or, with the `runtime` feature, copies three local helper source files into `OUT_DIR`. I checked it for install hooks, hidden subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15746,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055693741,
+            "finished_at_unix_ms": 1784055709488,
+            "total_token_usage": {
+              "input_tokens": 24644,
+              "cached_input_tokens": 21248,
+              "output_tokens": 703,
+              "reasoning_output_tokens": 496,
+              "total_tokens": 25347
+            },
+            "last_token_usage": {
+              "input_tokens": 24644,
+              "cached_input_tokens": 21248,
+              "output_tokens": 703,
+              "reasoning_output_tokens": 496,
+              "total_tokens": 25347
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "build/common.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "615cf20efb18d639de26e1e823962cf254505eea154ccf87e8a697a77bd4efc8"
+          },
+          "summary": "Reviewed `build/common.rs`, which implements build-time helpers for locating `libclang` by running `llvm-config` and `xcode-select`, reading environment variables such as `LLVM_CONFIG_PATH` and `LD_LIBRARY_PATH`, and globbing local filesystem paths. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17620,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055709488,
+            "finished_at_unix_ms": 1784055727109,
+            "total_token_usage": {
+              "input_tokens": 41427,
+              "cached_input_tokens": 34944,
+              "output_tokens": 791,
+              "reasoning_output_tokens": 473,
+              "total_tokens": 42218
+            },
+            "last_token_usage": {
+              "input_tokens": 41427,
+              "cached_input_tokens": 34944,
+              "output_tokens": 791,
+              "reasoning_output_tokens": 473,
+              "total_tokens": 42218
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "build/dynamic.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "02cd4bb98fdcb70f1b94463685494ab80b6658710a31afba22c85f4aaedb6196"
+          },
+          "summary": "Reviewed the dynamic libclang discovery/linking code in build/dynamic.rs. It only inspects local shared-library headers, filters candidates by platform/architecture, and emits Cargo link directives; I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading from remote or encoded payloads, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20368,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055727109,
+            "finished_at_unix_ms": 1784055747478,
+            "total_token_usage": {
+              "input_tokens": 40876,
+              "cached_input_tokens": 35456,
+              "output_tokens": 702,
+              "reasoning_output_tokens": 406,
+              "total_tokens": 41578
+            },
+            "last_token_usage": {
+              "input_tokens": 40876,
+              "cached_input_tokens": 35456,
+              "output_tokens": 702,
+              "reasoning_output_tokens": 406,
+              "total_tokens": 41578
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_e3dc719c89014eed9809117d303c0e3c",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784053453",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d1cad663d6e82a38a23fc909364ff2c61b79a631479fc17c8feb0b6bd8e52a75"
+          },
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the source VCS commit SHA and an empty `path_in_vcs` field. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13613,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053360310,
+            "finished_at_unix_ms": 1784053373923,
+            "total_token_usage": {
+              "input_tokens": 24145,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 24501
+            },
+            "last_token_usage": {
+              "input_tokens": 24145,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 24501
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/ci.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4bc9b8b5dcc9271e06a5728193b8030c4913fb6bbabcf260683edbf056528288"
+          },
+          "summary": "Reviewed the GitHub Actions workflow that checks out the repository, installs LLVM/Clang and Rust, and runs cargo test plus a bindgen test across macOS, Ubuntu, and Windows. I checked for install-time hooks, network or credential exfiltration, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14899,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053373923,
+            "finished_at_unix_ms": 1784053388823,
+            "total_token_usage": {
+              "input_tokens": 24543,
+              "cached_input_tokens": 21248,
+              "output_tokens": 570,
+              "reasoning_output_tokens": 357,
+              "total_tokens": 25113
+            },
+            "last_token_usage": {
+              "input_tokens": 24543,
+              "cached_input_tokens": 21248,
+              "output_tokens": 570,
+              "reasoning_output_tokens": 357,
+              "total_tokens": 25113
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -774,21 +1057,93 @@
             "algorithm": "blake3",
             "value": "72bbff32df78d461444fcb30873007c709c484e82fa4072c7f5fcde90097591e"
           },
-          "summary": "Reviewed the manual GitHub Actions workflow in `.github/workflows/ssh.yml`, which checks out the repository, installs LLVM and Rust, and then starts an explicit `action-tmate` SSH session for the selected OS. I found no concrete indicators of install-hook abuse, credential harvesting, covert network exfiltration, dynamic code loading, obfuscation, or persistence beyond the workflow's clearly signposted interactive SSH behavior.",
+          "summary": "Reviewed `.github/workflows/ssh.yml`, a manually dispatched GitHub Actions job that checks out the repo, installs LLVM and Rust, and then opens an interactive tmate SSH session. I found no concrete indicators in this file of hidden payload execution, credential harvesting, network exfiltration, obfuscation, persistence, or other supply-chain compromise behavior.",
           "security_summary": "none",
-          "confidence": "high",
+          "confidence": "medium",
+          "agent_run_metrics": {
+            "duration_ms": 40303,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053388824,
+            "finished_at_unix_ms": 1784053429127,
+            "total_token_usage": {
+              "input_tokens": 67249,
+              "cached_input_tokens": 62336,
+              "output_tokens": 2155,
+              "reasoning_output_tokens": 1652,
+              "total_tokens": 69404
+            },
+            "last_token_usage": {
+              "input_tokens": 67249,
+              "cached_input_tokens": 62336,
+              "output_tokens": 2155,
+              "reasoning_output_tokens": 1652,
+              "total_tokens": 69404
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "CHANGELOG.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "d1cad663d6e82a38a23fc909364ff2c61b79a631479fc17c8feb0b6bd8e52a75"
+            "value": "2672f6cf8dcb78e3099cb73761b905567600834d43854ba76559f333a7ec0524"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package git SHA (`cf3874b2480b9ca12f367a54a4835dd2920847de`) and an empty `path_in_vcs`. No concrete malicious or supply-chain indicators were found in this file; there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior present here.",
+          "summary": "Reviewed the changelog entries for clang-sys 1.8.1 and earlier releases, focusing on whether the file contains install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms. It is a plain release history describing feature additions and fixes, and I found no concrete malicious or supply-chain indicators in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10849,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053429128,
+            "finished_at_unix_ms": 1784053439977,
+            "total_token_usage": {
+              "input_tokens": 26083,
+              "cached_input_tokens": 21248,
+              "output_tokens": 327,
+              "reasoning_output_tokens": 119,
+              "total_tokens": 26410
+            },
+            "last_token_usage": {
+              "input_tokens": 26083,
+              "cached_input_tokens": 21248,
+              "output_tokens": 327,
+              "reasoning_output_tokens": 119,
+              "total_tokens": 26410
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "55fbf345744f3c75d1b4e59a94ab6bdd94a66630da19ecb5d0650075e522a27d"
+          },
+          "summary": "Reviewed the crate manifest for `clang-sys` 1.8.1, including package metadata, dependency declarations, features, and the presence of a build script. I found no concrete malicious or supply-chain indicators in this file: no install hooks, no network or exfiltration settings, no credential access, no dynamic code-loading directives, no obfuscation, and no persistence tampering.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13360,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053439978,
+            "finished_at_unix_ms": 1784053453339,
+            "total_token_usage": {
+              "input_tokens": 24662,
+              "cached_input_tokens": 23296,
+              "output_tokens": 490,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 25152
+            },
+            "last_token_usage": {
+              "input_tokens": 24662,
+              "cached_input_tokens": 23296,
+              "output_tokens": 490,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 25152
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

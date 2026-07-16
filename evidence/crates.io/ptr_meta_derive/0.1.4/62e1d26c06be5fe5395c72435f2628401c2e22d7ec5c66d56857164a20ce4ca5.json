@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591612",
+  "latest_reviewed_at": "1784054184",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -117,102 +123,40 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 2,
-      "file_record_count_with_metrics": 2
+      "review_count": 2,
+      "file_record_count": 5,
+      "file_record_count_with_metrics": 5
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 5,
-    "file_records_with_metrics": 2,
-    "file_records_without_metrics": 3,
-    "duration_ms_total": 25032,
-    "attempts_total": 2,
+    "file_records_with_metrics": 5,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 71675,
+    "attempts_total": 5,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 2,
-    "last_token_usage_records": 2,
+    "total_token_usage_records": 5,
+    "last_token_usage_records": 5,
     "total_token_usage": {
-      "input_tokens": 41680,
-      "cached_input_tokens": 35328,
-      "output_tokens": 858,
-      "reasoning_output_tokens": 480,
-      "total_tokens": 42538
+      "input_tokens": 128247,
+      "cached_input_tokens": 111744,
+      "output_tokens": 2363,
+      "reasoning_output_tokens": 1256,
+      "total_tokens": 130610
     },
     "last_token_usage": {
-      "input_tokens": 41680,
-      "cached_input_tokens": 35328,
-      "output_tokens": 858,
-      "reasoning_output_tokens": 480,
-      "total_tokens": 42538
+      "input_tokens": 128247,
+      "cached_input_tokens": 111744,
+      "output_tokens": 2363,
+      "reasoning_output_tokens": 1256,
+      "total_tokens": 130610
     },
     "model_context_windows": []
   },
   "reviews": [
-    {
-      "id": "rev_492a055dc60b4c12a1c6c3dae0182213",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783194007",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, a proc-macro crate that generates `Pointee` impls for DST structs and trait objects via `syn`/`quote`. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.\nI reviewed the package manifest in `Cargo.toml`, which defines a standard Rust proc-macro crate with ordinary `proc-macro2`, `quote`, and `syn` dependencies. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed .cargo_vcs_info.json, which contains only a recorded git SHA1 for the crate’s source provenance. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this target file.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "75884e8881ba1824411238726c2647f56b5f8b830b5dfc7f4933f0b2d0d343e0"
-          },
-          "summary": "Reviewed `src/lib.rs`, a proc-macro crate that generates `Pointee` impls for DST structs and trait objects via `syn`/`quote`. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "91f90e0750a29a47edfa0ac16f30bcc988655b4ad1d07a35fffb08c5724a034b"
-          },
-          "summary": "I reviewed the package manifest in `Cargo.toml`, which defines a standard Rust proc-macro crate with ordinary `proc-macro2`, `quote`, and `syn` dependencies. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2dd94c4517f0a07c00215bf31be4dfe05840faa06ab9f2d53d11a7065068b461"
-          },
-          "summary": "Reviewed .cargo_vcs_info.json, which contains only a recorded git SHA1 for the crate’s source provenance. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
     {
       "id": "rev_8dda83e1d7e14ebfa9a97121c27796f5",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -223,7 +167,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591612",
       "thirdpass_version": "0.6.0",
@@ -287,6 +231,119 @@
               "output_tokens": 367,
               "reasoning_output_tokens": 189,
               "total_tokens": 21258
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_fd0cbaab3ffa4daba6b3e774f30c58c3",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054184",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2dd94c4517f0a07c00215bf31be4dfe05840faa06ab9f2d53d11a7065068b461"
+          },
+          "summary": "Reviewed `.cargo_vcs_info.json`, which contains only a VCS provenance hash for the packaged source (`git.sha1`). I found no concrete malicious or supply-chain indicators in this target file, and there was no evidence here of install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13943,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054137407,
+            "finished_at_unix_ms": 1784054151350,
+            "total_token_usage": {
+              "input_tokens": 24104,
+              "cached_input_tokens": 21248,
+              "output_tokens": 402,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 24506
+            },
+            "last_token_usage": {
+              "input_tokens": 24104,
+              "cached_input_tokens": 21248,
+              "output_tokens": 402,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 24506
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "91f90e0750a29a47edfa0ac16f30bcc988655b4ad1d07a35fffb08c5724a034b"
+          },
+          "summary": "Reviewed the crate manifest for `ptr_meta_derive` 0.1.4. It is a straightforward proc-macro package declaration with normal library metadata and direct dependencies on `proc-macro2`, `quote`, and `syn`; I found no install hooks, network or exfiltration settings, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12004,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054151351,
+            "finished_at_unix_ms": 1784054163356,
+            "total_token_usage": {
+              "input_tokens": 24379,
+              "cached_input_tokens": 21248,
+              "output_tokens": 458,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24837
+            },
+            "last_token_usage": {
+              "input_tokens": 24379,
+              "cached_input_tokens": 21248,
+              "output_tokens": 458,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24837
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "75884e8881ba1824411238726c2647f56b5f8b830b5dfc7f4933f0b2d0d343e0"
+          },
+          "summary": "Reviewed `src/lib.rs`, which defines two `ptr_meta` proc-macro entry points for deriving and attaching `Pointee` implementations from Rust type metadata. I checked for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20696,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054163356,
+            "finished_at_unix_ms": 1784054184053,
+            "total_token_usage": {
+              "input_tokens": 38084,
+              "cached_input_tokens": 33920,
+              "output_tokens": 645,
+              "reasoning_output_tokens": 324,
+              "total_tokens": 38729
+            },
+            "last_token_usage": {
+              "input_tokens": 38084,
+              "cached_input_tokens": 33920,
+              "output_tokens": 645,
+              "reasoning_output_tokens": 324,
+              "total_tokens": 38729
             }
           },
           "comment_count": 0,

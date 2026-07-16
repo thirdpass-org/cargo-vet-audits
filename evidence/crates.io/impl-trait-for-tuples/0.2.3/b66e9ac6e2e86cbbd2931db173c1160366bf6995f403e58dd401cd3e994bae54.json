@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591808",
+  "latest_reviewed_at": "1784061766",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -513,44 +519,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 7,
-      "file_record_count": 25,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 4,
-      "file_record_count": 16,
-      "file_record_count_with_metrics": 16
+      "review_count": 10,
+      "file_record_count": 41,
+      "file_record_count_with_metrics": 41
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 41,
-    "file_records_with_metrics": 16,
-    "file_records_without_metrics": 25,
-    "duration_ms_total": 251462,
-    "attempts_total": 16,
+    "file_records_with_metrics": 41,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 641142,
+    "attempts_total": 41,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 16,
-    "last_token_usage_records": 16,
+    "total_token_usage_records": 41,
+    "last_token_usage_records": 41,
     "total_token_usage": {
-      "input_tokens": 378130,
-      "cached_input_tokens": 343552,
-      "output_tokens": 7453,
-      "reasoning_output_tokens": 3404,
-      "total_tokens": 385583
+      "input_tokens": 1043463,
+      "cached_input_tokens": 924544,
+      "output_tokens": 20040,
+      "reasoning_output_tokens": 9836,
+      "total_tokens": 1063503
     },
     "last_token_usage": {
-      "input_tokens": 378130,
-      "cached_input_tokens": 343552,
-      "output_tokens": 7453,
-      "reasoning_output_tokens": 3404,
-      "total_tokens": 385583
+      "input_tokens": 1043463,
+      "cached_input_tokens": 924544,
+      "output_tokens": 20040,
+      "reasoning_output_tokens": 9836,
+      "total_tokens": 1063503
     },
     "model_context_windows": []
   },
@@ -565,7 +563,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591787",
       "thirdpass_version": "0.6.0",
@@ -742,7 +740,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591711",
       "thirdpass_version": "0.6.0",
@@ -910,7 +908,7 @@
       ]
     },
     {
-      "id": "rev_279f18560e0b4ff6b4639af9d044e2c8",
+      "id": "rev_2ceb027200a74b47a3ba901e26397ff3",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -918,12 +916,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783186941",
+      "created_at": "1784061766",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed this UI test file, which only applies the `impl_trait_for_tuples::impl_for_tuples(1, 2, 3)` macro to an empty `Test` trait and defines an empty `main`. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the target file.",
       "files": [
         {
           "file_path": "tests/ui/too_much_arguments_to_macro.rs",
@@ -931,63 +928,29 @@
             "algorithm": "blake3",
             "value": "ca5ae24f6f93b3885ab0b4ee0afb8a9fbd101877ca40d0509c32a781474780fd"
           },
-          "summary": "Reviewed this UI test file, which only applies the `impl_trait_for_tuples::impl_for_tuples(1, 2, 3)` macro to an empty `Test` trait and defines an empty `main`. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the target file.",
+          "summary": "Reviewed a small Rust UI test that invokes `impl_trait_for_tuples::impl_for_tuples` on a dummy trait and defines an empty `main`. The file contains no concrete indicators of install hooks, network or credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_38f5bd25339c412487419d77751751d7",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783186793",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/utils.rs` is a small procedural-macro helper that appends tuple element identifiers and optional bounds into `syn::Generics` using `quote!` and `parse_quote!`. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed the target Rust UI test, which defines a small trait and an `impl_trait_for_tuples` expansion that forwards `test()` across tuple elements. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this file.\nReviewed this UI test file, which defines a small trait and uses `impl_trait_for_tuples` macro expansion in an implementation with an empty `for_tuples!()` body. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nI reviewed this Rust UI test file, which defines a small trait and uses `impl_trait_for_tuples` macros to generate tuple implementations. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the target test file, which defines a tuple-impl macro usage example and a small compile-time test harness. I found no concrete malicious or supply-chain indicators in the file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": "src/utils.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6abcb487fcb4bae189e4e1917b93649e79d7b98210e5c1889f748324289878f3"
+          "agent_run_metrics": {
+            "duration_ms": 11813,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061736889,
+            "finished_at_unix_ms": 1784061748703,
+            "total_token_usage": {
+              "input_tokens": 24174,
+              "cached_input_tokens": 21248,
+              "output_tokens": 373,
+              "reasoning_output_tokens": 172,
+              "total_tokens": 24547
+            },
+            "last_token_usage": {
+              "input_tokens": 24174,
+              "cached_input_tokens": 21248,
+              "output_tokens": 373,
+              "reasoning_output_tokens": 172,
+              "total_tokens": 24547
+            }
           },
-          "summary": "`src/utils.rs` is a small procedural-macro helper that appends tuple element identifiers and optional bounds into `syn::Generics` using `quote!` and `parse_quote!`. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/calling_method_in_static_function.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "603d2fca6f25edf54e69e33b5f34876f32765588f8666959b3ca676df0ff7615"
-          },
-          "summary": "Reviewed the target Rust UI test, which defines a small trait and an `impl_trait_for_tuples` expansion that forwards `test()` across tuple elements. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/empty_for_tuples.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "300fd17f6fd72292a059da29e7d9c4df2bab1a8872953edab7d7ea0540b9d1a2"
-          },
-          "summary": "Reviewed this UI test file, which defines a small trait and uses `impl_trait_for_tuples` macro expansion in an implementation with an empty `for_tuples!()` body. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -997,9 +960,174 @@
             "algorithm": "blake3",
             "value": "47be99b96093ede62f9db9dfbc0761bcbed8bb1f63b8021862398ffc5626b681"
           },
-          "summary": "I reviewed this Rust UI test file, which defines a small trait and uses `impl_trait_for_tuples` macros to generate tuple implementations. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "This file is a small Rust UI test that defines a trait and exercises `impl_trait_for_tuples` with an unusual separator token in a macro expansion, apparently to validate parser behavior. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17485,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061748703,
+            "finished_at_unix_ms": 1784061766189,
+            "total_token_usage": {
+              "input_tokens": 24186,
+              "cached_input_tokens": 21248,
+              "output_tokens": 418,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 24604
+            },
+            "last_token_usage": {
+              "input_tokens": 24186,
+              "cached_input_tokens": 21248,
+              "output_tokens": 418,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 24604
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_531a86dcf86d44918bde0ea76361049d",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784057898",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/codegen.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a022f6f3680d44f94b6dc07fa43ee2fd172dfce34f590c5737054fda14416df5"
+          },
+          "summary": "This file is a Rust test suite for the `impl_for_tuples` macro, covering tuple trait generation, method forwarding, generics, and return-type behavior. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16996,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057831486,
+            "finished_at_unix_ms": 1784057848482,
+            "total_token_usage": {
+              "input_tokens": 25646,
+              "cached_input_tokens": 21248,
+              "output_tokens": 601,
+              "reasoning_output_tokens": 397,
+              "total_tokens": 26247
+            },
+            "last_token_usage": {
+              "input_tokens": 25646,
+              "cached_input_tokens": 21248,
+              "output_tokens": 601,
+              "reasoning_output_tokens": 397,
+              "total_tokens": 26247
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/fail.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "abdbd42b475e614b1fb885ac01f4e36269d778b62644010605fab563689ac44d"
+          },
+          "summary": "`tests/fail.rs` is a small `trybuild` test harness that runs compile-fail fixtures from `tests/fail/*.rs`. I reviewed it for install-time execution, hidden subprocesses, network or credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12239,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057848483,
+            "finished_at_unix_ms": 1784057860722,
+            "total_token_usage": {
+              "input_tokens": 24156,
+              "cached_input_tokens": 21248,
+              "output_tokens": 482,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 24638
+            },
+            "last_token_usage": {
+              "input_tokens": 24156,
+              "cached_input_tokens": 21248,
+              "output_tokens": 482,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 24638
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/fail/custom_trait_bound_invalid.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ccf318326e7cb04155359236c88d42e41f0914fb2d2ae0dcf6427e96b01b3087"
+          },
+          "summary": "Reviewed this Rust test case, which exercises `impl_trait_for_tuples` with a custom trait bound and a small `main` that instantiates tuple implementations. I checked the file for install-time execution, network or credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11454,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057860723,
+            "finished_at_unix_ms": 1784057872177,
+            "total_token_usage": {
+              "input_tokens": 24305,
+              "cached_input_tokens": 21248,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 24712
+            },
+            "last_token_usage": {
+              "input_tokens": 24305,
+              "cached_input_tokens": 21248,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 24712
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/fail/trait_bound_not_added.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "312ef63ce9f2b09c7f123d38c610cdeccc4aa2fd3e173242543a15832bb91fd4"
+          },
+          "summary": "Reviewed `tests/fail/trait_bound_not_added.rs`, which is a small Rust compile-fail test exercising the `impl_trait_for_tuples` macro on a `Test` trait and tuple implementation. I checked it for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13589,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057872177,
+            "finished_at_unix_ms": 1784057885767,
+            "total_token_usage": {
+              "input_tokens": 24534,
+              "cached_input_tokens": 21760,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 112,
+              "total_tokens": 24991
+            },
+            "last_token_usage": {
+              "input_tokens": 24534,
+              "cached_input_tokens": 21760,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 112,
+              "total_tokens": 24991
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -1009,9 +1137,142 @@
             "algorithm": "blake3",
             "value": "3e3dba17448832f83fdc863069d69fd1acda8e7670a718e87d8615058e9b8a15"
           },
-          "summary": "Reviewed the target test file, which defines a tuple-impl macro usage example and a small compile-time test harness. I found no concrete malicious or supply-chain indicators in the file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed this Rust test file, which only defines a trait, a dummy impl, and a couple of calls meant to exercise `impl_trait_for_tuples` with tuple sizes. I found no concrete malicious or supply-chain indicators in the target file: there are no install hooks, network or exfiltration logic, credential or secret access, dynamic code loading, obfuscation, persistence changes, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12311,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057885767,
+            "finished_at_unix_ms": 1784057898078,
+            "total_token_usage": {
+              "input_tokens": 24248,
+              "cached_input_tokens": 23296,
+              "output_tokens": 467,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 24715
+            },
+            "last_token_usage": {
+              "input_tokens": 24248,
+              "cached_input_tokens": 23296,
+              "output_tokens": 467,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 24715
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_57c60173116844feab2e99616aab1b48",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056169",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8090a5982f7ab63bf90af4d5736d77b7175116babc75ef193a06ae2f555663c6"
+          },
+          "summary": "`src/lib.rs` is the proc-macro entrypoint for `impl-trait-for-tuples`: it parses macro arguments and either a `trait` or `impl`, then forwards expansion to the full-automatic or semi-automatic implementation modules. I checked this file for install-time hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24932,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056098316,
+            "finished_at_unix_ms": 1784056123248,
+            "total_token_usage": {
+              "input_tokens": 41145,
+              "cached_input_tokens": 35968,
+              "output_tokens": 677,
+              "reasoning_output_tokens": 349,
+              "total_tokens": 41822
+            },
+            "last_token_usage": {
+              "input_tokens": 41145,
+              "cached_input_tokens": 35968,
+              "output_tokens": 677,
+              "reasoning_output_tokens": 349,
+              "total_tokens": 41822
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/semi_automatic.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b6a03f6583dee8009b9367d224482cb69a580a475d40b925dfa77a595d46e66e"
+          },
+          "summary": "Reviewed src/semi_automatic.rs, a proc-macro helper that parses `for_tuples!` syntax and expands tuple trait implementations with `syn`/`quote`. I checked for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 28724,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056123248,
+            "finished_at_unix_ms": 1784056151973,
+            "total_token_usage": {
+              "input_tokens": 45670,
+              "cached_input_tokens": 35968,
+              "output_tokens": 1163,
+              "reasoning_output_tokens": 396,
+              "total_tokens": 46833
+            },
+            "last_token_usage": {
+              "input_tokens": 45670,
+              "cached_input_tokens": 35968,
+              "output_tokens": 1163,
+              "reasoning_output_tokens": 396,
+              "total_tokens": 46833
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/utils.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6abcb487fcb4bae189e4e1917b93649e79d7b98210e5c1889f748324289878f3"
+          },
+          "summary": "`src/utils.rs` is a small proc-macro helper that appends tuple element identifiers and an optional bound into `syn::Generics` for code generation. I checked this file for install-time execution, network or secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17768,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056151974,
+            "finished_at_unix_ms": 1784056169742,
+            "total_token_usage": {
+              "input_tokens": 24254,
+              "cached_input_tokens": 21248,
+              "output_tokens": 502,
+              "reasoning_output_tokens": 304,
+              "total_tokens": 24756
+            },
+            "last_token_usage": {
+              "input_tokens": 24254,
+              "cached_input_tokens": 21248,
+              "output_tokens": 502,
+              "reasoning_output_tokens": 304,
+              "total_tokens": 24756
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -1027,7 +1288,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591616",
       "thirdpass_version": "0.6.0",
@@ -1195,7 +1456,7 @@
       ]
     },
     {
-      "id": "rev_73bccd6c30fb4c68af1092c151203ae9",
+      "id": "rev_919b4e75eef8496d80f635e2756ed1fc",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1203,286 +1464,137 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783186618",
+      "created_at": "1784059440",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed src/semi_automatic.rs, which is a proc-macro expansion module for generating tuple-based trait implementations from `for_tuples!` syntax. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
-        {
-          "file_path": "src/semi_automatic.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b6a03f6583dee8009b9367d224482cb69a580a475d40b925dfa77a595d46e66e"
-          },
-          "summary": "Reviewed src/semi_automatic.rs, which is a proc-macro expansion module for generating tuple-based trait implementations from `for_tuples!` syntax. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_7a71336f67874c0d8274a445d036571f",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783186738",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the GitHub Actions workflow in `.github/workflows/rust.yml`, which only runs standard Rust CI jobs (`check`, `fmt`, `test`) on `push`/`pull_request` to `main`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration steps, credential access, dynamic code loading, obfuscation, or persistence/tampering behavior.\nReviewed the README.md for signs of supply-chain compromise or hidden runtime behavior. It is a normal crate README describing the `impl-trait-for-tuples` macro and I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed the package manifest `Cargo.toml` for install-time hooks, build scripts, unusual runtime entry points, and dependency metadata that could enable hidden execution or exfiltration. I found no concrete malicious or supply-chain indicators here: `build = false` disables build-script execution, and the file contains only standard proc-macro/library metadata plus ordinary Rust crate dependencies, with no network, credential access, obfuscation, or persistence behavior declared.\nReviewed `tests/fail/custom_trait_bound_invalid.rs`, a compile-fail Rust test exercising `impl_trait_for_tuples` macros, custom trait bounds, and tuple dispatch through a small in-memory trait implementation. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `tests/fail/trait_bound_not_added.rs`, a small compile-fail test that exercises `impl_trait_for_tuples` by defining a `Test` trait, generating a tuple impl with `#[tuple_types_no_default_trait_bound]`, and calling it from `main`. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
-      "files": [
-        {
-          "file_path": ".github/workflows/rust.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ef501ee6999fdab06f2b396bff497b5b6da41c76db63f3ae3ae2c6636d80d100"
-          },
-          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/rust.yml`, which only runs standard Rust CI jobs (`check`, `fmt`, `test`) on `push`/`pull_request` to `main`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration steps, credential access, dynamic code loading, obfuscation, or persistence/tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "aebb6864c571a1bbca1c5ee64d2a613c7257d69f51ace4be530fa8bc1b077aa4"
-          },
-          "summary": "Reviewed the README.md for signs of supply-chain compromise or hidden runtime behavior. It is a normal crate README describing the `impl-trait-for-tuples` macro and I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "79495ce3a6c58c6dc5f925f553659f61a89368586e91daa3e1d65a6b5cce7115"
-          },
-          "summary": "Reviewed the package manifest `Cargo.toml` for install-time hooks, build scripts, unusual runtime entry points, and dependency metadata that could enable hidden execution or exfiltration. I found no concrete malicious or supply-chain indicators here: `build = false` disables build-script execution, and the file contains only standard proc-macro/library metadata plus ordinary Rust crate dependencies, with no network, credential access, obfuscation, or persistence behavior declared.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/fail/custom_trait_bound_invalid.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ccf318326e7cb04155359236c88d42e41f0914fb2d2ae0dcf6427e96b01b3087"
-          },
-          "summary": "Reviewed `tests/fail/custom_trait_bound_invalid.rs`, a compile-fail Rust test exercising `impl_trait_for_tuples` macros, custom trait bounds, and tuple dispatch through a small in-memory trait implementation. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/fail/trait_bound_not_added.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "312ef63ce9f2b09c7f123d38c610cdeccc4aa2fd3e173242543a15832bb91fd4"
-          },
-          "summary": "Reviewed `tests/fail/trait_bound_not_added.rs`, a small compile-fail test that exercises `impl_trait_for_tuples` by defining a `Test` trait, generating a tuple impl with `#[tuple_types_no_default_trait_bound]`, and calling it from `main`. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_b725cd7889e94f03bc3655875b1eef05",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783186677",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/codegen.rs`, which is a Rust test suite exercising `impl_for_tuples` macro expansion across traits, associated types/constants, tuple access, separators, and unsafe/attribute cases. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, or other supply-chain compromise behavior in this file.\nReviewed the proc-macro entrypoint in `src/lib.rs`, which only parses attribute input, distinguishes full vs. semi-automatic tuple expansion, and forwards to helper modules. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\n`src/full_automatic.rs` is a procedural-macro helper that generates tuple trait implementations by inspecting a trait definition, validating supported method shapes, and emitting delegate impls. I checked it for install-time hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "tests/codegen.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a022f6f3680d44f94b6dc07fa43ee2fd172dfce34f590c5737054fda14416df5"
-          },
-          "summary": "Reviewed `tests/codegen.rs`, which is a Rust test suite exercising `impl_for_tuples` macro expansion across traits, associated types/constants, tuple access, separators, and unsafe/attribute cases. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, or other supply-chain compromise behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8090a5982f7ab63bf90af4d5736d77b7175116babc75ef193a06ae2f555663c6"
-          },
-          "summary": "Reviewed the proc-macro entrypoint in `src/lib.rs`, which only parses attribute input, distinguishes full vs. semi-automatic tuple expansion, and forwards to helper modules. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/full_automatic.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ded1fa8d185ab8b33cdda074b596390cc3ec36b608112702c052dc069de2ffd7"
-          },
-          "summary": "`src/full_automatic.rs` is a procedural-macro helper that generates tuple trait implementations by inspecting a trait definition, validating supported method shapes, and emitting delegate impls. I checked it for install-time hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_b8c882f16fc84948bb132785976a9249",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783186850",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed this Rust UI test file, which defines a small `Test` trait, applies `impl_trait_for_tuples::impl_for_tuples(2)` to an implementation, and invokes a `for_tuples!` macro in a `where` clause before `main()`. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `tests/ui/missing_paren_in_for_tuples.rs`, which is a small compile-fail/ UI-style Rust test defining a trait and an `impl_for_tuples` macro invocation. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.\nReviewed `.cargo_vcs_info.json`, which only records the source-control SHA1 and an empty `path_in_vcs` field. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `tests/ui/no_const_value.rs`, which is a minimal compile-time UI test for `impl_trait_for_tuples` defining a trait with an associated const and an empty `main`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nReviewed the UI test file `tests/ui/no_return_value.rs`, which only defines a small trait annotated with `impl_trait_for_tuples::impl_for_tuples(1)` and an empty `main` function. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution in this file.",
-      "files": [
-        {
-          "file_path": "tests/ui/custom_where_clause_not_allowed.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "615a23e3609cd2e38681ce87956d9a00c22ee3370257ef64b5517bc6e44d1c36"
-          },
-          "summary": "Reviewed this Rust UI test file, which defines a small `Test` trait, applies `impl_trait_for_tuples::impl_for_tuples(2)` to an implementation, and invokes a `for_tuples!` macro in a `where` clause before `main()`. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/missing_paren_in_for_tuples.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1e604e19b915eb90232554f35d6734f38bbf93129183ae91304ea6a7b2f8e984"
-          },
-          "summary": "Reviewed `tests/ui/missing_paren_in_for_tuples.rs`, which is a small compile-fail/ UI-style Rust test defining a trait and an `impl_for_tuples` macro invocation. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "39f0335a3d5597c62af3cca0d52fa461866971a8bf79b49bcc51f2b2524247fc"
-          },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the source-control SHA1 and an empty `path_in_vcs` field. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/no_const_value.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "695bbc71ca3b84a4ac2b12d8457199cfdea5862c21643dae5fb58b30f5e65dbf"
-          },
-          "summary": "Reviewed `tests/ui/no_const_value.rs`, which is a minimal compile-time UI test for `impl_trait_for_tuples` defining a trait with an associated const and an empty `main`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/no_return_value.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d34b7de6d66a6e9d71f50a5312a0c09a592a11c4d20a226d95595afe9aee64fb"
-          },
-          "summary": "Reviewed the UI test file `tests/ui/no_return_value.rs`, which only defines a small trait annotated with `impl_trait_for_tuples::impl_for_tuples(1)` and an empty `main` function. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_c90815bf08054288b724fb070288fdad",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783186923",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "I reviewed this Rust UI test file, which defines a small trait annotated with `impl_for_tuples(1)` and a minimal `main`. I checked for install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in the target file.\nReviewed `tests/fail.rs`, which is a small `trybuild` test harness that only creates `TestCases` and runs `compile_fail(\"tests/fail/*.rs\")`. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nI reviewed `tests/ui.rs`, which is a small `trybuild` test harness that only creates `TestCases` and runs `compile_fail` against `tests/ui/*.rs`. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nI reviewed `tests/ui/max_before_min_in_arguments.rs`, which is a minimal Rust UI test defining an empty trait under `#[impl_trait_for_tuples::impl_for_tuples(5, 2)]` with an empty `main`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed a minimal Rust UI test that applies `#[impl_trait_for_tuples::impl_for_tuples()]` to an empty trait and defines an empty `main`. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-      "files": [
-        {
-          "file_path": "tests/ui/no_type_parameter.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9b07840278569f10722e9fb7a04a8bab3a18571f4ba5cb09922a11950a2ba203"
-          },
-          "summary": "I reviewed this Rust UI test file, which defines a small trait annotated with `impl_for_tuples(1)` and a minimal `main`. I checked for install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/fail.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "abdbd42b475e614b1fb885ac01f4e36269d778b62644010605fab563689ac44d"
-          },
-          "summary": "Reviewed `tests/fail.rs`, which is a small `trybuild` test harness that only creates `TestCases` and runs `compile_fail(\"tests/fail/*.rs\")`. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": "tests/ui.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "26c455ab9c68a8478ec13c9b289ee0b102be8df128af973294369e514b80944f"
           },
-          "summary": "I reviewed `tests/ui.rs`, which is a small `trybuild` test harness that only creates `TestCases` and runs `compile_fail` against `tests/ui/*.rs`. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed a small test harness that creates a `trybuild::TestCases` instance and runs `compile_fail` against `tests/ui/*.rs`. The file contains no install hooks, subprocess execution, network or credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11739,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059374104,
+            "finished_at_unix_ms": 1784059385844,
+            "total_token_usage": {
+              "input_tokens": 24131,
+              "cached_input_tokens": 21248,
+              "output_tokens": 434,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 24565
+            },
+            "last_token_usage": {
+              "input_tokens": 24131,
+              "cached_input_tokens": 21248,
+              "output_tokens": 434,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 24565
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/calling_method_in_static_function.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "603d2fca6f25edf54e69e33b5f34876f32765588f8666959b3ca676df0ff7615"
+          },
+          "summary": "Reviewed tests/ui/calling_method_in_static_function.rs, a small compile-time test that defines a trait and uses the impl_trait_for_tuples macro to generate tuple-based method dispatch. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14497,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059385845,
+            "finished_at_unix_ms": 1784059400342,
+            "total_token_usage": {
+              "input_tokens": 24200,
+              "cached_input_tokens": 21248,
+              "output_tokens": 526,
+              "reasoning_output_tokens": 308,
+              "total_tokens": 24726
+            },
+            "last_token_usage": {
+              "input_tokens": 24200,
+              "cached_input_tokens": 21248,
+              "output_tokens": 526,
+              "reasoning_output_tokens": 308,
+              "total_tokens": 24726
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/custom_where_clause_not_allowed.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "615a23e3609cd2e38681ce87956d9a00c22ee3370257ef64b5517bc6e44d1c36"
+          },
+          "summary": "Reviewed this Rust UI test file, which defines a small `Test` trait and an `impl_trait_for_tuples` macro example in `main`; it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12235,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059400342,
+            "finished_at_unix_ms": 1784059412577,
+            "total_token_usage": {
+              "input_tokens": 24187,
+              "cached_input_tokens": 21248,
+              "output_tokens": 435,
+              "reasoning_output_tokens": 239,
+              "total_tokens": 24622
+            },
+            "last_token_usage": {
+              "input_tokens": 24187,
+              "cached_input_tokens": 21248,
+              "output_tokens": 435,
+              "reasoning_output_tokens": 239,
+              "total_tokens": 24622
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/empty_for_tuples.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "300fd17f6fd72292a059da29e7d9c4df2bab1a8872953edab7d7ea0540b9d1a2"
+          },
+          "summary": "Reviewed the UI test file `tests/ui/empty_for_tuples.rs`, which defines a small trait and an `impl_trait_for_tuples` test implementation and then exits in `main`. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11215,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059412578,
+            "finished_at_unix_ms": 1784059423793,
+            "total_token_usage": {
+              "input_tokens": 24213,
+              "cached_input_tokens": 23296,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 24592
+            },
+            "last_token_usage": {
+              "input_tokens": 24213,
+              "cached_input_tokens": 23296,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 24592
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -1492,21 +1604,206 @@
             "algorithm": "blake3",
             "value": "b778a3d1338ef67dfc5f7ea1692849cea9a7f76a89cc470b5104e7e4e820bd69"
           },
-          "summary": "I reviewed `tests/ui/max_before_min_in_arguments.rs`, which is a minimal Rust UI test defining an empty trait under `#[impl_trait_for_tuples::impl_for_tuples(5, 2)]` with an empty `main`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "summary": "Reviewed `tests/ui/max_before_min_in_arguments.rs`, which is a minimal UI test that applies `impl_trait_for_tuples::impl_for_tuples(5, 2)` to an empty trait and defines `main` with no body. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16455,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059423794,
+            "finished_at_unix_ms": 1784059440249,
+            "total_token_usage": {
+              "input_tokens": 24181,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 24704
+            },
+            "last_token_usage": {
+              "input_tokens": 24181,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 24704
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_9c670a1af3ec486caa7aa5d5c3f5856f",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784053936",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "39f0335a3d5597c62af3cca0d52fa461866971a8bf79b49bcc51f2b2524247fc"
+          },
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package's source-control SHA-1 and an empty `path_in_vcs` field. I found no indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11179,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053860797,
+            "finished_at_unix_ms": 1784053871976,
+            "total_token_usage": {
+              "input_tokens": 24157,
+              "cached_input_tokens": 21248,
+              "output_tokens": 361,
+              "reasoning_output_tokens": 163,
+              "total_tokens": 24518
+            },
+            "last_token_usage": {
+              "input_tokens": 24157,
+              "cached_input_tokens": 21248,
+              "output_tokens": 361,
+              "reasoning_output_tokens": 163,
+              "total_tokens": 24518
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/ui/missing_arguments_to_macro.rs",
+          "file_path": ".github/workflows/rust.yml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "60e62e46ef14593749ef99734c485b606f7d9ad80abffbfd01de0aefa8990126"
+            "value": "ef501ee6999fdab06f2b396bff497b5b6da41c76db63f3ae3ae2c6636d80d100"
           },
-          "summary": "Reviewed a minimal Rust UI test that applies `#[impl_trait_for_tuples::impl_for_tuples()]` to an empty trait and defines an empty `main`. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "summary": "The workflow only runs standard Rust CI jobs on push and pull_request: checkout, toolchain install, cache, cargo check, cargo fmt, and cargo test. I found no concrete malicious or supply-chain indicators in this file, and I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15636,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053871977,
+            "finished_at_unix_ms": 1784053887614,
+            "total_token_usage": {
+              "input_tokens": 24919,
+              "cached_input_tokens": 21248,
+              "output_tokens": 594,
+              "reasoning_output_tokens": 378,
+              "total_tokens": 25513
+            },
+            "last_token_usage": {
+              "input_tokens": 24919,
+              "cached_input_tokens": 21248,
+              "output_tokens": 594,
+              "reasoning_output_tokens": 378,
+              "total_tokens": 25513
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "79495ce3a6c58c6dc5f925f553659f61a89368586e91daa3e1d65a6b5cce7115"
+          },
+          "summary": "Reviewed the normalized Cargo.toml for the proc-macro crate metadata, dependency declarations, and any install-time or build-time hooks. I found no concrete indicators of malicious supply-chain behavior such as build scripts, install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence controls.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17361,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053887615,
+            "finished_at_unix_ms": 1784053904976,
+            "total_token_usage": {
+              "input_tokens": 24565,
+              "cached_input_tokens": 21248,
+              "output_tokens": 518,
+              "reasoning_output_tokens": 322,
+              "total_tokens": 25083
+            },
+            "last_token_usage": {
+              "input_tokens": 24565,
+              "cached_input_tokens": 21248,
+              "output_tokens": 518,
+              "reasoning_output_tokens": 322,
+              "total_tokens": 25083
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "aebb6864c571a1bbca1c5ee64d2a613c7257d69f51ace4be530fa8bc1b077aa4"
+          },
+          "summary": "Reviewed the README.md documentation for the crate’s tuple-implementation macro, including its usage examples and feature description. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms described here.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14288,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053904977,
+            "finished_at_unix_ms": 1784053919266,
+            "total_token_usage": {
+              "input_tokens": 25335,
+              "cached_input_tokens": 21248,
+              "output_tokens": 417,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 25752
+            },
+            "last_token_usage": {
+              "input_tokens": 25335,
+              "cached_input_tokens": 21248,
+              "output_tokens": 417,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 25752
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/full_automatic.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ded1fa8d185ab8b33cdda074b596390cc3ec36b608112702c052dc069de2ffd7"
+          },
+          "summary": "Reviewed `src/full_automatic.rs`, which generates tuple-trait implementations by walking a parsed trait definition, rewriting method signatures, and adding `Clone` bounds for non-reference arguments. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17082,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053919266,
+            "finished_at_unix_ms": 1784053936348,
+            "total_token_usage": {
+              "input_tokens": 42253,
+              "cached_input_tokens": 34944,
+              "output_tokens": 638,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 42891
+            },
+            "last_token_usage": {
+              "input_tokens": 42253,
+              "cached_input_tokens": 34944,
+              "output_tokens": 638,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 42891
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -1522,7 +1819,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591808",
       "thirdpass_version": "0.6.0",
@@ -1554,6 +1851,183 @@
               "output_tokens": 491,
               "reasoning_output_tokens": 188,
               "total_tokens": 32055
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_e325a9704b944e1e8ed916762b1c9ceb",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784060678",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/ui/missing_arguments_to_macro.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "60e62e46ef14593749ef99734c485b606f7d9ad80abffbfd01de0aefa8990126"
+          },
+          "summary": "Reviewed `tests/ui/missing_arguments_to_macro.rs`, which is a minimal Rust UI test that invokes `#[impl_trait_for_tuples::impl_for_tuples()]` on an empty trait and defines `main()`. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13589,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060598161,
+            "finished_at_unix_ms": 1784060611750,
+            "total_token_usage": {
+              "input_tokens": 24199,
+              "cached_input_tokens": 19200,
+              "output_tokens": 479,
+              "reasoning_output_tokens": 252,
+              "total_tokens": 24678
+            },
+            "last_token_usage": {
+              "input_tokens": 24199,
+              "cached_input_tokens": 19200,
+              "output_tokens": 479,
+              "reasoning_output_tokens": 252,
+              "total_tokens": 24678
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/missing_paren_in_for_tuples.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1e604e19b915eb90232554f35d6734f38bbf93129183ae91304ea6a7b2f8e984"
+          },
+          "summary": "Reviewed this Rust UI test file, which only defines a simple trait, a tuple-implementation macro invocation, and an empty `main` used to exercise parser behavior. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 25794,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060611751,
+            "finished_at_unix_ms": 1784060637545,
+            "total_token_usage": {
+              "input_tokens": 24198,
+              "cached_input_tokens": 23296,
+              "output_tokens": 484,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 24682
+            },
+            "last_token_usage": {
+              "input_tokens": 24198,
+              "cached_input_tokens": 23296,
+              "output_tokens": 484,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 24682
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/no_const_value.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "695bbc71ca3b84a4ac2b12d8457199cfdea5862c21643dae5fb58b30f5e65dbf"
+          },
+          "summary": "Reviewed `tests/ui/no_const_value.rs`, which is a minimal compile-fail style Rust UI test defining a tuple-impl trait with an associated const and an empty `main`. I found no concrete malicious or supply-chain indicators in this file, and it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13229,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060637546,
+            "finished_at_unix_ms": 1784060650776,
+            "total_token_usage": {
+              "input_tokens": 24181,
+              "cached_input_tokens": 21248,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 24638
+            },
+            "last_token_usage": {
+              "input_tokens": 24181,
+              "cached_input_tokens": 21248,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 24638
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/no_return_value.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d34b7de6d66a6e9d71f50a5312a0c09a592a11c4d20a226d95595afe9aee64fb"
+          },
+          "summary": "Reviewed a small Rust UI test file that applies `impl_trait_for_tuples::impl_for_tuples(1)` to a trait with a single method returning `u32`, followed by an empty `main`. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16013,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060650776,
+            "finished_at_unix_ms": 1784060666789,
+            "total_token_usage": {
+              "input_tokens": 24140,
+              "cached_input_tokens": 21248,
+              "output_tokens": 394,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 24534
+            },
+            "last_token_usage": {
+              "input_tokens": 24140,
+              "cached_input_tokens": 21248,
+              "output_tokens": 394,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 24534
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/no_type_parameter.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9b07840278569f10722e9fb7a04a8bab3a18571f4ba5cb09922a11950a2ba203"
+          },
+          "summary": "Reviewed `tests/ui/no_type_parameter.rs`, a small UI test that applies `impl_trait_for_tuples::impl_for_tuples(1)` to a trait with an associated type and then defines an empty `main`. I checked this target for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the file itself.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12057,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060666790,
+            "finished_at_unix_ms": 1784060678847,
+            "total_token_usage": {
+              "input_tokens": 24156,
+              "cached_input_tokens": 23296,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 24557
+            },
+            "last_token_usage": {
+              "input_tokens": 24156,
+              "cached_input_tokens": 23296,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 24557
             }
           },
           "comment_count": 0,

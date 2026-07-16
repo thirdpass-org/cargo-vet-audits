@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591851",
+  "latest_reviewed_at": "1784052137",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -160,49 +166,41 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 5
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 0
+      "review_count": 3,
+      "file_record_count": 13,
+      "file_record_count_with_metrics": 13
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 9,
-    "file_records_with_metrics": 5,
-    "file_records_without_metrics": 4,
-    "duration_ms_total": 55200,
-    "attempts_total": 5,
+    "reviewed_file_records": 13,
+    "file_records_with_metrics": 13,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 188978,
+    "attempts_total": 13,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 5,
-    "last_token_usage_records": 5,
+    "total_token_usage_records": 13,
+    "last_token_usage_records": 13,
     "total_token_usage": {
-      "input_tokens": 121738,
-      "cached_input_tokens": 98432,
-      "output_tokens": 1830,
-      "reasoning_output_tokens": 792,
-      "total_tokens": 123568
+      "input_tokens": 389308,
+      "cached_input_tokens": 305792,
+      "output_tokens": 5654,
+      "reasoning_output_tokens": 2613,
+      "total_tokens": 394962
     },
     "last_token_usage": {
-      "input_tokens": 121738,
-      "cached_input_tokens": 98432,
-      "output_tokens": 1830,
-      "reasoning_output_tokens": 792,
-      "total_tokens": 123568
+      "input_tokens": 389308,
+      "cached_input_tokens": 305792,
+      "output_tokens": 5654,
+      "reasoning_output_tokens": 2613,
+      "total_tokens": 394962
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_5fbdf70836b942338e929ccd6a326905",
+      "id": "rev_737f25e4e1c64e8e8f0274a8346ffe7f",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -210,22 +208,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782835029",
+      "created_at": "1784046124",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is a small no-std Rust adapter around ICU Unicode property lookups and UTS-46 normalization for `idna`. I checked for install-time hooks, network or exfiltration code, secret access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `Cargo.toml` for supply-chain indicators and found a plain library manifest: it declares only the `idna_adapter` crate, two ICU dependencies, and no build script, install hooks, binaries, or other metadata that would execute code at install time. I also checked for network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence-related settings in this file and found none.\nReviewed the README for `idna_adapter`, which is a documentation-only file describing the crate’s Unicode backend choices and the `cargo update --precise` commands for selecting versions. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden supply-chain behavior in this file.\n.cargo_vcs_info.json is a small Cargo provenance metadata file containing only the package's VCS commit SHA and an empty path. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "a1fa599fdaa952a97767ed9ad589f896e0a9ab1dc954f63f502b8c8ef4ee089a"
+            "value": "61f994e34638bcd983e78b6bfbadcfd412b14fd912e6bd172fda781d1bd039ca"
           },
-          "summary": "Reviewed `src/lib.rs`, which is a small no-std Rust adapter around ICU Unicode property lookups and UTS-46 normalization for `idna`. I checked for install-time hooks, network or exfiltration code, secret access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which contains only VCS provenance metadata (`git.sha1` and an empty `path_in_vcs`) and no executable content. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators in this target file and found none.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15315,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046065858,
+            "finished_at_unix_ms": 1784046081173,
+            "total_token_usage": {
+              "input_tokens": 24128,
+              "cached_input_tokens": 15104,
+              "output_tokens": 326,
+              "reasoning_output_tokens": 133,
+              "total_tokens": 24454
+            },
+            "last_token_usage": {
+              "input_tokens": 24128,
+              "cached_input_tokens": 15104,
+              "output_tokens": 326,
+              "reasoning_output_tokens": 133,
+              "total_tokens": 24454
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -235,9 +252,29 @@
             "algorithm": "blake3",
             "value": "935534a61cb6fd94d7731985fb323c37aa4d1776c39ef5ce34a70c07687ebb19"
           },
-          "summary": "Reviewed `Cargo.toml` for supply-chain indicators and found a plain library manifest: it declares only the `idna_adapter` crate, two ICU dependencies, and no build script, install hooks, binaries, or other metadata that would execute code at install time. I also checked for network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence-related settings in this file and found none.",
+          "summary": "Reviewed the normalized Cargo manifest for `idna_adapter` 1.2.2. It only declares package metadata, two ICU dependencies, and a feature flag; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12753,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046081175,
+            "finished_at_unix_ms": 1784046093928,
+            "total_token_usage": {
+              "input_tokens": 24491,
+              "cached_input_tokens": 15104,
+              "output_tokens": 409,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24900
+            },
+            "last_token_usage": {
+              "input_tokens": 24491,
+              "cached_input_tokens": 15104,
+              "output_tokens": 409,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24900
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -247,21 +284,206 @@
             "algorithm": "blake3",
             "value": "5dd42f9da446579e9b0629f3f4a3ac8d09ffc04cd2cb8654c7fff6cf439b21b2"
           },
-          "summary": "Reviewed the README for `idna_adapter`, which is a documentation-only file describing the crate’s Unicode backend choices and the `cargo update --precise` commands for selecting versions. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden supply-chain behavior in this file.",
+          "summary": "Reviewed the README for idna_adapter 1.2.2, which documents how Cargo can pin the crate to select ICU4X, unicode-rs, or a stub backend. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14677,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046093929,
+            "finished_at_unix_ms": 1784046108607,
+            "total_token_usage": {
+              "input_tokens": 24877,
+              "cached_input_tokens": 15104,
+              "output_tokens": 441,
+              "reasoning_output_tokens": 239,
+              "total_tokens": 25318
+            },
+            "last_token_usage": {
+              "input_tokens": 24877,
+              "cached_input_tokens": 15104,
+              "output_tokens": 441,
+              "reasoning_output_tokens": 239,
+              "total_tokens": 25318
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a1fa599fdaa952a97767ed9ad589f896e0a9ab1dc954f63f502b8c8ef4ee089a"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a `no_std` Rust adapter around ICU-backed Unicode property lookups and UTS-46 normalization helpers. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16275,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046108608,
+            "finished_at_unix_ms": 1784046124884,
+            "total_token_usage": {
+              "input_tokens": 41220,
+              "cached_input_tokens": 29312,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 195,
+              "total_tokens": 41707
+            },
+            "last_token_usage": {
+              "input_tokens": 41220,
+              "cached_input_tokens": 29312,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 195,
+              "total_tokens": 41707
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_8469f063172b46e18630e8e1d451a776",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052137",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "61f994e34638bcd983e78b6bfbadcfd412b14fd912e6bd172fda781d1bd039ca"
           },
-          "summary": ".cargo_vcs_info.json is a small Cargo provenance metadata file containing only the package's VCS commit SHA and an empty path. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "This file only contains Cargo VCS metadata for the package source, pointing at git commit `1d9782f32c9e29218542b4a9411a82b35ec5c8cb` with an empty `path_in_vcs`. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11892,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052063230,
+            "finished_at_unix_ms": 1784052075123,
+            "total_token_usage": {
+              "input_tokens": 24123,
+              "cached_input_tokens": 21248,
+              "output_tokens": 418,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 24541
+            },
+            "last_token_usage": {
+              "input_tokens": 24123,
+              "cached_input_tokens": 21248,
+              "output_tokens": 418,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 24541
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "935534a61cb6fd94d7731985fb323c37aa4d1776c39ef5ce34a70c07687ebb19"
+          },
+          "summary": "This is a normalized Cargo manifest for the `idna_adapter` 1.2.2 library crate, declaring only library metadata, feature flags, and two ICU dependencies. I checked for install hooks, build scripts, network or exfiltration paths, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14666,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052075124,
+            "finished_at_unix_ms": 1784052089791,
+            "total_token_usage": {
+              "input_tokens": 24423,
+              "cached_input_tokens": 21248,
+              "output_tokens": 556,
+              "reasoning_output_tokens": 359,
+              "total_tokens": 24979
+            },
+            "last_token_usage": {
+              "input_tokens": 24423,
+              "cached_input_tokens": 21248,
+              "output_tokens": 556,
+              "reasoning_output_tokens": 359,
+              "total_tokens": 24979
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5dd42f9da446579e9b0629f3f4a3ac8d09ffc04cd2cb8654c7fff6cf439b21b2"
+          },
+          "summary": "This README documents how `idna_adapter` lets Cargo pin different Unicode back ends for `idna` (ICU4X, unicode-rs, or a stub implementation). I checked the file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in the text.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13543,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052089792,
+            "finished_at_unix_ms": 1784052103335,
+            "total_token_usage": {
+              "input_tokens": 25229,
+              "cached_input_tokens": 21760,
+              "output_tokens": 399,
+              "reasoning_output_tokens": 196,
+              "total_tokens": 25628
+            },
+            "last_token_usage": {
+              "input_tokens": 25229,
+              "cached_input_tokens": 21760,
+              "output_tokens": 399,
+              "reasoning_output_tokens": 196,
+              "total_tokens": 25628
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a1fa599fdaa952a97767ed9ad589f896e0a9ab1dc954f63f502b8c8ef4ee089a"
+          },
+          "summary": "Reviewed src/lib.rs, a no_std Rust adapter that exposes ICU-backed Unicode property helpers and UTS-46 normalization wrappers for idna. I checked for install hooks, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 34657,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052103335,
+            "finished_at_unix_ms": 1784052137993,
+            "total_token_usage": {
+              "input_tokens": 79079,
+              "cached_input_tokens": 68480,
+              "output_tokens": 788,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 79867
+            },
+            "last_token_usage": {
+              "input_tokens": 79079,
+              "cached_input_tokens": 68480,
+              "output_tokens": 788,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 79867
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -277,7 +499,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591851",
       "thirdpass_version": "0.6.0",

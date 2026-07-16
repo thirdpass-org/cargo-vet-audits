@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590548",
+  "latest_reviewed_at": "1784059840",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -303,50 +309,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 5,
-      "file_record_count": 17,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 5
+      "review_count": 7,
+      "file_record_count": 27,
+      "file_record_count_with_metrics": 27
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 22,
-    "file_records_with_metrics": 5,
-    "file_records_without_metrics": 17,
-    "duration_ms_total": 68854,
-    "attempts_total": 5,
+    "reviewed_file_records": 27,
+    "file_records_with_metrics": 27,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 413106,
+    "attempts_total": 27,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 5,
-    "last_token_usage_records": 5,
+    "total_token_usage_records": 27,
+    "last_token_usage_records": 27,
     "total_token_usage": {
-      "input_tokens": 135045,
-      "cached_input_tokens": 109056,
-      "output_tokens": 2199,
-      "reasoning_output_tokens": 1019,
-      "total_tokens": 137244
+      "input_tokens": 811707,
+      "cached_input_tokens": 677632,
+      "output_tokens": 13006,
+      "reasoning_output_tokens": 6766,
+      "total_tokens": 824713
     },
     "last_token_usage": {
-      "input_tokens": 135045,
-      "cached_input_tokens": 109056,
-      "output_tokens": 2199,
-      "reasoning_output_tokens": 1019,
-      "total_tokens": 137244
+      "input_tokens": 811707,
+      "cached_input_tokens": 677632,
+      "output_tokens": 13006,
+      "reasoning_output_tokens": 6766,
+      "total_tokens": 824713
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_003fd93803e04f71898f0d7be2aac2b0",
+      "id": "rev_23a98638eecc483c9c8a9d37255b9d69",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -354,112 +352,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782834807",
+      "created_at": "1784052084",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/oid_ref.rs`, which is a straightforward unit test file exercising `ObjectIdentifierRef` parsing, arc access, and display formatting from fixed in-memory BER byte strings. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.\nReviewed `tests/proptests.rs`, which contains proptest-based round-trip checks for `const_oid::ObjectIdentifier` using locally generated digit/dot strings and a validation regex. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `src/buffer.rs`, which defines a small compile-time BER byte buffer type with slice access, length reporting, and an equality helper. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution, and found no concrete malicious or supply-chain indicators in this file.\n`src/checked.rs` contains three small `macro_rules!` helpers for `const fn`-friendly checked addition, subtraction, and multiplication that return `Error::Overflow` on arithmetic failure. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\n`src/traits.rs` contains a small trait definition module for associating an `ObjectIdentifier` with a type, plus a blanket `DynAssociatedOid` implementation that simply returns the compile-time `OID` constant. I checked this file for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "tests/oid_ref.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "c60478b35c29596c07a867d55875bcea81ad58f2e584d6a53bd6640061d60179"
+            "value": "c84a7618f181fa192faede4704c3acfce27fa735b7efeff0c2e97788a63133c4"
           },
-          "summary": "Reviewed `tests/oid_ref.rs`, which is a straightforward unit test file exercising `ObjectIdentifierRef` parsing, arc access, and display formatting from fixed in-memory BER byte strings. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.",
+          "summary": "Reviewed the `.cargo_vcs_info.json` VCS metadata file, which only records the source commit SHA and path-in-VCS for `const-oid`. It contains no install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/proptests.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "abc8d54a1860559ea66ef72051d89e30582fdf0fd3c11edfaf92f86854e7f56d"
+          "agent_run_metrics": {
+            "duration_ms": 13022,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052005922,
+            "finished_at_unix_ms": 1784052018944,
+            "total_token_usage": {
+              "input_tokens": 24172,
+              "cached_input_tokens": 21248,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 24604
+            },
+            "last_token_usage": {
+              "input_tokens": 24172,
+              "cached_input_tokens": 21248,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 24604
+            }
           },
-          "summary": "Reviewed `tests/proptests.rs`, which contains proptest-based round-trip checks for `const_oid::ObjectIdentifier` using locally generated digit/dot strings and a validation regex. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/buffer.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f77e11d0b7beae7e184c4d5e3e07b05f0550c67e02f58caf82ebebe5bc1080b5"
-          },
-          "summary": "Reviewed `src/buffer.rs`, which defines a small compile-time BER byte buffer type with slice access, length reporting, and an equality helper. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/checked.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "85e53cedadfba592dbb6884a9f87d58da8e45d4da8208fc5068f6a31f757c688"
-          },
-          "summary": "`src/checked.rs` contains three small `macro_rules!` helpers for `const fn`-friendly checked addition, subtraction, and multiplication that return `Error::Overflow` on arithmetic failure. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/traits.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f2f6f3e04f643b244157e08b7009e75051e10176b41fc9204bbfcd3712c6134f"
-          },
-          "summary": "`src/traits.rs` contains a small trait definition module for associating an `ObjectIdentifier` with a type, plus a blanket `DynAssociatedOid` implementation that simply returns the compile-time `OID` constant. I checked this file for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_04f9ed55d76c466fb963e9b257385626",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782834665",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is a `no_std` Rust library entry point for parsing, validating, encoding, and displaying ASN.1 OIDs. I checked for install hooks, subprocess execution, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/oid.rs`, which is a straightforward unit test suite for `ObjectIdentifier` parsing, formatting, and byte/arc conversion. I checked for install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.\nReviewed `CHANGELOG.md`, which is a plain release history for the crate with versioned notes and links to upstream pull requests. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/encoder.rs`, which is a const-capable ASN.1 BER/DER OID encoder built around fixed-size buffers and arc/base-128 packing logic. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.\nReviewed `src/arcs.rs`, which is a small OID arc parser/iterator that decodes BER base-128 arcs and validates root-arc bounds. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0996efdade652863aebd432df84f418652f4a90128b15836998e29a04d16f89a"
-          },
-          "summary": "Reviewed `src/lib.rs`, which is a `no_std` Rust library entry point for parsing, validating, encoding, and displaying ASN.1 OIDs. I checked for install hooks, subprocess execution, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/oid.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a60ea697abacabcd64780be2ad1304b2e01b004d87c4f67f1e0ac216a94eee71"
-          },
-          "summary": "Reviewed `tests/oid.rs`, which is a straightforward unit test suite for `ObjectIdentifier` parsing, formatting, and byte/arc conversion. I checked for install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -469,117 +396,29 @@
             "algorithm": "blake3",
             "value": "c08698a66102d732b3f676e486f3785fe9d693922b7d0eae221816af2dc19d38"
           },
-          "summary": "Reviewed `CHANGELOG.md`, which is a plain release history for the crate with versioned notes and links to upstream pull requests. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the changelog text in CHANGELOG.md, which is a release-history document listing version notes and GitHub references for RustCrypto const-oid. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain signals in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/encoder.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7c6f19bfa07b1dd6320abc11b4f7c976824ebf6ae11d4fb58eb2963ca8806dc9"
+          "agent_run_metrics": {
+            "duration_ms": 16319,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052018945,
+            "finished_at_unix_ms": 1784052035265,
+            "total_token_usage": {
+              "input_tokens": 26465,
+              "cached_input_tokens": 21248,
+              "output_tokens": 544,
+              "reasoning_output_tokens": 345,
+              "total_tokens": 27009
+            },
+            "last_token_usage": {
+              "input_tokens": 26465,
+              "cached_input_tokens": 21248,
+              "output_tokens": 544,
+              "reasoning_output_tokens": 345,
+              "total_tokens": 27009
+            }
           },
-          "summary": "Reviewed `src/encoder.rs`, which is a const-capable ASN.1 BER/DER OID encoder built around fixed-size buffers and arc/base-128 packing logic. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/arcs.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8e90dc99f4e6e7ff6d079fd6de89bdf6bad1a4aef1f8a953670fee4582522897"
-          },
-          "summary": "Reviewed `src/arcs.rs`, which is a small OID arc parser/iterator that decodes BER base-128 arcs and validates root-arc bounds. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_b476fe4ef1774247b2c6807c62f6371e",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782834588",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/db/generated.rs`, which is a large auto-generated OID registry mapping names to `crate::ObjectIdentifier::new_unwrap(...)` constants and lookup tables. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network/exfiltration behavior, credential or env access, dynamic code loading, obfuscation/packing, or persistence logic.",
-      "files": [
-        {
-          "file_path": "src/db/generated.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9f03882caebe347608e94cf9ed91b1a43e21dc391337a3a499752aa263a6f518"
-          },
-          "summary": "Reviewed `src/db/generated.rs`, which is a large auto-generated OID registry mapping names to `crate::ObjectIdentifier::new_unwrap(...)` constants and lookup tables. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network/exfiltration behavior, credential or env access, dynamic code loading, obfuscation/packing, or persistence logic.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_d3486d7201684901babc4b65672903d2",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782834743",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/db.rs`, which is a small OID name lookup layer over a generated table with case-insensitive name matching and OID resolution. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other hidden supply-chain activity in this file.\nReviewed `src/parser.rs`, which is a const-friendly dotted OID string parser with unit tests. I checked for install hooks, network/exfiltration, credential or secret access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nThe README describes a Rust crate for const-friendly OID parsing/serialization, with usage examples, MSRV policy, license terms, and project badges/links. I checked this target file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed this generated `Cargo.toml` for install-time hooks, build scripts, dependency tricks, dynamic loading, network/exfiltration, credential access, obfuscation, and persistence behavior. It is a normal Rust package manifest for `const-oid` with a library target, tests, and standard dependencies; no concrete malicious or supply-chain indicators were found in the manifest.\nReviewed `src/error.rs`, which defines the crate’s OID error enum plus `panic` and `Display` implementations for formatting/propagating parsing and encoding errors. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
-      "files": [
-        {
-          "file_path": "src/db.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3734e3256398231d657dcd3a373da702a8796f792ae5f200790cde32287cc5a3"
-          },
-          "summary": "Reviewed `src/db.rs`, which is a small OID name lookup layer over a generated table with case-insensitive name matching and OID resolution. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other hidden supply-chain activity in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/parser.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "dca44680e0a482bbbfb5d4ca6974e2beb7b94b4221ae0ce64c02adeb2a84b1f8"
-          },
-          "summary": "Reviewed `src/parser.rs`, which is a const-friendly dotted OID string parser with unit tests. I checked for install hooks, network/exfiltration, credential or secret access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "82ca5f7d43fb31ffc76c7eae4036ffcfdfe018f0a335e19465450d0c71b7f405"
-          },
-          "summary": "The README describes a Rust crate for const-friendly OID parsing/serialization, with usage examples, MSRV policy, license terms, and project badges/links. I checked this target file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -589,9 +428,255 @@
             "algorithm": "blake3",
             "value": "23a48c987fd7feefb28933c8031298d0ab144077171cc907be5723a48032ad52"
           },
-          "summary": "Reviewed this generated `Cargo.toml` for install-time hooks, build scripts, dependency tricks, dynamic loading, network/exfiltration, credential access, obfuscation, and persistence behavior. It is a normal Rust package manifest for `const-oid` with a library target, tests, and standard dependencies; no concrete malicious or supply-chain indicators were found in the manifest.",
+          "summary": "Reviewed the crate manifest for install-time hooks, build scripts, feature gates, and dependency declarations. The file describes a normal Rust library package with tests and optional/ dev dependencies, and I found no concrete indicators of malicious behavior such as postinstall execution, hidden downloads, credential access, obfuscation, or persistence.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18210,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052035266,
+            "finished_at_unix_ms": 1784052053476,
+            "total_token_usage": {
+              "input_tokens": 24573,
+              "cached_input_tokens": 21248,
+              "output_tokens": 427,
+              "reasoning_output_tokens": 241,
+              "total_tokens": 25000
+            },
+            "last_token_usage": {
+              "input_tokens": 24573,
+              "cached_input_tokens": 21248,
+              "output_tokens": 427,
+              "reasoning_output_tokens": 241,
+              "total_tokens": 25000
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "82ca5f7d43fb31ffc76c7eae4036ffcfdfe018f0a335e19465450d0c71b7f405"
+          },
+          "summary": "Reviewed README.md, which is a normal project overview for a Rust crate that documents OID parsing/serialization, MSRV, licensing, and badge/link metadata. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, secret-collection behavior, network or exfiltration code, dynamic code loading, obfuscation, or persistence mechanisms described here.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20279,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052053477,
+            "finished_at_unix_ms": 1784052073757,
+            "total_token_usage": {
+              "input_tokens": 39777,
+              "cached_input_tokens": 30848,
+              "output_tokens": 653,
+              "reasoning_output_tokens": 350,
+              "total_tokens": 40430
+            },
+            "last_token_usage": {
+              "input_tokens": 39777,
+              "cached_input_tokens": 30848,
+              "output_tokens": 653,
+              "reasoning_output_tokens": 350,
+              "total_tokens": 40430
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/arcs.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8e90dc99f4e6e7ff6d079fd6de89bdf6bad1a4aef1f8a953670fee4582522897"
+          },
+          "summary": "Reviewed `src/arcs.rs`, which implements OID arc encoding/decoding and iteration over BER-encoded bytes. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10354,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052073757,
+            "finished_at_unix_ms": 1784052084112,
+            "total_token_usage": {
+              "input_tokens": 25485,
+              "cached_input_tokens": 23296,
+              "output_tokens": 314,
+              "reasoning_output_tokens": 127,
+              "total_tokens": 25799
+            },
+            "last_token_usage": {
+              "input_tokens": 25485,
+              "cached_input_tokens": 23296,
+              "output_tokens": 314,
+              "reasoning_output_tokens": 127,
+              "total_tokens": 25799
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_3a44f9e4fa474c97a245d9d6aad20ef2",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059840",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/oid.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a60ea697abacabcd64780be2ad1304b2e01b004d87c4f67f1e0ac216a94eee71"
+          },
+          "summary": "Reviewed `tests/oid.rs`, which is a normal unit test file for `ObjectIdentifier` parsing, encoding, display, and arc validation. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12541,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059801133,
+            "finished_at_unix_ms": 1784059813674,
+            "total_token_usage": {
+              "input_tokens": 26648,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 27113
+            },
+            "last_token_usage": {
+              "input_tokens": 26648,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 27113
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/oid_ref.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c60478b35c29596c07a867d55875bcea81ad58f2e584d6a53bd6640061d60179"
+          },
+          "summary": "Reviewed `tests/oid_ref.rs`, which contains straightforward unit tests for `ObjectIdentifierRef` BER parsing, arc access, and string formatting on fixed constant inputs. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13741,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059813674,
+            "finished_at_unix_ms": 1784059827416,
+            "total_token_usage": {
+              "input_tokens": 25088,
+              "cached_input_tokens": 19200,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 221,
+              "total_tokens": 25507
+            },
+            "last_token_usage": {
+              "input_tokens": 25088,
+              "cached_input_tokens": 19200,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 221,
+              "total_tokens": 25507
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/proptests.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "abc8d54a1860559ea66ef72051d89e30582fdf0fd3c11edfaf92f86854e7f56d"
+          },
+          "summary": "`tests/proptests.rs` contains `proptest`-based round-trip tests for `ObjectIdentifier`, generating digit-and-dot strings and checking parse/format behavior against a regex. I found no concrete malicious or supply-chain indicators in this file, and no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13198,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059827417,
+            "finished_at_unix_ms": 1784059840616,
+            "total_token_usage": {
+              "input_tokens": 24536,
+              "cached_input_tokens": 21248,
+              "output_tokens": 538,
+              "reasoning_output_tokens": 336,
+              "total_tokens": 25074
+            },
+            "last_token_usage": {
+              "input_tokens": 24536,
+              "cached_input_tokens": 21248,
+              "output_tokens": 538,
+              "reasoning_output_tokens": 336,
+              "total_tokens": 25074
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_8fd05363537a496dab83edfa43213468",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058506",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/encoder.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7c6f19bfa07b1dd6320abc11b4f7c976824ebf6ae11d4fb58eb2963ca8806dc9"
+          },
+          "summary": "`src/encoder.rs` is a pure const-capable BER/DER OID encoder that validates arc sizes, builds bytes in a fixed buffer, and includes unit tests. I checked it for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15817,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058423410,
+            "finished_at_unix_ms": 1784058439228,
+            "total_token_usage": {
+              "input_tokens": 25836,
+              "cached_input_tokens": 21760,
+              "output_tokens": 438,
+              "reasoning_output_tokens": 233,
+              "total_tokens": 26274
+            },
+            "last_token_usage": {
+              "input_tokens": 25836,
+              "cached_input_tokens": 21760,
+              "output_tokens": 438,
+              "reasoning_output_tokens": 233,
+              "total_tokens": 26274
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -601,16 +686,132 @@
             "algorithm": "blake3",
             "value": "dd10290f8bc0c8e107af25bc33aeddc7b432d04b1045327564fff5cd9475ed4f"
           },
-          "summary": "Reviewed `src/error.rs`, which defines the crate’s OID error enum plus `panic` and `Display` implementations for formatting/propagating parsing and encoding errors. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
+          "summary": "Reviewed `src/error.rs`, which defines the crate's `Error` enum plus `panic`/`Display` implementations for OID parsing and encoding failures. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20127,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058439228,
+            "finished_at_unix_ms": 1784058459356,
+            "total_token_usage": {
+              "input_tokens": 25356,
+              "cached_input_tokens": 19200,
+              "output_tokens": 426,
+              "reasoning_output_tokens": 110,
+              "total_tokens": 25782
+            },
+            "last_token_usage": {
+              "input_tokens": 25356,
+              "cached_input_tokens": 19200,
+              "output_tokens": 426,
+              "reasoning_output_tokens": 110,
+              "total_tokens": 25782
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0996efdade652863aebd432df84f418652f4a90128b15836998e29a04d16f89a"
+          },
+          "summary": "Reviewed `src/lib.rs`, which defines the `const-oid` library's `ObjectIdentifier` and `ObjectIdentifierRef` types plus parsing, encoding, and formatting helpers. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18053,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058459357,
+            "finished_at_unix_ms": 1784058477410,
+            "total_token_usage": {
+              "input_tokens": 41910,
+              "cached_input_tokens": 35968,
+              "output_tokens": 604,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 42514
+            },
+            "last_token_usage": {
+              "input_tokens": 41910,
+              "cached_input_tokens": 35968,
+              "output_tokens": 604,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 42514
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/parser.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dca44680e0a482bbbfb5d4ca6974e2beb7b94b4221ae0ce64c02adeb2a84b1f8"
+          },
+          "summary": "Reviewed the const OID dotted-string parser in src/parser.rs. It only parses ASCII digits and dots, uses checked arithmetic while building arcs, and hands validated state to the encoder; I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14451,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058477411,
+            "finished_at_unix_ms": 1784058491863,
+            "total_token_usage": {
+              "input_tokens": 24956,
+              "cached_input_tokens": 21248,
+              "output_tokens": 482,
+              "reasoning_output_tokens": 291,
+              "total_tokens": 25438
+            },
+            "last_token_usage": {
+              "input_tokens": 24956,
+              "cached_input_tokens": 21248,
+              "output_tokens": 482,
+              "reasoning_output_tokens": 291,
+              "total_tokens": 25438
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/traits.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f2f6f3e04f643b244157e08b7009e75051e10176b41fc9204bbfcd3712c6134f"
+          },
+          "summary": "Reviewed `src/traits.rs`, which only defines two OID-related traits and a blanket `DynAssociatedOid` implementation that returns a compile-time constant. I found no concrete supply-chain indicators in this file: no install-time hooks, network or exfiltration logic, secret access, dynamic code loading, obfuscation, persistence, or hidden subprocess behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14935,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058491863,
+            "finished_at_unix_ms": 1784058506799,
+            "total_token_usage": {
+              "input_tokens": 24247,
+              "cached_input_tokens": 19200,
+              "output_tokens": 442,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 24689
+            },
+            "last_token_usage": {
+              "input_tokens": 24247,
+              "cached_input_tokens": 19200,
+              "output_tokens": 442,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 24689
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_d5a6160d11524a088d8f4937db4fc16a",
+      "id": "rev_9065817a06d34fe2be53f8035991835e",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -618,12 +819,173 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782834822",
+      "created_at": "1784056768",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `.cargo_vcs_info.json`, which only records the source VCS commit (`385ef739bcec785472c7c971c57f26f87caca3b8`) and the path in VCS (`const-oid`). No install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior is present in this file.",
+      "files": [
+        {
+          "file_path": "src/db/generated.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9f03882caebe347608e94cf9ed91b1a43e21dc391337a3a499752aa263a6f518"
+          },
+          "summary": "Reviewed this auto-generated OID constant registry in `src/db/generated.rs`. It only defines `crate::ObjectIdentifier::new_unwrap(...)` constants and lookup tables, and I found no concrete indicators of install hooks, network or exfiltration code, secret access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 39094,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056728946,
+            "finished_at_unix_ms": 1784056768040,
+            "total_token_usage": {
+              "input_tokens": 105940,
+              "cached_input_tokens": 85376,
+              "output_tokens": 928,
+              "reasoning_output_tokens": 393,
+              "total_tokens": 106868
+            },
+            "last_token_usage": {
+              "input_tokens": 105940,
+              "cached_input_tokens": 85376,
+              "output_tokens": 928,
+              "reasoning_output_tokens": 393,
+              "total_tokens": 106868
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_d2b227bad4dc491e83c213b734d1a754",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054738",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/buffer.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f77e11d0b7beae7e184c4d5e3e07b05f0550c67e02f58caf82ebebe5bc1080b5"
+          },
+          "summary": "Reviewed src/buffer.rs, a small const-evaluable BER buffer wrapper that exposes byte-slice access, length, and equality comparison. I found no concrete malicious or supply-chain indicators in this file, and no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11565,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054699971,
+            "finished_at_unix_ms": 1784054711536,
+            "total_token_usage": {
+              "input_tokens": 24394,
+              "cached_input_tokens": 21248,
+              "output_tokens": 445,
+              "reasoning_output_tokens": 252,
+              "total_tokens": 24839
+            },
+            "last_token_usage": {
+              "input_tokens": 24394,
+              "cached_input_tokens": 21248,
+              "output_tokens": 445,
+              "reasoning_output_tokens": 252,
+              "total_tokens": 24839
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/checked.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "85e53cedadfba592dbb6884a9f87d58da8e45d4da8208fc5068f6a31f757c688"
+          },
+          "summary": "Reviewed `src/checked.rs`, which only defines three `const fn`-friendly checked arithmetic macros that convert arithmetic overflow into `Error::Overflow`. I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15795,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054711537,
+            "finished_at_unix_ms": 1784054727332,
+            "total_token_usage": {
+              "input_tokens": 36755,
+              "cached_input_tokens": 33408,
+              "output_tokens": 598,
+              "reasoning_output_tokens": 318,
+              "total_tokens": 37353
+            },
+            "last_token_usage": {
+              "input_tokens": 36755,
+              "cached_input_tokens": 33408,
+              "output_tokens": 598,
+              "reasoning_output_tokens": 318,
+              "total_tokens": 37353
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/db.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3734e3256398231d657dcd3a373da702a8796f792ae5f200790cde32287cc5a3"
+          },
+          "summary": "Reviewed `src/db.rs`, which contains a small OID name lookup database wrapper plus case-insensitive lookup helpers and tests. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10709,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054727333,
+            "finished_at_unix_ms": 1784054738043,
+            "total_token_usage": {
+              "input_tokens": 25048,
+              "cached_input_tokens": 21248,
+              "output_tokens": 377,
+              "reasoning_output_tokens": 188,
+              "total_tokens": 25425
+            },
+            "last_token_usage": {
+              "input_tokens": 25048,
+              "cached_input_tokens": 21248,
+              "output_tokens": 377,
+              "reasoning_output_tokens": 188,
+              "total_tokens": 25425
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_d40297c457ed40d3aea53c063f009070",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046061",
+      "thirdpass_version": "0.6.0",
       "files": [
         {
           "file_path": ".cargo_vcs_info.json",
@@ -631,9 +993,157 @@
             "algorithm": "blake3",
             "value": "c84a7618f181fa192faede4704c3acfce27fa735b7efeff0c2e97788a63133c4"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the source VCS commit (`385ef739bcec785472c7c971c57f26f87caca3b8`) and the path in VCS (`const-oid`). No install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior is present in this file.",
+          "summary": "Reviewed the crate’s `.cargo_vcs_info.json`, which only records the VCS commit SHA and path-in-repo metadata. It contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior to indicate supply-chain compromise.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10859,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045995934,
+            "finished_at_unix_ms": 1784046006793,
+            "total_token_usage": {
+              "input_tokens": 24064,
+              "cached_input_tokens": 21248,
+              "output_tokens": 391,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 24455
+            },
+            "last_token_usage": {
+              "input_tokens": 24064,
+              "cached_input_tokens": 21248,
+              "output_tokens": 391,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 24455
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c08698a66102d732b3f676e486f3785fe9d693922b7d0eae221816af2dc19d38"
+          },
+          "summary": "Reviewed the changelog for const-oid 0.10.2 and its prior release history. It only records version notes and linked pull requests; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11130,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046006794,
+            "finished_at_unix_ms": 1784046017924,
+            "total_token_usage": {
+              "input_tokens": 26574,
+              "cached_input_tokens": 23296,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 26996
+            },
+            "last_token_usage": {
+              "input_tokens": 26574,
+              "cached_input_tokens": 23296,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 26996
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "23a48c987fd7feefb28933c8031298d0ab144077171cc907be5723a48032ad52"
+          },
+          "summary": "Reviewed the package manifest for `const-oid` 0.10.2. It declares a normal Rust library with tests and dev-dependencies only, and I found no evidence in this file of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17202,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046017926,
+            "finished_at_unix_ms": 1784046035128,
+            "total_token_usage": {
+              "input_tokens": 24472,
+              "cached_input_tokens": 21248,
+              "output_tokens": 565,
+              "reasoning_output_tokens": 370,
+              "total_tokens": 25037
+            },
+            "last_token_usage": {
+              "input_tokens": 24472,
+              "cached_input_tokens": 21248,
+              "output_tokens": 565,
+              "reasoning_output_tokens": 370,
+              "total_tokens": 25037
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "82ca5f7d43fb31ffc76c7eae4036ffcfdfe018f0a335e19465450d0c71b7f405"
+          },
+          "summary": "Reviewed the README for the const-oid crate, which describes OID parsing/serialization support, MSRV policy, licensing, and documentation links. I found no concrete malicious or supply-chain indicators in this file, and there were no install hooks, credential access, network/exfiltration logic, dynamic code loading, obfuscation, or persistence behavior to flag.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13365,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046035129,
+            "finished_at_unix_ms": 1784046048495,
+            "total_token_usage": {
+              "input_tokens": 24919,
+              "cached_input_tokens": 21248,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 203,
+              "total_tokens": 25323
+            },
+            "last_token_usage": {
+              "input_tokens": 24919,
+              "cached_input_tokens": 21248,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 203,
+              "total_tokens": 25323
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/arcs.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8e90dc99f4e6e7ff6d079fd6de89bdf6bad1a4aef1f8a953670fee4582522897"
+          },
+          "summary": "Reviewed `src/arcs.rs`, which implements BER OID arc parsing/encoding for `Arc` values and the `Arcs` iterator, including range checks for root arcs and base-128 continuation handling. I found no concrete indicators of install hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13486,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046048496,
+            "finished_at_unix_ms": 1784046061982,
+            "total_token_usage": {
+              "input_tokens": 25447,
+              "cached_input_tokens": 23296,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 276,
+              "total_tokens": 25940
+            },
+            "last_token_usage": {
+              "input_tokens": 25447,
+              "cached_input_tokens": 23296,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 276,
+              "total_tokens": 25940
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -649,7 +1159,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590548",
       "thirdpass_version": "0.6.0",

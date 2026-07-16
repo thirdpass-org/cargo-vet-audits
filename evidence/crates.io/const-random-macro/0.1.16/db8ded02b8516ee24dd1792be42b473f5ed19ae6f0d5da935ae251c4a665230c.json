@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591735",
+  "latest_reviewed_at": "1784054301",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -138,48 +144,185 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 2,
+      "file_record_count": 7,
+      "file_record_count_with_metrics": 7
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 7,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 4,
-    "duration_ms_total": 35895,
-    "attempts_total": 3,
+    "file_records_with_metrics": 7,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 96822,
+    "attempts_total": 7,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 7,
+    "last_token_usage_records": 7,
     "total_token_usage": {
-      "input_tokens": 64992,
-      "cached_input_tokens": 46336,
-      "output_tokens": 1071,
-      "reasoning_output_tokens": 492,
-      "total_tokens": 66063
+      "input_tokens": 163477,
+      "cached_input_tokens": 131840,
+      "output_tokens": 3312,
+      "reasoning_output_tokens": 1902,
+      "total_tokens": 166789
     },
     "last_token_usage": {
-      "input_tokens": 64992,
-      "cached_input_tokens": 46336,
-      "output_tokens": 1071,
-      "reasoning_output_tokens": 492,
-      "total_tokens": 66063
+      "input_tokens": 163477,
+      "cached_input_tokens": 131840,
+      "output_tokens": 3312,
+      "reasoning_output_tokens": 1902,
+      "total_tokens": 166789
     },
     "model_context_windows": []
   },
   "reviews": [
+    {
+      "id": "rev_12a5620c29bc401f888450476405645e",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054301",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "979052c2b9954b512b162ff55e3772dfc5f666d6597093c594a9b947b17a5c2a"
+          },
+          "summary": ".cargo_vcs_info.json is a small Cargo source-metadata file containing a git SHA-1 and a path-in-vcs entry for the crate. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14956,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054240950,
+            "finished_at_unix_ms": 1784054255907,
+            "total_token_usage": {
+              "input_tokens": 24152,
+              "cached_input_tokens": 21248,
+              "output_tokens": 365,
+              "reasoning_output_tokens": 163,
+              "total_tokens": 24517
+            },
+            "last_token_usage": {
+              "input_tokens": 24152,
+              "cached_input_tokens": 21248,
+              "output_tokens": 365,
+              "reasoning_output_tokens": 163,
+              "total_tokens": 24517
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "adfef73156737929e84d2e63a262a40a83462c5eddfa6dbb73ce9b3b7d9e49cc"
+          },
+          "summary": "Reviewed the crate manifest for `const-random-macro` 0.1.16. It only declares package metadata, a proc-macro library target, and normal Rust dependencies; I did not find install hooks, build scripts, network or exfiltration controls, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17953,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054255908,
+            "finished_at_unix_ms": 1784054273861,
+            "total_token_usage": {
+              "input_tokens": 24424,
+              "cached_input_tokens": 21248,
+              "output_tokens": 784,
+              "reasoning_output_tokens": 581,
+              "total_tokens": 25208
+            },
+            "last_token_usage": {
+              "input_tokens": 24424,
+              "cached_input_tokens": 21248,
+              "output_tokens": 784,
+              "reasoning_output_tokens": 581,
+              "total_tokens": 25208
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8368e3fb3d116d04f6f57f44bb45b514eb65bf3c14a245497b2fe6f5d66a6490"
+          },
+          "summary": "`src/lib.rs` is a proc-macro implementation that expands `const_random!` into typed numeric literals or random byte arrays via local helper functions. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13933,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054273861,
+            "finished_at_unix_ms": 1784054287795,
+            "total_token_usage": {
+              "input_tokens": 24802,
+              "cached_input_tokens": 21248,
+              "output_tokens": 537,
+              "reasoning_output_tokens": 335,
+              "total_tokens": 25339
+            },
+            "last_token_usage": {
+              "input_tokens": 24802,
+              "cached_input_tokens": 21248,
+              "output_tokens": 537,
+              "reasoning_output_tokens": 335,
+              "total_tokens": 25339
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/span.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c1c50fdded66aeb345d8486b6f27169eacdd33a199eeb8f7fd5871ea35d5c73e"
+          },
+          "summary": "`src/span.rs` implements a proc-macro helper that derives pseudo-random bytes from a cached seed, optionally taken from the compile-time `CONST_RANDOM_SEED` environment variable or otherwise from `getrandom`, then hashes that seed with the call-site span. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14085,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054287795,
+            "finished_at_unix_ms": 1784054301881,
+            "total_token_usage": {
+              "input_tokens": 25107,
+              "cached_input_tokens": 21760,
+              "output_tokens": 555,
+              "reasoning_output_tokens": 331,
+              "total_tokens": 25662
+            },
+            "last_token_usage": {
+              "input_tokens": 25107,
+              "cached_input_tokens": 21760,
+              "output_tokens": 555,
+              "reasoning_output_tokens": 331,
+              "total_tokens": 25662
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
     {
       "id": "rev_847ef4404fde467a9bcf314c7e53f93a",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -190,7 +333,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591735",
       "thirdpass_version": "0.6.0",
@@ -288,72 +431,6 @@
               "total_tokens": 21126
             }
           },
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_e2e4fc544c8c4afd8d7b7f89ffed5355",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783195159",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/span.rs` is a small helper for deterministic/random byte generation in a proc-macro context: it derives bytes from a compile-time `CONST_RANDOM_SEED` value or `getrandom`, then mixes in the call-site span via SHAKE to produce numeric outputs. I found no concrete indicators of install hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence, or other hidden payload execution in this file.\nReviewed `src/lib.rs`, a small procedural macro that generates constant random numeric literals and byte arrays from its macro input. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the normalized `Cargo.toml` for install-time hooks, build scripts, subprocess launches, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms. The manifest only declares a proc-macro crate with ordinary Rust dependencies (`getrandom`, `once_cell`, `tiny-keccak`) and no concrete malicious or supply-chain indicators were found in this file.\nI reviewed .cargo_vcs_info.json, which only records the crate's Git SHA1 and VCS path metadata. It contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior, so I found no concrete supply-chain indicators in this target file.",
-      "files": [
-        {
-          "file_path": "src/span.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c1c50fdded66aeb345d8486b6f27169eacdd33a199eeb8f7fd5871ea35d5c73e"
-          },
-          "summary": "`src/span.rs` is a small helper for deterministic/random byte generation in a proc-macro context: it derives bytes from a compile-time `CONST_RANDOM_SEED` value or `getrandom`, then mixes in the call-site span via SHAKE to produce numeric outputs. I found no concrete indicators of install hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence, or other hidden payload execution in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8368e3fb3d116d04f6f57f44bb45b514eb65bf3c14a245497b2fe6f5d66a6490"
-          },
-          "summary": "Reviewed `src/lib.rs`, a small procedural macro that generates constant random numeric literals and byte arrays from its macro input. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "adfef73156737929e84d2e63a262a40a83462c5eddfa6dbb73ce9b3b7d9e49cc"
-          },
-          "summary": "Reviewed the normalized `Cargo.toml` for install-time hooks, build scripts, subprocess launches, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms. The manifest only declares a proc-macro crate with ordinary Rust dependencies (`getrandom`, `once_cell`, `tiny-keccak`) and no concrete malicious or supply-chain indicators were found in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "979052c2b9954b512b162ff55e3772dfc5f666d6597093c594a9b947b17a5c2a"
-          },
-          "summary": "I reviewed .cargo_vcs_info.json, which only records the crate's Git SHA1 and VCS path metadata. It contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior, so I found no concrete supply-chain indicators in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

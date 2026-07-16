@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590451",
+  "latest_reviewed_at": "1784056302",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -162,44 +168,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 7,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 2,
-      "file_record_count_with_metrics": 2
+      "review_count": 3,
+      "file_record_count": 9,
+      "file_record_count_with_metrics": 9
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 9,
-    "file_records_with_metrics": 2,
-    "file_records_without_metrics": 7,
-    "duration_ms_total": 35065,
-    "attempts_total": 2,
+    "file_records_with_metrics": 9,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 142574,
+    "attempts_total": 9,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 2,
-    "last_token_usage_records": 2,
+    "total_token_usage_records": 9,
+    "last_token_usage_records": 9,
     "total_token_usage": {
-      "input_tokens": 55575,
-      "cached_input_tokens": 42880,
-      "output_tokens": 1285,
-      "reasoning_output_tokens": 774,
-      "total_tokens": 56860
+      "input_tokens": 247471,
+      "cached_input_tokens": 208384,
+      "output_tokens": 4597,
+      "reasoning_output_tokens": 2594,
+      "total_tokens": 252068
     },
     "last_token_usage": {
-      "input_tokens": 55575,
-      "cached_input_tokens": 42880,
-      "output_tokens": 1285,
-      "reasoning_output_tokens": 774,
-      "total_tokens": 56860
+      "input_tokens": 247471,
+      "cached_input_tokens": 208384,
+      "output_tokens": 4597,
+      "reasoning_output_tokens": 2594,
+      "total_tokens": 252068
     },
     "model_context_windows": []
   },
@@ -214,7 +212,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590451",
       "thirdpass_version": "0.6.0",
@@ -286,7 +284,7 @@
       ]
     },
     {
-      "id": "rev_7aa79e1830e04d9092cedf9c66a649f8",
+      "id": "rev_251d1a29dcfd479bb0a1580612e36efc",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -294,88 +292,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783193885",
+      "created_at": "1784056302",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `README.md`, which is a normal crate description for `defmt-parser` documenting its purpose, MSRV, support links, and license terms. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none in this file.\nReviewed `.cargo_vcs_info.json`, which is a small Cargo VCS metadata file containing a source-control SHA1 and the original path in the repository. I checked it for install-time hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
       "files": [
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "04842193982c94f669188bb5d40ce8a227e883cc3975384b019a635a477dab89"
-          },
-          "summary": "Reviewed `README.md`, which is a normal crate description for `defmt-parser` documenting its purpose, MSRV, support links, and license terms. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3ccb2519b68e5e33449e16b606b907e1454589a64e6793b357de437f0c284271"
-          },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which is a small Cargo VCS metadata file containing a source-control SHA1 and the original path in the repository. I checked it for install-time hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_c8a1c94f3d624fb9928521b32a3d34b2",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783193855",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is a pure Rust parser for `defmt` format strings and related types/errors. I checked for install hooks, subprocess execution, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\n`src/tests.rs` is a Rust test module that exercises parser behavior for parameters, display hints, numeric ranges, arrays, errors, and escaped braces. I checked it for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `src/display_hint.rs`, which is a small parser/enum for formatting hints such as hex, octal, binary, timestamps, bitflags, CBOR, and unknown hints. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/types.rs`, which defines a `Type` enum and a `FromStr` parser for fixed type tokens such as integers, floats, booleans, strings, and a few internal format markers. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nI reviewed this Cargo manifest for install-time execution, build hooks, dynamic code loading, network/exfiltration, credential access, obfuscation, and persistence behavior. It is a normal library manifest for `defmt-parser` with no `build.rs`, no package scripts, no unusual dependencies, and no manifest-level indicators of malicious or supply-chain behavior.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2a590e9ad8b212151e9dadc9f5f0086481a2e323b8c1dc5e9062a4fba8ff5f50"
-          },
-          "summary": "Reviewed `src/lib.rs`, which is a pure Rust parser for `defmt` format strings and related types/errors. I checked for install hooks, subprocess execution, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": "src/tests.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "9f659f3a61fd252c7f00264d393abfc0effd16dd56e6577109c0bf14c9d28399"
           },
-          "summary": "`src/tests.rs` is a Rust test module that exercises parser behavior for parameters, display hints, numeric ranges, arrays, errors, and escaped braces. I checked it for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/tests.rs`, which is a Rust test module exercising parser cases for parameter parsing, display hints, type specifiers, ranges, arrays, errors, and escaped braces. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/display_hint.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3742e3b152b766fc57edb22bc8b7209bf55441fee7fc76b9770cc20f9f35a3b9"
+          "agent_run_metrics": {
+            "duration_ms": 17034,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056272177,
+            "finished_at_unix_ms": 1784056289211,
+            "total_token_usage": {
+              "input_tokens": 26723,
+              "cached_input_tokens": 21248,
+              "output_tokens": 584,
+              "reasoning_output_tokens": 389,
+              "total_tokens": 27307
+            },
+            "last_token_usage": {
+              "input_tokens": 26723,
+              "cached_input_tokens": 21248,
+              "output_tokens": 584,
+              "reasoning_output_tokens": 389,
+              "total_tokens": 27307
+            }
           },
-          "summary": "Reviewed `src/display_hint.rs`, which is a small parser/enum for formatting hints such as hex, octal, binary, timestamps, bitflags, CBOR, and unknown hints. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -385,9 +336,78 @@
             "algorithm": "blake3",
             "value": "70a292d5408499883254b1fd3fb5d4690c4fae11ce8fdedfddb44661e1307770"
           },
-          "summary": "Reviewed `src/types.rs`, which defines a `Type` enum and a `FromStr` parser for fixed type tokens such as integers, floats, booleans, strings, and a few internal format markers. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/types.rs`, which only defines a `Type` enum for parser/type classification and a `FromStr` implementation mapping a fixed set of primitive and internal specifier strings. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13611,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056289212,
+            "finished_at_unix_ms": 1784056302823,
+            "total_token_usage": {
+              "input_tokens": 24609,
+              "cached_input_tokens": 21248,
+              "output_tokens": 397,
+              "reasoning_output_tokens": 194,
+              "total_tokens": 25006
+            },
+            "last_token_usage": {
+              "input_tokens": 24609,
+              "cached_input_tokens": 21248,
+              "output_tokens": 397,
+              "reasoning_output_tokens": 194,
+              "total_tokens": 25006
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_3992515e9bc84899a9a2c92052b1154c",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054184",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3ccb2519b68e5e33449e16b606b907e1454589a64e6793b357de437f0c284271"
+          },
+          "summary": "Reviewed the crate metadata file `.cargo_vcs_info.json`, which only records the source Git SHA1 and the path-in-VCS for the packaged source. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic are present here.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17074,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054108054,
+            "finished_at_unix_ms": 1784054125128,
+            "total_token_usage": {
+              "input_tokens": 24106,
+              "cached_input_tokens": 21248,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24525
+            },
+            "last_token_usage": {
+              "input_tokens": 24106,
+              "cached_input_tokens": 21248,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24525
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -397,9 +417,125 @@
             "algorithm": "blake3",
             "value": "d0770fb01813f5fdfe6f0932ddd3d81f423ace3641c7bfa6efbd866f19e8a8c2"
           },
-          "summary": "I reviewed this Cargo manifest for install-time execution, build hooks, dynamic code loading, network/exfiltration, credential access, obfuscation, and persistence behavior. It is a normal library manifest for `defmt-parser` with no `build.rs`, no package scripts, no unusual dependencies, and no manifest-level indicators of malicious or supply-chain behavior.",
+          "summary": "Reviewed the normalized Cargo.toml for defmt-parser 1.0.0. It is a standard library manifest with no build script, install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence indicators; dependencies are limited to `thiserror` and test-only `rstest`.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17483,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054125129,
+            "finished_at_unix_ms": 1784054142612,
+            "total_token_usage": {
+              "input_tokens": 24415,
+              "cached_input_tokens": 21248,
+              "output_tokens": 541,
+              "reasoning_output_tokens": 347,
+              "total_tokens": 24956
+            },
+            "last_token_usage": {
+              "input_tokens": 24415,
+              "cached_input_tokens": 21248,
+              "output_tokens": 541,
+              "reasoning_output_tokens": 347,
+              "total_tokens": 24956
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "04842193982c94f669188bb5d40ce8a227e883cc3975384b019a635a477dab89"
+          },
+          "summary": "Reviewed the README for defmt-parser, which describes the crate as a Rust decoder for defmt frames, lists MSRV/support/license information, and links to the defmt project and sponsor pages. I checked for install hooks, network or credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13402,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054142612,
+            "finished_at_unix_ms": 1784054156015,
+            "total_token_usage": {
+              "input_tokens": 25123,
+              "cached_input_tokens": 21760,
+              "output_tokens": 472,
+              "reasoning_output_tokens": 263,
+              "total_tokens": 25595
+            },
+            "last_token_usage": {
+              "input_tokens": 25123,
+              "cached_input_tokens": 21760,
+              "output_tokens": 472,
+              "reasoning_output_tokens": 263,
+              "total_tokens": 25595
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/display_hint.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3742e3b152b766fc57edb22bc8b7209bf55441fee7fc76b9770cc20f9f35a3b9"
+          },
+          "summary": "Reviewed src/display_hint.rs, which only parses display-hint strings into a DisplayHint enum and a small integer parser for formatting metadata. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10857,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054156016,
+            "finished_at_unix_ms": 1784054166873,
+            "total_token_usage": {
+              "input_tokens": 25305,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 25661
+            },
+            "last_token_usage": {
+              "input_tokens": 25305,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 25661
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2a590e9ad8b212151e9dadc9f5f0086481a2e323b8c1dc5e9062a4fba8ff5f50"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a pure Rust parser for `defmt` format strings and parameter metadata. I checked this file for install-time execution, subprocesses, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18048,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054166874,
+            "finished_at_unix_ms": 1784054184923,
+            "total_token_usage": {
+              "input_tokens": 41615,
+              "cached_input_tokens": 37504,
+              "output_tokens": 543,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 42158
+            },
+            "last_token_usage": {
+              "input_tokens": 41615,
+              "cached_input_tokens": 37504,
+              "output_tokens": 543,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 42158
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

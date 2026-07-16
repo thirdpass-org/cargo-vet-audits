@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591896",
+  "latest_reviewed_at": "1784052846",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -139,49 +145,41 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 0
+      "review_count": 3,
+      "file_record_count": 10,
+      "file_record_count_with_metrics": 10
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 7,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 3,
-    "duration_ms_total": 45101,
-    "attempts_total": 4,
+    "reviewed_file_records": 10,
+    "file_records_with_metrics": 10,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 144929,
+    "attempts_total": 10,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 10,
+    "last_token_usage_records": 10,
     "total_token_usage": {
-      "input_tokens": 86539,
-      "cached_input_tokens": 65536,
-      "output_tokens": 1678,
-      "reasoning_output_tokens": 905,
-      "total_tokens": 88217
+      "input_tokens": 232404,
+      "cached_input_tokens": 193024,
+      "output_tokens": 4558,
+      "reasoning_output_tokens": 2609,
+      "total_tokens": 236962
     },
     "last_token_usage": {
-      "input_tokens": 86539,
-      "cached_input_tokens": 65536,
-      "output_tokens": 1678,
-      "reasoning_output_tokens": 905,
-      "total_tokens": 88217
+      "input_tokens": 232404,
+      "cached_input_tokens": 193024,
+      "output_tokens": 4558,
+      "reasoning_output_tokens": 2609,
+      "total_tokens": 236962
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_3959902e60a842189bb5396018065f1a",
+      "id": "rev_574c9638a3f54250ad89d89a6d71fe4c",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -189,22 +187,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782851583",
+      "created_at": "1784052846",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `Cargo.toml` for install-time execution, build scripts, hidden subprocesses, network/exfiltration hooks, dynamic code loading, obfuscation, and persistence tampering. The manifest is a straightforward Rust library package with `build = false`, no scripts or binaries, and only normal serde-related dependencies and feature flags; no concrete malicious or supply-chain indicators were found in this file.\nReviewed `src/lib.rs`, which is a minimal `no_std` re-export shim for `value-bag` implementation dependencies. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `.cargo_vcs_info.json`, which only records the source VCS commit (`5b82238653e004a7da2b63ef42c0fb6ddc359901`) and its path in the upstream repository (`meta/serde1`). I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other payload-like behavior in this file.",
       "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dbff9c118d15ff2c8b3bc7b054419a4505c0fa428724baaa28ed2f3ec6d176dd"
+          },
+          "summary": "The target file is a small Cargo VCS metadata JSON object that records the source git SHA and the path in the upstream repository. I checked it for install-time hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13453,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052794028,
+            "finished_at_unix_ms": 1784052807481,
+            "total_token_usage": {
+              "input_tokens": 24221,
+              "cached_input_tokens": 21248,
+              "output_tokens": 544,
+              "reasoning_output_tokens": 348,
+              "total_tokens": 24765
+            },
+            "last_token_usage": {
+              "input_tokens": 24221,
+              "cached_input_tokens": 21248,
+              "output_tokens": 544,
+              "reasoning_output_tokens": 348,
+              "total_tokens": 24765
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
         {
           "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
             "value": "6689815bc01ab55fabe3be5555a1b0c0552ebb538f41ebc5d4d4c59010010c7f"
           },
-          "summary": "Reviewed `Cargo.toml` for install-time execution, build scripts, hidden subprocesses, network/exfiltration hooks, dynamic code loading, obfuscation, and persistence tampering. The manifest is a straightforward Rust library package with `build = false`, no scripts or binaries, and only normal serde-related dependencies and feature flags; no concrete malicious or supply-chain indicators were found in this file.",
+          "summary": "Reviewed this generated Cargo.toml for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence controls. It defines a normal Rust library package with optional serde-related features and no build script, no package scripts, and no suspicious payload-loading or outbound behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18932,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052807482,
+            "finished_at_unix_ms": 1784052826415,
+            "total_token_usage": {
+              "input_tokens": 24496,
+              "cached_input_tokens": 21248,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 205,
+              "total_tokens": 24891
+            },
+            "last_token_usage": {
+              "input_tokens": 24496,
+              "cached_input_tokens": 21248,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 205,
+              "total_tokens": 24891
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -214,21 +263,142 @@
             "algorithm": "blake3",
             "value": "ea95627799b620e7eea40082f1f0dffdd24254ac32bcd8b6c602bb948d90d3d5"
           },
-          "summary": "Reviewed `src/lib.rs`, which is a minimal `no_std` re-export shim for `value-bag` implementation dependencies. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed src/lib.rs, which is a no_std facade that only re-exports serde-related crates behind feature gates. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20199,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052826415,
+            "finished_at_unix_ms": 1784052846615,
+            "total_token_usage": {
+              "input_tokens": 24234,
+              "cached_input_tokens": 21248,
+              "output_tokens": 486,
+              "reasoning_output_tokens": 304,
+              "total_tokens": 24720
+            },
+            "last_token_usage": {
+              "input_tokens": 24234,
+              "cached_input_tokens": 21248,
+              "output_tokens": 486,
+              "reasoning_output_tokens": 304,
+              "total_tokens": 24720
+            }
+          },
           "comment_count": 0,
           "comments": []
-        },
+        }
+      ]
+    },
+    {
+      "id": "rev_b31d24e59a9a46b6a3e92ce66ea6bc36",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046819",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "dbff9c118d15ff2c8b3bc7b054419a4505c0fa428724baaa28ed2f3ec6d176dd"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the source VCS commit (`5b82238653e004a7da2b63ef42c0fb6ddc359901`) and its path in the upstream repository (`meta/serde1`). I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other payload-like behavior in this file.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which contains only source provenance metadata (`git.sha1` and `path_in_vcs`). I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12726,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046772623,
+            "finished_at_unix_ms": 1784046785349,
+            "total_token_usage": {
+              "input_tokens": 24175,
+              "cached_input_tokens": 21248,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 291,
+              "total_tokens": 24662
+            },
+            "last_token_usage": {
+              "input_tokens": 24175,
+              "cached_input_tokens": 21248,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 291,
+              "total_tokens": 24662
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6689815bc01ab55fabe3be5555a1b0c0552ebb538f41ebc5d4d4c59010010c7f"
+          },
+          "summary": "Reviewed the generated Cargo manifest for `value-bag-serde1` 1.12.0. It contains only package metadata, feature flags, and dependency declarations; I found no install hooks, network or exfiltration configuration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14150,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046785349,
+            "finished_at_unix_ms": 1784046799500,
+            "total_token_usage": {
+              "input_tokens": 24502,
+              "cached_input_tokens": 21248,
+              "output_tokens": 544,
+              "reasoning_output_tokens": 348,
+              "total_tokens": 25046
+            },
+            "last_token_usage": {
+              "input_tokens": 24502,
+              "cached_input_tokens": 21248,
+              "output_tokens": 544,
+              "reasoning_output_tokens": 348,
+              "total_tokens": 25046
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ea95627799b620e7eea40082f1f0dffdd24254ac32bcd8b6c602bb948d90d3d5"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a tiny `no_std` facade that only re-exports `erased_serde`, `serde_core`, `serde_fmt`, and optional feature-gated serde helper crates. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20368,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046799500,
+            "finished_at_unix_ms": 1784046819869,
+            "total_token_usage": {
+              "input_tokens": 24237,
+              "cached_input_tokens": 21248,
+              "output_tokens": 424,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 24661
+            },
+            "last_token_usage": {
+              "input_tokens": 24237,
+              "cached_input_tokens": 21248,
+              "output_tokens": 424,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 24661
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -244,7 +414,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591896",
       "thirdpass_version": "0.6.0",

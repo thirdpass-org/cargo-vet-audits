@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783588625",
+  "latest_reviewed_at": "1784063573",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -491,50 +497,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 10,
-      "file_record_count": 36,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 11,
+      "file_record_count": 44,
+      "file_record_count_with_metrics": 44
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 39,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 36,
-    "duration_ms_total": 53982,
-    "attempts_total": 3,
+    "reviewed_file_records": 44,
+    "file_records_with_metrics": 44,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 778649,
+    "attempts_total": 44,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 44,
+    "last_token_usage_records": 44,
     "total_token_usage": {
-      "input_tokens": 117968,
-      "cached_input_tokens": 99712,
-      "output_tokens": 1974,
-      "reasoning_output_tokens": 1055,
-      "total_tokens": 119942
+      "input_tokens": 1778012,
+      "cached_input_tokens": 1537920,
+      "output_tokens": 23464,
+      "reasoning_output_tokens": 10944,
+      "total_tokens": 1801476
     },
     "last_token_usage": {
-      "input_tokens": 117968,
-      "cached_input_tokens": 99712,
-      "output_tokens": 1974,
-      "reasoning_output_tokens": 1055,
-      "total_tokens": 119942
+      "input_tokens": 1778012,
+      "cached_input_tokens": 1537920,
+      "output_tokens": 23464,
+      "reasoning_output_tokens": 10944,
+      "total_tokens": 1801476
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_3c57938ba8464544a70be6ea1c539294",
+      "id": "rev_053b205bdd2a4a028053fc34aeed1264",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -542,70 +540,90 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782838457",
+      "created_at": "1784062218",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "I reviewed this target file as plain UTF-8 benchmark data containing a list of Japanese names. It does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or other concrete supply-chain indicators.\nReviewed this target data file, which contains ICU4X Japanese name test entries and license header text only. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain signals.\nReviewed the target text fixture `benches/data/TestNames_Korean.txt`, which contains an ICU4X license header and a static list of Korean names. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nI reviewed this target file as a plain text benchmark/data list of Latin-script personal names and checked it for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, or other hidden payload indicators. No concrete malicious or supply-chain compromise signs were present in the file.\nReviewed benches/data/TestNames_Thai.txt, which is a plain UTF-8 text corpus of Thai personal names with a short ICU4X license header. I checked for install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence cues, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "benches/data/TestNames_Japanese_h.txt",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "6341226cd64296d8270dfca3fc01576da6a5e7981f1b9496526c73aff728dd28"
+            "value": "fca5b5634c227e05c1394194d481adeb0699895637963beaa367eaea047b11e0"
           },
-          "summary": "I reviewed this target file as plain UTF-8 benchmark data containing a list of Japanese names. It does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or other concrete supply-chain indicators.",
+          "summary": "Reviewed `src/lib.rs`, which implements ICU4X Unicode normalization (decomposition/composition, UTF-8/UTF-16 iterators, and provider-backed trie/data lookups). I checked for install-time hooks, subprocesses, network or exfiltration paths, secret access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 44263,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062173834,
+            "finished_at_unix_ms": 1784062218098,
+            "total_token_usage": {
+              "input_tokens": 205127,
+              "cached_input_tokens": 171520,
+              "output_tokens": 1182,
+              "reasoning_output_tokens": 411,
+              "total_tokens": 206309
+            },
+            "last_token_usage": {
+              "input_tokens": 205127,
+              "cached_input_tokens": 171520,
+              "output_tokens": 1182,
+              "reasoning_output_tokens": 411,
+              "total_tokens": 206309
+            }
+          },
           "comment_count": 0,
           "comments": []
-        },
+        }
+      ]
+    },
+    {
+      "id": "rev_2140bfaeaab1469a95da8589bfe7806f",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784063573",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
-          "file_path": "benches/data/TestNames_Japanese_k.txt",
+          "file_path": "tests/tests.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "4bafadaaac3836379c48cd28668a09b16ee885211277dcd276acdceee8e34b42"
+            "value": "6144bf8c82981c5bbe8bfec7a45d107b715831c85fdb9980ff3c87f5e346ace0"
           },
-          "summary": "Reviewed this target data file, which contains ICU4X Japanese name test entries and license header text only. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain signals.",
+          "summary": "Reviewed tests/tests.rs, which is a Unicode normalization test suite covering NFD/NFKD/NFC/NFKC, UTS 46 mapping, UTF-8/UTF-16 error handling, and conformance parsing helpers. I found no concrete malicious or supply-chain indicators in this file: no install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering logic.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/data/TestNames_Korean.txt",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "de5eac7bc272c2cccdf4c7f10c44d973b1748a1180f844ea85d905adacd7280f"
+          "agent_run_metrics": {
+            "duration_ms": 34865,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063538380,
+            "finished_at_unix_ms": 1784063573246,
+            "total_token_usage": {
+              "input_tokens": 242000,
+              "cached_input_tokens": 218368,
+              "output_tokens": 1200,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 243200
+            },
+            "last_token_usage": {
+              "input_tokens": 242000,
+              "cached_input_tokens": 218368,
+              "output_tokens": 1200,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 243200
+            }
           },
-          "summary": "Reviewed the target text fixture `benches/data/TestNames_Korean.txt`, which contains an ICU4X license header and a static list of Korean names. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/data/TestNames_Latin.txt",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e1dfb9bf4470643a2fafabac91d82c35d1892f29a310861e5c65b5b22d5d2979"
-          },
-          "summary": "I reviewed this target file as a plain text benchmark/data list of Latin-script personal names and checked it for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, or other hidden payload indicators. No concrete malicious or supply-chain compromise signs were present in the file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/data/TestNames_Thai.txt",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2db6305aa4548173bb2b0497a3d4897b612bd49de75bb28b04f59d9cd42c9da0"
-          },
-          "summary": "Reviewed benches/data/TestNames_Thai.txt, which is a plain UTF-8 text corpus of Thai personal names with a short ICU4X license header. I checked for install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence cues, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
@@ -621,7 +639,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783588625",
       "thirdpass_version": "0.6.0",
@@ -725,7 +743,7 @@
       ]
     },
     {
-      "id": "rev_4b72e939ebd546109165ece66d2a9c7c",
+      "id": "rev_6b32179ce60d42069255aa618406d7ff",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -733,208 +751,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782838529",
+      "created_at": "1784046226",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `README.md`, which is a plain crate overview for ICU4X Unicode normalization functionality, examples, and project links. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior; none are present in this file.\n`benches/bench.rs` is a small Criterion benchmark entrypoint that registers benchmark modules and launches `criterion_main!`. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.\n`benches/data/README.md` is a short documentation file describing how to sanitize and shuffle microbench data and how to restore the ICU4X header, with one informational link to the upstream ICU data source. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden execution in this target file.\nReviewed the entire target file, which is a short Hebrew text corpus excerpt from ICU4X/Lewis Carroll with only static prose and metadata comments. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden execution triggers, and found no concrete malicious or supply-chain indicators.\nReviewed `benches/data/Carroll-11-ar.txt`, which contains an Arabic prose excerpt from a literary corpus with only header metadata and translated story text. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
       "files": [
         {
-          "file_path": "README.md",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "306b0ffe26f2351d35e8682eaaf0939f544b04f6bcdaa6505dac2ecef3636092"
+            "value": "ded4d621e9e213b573d789de7dc1b102adb133760e7d06a26293c648446d0796"
           },
-          "summary": "Reviewed `README.md`, which is a plain crate overview for ICU4X Unicode normalization functionality, examples, and project links. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior; none are present in this file.",
+          "summary": "Reviewed .cargo_vcs_info.json, which only records the upstream git SHA1 and the source path within the VCS tree. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/bench.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c01c0cd8d54ab360474cff601d3df0063368188e4054b6a53bb790418ca5058d"
+          "agent_run_metrics": {
+            "duration_ms": 14259,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046130393,
+            "finished_at_unix_ms": 1784046144652,
+            "total_token_usage": {
+              "input_tokens": 24208,
+              "cached_input_tokens": 15104,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 210,
+              "total_tokens": 24615
+            },
+            "last_token_usage": {
+              "input_tokens": 24208,
+              "cached_input_tokens": 15104,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 210,
+              "total_tokens": 24615
+            }
           },
-          "summary": "`benches/bench.rs` is a small Criterion benchmark entrypoint that registers benchmark modules and launches `criterion_main!`. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/data/README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "adc2c9f8abfa4e23631194d4f09bdd0cdf47bd41ac3f981aaca857d1a9d51817"
-          },
-          "summary": "`benches/data/README.md` is a short documentation file describing how to sanitize and shuffle microbench data and how to restore the ICU4X header, with one informational link to the upstream ICU data source. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden execution in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/data/Carroll-11-he.txt",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "589d7b98ef7e03c3ec4cf8a839d8bef7c42d2b36b2e386bc5517d6a4e1ad1ec9"
-          },
-          "summary": "Reviewed the entire target file, which is a short Hebrew text corpus excerpt from ICU4X/Lewis Carroll with only static prose and metadata comments. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden execution triggers, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/data/Carroll-11-ar.txt",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a1dabcf489f6709181fcc670de980fe5c934fa6a1ec37eae2c6ac536f120897b"
-          },
-          "summary": "Reviewed `benches/data/Carroll-11-ar.txt`, which contains an Arabic prose excerpt from a literary corpus with only header metadata and translated story text. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_4d5a256ab9ce42f8b1ce44e7dc14db47",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782838140",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/tests.rs`, a Rust conformance suite for ICU4X normalizer behavior covering NFC/NFD/NFKC/NFKD and UTS 46 mapping. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, subprocesses, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, or hidden decoding pipelines; the only external data use is a bundled normalization corpus read via `include_bytes!` for test assertions.",
-      "files": [
-        {
-          "file_path": "tests/tests.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6144bf8c82981c5bbe8bfec7a45d107b715831c85fdb9980ff3c87f5e346ace0"
-          },
-          "summary": "Reviewed `tests/tests.rs`, a Rust conformance suite for ICU4X normalizer behavior covering NFC/NFD/NFKC/NFKD and UTS 46 mapping. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, subprocesses, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, or hidden decoding pipelines; the only external data use is a bundled normalization corpus read via `include_bytes!` for test assertions.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_58c7fb279ffb4df8bdc51b530fcd9cef",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782838618",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed benches/data/Carroll-11-th.txt, which contains Thai-language prose from an ICU4X test corpus with only source/license comments and narrative text. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.\nReviewed this target text corpus file, which contains Greek-language translated literary prose from Alice in Wonderland with source/license headers. I found no concrete malicious or supply-chain indicators in the file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed the target file as a Spanish ICU4X benchmark text excerpt from Alice in Wonderland. It contains only prose and metadata comments; I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none.\nReviewed this target as a plain-text ICU4X corpus entry containing Polish prose from Alice in Wonderland plus source/license comments. I found no concrete malicious or supply-chain indicators: no install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, persistence, or hidden execution paths.\nReviewed `benches/data/Carroll-11-ru.txt`, which is a Russian prose corpus excerpt from Alice in Wonderland with only static text and provenance comments. I found no concrete malicious or supply-chain indicators: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in the target file.",
-      "files": [
-        {
-          "file_path": "benches/data/Carroll-11-th.txt",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "138da85dbf8f2722ee10d44013c8c1573a1adbe8e2c01d2d3879e02c6022e48c"
-          },
-          "summary": "Reviewed benches/data/Carroll-11-th.txt, which contains Thai-language prose from an ICU4X test corpus with only source/license comments and narrative text. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/data/Carroll-11-el.txt",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "774a2672a1004aa0392cffe0ee38437156f5a9e84de7718598752bd3fffd1b70"
-          },
-          "summary": "Reviewed this target text corpus file, which contains Greek-language translated literary prose from Alice in Wonderland with source/license headers. I found no concrete malicious or supply-chain indicators in the file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/data/Carroll-11-es.txt",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "352f6577ccac7317c35a89f4b75033d405e9883c8cff834319666ba73178ce30"
-          },
-          "summary": "Reviewed the target file as a Spanish ICU4X benchmark text excerpt from Alice in Wonderland. It contains only prose and metadata comments; I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/data/Carroll-11-pl.txt",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f2cd876f350f8d3120e54451668eb65784bd8ca81894c2355e5057c43d956e6b"
-          },
-          "summary": "Reviewed this target as a plain-text ICU4X corpus entry containing Polish prose from Alice in Wonderland plus source/license comments. I found no concrete malicious or supply-chain indicators: no install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, persistence, or hidden execution paths.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/data/Carroll-11-ru.txt",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5860d8aa2bda609f8f8db3132cee41014b56b458e97b3beae13e76b6be2c4796"
-          },
-          "summary": "Reviewed `benches/data/Carroll-11-ru.txt`, which is a Russian prose corpus excerpt from Alice in Wonderland with only static text and provenance comments. I found no concrete malicious or supply-chain indicators: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_5c39cc75eab2472980d2aa37a16fc8c0",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782838195",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/properties.rs`, which implements Unicode normalization property lookups and decomposition/composition helpers backed by compiled ICU data. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious or suspicious-by-default behavior in this file.\nReviewed the generated `Cargo.toml` for install-time hooks, build-script execution, hidden downloads, dynamic code loading, credential access, obfuscation, and persistence. It describes a standard Rust library crate for ICU normalizer functionality and I found no concrete supply-chain or malicious indicators in this manifest.\nReviewed `benches/composing_normalizer_nfc.rs`, a benchmark harness that loads bundled fixture text with `include_str!`, strips comment headers, precomputes NFC/NFD/NFKC/NFKD normalization results, and benchmarks UTF-8 and UTF-16 normalization paths. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": "src/properties.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "668b7e20235bc1c52a89eb53fcee8de68095ab913bb1e2e584f379938bb499b1"
-          },
-          "summary": "Reviewed `src/properties.rs`, which implements Unicode normalization property lookups and decomposition/composition helpers backed by compiled ICU data. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious or suspicious-by-default behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -944,183 +795,93 @@
             "algorithm": "blake3",
             "value": "4ec795560509995fcbc28fd74d29822b437440e73028d7125659bf3297597fd2"
           },
-          "summary": "Reviewed the generated `Cargo.toml` for install-time hooks, build-script execution, hidden downloads, dynamic code loading, credential access, obfuscation, and persistence. It describes a standard Rust library crate for ICU normalizer functionality and I found no concrete supply-chain or malicious indicators in this manifest.",
+          "summary": "Reviewed the autogenerated Cargo.toml for icu_normalizer 2.2.0 and found no concrete indicators of supply-chain compromise. The manifest contains standard package metadata, feature flags, and dependency declarations, with no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence settings.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 32135,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046144654,
+            "finished_at_unix_ms": 1784046176789,
+            "total_token_usage": {
+              "input_tokens": 25308,
+              "cached_input_tokens": 21248,
+              "output_tokens": 417,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 25725
+            },
+            "last_token_usage": {
+              "input_tokens": 25308,
+              "cached_input_tokens": 21248,
+              "output_tokens": 417,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 25725
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "benches/composing_normalizer_nfc.rs",
+          "file_path": "README.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "439b2aa0b8816fd86c501b57cc34e69d5c98cc295fbfa3b28036123dbc12dc10"
+            "value": "306b0ffe26f2351d35e8682eaaf0939f544b04f6bcdaa6505dac2ecef3636092"
           },
-          "summary": "Reviewed `benches/composing_normalizer_nfc.rs`, a benchmark harness that loads bundled fixture text with `include_str!`, strips comment headers, precomputes NFC/NFD/NFKC/NFKD normalization results, and benchmarks UTF-8 and UTF-16 normalization paths. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed the README for icu_normalizer, which documents Unicode normalization functionality, supported input types, and examples of NFC/NFD usage. I found no concrete indicators of install-time execution, network or credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_686b3e0d6c1e4554a86efb3dd0b55902",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782838365",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `benches/canonical_decomposition.rs`, a Criterion benchmark that loads bundled text fixtures, strips comment lines, normalizes them with ICU normalizers, and benchmarks canonical decomposition. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.\n`src/provider.rs` defines ICU normalizer data marker types and static provider/data-structure definitions for decomposition/composition tables, plus optional baked-data wiring behind feature flags. I checked the file for install-time execution, subprocess launches, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.\nReviewed `src/uts46.rs`, which is a Rust UTS-46 mapper wrapper around ICU normalizer data and iterator adapters for map/normalize/validate behavior. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.\nReviewed `src/harfbuzz.rs`, which only contains `harfbuzz_traits` feature-gated trait implementations forwarding composition, decomposition, and combining-class lookups into ICU4X property tables. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed this plain-text Vietnamese translation excerpt of a literary work in `benches/data/wotw.txt`. It contains narrative prose only; I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "benches/canonical_decomposition.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "46bef24892c090dbfa26cf65209332c77e9b1dfd40ce7eec3ab8a27c3fddb59f"
+          "agent_run_metrics": {
+            "duration_ms": 12296,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046176790,
+            "finished_at_unix_ms": 1784046189087,
+            "total_token_usage": {
+              "input_tokens": 24713,
+              "cached_input_tokens": 23296,
+              "output_tokens": 375,
+              "reasoning_output_tokens": 188,
+              "total_tokens": 25088
+            },
+            "last_token_usage": {
+              "input_tokens": 24713,
+              "cached_input_tokens": 23296,
+              "output_tokens": 375,
+              "reasoning_output_tokens": 188,
+              "total_tokens": 25088
+            }
           },
-          "summary": "Reviewed `benches/canonical_decomposition.rs`, a Criterion benchmark that loads bundled text fixtures, strips comment lines, normalizes them with ICU normalizers, and benchmarks canonical decomposition. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/provider.rs",
+          "file_path": "benches/bench.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "ee146e28193a83abeb06c1093fddf8e8eaf464cf35af75c5e1688a0425031b26"
+            "value": "c01c0cd8d54ab360474cff601d3df0063368188e4054b6a53bb790418ca5058d"
           },
-          "summary": "`src/provider.rs` defines ICU normalizer data marker types and static provider/data-structure definitions for decomposition/composition tables, plus optional baked-data wiring behind feature flags. I checked the file for install-time execution, subprocess launches, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "summary": "The target file is a small Criterion benchmark entrypoint that just declares benchmark modules and registers them with `criterion_group!`/`criterion_main!`. I checked this file for install-time hooks, subprocess execution, network or credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/uts46.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "91653abdf09b7057ad688305073b35c344f6c846cd64c1cfa065139cb8fcc678"
+          "agent_run_metrics": {
+            "duration_ms": 24674,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046189088,
+            "finished_at_unix_ms": 1784046213763,
+            "total_token_usage": {
+              "input_tokens": 24272,
+              "cached_input_tokens": 21248,
+              "output_tokens": 456,
+              "reasoning_output_tokens": 259,
+              "total_tokens": 24728
+            },
+            "last_token_usage": {
+              "input_tokens": 24272,
+              "cached_input_tokens": 21248,
+              "output_tokens": 456,
+              "reasoning_output_tokens": 259,
+              "total_tokens": 24728
+            }
           },
-          "summary": "Reviewed `src/uts46.rs`, which is a Rust UTS-46 mapper wrapper around ICU normalizer data and iterator adapters for map/normalize/validate behavior. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/harfbuzz.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "21e59f629f8ba7c60324176746dab8d20256bf3fe15c581ae57df6290a9e2b30"
-          },
-          "summary": "Reviewed `src/harfbuzz.rs`, which only contains `harfbuzz_traits` feature-gated trait implementations forwarding composition, decomposition, and combining-class lookups into ICU4X property tables. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/data/wotw.txt",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "056b19bcc0adf9d22df8e89e0cbd5058d4226c248ed3003d68635760494f27f5"
-          },
-          "summary": "Reviewed this plain-text Vietnamese translation excerpt of a literary work in `benches/data/wotw.txt`. It contains narrative prose only; I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_86124628e3e9438db4316f03ee4575f9",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782838094",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which implements ICU4X Unicode normalization iterators and constructors for NFC/NFD/NFKC/NFKD/UTS46 using provider-backed trie/data tables and fast-path normalization logic. I found no concrete indicators of install-time execution, network/exfiltration, credential access, hidden downloads, dynamic code loading, obfuscation/packing, or persistence in this file.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "fca5b5634c227e05c1394194d481adeb0699895637963beaa367eaea047b11e0"
-          },
-          "summary": "Reviewed `src/lib.rs`, which implements ICU4X Unicode normalization iterators and constructors for NFC/NFD/NFKC/NFKD/UTS46 using provider-backed trie/data tables and fast-path normalization logic. I found no concrete indicators of install-time execution, network/exfiltration, credential access, hidden downloads, dynamic code loading, obfuscation/packing, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_b308338bedf84c28bf83b8856bbb62b1",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782838275",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `benches/decomposing_normalizer_nfd.rs`, which is a Criterion benchmark that loads bundled text fixtures with `include_str!`, strips comment lines, and runs NFC/NFD/NFKC/NFKD normalization in-process for timing. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nReviewed the benchmark source in `benches/composing_normalizer_nfkc.rs`, which loads local test data with `include_str!`, strips comment headers, and benchmarks NFC/NFD/NFKC/NFKD normalization over UTF-8 and UTF-16 inputs. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution, and found no concrete malicious or supply-chain indicators.\nI reviewed this benchmark file, which builds NFC/NFD/NFKC/NFKD normalization test cases from bundled text fixtures and measures normalization performance for UTF-8 and UTF-16 inputs. I checked for install hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.\nReviewed this benchmark-only Rust file, which loads local text fixtures with `include_str!`, strips comment headers, normalizes/decomposes characters, and measures canonical composition performance. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.\nReviewed `benches/utf16_throughput.rs`, which is a Criterion benchmark for ICU4X UTF-16 normalization throughput using embedded sample texts and in-memory `SmallVec` output buffers. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "benches/decomposing_normalizer_nfd.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "bc8f30f51552b8b336bfd7b6ebbe1f7f1a8d17cb561c6f00464ea450cf22bfde"
-          },
-          "summary": "Reviewed `benches/decomposing_normalizer_nfd.rs`, which is a Criterion benchmark that loads bundled text fixtures with `include_str!`, strips comment lines, and runs NFC/NFD/NFKC/NFKD normalization in-process for timing. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/composing_normalizer_nfkc.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "13365f324ecb209a1a09ee23fcde8de1d673fe4f3e01fb5c86ca42d46eade516"
-          },
-          "summary": "Reviewed the benchmark source in `benches/composing_normalizer_nfkc.rs`, which loads local test data with `include_str!`, strips comment headers, and benchmarks NFC/NFD/NFKC/NFKD normalization over UTF-8 and UTF-16 inputs. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/decomposing_normalizer_nfkd.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b62b25ba8a3aca4b9b674feafad223dd8a0a31467599bfe824ad0fb937b4c4f8"
-          },
-          "summary": "I reviewed this benchmark file, which builds NFC/NFD/NFKC/NFKD normalization test cases from bundled text fixtures and measures normalization performance for UTF-8 and UTF-16 inputs. I checked for install hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -1130,9 +891,110 @@
             "algorithm": "blake3",
             "value": "fa0a8702128d0492c0b41622af1e12740497f8568542a8d37d5411a43776f08a"
           },
-          "summary": "Reviewed this benchmark-only Rust file, which loads local text fixtures with `include_str!`, strips comment headers, normalizes/decomposes characters, and measures canonical composition performance. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.",
+          "summary": "Reviewed `benches/canonical_composition.rs`, a Criterion benchmark that loads local test vectors with `include_str!`, strips comment headers, normalizes/decomposes characters, and measures canonical composition behavior. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13220,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046213763,
+            "finished_at_unix_ms": 1784046226984,
+            "total_token_usage": {
+              "input_tokens": 25624,
+              "cached_input_tokens": 23296,
+              "output_tokens": 528,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 26152
+            },
+            "last_token_usage": {
+              "input_tokens": 25624,
+              "cached_input_tokens": 23296,
+              "output_tokens": 528,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 26152
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_855cd2705a36467f9e1d0ec9184758dd",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784061251",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "benches/decomposing_normalizer_nfd.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "bc8f30f51552b8b336bfd7b6ebbe1f7f1a8d17cb561c6f00464ea450cf22bfde"
+          },
+          "summary": "Reviewed this Criterion benchmark for ICU normalizer NFD behavior: it loads static local test vectors with `include_str!`, strips comment headers, precomputes NFC/NFD/NFKC/NFKD variants, and runs local normalization benchmarks on UTF-8 and UTF-16 inputs. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14352,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061188022,
+            "finished_at_unix_ms": 1784061202374,
+            "total_token_usage": {
+              "input_tokens": 25978,
+              "cached_input_tokens": 21248,
+              "output_tokens": 438,
+              "reasoning_output_tokens": 215,
+              "total_tokens": 26416
+            },
+            "last_token_usage": {
+              "input_tokens": 25978,
+              "cached_input_tokens": 21248,
+              "output_tokens": 438,
+              "reasoning_output_tokens": 215,
+              "total_tokens": 26416
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/decomposing_normalizer_nfkd.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b62b25ba8a3aca4b9b674feafad223dd8a0a31467599bfe824ad0fb937b4c4f8"
+          },
+          "summary": "Reviewed a Criterion benchmark harness that loads local text fixtures, strips comment headers, precomputes NFC/NFD/NFKC/NFKD string and UTF-16 variants, and benchmarks `icu_normalizer` decomposition paths. I found no concrete indicators of install-time execution, network or secret access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13510,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061202375,
+            "finished_at_unix_ms": 1784061215885,
+            "total_token_usage": {
+              "input_tokens": 25994,
+              "cached_input_tokens": 23296,
+              "output_tokens": 521,
+              "reasoning_output_tokens": 311,
+              "total_tokens": 26515
+            },
+            "last_token_usage": {
+              "input_tokens": 25994,
+              "cached_input_tokens": 23296,
+              "output_tokens": 521,
+              "reasoning_output_tokens": 311,
+              "total_tokens": 26515
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -1142,16 +1004,68 @@
             "algorithm": "blake3",
             "value": "2abe64ca74d6a04d673ff643e7580810ccda8d4c04aa973e7fa8b4ee8dfd006d"
           },
-          "summary": "Reviewed `benches/utf16_throughput.rs`, which is a Criterion benchmark for ICU4X UTF-16 normalization throughput using embedded sample texts and in-memory `SmallVec` output buffers. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed this benchmark file, which generates UTF-16 normalization inputs and runs Criterion throughput tests over fixed in-tree text samples. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11404,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061215886,
+            "finished_at_unix_ms": 1784061227291,
+            "total_token_usage": {
+              "input_tokens": 25549,
+              "cached_input_tokens": 21248,
+              "output_tokens": 306,
+              "reasoning_output_tokens": 113,
+              "total_tokens": 25855
+            },
+            "last_token_usage": {
+              "input_tokens": 25549,
+              "cached_input_tokens": 21248,
+              "output_tokens": 306,
+              "reasoning_output_tokens": 113,
+              "total_tokens": 25855
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/harfbuzz.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "21e59f629f8ba7c60324176746dab8d20256bf3fe15c581ae57df6290a9e2b30"
+          },
+          "summary": "Reviewed src/harfbuzz.rs, which only provides trait-implementation adapters between ICU4X normalization types and harfbuzz_traits for composition, decomposition, and combining-class lookup. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 23879,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061227291,
+            "finished_at_unix_ms": 1784061251170,
+            "total_token_usage": {
+              "input_tokens": 24864,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 25329
+            },
+            "last_token_usage": {
+              "input_tokens": 24864,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 25329
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_ebace7e9ab7e4df0afad583787baf91a",
+      "id": "rev_ad80d25d53e640f3b657713f94d36b05",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1159,58 +1073,105 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782838700",
+      "created_at": "1784063010",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the target file as a UTF-8 Turkish text corpus excerpt from ICU4X/Unicode test data. It contains only translated literary text and metadata comments; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain payload characteristics.\nReviewed `benches/data/Carroll-11-de.txt`, which is a German ICU4X corpus text excerpt from Alice in Wonderland with only static prose and provenance comments. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.\nReviewed this target as a plain French prose corpus excerpt from ICU4X test data. I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload indicators, and found no concrete malicious or supply-chain signals.\nReviewed the `.cargo_vcs_info.json` metadata file, which only records the source tree git SHA1 and the package path in VCS. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `tests/data/NormalizationTest.txt`, which is just a four-line placeholder pointing to the upstream Unicode NormalizationTest corpus. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other payload-like behavior in this target file; none are present because the file contains only comments and no executable content.",
       "files": [
         {
-          "file_path": "benches/data/Carroll-11-tr.txt",
+          "file_path": "src/properties.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "587341568e9f001aa9be09107825333f77d553e619697b8ef260540eec654b41"
+            "value": "668b7e20235bc1c52a89eb53fcee8de68095ab913bb1e2e584f379938bb499b1"
           },
-          "summary": "Reviewed the target file as a UTF-8 Turkish text corpus excerpt from ICU4X/Unicode test data. It contains only translated literary text and metadata comments; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain payload characteristics.",
+          "summary": "Reviewed `src/properties.rs`, which implements ICU4X Unicode normalization property lookups and compiled-data/provider constructors for canonical composition, decomposition, and combining-class queries. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22142,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062929150,
+            "finished_at_unix_ms": 1784062951292,
+            "total_token_usage": {
+              "input_tokens": 62423,
+              "cached_input_tokens": 52736,
+              "output_tokens": 740,
+              "reasoning_output_tokens": 353,
+              "total_tokens": 63163
+            },
+            "last_token_usage": {
+              "input_tokens": 62423,
+              "cached_input_tokens": 52736,
+              "output_tokens": 740,
+              "reasoning_output_tokens": 353,
+              "total_tokens": 63163
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "benches/data/Carroll-11-de.txt",
+          "file_path": "src/provider.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "3842a09c45a03c436c0fdf3e75245919587430558c6735ca8a3a434a78dd7839"
+            "value": "ee146e28193a83abeb06c1093fddf8e8eaf464cf35af75c5e1688a0425031b26"
           },
-          "summary": "Reviewed `benches/data/Carroll-11-de.txt`, which is a German ICU4X corpus text excerpt from Alice in Wonderland with only static prose and provenance comments. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed the normalizer provider definitions and baked-data feature-gated structs/macros in src/provider.rs, including serde/bake derives and trie/vector data containers. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12860,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062951293,
+            "finished_at_unix_ms": 1784062964154,
+            "total_token_usage": {
+              "input_tokens": 26542,
+              "cached_input_tokens": 21760,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 300,
+              "total_tokens": 27025
+            },
+            "last_token_usage": {
+              "input_tokens": 26542,
+              "cached_input_tokens": 21760,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 300,
+              "total_tokens": 27025
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "benches/data/Carroll-11-fr.txt",
+          "file_path": "src/uts46.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "c28134acba3eaf4a9ed77531961e60fa39b99163bc4e3e0eccd9e4d0d65cda8b"
+            "value": "91653abdf09b7057ad688305073b35c344f6c846cd64c1cfa065139cb8fcc678"
           },
-          "summary": "Reviewed this target as a plain French prose corpus excerpt from ICU4X test data. I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload indicators, and found no concrete malicious or supply-chain signals.",
+          "summary": "Reviewed `src/uts46.rs`, which is a UTS 46/IDNA normalization wrapper around ICU4X composing normalizers. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain malicious behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ded4d621e9e213b573d789de7dc1b102adb133760e7d06a26293c648446d0796"
+          "agent_run_metrics": {
+            "duration_ms": 13464,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062964154,
+            "finished_at_unix_ms": 1784062977619,
+            "total_token_usage": {
+              "input_tokens": 42611,
+              "cached_input_tokens": 34944,
+              "output_tokens": 553,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 43164
+            },
+            "last_token_usage": {
+              "input_tokens": 42611,
+              "cached_input_tokens": 34944,
+              "output_tokens": 553,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 43164
+            }
           },
-          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the source tree git SHA1 and the package path in VCS. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -1220,16 +1181,68 @@
             "algorithm": "blake3",
             "value": "42773cddcbdcd29dae0eb49e8d5724e78f7ed24127d520a76a6ad1e8fd6f77c0"
           },
-          "summary": "Reviewed `tests/data/NormalizationTest.txt`, which is just a four-line placeholder pointing to the upstream Unicode NormalizationTest corpus. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other payload-like behavior in this target file; none are present because the file contains only comments and no executable content.",
+          "summary": "Reviewed the 4-line placeholder file at tests/data/NormalizationTest.txt. It only documents that the real Unicode NormalizationTest.txt should be fetched separately for conformance testing, and I found no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17548,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062977619,
+            "finished_at_unix_ms": 1784062995168,
+            "total_token_usage": {
+              "input_tokens": 36965,
+              "cached_input_tokens": 33920,
+              "output_tokens": 789,
+              "reasoning_output_tokens": 324,
+              "total_tokens": 37754
+            },
+            "last_token_usage": {
+              "input_tokens": 36965,
+              "cached_input_tokens": 33920,
+              "output_tokens": 789,
+              "reasoning_output_tokens": 324,
+              "total_tokens": 37754
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/data/README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b12d593e34f7c513c92bc003664c844d3352098b81cb48d5a916c9ec155bc080"
+          },
+          "summary": "Reviewed `tests/data/README.md`, which only documents that the test data is sourced from Unicode's `NormalizationTest.txt`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15799,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062995168,
+            "finished_at_unix_ms": 1784063010968,
+            "total_token_usage": {
+              "input_tokens": 24136,
+              "cached_input_tokens": 21248,
+              "output_tokens": 354,
+              "reasoning_output_tokens": 159,
+              "total_tokens": 24490
+            },
+            "last_token_usage": {
+              "input_tokens": 24136,
+              "cached_input_tokens": 21248,
+              "output_tokens": 354,
+              "reasoning_output_tokens": 159,
+              "total_tokens": 24490
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_f30f858ea1394d4fab31126318d4d81d",
+      "id": "rev_b1da85e183d345f79455727a8494077a",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1237,22 +1250,877 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782838714",
+      "created_at": "1784056897",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/data/README.md`, which only documents the provenance of the test corpus as Unicode NormalizationTest.txt from unicode.org. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other executable behavior in this file.",
       "files": [
         {
-          "file_path": "tests/data/README.md",
+          "file_path": "benches/data/Carroll-11-el.txt",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "b12d593e34f7c513c92bc003664c844d3352098b81cb48d5a916c9ec155bc080"
+            "value": "774a2672a1004aa0392cffe0ee38437156f5a9e84de7718598752bd3fffd1b70"
           },
-          "summary": "Reviewed `tests/data/README.md`, which only documents the provenance of the test corpus as Unicode NormalizationTest.txt from unicode.org. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other executable behavior in this file.",
+          "summary": "Reviewed this target as a Greek ICU4X test-corpus text excerpt from Alice in Wonderland. It contains only static prose and source/license comments; I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators in the file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 30337,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056813200,
+            "finished_at_unix_ms": 1784056843537,
+            "total_token_usage": {
+              "input_tokens": 40260,
+              "cached_input_tokens": 34944,
+              "output_tokens": 651,
+              "reasoning_output_tokens": 340,
+              "total_tokens": 40911
+            },
+            "last_token_usage": {
+              "input_tokens": 40260,
+              "cached_input_tokens": 34944,
+              "output_tokens": 651,
+              "reasoning_output_tokens": 340,
+              "total_tokens": 40911
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/Carroll-11-es.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "352f6577ccac7317c35a89f4b75033d405e9883c8cff834319666ba73178ce30"
+          },
+          "summary": "Reviewed this target text file, which is a Spanish excerpt of Alice in Wonderland with source/license comments. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution patterns, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14274,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056843538,
+            "finished_at_unix_ms": 1784056857813,
+            "total_token_usage": {
+              "input_tokens": 38783,
+              "cached_input_tokens": 33920,
+              "output_tokens": 537,
+              "reasoning_output_tokens": 233,
+              "total_tokens": 39320
+            },
+            "last_token_usage": {
+              "input_tokens": 38783,
+              "cached_input_tokens": 33920,
+              "output_tokens": 537,
+              "reasoning_output_tokens": 233,
+              "total_tokens": 39320
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/Carroll-11-fr.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c28134acba3eaf4a9ed77531961e60fa39b99163bc4e3e0eccd9e4d0d65cda8b"
+          },
+          "summary": "Reviewed `benches/data/Carroll-11-fr.txt`, which is a short French literary corpus excerpt from ICU4X/Unicode test data. I checked for install-time behavior, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in the file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16330,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056857814,
+            "finished_at_unix_ms": 1784056874144,
+            "total_token_usage": {
+              "input_tokens": 38423,
+              "cached_input_tokens": 33920,
+              "output_tokens": 488,
+              "reasoning_output_tokens": 168,
+              "total_tokens": 38911
+            },
+            "last_token_usage": {
+              "input_tokens": 38423,
+              "cached_input_tokens": 33920,
+              "output_tokens": 488,
+              "reasoning_output_tokens": 168,
+              "total_tokens": 38911
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/Carroll-11-he.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "589d7b98ef7e03c3ec4cf8a839d8bef7c42d2b36b2e386bc5517d6a4e1ad1ec9"
+          },
+          "summary": "Reviewed this Hebrew text corpus file from ICU4X and found only static narrative content plus source/license headers. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13331,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056874145,
+            "finished_at_unix_ms": 1784056887477,
+            "total_token_usage": {
+              "input_tokens": 39561,
+              "cached_input_tokens": 34432,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 140,
+              "total_tokens": 40004
+            },
+            "last_token_usage": {
+              "input_tokens": 39561,
+              "cached_input_tokens": 34432,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 140,
+              "total_tokens": 40004
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/Carroll-11-pl.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f2cd876f350f8d3120e54451668eb65784bd8ca81894c2355e5057c43d956e6b"
+          },
+          "summary": "Reviewed a Polish plaintext corpus excerpt from Alice in Wonderland; it contains only translated narrative text and source/license comments, with no install hooks, network or exfiltration code, credential access, dynamic loading, obfuscation, or persistence behavior in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10213,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056887477,
+            "finished_at_unix_ms": 1784056897691,
+            "total_token_usage": {
+              "input_tokens": 25096,
+              "cached_input_tokens": 19200,
+              "output_tokens": 353,
+              "reasoning_output_tokens": 161,
+              "total_tokens": 25449
+            },
+            "last_token_usage": {
+              "input_tokens": 25096,
+              "cached_input_tokens": 19200,
+              "output_tokens": 353,
+              "reasoning_output_tokens": 161,
+              "total_tokens": 25449
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_c8d13f8e3730491ea0bd61d3285f862c",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054841",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "benches/canonical_decomposition.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "46bef24892c090dbfa26cf65209332c77e9b1dfd40ce7eec3ab8a27c3fddb59f"
+          },
+          "summary": "Reviewed the benchmark harness in benches/canonical_decomposition.rs. It only loads bundled text fixtures with include_str!, strips comment headers, normalizes them with ICU4X APIs, and feeds the results into Criterion; I found no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21410,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054762158,
+            "finished_at_unix_ms": 1784054783568,
+            "total_token_usage": {
+              "input_tokens": 41453,
+              "cached_input_tokens": 34944,
+              "output_tokens": 552,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 42005
+            },
+            "last_token_usage": {
+              "input_tokens": 41453,
+              "cached_input_tokens": 34944,
+              "output_tokens": 552,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 42005
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/composing_normalizer_nfc.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "439b2aa0b8816fd86c501b57cc34e69d5c98cc295fbfa3b28036123dbc12dc10"
+          },
+          "summary": "The target file is a Criterion benchmark that loads local text fixtures with `include_str!`, strips comment headers, normalizes them with ICU NFC/NFD/NFKC/NFKD implementations, and benchmarks UTF-8 and UTF-16 paths. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16398,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054783568,
+            "finished_at_unix_ms": 1784054799967,
+            "total_token_usage": {
+              "input_tokens": 40192,
+              "cached_input_tokens": 34944,
+              "output_tokens": 497,
+              "reasoning_output_tokens": 184,
+              "total_tokens": 40689
+            },
+            "last_token_usage": {
+              "input_tokens": 40192,
+              "cached_input_tokens": 34944,
+              "output_tokens": 497,
+              "reasoning_output_tokens": 184,
+              "total_tokens": 40689
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/composing_normalizer_nfkc.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "13365f324ecb209a1a09ee23fcde8de1d673fe4f3e01fb5c86ca42d46eade516"
+          },
+          "summary": "The target file is a Criterion benchmark that embeds local text fixtures with `include_str!`, strips comment headers, precomputes NFC/NFD/NFKC/NFKD forms, and benchmarks UTF-8 and UTF-16 normalization paths. I checked it for install-time hooks, network or exfiltration, secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11446,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054799967,
+            "finished_at_unix_ms": 1784054811414,
+            "total_token_usage": {
+              "input_tokens": 25948,
+              "cached_input_tokens": 21248,
+              "output_tokens": 421,
+              "reasoning_output_tokens": 203,
+              "total_tokens": 26369
+            },
+            "last_token_usage": {
+              "input_tokens": 25948,
+              "cached_input_tokens": 21248,
+              "output_tokens": 421,
+              "reasoning_output_tokens": 203,
+              "total_tokens": 26369
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/Carroll-11-ar.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a1dabcf489f6709181fcc670de980fe5c934fa6a1ec37eae2c6ac536f120897b"
+          },
+          "summary": "Reviewed `benches/data/Carroll-11-ar.txt`, which is a plain-text Arabic corpus excerpt from Alice in Wonderland with provenance comments and narrative content only. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13877,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054811415,
+            "finished_at_unix_ms": 1784054825292,
+            "total_token_usage": {
+              "input_tokens": 25029,
+              "cached_input_tokens": 23808,
+              "output_tokens": 492,
+              "reasoning_output_tokens": 275,
+              "total_tokens": 25521
+            },
+            "last_token_usage": {
+              "input_tokens": 25029,
+              "cached_input_tokens": 23808,
+              "output_tokens": 492,
+              "reasoning_output_tokens": 275,
+              "total_tokens": 25521
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/Carroll-11-de.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3842a09c45a03c436c0fdf3e75245919587430558c6735ca8a3a434a78dd7839"
+          },
+          "summary": "Reviewed the German text corpus file `benches/data/Carroll-11-de.txt`, which contains ordinary prose from Alice in Wonderland with source comments and no executable content. I checked for install-time hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15868,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054825293,
+            "finished_at_unix_ms": 1784054841161,
+            "total_token_usage": {
+              "input_tokens": 24779,
+              "cached_input_tokens": 21248,
+              "output_tokens": 409,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 25188
+            },
+            "last_token_usage": {
+              "input_tokens": 24779,
+              "cached_input_tokens": 21248,
+              "output_tokens": 409,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 25188
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_d4b5a3f1ba964c03ad6882c41368b420",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052212",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ded4d621e9e213b573d789de7dc1b102adb133760e7d06a26293c648446d0796"
+          },
+          "summary": "Reviewed .cargo_vcs_info.json, which only records the source git SHA and the path-in-vcs mapping for this crate. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14430,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052143407,
+            "finished_at_unix_ms": 1784052157837,
+            "total_token_usage": {
+              "input_tokens": 24138,
+              "cached_input_tokens": 21248,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 222,
+              "total_tokens": 24550
+            },
+            "last_token_usage": {
+              "input_tokens": 24138,
+              "cached_input_tokens": 21248,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 222,
+              "total_tokens": 24550
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4ec795560509995fcbc28fd74d29822b437440e73028d7125659bf3297597fd2"
+          },
+          "summary": "Reviewed the generated Cargo manifest for `icu_normalizer` 2.2.0, including package metadata, features, dependencies, and test/bench declarations. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16586,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052157838,
+            "finished_at_unix_ms": 1784052174425,
+            "total_token_usage": {
+              "input_tokens": 25351,
+              "cached_input_tokens": 21248,
+              "output_tokens": 700,
+              "reasoning_output_tokens": 508,
+              "total_tokens": 26051
+            },
+            "last_token_usage": {
+              "input_tokens": 25351,
+              "cached_input_tokens": 21248,
+              "output_tokens": 700,
+              "reasoning_output_tokens": 508,
+              "total_tokens": 26051
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "306b0ffe26f2351d35e8682eaaf0939f544b04f6bcdaa6505dac2ecef3636092"
+          },
+          "summary": "Reviewed the README for icu_normalizer, which documents Unicode normalization features, supported forms, examples, and links to ICU4X resources. I found no concrete malicious or supply-chain indicators in the file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13966,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052174426,
+            "finished_at_unix_ms": 1784052188392,
+            "total_token_usage": {
+              "input_tokens": 24803,
+              "cached_input_tokens": 21248,
+              "output_tokens": 471,
+              "reasoning_output_tokens": 275,
+              "total_tokens": 25274
+            },
+            "last_token_usage": {
+              "input_tokens": 24803,
+              "cached_input_tokens": 21248,
+              "output_tokens": 471,
+              "reasoning_output_tokens": 275,
+              "total_tokens": 25274
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/bench.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c01c0cd8d54ab360474cff601d3df0063368188e4054b6a53bb790418ca5058d"
+          },
+          "summary": "The target file is a small Criterion benchmark entry point that declares benchmark modules and registers them with `criterion_main!`. I checked it for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13987,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052188392,
+            "finished_at_unix_ms": 1784052202380,
+            "total_token_usage": {
+              "input_tokens": 24227,
+              "cached_input_tokens": 21248,
+              "output_tokens": 320,
+              "reasoning_output_tokens": 127,
+              "total_tokens": 24547
+            },
+            "last_token_usage": {
+              "input_tokens": 24227,
+              "cached_input_tokens": 21248,
+              "output_tokens": 320,
+              "reasoning_output_tokens": 127,
+              "total_tokens": 24547
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/canonical_composition.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "fa0a8702128d0492c0b41622af1e12740497f8568542a8d37d5411a43776f08a"
+          },
+          "summary": "Reviewed this benchmark harness, which loads local test data with `include_str!`, strips comment headers, normalizes/decomposes Unicode text, and exercises canonical composition and Vietnamese tone decomposition. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10556,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052202381,
+            "finished_at_unix_ms": 1784052212938,
+            "total_token_usage": {
+              "input_tokens": 25556,
+              "cached_input_tokens": 21248,
+              "output_tokens": 380,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 25936
+            },
+            "last_token_usage": {
+              "input_tokens": 25556,
+              "cached_input_tokens": 21248,
+              "output_tokens": 380,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 25936
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_de1f7b6f85394ac48fdabad211dffccd",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059946",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "benches/data/TestNames_Japanese_k.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4bafadaaac3836379c48cd28668a09b16ee885211277dcd276acdceee8e34b42"
+          },
+          "summary": "Reviewed `benches/data/TestNames_Japanese_k.txt`, a UTF-8 benchmark fixture containing only static Japanese name pairs plus license comments. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19054,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059848608,
+            "finished_at_unix_ms": 1784059867662,
+            "total_token_usage": {
+              "input_tokens": 50945,
+              "cached_input_tokens": 48640,
+              "output_tokens": 700,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 51645
+            },
+            "last_token_usage": {
+              "input_tokens": 50945,
+              "cached_input_tokens": 48640,
+              "output_tokens": 700,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 51645
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/TestNames_Korean.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "de5eac7bc272c2cccdf4c7f10c44d973b1748a1180f844ea85d905adacd7280f"
+          },
+          "summary": "Reviewed `benches/data/TestNames_Korean.txt`, which is a plain text list of Korean names with ICU4X license comments at the top. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12181,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059867662,
+            "finished_at_unix_ms": 1784059879844,
+            "total_token_usage": {
+              "input_tokens": 24384,
+              "cached_input_tokens": 21248,
+              "output_tokens": 515,
+              "reasoning_output_tokens": 309,
+              "total_tokens": 24899
+            },
+            "last_token_usage": {
+              "input_tokens": 24384,
+              "cached_input_tokens": 21248,
+              "output_tokens": 515,
+              "reasoning_output_tokens": 309,
+              "total_tokens": 24899
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/TestNames_Latin.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e1dfb9bf4470643a2fafabac91d82c35d1892f29a310861e5c65b5b22d5d2979"
+          },
+          "summary": "Reviewed this plain-text ICU4X fixture of Latin-script personal names plus a license header. I checked the file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20925,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059879844,
+            "finished_at_unix_ms": 1784059900770,
+            "total_token_usage": {
+              "input_tokens": 37551,
+              "cached_input_tokens": 33920,
+              "output_tokens": 746,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 38297
+            },
+            "last_token_usage": {
+              "input_tokens": 37551,
+              "cached_input_tokens": 33920,
+              "output_tokens": 746,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 38297
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/TestNames_Thai.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2db6305aa4548173bb2b0497a3d4897b612bd49de75bb28b04f59d9cd42c9da0"
+          },
+          "summary": "Reviewed this target file as a plain Thai name fixture with an ICU4X license header. It contains only static text data and I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in the file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16546,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059900771,
+            "finished_at_unix_ms": 1784059917317,
+            "total_token_usage": {
+              "input_tokens": 24674,
+              "cached_input_tokens": 23296,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 25081
+            },
+            "last_token_usage": {
+              "input_tokens": 24674,
+              "cached_input_tokens": 23296,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 25081
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/wotw.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "056b19bcc0adf9d22df8e89e0cbd5058d4226c248ed3003d68635760494f27f5"
+          },
+          "summary": "Reviewed this target text file, which appears to contain a Vietnamese translation of the opening of a literary passage from *The War of the Worlds* for benchmark data. I checked for install-time execution, network or credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in the file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 28780,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059917318,
+            "finished_at_unix_ms": 1784059946098,
+            "total_token_usage": {
+              "input_tokens": 39492,
+              "cached_input_tokens": 34432,
+              "output_tokens": 488,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 39980
+            },
+            "last_token_usage": {
+              "input_tokens": 39492,
+              "cached_input_tokens": 34432,
+              "output_tokens": 488,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 39980
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_e0a0d53dc7734a318aa4be20078d23a7",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058577",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "benches/data/Carroll-11-ru.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5860d8aa2bda609f8f8db3132cee41014b56b458e97b3beae13e76b6be2c4796"
+          },
+          "summary": "Reviewed this Russian ICU4X corpus text excerpt from Alice in Wonderland and found only plain narrative content. I checked for install hooks, hidden subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found none in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16526,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058503646,
+            "finished_at_unix_ms": 1784058520173,
+            "total_token_usage": {
+              "input_tokens": 25008,
+              "cached_input_tokens": 21248,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 25394
+            },
+            "last_token_usage": {
+              "input_tokens": 25008,
+              "cached_input_tokens": 21248,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 25394
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/Carroll-11-th.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "138da85dbf8f2722ee10d44013c8c1573a1adbe8e2c01d2d3879e02c6022e48c"
+          },
+          "summary": "Reviewed this Thai text corpus file from ICU4X and found it to be plain translated prose with only source/license comments and narrative content. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12787,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058520173,
+            "finished_at_unix_ms": 1784058532960,
+            "total_token_usage": {
+              "input_tokens": 40546,
+              "cached_input_tokens": 34432,
+              "output_tokens": 526,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 41072
+            },
+            "last_token_usage": {
+              "input_tokens": 40546,
+              "cached_input_tokens": 34432,
+              "output_tokens": 526,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 41072
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/Carroll-11-tr.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "587341568e9f001aa9be09107825333f77d553e619697b8ef260540eec654b41"
+          },
+          "summary": "Reviewed `benches/data/Carroll-11-tr.txt`, a Turkish text corpus excerpt from Alice in Wonderland with source/license comments. The file contains only plain translated prose and no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13187,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058532961,
+            "finished_at_unix_ms": 1784058546149,
+            "total_token_usage": {
+              "input_tokens": 24950,
+              "cached_input_tokens": 21248,
+              "output_tokens": 438,
+              "reasoning_output_tokens": 225,
+              "total_tokens": 25388
+            },
+            "last_token_usage": {
+              "input_tokens": 24950,
+              "cached_input_tokens": 21248,
+              "output_tokens": 438,
+              "reasoning_output_tokens": 225,
+              "total_tokens": 25388
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "adc2c9f8abfa4e23631194d4f09bdd0cdf47bd41ac3f981aaca857d1a9d51817"
+          },
+          "summary": "Reviewed `benches/data/README.md`, which is a short documentation file describing how to sanitize and shuffle microbench data with `sed` and `shuf` and how to restore an ICU4X header. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior; none are present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14802,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058546149,
+            "finished_at_unix_ms": 1784058560952,
+            "total_token_usage": {
+              "input_tokens": 24345,
+              "cached_input_tokens": 21248,
+              "output_tokens": 410,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 24755
+            },
+            "last_token_usage": {
+              "input_tokens": 24345,
+              "cached_input_tokens": 21248,
+              "output_tokens": 410,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 24755
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data/TestNames_Japanese_h.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6341226cd64296d8270dfca3fc01576da6a5e7981f1b9496526c73aff728dd28"
+          },
+          "summary": "Reviewed `benches/data/TestNames_Japanese_h.txt`, which is a static text fixture containing Japanese name pairs and license header comments. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16200,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058560952,
+            "finished_at_unix_ms": 1784058577153,
+            "total_token_usage": {
+              "input_tokens": 38236,
+              "cached_input_tokens": 33920,
+              "output_tokens": 534,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 38770
+            },
+            "last_token_usage": {
+              "input_tokens": 38236,
+              "cached_input_tokens": 33920,
+              "output_tokens": 534,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 38770
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

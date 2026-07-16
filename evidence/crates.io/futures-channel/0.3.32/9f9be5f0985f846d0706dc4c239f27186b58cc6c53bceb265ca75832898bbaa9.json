@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590301",
+  "latest_reviewed_at": "1784059795",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -270,50 +276,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 5,
-      "file_record_count": 15,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 7,
+      "file_record_count": 24,
+      "file_record_count_with_metrics": 24
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 19,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 15,
-    "duration_ms_total": 63754,
-    "attempts_total": 4,
+    "reviewed_file_records": 24,
+    "file_records_with_metrics": 24,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 407637,
+    "attempts_total": 24,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 24,
+    "last_token_usage_records": 24,
     "total_token_usage": {
-      "input_tokens": 96739,
-      "cached_input_tokens": 73600,
-      "output_tokens": 1810,
-      "reasoning_output_tokens": 965,
-      "total_tokens": 98549
+      "input_tokens": 826456,
+      "cached_input_tokens": 702208,
+      "output_tokens": 12078,
+      "reasoning_output_tokens": 5898,
+      "total_tokens": 838534
     },
     "last_token_usage": {
-      "input_tokens": 96739,
-      "cached_input_tokens": 73600,
-      "output_tokens": 1810,
-      "reasoning_output_tokens": 965,
-      "total_tokens": 98549
+      "input_tokens": 826456,
+      "cached_input_tokens": 702208,
+      "output_tokens": 12078,
+      "reasoning_output_tokens": 5898,
+      "total_tokens": 838534
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_0bb1f02211e14c55962a32ea3a707694",
+      "id": "rev_416ce27a61034bb887d1082e45a3ff07",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -321,12 +319,173 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782821534",
+      "created_at": "1784059795",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/mpsc/mod.rs`, which is a standard Rust implementation of bounded and unbounded MPSC channels with sender/receiver state, queueing, wakeups, and drop/close handling. I checked for install-time hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden execution paths; none were present in this file.",
+      "files": [
+        {
+          "file_path": "tests/mpsc-size_hint.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2bdb395e17eebfa879f40eb2147adae47e30ffba6b64885b6edf3453cfcfe9da"
+          },
+          "summary": "I reviewed `tests/mpsc-size_hint.rs`, which is a small unit test file covering `futures::channel::mpsc` `size_hint()` behavior for bounded and unbounded receivers. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain malicious behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12081,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059746852,
+            "finished_at_unix_ms": 1784059758934,
+            "total_token_usage": {
+              "input_tokens": 24479,
+              "cached_input_tokens": 21248,
+              "output_tokens": 421,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 24900
+            },
+            "last_token_usage": {
+              "input_tokens": 24479,
+              "cached_input_tokens": 21248,
+              "output_tokens": 421,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 24900
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/mpsc.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4ec945606140bcf83690cb581992136678fe9d08801b6e2ef6b43cc5692b6176"
+          },
+          "summary": "Reviewed `tests/mpsc.rs`, which contains synchronous and multithreaded tests for the `mpsc` channel API, including send/recv behavior, backpressure, cloning, and stress cases. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, secret or environment harvesting, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21238,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059758934,
+            "finished_at_unix_ms": 1784059780172,
+            "total_token_usage": {
+              "input_tokens": 84971,
+              "cached_input_tokens": 73600,
+              "output_tokens": 780,
+              "reasoning_output_tokens": 264,
+              "total_tokens": 85751
+            },
+            "last_token_usage": {
+              "input_tokens": 84971,
+              "cached_input_tokens": 73600,
+              "output_tokens": 780,
+              "reasoning_output_tokens": 264,
+              "total_tokens": 85751
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/oneshot.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4f8e2fd6e0fc99defc3f71e80f5f01c305789c630323162e8f7659a8eb58bac7"
+          },
+          "summary": "This file is a Rust test module for `futures::channel::oneshot`, covering cancellation, close, and wakeup behavior with threads and `mpsc` synchronization. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15585,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059780173,
+            "finished_at_unix_ms": 1784059795759,
+            "total_token_usage": {
+              "input_tokens": 25856,
+              "cached_input_tokens": 19200,
+              "output_tokens": 452,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 26308
+            },
+            "last_token_usage": {
+              "input_tokens": 25856,
+              "cached_input_tokens": 19200,
+              "output_tokens": 452,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 26308
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_4d514feff0f54bcdb817041b49fdef21",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054589",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/lock.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4ff5266283ffe185d87da44205adbc23d29ce35620a3d4963ad3b80bb2e13b7e"
+          },
+          "summary": "`src/lock.rs` implements a small `try_lock`-only mutex wrapper using `AtomicBool` and `UnsafeCell` with RAII unlock on drop. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16555,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054572585,
+            "finished_at_unix_ms": 1784054589141,
+            "total_token_usage": {
+              "input_tokens": 24903,
+              "cached_input_tokens": 21248,
+              "output_tokens": 508,
+              "reasoning_output_tokens": 316,
+              "total_tokens": 25411
+            },
+            "last_token_usage": {
+              "input_tokens": 24903,
+              "cached_input_tokens": 21248,
+              "output_tokens": 508,
+              "reasoning_output_tokens": 316,
+              "total_tokens": 25411
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_4d7e25c6ddb641e99949cbd471cb1794",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056645",
+      "thirdpass_version": "0.6.0",
       "files": [
         {
           "file_path": "src/mpsc/mod.rs",
@@ -334,9 +493,29 @@
             "algorithm": "blake3",
             "value": "1b3ce30dce8aef59fed86439f1acaddf88e3cbafbe645f606bf720017680ba37"
           },
-          "summary": "Reviewed `src/mpsc/mod.rs`, which is a standard Rust implementation of bounded and unbounded MPSC channels with sender/receiver state, queueing, wakeups, and drop/close handling. I checked for install-time hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden execution paths; none were present in this file.",
+          "summary": "Reviewed `src/mpsc/mod.rs`, which implements bounded and unbounded async MPSC channels, sender/receiver state management, and wakeup/close logic. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential or secret access, dynamic code loading, obfuscation/packing, or persistence/tampering behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24897,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056620154,
+            "finished_at_unix_ms": 1784056645051,
+            "total_token_usage": {
+              "input_tokens": 87411,
+              "cached_input_tokens": 72064,
+              "output_tokens": 744,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 88155
+            },
+            "last_token_usage": {
+              "input_tokens": 87411,
+              "cached_input_tokens": 72064,
+              "output_tokens": 744,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 88155
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -352,7 +531,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590301",
       "thirdpass_version": "0.6.0",
@@ -488,7 +667,7 @@
       ]
     },
     {
-      "id": "rev_7e3fe8db17b34e4981726e1c1d40a91f",
+      "id": "rev_638369c41d4a4b14a9c636ea387dd986",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -496,22 +675,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782821752",
+      "created_at": "1784058406",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lock.rs`, which implements a small internal `Lock<T>`/`TryLock` synchronization primitive backed by `AtomicBool` and `UnsafeCell`. No concrete malicious or supply-chain indicators were found; I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and none are present in this file.\nReviewed `src/mpsc/sink_impl.rs`, which only implements `futures_sink::Sink` forwarding for `Sender<T>` and `UnboundedSender<T>` and closes channels by disconnecting them. I checked for install hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/channel.rs`, which contains straightforward unit tests for `futures::channel::mpsc` sender/receiver sequencing and drop behavior. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload indicators, and found no concrete malicious or supply-chain compromise evidence in this file.\nReviewed `tests/mpsc-size_hint.rs`, which contains two straightforward unit tests for `futures::channel::mpsc` size-hint behavior on bounded and unbounded channels. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/lib.rs`, a crate root that only declares `no_std`, feature-gated imports, and public module exports for `lock`, `mpsc`, and `oneshot`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
       "files": [
         {
-          "file_path": "src/lock.rs",
+          "file_path": "src/mpsc/queue.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "4ff5266283ffe185d87da44205adbc23d29ce35620a3d4963ad3b80bb2e13b7e"
+            "value": "0215cd1d8040488d27e04570138efecdef6b0334d3c23ca165d6e7550fae5290"
           },
-          "summary": "Reviewed `src/lock.rs`, which implements a small internal `Lock<T>`/`TryLock` synchronization primitive backed by `AtomicBool` and `UnsafeCell`. No concrete malicious or supply-chain indicators were found; I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and none are present in this file.",
+          "summary": "Reviewed `src/mpsc/queue.rs`, which implements a mostly lock-free MPSC queue with atomic pointer operations, node allocation, push/pop logic, and cleanup in `Drop`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential or secret access, dynamic code loading, obfuscation/deobfuscation, persistence changes, or unrelated system-probing behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12576,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058315238,
+            "finished_at_unix_ms": 1784058327815,
+            "total_token_usage": {
+              "input_tokens": 25589,
+              "cached_input_tokens": 21248,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 178,
+              "total_tokens": 25984
+            },
+            "last_token_usage": {
+              "input_tokens": 25589,
+              "cached_input_tokens": 21248,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 178,
+              "total_tokens": 25984
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -521,75 +719,29 @@
             "algorithm": "blake3",
             "value": "a4290348ec607987891c3be7ef29000c2753fe0b4cf805b4929d617b2b37cdc6"
           },
-          "summary": "Reviewed `src/mpsc/sink_impl.rs`, which only implements `futures_sink::Sink` forwarding for `Sender<T>` and `UnboundedSender<T>` and closes channels by disconnecting them. I checked for install hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/mpsc/sink_impl.rs`, which only provides `Sink` trait adapters for `Sender` and `UnboundedSender` by forwarding readiness, send, flush, and close operations. I found no concrete malicious or supply-chain indicators in this file: no install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/channel.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a404d6c90ac4266aea89ab4cd8d7afd18f9a3537e66e6767c5322c8aa7bd8576"
+          "agent_run_metrics": {
+            "duration_ms": 13024,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058327815,
+            "finished_at_unix_ms": 1784058340840,
+            "total_token_usage": {
+              "input_tokens": 38532,
+              "cached_input_tokens": 33920,
+              "output_tokens": 518,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 39050
+            },
+            "last_token_usage": {
+              "input_tokens": 38532,
+              "cached_input_tokens": 33920,
+              "output_tokens": 518,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 39050
+            }
           },
-          "summary": "Reviewed `tests/channel.rs`, which contains straightforward unit tests for `futures::channel::mpsc` sender/receiver sequencing and drop behavior. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload indicators, and found no concrete malicious or supply-chain compromise evidence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/mpsc-size_hint.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2bdb395e17eebfa879f40eb2147adae47e30ffba6b64885b6edf3453cfcfe9da"
-          },
-          "summary": "Reviewed `tests/mpsc-size_hint.rs`, which contains two straightforward unit tests for `futures::channel::mpsc` size-hint behavior on bounded and unbounded channels. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "39219db36815610c2fdbc5f647140a8b7f06e3137270dd6c3aa7ab59b1578d74"
-          },
-          "summary": "Reviewed `src/lib.rs`, a crate root that only declares `no_std`, feature-gated imports, and public module exports for `lock`, `mpsc`, and `oneshot`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_a39180c011e4489483146a0906bebd95",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782821577",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/mpsc.rs`, which is a Rust test suite for `futures_channel::mpsc` covering bounded and unbounded send/recv behavior, cross-thread stress cases, backpressure, and channel identity/hash helpers. I checked for install hooks, network/exfiltration, credential or secret access, dynamic code loading, obfuscation, persistence tampering, and other hidden execution paths; none were present in this file.\nReviewed `src/oneshot.rs`, which implements a standard single-producer/single-consumer oneshot channel with send/receive, cancellation, close, and drop handling. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence tampering, or hidden subprocess execution.",
-      "files": [
-        {
-          "file_path": "tests/mpsc.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4ec945606140bcf83690cb581992136678fe9d08801b6e2ef6b43cc5692b6176"
-          },
-          "summary": "Reviewed `tests/mpsc.rs`, which is a Rust test suite for `futures_channel::mpsc` covering bounded and unbounded send/recv behavior, cross-thread stress cases, backpressure, and channel identity/hash helpers. I checked for install hooks, network/exfiltration, credential or secret access, dynamic code loading, obfuscation, persistence tampering, and other hidden execution paths; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -599,16 +751,100 @@
             "algorithm": "blake3",
             "value": "1cd7ed933d1a026cb94d48e7f5a6e75d25cb3ced9d2bd85f2fb1f58e92a7825c"
           },
-          "summary": "Reviewed `src/oneshot.rs`, which implements a standard single-producer/single-consumer oneshot channel with send/receive, cancellation, close, and drop handling. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence tampering, or hidden subprocess execution.",
+          "summary": "`src/oneshot.rs` implements the sender/receiver halves of a single-message async channel, including waker registration, cancellation handling, and drop coordination via atomics and locks. I checked for install-time execution, secret or credential access, network exfiltration, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17206,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058340840,
+            "finished_at_unix_ms": 1784058358047,
+            "total_token_usage": {
+              "input_tokens": 42836,
+              "cached_input_tokens": 35456,
+              "output_tokens": 619,
+              "reasoning_output_tokens": 314,
+              "total_tokens": 43455
+            },
+            "last_token_usage": {
+              "input_tokens": 42836,
+              "cached_input_tokens": 35456,
+              "output_tokens": 619,
+              "reasoning_output_tokens": 314,
+              "total_tokens": 43455
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/channel.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a404d6c90ac4266aea89ab4cd8d7afd18f9a3537e66e6767c5322c8aa7bd8576"
+          },
+          "summary": "Reviewed `tests/channel.rs`, which contains ordinary async tests for `futures::channel::mpsc` send/receive ordering and drop semantics. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15647,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058358048,
+            "finished_at_unix_ms": 1784058373696,
+            "total_token_usage": {
+              "input_tokens": 37929,
+              "cached_input_tokens": 33408,
+              "output_tokens": 406,
+              "reasoning_output_tokens": 124,
+              "total_tokens": 38335
+            },
+            "last_token_usage": {
+              "input_tokens": 37929,
+              "cached_input_tokens": 33408,
+              "output_tokens": 406,
+              "reasoning_output_tokens": 124,
+              "total_tokens": 38335
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/mpsc-close.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d95d8123c806e14d654c1f5a53b6e278a6c73abf9d4d02953322d8e8b40deb13"
+          },
+          "summary": "I reviewed `tests/mpsc-close.rs`, which contains Rust test cases for `futures::channel::mpsc` close, disconnect, drain, and try-recv semantics, including a concurrency stress test. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 32635,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058373696,
+            "finished_at_unix_ms": 1784058406332,
+            "total_token_usage": {
+              "input_tokens": 77427,
+              "cached_input_tokens": 67456,
+              "output_tokens": 660,
+              "reasoning_output_tokens": 165,
+              "total_tokens": 78087
+            },
+            "last_token_usage": {
+              "input_tokens": 77427,
+              "cached_input_tokens": 67456,
+              "output_tokens": 660,
+              "reasoning_output_tokens": 165,
+              "total_tokens": 78087
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_b2646f0e92a946bf86730df2f42b3d5a",
+      "id": "rev_d32585146aea446a8a3190322b55b78c",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -616,58 +852,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782821671",
+      "created_at": "1784045936",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/mpsc-close.rs`, which is a Rust test module for `futures_channel::mpsc` close/disconnect behavior, including a concurrency stress test that spawns a background thread and checks `Arc` drop timing. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, secret access, dynamic code loading, obfuscation/decoding pipelines, persistence, or other hidden payload execution.\nReviewed `tests/oneshot.rs`, which is a test-only Rust module exercising `futures::channel::oneshot` cancellation, close, and wake behavior with local threads and `mpsc` coordination. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration calls, credential access, dynamic loading, obfuscation, persistence, or hidden subprocess behavior.\nReviewed `src/mpsc/queue.rs`, a standard mostly lock-free MPSC queue implementation with `push`, `pop`, `pop_spin`, and `Drop` cleanup logic. I checked the file for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `benches/sync_mpsc.rs`, which is a Rust benchmark for bounded and unbounded `futures::channel::mpsc` send/receive behavior using `noop_context` and a local `TestSender` helper. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nThe target manifest is a normal Rust crate `Cargo.toml` for `futures-channel` 0.3.32, defining library/test/bench targets, feature flags, and direct dependencies only. I checked for install hooks, build scripts, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "tests/mpsc-close.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "d95d8123c806e14d654c1f5a53b6e278a6c73abf9d4d02953322d8e8b40deb13"
+            "value": "344f6209561d1b5c6e82ebcbe44be1c5ebb713fc54efd1951dff04d03eb49361"
           },
-          "summary": "Reviewed `tests/mpsc-close.rs`, which is a Rust test module for `futures_channel::mpsc` close/disconnect behavior, including a concurrency stress test that spawns a background thread and checks `Arc` drop timing. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, secret access, dynamic code loading, obfuscation/decoding pipelines, persistence, or other hidden payload execution.",
+          "summary": "Reviewed .cargo_vcs_info.json, which only records the package's VCS SHA1 and path-in-VCS metadata. I found no concrete malicious or supply-chain indicators in this file, and there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior present here.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/oneshot.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4f8e2fd6e0fc99defc3f71e80f5f01c305789c630323162e8f7659a8eb58bac7"
+          "agent_run_metrics": {
+            "duration_ms": 14856,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045865279,
+            "finished_at_unix_ms": 1784045880135,
+            "total_token_usage": {
+              "input_tokens": 24093,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 327,
+              "total_tokens": 24616
+            },
+            "last_token_usage": {
+              "input_tokens": 24093,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 327,
+              "total_tokens": 24616
+            }
           },
-          "summary": "Reviewed `tests/oneshot.rs`, which is a test-only Rust module exercising `futures::channel::oneshot` cancellation, close, and wake behavior with local threads and `mpsc` coordination. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration calls, credential access, dynamic loading, obfuscation, persistence, or hidden subprocess behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/mpsc/queue.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0215cd1d8040488d27e04570138efecdef6b0334d3c23ca165d6e7550fae5290"
-          },
-          "summary": "Reviewed `src/mpsc/queue.rs`, a standard mostly lock-free MPSC queue implementation with `push`, `pop`, `pop_spin`, and `Drop` cleanup logic. I checked the file for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/sync_mpsc.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2e44ef08be604b2af1f4a3cd667cfd5ef50d46ab503af8a87f36df83272225db"
-          },
-          "summary": "Reviewed `benches/sync_mpsc.rs`, which is a Rust benchmark for bounded and unbounded `futures::channel::mpsc` send/receive behavior using `noop_context` and a local `TestSender` helper. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -677,16 +896,132 @@
             "algorithm": "blake3",
             "value": "3466acf68f70e1cd43c4286abebe191cd088ecbf21139187c68746d100291b7d"
           },
-          "summary": "The target manifest is a normal Rust crate `Cargo.toml` for `futures-channel` 0.3.32, defining library/test/bench targets, feature flags, and direct dependencies only. I checked for install hooks, build scripts, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the normalized Cargo manifest for `futures-channel` 0.3.32. It defines package metadata, feature flags, library/test targets, and dependency declarations only; I found no concrete malicious or supply-chain indicators such as install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16510,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045880136,
+            "finished_at_unix_ms": 1784045896647,
+            "total_token_usage": {
+              "input_tokens": 24556,
+              "cached_input_tokens": 21248,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 24993
+            },
+            "last_token_usage": {
+              "input_tokens": 24556,
+              "cached_input_tokens": 21248,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 24993
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "951e5d36dbffa1b5983f00d29f9fdf81ccb385afbac709fb6da55fb75b36a159"
+          },
+          "summary": "Reviewed the README for this crate, which only documents basic `Cargo.toml` usage, the minimum Rust version, and licensing. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 9347,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045896647,
+            "finished_at_unix_ms": 1784045905995,
+            "total_token_usage": {
+              "input_tokens": 24060,
+              "cached_input_tokens": 21248,
+              "output_tokens": 314,
+              "reasoning_output_tokens": 125,
+              "total_tokens": 24374
+            },
+            "last_token_usage": {
+              "input_tokens": 24060,
+              "cached_input_tokens": 21248,
+              "output_tokens": 314,
+              "reasoning_output_tokens": 125,
+              "total_tokens": 24374
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/sync_mpsc.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2e44ef08be604b2af1f4a3cd667cfd5ef50d46ab503af8a87f36df83272225db"
+          },
+          "summary": "Reviewed `benches/sync_mpsc.rs`, which contains benchmark-only synchronous and asynchronous MPSC send/receive loops using `noop_context`, `mpsc::channel`, and `mpsc::unbounded`. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13658,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045905996,
+            "finished_at_unix_ms": 1784045919654,
+            "total_token_usage": {
+              "input_tokens": 25052,
+              "cached_input_tokens": 21248,
+              "output_tokens": 470,
+              "reasoning_output_tokens": 267,
+              "total_tokens": 25522
+            },
+            "last_token_usage": {
+              "input_tokens": 25052,
+              "cached_input_tokens": 21248,
+              "output_tokens": 470,
+              "reasoning_output_tokens": 267,
+              "total_tokens": 25522
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "39219db36815610c2fdbc5f647140a8b7f06e3137270dd6c3aa7ab59b1578d74"
+          },
+          "summary": "Reviewed the crate root in src/lib.rs; it only defines no_std crate attributes and conditionally exposes the lock, mpsc, and oneshot modules for alloc/std builds. I found no concrete malicious or supply-chain indicators in this file, and no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16471,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045919655,
+            "finished_at_unix_ms": 1784045936126,
+            "total_token_usage": {
+              "input_tokens": 24537,
+              "cached_input_tokens": 23296,
+              "output_tokens": 620,
+              "reasoning_output_tokens": 416,
+              "total_tokens": 25157
+            },
+            "last_token_usage": {
+              "input_tokens": 24537,
+              "cached_input_tokens": 23296,
+              "output_tokens": 620,
+              "reasoning_output_tokens": 416,
+              "total_tokens": 25157
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_c797d3a4baf345ddbba43d535c187658",
+      "id": "rev_dfd898352238412db0d36d6ecf4ca955",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -694,34 +1029,169 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782821782",
+      "created_at": "1784051917",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed README.md, which is a plain package introduction and usage note for `futures-channel` with version and license information. I checked for install hooks, network or exfiltration behavior, dynamic code loading, obfuscation, and persistence indicators, and found none in this file.\nReviewed .cargo_vcs_info.json, which only records the crate's source-control SHA1 and VCS path metadata. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this file.",
       "files": [
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "951e5d36dbffa1b5983f00d29f9fdf81ccb385afbac709fb6da55fb75b36a159"
-          },
-          "summary": "Reviewed README.md, which is a plain package introduction and usage note for `futures-channel` with version and license information. I checked for install hooks, network or exfiltration behavior, dynamic code loading, obfuscation, and persistence indicators, and found none in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "344f6209561d1b5c6e82ebcbe44be1c5ebb713fc54efd1951dff04d03eb49361"
           },
-          "summary": "Reviewed .cargo_vcs_info.json, which only records the crate's source-control SHA1 and VCS path metadata. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this file.",
+          "summary": "Reviewed .cargo_vcs_info.json, which only records the crate's VCS SHA1 and path_in_vcs metadata. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15035,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051825799,
+            "finished_at_unix_ms": 1784051840835,
+            "total_token_usage": {
+              "input_tokens": 24129,
+              "cached_input_tokens": 21248,
+              "output_tokens": 468,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 24597
+            },
+            "last_token_usage": {
+              "input_tokens": 24129,
+              "cached_input_tokens": 21248,
+              "output_tokens": 468,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 24597
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3466acf68f70e1cd43c4286abebe191cd088ecbf21139187c68746d100291b7d"
+          },
+          "summary": "Reviewed the generated Cargo.toml for `futures-channel` 0.3.32, focusing on install-time hooks, subprocess launch paths, network or secret access, dynamic code loading, obfuscation, and persistence-related manifest settings. The file is a standard crate manifest with normal library, test, bench, feature, and dependency declarations and no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14535,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051840836,
+            "finished_at_unix_ms": 1784051855372,
+            "total_token_usage": {
+              "input_tokens": 24665,
+              "cached_input_tokens": 21248,
+              "output_tokens": 522,
+              "reasoning_output_tokens": 320,
+              "total_tokens": 25187
+            },
+            "last_token_usage": {
+              "input_tokens": 24665,
+              "cached_input_tokens": 21248,
+              "output_tokens": 522,
+              "reasoning_output_tokens": 320,
+              "total_tokens": 25187
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "951e5d36dbffa1b5983f00d29f9fdf81ccb385afbac709fb6da55fb75b36a159"
+          },
+          "summary": "The target README.md is a short package description and usage note for `futures-channel`, with a Cargo.toml dependency snippet, minimum Rust version, and license text. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14809,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051855373,
+            "finished_at_unix_ms": 1784051870182,
+            "total_token_usage": {
+              "input_tokens": 24303,
+              "cached_input_tokens": 21248,
+              "output_tokens": 409,
+              "reasoning_output_tokens": 200,
+              "total_tokens": 24712
+            },
+            "last_token_usage": {
+              "input_tokens": 24303,
+              "cached_input_tokens": 21248,
+              "output_tokens": 409,
+              "reasoning_output_tokens": 200,
+              "total_tokens": 24712
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/sync_mpsc.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2e44ef08be604b2af1f4a3cd667cfd5ef50d46ab503af8a87f36df83272225db"
+          },
+          "summary": "Reviewed `benches/sync_mpsc.rs`, which is a benchmark-only Rust file exercising bounded and unbounded `futures::channel::mpsc` send/receive paths with `noop_context` and `poll_next_unpin`. I found no concrete malicious or supply-chain indicators in the target file: there are no install hooks, network or exfiltration calls, credential or secret access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19545,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051870182,
+            "finished_at_unix_ms": 1784051889728,
+            "total_token_usage": {
+              "input_tokens": 40014,
+              "cached_input_tokens": 34432,
+              "output_tokens": 572,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 40586
+            },
+            "last_token_usage": {
+              "input_tokens": 40014,
+              "cached_input_tokens": 34432,
+              "output_tokens": 572,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 40586
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "39219db36815610c2fdbc5f647140a8b7f06e3137270dd6c3aa7ab59b1578d74"
+          },
+          "summary": "Reviewed the crate root in `src/lib.rs`, which only declares `no_std`, documentation/test lint settings, and conditional module exports for `lock`, `mpsc`, and `oneshot`. I found no concrete supply-chain indicators in this file: no install hooks, subprocesses, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 27673,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051889729,
+            "finished_at_unix_ms": 1784051917402,
+            "total_token_usage": {
+              "input_tokens": 24375,
+              "cached_input_tokens": 23296,
+              "output_tokens": 430,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 24805
+            },
+            "last_token_usage": {
+              "input_tokens": 24375,
+              "cached_input_tokens": 23296,
+              "output_tokens": 430,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 24805
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

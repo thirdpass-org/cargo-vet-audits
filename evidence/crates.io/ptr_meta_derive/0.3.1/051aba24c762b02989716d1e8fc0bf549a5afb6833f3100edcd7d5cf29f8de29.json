@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591451",
+  "latest_reviewed_at": "1784053757",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -150,50 +156,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 2,
+      "file_record_count": 8,
+      "file_record_count_with_metrics": 8
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 8,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 5,
-    "duration_ms_total": 40761,
-    "attempts_total": 3,
+    "file_records_with_metrics": 8,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 105634,
+    "attempts_total": 8,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 8,
+    "last_token_usage_records": 8,
     "total_token_usage": {
-      "input_tokens": 74238,
-      "cached_input_tokens": 63616,
-      "output_tokens": 1535,
-      "reasoning_output_tokens": 746,
-      "total_tokens": 75773
+      "input_tokens": 211424,
+      "cached_input_tokens": 183552,
+      "output_tokens": 3993,
+      "reasoning_output_tokens": 2110,
+      "total_tokens": 215417
     },
     "last_token_usage": {
-      "input_tokens": 74238,
-      "cached_input_tokens": 63616,
-      "output_tokens": 1535,
-      "reasoning_output_tokens": 746,
-      "total_tokens": 75773
+      "input_tokens": 211424,
+      "cached_input_tokens": 183552,
+      "output_tokens": 3993,
+      "reasoning_output_tokens": 2110,
+      "total_tokens": 215417
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_06d609f2584e44dd84905e18c9556f16",
+      "id": "rev_1bbb53e224e54488a19f43dbbc78c7eb",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -201,34 +199,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783181923",
+      "created_at": "1784053757",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, a small proc-macro implementation that parses Rust input and generates `Pointee` impls for structs and trait objects. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/attributes.rs`, which only parses a `ptr_meta` attribute to record an optional crate path and defaults it to `::ptr_meta`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the normalized `Cargo.toml` for `ptr_meta_derive` 0.3.1 and found only a standard proc-macro crate declaration with normal `proc-macro2`, `quote`, and `syn` dependencies. I checked for install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `README.md`, which is documentation and usage examples for the `ptr_meta`/`ptr_meta_derive` crate. It contains no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence indicators.\nReviewed .cargo_vcs_info.json, which only records the upstream git SHA1 and path-in-vcs metadata for this crate. I found no concrete malicious or supply-chain indicators in this file, and there were no signs of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "c0d8c5c76a82028b014dfc76e6734b0acd24b8c72b44cf5a5e10c76d84b1da29"
+            "value": "7bf376ebf88363e6887ce39268824e5d9d826332b60c692d6a480ec1c8651fad"
           },
-          "summary": "Reviewed `src/lib.rs`, a small proc-macro implementation that parses Rust input and generates `Pointee` impls for structs and trait objects. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed the cargo VCS metadata file, which only records the source git SHA1 and path in VCS for the crate. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/attributes.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e9d7c76db0adc9aacd5c50aa856ae602485ab891908734f47b4132a414505ca4"
+          "agent_run_metrics": {
+            "duration_ms": 12600,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053693014,
+            "finished_at_unix_ms": 1784053705614,
+            "total_token_usage": {
+              "input_tokens": 24123,
+              "cached_input_tokens": 21248,
+              "output_tokens": 309,
+              "reasoning_output_tokens": 122,
+              "total_tokens": 24432
+            },
+            "last_token_usage": {
+              "input_tokens": 24123,
+              "cached_input_tokens": 21248,
+              "output_tokens": 309,
+              "reasoning_output_tokens": 122,
+              "total_tokens": 24432
+            }
           },
-          "summary": "Reviewed `src/attributes.rs`, which only parses a `ptr_meta` attribute to record an optional crate path and defaults it to `::ptr_meta`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -238,9 +243,29 @@
             "algorithm": "blake3",
             "value": "cb0942cd0ca46deaa081de7b562d33352c8c42db2eb868a278bd928508702a7f"
           },
-          "summary": "Reviewed the normalized `Cargo.toml` for `ptr_meta_derive` 0.3.1 and found only a standard proc-macro crate declaration with normal `proc-macro2`, `quote`, and `syn` dependencies. I checked for install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "`Cargo.toml` is the normalized manifest for the `ptr_meta_derive` proc-macro crate. I reviewed it for install-time hooks, build scripts, dependency redirection, dynamic loading, network/exfiltration, secret access, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in the manifest.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14442,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053705615,
+            "finished_at_unix_ms": 1784053720057,
+            "total_token_usage": {
+              "input_tokens": 24784,
+              "cached_input_tokens": 21760,
+              "output_tokens": 601,
+              "reasoning_output_tokens": 393,
+              "total_tokens": 25385
+            },
+            "last_token_usage": {
+              "input_tokens": 24784,
+              "cached_input_tokens": 21760,
+              "output_tokens": 601,
+              "reasoning_output_tokens": 393,
+              "total_tokens": 25385
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -250,21 +275,93 @@
             "algorithm": "blake3",
             "value": "b66097580f507e401ca7f9f0d60ea0d2661ad8ead2fe4f932cee4c16c9c5aa71"
           },
-          "summary": "Reviewed `README.md`, which is documentation and usage examples for the `ptr_meta`/`ptr_meta_derive` crate. It contains no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence indicators.",
+          "summary": "Reviewed README.md, which is a crate overview and usage example for ptr_meta/ptr_meta_derive. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 9475,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053720058,
+            "finished_at_unix_ms": 1784053729533,
+            "total_token_usage": {
+              "input_tokens": 24672,
+              "cached_input_tokens": 21248,
+              "output_tokens": 336,
+              "reasoning_output_tokens": 149,
+              "total_tokens": 25008
+            },
+            "last_token_usage": {
+              "input_tokens": 24672,
+              "cached_input_tokens": 21248,
+              "output_tokens": 336,
+              "reasoning_output_tokens": 149,
+              "total_tokens": 25008
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/attributes.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "7bf376ebf88363e6887ce39268824e5d9d826332b60c692d6a480ec1c8651fad"
+            "value": "e9d7c76db0adc9aacd5c50aa856ae602485ab891908734f47b4132a414505ca4"
           },
-          "summary": "Reviewed .cargo_vcs_info.json, which only records the upstream git SHA1 and path-in-vcs metadata for this crate. I found no concrete malicious or supply-chain indicators in this file, and there were no signs of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
+          "summary": "Reviewed `src/attributes.rs`, which only parses the `ptr_meta` proc-macro attribute syntax and defaults the crate path to `::ptr_meta`. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13947,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053729534,
+            "finished_at_unix_ms": 1784053743482,
+            "total_token_usage": {
+              "input_tokens": 38632,
+              "cached_input_tokens": 34432,
+              "output_tokens": 573,
+              "reasoning_output_tokens": 267,
+              "total_tokens": 39205
+            },
+            "last_token_usage": {
+              "input_tokens": 38632,
+              "cached_input_tokens": 34432,
+              "output_tokens": 573,
+              "reasoning_output_tokens": 267,
+              "total_tokens": 39205
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c0d8c5c76a82028b014dfc76e6734b0acd24b8c72b44cf5a5e10c76d84b1da29"
+          },
+          "summary": "Reviewed `src/lib.rs`, which defines the `Pointee` derive macro and `#[pointee]` attribute macro. The file only parses macro input, validates struct/trait shapes, and emits `unsafe impl` blocks; I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14409,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053743482,
+            "finished_at_unix_ms": 1784053757892,
+            "total_token_usage": {
+              "input_tokens": 24975,
+              "cached_input_tokens": 21248,
+              "output_tokens": 639,
+              "reasoning_output_tokens": 433,
+              "total_tokens": 25614
+            },
+            "last_token_usage": {
+              "input_tokens": 24975,
+              "cached_input_tokens": 21248,
+              "output_tokens": 639,
+              "reasoning_output_tokens": 433,
+              "total_tokens": 25614
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -280,7 +377,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591451",
       "thirdpass_version": "0.6.0",

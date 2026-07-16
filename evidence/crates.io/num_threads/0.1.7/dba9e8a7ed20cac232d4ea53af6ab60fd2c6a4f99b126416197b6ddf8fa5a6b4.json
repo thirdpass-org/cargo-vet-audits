@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590806",
+  "latest_reviewed_at": "1784055426",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -182,48 +188,330 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 8,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 3,
+      "file_record_count": 11,
+      "file_record_count_with_metrics": 11
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 11,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 8,
-    "duration_ms_total": 33332,
-    "attempts_total": 3,
+    "file_records_with_metrics": 11,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 140643,
+    "attempts_total": 11,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 11,
+    "last_token_usage_records": 11,
     "total_token_usage": {
-      "input_tokens": 63705,
-      "cached_input_tokens": 52992,
-      "output_tokens": 1217,
-      "reasoning_output_tokens": 691,
-      "total_tokens": 64922
+      "input_tokens": 258358,
+      "cached_input_tokens": 222976,
+      "output_tokens": 5101,
+      "reasoning_output_tokens": 2973,
+      "total_tokens": 263459
     },
     "last_token_usage": {
-      "input_tokens": 63705,
-      "cached_input_tokens": 52992,
-      "output_tokens": 1217,
-      "reasoning_output_tokens": 691,
-      "total_tokens": 64922
+      "input_tokens": 258358,
+      "cached_input_tokens": 222976,
+      "output_tokens": 5101,
+      "reasoning_output_tokens": 2973,
+      "total_tokens": 263459
     },
     "model_context_windows": []
   },
   "reviews": [
+    {
+      "id": "rev_4cfe7a3a6c75471e8f904061f119cd6b",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784053085",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "869cb2283644172e5eb47b39d1a350d06a2072dd01ee48d6d56f67c7cb9b574a"
+          },
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the package's VCS commit SHA and an empty `path_in_vcs`. No concrete malicious or supply-chain indicators were found in this file, and it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11652,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053020646,
+            "finished_at_unix_ms": 1784053032299,
+            "total_token_usage": {
+              "input_tokens": 24138,
+              "cached_input_tokens": 21248,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 222,
+              "total_tokens": 24560
+            },
+            "last_token_usage": {
+              "input_tokens": 24138,
+              "cached_input_tokens": 21248,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 222,
+              "total_tokens": 24560
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "779486d19b0c675950fdefda561611fdbe5199156bfbee73ea931fc91cbd2a36"
+          },
+          "summary": "Reviewed the normalized Cargo manifest for num_threads 0.1.7. It only declares package metadata, a test target, and a target-specific libc dependency; I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13393,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053032300,
+            "finished_at_unix_ms": 1784053045694,
+            "total_token_usage": {
+              "input_tokens": 24360,
+              "cached_input_tokens": 21248,
+              "output_tokens": 495,
+              "reasoning_output_tokens": 308,
+              "total_tokens": 24855
+            },
+            "last_token_usage": {
+              "input_tokens": 24360,
+              "cached_input_tokens": 21248,
+              "output_tokens": 495,
+              "reasoning_output_tokens": 308,
+              "total_tokens": 24855
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/aix.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ee476fc9e817ca77cc9199526c595222970f48b1f1a03ef83bf1f776c1691d0b"
+          },
+          "summary": "Reviewed `src/aix.rs`, which implements an AIX-specific `num_threads()` helper by reading `/proc/<pid>/status`, extracting the `pr_nlwp` field, and returning it as a `NonZeroUsize`. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12063,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053045694,
+            "finished_at_unix_ms": 1784053057758,
+            "total_token_usage": {
+              "input_tokens": 24354,
+              "cached_input_tokens": 21248,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24815
+            },
+            "last_token_usage": {
+              "input_tokens": 24354,
+              "cached_input_tokens": 21248,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24815
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/apple.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b28a22986daa29cd911ecf0accf56a448a72c6ad69ef2905b5f11a5686874649"
+          },
+          "summary": "Reviewed the macOS-only `num_threads()` implementation in `src/apple.rs`, which calls `task_threads` and then deallocates the returned thread ports and list before returning the count. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12885,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053057759,
+            "finished_at_unix_ms": 1784053070644,
+            "total_token_usage": {
+              "input_tokens": 24729,
+              "cached_input_tokens": 21248,
+              "output_tokens": 565,
+              "reasoning_output_tokens": 364,
+              "total_tokens": 25294
+            },
+            "last_token_usage": {
+              "input_tokens": 24729,
+              "cached_input_tokens": 21248,
+              "output_tokens": 565,
+              "reasoning_output_tokens": 364,
+              "total_tokens": 25294
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/freebsd.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3702ba19bec4d38a8b837664bd1082741b1e4b36769f0823193e34bdb42c3af5"
+          },
+          "summary": "`src/freebsd.rs` contains a small FreeBSD-only helper that calls `sysctl` on the current PID to read `kinfo_proc.ki_numthreads` and return it as `Option<NonZeroUsize>`. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14675,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053070645,
+            "finished_at_unix_ms": 1784053085320,
+            "total_token_usage": {
+              "input_tokens": 24408,
+              "cached_input_tokens": 21248,
+              "output_tokens": 488,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 24896
+            },
+            "last_token_usage": {
+              "input_tokens": 24408,
+              "cached_input_tokens": 21248,
+              "output_tokens": 488,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 24896
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_77cdc76b9ee345f7be6c0116e6633ba9",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784055426",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/imp.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0573ca62ecd08449547a5b5e7ff1975e9bdfc385df4f1f25abbbcdbe6fbcc57f"
+          },
+          "summary": "`src/imp.rs` is a minimal fallback implementation that always returns `None` from `num_threads()`. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15050,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055383450,
+            "finished_at_unix_ms": 1784055398501,
+            "total_token_usage": {
+              "input_tokens": 24121,
+              "cached_input_tokens": 21248,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 24604
+            },
+            "last_token_usage": {
+              "input_tokens": 24121,
+              "cached_input_tokens": 21248,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 24604
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0b4ecf02eea19c10d9ab34a98519952adc0a9725c550f8bf83bc2436bb7942c6"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a small public wrapper around platform-specific thread-count detection helpers and a single-threaded predicate. The file contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior, and I found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12429,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055398501,
+            "finished_at_unix_ms": 1784055410931,
+            "total_token_usage": {
+              "input_tokens": 24269,
+              "cached_input_tokens": 21248,
+              "output_tokens": 427,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 24696
+            },
+            "last_token_usage": {
+              "input_tokens": 24269,
+              "cached_input_tokens": 21248,
+              "output_tokens": 427,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 24696
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/linux.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1bbfed2442f78f066ae41892014e3eaa0009f28edb7b0e2d0573f22484b035ec"
+          },
+          "summary": "Reviewed `src/linux.rs`, which implements a small Linux-only helper that reads `/proc/self/stat` and parses the thread-count field into `Option<NonZeroUsize>`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15164,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055410931,
+            "finished_at_unix_ms": 1784055426096,
+            "total_token_usage": {
+              "input_tokens": 24274,
+              "cached_input_tokens": 21248,
+              "output_tokens": 543,
+              "reasoning_output_tokens": 333,
+              "total_tokens": 24817
+            },
+            "last_token_usage": {
+              "input_tokens": 24274,
+              "cached_input_tokens": 21248,
+              "output_tokens": 543,
+              "reasoning_output_tokens": 333,
+              "total_tokens": 24817
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
     {
       "id": "rev_9401beb576524fa8a3eff22e8ca42a66",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -234,7 +522,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590806",
       "thirdpass_version": "0.6.0",
@@ -332,138 +620,6 @@
               "total_tokens": 21229
             }
           },
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_9f3a361a49e34ed6b7669349a0020321",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782860500",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "This Apple-specific helper queries `task_threads`, deallocates the returned Mach thread port rights and kernel-allocated list, and returns the current thread count. I checked this target file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.\nReviewed the crate manifest in `Cargo.toml` for install-time hooks, hidden subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. The file is a minimal package manifest for a small thread-counting library and does not declare build scripts, proc-macro/plugin behavior, unusual metadata, or other concrete supply-chain indicators.\nReviewed `src/freebsd.rs`, which exposes a small FreeBSD-only `num_threads()` helper that queries `sysctl` for the current process and returns the thread count when the kernel response matches the expected pid and struct size. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed this AIX-specific helper that opens `/proc/<pid>/status`, reads the first 16 bytes, and extracts the `pr_nlwp` thread count. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration, secret harvesting, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed `src/lib.rs`, which is a small public wrapper exposing `num_threads()` and `is_single_threaded()` via OS-specific implementations. I checked this target file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in the file itself.",
-      "files": [
-        {
-          "file_path": "src/apple.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b28a22986daa29cd911ecf0accf56a448a72c6ad69ef2905b5f11a5686874649"
-          },
-          "summary": "This Apple-specific helper queries `task_threads`, deallocates the returned Mach thread port rights and kernel-allocated list, and returns the current thread count. I checked this target file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "779486d19b0c675950fdefda561611fdbe5199156bfbee73ea931fc91cbd2a36"
-          },
-          "summary": "Reviewed the crate manifest in `Cargo.toml` for install-time hooks, hidden subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. The file is a minimal package manifest for a small thread-counting library and does not declare build scripts, proc-macro/plugin behavior, unusual metadata, or other concrete supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/freebsd.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3702ba19bec4d38a8b837664bd1082741b1e4b36769f0823193e34bdb42c3af5"
-          },
-          "summary": "Reviewed `src/freebsd.rs`, which exposes a small FreeBSD-only `num_threads()` helper that queries `sysctl` for the current process and returns the thread count when the kernel response matches the expected pid and struct size. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/aix.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ee476fc9e817ca77cc9199526c595222970f48b1f1a03ef83bf1f776c1691d0b"
-          },
-          "summary": "Reviewed this AIX-specific helper that opens `/proc/<pid>/status`, reads the first 16 bytes, and extracts the `pr_nlwp` thread count. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration, secret harvesting, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0b4ecf02eea19c10d9ab34a98519952adc0a9725c550f8bf83bc2436bb7942c6"
-          },
-          "summary": "Reviewed `src/lib.rs`, which is a small public wrapper exposing `num_threads()` and `is_single_threaded()` via OS-specific implementations. I checked this target file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in the file itself.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_b3f695ce2981472a861745d3a6e01de5",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782860541",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/linux.rs`, which contains a small Linux-only helper that reads `/proc/self/stat` and parses the thread-count field into `Option<NonZeroUsize>`. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators.\nReviewed the target `.cargo_vcs_info.json`, which only records a git SHA1 and an empty `path_in_vcs` field. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/imp.rs`, which is a tiny fallback implementation returning `None` from `num_threads()` when no OS-specific backend applies. I checked this target file for install-time execution, subprocess spawning, network or credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "src/linux.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1bbfed2442f78f066ae41892014e3eaa0009f28edb7b0e2d0573f22484b035ec"
-          },
-          "summary": "Reviewed `src/linux.rs`, which contains a small Linux-only helper that reads `/proc/self/stat` and parses the thread-count field into `Option<NonZeroUsize>`. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "869cb2283644172e5eb47b39d1a350d06a2072dd01ee48d6d56f67c7cb9b574a"
-          },
-          "summary": "Reviewed the target `.cargo_vcs_info.json`, which only records a git SHA1 and an empty `path_in_vcs` field. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/imp.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0573ca62ecd08449547a5b5e7ff1975e9bdfc385df4f1f25abbbcdbe6fbcc57f"
-          },
-          "summary": "Reviewed `src/imp.rs`, which is a tiny fallback implementation returning `None` from `num_threads()` when no OS-specific backend applies. I checked this target file for install-time execution, subprocess spawning, network or credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

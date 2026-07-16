@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783252153",
+  "latest_reviewed_at": "1784190348",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -268,52 +274,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 3,
-      "file_record_count": 13,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 3,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 5
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.5",
-      "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 0
+      "review_count": 7,
+      "file_record_count": 24,
+      "file_record_count_with_metrics": 24
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 23,
-    "file_records_with_metrics": 5,
-    "file_records_without_metrics": 18,
-    "duration_ms_total": 59721,
-    "attempts_total": 5,
+    "reviewed_file_records": 24,
+    "file_records_with_metrics": 24,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 374192,
+    "attempts_total": 24,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 5,
-    "last_token_usage_records": 5,
+    "total_token_usage_records": 24,
+    "last_token_usage_records": 24,
     "total_token_usage": {
-      "input_tokens": 122175,
-      "cached_input_tokens": 82560,
-      "output_tokens": 2022,
-      "reasoning_output_tokens": 775,
-      "total_tokens": 124197
+      "input_tokens": 717272,
+      "cached_input_tokens": 529920,
+      "output_tokens": 11616,
+      "reasoning_output_tokens": 5909,
+      "total_tokens": 728888
     },
     "last_token_usage": {
-      "input_tokens": 122175,
-      "cached_input_tokens": 82560,
-      "output_tokens": 2022,
-      "reasoning_output_tokens": 775,
-      "total_tokens": 124197
+      "input_tokens": 717272,
+      "cached_input_tokens": 529920,
+      "output_tokens": 11616,
+      "reasoning_output_tokens": 5909,
+      "total_tokens": 728888
     },
     "model_context_windows": []
   },
@@ -328,7 +318,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783252153",
       "thirdpass_version": "0.6.0",
@@ -369,7 +359,7 @@
       ]
     },
     {
-      "id": "rev_215bbabc92104304b0a327f656919341",
+      "id": "rev_1753181dbdfd44cca4e74e8c5449bf01",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -377,88 +367,250 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782745713",
+      "created_at": "1784045624",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed README.md, which is a short crate description and license notice for rand_core. It contains no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms, and no concrete malicious or supply-chain indicators were found in the target file.\nReviewed `src/unwrap_err.rs`, which is a small `TryRng`/`TryCryptoRng` adapter that forwards random-number requests and panics on error via `panic_msg`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `.cargo_vcs_info.json`, which only contains a git commit SHA and an empty `path_in_vcs` field. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
       "files": [
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6ef58902f701aac70060f507a8dc2773e9500f7f296105834b381a79edabf344"
-          },
-          "summary": "Reviewed README.md, which is a short crate description and license notice for rand_core. It contains no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms, and no concrete malicious or supply-chain indicators were found in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/unwrap_err.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "084f0830a43d2818363f87bcbba42b01884d93742b76cd613c12407055669c8a"
-          },
-          "summary": "Reviewed `src/unwrap_err.rs`, which is a small `TryRng`/`TryCryptoRng` adapter that forwards random-number requests and panics on error via `panic_msg`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "04b074a29358e2749e978d80bb6563f27e4be623c03c01229d4f5c542c602336"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only contains a git commit SHA and an empty `path_in_vcs` field. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the package VCS commit SHA and an empty path field. No concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence were present in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10211,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045529353,
+            "finished_at_unix_ms": 1784045539564,
+            "total_token_usage": {
+              "input_tokens": 23984,
+              "cached_input_tokens": 13056,
+              "output_tokens": 282,
+              "reasoning_output_tokens": 93,
+              "total_tokens": 24266
+            },
+            "last_token_usage": {
+              "input_tokens": 23984,
+              "cached_input_tokens": 13056,
+              "output_tokens": 282,
+              "reasoning_output_tokens": 93,
+              "total_tokens": 24266
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ae3c536892e856ae0830857dd5f80efef443b47ac3070f3e0f998c9516ca196d"
+          },
+          "summary": "Reviewed `CHANGELOG.md`, which contains only release notes and version comparison links for `rand_core` 0.1.0 through 0.10.1. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13751,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045539565,
+            "finished_at_unix_ms": 1784045553316,
+            "total_token_usage": {
+              "input_tokens": 45187,
+              "cached_input_tokens": 29312,
+              "output_tokens": 434,
+              "reasoning_output_tokens": 148,
+              "total_tokens": 45621
+            },
+            "last_token_usage": {
+              "input_tokens": 45187,
+              "cached_input_tokens": 29312,
+              "output_tokens": 434,
+              "reasoning_output_tokens": 148,
+              "total_tokens": 45621
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "733f2b0c891fedec021c2e006d252ba21849df9fd54083d1b04992d98f77520f"
+          },
+          "summary": "Reviewed the normalized Cargo.toml for rand_core 0.10.1, which declares a library-only crate with explicit test targets and no build script or package hooks. I checked the manifest for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17501,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045553317,
+            "finished_at_unix_ms": 1784045570819,
+            "total_token_usage": {
+              "input_tokens": 24329,
+              "cached_input_tokens": 13056,
+              "output_tokens": 499,
+              "reasoning_output_tokens": 299,
+              "total_tokens": 24828
+            },
+            "last_token_usage": {
+              "input_tokens": 24329,
+              "cached_input_tokens": 13056,
+              "output_tokens": 499,
+              "reasoning_output_tokens": 299,
+              "total_tokens": 24828
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/block.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "59a5b17cb371be9ee179f241240d4dd2588bac07929233eeb0da31890a9002c3"
+          },
+          "summary": "`src/block.rs` implements the `Generator` trait and the `BlockRng` buffer wrapper for block-based RNGs, including word generation, byte filling, reconstruction, and drop handling. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20474,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045570819,
+            "finished_at_unix_ms": 1784045591293,
+            "total_token_usage": {
+              "input_tokens": 40824,
+              "cached_input_tokens": 37504,
+              "output_tokens": 622,
+              "reasoning_output_tokens": 327,
+              "total_tokens": 41446
+            },
+            "last_token_usage": {
+              "input_tokens": 40824,
+              "cached_input_tokens": 37504,
+              "output_tokens": 622,
+              "reasoning_output_tokens": 327,
+              "total_tokens": 41446
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dc0a919fd407a603624f5066be47ca9dcc41f6b8adea52c0654aaf27fea8ef9e"
+          },
+          "summary": "Reviewed src/lib.rs, which defines the `rand_core` no_std RNG traits, blanket trait impls, and documentation re-exports. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 33592,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045591294,
+            "finished_at_unix_ms": 1784045624886,
+            "total_token_usage": {
+              "input_tokens": 44672,
+              "cached_input_tokens": 35456,
+              "output_tokens": 618,
+              "reasoning_output_tokens": 316,
+              "total_tokens": 45290
+            },
+            "last_token_usage": {
+              "input_tokens": 44672,
+              "cached_input_tokens": 35456,
+              "output_tokens": 618,
+              "reasoning_output_tokens": 316,
+              "total_tokens": 45290
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_2236cfcebbb843ee8de868ffac5df465",
-      "public_user_id": "2ee444d4-6b14-8749-8b17-ecfb496ce536",
+      "id": "rev_1f2ae5238a61461690a2aa25a4011122",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
-        "public_user_id": "2ee444d4-6b14-8749-8b17-ecfb496ce536",
-        "official": false
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
       },
       "agent_name": "codex",
-      "agent_model": "gpt-5.5",
+      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1778970762",
-      "thirdpass_version": "0.3.3",
-      "agent_summary": "Reviewed tests/mod.rs for supply-chain compromise indicators. The file contains ordinary Rust unit tests for rand_core traits and deterministic seeding behavior, with no install-time execution, subprocess use, network access, credential access, obfuscation, or dynamic payload loading.\nReviewed Cargo.toml.orig for supply-chain compromise indicators. The file only contains package metadata, lint settings, and docs.rs configuration, with no install-time execution, subprocess use, network access, obfuscation, or environment tampering.\nReviewed src/seedable_rng.rs for supply-chain compromise indicators. The file contains documented RNG seeding trait methods and a local PCG32 seed expansion helper, with no install-time execution, subprocesses, network access, credential access, dynamic code loading, obfuscation, persistence, or exfiltration behavior.\nREADME.md contains standard package description, license text, and badge/link references. No install-time execution, obfuscation, credential access, downloads, dynamic code loading, or exfiltration indicators are present in the reviewed file.\nReviewed tests/block.rs for supply-chain compromise indicators. The file contains straightforward Rust unit tests for BlockRng behavior and no install-time execution, network access, dynamic code loading, obfuscation, credential access, persistence, or system probing.",
+      "created_at": "1784190348",
+      "thirdpass_version": "0.6.0",
       "files": [
-        {
-          "file_path": "tests/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3f7bd46bc1927f6e5a1cd7514ed6d341bbb82078ee69c25a5a20043db9e764fe"
-          },
-          "summary": "Reviewed tests/mod.rs for supply-chain compromise indicators. The file contains ordinary Rust unit tests for rand_core traits and deterministic seeding behavior, with no install-time execution, subprocess use, network access, credential access, obfuscation, or dynamic payload loading.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": "Cargo.toml.orig",
           "file_hash": {
             "algorithm": "blake3",
             "value": "10d5426c3e33f00fb188603b35ae045d11568db8b724b9ac4cb9072df39be5e1"
           },
-          "summary": "Reviewed Cargo.toml.orig for supply-chain compromise indicators. The file only contains package metadata, lint settings, and docs.rs configuration, with no install-time execution, subprocess use, network access, obfuscation, or environment tampering.",
+          "summary": "Reviewed the package metadata in Cargo.toml.orig for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence. The file only defines crate metadata, lint settings, and docs.rs build arguments, with no concrete malicious or supply-chain indicators found.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14694,
+            "attempts": 1,
+            "started_at_unix_ms": 1784190263637,
+            "finished_at_unix_ms": 1784190278332,
+            "total_token_usage": {
+              "input_tokens": 24276,
+              "cached_input_tokens": 13056,
+              "output_tokens": 383,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 24659
+            },
+            "last_token_usage": {
+              "input_tokens": 24276,
+              "cached_input_tokens": 13056,
+              "output_tokens": 383,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 24659
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6ef58902f701aac70060f507a8dc2773e9500f7f296105834b381a79edabf344"
+          },
+          "summary": "Reviewed the crate README, which is standard documentation describing the rand_core RNG trait crate, its relationship to rand, and license metadata. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18834,
+            "attempts": 1,
+            "started_at_unix_ms": 1784190278333,
+            "finished_at_unix_ms": 1784190297167,
+            "total_token_usage": {
+              "input_tokens": 24427,
+              "cached_input_tokens": 13056,
+              "output_tokens": 371,
+              "reasoning_output_tokens": 176,
+              "total_tokens": 24798
+            },
+            "last_token_usage": {
+              "input_tokens": 24427,
+              "cached_input_tokens": 13056,
+              "output_tokens": 371,
+              "reasoning_output_tokens": 176,
+              "total_tokens": 24798
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -468,21 +620,29 @@
             "algorithm": "blake3",
             "value": "66ee5b582e6710035e0566f392a55f5f8d92b8ed5096d20f0102050fcf170947"
           },
-          "summary": "Reviewed src/seedable_rng.rs for supply-chain compromise indicators. The file contains documented RNG seeding trait methods and a local PCG32 seed expansion helper, with no install-time execution, subprocesses, network access, credential access, dynamic code loading, obfuscation, persistence, or exfiltration behavior.",
+          "summary": "Reviewed `src/seedable_rng.rs`, which defines the `SeedableRng` trait and a small local PCG32-based helper for expanding a `u64` seed into bytes. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6ef58902f701aac70060f507a8dc2773e9500f7f296105834b381a79edabf344"
+          "agent_run_metrics": {
+            "duration_ms": 15771,
+            "attempts": 1,
+            "started_at_unix_ms": 1784190297167,
+            "finished_at_unix_ms": 1784190312939,
+            "total_token_usage": {
+              "input_tokens": 26247,
+              "cached_input_tokens": 13568,
+              "output_tokens": 478,
+              "reasoning_output_tokens": 275,
+              "total_tokens": 26725
+            },
+            "last_token_usage": {
+              "input_tokens": 26247,
+              "cached_input_tokens": 13568,
+              "output_tokens": 478,
+              "reasoning_output_tokens": 275,
+              "total_tokens": 26725
+            }
           },
-          "summary": "README.md contains standard package description, license text, and badge/link references. No install-time execution, obfuscation, credential access, downloads, dynamic code loading, or exfiltration indicators are present in the reviewed file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -492,9 +652,61 @@
             "algorithm": "blake3",
             "value": "e728a26ba4f1ad853ccc160a020846c94292860294dc1c7885575e3dbcc159d7"
           },
-          "summary": "Reviewed tests/block.rs for supply-chain compromise indicators. The file contains straightforward Rust unit tests for BlockRng behavior and no install-time execution, network access, dynamic code loading, obfuscation, credential access, persistence, or system probing.",
+          "summary": "Reviewed `tests/block.rs`, which contains deterministic unit tests for `rand_core::block::BlockRng` using a local `DummyRng` and simple byte-order assertions. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18168,
+            "attempts": 1,
+            "started_at_unix_ms": 1784190312940,
+            "finished_at_unix_ms": 1784190331108,
+            "total_token_usage": {
+              "input_tokens": 24646,
+              "cached_input_tokens": 23296,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 25083
+            },
+            "last_token_usage": {
+              "input_tokens": 24646,
+              "cached_input_tokens": 23296,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 25083
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3f7bd46bc1927f6e5a1cd7514ed6d341bbb82078ee69c25a5a20043db9e764fe"
+          },
+          "summary": "Reviewed `tests/mod.rs`, which contains unit tests for `rand_core` traits and wrapper behavior, including seed derivation, `TryRng`/`TryCryptoRng` coercions, and reborrowing. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17637,
+            "attempts": 1,
+            "started_at_unix_ms": 1784190331109,
+            "finished_at_unix_ms": 1784190348746,
+            "total_token_usage": {
+              "input_tokens": 25295,
+              "cached_input_tokens": 23296,
+              "output_tokens": 435,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 25730
+            },
+            "last_token_usage": {
+              "input_tokens": 25295,
+              "cached_input_tokens": 23296,
+              "output_tokens": 435,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 25730
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -510,7 +722,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783252107",
       "thirdpass_version": "0.6.0",
@@ -583,7 +795,7 @@
       ]
     },
     {
-      "id": "rev_d464c46ef7de46918db356916723ff1f",
+      "id": "rev_a15334133cb441c995202b68a70c0fb2",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -591,22 +803,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782745675",
+      "created_at": "1784051607",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/utils.rs`, which contains deterministic unit tests for `rand_core::utils` helpers (`next_u64_via_u32`, `fill_bytes_via_next_word`, and `read_words`) using a local `DummyRng`. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration calls, credential or environment access, dynamic code loading, obfuscation, or persistence behavior in this file.\nI reviewed the generated `Cargo.toml` for `rand_core` 0.10.1. It only declares package metadata, library/test targets, docs.rs settings, and lint configuration; I found no install hooks, build scripts, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.\n`src/seedable_rng.rs` is a straightforward Rust trait definition for `SeedableRng` plus a small local `pcg32` helper used to expand `u64` seeds into byte arrays. I checked for install-time hooks, network or exfiltration behavior, credential or environment harvesting, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.\n`src/word.rs` defines the crate’s sealed `Word` trait and its `u32`/`u64` implementations, with only byte-order and `usize` conversion helpers. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.\nReviewed `src/utils.rs`, which contains pure RNG utility helpers for endian-aware word/byte conversion and seed material reading. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "tests/utils.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "cf022055220cf6d2ae3a6c154af04517c217953e51c22e5cc3301cbfc8a327a8"
+            "value": "04b074a29358e2749e978d80bb6563f27e4be623c03c01229d4f5c542c602336"
           },
-          "summary": "Reviewed `tests/utils.rs`, which contains deterministic unit tests for `rand_core::utils` helpers (`next_u64_via_u32`, `fill_bytes_via_next_word`, and `read_words`) using a local `DummyRng`. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration calls, credential or environment access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed the cargo VCS metadata file, which only records a git SHA1 and an empty `path_in_vcs` field. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15312,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051527629,
+            "finished_at_unix_ms": 1784051542941,
+            "total_token_usage": {
+              "input_tokens": 24145,
+              "cached_input_tokens": 13056,
+              "output_tokens": 359,
+              "reasoning_output_tokens": 158,
+              "total_tokens": 24504
+            },
+            "last_token_usage": {
+              "input_tokens": 24145,
+              "cached_input_tokens": 13056,
+              "output_tokens": 359,
+              "reasoning_output_tokens": 158,
+              "total_tokens": 24504
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ae3c536892e856ae0830857dd5f80efef443b47ac3070f3e0f998c9516ca196d"
+          },
+          "summary": "Reviewed the changelog release notes and reference links in CHANGELOG.md. It is a standard version history for rand_core with GitHub compare/pull links, and I found no concrete signs of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13555,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051542942,
+            "finished_at_unix_ms": 1784051556498,
+            "total_token_usage": {
+              "input_tokens": 27997,
+              "cached_input_tokens": 13568,
+              "output_tokens": 491,
+              "reasoning_output_tokens": 302,
+              "total_tokens": 28488
+            },
+            "last_token_usage": {
+              "input_tokens": 27997,
+              "cached_input_tokens": 13568,
+              "output_tokens": 491,
+              "reasoning_output_tokens": 302,
+              "total_tokens": 28488
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -616,33 +879,142 @@
             "algorithm": "blake3",
             "value": "733f2b0c891fedec021c2e006d252ba21849df9fd54083d1b04992d98f77520f"
           },
-          "summary": "I reviewed the generated `Cargo.toml` for `rand_core` 0.10.1. It only declares package metadata, library/test targets, docs.rs settings, and lint configuration; I found no install hooks, build scripts, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
+          "summary": "Reviewed the normalized Cargo manifest for rand_core 0.10.1. It defines a library-only crate with no build script, install hooks, dynamic code-loading hooks, secret-access settings, or network/exfiltration-related metadata in this file, and no concrete malicious or supply-chain indicators were found.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12105,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051556498,
+            "finished_at_unix_ms": 1784051568604,
+            "total_token_usage": {
+              "input_tokens": 24462,
+              "cached_input_tokens": 21248,
+              "output_tokens": 497,
+              "reasoning_output_tokens": 312,
+              "total_tokens": 24959
+            },
+            "last_token_usage": {
+              "input_tokens": 24462,
+              "cached_input_tokens": 21248,
+              "output_tokens": 497,
+              "reasoning_output_tokens": 312,
+              "total_tokens": 24959
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/seedable_rng.rs",
+          "file_path": "src/block.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "66ee5b582e6710035e0566f392a55f5f8d92b8ed5096d20f0102050fcf170947"
+            "value": "59a5b17cb371be9ee179f241240d4dd2588bac07929233eeb0da31890a9002c3"
           },
-          "summary": "`src/seedable_rng.rs` is a straightforward Rust trait definition for `SeedableRng` plus a small local `pcg32` helper used to expand `u64` seeds into byte arrays. I checked for install-time hooks, network or exfiltration behavior, credential or environment harvesting, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/block.rs`, which defines the `Generator` trait and `BlockRng` buffer logic for block-based RNGs, including construction, reconstruction, word/u64 generation, byte filling, and drop handling. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering; none were present in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18018,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051568604,
+            "finished_at_unix_ms": 1784051586623,
+            "total_token_usage": {
+              "input_tokens": 40839,
+              "cached_input_tokens": 36992,
+              "output_tokens": 679,
+              "reasoning_output_tokens": 380,
+              "total_tokens": 41518
+            },
+            "last_token_usage": {
+              "input_tokens": 40839,
+              "cached_input_tokens": 36992,
+              "output_tokens": 679,
+              "reasoning_output_tokens": 380,
+              "total_tokens": 41518
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/word.rs",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "a4a76f4044c687a07a84053f9b2ac34580c0b4382e562179e1ffa17ad6feff58"
+            "value": "dc0a919fd407a603624f5066be47ca9dcc41f6b8adea52c0654aaf27fea8ef9e"
           },
-          "summary": "`src/word.rs` defines the crate’s sealed `Word` trait and its `u32`/`u64` implementations, with only byte-order and `usize` conversion helpers. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
+          "summary": "Reviewed the `rand_core` crate root, which defines RNG traits, blanket impls, and deprecation shims plus doc metadata; I found no concrete malicious or supply-chain indicators in this file. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and none are present.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21322,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051586623,
+            "finished_at_unix_ms": 1784051607946,
+            "total_token_usage": {
+              "input_tokens": 60017,
+              "cached_input_tokens": 50176,
+              "output_tokens": 976,
+              "reasoning_output_tokens": 596,
+              "total_tokens": 60993
+            },
+            "last_token_usage": {
+              "input_tokens": 60017,
+              "cached_input_tokens": 50176,
+              "output_tokens": 976,
+              "reasoning_output_tokens": 596,
+              "total_tokens": 60993
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_d1687aacdf564bd1b686e44646faade1",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054355",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/unwrap_err.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "084f0830a43d2818363f87bcbba42b01884d93742b76cd613c12407055669c8a"
+          },
+          "summary": "Reviewed `src/unwrap_err.rs`, which defines the `UnwrapErr` adapter for `TryRng`/`TryCryptoRng` by unwrapping RNG errors via a panic and providing a reborrow helper for `&mut` references. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12618,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054301594,
+            "finished_at_unix_ms": 1784054314213,
+            "total_token_usage": {
+              "input_tokens": 24720,
+              "cached_input_tokens": 21248,
+              "output_tokens": 497,
+              "reasoning_output_tokens": 279,
+              "total_tokens": 25217
+            },
+            "last_token_usage": {
+              "input_tokens": 24720,
+              "cached_input_tokens": 21248,
+              "output_tokens": 497,
+              "reasoning_output_tokens": 279,
+              "total_tokens": 25217
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -652,9 +1024,93 @@
             "algorithm": "blake3",
             "value": "b982b2a7d873a19ce53806359e2c6d55346a082531df89a40e897688db7b3af5"
           },
-          "summary": "Reviewed `src/utils.rs`, which contains pure RNG utility helpers for endian-aware word/byte conversion and seed material reading. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/utils.rs`, which contains local RNG helper routines for byte/word conversion (`next_u64_via_u32`, `fill_bytes_via_next_word`, `next_word_via_fill`, `read_words`) and associated documentation/example code. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12858,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054314215,
+            "finished_at_unix_ms": 1784054327073,
+            "total_token_usage": {
+              "input_tokens": 25563,
+              "cached_input_tokens": 21248,
+              "output_tokens": 498,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 26061
+            },
+            "last_token_usage": {
+              "input_tokens": 25563,
+              "cached_input_tokens": 21248,
+              "output_tokens": 498,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 26061
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/word.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a4a76f4044c687a07a84053f9b2ac34580c0b4382e562179e1ffa17ad6feff58"
+          },
+          "summary": "Reviewed `src/word.rs`, which defines a sealed `Word` trait implemented only for `u32` and `u64` plus byte/usize conversion helpers. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12574,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054327073,
+            "finished_at_unix_ms": 1784054339648,
+            "total_token_usage": {
+              "input_tokens": 24468,
+              "cached_input_tokens": 21248,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 24880
+            },
+            "last_token_usage": {
+              "input_tokens": 24468,
+              "cached_input_tokens": 21248,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 24880
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/utils.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cf022055220cf6d2ae3a6c154af04517c217953e51c22e5cc3301cbfc8a327a8"
+          },
+          "summary": "Reviewed `tests/utils.rs`, which contains unit tests for `rand_core` utility helpers (`next_u64_via_u32`, `fill_bytes_via_next_word`, and `read_words`) using a dummy RNG. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15476,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054339649,
+            "finished_at_unix_ms": 1784054355125,
+            "total_token_usage": {
+              "input_tokens": 38999,
+              "cached_input_tokens": 33920,
+              "output_tokens": 626,
+              "reasoning_output_tokens": 302,
+              "total_tokens": 39625
+            },
+            "last_token_usage": {
+              "input_tokens": 38999,
+              "cached_input_tokens": 33920,
+              "output_tokens": 626,
+              "reasoning_output_tokens": 302,
+              "total_tokens": 39625
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -670,7 +1126,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783252133",
       "thirdpass_version": "0.6.0",
@@ -737,84 +1193,6 @@
               "total_tokens": 22247
             }
           },
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_e6300c0208c642669fb5aa89c9f2bcd9",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782745582",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `CHANGELOG.md`, which is a plain release history for `rand_core` with version notes and GitHub reference links. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, persistence behavior, or other executable content.\n`src/block.rs` implements the `Generator` trait and `BlockRng` buffer-management helpers for deterministic RNG cores, including refill, skip, serialization-oriented reconstruction, and byte-filling logic. I checked it for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload delivery paths, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/mod.rs`, which contains ordinary unit tests for `rand_core` RNG traits and adapter behavior (`SeedableRng`, `TryRng`, `TryCryptoRng`, `UnwrapErr`). I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/lib.rs`, which is a no_std Rust crate root exporting RNG traits (`Rng`, `TryRng`, `CryptoRng`) and deprecated compatibility aliases, plus documentation attributes and blanket impls. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and hidden subprocess execution; none are present in this file.\nReviewed `tests/block.rs`, which is a small unit test module for `rand_core::block` behavior using a deterministic dummy RNG. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
-      "files": [
-        {
-          "file_path": "CHANGELOG.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ae3c536892e856ae0830857dd5f80efef443b47ac3070f3e0f998c9516ca196d"
-          },
-          "summary": "Reviewed `CHANGELOG.md`, which is a plain release history for `rand_core` with version notes and GitHub reference links. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, persistence behavior, or other executable content.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/block.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "59a5b17cb371be9ee179f241240d4dd2588bac07929233eeb0da31890a9002c3"
-          },
-          "summary": "`src/block.rs` implements the `Generator` trait and `BlockRng` buffer-management helpers for deterministic RNG cores, including refill, skip, serialization-oriented reconstruction, and byte-filling logic. I checked it for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload delivery paths, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3f7bd46bc1927f6e5a1cd7514ed6d341bbb82078ee69c25a5a20043db9e764fe"
-          },
-          "summary": "Reviewed `tests/mod.rs`, which contains ordinary unit tests for `rand_core` RNG traits and adapter behavior (`SeedableRng`, `TryRng`, `TryCryptoRng`, `UnwrapErr`). I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "dc0a919fd407a603624f5066be47ca9dcc41f6b8adea52c0654aaf27fea8ef9e"
-          },
-          "summary": "Reviewed `src/lib.rs`, which is a no_std Rust crate root exporting RNG traits (`Rng`, `TryRng`, `CryptoRng`) and deprecated compatibility aliases, plus documentation attributes and blanket impls. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and hidden subprocess execution; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/block.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e728a26ba4f1ad853ccc160a020846c94292860294dc1c7885575e3dbcc159d7"
-          },
-          "summary": "Reviewed `tests/block.rs`, which is a small unit test module for `rand_core::block` behavior using a deterministic dummy RNG. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589529",
+  "latest_reviewed_at": "1784061068",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -369,48 +375,121 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 8,
-      "file_record_count": 24,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 9,
+      "file_record_count": 35,
+      "file_record_count_with_metrics": 35
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 28,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 24,
-    "duration_ms_total": 69128,
-    "attempts_total": 4,
+    "reviewed_file_records": 35,
+    "file_records_with_metrics": 35,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 579610,
+    "attempts_total": 35,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 35,
+    "last_token_usage_records": 35,
     "total_token_usage": {
-      "input_tokens": 94225,
-      "cached_input_tokens": 72576,
-      "output_tokens": 1605,
-      "reasoning_output_tokens": 753,
-      "total_tokens": 95830
+      "input_tokens": 1418887,
+      "cached_input_tokens": 1182208,
+      "output_tokens": 18581,
+      "reasoning_output_tokens": 8742,
+      "total_tokens": 1437468
     },
     "last_token_usage": {
-      "input_tokens": 94225,
-      "cached_input_tokens": 72576,
-      "output_tokens": 1605,
-      "reasoning_output_tokens": 753,
-      "total_tokens": 95830
+      "input_tokens": 1418887,
+      "cached_input_tokens": 1182208,
+      "output_tokens": 18581,
+      "reasoning_output_tokens": 8742,
+      "total_tokens": 1437468
     },
     "model_context_windows": []
   },
   "reviews": [
+    {
+      "id": "rev_01748ea672b34532bc662df60592e448",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056554",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/field.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a553f00bc9d5e7b898b80daab87b673398673864109904b2ada1a6bad8d52342"
+          },
+          "summary": "Reviewed `src/field.rs`, which defines tracing field metadata, value-erasure wrappers, visitor dispatch, and `FieldSet`/`ValueSet` bookkeeping plus formatting helpers. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators; none were present.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 33597,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056507555,
+            "finished_at_unix_ms": 1784056541152,
+            "total_token_usage": {
+              "input_tokens": 139224,
+              "cached_input_tokens": 118400,
+              "output_tokens": 1124,
+              "reasoning_output_tokens": 399,
+              "total_tokens": 140348
+            },
+            "last_token_usage": {
+              "input_tokens": 139224,
+              "cached_input_tokens": 118400,
+              "output_tokens": 1124,
+              "reasoning_output_tokens": 399,
+              "total_tokens": 140348
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lazy.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0cd7ac870cf3ccec386aa77938e69556b7e29622c3fe69b3ef777b1edc2e13d1"
+          },
+          "summary": "`src/lazy.rs` defines a small lazy-initialization helper that reexports `once_cell::sync::Lazy` on `std` builds and provides a `spin::Once`-backed `Lazy` implementation for `no_std`. I reviewed it for install-time execution, network or credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13040,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056541153,
+            "finished_at_unix_ms": 1784056554193,
+            "total_token_usage": {
+              "input_tokens": 24756,
+              "cached_input_tokens": 21248,
+              "output_tokens": 495,
+              "reasoning_output_tokens": 282,
+              "total_tokens": 25251
+            },
+            "last_token_usage": {
+              "input_tokens": 24756,
+              "cached_input_tokens": 21248,
+              "output_tokens": 495,
+              "reasoning_output_tokens": 282,
+              "total_tokens": 25251
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
     {
       "id": "rev_13cdb853f6a249979836c6db7fdf9127",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -421,7 +500,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589529",
       "thirdpass_version": "0.6.0",
@@ -557,7 +636,7 @@
       ]
     },
     {
-      "id": "rev_4388fb0a947948e29981b44ad662df42",
+      "id": "rev_16396bd6b9bf4b679f959b5dfa72d71c",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -565,34 +644,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782818741",
+      "created_at": "1784059752",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/subscriber.rs`, which defines the `tracing-core` `Subscriber` trait, `Interest` helper, and no-op/forwarding implementations for `Box` and `Arc`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential or environment harvesting, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.\nReviewed `src/span.rs`, which defines span-related data types (`Id`, `Attributes`, `Record`, `Current`) and simple accessor/constructor methods for tracing metadata. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/spin/once.rs`, which implements a spin-based one-time initialization primitive using atomic state transitions, a guarded panic path, and `unsafe` access to stored data. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/lib.rs`, which is the crate root for `tracing-core` and contains crate docs, macro definitions, feature-gated module declarations, and public re-exports. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed README.md, which is a standard project overview for the `tracing-core` Rust crate with badges, documentation links, feature flags, and compiler-version notes. I checked for install hooks, hidden subprocess execution, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/subscriber.rs",
+          "file_path": "src/spin/mutex.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "678081c238b4434493d2ca30d546aae8b002a1516a3e187a0d8e0f29678730cc"
+            "value": "4961c0348bc4e91e13126fee2beac85becd350d057f5c0f005d8073dd583849b"
           },
-          "summary": "Reviewed `src/subscriber.rs`, which defines the `tracing-core` `Subscriber` trait, `Interest` helper, and no-op/forwarding implementations for `Box` and `Arc`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential or environment harvesting, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.",
+          "summary": "Reviewed `src/spin/mutex.rs`, which implements a small spinlock-based `Mutex` and `MutexGuard` using `AtomicBool`, `UnsafeCell`, and RAII unlock on `Drop`. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/span.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d48e7dd9f885ef6f8efdee82bf48e29b3e4e89faa34601b1875a01344f3a48e8"
+          "agent_run_metrics": {
+            "duration_ms": 19317,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059679940,
+            "finished_at_unix_ms": 1784059699258,
+            "total_token_usage": {
+              "input_tokens": 24980,
+              "cached_input_tokens": 21248,
+              "output_tokens": 423,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 25403
+            },
+            "last_token_usage": {
+              "input_tokens": 24980,
+              "cached_input_tokens": 21248,
+              "output_tokens": 423,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 25403
+            }
           },
-          "summary": "Reviewed `src/span.rs`, which defines span-related data types (`Id`, `Attributes`, `Record`, `Current`) and simple accessor/constructor methods for tracing metadata. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -602,177 +688,93 @@
             "algorithm": "blake3",
             "value": "bb9c86eb129ec0457f32b37838798da5006159ac4853787772d019b637788626"
           },
-          "summary": "Reviewed `src/spin/once.rs`, which implements a spin-based one-time initialization primitive using atomic state transitions, a guarded panic path, and `unsafe` access to stored data. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed `src/spin/once.rs`, which implements a small `Once<T>` synchronization primitive with atomic state transitions, spinning, panic handling, and read-only accessors. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, persistence changes, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16381,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059699258,
+            "finished_at_unix_ms": 1784059715639,
+            "total_token_usage": {
+              "input_tokens": 40534,
+              "cached_input_tokens": 34432,
+              "output_tokens": 529,
+              "reasoning_output_tokens": 211,
+              "total_tokens": 41063
+            },
+            "last_token_usage": {
+              "input_tokens": 40534,
+              "cached_input_tokens": 34432,
+              "output_tokens": 529,
+              "reasoning_output_tokens": 211,
+              "total_tokens": 41063
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/lib.rs",
+          "file_path": "src/subscriber.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "91fca291534d41d6c7bfc5c1d381907f43a2ccf2ea598e3d92f1b380d0f814d1"
+            "value": "678081c238b4434493d2ca30d546aae8b002a1516a3e187a0d8e0f29678730cc"
           },
-          "summary": "Reviewed `src/lib.rs`, which is the crate root for `tracing-core` and contains crate docs, macro definitions, feature-gated module declarations, and public re-exports. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/subscriber.rs`, which defines the `Subscriber` trait and its default dispatch, span, event, and downcasting behavior. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15148,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059715640,
+            "finished_at_unix_ms": 1784059730789,
+            "total_token_usage": {
+              "input_tokens": 45402,
+              "cached_input_tokens": 36480,
+              "output_tokens": 538,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 45940
+            },
+            "last_token_usage": {
+              "input_tokens": 45402,
+              "cached_input_tokens": 36480,
+              "output_tokens": 538,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 45940
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "README.md",
+          "file_path": "src/sync.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "545aa14e86681bcc2c02cc3e2aded9ac40144a977dced1f31e7bcc5f12511dec"
+            "value": "7e1cdaa022a3277ebf9d7340248369d1cf0e1ed157440e37da79376738a4bcde"
           },
-          "summary": "Reviewed README.md, which is a standard project overview for the `tracing-core` Rust crate with badges, documentation links, feature flags, and compiler-version notes. I checked for install hooks, hidden subprocess execution, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/sync.rs`, which is a small wrapper around `spin::Mutex` that exposes a `lock()` method returning `Result<MutexGuard, ()>` for `std::sync::Mutex`-compatible call sites. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_4e047a8e6f0845b7bfff43ff6cc15c32",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782818805",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/missed_register_callsite.rs`, which is a concurrency regression test for `tracing_core` that spawns two threads, registers a test subscriber, and checks that `event` is not observed before `register_callsite`. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed the normalized `Cargo.toml` for `tracing-core` 0.1.36 and found only package metadata, feature flags, library/test targets, and ordinary dependencies. I checked for install hooks, build scripts, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and none are declared in this file.\nReviewed `src/spin/mutex.rs`, which implements a small spinlock-backed `Mutex`/`MutexGuard` using `AtomicBool`, `UnsafeCell`, and RAII unlock on drop. I checked it for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence/tampering behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/event.rs`, which defines the `tracing-core` `Event` type and its constructors/accessors for dispatching structured events to the current subscriber. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.\nReviewed `src/lazy.rs`, which only provides a `Lazy` re-export for `std` builds and a small `no-std` wrapper around `spin::Once`/`once_cell` semantics. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "tests/missed_register_callsite.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "79611ac630f86008b3499e361a7f29166febed6ae44307f071ab6a597a0a82ad"
+          "agent_run_metrics": {
+            "duration_ms": 11576,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059730789,
+            "finished_at_unix_ms": 1784059742366,
+            "total_token_usage": {
+              "input_tokens": 24227,
+              "cached_input_tokens": 21248,
+              "output_tokens": 434,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 24661
+            },
+            "last_token_usage": {
+              "input_tokens": 24227,
+              "cached_input_tokens": 21248,
+              "output_tokens": 434,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 24661
+            }
           },
-          "summary": "Reviewed `tests/missed_register_callsite.rs`, which is a concurrency regression test for `tracing_core` that spawns two threads, registers a test subscriber, and checks that `event` is not observed before `register_callsite`. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "086760bb6e8adefc236b5eff7a6fce4f52a3d12126f6c88e68931ebe28d81da9"
-          },
-          "summary": "Reviewed the normalized `Cargo.toml` for `tracing-core` 0.1.36 and found only package metadata, feature flags, library/test targets, and ordinary dependencies. I checked for install hooks, build scripts, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and none are declared in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/spin/mutex.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4961c0348bc4e91e13126fee2beac85becd350d057f5c0f005d8073dd583849b"
-          },
-          "summary": "Reviewed `src/spin/mutex.rs`, which implements a small spinlock-backed `Mutex`/`MutexGuard` using `AtomicBool`, `UnsafeCell`, and RAII unlock on drop. I checked it for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence/tampering behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/event.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7ff501dbc8b3787986decb0c7d9f73679fbe8b213875f831d894d38235dd480c"
-          },
-          "summary": "Reviewed `src/event.rs`, which defines the `tracing-core` `Event` type and its constructors/accessors for dispatching structured events to the current subscriber. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lazy.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0cd7ac870cf3ccec386aa77938e69556b7e29622c3fe69b3ef777b1edc2e13d1"
-          },
-          "summary": "Reviewed `src/lazy.rs`, which only provides a `Lazy` re-export for `std` builds and a small `no-std` wrapper around `spin::Once`/`once_cell` semantics. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_5ac0b5d363894c73bd17578096e52d1a",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782818874",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`tests/dispatch.rs` contains straightforward unit tests for dispatcher defaulting and nesting behavior in `tracing_core`; I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators.\nReviewed `tests/macros.rs`, which is a straightforward unit test for the `metadata!` macro API using a local dummy `Callsite` implementation and static metadata literals. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.\nReviewed `tests/local_dispatch_before_init.rs`, a unit test that exercises `tracing_core` dispatcher initialization and scoped default handling before and after global setup. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload execution.\nReviewed `tests/global_dispatch.rs`, which is a unit test covering global and thread-local dispatcher behavior via `set_global_default`, `get_default`, and `with_default`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/common/mod.rs`, which only defines two minimal `Subscriber` test doubles returning fixed IDs and no-op handlers. I checked for install-time hooks, subprocess or network activity, secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "tests/dispatch.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9885e3c1d70b9344daf54883d477657614aa765d03b436bf0ea23474051619e5"
-          },
-          "summary": "`tests/dispatch.rs` contains straightforward unit tests for dispatcher defaulting and nesting behavior in `tracing_core`; I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/macros.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f8644f9118b724a7cc3f0173f4dcf9a6162c5416bab94729de74ea6b589786b9"
-          },
-          "summary": "Reviewed `tests/macros.rs`, which is a straightforward unit test for the `metadata!` macro API using a local dummy `Callsite` implementation and static metadata literals. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/local_dispatch_before_init.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "528c73288b4ddee28349a6270e5a5d8c87e923f2b66ff81036b657247813b1c4"
-          },
-          "summary": "Reviewed `tests/local_dispatch_before_init.rs`, a unit test that exercises `tracing_core` dispatcher initialization and scoped default handling before and after global setup. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/global_dispatch.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "301161021a042859251e05ba5260eadc64a96788501725ddcf61fd510f06adbe"
-          },
-          "summary": "Reviewed `tests/global_dispatch.rs`, which is a unit test covering global and thread-local dispatcher behavior via `set_global_default`, `get_default`, and `with_default`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -782,16 +784,36 @@
             "algorithm": "blake3",
             "value": "552bf3dc9eda53b1ac0acef42bb5d258a6457b8d8c89d30fed45b4d6bbc61101"
           },
-          "summary": "Reviewed `tests/common/mod.rs`, which only defines two minimal `Subscriber` test doubles returning fixed IDs and no-op handlers. I checked for install-time hooks, subprocess or network activity, secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `tests/common/mod.rs`, which defines two minimal `tracing_core::Subscriber` test helpers that always enable spans, return a fixed span ID, and otherwise no-op on events. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10524,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059742366,
+            "finished_at_unix_ms": 1784059752890,
+            "total_token_usage": {
+              "input_tokens": 24381,
+              "cached_input_tokens": 21248,
+              "output_tokens": 349,
+              "reasoning_output_tokens": 154,
+              "total_tokens": 24730
+            },
+            "last_token_usage": {
+              "input_tokens": 24381,
+              "cached_input_tokens": 21248,
+              "output_tokens": 349,
+              "reasoning_output_tokens": 154,
+              "total_tokens": 24730
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_65e5feca280f404e88001be5d967fe45",
+      "id": "rev_7dcabefcabbc40ffba8a76ad188dd8b6",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -799,41 +821,176 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782818638",
+      "created_at": "1784061068",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `CHANGELOG.md`, which is a plain release-history document for `tracing-core` covering version notes and pull-request links. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other payload-like behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `src/callsite.rs`, which implements tracing callsite registration, interest caching, and dispatcher rebinding for `tracing-core`. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "CHANGELOG.md",
+          "file_path": "tests/dispatch.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "17a8f4ea8c43bf52ae04e2b5bc6f4ad2a93fc11a03a8fdba110a4c161c62eb2c"
+            "value": "9885e3c1d70b9344daf54883d477657614aa765d03b436bf0ea23474051619e5"
           },
-          "summary": "Reviewed `CHANGELOG.md`, which is a plain release-history document for `tracing-core` covering version notes and pull-request links. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other payload-like behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `tests/dispatch.rs`, which contains two unit tests for `tracing_core::dispatcher` default-dispatch scoping and guard restoration. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13923,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060987961,
+            "finished_at_unix_ms": 1784061001885,
+            "total_token_usage": {
+              "input_tokens": 24350,
+              "cached_input_tokens": 21248,
+              "output_tokens": 398,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 24748
+            },
+            "last_token_usage": {
+              "input_tokens": 24350,
+              "cached_input_tokens": 21248,
+              "output_tokens": 398,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 24748
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/callsite.rs",
+          "file_path": "tests/global_dispatch.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "e77679a4884e9b9b6fd87feb254c5593ff90533b88a950a854960e4e1546efb7"
+            "value": "301161021a042859251e05ba5260eadc64a96788501725ddcf61fd510f06adbe"
           },
-          "summary": "Reviewed `src/callsite.rs`, which implements tracing callsite registration, interest caching, and dispatcher rebinding for `tracing-core`. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `tests/global_dispatch.rs`, a unit test that exercises `set_global_default`, `with_default`, and `get_default` behavior for dispatcher state. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17067,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061001885,
+            "finished_at_unix_ms": 1784061018953,
+            "total_token_usage": {
+              "input_tokens": 37015,
+              "cached_input_tokens": 35456,
+              "output_tokens": 528,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 37543
+            },
+            "last_token_usage": {
+              "input_tokens": 37015,
+              "cached_input_tokens": 35456,
+              "output_tokens": 528,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 37543
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/local_dispatch_before_init.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "528c73288b4ddee28349a6270e5a5d8c87e923f2b66ff81036b657247813b1c4"
+          },
+          "summary": "`tests/local_dispatch_before_init.rs` is a unit test that verifies tracing-core dispatcher behavior before initialization, during a scoped default override, and after setting a global default. I checked the file for install hooks, subprocess execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15709,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061018954,
+            "finished_at_unix_ms": 1784061034663,
+            "total_token_usage": {
+              "input_tokens": 37422,
+              "cached_input_tokens": 33408,
+              "output_tokens": 613,
+              "reasoning_output_tokens": 308,
+              "total_tokens": 38035
+            },
+            "last_token_usage": {
+              "input_tokens": 37422,
+              "cached_input_tokens": 33408,
+              "output_tokens": 613,
+              "reasoning_output_tokens": 308,
+              "total_tokens": 38035
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/macros.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f8644f9118b724a7cc3f0173f4dcf9a6162c5416bab94729de74ea6b589786b9"
+          },
+          "summary": "Reviewed tests/macros.rs, which is a small unit test that exercises the `tracing_core::metadata!` macro across several level and kind combinations. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14125,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061034664,
+            "finished_at_unix_ms": 1784061048789,
+            "total_token_usage": {
+              "input_tokens": 24560,
+              "cached_input_tokens": 21248,
+              "output_tokens": 524,
+              "reasoning_output_tokens": 324,
+              "total_tokens": 25084
+            },
+            "last_token_usage": {
+              "input_tokens": 24560,
+              "cached_input_tokens": 21248,
+              "output_tokens": 524,
+              "reasoning_output_tokens": 324,
+              "total_tokens": 25084
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/missed_register_callsite.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "79611ac630f86008b3499e361a7f29166febed6ae44307f071ab6a597a0a82ad"
+          },
+          "summary": "Reviewed `tests/missed_register_callsite.rs`, a concurrency regression test that spawns two threads, installs test subscribers, and verifies `register_callsite` happens before `event` is observed for a callsite. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19849,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061048790,
+            "finished_at_unix_ms": 1784061068640,
+            "total_token_usage": {
+              "input_tokens": 25107,
+              "cached_input_tokens": 21248,
+              "output_tokens": 399,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 25506
+            },
+            "last_token_usage": {
+              "input_tokens": 25107,
+              "cached_input_tokens": 21248,
+              "output_tokens": 399,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 25506
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_8e45ab13c553491d81bcf9779f4c501c",
+      "id": "rev_928a83e8c9814c338a324d63d071ae6c",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -841,82 +998,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782818541",
+      "created_at": "1784058309",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/field.rs` is a pure Rust implementation of tracing field/value abstractions (`Field`, `FieldSet`, `ValueSet`, `Visit`, and `Value`) plus formatting and test helpers. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "src/field.rs",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "a553f00bc9d5e7b898b80daab87b673398673864109904b2ada1a6bad8d52342"
+            "value": "91fca291534d41d6c7bfc5c1d381907f43a2ccf2ea598e3d92f1b380d0f814d1"
           },
-          "summary": "`src/field.rs` is a pure Rust implementation of tracing field/value abstractions (`Field`, `FieldSet`, `ValueSet`, `Visit`, and `Value`) plus formatting and test helpers. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/lib.rs`, which is the crate root for `tracing-core` and consists of crate docs, macro definitions, and public module re-exports. I checked for install-time hooks, hidden subprocess or network activity, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14504,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058217852,
+            "finished_at_unix_ms": 1784058232356,
+            "total_token_usage": {
+              "input_tokens": 40768,
+              "cached_input_tokens": 35456,
+              "output_tokens": 527,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 41295
+            },
+            "last_token_usage": {
+              "input_tokens": 40768,
+              "cached_input_tokens": 35456,
+              "output_tokens": 527,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 41295
+            }
+          },
           "comment_count": 0,
           "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_c04f8d051b0d4be3a94d33a159fa7d55",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782818587",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/dispatcher.rs` implements the tracing-core dispatcher: thread-local and global default subscriber management, dispatch forwarding, weak upgrades, and recursion guards around subscriber callbacks. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
+        },
         {
-          "file_path": "src/dispatcher.rs",
+          "file_path": "src/metadata.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "559256db35f23e76d559ce16c09914ade77b5339c43db73b875ceb2d3026b5df"
+            "value": "22a34581498c9e4baee40717064c3f99375a2986e26851fb5f4ba113f84b4b33"
           },
-          "summary": "`src/dispatcher.rs` implements the tracing-core dispatcher: thread-local and global default subscriber management, dispatch forwarding, weak upgrades, and recursion guards around subscriber callbacks. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed src/metadata.rs, which defines tracing Metadata, Kind, Level, LevelFilter, parsing, formatting, and comparison logic plus tests. I checked for install hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_c6fe5e590147496892ca0aea17e6412c",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782818929",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/sync.rs` is a small wrapper around `crate::spin::Mutex` that exposes a `lock()` API returning `Result<MutexGuard<'_, T>, ()>` for compatibility with `std::sync::Mutex`-style code. I reviewed it for install-time execution, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/parent.rs`, which is a small Rust enum defining span parentage (`Root`, `Current`, `Explicit(Id)`) with no executable logic. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.\nReviewed `.cargo_vcs_info.json`, which only records the package's VCS commit SHA1 and path-in-repository metadata. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain payload logic in this file.\n`src/spin/mod.rs` is a tiny module re-export that wires together the local `mutex` and `once` spin-based synchronization submodules. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/sync.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7e1cdaa022a3277ebf9d7340248369d1cf0e1ed157440e37da79376738a4bcde"
+          "agent_run_metrics": {
+            "duration_ms": 31769,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058232357,
+            "finished_at_unix_ms": 1784058264126,
+            "total_token_usage": {
+              "input_tokens": 86059,
+              "cached_input_tokens": 73088,
+              "output_tokens": 776,
+              "reasoning_output_tokens": 292,
+              "total_tokens": 86835
+            },
+            "last_token_usage": {
+              "input_tokens": 86059,
+              "cached_input_tokens": 73088,
+              "output_tokens": 776,
+              "reasoning_output_tokens": 292,
+              "total_tokens": 86835
+            }
           },
-          "summary": "`src/sync.rs` is a small wrapper around `crate::spin::Mutex` that exposes a `lock()` API returning `Result<MutexGuard<'_, T>, ()>` for compatibility with `std::sync::Mutex`-style code. I reviewed it for install-time execution, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -926,21 +1074,61 @@
             "algorithm": "blake3",
             "value": "0cf96050053a8054aefdeab0b34a3409388ee0a98e2a41d3505bb3da80637b5f"
           },
-          "summary": "Reviewed `src/parent.rs`, which is a small Rust enum defining span parentage (`Root`, `Current`, `Explicit(Id)`) with no executable logic. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.",
+          "summary": "Reviewed `src/parent.rs`, which only defines the internal `Parent` enum for span parenting (`Root`, `Current`, `Explicit(Id)`). I found no install hooks, subprocess execution, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12507,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058264127,
+            "finished_at_unix_ms": 1784058276634,
+            "total_token_usage": {
+              "input_tokens": 24160,
+              "cached_input_tokens": 21248,
+              "output_tokens": 464,
+              "reasoning_output_tokens": 275,
+              "total_tokens": 24624
+            },
+            "last_token_usage": {
+              "input_tokens": 24160,
+              "cached_input_tokens": 21248,
+              "output_tokens": 464,
+              "reasoning_output_tokens": 275,
+              "total_tokens": 24624
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/span.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "b04ac1e3d7d162b0beb4207715a417259cd74361b6b18034e3841e54a890de7b"
+            "value": "d48e7dd9f885ef6f8efdee82bf48e29b3e4e89faa34601b1875a01344f3a48e8"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package's VCS commit SHA1 and path-in-repository metadata. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain payload logic in this file.",
+          "summary": "`src/span.rs` defines the span-facing data types and helpers for `Id`, `Attributes`, `Record`, and `Current` in tracing-core, with only in-memory state transitions and accessor methods. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17927,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058276635,
+            "finished_at_unix_ms": 1784058294563,
+            "total_token_usage": {
+              "input_tokens": 41322,
+              "cached_input_tokens": 35456,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 170,
+              "total_tokens": 41779
+            },
+            "last_token_usage": {
+              "input_tokens": 41322,
+              "cached_input_tokens": 35456,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 170,
+              "total_tokens": 41779
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -950,16 +1138,36 @@
             "algorithm": "blake3",
             "value": "650d038971e03296d5ec7043d0252b87615fb4fc89012999e8413cf9ac94da11"
           },
-          "summary": "`src/spin/mod.rs` is a tiny module re-export that wires together the local `mutex` and `once` spin-based synchronization submodules. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "The target file is a minimal Rust module wrapper that re-exports `mutex::*` and `once::Once` from sibling modules and declares those modules. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14546,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058294564,
+            "finished_at_unix_ms": 1784058309110,
+            "total_token_usage": {
+              "input_tokens": 24150,
+              "cached_input_tokens": 23296,
+              "output_tokens": 476,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 24626
+            },
+            "last_token_usage": {
+              "input_tokens": 24150,
+              "cached_input_tokens": 23296,
+              "output_tokens": 476,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 24626
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_d65ba765672d4a6e858de3dc3c9866b1",
+      "id": "rev_9fdded11f5cf4278911a6ee7d9f1c6cf",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -967,22 +1175,508 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782818566",
+      "created_at": "1784054494",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/metadata.rs`, which defines `Metadata`, `Kind`, `Level`, and `LevelFilter` types plus parsing, formatting, and comparison logic for tracing metadata. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution behavior and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "src/metadata.rs",
+          "file_path": "src/callsite.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "22a34581498c9e4baee40717064c3f99375a2986e26851fb5f4ba113f84b4b33"
+            "value": "e77679a4884e9b9b6fd87feb254c5593ff90533b88a950a854960e4e1546efb7"
           },
-          "summary": "Reviewed `src/metadata.rs`, which defines `Metadata`, `Kind`, `Level`, and `LevelFilter` types plus parsing, formatting, and comparison logic for tracing metadata. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution behavior and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/callsite.rs`, which implements tracing callsite registration, interest caching, dispatcher rebuilding, and the `DefaultCallsite`/`Identifier` plumbing. I did not find concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16941,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054438579,
+            "finished_at_unix_ms": 1784054455521,
+            "total_token_usage": {
+              "input_tokens": 66261,
+              "cached_input_tokens": 55296,
+              "output_tokens": 667,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 66928
+            },
+            "last_token_usage": {
+              "input_tokens": 66261,
+              "cached_input_tokens": 55296,
+              "output_tokens": 667,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 66928
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/dispatcher.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "559256db35f23e76d559ce16c09914ade77b5339c43db73b875ceb2d3026b5df"
+          },
+          "summary": "Reviewed `src/dispatcher.rs`, which implements the tracing dispatcher, thread-local/global default subscriber handling, weak dispatch upgrades, and event/span forwarding. I checked for install-time execution, credential access, network or exfiltration behavior, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21138,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054455522,
+            "finished_at_unix_ms": 1784054476661,
+            "total_token_usage": {
+              "input_tokens": 85539,
+              "cached_input_tokens": 73088,
+              "output_tokens": 786,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 86325
+            },
+            "last_token_usage": {
+              "input_tokens": 85539,
+              "cached_input_tokens": 73088,
+              "output_tokens": 786,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 86325
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/event.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7ff501dbc8b3787986decb0c7d9f73679fbe8b213875f831d894d38235dd480c"
+          },
+          "summary": "Reviewed `src/event.rs`, which defines the `Event` type, its constructors, field visitors, metadata accessors, and dispatch into the current subscriber. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, or other supply-chain behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18336,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054476662,
+            "finished_at_unix_ms": 1784054494999,
+            "total_token_usage": {
+              "input_tokens": 25094,
+              "cached_input_tokens": 21248,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 25577
+            },
+            "last_token_usage": {
+              "input_tokens": 25094,
+              "cached_input_tokens": 21248,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 25577
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_be2c9a1d40e74c1f9c2eb98f00fbe195",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784045733",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b04ac1e3d7d162b0beb4207715a417259cd74361b6b18034e3841e54a890de7b"
+          },
+          "summary": "Reviewed `.cargo_vcs_info.json`, which contains only Git provenance metadata (`sha1` and `path_in_vcs`) and no executable content. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13670,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045681157,
+            "finished_at_unix_ms": 1784045694828,
+            "total_token_usage": {
+              "input_tokens": 24031,
+              "cached_input_tokens": 13056,
+              "output_tokens": 425,
+              "reasoning_output_tokens": 233,
+              "total_tokens": 24456
+            },
+            "last_token_usage": {
+              "input_tokens": 24031,
+              "cached_input_tokens": 13056,
+              "output_tokens": 425,
+              "reasoning_output_tokens": 233,
+              "total_tokens": 24456
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "17a8f4ea8c43bf52ae04e2b5bc6f4ad2a93fc11a03a8fdba110a4c161c62eb2c"
+          },
+          "summary": "Reviewed CHANGELOG.md, which is a plain release-history document for tracing-core 0.1.36 with versioned notes and GitHub PR/release links. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other payload indicators and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17070,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045694828,
+            "finished_at_unix_ms": 1784045711898,
+            "total_token_usage": {
+              "input_tokens": 61465,
+              "cached_input_tokens": 44544,
+              "output_tokens": 703,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 62168
+            },
+            "last_token_usage": {
+              "input_tokens": 61465,
+              "cached_input_tokens": 44544,
+              "output_tokens": 703,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 62168
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "086760bb6e8adefc236b5eff7a6fce4f52a3d12126f6c88e68931ebe28d81da9"
+          },
+          "summary": "Reviewed the normalized Cargo.toml for tracing-core 0.1.36. It only declares package metadata, features, tests, optional dependencies, and lint/docs settings; I found no install hooks, build scripts, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11512,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045711899,
+            "finished_at_unix_ms": 1784045723411,
+            "total_token_usage": {
+              "input_tokens": 24534,
+              "cached_input_tokens": 21248,
+              "output_tokens": 446,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 24980
+            },
+            "last_token_usage": {
+              "input_tokens": 24534,
+              "cached_input_tokens": 21248,
+              "output_tokens": 446,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 24980
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "545aa14e86681bcc2c02cc3e2aded9ac40144a977dced1f31e7bcc5f12511dec"
+          },
+          "summary": "Reviewed this README for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. It is a standard crate overview with documentation and badge links only; no concrete malicious or supply-chain indicators were found in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10337,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045723412,
+            "finished_at_unix_ms": 1784045733749,
+            "total_token_usage": {
+              "input_tokens": 25235,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 172,
+              "total_tokens": 25591
+            },
+            "last_token_usage": {
+              "input_tokens": 25235,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 172,
+              "total_tokens": 25591
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_d30d04bbc4f54543a912fb17aab0d2b9",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784045792",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/callsite.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e77679a4884e9b9b6fd87feb254c5593ff90533b88a950a854960e4e1546efb7"
+          },
+          "summary": "I reviewed `src/callsite.rs`, which implements the in-memory callsite registry, interest caching, and dispatcher rebuild logic for tracing metadata. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence; the file only manipulates callsite metadata and atomic registry state.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20079,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045738796,
+            "finished_at_unix_ms": 1784045758876,
+            "total_token_usage": {
+              "input_tokens": 60661,
+              "cached_input_tokens": 44544,
+              "output_tokens": 712,
+              "reasoning_output_tokens": 322,
+              "total_tokens": 61373
+            },
+            "last_token_usage": {
+              "input_tokens": 60661,
+              "cached_input_tokens": 44544,
+              "output_tokens": 712,
+              "reasoning_output_tokens": 322,
+              "total_tokens": 61373
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/dispatcher.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "559256db35f23e76d559ce16c09914ade77b5339c43db73b875ceb2d3026b5df"
+          },
+          "summary": "`src/dispatcher.rs` is the tracing-core dispatcher implementation for setting and reading thread-local or global subscribers, forwarding span/event calls, and managing weak/default guards. I checked it for install-time hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20233,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045758877,
+            "finished_at_unix_ms": 1784045779111,
+            "total_token_usage": {
+              "input_tokens": 85465,
+              "cached_input_tokens": 73088,
+              "output_tokens": 835,
+              "reasoning_output_tokens": 374,
+              "total_tokens": 86300
+            },
+            "last_token_usage": {
+              "input_tokens": 85465,
+              "cached_input_tokens": 73088,
+              "output_tokens": 835,
+              "reasoning_output_tokens": 374,
+              "total_tokens": 86300
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/event.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7ff501dbc8b3787986decb0c7d9f73679fbe8b213875f831d894d38235dd480c"
+          },
+          "summary": "`src/event.rs` defines the `tracing-core` `Event` type, its constructors, and read-only accessors for metadata, fields, and parentage. I reviewed it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13007,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045779111,
+            "finished_at_unix_ms": 1784045792119,
+            "total_token_usage": {
+              "input_tokens": 24965,
+              "cached_input_tokens": 21248,
+              "output_tokens": 433,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 25398
+            },
+            "last_token_usage": {
+              "input_tokens": 24965,
+              "cached_input_tokens": 21248,
+              "output_tokens": 433,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 25398
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_ea60707dd58648c3818cb00e637ecb5c",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784051734",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b04ac1e3d7d162b0beb4207715a417259cd74361b6b18034e3841e54a890de7b"
+          },
+          "summary": "The target file is a small crate VCS metadata JSON record containing only a git commit SHA and the path in version control. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10426,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051677639,
+            "finished_at_unix_ms": 1784051688065,
+            "total_token_usage": {
+              "input_tokens": 24140,
+              "cached_input_tokens": 13568,
+              "output_tokens": 351,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 24491
+            },
+            "last_token_usage": {
+              "input_tokens": 24140,
+              "cached_input_tokens": 13568,
+              "output_tokens": 351,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 24491
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "17a8f4ea8c43bf52ae04e2b5bc6f4ad2a93fc11a03a8fdba110a4c161c62eb2c"
+          },
+          "summary": "Reviewed the changelog entries in CHANGELOG.md and found a plain release-history document with version notes, links, and contributor credits. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence markers in the target file and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21224,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051688065,
+            "finished_at_unix_ms": 1784051709289,
+            "total_token_usage": {
+              "input_tokens": 78348,
+              "cached_input_tokens": 69504,
+              "output_tokens": 930,
+              "reasoning_output_tokens": 460,
+              "total_tokens": 79278
+            },
+            "last_token_usage": {
+              "input_tokens": 78348,
+              "cached_input_tokens": 69504,
+              "output_tokens": 930,
+              "reasoning_output_tokens": 460,
+              "total_tokens": 79278
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "086760bb6e8adefc236b5eff7a6fce4f52a3d12126f6c88e68931ebe28d81da9"
+          },
+          "summary": "Reviewed the generated Cargo manifest for `tracing-core` 0.1.36. It only defines package metadata, feature flags, tests, and ordinary dependencies; I found no install hooks, build scripts, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11934,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051709290,
+            "finished_at_unix_ms": 1784051721225,
+            "total_token_usage": {
+              "input_tokens": 24644,
+              "cached_input_tokens": 21248,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 25023
+            },
+            "last_token_usage": {
+              "input_tokens": 24644,
+              "cached_input_tokens": 21248,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 25023
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "545aa14e86681bcc2c02cc3e2aded9ac40144a977dced1f31e7bcc5f12511dec"
+          },
+          "summary": "Reviewed the README.md for tracing-core 0.1.36 as a documentation-only file. It contains project overview text, feature notes, and reference links to docs, badges, and the upstream repository; I did not find any install hooks, secret access, hidden downloads, dynamic code loading, obfuscation, persistence, or other supply-chain abuse indicators in the file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13066,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051721226,
+            "finished_at_unix_ms": 1784051734293,
+            "total_token_usage": {
+              "input_tokens": 25863,
+              "cached_input_tokens": 21248,
+              "output_tokens": 416,
+              "reasoning_output_tokens": 217,
+              "total_tokens": 26279
+            },
+            "last_token_usage": {
+              "input_tokens": 25863,
+              "cached_input_tokens": 21248,
+              "output_tokens": 416,
+              "reasoning_output_tokens": 217,
+              "total_tokens": 26279
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

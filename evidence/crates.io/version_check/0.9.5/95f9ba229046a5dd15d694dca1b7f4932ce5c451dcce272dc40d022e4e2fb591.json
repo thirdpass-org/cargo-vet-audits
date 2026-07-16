@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590960",
+  "latest_reviewed_at": "1784054489",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -203,44 +209,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 9,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 4,
+      "file_record_count": 18,
+      "file_record_count_with_metrics": 18
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 13,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 9,
-    "duration_ms_total": 60767,
-    "attempts_total": 4,
+    "reviewed_file_records": 18,
+    "file_records_with_metrics": 18,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 267738,
+    "attempts_total": 18,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 18,
+    "last_token_usage_records": 18,
     "total_token_usage": {
-      "input_tokens": 85033,
-      "cached_input_tokens": 68096,
-      "output_tokens": 1368,
-      "reasoning_output_tokens": 649,
-      "total_tokens": 86401
+      "input_tokens": 501748,
+      "cached_input_tokens": 415232,
+      "output_tokens": 8376,
+      "reasoning_output_tokens": 4490,
+      "total_tokens": 510124
     },
     "last_token_usage": {
-      "input_tokens": 85033,
-      "cached_input_tokens": 68096,
-      "output_tokens": 1368,
-      "reasoning_output_tokens": 649,
-      "total_tokens": 86401
+      "input_tokens": 501748,
+      "cached_input_tokens": 415232,
+      "output_tokens": 8376,
+      "reasoning_output_tokens": 4490,
+      "total_tokens": 510124
     },
     "model_context_windows": []
   },
@@ -255,7 +253,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590960",
       "thirdpass_version": "0.6.0",
@@ -391,7 +389,7 @@
       ]
     },
     {
-      "id": "rev_679bb90ea79f44f192466c60f046c287",
+      "id": "rev_6901dfb217504703bd11b2195200ad6c",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -399,46 +397,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782818513",
+      "created_at": "1784045734",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the CI workflow in `.github/workflows/ci.yml`, which runs standard checkout, Rust toolchain installation, and cargo tests across a matrix of platforms/toolchains. I found no concrete indicators of install hooks, hidden downloads, network exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed the crate manifest in Cargo.toml for install-time execution, build scripts, dependency-triggered code paths, network/exfiltration hooks, credential access, dynamic code loading, obfuscation, and persistence mechanisms. The manifest is minimal: it declares a library crate with `build = false`, no dependencies, and no install hooks or other suspicious supply-chain indicators.\nReviewed the `.cargo_vcs_info.json` metadata file, which only records a Git SHA1 and an empty `path_in_vcs` value. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed the Travis CI configuration in `.travis.yml`; it only declares a Rust build matrix for `1.0.0`, `stable`, `beta`, and `nightly` and does not contain install hooks, shell commands, network/exfiltration steps, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in this file.",
       "files": [
-        {
-          "file_path": ".github/workflows/ci.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "79088dd87bd8263a2dfcb0ea05edff664d1595f492bd52c7911008a061e2d8c2"
-          },
-          "summary": "Reviewed the CI workflow in `.github/workflows/ci.yml`, which runs standard checkout, Rust toolchain installation, and cargo tests across a matrix of platforms/toolchains. I found no concrete indicators of install hooks, hidden downloads, network exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "70ad295702c36256850de76681329879d7438b2fec934dafb0e0428dee9f61c1"
-          },
-          "summary": "Reviewed the crate manifest in Cargo.toml for install-time execution, build scripts, dependency-triggered code paths, network/exfiltration hooks, credential access, dynamic code loading, obfuscation, and persistence mechanisms. The manifest is minimal: it declares a library crate with `build = false`, no dependencies, and no install hooks or other suspicious supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "9cc0effb3c8f875fd574ff1a69d22f0d36d8ced5edee8ae55122ebadb892f0c5"
           },
-          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records a Git SHA1 and an empty `path_in_vcs` value. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package git SHA (`d77ef9f27cc336719b2d839d09ee6635dd22f758`) and an empty `path_in_vcs` field. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12736,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045669430,
+            "finished_at_unix_ms": 1784045682167,
+            "total_token_usage": {
+              "input_tokens": 23970,
+              "cached_input_tokens": 21248,
+              "output_tokens": 463,
+              "reasoning_output_tokens": 248,
+              "total_tokens": 24433
+            },
+            "last_token_usage": {
+              "input_tokens": 23970,
+              "cached_input_tokens": 21248,
+              "output_tokens": 463,
+              "reasoning_output_tokens": 248,
+              "total_tokens": 24433
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/ci.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "79088dd87bd8263a2dfcb0ea05edff664d1595f492bd52c7911008a061e2d8c2"
+          },
+          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/ci.yml`, which runs Rust tests across Linux, Windows, and macOS with multiple toolchains using standard checkout/toolchain/cargo actions. I found no concrete indicators of install-time abuse, network or exfiltration logic, secret harvesting, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11689,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045682167,
+            "finished_at_unix_ms": 1784045693857,
+            "total_token_usage": {
+              "input_tokens": 24207,
+              "cached_input_tokens": 21248,
+              "output_tokens": 403,
+              "reasoning_output_tokens": 203,
+              "total_tokens": 24610
+            },
+            "last_token_usage": {
+              "input_tokens": 24207,
+              "cached_input_tokens": 21248,
+              "output_tokens": 403,
+              "reasoning_output_tokens": 203,
+              "total_tokens": 24610
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -448,75 +473,61 @@
             "algorithm": "blake3",
             "value": "00a59b73acdb3118c5d13577b1736c5d85cfb8883bf3019829c7ae1117320b23"
           },
-          "summary": "Reviewed the Travis CI configuration in `.travis.yml`; it only declares a Rust build matrix for `1.0.0`, `stable`, `beta`, and `nightly` and does not contain install hooks, shell commands, network/exfiltration steps, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in this file.",
+          "summary": "Reviewed the Travis CI config in `.travis.yml`; it only defines a Rust build matrix for `1.0.0`, `stable`, `beta`, and `nightly`. I found no install hooks, network or exfiltration steps, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_72f4dd713ff34e848fdccd54ce165fc8",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782818461",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which implements rustc version/date/channel detection by invoking the local `rustc --verbose --version` command and parsing its stdout. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution beyond the documented compiler probe, and found no concrete malicious or supply-chain indicators.\nReviewed `src/version.rs`, which implements the `Version` type plus parsing, comparison, formatting, and unit tests for Rust compiler version strings. I checked for install-time execution, network/exfiltration, credential or environment access, dynamic code loading, obfuscation, persistence, and other supply-chain compromise indicators, and found none in this file.\nReviewed `src/date.rs`, which implements a small `Date` wrapper with parsing, comparison helpers, and display formatting for `YYYY-MM-DD` strings. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess use; none are present in this file.\nReviewed `src/channel.rs`, which only defines a `Channel` wrapper plus parsing, channel checks, and `Display` formatting for Rust release-channel strings. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed `README.md`, which documents a small Rust crate that checks `rustc` version/date by invoking the local compiler via `RUSTC` or `rustc`. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, hidden downloads, obfuscation, persistence, or other supply-chain payload execution in this file.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a0ce830b09d8a79fd3fa1dfadf4a2513e8cac594950291ba10871a15b66dbc90"
+          "agent_run_metrics": {
+            "duration_ms": 11994,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045693857,
+            "finished_at_unix_ms": 1784045705851,
+            "total_token_usage": {
+              "input_tokens": 23990,
+              "cached_input_tokens": 21248,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 205,
+              "total_tokens": 24394
+            },
+            "last_token_usage": {
+              "input_tokens": 23990,
+              "cached_input_tokens": 21248,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 205,
+              "total_tokens": 24394
+            }
           },
-          "summary": "Reviewed `src/lib.rs`, which implements rustc version/date/channel detection by invoking the local `rustc --verbose --version` command and parsing its stdout. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution beyond the documented compiler probe, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/version.rs",
+          "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "d0a5883397a0a2bb8b7fb2f59da2c371054849ce20987e7f0f7b245d646edad3"
+            "value": "70ad295702c36256850de76681329879d7438b2fec934dafb0e0428dee9f61c1"
           },
-          "summary": "Reviewed `src/version.rs`, which implements the `Version` type plus parsing, comparison, formatting, and unit tests for Rust compiler version strings. I checked for install-time execution, network/exfiltration, credential or environment access, dynamic code loading, obfuscation, persistence, and other supply-chain compromise indicators, and found none in this file.",
+          "summary": "Reviewed the normalized Cargo.toml for version_check 0.9.5. It defines a plain library crate with no build script, no dependencies, and no install-time hooks; I found no concrete indicators of network exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/date.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d1dbdf2e47a51ef84dae21eda0f9c767838a2cfc200a7e7607457c73c0309ce7"
+          "agent_run_metrics": {
+            "duration_ms": 14334,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045705852,
+            "finished_at_unix_ms": 1784045720187,
+            "total_token_usage": {
+              "input_tokens": 24274,
+              "cached_input_tokens": 23296,
+              "output_tokens": 575,
+              "reasoning_output_tokens": 381,
+              "total_tokens": 24849
+            },
+            "last_token_usage": {
+              "input_tokens": 24274,
+              "cached_input_tokens": 23296,
+              "output_tokens": 575,
+              "reasoning_output_tokens": 381,
+              "total_tokens": 24849
+            }
           },
-          "summary": "Reviewed `src/date.rs`, which implements a small `Date` wrapper with parsing, comparison helpers, and display formatting for `YYYY-MM-DD` strings. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess use; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/channel.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8a0dc0927358402966be56bbe5245b35f5302c58b9ba49fc532d0432c4056972"
-          },
-          "summary": "Reviewed `src/channel.rs`, which only defines a `Channel` wrapper plus parsing, channel checks, and `Display` formatting for Rust release-channel strings. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -526,9 +537,351 @@
             "algorithm": "blake3",
             "value": "1bfa2985ae849d246ff936db39df81f03c9fe3e08d89a6f718e734cb76d14edf"
           },
-          "summary": "Reviewed `README.md`, which documents a small Rust crate that checks `rustc` version/date by invoking the local compiler via `RUSTC` or `rustc`. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, hidden downloads, obfuscation, persistence, or other supply-chain payload execution in this file.",
+          "summary": "README.md is a normal crate overview that explains `version_check` queries `rustc --version` (preferring `RUSTC`) and shows usage examples. I found no concrete malicious or supply-chain indicators in this file, and no signs of install hooks, network exfiltration, secret access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14507,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045720187,
+            "finished_at_unix_ms": 1784045734695,
+            "total_token_usage": {
+              "input_tokens": 24965,
+              "cached_input_tokens": 13568,
+              "output_tokens": 570,
+              "reasoning_output_tokens": 371,
+              "total_tokens": 25535
+            },
+            "last_token_usage": {
+              "input_tokens": 24965,
+              "cached_input_tokens": 13568,
+              "output_tokens": 570,
+              "reasoning_output_tokens": 371,
+              "total_tokens": 25535
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_89d28ba6c86f40c7857e18d4148d6dc8",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784051740",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9cc0effb3c8f875fd574ff1a69d22f0d36d8ced5edee8ae55122ebadb892f0c5"
+          },
+          "summary": "Reviewed .cargo_vcs_info.json, which only records a git SHA1 and an empty path_in_vcs value for provenance metadata. I found no evidence in this file of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13633,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051674392,
+            "finished_at_unix_ms": 1784051688026,
+            "total_token_usage": {
+              "input_tokens": 24097,
+              "cached_input_tokens": 21248,
+              "output_tokens": 510,
+              "reasoning_output_tokens": 318,
+              "total_tokens": 24607
+            },
+            "last_token_usage": {
+              "input_tokens": 24097,
+              "cached_input_tokens": 21248,
+              "output_tokens": 510,
+              "reasoning_output_tokens": 318,
+              "total_tokens": 24607
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/ci.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "79088dd87bd8263a2dfcb0ea05edff664d1595f492bd52c7911008a061e2d8c2"
+          },
+          "summary": "This GitHub Actions workflow checks out the repository and runs `cargo test` across Linux, Windows, and macOS on nightly/beta/stable plus an extra 1.0.0 Linux job. I reviewed it for install-time hooks, secret or credential access, network/exfiltration, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12103,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051688027,
+            "finished_at_unix_ms": 1784051700130,
+            "total_token_usage": {
+              "input_tokens": 24348,
+              "cached_input_tokens": 21248,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 24805
+            },
+            "last_token_usage": {
+              "input_tokens": 24348,
+              "cached_input_tokens": 21248,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 24805
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".travis.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "00a59b73acdb3118c5d13577b1736c5d85cfb8883bf3019829c7ae1117320b23"
+          },
+          "summary": "Reviewed the Travis CI configuration in `.travis.yml`; it only declares the Rust language and a build matrix for `1.0.0`, `stable`, `beta`, and `nightly`. I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12430,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051700131,
+            "finished_at_unix_ms": 1784051712561,
+            "total_token_usage": {
+              "input_tokens": 24067,
+              "cached_input_tokens": 21248,
+              "output_tokens": 350,
+              "reasoning_output_tokens": 155,
+              "total_tokens": 24417
+            },
+            "last_token_usage": {
+              "input_tokens": 24067,
+              "cached_input_tokens": 21248,
+              "output_tokens": 350,
+              "reasoning_output_tokens": 155,
+              "total_tokens": 24417
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "70ad295702c36256850de76681329879d7438b2fec934dafb0e0428dee9f61c1"
+          },
+          "summary": "Reviewed the normalized `Cargo.toml` for `version_check` 0.9.5. It only contains package metadata and a library path, with no install hooks, build scripts, dependencies, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15049,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051712562,
+            "finished_at_unix_ms": 1784051727611,
+            "total_token_usage": {
+              "input_tokens": 24335,
+              "cached_input_tokens": 23296,
+              "output_tokens": 490,
+              "reasoning_output_tokens": 307,
+              "total_tokens": 24825
+            },
+            "last_token_usage": {
+              "input_tokens": 24335,
+              "cached_input_tokens": 23296,
+              "output_tokens": 490,
+              "reasoning_output_tokens": 307,
+              "total_tokens": 24825
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1bfa2985ae849d246ff936db39df81f03c9fe3e08d89a6f718e734cb76d14edf"
+          },
+          "summary": "Reviewed README.md, which documents a small Rust crate for checking the installed `rustc` version via `--version` and shows normal build-dependency usage examples. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12675,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051727612,
+            "finished_at_unix_ms": 1784051740288,
+            "total_token_usage": {
+              "input_tokens": 25148,
+              "cached_input_tokens": 14080,
+              "output_tokens": 360,
+              "reasoning_output_tokens": 159,
+              "total_tokens": 25508
+            },
+            "last_token_usage": {
+              "input_tokens": 25148,
+              "cached_input_tokens": 14080,
+              "output_tokens": 360,
+              "reasoning_output_tokens": 159,
+              "total_tokens": 25508
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_edc3f4cb01b54c05a657c3aab7ec8560",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054489",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/channel.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8a0dc0927358402966be56bbe5245b35f5302c58b9ba49fc532d0432c4056972"
+          },
+          "summary": "Reviewed src/channel.rs, which only parses Rust compiler release-channel strings and exposes simple predicate/display helpers. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12304,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054413745,
+            "finished_at_unix_ms": 1784054426049,
+            "total_token_usage": {
+              "input_tokens": 25510,
+              "cached_input_tokens": 21248,
+              "output_tokens": 464,
+              "reasoning_output_tokens": 283,
+              "total_tokens": 25974
+            },
+            "last_token_usage": {
+              "input_tokens": 25510,
+              "cached_input_tokens": 21248,
+              "output_tokens": 464,
+              "reasoning_output_tokens": 283,
+              "total_tokens": 25974
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/date.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d1dbdf2e47a51ef84dae21eda0f9c767838a2cfc200a7e7607457c73c0309ce7"
+          },
+          "summary": "Reviewed `src/date.rs`, which implements a small `Date` type with parsing, comparison, and display logic for `YYYY-MM-DD` values. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14898,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054426050,
+            "finished_at_unix_ms": 1784054440948,
+            "total_token_usage": {
+              "input_tokens": 43032,
+              "cached_input_tokens": 35456,
+              "output_tokens": 520,
+              "reasoning_output_tokens": 230,
+              "total_tokens": 43552
+            },
+            "last_token_usage": {
+              "input_tokens": 43032,
+              "cached_input_tokens": 35456,
+              "output_tokens": 520,
+              "reasoning_output_tokens": 230,
+              "total_tokens": 43552
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a0ce830b09d8a79fd3fa1dfadf4a2513e8cac594950291ba10871a15b66dbc90"
+          },
+          "summary": "Reviewed `src/lib.rs`, which implements `version_check` helpers by invoking `rustc --verbose --version`, parsing the compiler version/date/channel, and consulting `RUSTC`, `RUSTFLAGS`, and `CARGO_ENCODED_RUSTFLAGS`. I found no concrete indicators of install-time hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22747,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054440949,
+            "finished_at_unix_ms": 1784054463696,
+            "total_token_usage": {
+              "input_tokens": 63047,
+              "cached_input_tokens": 53248,
+              "output_tokens": 897,
+              "reasoning_output_tokens": 473,
+              "total_tokens": 63944
+            },
+            "last_token_usage": {
+              "input_tokens": 63047,
+              "cached_input_tokens": 53248,
+              "output_tokens": 897,
+              "reasoning_output_tokens": 473,
+              "total_tokens": 63944
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/version.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d0a5883397a0a2bb8b7fb2f59da2c371054849ce20987e7f0f7b245d646edad3"
+          },
+          "summary": "`src/version.rs` contains a small Rust `Version` wrapper with parsing, formatting, and comparison helpers plus unit tests. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 25872,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054463697,
+            "finished_at_unix_ms": 1784054489569,
+            "total_token_usage": {
+              "input_tokens": 41725,
+              "cached_input_tokens": 35456,
+              "output_tokens": 545,
+              "reasoning_output_tokens": 258,
+              "total_tokens": 42270
+            },
+            "last_token_usage": {
+              "input_tokens": 41725,
+              "cached_input_tokens": 35456,
+              "output_tokens": 545,
+              "reasoning_output_tokens": 258,
+              "total_tokens": 42270
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

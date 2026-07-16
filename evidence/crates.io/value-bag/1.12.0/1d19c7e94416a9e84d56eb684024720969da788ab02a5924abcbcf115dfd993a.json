@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589943",
+  "latest_reviewed_at": "1784063633",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -390,50 +396,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 10,
-      "file_record_count": 25,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 5
+      "review_count": 11,
+      "file_record_count": 35,
+      "file_record_count_with_metrics": 35
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 30,
-    "file_records_with_metrics": 5,
-    "file_records_without_metrics": 25,
-    "duration_ms_total": 70350,
-    "attempts_total": 5,
+    "reviewed_file_records": 35,
+    "file_records_with_metrics": 35,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 621779,
+    "attempts_total": 35,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 5,
-    "last_token_usage_records": 5,
+    "total_token_usage_records": 35,
+    "last_token_usage_records": 35,
     "total_token_usage": {
-      "input_tokens": 138072,
-      "cached_input_tokens": 110592,
-      "output_tokens": 2368,
-      "reasoning_output_tokens": 1196,
-      "total_tokens": 140440
+      "input_tokens": 1369157,
+      "cached_input_tokens": 1172096,
+      "output_tokens": 18961,
+      "reasoning_output_tokens": 9007,
+      "total_tokens": 1388118
     },
     "last_token_usage": {
-      "input_tokens": 138072,
-      "cached_input_tokens": 110592,
-      "output_tokens": 2368,
-      "reasoning_output_tokens": 1196,
-      "total_tokens": 140440
+      "input_tokens": 1369157,
+      "cached_input_tokens": 1172096,
+      "output_tokens": 18961,
+      "reasoning_output_tokens": 9007,
+      "total_tokens": 1388118
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_001252506cc64abc92268b508ba40743",
+      "id": "rev_36e2c746d1f94907b3caa75865d4edce",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -441,100 +439,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782850285",
+      "created_at": "1784046682",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/internal/fmt.rs` is a formatting integration module for `ValueBag`, implementing `Debug`/`Display` capture, downcasting helpers, owned buffering, and tests. I checked this file for install hooks, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence/tampering behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `src/internal/mod.rs`, which defines the crate’s internal `Internal<'v>` value container and the `InternalVisitor` dispatch trait used to route borrowed and owned values through serialization paths. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
       "files": [
         {
-          "file_path": "src/internal/fmt.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "8f31cd5f4635ae78bf4678b32d6e7aafd5724b87a46a7bed8817e0b2e8eec4a9"
+            "value": "2ce7748fc018bbd1e43407e469a469b33abf094a6945ce00413e94806b659e6b"
           },
-          "summary": "`src/internal/fmt.rs` is a formatting integration module for `ValueBag`, implementing `Debug`/`Display` capture, downcasting helpers, owned buffering, and tests. I checked this file for install hooks, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence/tampering behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed the Cargo VCS metadata in this file; it only records the upstream git SHA1 and an empty `path_in_vcs` value. I found no evidence here of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/internal/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a74b69dbd680b886411d858765ffe3113838dbca5ac6a1c16cdb740e540cbcc5"
+          "agent_run_metrics": {
+            "duration_ms": 12182,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046596112,
+            "finished_at_unix_ms": 1784046608294,
+            "total_token_usage": {
+              "input_tokens": 24146,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 24547
+            },
+            "last_token_usage": {
+              "input_tokens": 24146,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 24547
+            }
           },
-          "summary": "Reviewed `src/internal/mod.rs`, which defines the crate’s internal `Internal<'v>` value container and the `InternalVisitor` dispatch trait used to route borrowed and owned values through serialization paths. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_3fa67c065f534b6990f8de0c7541cffe",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782850443",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/test.rs`, which defines test-only `ValueBag` tokenization and visitor assertions for primitives, strings, errors, and feature-gated variants. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, or other supply-chain malicious behavior in this file.\nReviewed `src/internal/error.rs`, which implements `ValueBag` error capture, downcasting, and owned error buffering plus unit tests. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/fill.rs`, which defines the `Fill` trait, `Slot` wrapper, and `ValueBag::from_fill` helper for deferred value initialization and tests for casting/borrowing behavior. I checked for install-time hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/internal/cast/primitive.rs`, which contains internal `TypeId`-based casts from references to primitive types, `str`, and optionally `String`, plus owned-value handling behind feature flags. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed this generated Cargo.toml manifest for install hooks, build scripts, hidden subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence. It only declares package metadata, feature flags, optional in-crate dependencies, benches, and wasm dev-dependencies; no concrete malicious or supply-chain indicators were found in this file.",
-      "files": [
-        {
-          "file_path": "src/test.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "73191ffe9061a6cd8974022e0c86b9e83a1fcc3c79bee04e96e064a922baf97e"
-          },
-          "summary": "Reviewed `src/test.rs`, which defines test-only `ValueBag` tokenization and visitor assertions for primitives, strings, errors, and feature-gated variants. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, or other supply-chain malicious behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/internal/error.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8a7b7c7d7dc19db0836fcfd096e8cc4d6b78e2112e320a9f08a34e9d4a4048c6"
-          },
-          "summary": "Reviewed `src/internal/error.rs`, which implements `ValueBag` error capture, downcasting, and owned error buffering plus unit tests. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/fill.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "27db870203dd215c0a2f10e832a74385b11ae821f2620f369594972ad6355d2e"
-          },
-          "summary": "Reviewed `src/fill.rs`, which defines the `Fill` trait, `Slot` wrapper, and `ValueBag::from_fill` helper for deferred value initialization and tests for casting/borrowing behavior. I checked for install-time hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/internal/cast/primitive.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "fe1b49b5ff7c3df9b8f6cfff4b9b952fd3a8a7c147d7dcf20ddf0861bbfc3210"
-          },
-          "summary": "Reviewed `src/internal/cast/primitive.rs`, which contains internal `TypeId`-based casts from references to primitive types, `str`, and optionally `String`, plus owned-value handling behind feature flags. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -544,124 +483,132 @@
             "algorithm": "blake3",
             "value": "59e740e1405375726d42694afdaed5544fc7c55aaf3e055297c3ec1b401680bb"
           },
-          "summary": "Reviewed this generated Cargo.toml manifest for install hooks, build scripts, hidden subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence. It only declares package metadata, feature flags, optional in-crate dependencies, benches, and wasm dev-dependencies; no concrete malicious or supply-chain indicators were found in this file.",
+          "summary": "Reviewed the normalized Cargo manifest for `value-bag` 1.12.0. It only declares package metadata, feature flags, benches, and optional crate dependencies; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_4134d9e3d8e248fd9494e1bcadec0886",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782850323",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/owned.rs`, which defines `OwnedValueBag` and the `ValueBag` helpers for buffering values, converting to shared `Arc`-backed forms, and round-tripping back to borrowed views. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\n`src/visit.rs` defines the `Visit` trait and `ValueBag::visit` dispatch logic for structured value inspection, with fallback conversions into `ValueBag` and tests for serde/sval formatting. I reviewed it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/owned.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "47597e3b5c0e55981d39fcb9a405100ea55716fbd16e380cfa895c18962df66c"
+          "agent_run_metrics": {
+            "duration_ms": 16211,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046608295,
+            "finished_at_unix_ms": 1784046624506,
+            "total_token_usage": {
+              "input_tokens": 24710,
+              "cached_input_tokens": 21248,
+              "output_tokens": 472,
+              "reasoning_output_tokens": 284,
+              "total_tokens": 25182
+            },
+            "last_token_usage": {
+              "input_tokens": 24710,
+              "cached_input_tokens": 21248,
+              "output_tokens": 472,
+              "reasoning_output_tokens": 284,
+              "total_tokens": 25182
+            }
           },
-          "summary": "Reviewed `src/owned.rs`, which defines `OwnedValueBag` and the `ValueBag` helpers for buffering values, converting to shared `Arc`-backed forms, and round-tripping back to borrowed views. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/visit.rs",
+          "file_path": "README.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "dc75c0c877fb3e962024eb6cdbb7a4ff3829f0444041ddf1276f7ac9b187f41a"
+            "value": "dffc3c03b2c8ca6be696af8001d2c946f5eabbb49069f7fcfa83b2e98048f724"
           },
-          "summary": "`src/visit.rs` defines the `Visit` trait and `ValueBag::visit` dispatch logic for structured value inspection, with fallback conversions into `ValueBag` and tests for serde/sval formatting. I reviewed it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the README.md documentation for the `value-bag` crate. It only describes the library API, Cargo features, and usage examples; I found no concrete indicators of install hooks, network or credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17353,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046624507,
+            "finished_at_unix_ms": 1784046641861,
+            "total_token_usage": {
+              "input_tokens": 25110,
+              "cached_input_tokens": 21248,
+              "output_tokens": 463,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 25573
+            },
+            "last_token_usage": {
+              "input_tokens": 25110,
+              "cached_input_tokens": 21248,
+              "output_tokens": 463,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 25573
+            }
+          },
           "comment_count": 0,
           "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_4533d985c0d343bab1080cedd0f506a9",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782850563",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `benches/by_ref.rs`, which is a small Rust benchmark that constructs a `ValueBag` from a `u8` and repeatedly calls `by_ref()` inside the benchmark loop. I checked for install hooks, network or exfiltration, credential or environment access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.\nReviewed .cargo_vcs_info.json, which only contains Cargo VCS metadata (a git SHA and an empty path_in_vcs). I checked this target for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `src/internal/serde/mod.rs`, which only declares the internal `v1` module and contains no executable logic. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/internal/sval/mod.rs`, which is a one-line Rust module declaration (`pub(crate) mod v2;`) and contains no executable logic, install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in this target file.",
-      "files": [
+        },
         {
           "file_path": "benches/by_ref.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "497ba1bbbbf84a1db9701eb8343226ee529c2ee685ab373003e16c2e9a227fbb"
           },
-          "summary": "Reviewed `benches/by_ref.rs`, which is a small Rust benchmark that constructs a `ValueBag` from a `u8` and repeatedly calls `by_ref()` inside the benchmark loop. I checked for install hooks, network or exfiltration, credential or environment access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "`benches/by_ref.rs` is a small Rust benchmark that exercises `ValueBag::by_ref()` on a `u8` value inside a `test::Bencher` loop. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 23655,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046641861,
+            "finished_at_unix_ms": 1784046665517,
+            "total_token_usage": {
+              "input_tokens": 24141,
+              "cached_input_tokens": 21248,
+              "output_tokens": 380,
+              "reasoning_output_tokens": 185,
+              "total_tokens": 24521
+            },
+            "last_token_usage": {
+              "input_tokens": 24141,
+              "cached_input_tokens": 21248,
+              "output_tokens": 380,
+              "reasoning_output_tokens": 185,
+              "total_tokens": 24521
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "benches/capture.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "2ce7748fc018bbd1e43407e469a469b33abf094a6945ce00413e94806b659e6b"
+            "value": "b244b3b7d4df45ec8864ce05ee0ed87f8eaf90f946954337e97a27f60db89539"
           },
-          "summary": "Reviewed .cargo_vcs_info.json, which only contains Cargo VCS metadata (a git SHA and an empty path_in_vcs). I checked this target for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "The target file is a Rust benchmark module that exercises `ValueBag` capture and conversion paths, including feature-gated `sval2` cases. I checked it for install-time hooks, subprocess or network activity, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/internal/serde/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9e903044a0a59bc22ba18d016f1662f96db8cff0353b1d92dbb465dc3817c719"
+          "agent_run_metrics": {
+            "duration_ms": 17410,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046665517,
+            "finished_at_unix_ms": 1784046682928,
+            "total_token_usage": {
+              "input_tokens": 38987,
+              "cached_input_tokens": 33920,
+              "output_tokens": 530,
+              "reasoning_output_tokens": 240,
+              "total_tokens": 39517
+            },
+            "last_token_usage": {
+              "input_tokens": 38987,
+              "cached_input_tokens": 33920,
+              "output_tokens": 530,
+              "reasoning_output_tokens": 240,
+              "total_tokens": 39517
+            }
           },
-          "summary": "Reviewed `src/internal/serde/mod.rs`, which only declares the internal `v1` module and contains no executable logic. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/internal/sval/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "048478579ec834ad451f0448955cc5d3c556e9f17b66b2bb4a1c9572d44d9b19"
-          },
-          "summary": "Reviewed `src/internal/sval/mod.rs`, which is a one-line Rust module declaration (`pub(crate) mod v2;`) and contains no executable logic, install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_739a30c3fb21488d8f1a1a9ede7c5c47",
+      "id": "rev_4c922955b5d7401ba8ca077a3d67f642",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -669,29 +616,48 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782850248",
+      "created_at": "1784062367",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/internal/cast/mod.rs` is a Rust casting/downcasting module for `ValueBag`, with helper methods that convert erased values into primitive types and tests covering those conversions. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/internal/cast/mod.rs",
+          "file_path": "src/internal/sval/v2.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "6188715a078a838c81b01221e2be1cbf18009896525a1cf236ff20baee0af67b"
+            "value": "23cb5339a5b31759e5f7c58e1c6198bd69ea9e2800b47f4d108978018b73ce8b"
           },
-          "summary": "`src/internal/cast/mod.rs` is a Rust casting/downcasting module for `ValueBag`, with helper methods that convert erased values into primitive types and tests covering those conversions. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/internal/sval/v2.rs`, which is a Rust adapter layer between `ValueBag` and `sval`/`sval2` for capturing, streaming, and visiting primitive values, strings, sequences, and owned values. I checked this file for install-time hooks, subprocess spawning, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious signals.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 26530,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062340833,
+            "finished_at_unix_ms": 1784062367363,
+            "total_token_usage": {
+              "input_tokens": 82230,
+              "cached_input_tokens": 70528,
+              "output_tokens": 880,
+              "reasoning_output_tokens": 359,
+              "total_tokens": 83110
+            },
+            "last_token_usage": {
+              "input_tokens": 82230,
+              "cached_input_tokens": 70528,
+              "output_tokens": 880,
+              "reasoning_output_tokens": 359,
+              "total_tokens": 83110
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_97f7095855aa47028402f21e4cfea8a6",
+      "id": "rev_5152a70fa80b471d959ca3b7f37a1ccb",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -699,29 +665,48 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782850178",
+      "created_at": "1784063633",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/internal/serde/v1.rs`, which is a serde integration layer for `ValueBag` that converts values to and from serde serializers/visitors and handles primitive/sequence fallbacks. I checked for install hooks, subprocess execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/internal/serde/v1.rs",
+          "file_path": "src/visit.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "29a8c3a6b01793545446639b1c5e611750030e6cec230867070034437ca741ad"
+            "value": "dc75c0c877fb3e962024eb6cdbb7a4ff3829f0444041ddf1276f7ac9b187f41a"
           },
-          "summary": "Reviewed `src/internal/serde/v1.rs`, which is a serde integration layer for `ValueBag` that converts values to and from serde serializers/visitors and handles primitive/sequence fallbacks. I checked for install hooks, subprocess execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/visit.rs`, which defines the `Visit` trait and `ValueBag::visit` dispatch path for primitive, error, serde, and sval values. I checked for install hooks, network or exfiltration, credential access, hidden subprocesses, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14506,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063618541,
+            "finished_at_unix_ms": 1784063633047,
+            "total_token_usage": {
+              "input_tokens": 42296,
+              "cached_input_tokens": 35456,
+              "output_tokens": 475,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 42771
+            },
+            "last_token_usage": {
+              "input_tokens": 42296,
+              "cached_input_tokens": 35456,
+              "output_tokens": 475,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 42771
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_989ab42b925844329641fdc9964f809d",
+      "id": "rev_5c29d7ee62f346fd88962189d26fc6db",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -729,22 +714,137 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782850380",
+      "created_at": "1784055189",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/internal/owned.rs`, which is a Rust enum and visitor implementation for converting borrowed `Internal` values into owned/shared forms, including an optional inline string optimization. I did not find concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential harvesting, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/impls.rs`, which is a straightforward set of `From`/`TryFrom` implementations and tests for converting primitive, string, and owned value types into and out of `ValueBag`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/lib.rs`, the crate root for the `ValueBag` API, including its `no_std`/feature-gated reexports, public constructors, and extensive documentation examples. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
-          "file_path": "src/internal/owned.rs",
+          "file_path": "benches/owned.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "8d8b2b5f29caaac05fdb4ac250dcb05c9e4290f57046c6f14336e02f018db7d9"
+            "value": "15d9a0753f91f7ff2516bfd292cd03bf468ce70a6e85dc5916eb262abf5b0739"
           },
-          "summary": "Reviewed `src/internal/owned.rs`, which is a Rust enum and visitor implementation for converting borrowed `Internal` values into owned/shared forms, including an optional inline string optimization. I did not find concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential harvesting, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `benches/owned.rs`, which only defines benchmark cases for `ValueBag` owned/shared conversions plus optional `serde1` and `sval2` serialization benchmarks behind feature gates. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16230,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055111613,
+            "finished_at_unix_ms": 1784055127844,
+            "total_token_usage": {
+              "input_tokens": 39075,
+              "cached_input_tokens": 33920,
+              "output_tokens": 692,
+              "reasoning_output_tokens": 392,
+              "total_tokens": 39767
+            },
+            "last_token_usage": {
+              "input_tokens": 39075,
+              "cached_input_tokens": 33920,
+              "output_tokens": 692,
+              "reasoning_output_tokens": 392,
+              "total_tokens": 39767
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/seq.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3b3d513de37dd3643818e698d657ef311d28f2c5f081e19ac4fdc431311911b0"
+          },
+          "summary": "Reviewed `benches/seq.rs`, which contains two conditional Rust benchmark functions for serializing a `ValueBag` into `Vec<Option<f64>>` via `serde1` and `sval2`. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13062,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055127844,
+            "finished_at_unix_ms": 1784055140906,
+            "total_token_usage": {
+              "input_tokens": 24218,
+              "cached_input_tokens": 21248,
+              "output_tokens": 331,
+              "reasoning_output_tokens": 125,
+              "total_tokens": 24549
+            },
+            "last_token_usage": {
+              "input_tokens": 24218,
+              "cached_input_tokens": 21248,
+              "output_tokens": 331,
+              "reasoning_output_tokens": 125,
+              "total_tokens": 24549
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/error.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "53a68ca163a08127c49d5c5231d9f5083413238b3547742ba6030656ea83a192"
+          },
+          "summary": "Reviewed `src/error.rs`, which defines a small error wrapper with message, boxed standard-error, and formatting variants plus `From<fmt::Error>`/`From<io::Error>` conversions under feature gates. I found no concrete indicators of install-time execution, network or credential access, dynamic code loading, obfuscation, persistence tampering, or other supply-chain compromise behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11847,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055140907,
+            "finished_at_unix_ms": 1784055152754,
+            "total_token_usage": {
+              "input_tokens": 24536,
+              "cached_input_tokens": 21248,
+              "output_tokens": 418,
+              "reasoning_output_tokens": 217,
+              "total_tokens": 24954
+            },
+            "last_token_usage": {
+              "input_tokens": 24536,
+              "cached_input_tokens": 21248,
+              "output_tokens": 418,
+              "reasoning_output_tokens": 217,
+              "total_tokens": 24954
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/fill.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "27db870203dd215c0a2f10e832a74385b11ae821f2620f369594972ad6355d2e"
+          },
+          "summary": "Reviewed `src/fill.rs`, which defines the `Fill` trait, `Slot` helper, and `ValueBag::from_fill` for deferred value initialization. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16113,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055152755,
+            "finished_at_unix_ms": 1784055168868,
+            "total_token_usage": {
+              "input_tokens": 25623,
+              "cached_input_tokens": 21760,
+              "output_tokens": 494,
+              "reasoning_output_tokens": 295,
+              "total_tokens": 26117
+            },
+            "last_token_usage": {
+              "input_tokens": 25623,
+              "cached_input_tokens": 21760,
+              "output_tokens": 494,
+              "reasoning_output_tokens": 295,
+              "total_tokens": 26117
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -754,21 +854,481 @@
             "algorithm": "blake3",
             "value": "671707222625b16fa5d01f51c5f289405b4b391577fa1a62c1e66541b7db80da"
           },
-          "summary": "Reviewed `src/impls.rs`, which is a straightforward set of `From`/`TryFrom` implementations and tests for converting primitive, string, and owned value types into and out of `ValueBag`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/impls.rs`, which only contains `From`/`TryFrom` conversions and tests for `ValueBag` across primitive, string, and optional types. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20868,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055168868,
+            "finished_at_unix_ms": 1784055189737,
+            "total_token_usage": {
+              "input_tokens": 54693,
+              "cached_input_tokens": 50688,
+              "output_tokens": 721,
+              "reasoning_output_tokens": 300,
+              "total_tokens": 55414
+            },
+            "last_token_usage": {
+              "input_tokens": 54693,
+              "cached_input_tokens": 50688,
+              "output_tokens": 721,
+              "reasoning_output_tokens": 300,
+              "total_tokens": 55414
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_7887a806a64c44c5969ef84756742171",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058786",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/internal/fmt.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8f31cd5f4635ae78bf4678b32d6e7aafd5724b87a46a7bed8817e0b2e8eec4a9"
+          },
+          "summary": "Reviewed `src/internal/fmt.rs`, which implements `ValueBag` integration with `Debug`/`Display`, downcast helpers, owned formatting buffers, and formatting tests. I found no concrete indicators of install-time execution, subprocess spawning, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence tampering in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20023,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058746705,
+            "finished_at_unix_ms": 1784058766728,
+            "total_token_usage": {
+              "input_tokens": 56605,
+              "cached_input_tokens": 48640,
+              "output_tokens": 691,
+              "reasoning_output_tokens": 308,
+              "total_tokens": 57296
+            },
+            "last_token_usage": {
+              "input_tokens": 56605,
+              "cached_input_tokens": 48640,
+              "output_tokens": 691,
+              "reasoning_output_tokens": 308,
+              "total_tokens": 57296
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/lib.rs",
+          "file_path": "src/internal/mod.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "19b41d781751cdc5e34efb57697cd8234f2a0a0e93fec7522a595015c61e4d0f"
+            "value": "a74b69dbd680b886411d858765ffe3113838dbca5ac6a1c16cdb740e540cbcc5"
           },
-          "summary": "Reviewed `src/lib.rs`, the crate root for the `ValueBag` API, including its `no_std`/feature-gated reexports, public constructors, and extensive documentation examples. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed src/internal/mod.rs, which defines the crate's internal value-serialization enum and visitor dispatch used to traverse primitive, borrowed, shared, and feature-gated value representations. I found no concrete supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20191,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058766729,
+            "finished_at_unix_ms": 1784058786920,
+            "total_token_usage": {
+              "input_tokens": 61597,
+              "cached_input_tokens": 53248,
+              "output_tokens": 728,
+              "reasoning_output_tokens": 350,
+              "total_tokens": 62325
+            },
+            "last_token_usage": {
+              "input_tokens": 61597,
+              "cached_input_tokens": 53248,
+              "output_tokens": 728,
+              "reasoning_output_tokens": 350,
+              "total_tokens": 62325
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_790058f59e9044958ddc42a2640ce7dc",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784060167",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/internal/owned.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8d8b2b5f29caaac05fdb4ac250dcb05c9e4290f57046c6f14336e02f018db7d9"
+          },
+          "summary": "Reviewed `src/internal/owned.rs`, which implements owned buffering and sharing for `value-bag` internal values, including primitive copies, formatted-value buffering, and the optional inline string helper. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19842,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060096573,
+            "finished_at_unix_ms": 1784060116415,
+            "total_token_usage": {
+              "input_tokens": 41866,
+              "cached_input_tokens": 35456,
+              "output_tokens": 619,
+              "reasoning_output_tokens": 320,
+              "total_tokens": 42485
+            },
+            "last_token_usage": {
+              "input_tokens": 41866,
+              "cached_input_tokens": 35456,
+              "output_tokens": 619,
+              "reasoning_output_tokens": 320,
+              "total_tokens": 42485
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/internal/seq.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dfd656cb06bd14969db2c836ef61613b0444ea0e351d34a2233cb66f36f9c090"
+          },
+          "summary": "Reviewed `src/internal/seq.rs`, which implements sequence conversion, visitor plumbing, and a few internal `unsafe` lifetime/representation casts for `ValueBag`. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, or persistence tampering in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 28478,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060116415,
+            "finished_at_unix_ms": 1784060144894,
+            "total_token_usage": {
+              "input_tokens": 80482,
+              "cached_input_tokens": 70016,
+              "output_tokens": 764,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 81246
+            },
+            "last_token_usage": {
+              "input_tokens": 80482,
+              "cached_input_tokens": 70016,
+              "output_tokens": 764,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 81246
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/internal/serde/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9e903044a0a59bc22ba18d016f1662f96db8cff0353b1d92dbb465dc3817c719"
+          },
+          "summary": "The target file is a one-line Rust module declaration that only re-exports the internal `v1` serialization module. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22361,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060144895,
+            "finished_at_unix_ms": 1784060167256,
+            "total_token_usage": {
+              "input_tokens": 24062,
+              "cached_input_tokens": 21248,
+              "output_tokens": 347,
+              "reasoning_output_tokens": 155,
+              "total_tokens": 24409
+            },
+            "last_token_usage": {
+              "input_tokens": 24062,
+              "cached_input_tokens": 21248,
+              "output_tokens": 347,
+              "reasoning_output_tokens": 155,
+              "total_tokens": 24409
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_90822c87acd24ecb978b012370dba96b",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052715",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2ce7748fc018bbd1e43407e469a469b33abf094a6945ce00413e94806b659e6b"
+          },
+          "summary": "Reviewed the JSON VCS metadata in `.cargo_vcs_info.json`; it only records a source git SHA and an empty `path_in_vcs` field. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12489,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052637941,
+            "finished_at_unix_ms": 1784052650431,
+            "total_token_usage": {
+              "input_tokens": 24217,
+              "cached_input_tokens": 21248,
+              "output_tokens": 480,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 24697
+            },
+            "last_token_usage": {
+              "input_tokens": 24217,
+              "cached_input_tokens": 21248,
+              "output_tokens": 480,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 24697
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "59e740e1405375726d42694afdaed5544fc7c55aaf3e055297c3ec1b401680bb"
+          },
+          "summary": "Reviewed the normalized Cargo.toml for value-bag 1.12.0. It only declares package metadata, features, library/bench targets, and optional local crate dependencies; I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 27838,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052650432,
+            "finished_at_unix_ms": 1784052678270,
+            "total_token_usage": {
+              "input_tokens": 24725,
+              "cached_input_tokens": 21248,
+              "output_tokens": 522,
+              "reasoning_output_tokens": 330,
+              "total_tokens": 25247
+            },
+            "last_token_usage": {
+              "input_tokens": 24725,
+              "cached_input_tokens": 21248,
+              "output_tokens": 522,
+              "reasoning_output_tokens": 330,
+              "total_tokens": 25247
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dffc3c03b2c8ca6be696af8001d2c946f5eabbb49069f7fcfa83b2e98048f724"
+          },
+          "summary": "Reviewed the README for the `value-bag` crate, which only describes the library API, Cargo features, and usage examples. I found no concrete supply-chain indicators such as install hooks, network or credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10841,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052678271,
+            "finished_at_unix_ms": 1784052689112,
+            "total_token_usage": {
+              "input_tokens": 25322,
+              "cached_input_tokens": 21248,
+              "output_tokens": 389,
+              "reasoning_output_tokens": 210,
+              "total_tokens": 25711
+            },
+            "last_token_usage": {
+              "input_tokens": 25322,
+              "cached_input_tokens": 21248,
+              "output_tokens": 389,
+              "reasoning_output_tokens": 210,
+              "total_tokens": 25711
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/by_ref.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "497ba1bbbbf84a1db9701eb8343226ee529c2ee685ab373003e16c2e9a227fbb"
+          },
+          "summary": "Reviewed `benches/by_ref.rs`, which is a small Rust benchmark that constructs a `ValueBag` from a `u8` and repeatedly calls `by_ref()` inside `test::Bencher`. I found no evidence of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain malicious behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15552,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052689112,
+            "finished_at_unix_ms": 1784052704665,
+            "total_token_usage": {
+              "input_tokens": 24109,
+              "cached_input_tokens": 23296,
+              "output_tokens": 358,
+              "reasoning_output_tokens": 158,
+              "total_tokens": 24467
+            },
+            "last_token_usage": {
+              "input_tokens": 24109,
+              "cached_input_tokens": 23296,
+              "output_tokens": 358,
+              "reasoning_output_tokens": 158,
+              "total_tokens": 24467
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/capture.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b244b3b7d4df45ec8864ce05ee0ed87f8eaf90f946954337e97a27f60db89539"
+          },
+          "summary": "`benches/capture.rs` is a Rust benchmark module that exercises `ValueBag` capture and conversion paths for primitive, string, bool, and custom debug values, including `sval2`-gated benchmarks. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11250,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052704666,
+            "finished_at_unix_ms": 1784052715916,
+            "total_token_usage": {
+              "input_tokens": 24834,
+              "cached_input_tokens": 19200,
+              "output_tokens": 467,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 25301
+            },
+            "last_token_usage": {
+              "input_tokens": 24834,
+              "cached_input_tokens": 19200,
+              "output_tokens": 467,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 25301
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_9f20882c2dad4e6cba1fddb15c80fade",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784061329",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/internal/serde/v1.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "29a8c3a6b01793545446639b1c5e611750030e6cec230867070034437ca741ad"
+          },
+          "summary": "Reviewed `src/internal/serde/v1.rs`, which implements serde integration for `ValueBag` including capture, serialization, downcasting, and sequence buffering. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24088,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061287835,
+            "finished_at_unix_ms": 1784061311923,
+            "total_token_usage": {
+              "input_tokens": 80183,
+              "cached_input_tokens": 68480,
+              "output_tokens": 725,
+              "reasoning_output_tokens": 226,
+              "total_tokens": 80908
+            },
+            "last_token_usage": {
+              "input_tokens": 80183,
+              "cached_input_tokens": 68480,
+              "output_tokens": 725,
+              "reasoning_output_tokens": 226,
+              "total_tokens": 80908
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/internal/sval/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "048478579ec834ad451f0448955cc5d3c556e9f17b66b2bb4a1c9572d44d9b19"
+          },
+          "summary": "Reviewed this module stub, which only exposes the internal `v2` submodule. It contains no install hooks, subprocess launches, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17877,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061311924,
+            "finished_at_unix_ms": 1784061329802,
+            "total_token_usage": {
+              "input_tokens": 24062,
+              "cached_input_tokens": 23296,
+              "output_tokens": 347,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 24409
+            },
+            "last_token_usage": {
+              "input_tokens": 24062,
+              "cached_input_tokens": 23296,
+              "output_tokens": 347,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 24409
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -784,7 +1344,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589943",
       "thirdpass_version": "0.6.0",
@@ -952,7 +1512,7 @@
       ]
     },
     {
-      "id": "rev_b19120dceb2246c2800fdd97af80566a",
+      "id": "rev_b2a63bfc12604205aa674725a0382a80",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -960,29 +1520,112 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782850201",
+      "created_at": "1784063125",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/internal/sval/v2.rs`, which is a normal Rust integration layer between `ValueBag` and `sval` for capturing, streaming, downcasting, and test support. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/decoding, hidden subprocess use, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/internal/sval/v2.rs",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "23cb5339a5b31759e5f7c58e1c6198bd69ea9e2800b47f4d108978018b73ce8b"
+            "value": "19b41d781751cdc5e34efb57697cd8234f2a0a0e93fec7522a595015c61e4d0f"
           },
-          "summary": "Reviewed `src/internal/sval/v2.rs`, which is a normal Rust integration layer between `ValueBag` and `sval` for capturing, streaming, downcasting, and test support. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/decoding, hidden subprocess use, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/lib.rs`, which is the crate root for `value-bag` and defines the `ValueBag` type, constructors, feature-gated module wiring, and documentation examples. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17384,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063080013,
+            "finished_at_unix_ms": 1784063097398,
+            "total_token_usage": {
+              "input_tokens": 30909,
+              "cached_input_tokens": 21760,
+              "output_tokens": 596,
+              "reasoning_output_tokens": 256,
+              "total_tokens": 31505
+            },
+            "last_token_usage": {
+              "input_tokens": 30909,
+              "cached_input_tokens": 21760,
+              "output_tokens": 596,
+              "reasoning_output_tokens": 256,
+              "total_tokens": 31505
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/owned.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "47597e3b5c0e55981d39fcb9a405100ea55716fbd16e380cfa895c18962df66c"
+          },
+          "summary": "`src/owned.rs` implements `OwnedValueBag` plus `ValueBag` helpers for buffering values into owned or Arc-shared forms, with tests covering the conversion paths. I checked for install-time execution, subprocess spawning, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15059,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063097398,
+            "finished_at_unix_ms": 1784063112458,
+            "total_token_usage": {
+              "input_tokens": 41865,
+              "cached_input_tokens": 34944,
+              "output_tokens": 590,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 42455
+            },
+            "last_token_usage": {
+              "input_tokens": 41865,
+              "cached_input_tokens": 34944,
+              "output_tokens": 590,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 42455
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/test.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "73191ffe9061a6cd8974022e0c86b9e83a1fcc3c79bee04e96e064a922baf97e"
+          },
+          "summary": "Reviewed `src/test.rs`, which contains test-only helpers for converting `ValueBag` values into `TestToken` variants and asserting visitor behavior. I checked for install-time execution, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, and persistence tampering; none are present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12562,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063112459,
+            "finished_at_unix_ms": 1784063125021,
+            "total_token_usage": {
+              "input_tokens": 39805,
+              "cached_input_tokens": 34944,
+              "output_tokens": 517,
+              "reasoning_output_tokens": 231,
+              "total_tokens": 40322
+            },
+            "last_token_usage": {
+              "input_tokens": 39805,
+              "cached_input_tokens": 34944,
+              "output_tokens": 517,
+              "reasoning_output_tokens": 231,
+              "total_tokens": 40322
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_b699bc24e5ac4e47b235c421a2a3aa6d",
+      "id": "rev_f8b6f48d035a4ca7a115be53279817a8",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -990,100 +1633,105 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782850226",
+      "created_at": "1784057155",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/internal/seq.rs`, which implements `ValueBag` sequence conversion/visitor logic plus tests and feature-gated owned/alloc helpers. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, or persistence in this file.",
       "files": [
         {
-          "file_path": "src/internal/seq.rs",
+          "file_path": "src/internal/cast/mod.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "dfd656cb06bd14969db2c836ef61613b0444ea0e351d34a2233cb66f36f9c090"
+            "value": "6188715a078a838c81b01221e2be1cbf18009896525a1cf236ff20baee0af67b"
           },
-          "summary": "Reviewed `src/internal/seq.rs`, which implements `ValueBag` sequence conversion/visitor logic plus tests and feature-gated owned/alloc helpers. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed `src/internal/cast/mod.rs`, which implements `ValueBag` casting and downcasting helpers for numeric, bool, char, and string representations, including optional allocation for owned strings. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_cf6bdd846d7b422ba95fdbf2a19bc64f",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782850508",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "I reviewed benches/owned.rs, which is a Rust benchmark module exercising ValueBag owned/shared conversion paths and optional serde1/sval2 serialization benchmarks. I checked for install hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\n`benches/capture.rs` is a Rust benchmark harness that exercises `ValueBag` capture and conversion paths for primitive, string, bool, custom `Debug`, and `fill`/`sval2` cases. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/error.rs`, which defines a small error wrapper with message, formatted, and boxed error variants plus standard `Display`/`From` conversions. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `README.md`, which is ordinary crate documentation describing the `value-bag` API, Cargo features, and usage examples. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `benches/seq.rs`, which is a small benchmark gated behind the `seq` feature and `test` harness, measuring `ValueBag` sequence conversion for serde1 and sval2 inputs. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": "benches/owned.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "15d9a0753f91f7ff2516bfd292cd03bf468ce70a6e85dc5916eb262abf5b0739"
+          "agent_run_metrics": {
+            "duration_ms": 32039,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057085849,
+            "finished_at_unix_ms": 1784057117888,
+            "total_token_usage": {
+              "input_tokens": 130882,
+              "cached_input_tokens": 113792,
+              "output_tokens": 1113,
+              "reasoning_output_tokens": 386,
+              "total_tokens": 131995
+            },
+            "last_token_usage": {
+              "input_tokens": 130882,
+              "cached_input_tokens": 113792,
+              "output_tokens": 1113,
+              "reasoning_output_tokens": 386,
+              "total_tokens": 131995
+            }
           },
-          "summary": "I reviewed benches/owned.rs, which is a Rust benchmark module exercising ValueBag owned/shared conversion paths and optional serde1/sval2 serialization benchmarks. I checked for install hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "benches/capture.rs",
+          "file_path": "src/internal/cast/primitive.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "b244b3b7d4df45ec8864ce05ee0ed87f8eaf90f946954337e97a27f60db89539"
+            "value": "fe1b49b5ff7c3df9b8f6cfff4b9b952fd3a8a7c147d7dcf20ddf0861bbfc3210"
           },
-          "summary": "`benches/capture.rs` is a Rust benchmark harness that exercises `ValueBag` capture and conversion paths for primitive, string, bool, custom `Debug`, and `fill`/`sval2` cases. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/internal/cast/primitive.rs`, which implements `ValueBag` conversion helpers by matching `TypeId`s and performing narrowly scoped unsafe casts for primitive, `str`, and optional primitive values. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18941,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057117888,
+            "finished_at_unix_ms": 1784057136830,
+            "total_token_usage": {
+              "input_tokens": 24946,
+              "cached_input_tokens": 21248,
+              "output_tokens": 581,
+              "reasoning_output_tokens": 367,
+              "total_tokens": 25527
+            },
+            "last_token_usage": {
+              "input_tokens": 24946,
+              "cached_input_tokens": 21248,
+              "output_tokens": 581,
+              "reasoning_output_tokens": 367,
+              "total_tokens": 25527
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/error.rs",
+          "file_path": "src/internal/error.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "53a68ca163a08127c49d5c5231d9f5083413238b3547742ba6030656ea83a192"
+            "value": "8a7b7c7d7dc19db0836fcfd096e8cc4d6b78e2112e320a9f08a34e9d4a4048c6"
           },
-          "summary": "Reviewed `src/error.rs`, which defines a small error wrapper with message, formatted, and boxed error variants plus standard `Display`/`From` conversions. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/internal/error.rs`, which implements `ValueBag` error capture/conversion helpers, an owned error buffer type, and a small test module. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "dffc3c03b2c8ca6be696af8001d2c946f5eabbb49069f7fcfa83b2e98048f724"
+          "agent_run_metrics": {
+            "duration_ms": 18647,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057136830,
+            "finished_at_unix_ms": 1784057155478,
+            "total_token_usage": {
+              "input_tokens": 40849,
+              "cached_input_tokens": 34432,
+              "output_tokens": 502,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 41351
+            },
+            "last_token_usage": {
+              "input_tokens": 40849,
+              "cached_input_tokens": 34432,
+              "output_tokens": 502,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 41351
+            }
           },
-          "summary": "Reviewed `README.md`, which is ordinary crate documentation describing the `value-bag` API, Cargo features, and usage examples. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/seq.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3b3d513de37dd3643818e698d657ef311d28f2c5f081e19ac4fdc431311911b0"
-          },
-          "summary": "Reviewed `benches/seq.rs`, which is a small benchmark gated behind the `seq` feature and `test` harness, measuring `ValueBag` sequence conversion for serde1 and sval2 inputs. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

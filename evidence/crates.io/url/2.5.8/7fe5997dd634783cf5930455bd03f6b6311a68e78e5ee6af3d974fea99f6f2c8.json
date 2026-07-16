@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590356",
+  "latest_reviewed_at": "1784063816",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -270,50 +276,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 8,
-      "file_record_count": 15,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 10,
+      "file_record_count": 19,
+      "file_record_count_with_metrics": 19
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 19,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 15,
-    "duration_ms_total": 72955,
-    "attempts_total": 4,
+    "file_records_with_metrics": 19,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 405622,
+    "attempts_total": 19,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 19,
+    "last_token_usage_records": 19,
     "total_token_usage": {
-      "input_tokens": 101330,
-      "cached_input_tokens": 74624,
-      "output_tokens": 1654,
-      "reasoning_output_tokens": 851,
-      "total_tokens": 102984
+      "input_tokens": 1294793,
+      "cached_input_tokens": 1099392,
+      "output_tokens": 14759,
+      "reasoning_output_tokens": 7134,
+      "total_tokens": 1309552
     },
     "last_token_usage": {
-      "input_tokens": 101330,
-      "cached_input_tokens": 74624,
-      "output_tokens": 1654,
-      "reasoning_output_tokens": 851,
-      "total_tokens": 102984
+      "input_tokens": 1294793,
+      "cached_input_tokens": 1099392,
+      "output_tokens": 14759,
+      "reasoning_output_tokens": 7134,
+      "total_tokens": 1309552
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_0d209663288c4ca395a10e6c0fd03b7c",
+      "id": "rev_0985d4dbf5124622bf567cf7c228f120",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -321,71 +319,144 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783177903",
+      "created_at": "1784060523",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is the main URL parsing/serialization implementation for the crate, including parser options, URL mutation helpers, file-path conversion, and serde support. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": "src/path_segments.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "7078a2e55ed2ae2782b2e6a370603bc308ec8e8cdf09d44219e80c777268058c"
+            "value": "87c84d5a250d63479037b327f8aa3a078aedf3396dc1d5d0e0f6210ad321c14c"
           },
-          "summary": "Reviewed `src/lib.rs`, which is the main URL parsing/serialization implementation for the crate, including parser options, URL mutation helpers, file-path conversion, and serde support. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed `src/path_segments.rs`, which implements `PathSegmentsMut` helpers for clearing, popping, and appending URL path segments with percent-encoding and dot-segment filtering. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain payload indicators, and found none in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_2918fcf150d649b1ad3a22a7dcb054c9",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783177995",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/wpt.rs`, a Rust/WPT-driven URL parser test harness that loads bundled JSON fixtures with `include_str!`, parses them with `serde_json`, and compares `url` behavior against expected results. I checked for install hooks, subprocess execution beyond normal test termination, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\n`src/host.rs` is a host parsing/formatting module for the URL crate, covering domain, IPv4, and IPv6 parsing plus serialization logic. I checked it for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "tests/wpt.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "190de10786533701b086372ea3e7bba34b37039826b6e5bfb76aff5a193d4937"
+          "agent_run_metrics": {
+            "duration_ms": 22640,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060460910,
+            "finished_at_unix_ms": 1784060483551,
+            "total_token_usage": {
+              "input_tokens": 76729,
+              "cached_input_tokens": 67456,
+              "output_tokens": 740,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 77469
+            },
+            "last_token_usage": {
+              "input_tokens": 76729,
+              "cached_input_tokens": 67456,
+              "output_tokens": 740,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 77469
+            }
           },
-          "summary": "Reviewed `tests/wpt.rs`, a Rust/WPT-driven URL parser test harness that loads bundled JSON fixtures with `include_str!`, parses them with `serde_json`, and compares `url` behavior against expected results. I checked for install hooks, subprocess execution beyond normal test termination, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/host.rs",
+          "file_path": "src/quirks.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "61af1193fdde7596f0ca43c4b6b751e28d88f4e835227b17782f4002a5ebf0f9"
+            "value": "81537585bebf2098eb696e28682a3fdcfcace65ddbce015c43be93d97a69900c"
           },
-          "summary": "`src/host.rs` is a host parsing/formatting module for the URL crate, covering domain, IPv4, and IPv6 parsing plus serialization logic. I checked it for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/quirks.rs`, which implements URL component getters and setters plus host/protocol/path/query/fragment normalization helpers for the `Url` type. I checked for install-time execution, network or exfiltration, credential harvesting, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14369,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060483551,
+            "finished_at_unix_ms": 1784060497921,
+            "total_token_usage": {
+              "input_tokens": 41647,
+              "cached_input_tokens": 35968,
+              "output_tokens": 490,
+              "reasoning_output_tokens": 196,
+              "total_tokens": 42137
+            },
+            "last_token_usage": {
+              "input_tokens": 41647,
+              "cached_input_tokens": 35968,
+              "output_tokens": 490,
+              "reasoning_output_tokens": 196,
+              "total_tokens": 42137
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/slicing.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d2f05b970d2fda3dd0b9eb6cd77c3a862df2217fc9b9adb211ca4ca0484cd7d3"
+          },
+          "summary": "I reviewed src/slicing.rs, which implements `Url` range indexing via `Position` offsets and includes a small digit-count helper used for port slicing. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14171,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060497922,
+            "finished_at_unix_ms": 1784060512093,
+            "total_token_usage": {
+              "input_tokens": 25765,
+              "cached_input_tokens": 21248,
+              "output_tokens": 545,
+              "reasoning_output_tokens": 359,
+              "total_tokens": 26310
+            },
+            "last_token_usage": {
+              "input_tokens": 25765,
+              "cached_input_tokens": 21248,
+              "output_tokens": 545,
+              "reasoning_output_tokens": 359,
+              "total_tokens": 26310
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expected_failures.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "565aa6811b8b2e2ecbf546430098656e77409e735e293a98555a52088772c6eb"
+          },
+          "summary": "Reviewed a plain-text regression fixture listing URL parsing edge cases and expected failures, mainly around file: and non-standard URL forms. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11245,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060512094,
+            "finished_at_unix_ms": 1784060523340,
+            "total_token_usage": {
+              "input_tokens": 24537,
+              "cached_input_tokens": 21248,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 226,
+              "total_tokens": 24944
+            },
+            "last_token_usage": {
+              "input_tokens": 24537,
+              "cached_input_tokens": 21248,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 226,
+              "total_tokens": 24944
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_338c6f63b9d849378d28730401e37b6c",
+      "id": "rev_10a0ab88e6054550bc0c4e3722d74810",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -393,12 +464,109 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783177877",
+      "created_at": "1784063304",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/setters_tests.json`, which is a WPT-derived JSON corpus of URL setter test vectors for `protocol`, `username`, `password`, `host`, and `hostname`. I found no concrete malicious or supply-chain indicators in the target file: there are no install hooks, network/exfiltration logic, credential harvesting, dynamic code loading, obfuscation, or persistence behavior present.",
+      "files": [
+        {
+          "file_path": "tests/urltestdata.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "06dcea480769d66dad3e2bf084056e7fce57256d71df8b8511ab55c04684fa88"
+          },
+          "summary": "Reviewed `tests/urltestdata.json`, a large WHATWG URL parsing fixture set containing URL inputs, expected parse results, and a few source-note comments. I found no concrete supply-chain indicators in the target file: no install hooks, subprocess execution, network exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 49167,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063255649,
+            "finished_at_unix_ms": 1784063304817,
+            "total_token_usage": {
+              "input_tokens": 146339,
+              "cached_input_tokens": 125696,
+              "output_tokens": 2611,
+              "reasoning_output_tokens": 1906,
+              "total_tokens": 148950
+            },
+            "last_token_usage": {
+              "input_tokens": 146339,
+              "cached_input_tokens": 125696,
+              "output_tokens": 2611,
+              "reasoning_output_tokens": 1906,
+              "total_tokens": 148950
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_317cfdf634664218a9664e39bbe1b14e",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784062580",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/unit.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "99c71ecc22e6c5a305ff03cac12ba8a40471a671abf67054779936227831acc6"
+          },
+          "summary": "Reviewed tests/unit.rs, a comprehensive URL crate test module covering parsing/serialization, file-path conversions, query/path mutations, and syntax-violation callbacks; I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and subprocess usage, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 28377,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062551877,
+            "finished_at_unix_ms": 1784062580255,
+            "total_token_usage": {
+              "input_tokens": 80793,
+              "cached_input_tokens": 61440,
+              "output_tokens": 1315,
+              "reasoning_output_tokens": 369,
+              "total_tokens": 82108
+            },
+            "last_token_usage": {
+              "input_tokens": 80793,
+              "cached_input_tokens": 61440,
+              "output_tokens": 1315,
+              "reasoning_output_tokens": 369,
+              "total_tokens": 82108
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_473adc3f57144d79b9d5724d5159c023",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784061666",
+      "thirdpass_version": "0.6.0",
       "files": [
         {
           "file_path": "tests/setters_tests.json",
@@ -406,16 +574,36 @@
             "algorithm": "blake3",
             "value": "aab3aba5bf0716f17b4de7fd12829365c6fdcaa9979409e5e8a5b0128d4cf63a"
           },
-          "summary": "Reviewed `tests/setters_tests.json`, which is a WPT-derived JSON corpus of URL setter test vectors for `protocol`, `username`, `password`, `host`, and `hostname`. I found no concrete malicious or supply-chain indicators in the target file: there are no install hooks, network/exfiltration logic, credential harvesting, dynamic code loading, obfuscation, or persistence behavior present.",
+          "summary": "`tests/setters_tests.json` is a static Web Platform Tests fixture of URL setter cases covering protocol, username, password, host, hostname, port, pathname, search, hash, and href behavior. I checked it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 31180,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061635689,
+            "finished_at_unix_ms": 1784061666869,
+            "total_token_usage": {
+              "input_tokens": 166577,
+              "cached_input_tokens": 147456,
+              "output_tokens": 937,
+              "reasoning_output_tokens": 198,
+              "total_tokens": 167514
+            },
+            "last_token_usage": {
+              "input_tokens": 166577,
+              "cached_input_tokens": 147456,
+              "output_tokens": 937,
+              "reasoning_output_tokens": 198,
+              "total_tokens": 167514
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_57c4e18e0723499f9853471858297b84",
+      "id": "rev_4cc5b34095184e17b79b8e73da9e1524",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -423,22 +611,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783178114",
+      "created_at": "1784053592",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/expected_failures.txt`, which is a plain ASCII fixture listing URL/file-path parsing cases and expected failures for the URL crate. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.\nReviewed `README.md`, which is a short project overview for the Rust `url` library plus documentation and dependency notes. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the file.\nReviewed `.cargo_vcs_info.json`, which contains only a git SHA-1 and the package path in VCS. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this file.",
       "files": [
         {
-          "file_path": "tests/expected_failures.txt",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "565aa6811b8b2e2ecbf546430098656e77409e735e293a98555a52088772c6eb"
+            "value": "f93a6f0d290c1d5ef212867a396da58cea742321debbb9465a47b0523af542d6"
           },
-          "summary": "Reviewed `tests/expected_failures.txt`, which is a plain ASCII fixture listing URL/file-path parsing cases and expected failures for the URL crate. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.",
+          "summary": "Reviewed .cargo_vcs_info.json, which only records the source git SHA-1 and the path_in_vcs for the `url` package metadata. No concrete malicious or supply-chain indicators were present in this file, and it contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13188,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053526063,
+            "finished_at_unix_ms": 1784053539252,
+            "total_token_usage": {
+              "input_tokens": 24125,
+              "cached_input_tokens": 21248,
+              "output_tokens": 413,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 24538
+            },
+            "last_token_usage": {
+              "input_tokens": 24125,
+              "cached_input_tokens": 21248,
+              "output_tokens": 413,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 24538
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "540e425e017aa16ce66dc25f06601b4d17f5986e58168b0aff1c1edc80a2c590"
+          },
+          "summary": "Reviewed the normalized Cargo manifest for the `url` crate v2.5.8. It only declares package metadata, feature flags, dependencies, tests, and docs settings; I found no install hooks, build scripts, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14676,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053539253,
+            "finished_at_unix_ms": 1784053553929,
+            "total_token_usage": {
+              "input_tokens": 24706,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 25146
+            },
+            "last_token_usage": {
+              "input_tokens": 24706,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 25146
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -448,28 +687,68 @@
             "algorithm": "blake3",
             "value": "323a28f410b0c96a93be4839c8e384f81d2f23baacf8aa4a2fbe557b7bada706"
           },
-          "summary": "Reviewed `README.md`, which is a short project overview for the Rust `url` library plus documentation and dependency notes. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the file.",
+          "summary": "Reviewed README.md as a package description and documentation file. It only contains project badges, usage links, and a note about Unicode back-end options; I found no concrete indicators of install hooks, network exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16024,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053553930,
+            "finished_at_unix_ms": 1784053569955,
+            "total_token_usage": {
+              "input_tokens": 37622,
+              "cached_input_tokens": 33408,
+              "output_tokens": 559,
+              "reasoning_output_tokens": 264,
+              "total_tokens": 38181
+            },
+            "last_token_usage": {
+              "input_tokens": 37622,
+              "cached_input_tokens": 33408,
+              "output_tokens": 559,
+              "reasoning_output_tokens": 264,
+              "total_tokens": 38181
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/host.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "f93a6f0d290c1d5ef212867a396da58cea742321debbb9465a47b0523af542d6"
+            "value": "61af1193fdde7596f0ca43c4b6b751e28d88f4e835227b17782f4002a5ebf0f9"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which contains only a git SHA-1 and the package path in VCS. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this file.",
+          "summary": "Reviewed `src/host.rs`, which implements URL host parsing/serialization for domains, IPv4, and IPv6, including percent-decoding and IDNA conversion for normal hosts and percent-encoding for opaque hosts. I checked for install-time execution, subprocess spawning, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22850,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053569956,
+            "finished_at_unix_ms": 1784053592806,
+            "total_token_usage": {
+              "input_tokens": 64535,
+              "cached_input_tokens": 57856,
+              "output_tokens": 897,
+              "reasoning_output_tokens": 394,
+              "total_tokens": 65432
+            },
+            "last_token_usage": {
+              "input_tokens": 64535,
+              "cached_input_tokens": 57856,
+              "output_tokens": 897,
+              "reasoning_output_tokens": 394,
+              "total_tokens": 65432
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_77ce2c8ce33d4115966db7c9fa235c24",
+      "id": "rev_7b0e4af5bdba4bd0bfed4234da0e79c3",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -477,29 +756,48 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783177853",
+      "created_at": "1784063816",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/urltestdata.json`, a static URL parser test corpus sourced from WPT. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, subprocess launches, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior because the content is data-only test fixtures.",
       "files": [
         {
-          "file_path": "tests/urltestdata.json",
+          "file_path": "tests/wpt.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "06dcea480769d66dad3e2bf084056e7fce57256d71df8b8511ab55c04684fa88"
+            "value": "190de10786533701b086372ea3e7bba34b37039826b6e5bfb76aff5a193d4937"
           },
-          "summary": "Reviewed `tests/urltestdata.json`, a static URL parser test corpus sourced from WPT. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, subprocess launches, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior because the content is data-only test fixtures.",
+          "summary": "`tests/wpt.rs` is a data-driven test harness that loads bundled WPT URL fixtures, parses them with `url::Url`, and checks parsing/serialization and setter behavior. I checked for install hooks, network or exfiltration calls, credential/secret access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15873,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063800611,
+            "finished_at_unix_ms": 1784063816485,
+            "total_token_usage": {
+              "input_tokens": 41497,
+              "cached_input_tokens": 36992,
+              "output_tokens": 598,
+              "reasoning_output_tokens": 313,
+              "total_tokens": 42095
+            },
+            "last_token_usage": {
+              "input_tokens": 41497,
+              "cached_input_tokens": 36992,
+              "output_tokens": 598,
+              "reasoning_output_tokens": 313,
+              "total_tokens": 42095
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_7a5ae1ab36ea4552934ab105c2e5df4c",
+      "id": "rev_7de3bd11d02944b9ac61bf8c0058b946",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -507,12 +805,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783177918",
+      "created_at": "1784059188",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/parser.rs`, which implements the URL parsing state machine, input trimming, percent-encoding, and syntax-violation reporting. I found no concrete indicators of supply-chain compromise in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.",
       "files": [
         {
           "file_path": "src/parser.rs",
@@ -520,16 +817,36 @@
             "algorithm": "blake3",
             "value": "3f5d8e9f08f45c03387e28d2f4b22617b32855336eb7a188f0fd9fa72e74a2bf"
           },
-          "summary": "Reviewed `src/parser.rs`, which implements the URL parsing state machine, input trimming, percent-encoding, and syntax-violation reporting. I found no concrete indicators of supply-chain compromise in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.",
+          "summary": "Reviewed the URL parsing state machine in `src/parser.rs`, including scheme/host/path/query/fragment handling, percent-encoding, and the optional syntax-violation callback path. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration logic, dynamic code loading, obfuscation/packing, secret access, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 28925,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059159656,
+            "finished_at_unix_ms": 1784059188581,
+            "total_token_usage": {
+              "input_tokens": 132171,
+              "cached_input_tokens": 107264,
+              "output_tokens": 1000,
+              "reasoning_output_tokens": 378,
+              "total_tokens": 133171
+            },
+            "last_token_usage": {
+              "input_tokens": 132171,
+              "cached_input_tokens": 107264,
+              "output_tokens": 1000,
+              "reasoning_output_tokens": 378,
+              "total_tokens": 133171
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_d9f820fd9bd64608887485eee260f21f",
+      "id": "rev_a63da7426a6d441f958b81ed048129a9",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -537,22 +854,90 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783177952",
+      "created_at": "1784055842",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/unit.rs`, which is a unit-test module for URL parsing, serialization, path handling, and syntax-violation reporting. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
-          "file_path": "tests/unit.rs",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "99c71ecc22e6c5a305ff03cac12ba8a40471a671abf67054779936227831acc6"
+            "value": "7078a2e55ed2ae2782b2e6a370603bc308ec8e8cdf09d44219e80c777268058c"
           },
-          "summary": "Reviewed `tests/unit.rs`, which is a unit-test module for URL parsing, serialization, path handling, and syntax-violation reporting. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed src/lib.rs, the main URL parsing and mutation implementation for the crate, including parsing, path/query/host setters, file-path conversions, Serde support, and the optional socket_addrs helper. I found no concrete indicators of install-time hooks, hidden subprocesses, credential harvesting, covert network exfiltration, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 39836,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055802714,
+            "finished_at_unix_ms": 1784055842551,
+            "total_token_usage": {
+              "input_tokens": 281464,
+              "cached_input_tokens": 244992,
+              "output_tokens": 1777,
+              "reasoning_output_tokens": 758,
+              "total_tokens": 283241
+            },
+            "last_token_usage": {
+              "input_tokens": 281464,
+              "cached_input_tokens": 244992,
+              "output_tokens": 1777,
+              "reasoning_output_tokens": 758,
+              "total_tokens": 283241
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_d8f1c15da3f1403380a06cf54874cf9b",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784057648",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/origin.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b031984f55d6435289a4b28fa615a624932235ee56bb150fabdf34593ac252df"
+          },
+          "summary": "Reviewed `src/origin.rs`, which implements URL origin classification and ASCII/unicode serialization for tuple and opaque origins. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10146,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057637870,
+            "finished_at_unix_ms": 1784057648017,
+            "total_token_usage": {
+              "input_tokens": 24956,
+              "cached_input_tokens": 21248,
+              "output_tokens": 376,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 25332
+            },
+            "last_token_usage": {
+              "input_tokens": 24956,
+              "cached_input_tokens": 21248,
+              "output_tokens": 376,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 25332
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -568,7 +953,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590356",
       "thirdpass_version": "0.6.0",
@@ -698,84 +1083,6 @@
               "total_tokens": 21118
             }
           },
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_f88a4169beb14ce58460d2665b546173",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783178072",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/quirks.rs`, which implements URL component getters/setters and internal offset helpers for parsing and serialization behavior. I found no concrete supply-chain or malicious indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed `src/slicing.rs`, which implements `Url` slice/index support and a small digit-count helper plus unit tests. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed the generated `Cargo.toml` for the `url` crate and found a standard library manifest: it defines package metadata, normal feature flags, library/test targets, and ordinary dependencies only. I checked for install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\n`src/path_segments.rs` contains the `PathSegmentsMut` helper for editing URL path segments, with methods to clear, pop, and append encoded segments and a `Drop` restore path for temporary mutation. I reviewed it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/origin.rs`, which implements URL origin calculation and serialization for tuple and opaque origins, including blob URL recursion and IDNA unicode serialization. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, secret access, dynamic code loading, obfuscation, persistence behavior, or hidden subprocess execution.",
-      "files": [
-        {
-          "file_path": "src/quirks.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "81537585bebf2098eb696e28682a3fdcfcace65ddbce015c43be93d97a69900c"
-          },
-          "summary": "Reviewed `src/quirks.rs`, which implements URL component getters/setters and internal offset helpers for parsing and serialization behavior. I found no concrete supply-chain or malicious indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/slicing.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d2f05b970d2fda3dd0b9eb6cd77c3a862df2217fc9b9adb211ca4ca0484cd7d3"
-          },
-          "summary": "Reviewed `src/slicing.rs`, which implements `Url` slice/index support and a small digit-count helper plus unit tests. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "540e425e017aa16ce66dc25f06601b4d17f5986e58168b0aff1c1edc80a2c590"
-          },
-          "summary": "Reviewed the generated `Cargo.toml` for the `url` crate and found a standard library manifest: it defines package metadata, normal feature flags, library/test targets, and ordinary dependencies only. I checked for install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/path_segments.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "87c84d5a250d63479037b327f8aa3a078aedf3396dc1d5d0e0f6210ad321c14c"
-          },
-          "summary": "`src/path_segments.rs` contains the `PathSegmentsMut` helper for editing URL path segments, with methods to clear, pop, and append encoded segments and a `Drop` restore path for temporary mutation. I reviewed it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/origin.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b031984f55d6435289a4b28fa615a624932235ee56bb150fabdf34593ac252df"
-          },
-          "summary": "Reviewed `src/origin.rs`, which implements URL origin calculation and serialization for tuple and opaque origins, including blob URL recursion and IDNA unicode serialization. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, secret access, dynamic code loading, obfuscation, persistence behavior, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

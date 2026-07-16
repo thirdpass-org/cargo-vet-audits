@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589454",
+  "latest_reviewed_at": "1784058657",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -304,50 +310,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 5,
-      "file_record_count": 19,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 6,
+      "file_record_count": 27,
+      "file_record_count_with_metrics": 27
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 22,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 19,
-    "duration_ms_total": 54362,
-    "attempts_total": 3,
+    "reviewed_file_records": 27,
+    "file_records_with_metrics": 27,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 438297,
+    "attempts_total": 27,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 27,
+    "last_token_usage_records": 27,
     "total_token_usage": {
-      "input_tokens": 98149,
-      "cached_input_tokens": 69120,
-      "output_tokens": 1525,
-      "reasoning_output_tokens": 758,
-      "total_tokens": 99674
+      "input_tokens": 856799,
+      "cached_input_tokens": 723712,
+      "output_tokens": 13234,
+      "reasoning_output_tokens": 6648,
+      "total_tokens": 870033
     },
     "last_token_usage": {
-      "input_tokens": 98149,
-      "cached_input_tokens": 69120,
-      "output_tokens": 1525,
-      "reasoning_output_tokens": 758,
-      "total_tokens": 99674
+      "input_tokens": 856799,
+      "cached_input_tokens": 723712,
+      "output_tokens": 13234,
+      "reasoning_output_tokens": 6648,
+      "total_tokens": 870033
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_39e7f1b9ac8b4ccfa54bcac2663c77fc",
+      "id": "rev_2675e14ea93740d9b6b71cf0e3dd7fd9",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -355,88 +353,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782840408",
+      "created_at": "1784052370",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/macros.rs`, which only defines the `tinystr!` macro for compile-time construction of `TinyAsciiStr` values and includes a small unit test. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `src/error.rs`, which only defines a `ParseError` enum and its `core::error::Error` implementation plus `displaydoc`-based messages for length, null-byte, and non-ASCII parse failures. I found no concrete signs of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed this provenance-only `.cargo_vcs_info.json` file, which contains only the upstream git SHA1 and `path_in_vcs` metadata. No concrete malicious or supply-chain indicators were found in the target file, and it does not contain install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
-        {
-          "file_path": "src/macros.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7851f4f8eb5e4dc4bc7a65c24c2ba4e0ac5d1d60cb1fc491d0564a5fcb8fe439"
-          },
-          "summary": "Reviewed `src/macros.rs`, which only defines the `tinystr!` macro for compile-time construction of `TinyAsciiStr` values and includes a small unit test. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/error.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e53518c4c0b302254345cf35217f0920b3c5e23ba5c3ea5f8f82fcbbfcf4346a"
-          },
-          "summary": "Reviewed `src/error.rs`, which only defines a `ParseError` enum and its `core::error::Error` implementation plus `displaydoc`-based messages for length, null-byte, and non-ASCII parse failures. I found no concrete signs of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "ad9fae8a614a8f32ece403729767e9eb0ba5894b10d344bd9a278892f0790986"
           },
-          "summary": "Reviewed this provenance-only `.cargo_vcs_info.json` file, which contains only the upstream git SHA1 and `path_in_vcs` metadata. No concrete malicious or supply-chain indicators were found in the target file, and it does not contain install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the source git SHA1 and the package path in VCS. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other payload indicators, and found none.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_77c1e8b480e0485fb10fe58084c3cb11",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782840353",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is the crate entry point exporting `TinyAsciiStr`, error types, compatibility aliases, and a few feature-gated modules. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/serde.rs`, which only defines round-trip tests for `TinyAsciiStr` across `serde_json`, `bincode`, and `postcard`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed README.md, which is a standard crate overview for `tinystr`/`TinyAsciiStr` with usage examples and project links. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence cues, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `benches/serde.rs`, which is a Criterion benchmark that serializes and deserializes `TinyAsciiStr` values with `postcard` and measures decode performance. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `benches/read.rs`, which is a small Criterion benchmark that parses `TinyAsciiStr` values from local inputs and repeatedly black-boxes their string views. I checked for install-time execution, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence, and hidden subprocess use; none were present in this file.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "da2bf1528c1a1a0a8db90e21adb8483b21359475277b41d7cb69928210be5afc"
+          "agent_run_metrics": {
+            "duration_ms": 30369,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052278910,
+            "finished_at_unix_ms": 1784052309279,
+            "total_token_usage": {
+              "input_tokens": 24114,
+              "cached_input_tokens": 21248,
+              "output_tokens": 311,
+              "reasoning_output_tokens": 118,
+              "total_tokens": 24425
+            },
+            "last_token_usage": {
+              "input_tokens": 24114,
+              "cached_input_tokens": 21248,
+              "output_tokens": 311,
+              "reasoning_output_tokens": 118,
+              "total_tokens": 24425
+            }
           },
-          "summary": "Reviewed `src/lib.rs`, which is the crate entry point exporting `TinyAsciiStr`, error types, compatibility aliases, and a few feature-gated modules. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/serde.rs",
+          "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "e2eefd4e5892b55b22e57512a5ddd73dff5a89cc9e3bd5170d975132b2c40b4f"
+            "value": "d66ece1140064fcd2bf35c0c387d00a532f3dbcd416737c46be9a539855af77c"
           },
-          "summary": "Reviewed `tests/serde.rs`, which only defines round-trip tests for `TinyAsciiStr` across `serde_json`, `bincode`, and `postcard`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed the normalized Cargo.toml for `tinystr` 0.8.3. It contains ordinary package metadata, feature flags, dependencies, tests, benches, and lint settings, and I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16365,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052309280,
+            "finished_at_unix_ms": 1784052325645,
+            "total_token_usage": {
+              "input_tokens": 25253,
+              "cached_input_tokens": 21248,
+              "output_tokens": 665,
+              "reasoning_output_tokens": 463,
+              "total_tokens": 25918
+            },
+            "last_token_usage": {
+              "input_tokens": 25253,
+              "cached_input_tokens": 21248,
+              "output_tokens": 665,
+              "reasoning_output_tokens": 463,
+              "total_tokens": 25918
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -446,21 +429,496 @@
             "algorithm": "blake3",
             "value": "c386a516d9e4eab46351df30944a3b1a01be45444d9e6b0a93af5384a85aaf11"
           },
-          "summary": "Reviewed README.md, which is a standard crate overview for `tinystr`/`TinyAsciiStr` with usage examples and project links. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence cues, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed README.md, which is a plain crate description and usage guide for `tinystr`/`TinyAsciiStr` with examples and performance notes. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators; none are present in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16072,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052325646,
+            "finished_at_unix_ms": 1784052341718,
+            "total_token_usage": {
+              "input_tokens": 24551,
+              "cached_input_tokens": 21248,
+              "output_tokens": 343,
+              "reasoning_output_tokens": 153,
+              "total_tokens": 24894
+            },
+            "last_token_usage": {
+              "input_tokens": 24551,
+              "cached_input_tokens": 21248,
+              "output_tokens": 343,
+              "reasoning_output_tokens": 153,
+              "total_tokens": 24894
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "benches/serde.rs",
+          "file_path": "benches/common/mod.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "e942f6d7525495b9e9f696cb7d3352fcb611574b7aca712823f5dbd4f1511703"
+            "value": "8592cd3e3f3f2bda71490a3ca9faafb8d29464d0529d6eb5ee501a94f2991a16"
           },
-          "summary": "Reviewed `benches/serde.rs`, which is a Criterion benchmark that serializes and deserializes `TinyAsciiStr` values with `postcard` and measures decode performance. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `benches/common/mod.rs`, which is a small benchmark helper defining static string inputs and a `bench_block!` macro for Criterion-style benchmarks. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17957,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052341718,
+            "finished_at_unix_ms": 1784052359676,
+            "total_token_usage": {
+              "input_tokens": 38352,
+              "cached_input_tokens": 35968,
+              "output_tokens": 425,
+              "reasoning_output_tokens": 126,
+              "total_tokens": 38777
+            },
+            "last_token_usage": {
+              "input_tokens": 38352,
+              "cached_input_tokens": 35968,
+              "output_tokens": 425,
+              "reasoning_output_tokens": 126,
+              "total_tokens": 38777
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/construct.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2e2de3ce282654a4e4b20d1e3021fe4296de654597ea4aeecdf4a9c09a2ba305"
+          },
+          "summary": "Reviewed this Criterion benchmark for TinyAsciiStr construction from strings and UTF-8 bytes. It contains only local benchmark loops and parsing/conversion calls; I found no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10681,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052359677,
+            "finished_at_unix_ms": 1784052370359,
+            "total_token_usage": {
+              "input_tokens": 24835,
+              "cached_input_tokens": 21248,
+              "output_tokens": 344,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 25179
+            },
+            "last_token_usage": {
+              "input_tokens": 24835,
+              "cached_input_tokens": 21248,
+              "output_tokens": 344,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 25179
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_2d2e1055362546b69a6e87fc4ff97ce3",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056961",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/asciibyte.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ab7ab2e88027e063e0403c8b73ef90bae1d1cd91a591086acd941c3cce2c453a"
+          },
+          "summary": "Reviewed `src/asciibyte.rs`, which defines a `repr(u8)` `AsciiByte` enum plus small ASCII conversion helpers. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14530,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056889156,
+            "finished_at_unix_ms": 1784056903686,
+            "total_token_usage": {
+              "input_tokens": 41195,
+              "cached_input_tokens": 34432,
+              "output_tokens": 534,
+              "reasoning_output_tokens": 228,
+              "total_tokens": 41729
+            },
+            "last_token_usage": {
+              "input_tokens": 41195,
+              "cached_input_tokens": 34432,
+              "output_tokens": 534,
+              "reasoning_output_tokens": 228,
+              "total_tokens": 41729
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/databake.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "39b8e7dfbb07ed1ffd29733e6628ef98ea858163816044401bc95d97b84a1995"
+          },
+          "summary": "Reviewed `src/databake.rs`, which implements `databake::Bake` and `BakeSize` for `TinyAsciiStr` and `UnvalidatedTinyAsciiStr` plus a couple of tests. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13769,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056903687,
+            "finished_at_unix_ms": 1784056917457,
+            "total_token_usage": {
+              "input_tokens": 24549,
+              "cached_input_tokens": 21248,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 179,
+              "total_tokens": 24944
+            },
+            "last_token_usage": {
+              "input_tokens": 24549,
+              "cached_input_tokens": 21248,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 179,
+              "total_tokens": 24944
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/error.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e53518c4c0b302254345cf35217f0920b3c5e23ba5c3ea5f8f82fcbbfcf4346a"
+          },
+          "summary": "Reviewed `src/error.rs`, which only defines a `ParseError` enum and its `core::error::Error` implementation for length, null-byte, and non-ASCII parse failures. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10354,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056917457,
+            "finished_at_unix_ms": 1784056927812,
+            "total_token_usage": {
+              "input_tokens": 24201,
+              "cached_input_tokens": 23296,
+              "output_tokens": 330,
+              "reasoning_output_tokens": 131,
+              "total_tokens": 24531
+            },
+            "last_token_usage": {
+              "input_tokens": 24201,
+              "cached_input_tokens": 23296,
+              "output_tokens": 330,
+              "reasoning_output_tokens": 131,
+              "total_tokens": 24531
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/int_ops.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9563a8b9913e510dcb853bc3ac76ecce8f19bd658e404edeea4f50eabac2f3ae"
+          },
+          "summary": "Reviewed `src/int_ops.rs`, which contains inline `const fn` helpers for 4-byte and 8-byte aligned integer operations used to classify and transform ASCII bytes via bit masks. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19328,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056927813,
+            "finished_at_unix_ms": 1784056947141,
+            "total_token_usage": {
+              "input_tokens": 43476,
+              "cached_input_tokens": 30848,
+              "output_tokens": 639,
+              "reasoning_output_tokens": 342,
+              "total_tokens": 44115
+            },
+            "last_token_usage": {
+              "input_tokens": 43476,
+              "cached_input_tokens": 30848,
+              "output_tokens": 639,
+              "reasoning_output_tokens": 342,
+              "total_tokens": 44115
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "da2bf1528c1a1a0a8db90e21adb8483b21359475277b41d7cb69928210be5afc"
+          },
+          "summary": "Reviewed the crate root in `src/lib.rs`. It only sets `no_std`/lint attributes, declares internal modules, re-exports `TinyAsciiStr` and related aliases, and includes a small size test; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14670,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056947142,
+            "finished_at_unix_ms": 1784056961812,
+            "total_token_usage": {
+              "input_tokens": 24885,
+              "cached_input_tokens": 23296,
+              "output_tokens": 491,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 25376
+            },
+            "last_token_usage": {
+              "input_tokens": 24885,
+              "cached_input_tokens": 23296,
+              "output_tokens": 491,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 25376
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_79a1c9da0cd54c46b5bb2aee608c89d6",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058657",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/macros.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7851f4f8eb5e4dc4bc7a65c24c2ba4e0ac5d1d60cb1fc491d0564a5fcb8fe439"
+          },
+          "summary": "Reviewed `src/macros.rs`, which defines the `tinystr!` macro and a small test module. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11893,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058580508,
+            "finished_at_unix_ms": 1784058592401,
+            "total_token_usage": {
+              "input_tokens": 24331,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 244,
+              "total_tokens": 24771
+            },
+            "last_token_usage": {
+              "input_tokens": 24331,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 244,
+              "total_tokens": 24771
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/serde.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d002ef2db5e5ef812a31466d5805f1783b10a1d4ca06ac5f6b4bedce740e4d78"
+          },
+          "summary": "Reviewed `src/serde.rs`, which only implements `Serialize`/`Deserialize` for `TinyAsciiStr` by converting to human-readable strings or fixed-size byte tuples. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17479,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058592402,
+            "finished_at_unix_ms": 1784058609881,
+            "total_token_usage": {
+              "input_tokens": 39230,
+              "cached_input_tokens": 34432,
+              "output_tokens": 670,
+              "reasoning_output_tokens": 388,
+              "total_tokens": 39900
+            },
+            "last_token_usage": {
+              "input_tokens": 39230,
+              "cached_input_tokens": 34432,
+              "output_tokens": 670,
+              "reasoning_output_tokens": 388,
+              "total_tokens": 39900
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/ule.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4b96911034be880bf82c3f19686c8deec2abda2f3cef2cab46bba04840e24b4f"
+          },
+          "summary": "Reviewed `src/ule.rs`, which contains `ULE`/`AsULE` and `ZeroMapKV` implementations plus a small unit test for `TinyAsciiStr` and `UnvalidatedTinyAsciiStr`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19017,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058609882,
+            "finished_at_unix_ms": 1784058628900,
+            "total_token_usage": {
+              "input_tokens": 25225,
+              "cached_input_tokens": 21248,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 241,
+              "total_tokens": 25682
+            },
+            "last_token_usage": {
+              "input_tokens": 25225,
+              "cached_input_tokens": 21248,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 241,
+              "total_tokens": 25682
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/unvalidated.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c7ffc43b1ca41804005aef11b9f651f4649481ea6ffe507720477a6c65eac938"
+          },
+          "summary": "Reviewed `src/unvalidated.rs`, which defines the `UnvalidatedTinyAsciiStr` wrapper plus conversions and optional serde serialization/deserialization for fixed-size byte arrays. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14438,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058628900,
+            "finished_at_unix_ms": 1784058643339,
+            "total_token_usage": {
+              "input_tokens": 25138,
+              "cached_input_tokens": 23296,
+              "output_tokens": 525,
+              "reasoning_output_tokens": 328,
+              "total_tokens": 25663
+            },
+            "last_token_usage": {
+              "input_tokens": 25138,
+              "cached_input_tokens": 23296,
+              "output_tokens": 525,
+              "reasoning_output_tokens": 328,
+              "total_tokens": 25663
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/serde.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e2eefd4e5892b55b22e57512a5ddd73dff5a89cc9e3bd5170d975132b2c40b4f"
+          },
+          "summary": "Reviewed `tests/serde.rs`, which contains deterministic round-trip tests for `TinyAsciiStr` through `serde_json`, `bincode`, and `postcard`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14107,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058643339,
+            "finished_at_unix_ms": 1784058657447,
+            "total_token_usage": {
+              "input_tokens": 24506,
+              "cached_input_tokens": 21248,
+              "output_tokens": 394,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 24900
+            },
+            "last_token_usage": {
+              "input_tokens": 24506,
+              "cached_input_tokens": 21248,
+              "output_tokens": 394,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 24900
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_7dc82bc272b74ac7a8e766b5ac5ddc5d",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054936",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "benches/overview.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9278a7365a4f826be0f63488aeedebb438f4b7fb10dd648d304809017e5d989d"
+          },
+          "summary": "Reviewed `benches/overview.rs`, which is a Criterion benchmark harness for `tinystr::TinyAsciiStr` construction, parsing, reading, and comparison across UTF-8 and UTF-16 inputs. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11139,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054867981,
+            "finished_at_unix_ms": 1784054879120,
+            "total_token_usage": {
+              "input_tokens": 25233,
+              "cached_input_tokens": 21248,
+              "output_tokens": 373,
+              "reasoning_output_tokens": 168,
+              "total_tokens": 25606
+            },
+            "last_token_usage": {
+              "input_tokens": 25233,
+              "cached_input_tokens": 21248,
+              "output_tokens": 373,
+              "reasoning_output_tokens": 168,
+              "total_tokens": 25606
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -470,9 +928,270 @@
             "algorithm": "blake3",
             "value": "67a9d88a7d813ec20991fd442ba602107dc3cf87bc0fcf8857a65b1b749cdc96"
           },
-          "summary": "Reviewed `benches/read.rs`, which is a small Criterion benchmark that parses `TinyAsciiStr` values from local inputs and repeatedly black-boxes their string views. I checked for install-time execution, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence, and hidden subprocess use; none were present in this file.",
+          "summary": "`benches/read.rs` is a Criterion benchmark for the `TinyAsciiStr` read path: it parses benchmark inputs, black-boxes borrowed string views, and registers the `read` bench. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11679,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054879121,
+            "finished_at_unix_ms": 1784054890801,
+            "total_token_usage": {
+              "input_tokens": 24385,
+              "cached_input_tokens": 21248,
+              "output_tokens": 433,
+              "reasoning_output_tokens": 231,
+              "total_tokens": 24818
+            },
+            "last_token_usage": {
+              "input_tokens": 24385,
+              "cached_input_tokens": 21248,
+              "output_tokens": 433,
+              "reasoning_output_tokens": 231,
+              "total_tokens": 24818
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/serde.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e942f6d7525495b9e9f696cb7d3352fcb611574b7aca712823f5dbd4f1511703"
+          },
+          "summary": "Reviewed `benches/serde.rs`, which is a Criterion benchmark that serializes and deserializes `tinystr` values with `postcard` for performance measurement. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20629,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054890802,
+            "finished_at_unix_ms": 1784054911432,
+            "total_token_usage": {
+              "input_tokens": 37330,
+              "cached_input_tokens": 33408,
+              "output_tokens": 577,
+              "reasoning_output_tokens": 293,
+              "total_tokens": 37907
+            },
+            "last_token_usage": {
+              "input_tokens": 37330,
+              "cached_input_tokens": 33408,
+              "output_tokens": 577,
+              "reasoning_output_tokens": 293,
+              "total_tokens": 37907
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/ascii.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5eebd5921890f810df434cf6a792ec70784d762b0de839998e14b9b8eec4d40a"
+          },
+          "summary": "`src/ascii.rs` defines the `TinyAsciiStr` ASCII-string type plus parsing, lossy conversion, case-checking, and case-conversion helpers, with unit tests covering those behaviors. I checked the file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24686,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054911432,
+            "finished_at_unix_ms": 1784054936118,
+            "total_token_usage": {
+              "input_tokens": 87276,
+              "cached_input_tokens": 73088,
+              "output_tokens": 809,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 88085
+            },
+            "last_token_usage": {
+              "input_tokens": 87276,
+              "cached_input_tokens": 73088,
+              "output_tokens": 809,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 88085
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_8492d62ae9ec456bbeec8399ce69fad4",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046339",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ad9fae8a614a8f32ece403729767e9eb0ba5894b10d344bd9a278892f0790986"
+          },
+          "summary": "Reviewed the `.cargo_vcs_info.json` provenance metadata for the crate source mapping (`git` SHA and `path_in_vcs`). It contains only static VCS information and I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14862,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046264331,
+            "finished_at_unix_ms": 1784046279194,
+            "total_token_usage": {
+              "input_tokens": 36559,
+              "cached_input_tokens": 33408,
+              "output_tokens": 459,
+              "reasoning_output_tokens": 174,
+              "total_tokens": 37018
+            },
+            "last_token_usage": {
+              "input_tokens": 36559,
+              "cached_input_tokens": 33408,
+              "output_tokens": 459,
+              "reasoning_output_tokens": 174,
+              "total_tokens": 37018
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d66ece1140064fcd2bf35c0c387d00a532f3dbcd416737c46be9a539855af77c"
+          },
+          "summary": "Reviewed the normalized Cargo.toml for package metadata, features, dependencies, and any build/install hooks. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence; the file only declares crate metadata, feature flags, dependencies, and lint settings.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16423,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046279194,
+            "finished_at_unix_ms": 1784046295618,
+            "total_token_usage": {
+              "input_tokens": 25229,
+              "cached_input_tokens": 21248,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 25722
+            },
+            "last_token_usage": {
+              "input_tokens": 25229,
+              "cached_input_tokens": 21248,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 25722
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c386a516d9e4eab46351df30944a3b1a01be45444d9e6b0a93af5384a85aaf11"
+          },
+          "summary": "Reviewed README.md, which documents the tinystr crate’s TinyAsciiStr API, examples, and performance-oriented string handling. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain signals in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12497,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046295618,
+            "finished_at_unix_ms": 1784046308116,
+            "total_token_usage": {
+              "input_tokens": 24570,
+              "cached_input_tokens": 19200,
+              "output_tokens": 364,
+              "reasoning_output_tokens": 176,
+              "total_tokens": 24934
+            },
+            "last_token_usage": {
+              "input_tokens": 24570,
+              "cached_input_tokens": 19200,
+              "output_tokens": 364,
+              "reasoning_output_tokens": 176,
+              "total_tokens": 24934
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/common/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8592cd3e3f3f2bda71490a3ca9faafb8d29464d0529d6eb5ee501a94f2991a16"
+          },
+          "summary": "Reviewed `benches/common/mod.rs`, which only defines static benchmark string fixtures and a `bench_block!` macro for grouping Criterion benchmark runs. I checked for install hooks, subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18005,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046308116,
+            "finished_at_unix_ms": 1784046326122,
+            "total_token_usage": {
+              "input_tokens": 39555,
+              "cached_input_tokens": 34944,
+              "output_tokens": 761,
+              "reasoning_output_tokens": 365,
+              "total_tokens": 40316
+            },
+            "last_token_usage": {
+              "input_tokens": 39555,
+              "cached_input_tokens": 34944,
+              "output_tokens": 761,
+              "reasoning_output_tokens": 365,
+              "total_tokens": 40316
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/construct.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2e2de3ce282654a4e4b20d1e3021fe4296de654597ea4aeecdf4a9c09a2ba305"
+          },
+          "summary": "`benches/construct.rs` is a Criterion benchmark that measures `TinyAsciiStr` construction from parsed strings and UTF-8 byte slices. I checked it for install-time execution, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12986,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046326123,
+            "finished_at_unix_ms": 1784046339109,
+            "total_token_usage": {
+              "input_tokens": 24672,
+              "cached_input_tokens": 21248,
+              "output_tokens": 477,
+              "reasoning_output_tokens": 281,
+              "total_tokens": 25149
+            },
+            "last_token_usage": {
+              "input_tokens": 24672,
+              "cached_input_tokens": 21248,
+              "output_tokens": 477,
+              "reasoning_output_tokens": 281,
+              "total_tokens": 25149
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -488,7 +1207,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589454",
       "thirdpass_version": "0.6.0",
@@ -586,192 +1305,6 @@
               "total_tokens": 21066
             }
           },
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_ea52b89bc8d14e2dafd998048b2e5a1b",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782840105",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/ascii.rs` is a normal Rust implementation of `TinyAsciiStr` ASCII parsing, validation, case-conversion, and formatting helpers, plus tests. I checked this file for install hooks, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation/packing, persistence tampering, and other hidden execution signals, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "src/ascii.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5eebd5921890f810df434cf6a792ec70784d762b0de839998e14b9b8eec4d40a"
-          },
-          "summary": "`src/ascii.rs` is a normal Rust implementation of `TinyAsciiStr` ASCII parsing, validation, case-conversion, and formatting helpers, plus tests. I checked this file for install hooks, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation/packing, persistence tampering, and other hidden execution signals, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_f52b9ef7a3a14633a97a0a7c50659b44",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782840199",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/int_ops.rs`, which contains only const integer-based ASCII classification and case-conversion helpers for 4-byte and 8-byte aligned values. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/packing, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.\nReviewed the Cargo manifest for `tinystr` 0.8.3, including package metadata, features, dependencies, and any install-time or build-time hooks. I found no concrete malicious or supply-chain indicators in this file: there are no build scripts or post-install hooks, no network or exfiltration logic, no credential access, no dynamic code loading, no obfuscation, and no persistence/tampering behavior declared here.\nReviewed `src/asciibyte.rs`, which is a small ASCII-byte utility defining an `AsciiByte` enum and helper conversions between digits and ASCII case variants. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic; the only notable behavior is local `unsafe` casting/transmute used for in-memory byte reinterpretation.\nReviewed `benches/overview.rs`, a Criterion benchmark that exercises `TinyAsciiStr` construction, parsing, reading, and comparison over in-memory string samples. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network or exfiltration calls, secret or credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/unvalidated.rs`, which defines `UnvalidatedTinyAsciiStr` and its conversions/serde support for byte arrays and ASCII strings. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-      "files": [
-        {
-          "file_path": "src/int_ops.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9563a8b9913e510dcb853bc3ac76ecce8f19bd658e404edeea4f50eabac2f3ae"
-          },
-          "summary": "Reviewed `src/int_ops.rs`, which contains only const integer-based ASCII classification and case-conversion helpers for 4-byte and 8-byte aligned values. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/packing, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d66ece1140064fcd2bf35c0c387d00a532f3dbcd416737c46be9a539855af77c"
-          },
-          "summary": "Reviewed the Cargo manifest for `tinystr` 0.8.3, including package metadata, features, dependencies, and any install-time or build-time hooks. I found no concrete malicious or supply-chain indicators in this file: there are no build scripts or post-install hooks, no network or exfiltration logic, no credential access, no dynamic code loading, no obfuscation, and no persistence/tampering behavior declared here.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/asciibyte.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ab7ab2e88027e063e0403c8b73ef90bae1d1cd91a591086acd941c3cce2c453a"
-          },
-          "summary": "Reviewed `src/asciibyte.rs`, which is a small ASCII-byte utility defining an `AsciiByte` enum and helper conversions between digits and ASCII case variants. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic; the only notable behavior is local `unsafe` casting/transmute used for in-memory byte reinterpretation.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/overview.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9278a7365a4f826be0f63488aeedebb438f4b7fb10dd648d304809017e5d989d"
-          },
-          "summary": "Reviewed `benches/overview.rs`, a Criterion benchmark that exercises `TinyAsciiStr` construction, parsing, reading, and comparison over in-memory string samples. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network or exfiltration calls, secret or credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/unvalidated.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c7ffc43b1ca41804005aef11b9f651f4649481ea6ffe507720477a6c65eac938"
-          },
-          "summary": "Reviewed `src/unvalidated.rs`, which defines `UnvalidatedTinyAsciiStr` and its conversions/serde support for byte arrays and ASCII strings. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_f569aab086ca4a2da96b981a9bcbc7a7",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782840284",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/ule.rs`, which contains `zerovec` ULE/AsULE implementations and a small unit test for `TinyAsciiStr` and `UnvalidatedTinyAsciiStr`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, secret access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/serde.rs`, which only implements Serde serialization and deserialization for `TinyAsciiStr<N>` with human-readable string handling and non-human-readable tuple encoding. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/databake.rs`, which only implements `databake::Bake`/`BakeSize` for `TinyAsciiStr` and `UnvalidatedTinyAsciiStr` plus tests. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution; none are present in this file.\nI reviewed `benches/construct.rs`, which is a Criterion benchmark harness that parses and constructs `TinyAsciiStr` values from string and UTF-8 inputs. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `benches/common/mod.rs`, which only defines static benchmark input strings and a `bench_block!` macro for Criterion-style benchmarking of `TinyAsciiStr` sizes. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
-      "files": [
-        {
-          "file_path": "src/ule.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4b96911034be880bf82c3f19686c8deec2abda2f3cef2cab46bba04840e24b4f"
-          },
-          "summary": "Reviewed `src/ule.rs`, which contains `zerovec` ULE/AsULE implementations and a small unit test for `TinyAsciiStr` and `UnvalidatedTinyAsciiStr`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, secret access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/serde.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d002ef2db5e5ef812a31466d5805f1783b10a1d4ca06ac5f6b4bedce740e4d78"
-          },
-          "summary": "Reviewed `src/serde.rs`, which only implements Serde serialization and deserialization for `TinyAsciiStr<N>` with human-readable string handling and non-human-readable tuple encoding. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/databake.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "39b8e7dfbb07ed1ffd29733e6628ef98ea858163816044401bc95d97b84a1995"
-          },
-          "summary": "Reviewed `src/databake.rs`, which only implements `databake::Bake`/`BakeSize` for `TinyAsciiStr` and `UnvalidatedTinyAsciiStr` plus tests. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/construct.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2e2de3ce282654a4e4b20d1e3021fe4296de654597ea4aeecdf4a9c09a2ba305"
-          },
-          "summary": "I reviewed `benches/construct.rs`, which is a Criterion benchmark harness that parses and constructs `TinyAsciiStr` values from string and UTF-8 inputs. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/common/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8592cd3e3f3f2bda71490a3ca9faafb8d29464d0529d6eb5ee501a94f2991a16"
-          },
-          "summary": "Reviewed `benches/common/mod.rs`, which only defines static benchmark input strings and a `bench_block!` macro for Criterion-style benchmarking of `TinyAsciiStr` sizes. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

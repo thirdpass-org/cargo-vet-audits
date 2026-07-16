@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591536",
+  "latest_reviewed_at": "1784056564",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -235,44 +241,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 3,
-      "file_record_count": 10,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 2,
-      "file_record_count": 6,
-      "file_record_count_with_metrics": 6
+      "review_count": 6,
+      "file_record_count": 21,
+      "file_record_count_with_metrics": 21
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 16,
-    "file_records_with_metrics": 6,
-    "file_records_without_metrics": 10,
-    "duration_ms_total": 98215,
-    "attempts_total": 6,
+    "reviewed_file_records": 21,
+    "file_records_with_metrics": 21,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 344018,
+    "attempts_total": 21,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 6,
-    "last_token_usage_records": 6,
+    "total_token_usage_records": 21,
+    "last_token_usage_records": 21,
     "total_token_usage": {
-      "input_tokens": 166321,
-      "cached_input_tokens": 134528,
-      "output_tokens": 3442,
-      "reasoning_output_tokens": 1602,
-      "total_tokens": 169763
+      "input_tokens": 706626,
+      "cached_input_tokens": 590976,
+      "output_tokens": 11262,
+      "reasoning_output_tokens": 5664,
+      "total_tokens": 717888
     },
     "last_token_usage": {
-      "input_tokens": 166321,
-      "cached_input_tokens": 134528,
-      "output_tokens": 3442,
-      "reasoning_output_tokens": 1602,
-      "total_tokens": 169763
+      "input_tokens": 706626,
+      "cached_input_tokens": 590976,
+      "output_tokens": 11262,
+      "reasoning_output_tokens": 5664,
+      "total_tokens": 717888
     },
     "model_context_windows": []
   },
@@ -287,7 +285,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591536",
       "thirdpass_version": "0.6.0",
@@ -327,7 +325,7 @@
       ]
     },
     {
-      "id": "rev_6a59fbf72ed44dada93a4e87fce0b0fc",
+      "id": "rev_4985d502d22943258028e17b87b48331",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -335,12 +333,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782819008",
+      "created_at": "1784056564",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/v0.rs` is a Rust symbol demangler and parser for the v0 Rust mangling format, implementing recursive descent parsing, punycode/hex decoding, and pretty-printing of paths, types, and consts. I checked it for install hooks, subprocess spawning, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and crypto-mining behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
           "file_path": "src/v0.rs",
@@ -348,9 +345,528 @@
             "algorithm": "blake3",
             "value": "2c24ca316839035257e3deea8160e434987bbe90ec08337f91f58ab13a52dfbe"
           },
-          "summary": "`src/v0.rs` is a Rust symbol demangler and parser for the v0 Rust mangling format, implementing recursive descent parsing, punycode/hex decoding, and pretty-printing of paths, types, and consts. I checked it for install hooks, subprocess spawning, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and crypto-mining behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed src/v0.rs, which implements Rust v0 symbol demangling with parsing, punycode and hex decoding, recursion limits, and Display formatting. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 27747,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056536394,
+            "finished_at_unix_ms": 1784056564141,
+            "total_token_usage": {
+              "input_tokens": 126946,
+              "cached_input_tokens": 104192,
+              "output_tokens": 968,
+              "reasoning_output_tokens": 374,
+              "total_tokens": 127914
+            },
+            "last_token_usage": {
+              "input_tokens": 126946,
+              "cached_input_tokens": 104192,
+              "output_tokens": 968,
+              "reasoning_output_tokens": 374,
+              "total_tokens": 127914
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_4f339bf70fdd4af6aa240d3b3d099f17",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784051804",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3e36da724804ea68ef207d5e6da76d7f1cd21c6cfb53c52d73ee4bceca4407a7"
+          },
+          "summary": "The target file is a small Cargo VCS metadata JSON blob containing only the source git SHA and an empty `path_in_vcs` field. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11104,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051737747,
+            "finished_at_unix_ms": 1784051748852,
+            "total_token_usage": {
+              "input_tokens": 24124,
+              "cached_input_tokens": 21248,
+              "output_tokens": 334,
+              "reasoning_output_tokens": 133,
+              "total_tokens": 24458
+            },
+            "last_token_usage": {
+              "input_tokens": 24124,
+              "cached_input_tokens": 21248,
+              "output_tokens": 334,
+              "reasoning_output_tokens": 133,
+              "total_tokens": 24458
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/dependabot.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5e86faa011b6d47e660202df355016cec37157402601a826856f9f5a817595b0"
+          },
+          "summary": "Reviewed the Dependabot configuration in `.github/dependabot.yml`, which only sets a daily Cargo update schedule for the repository root with a pull request limit. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10581,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051748853,
+            "finished_at_unix_ms": 1784051759434,
+            "total_token_usage": {
+              "input_tokens": 24116,
+              "cached_input_tokens": 21248,
+              "output_tokens": 314,
+              "reasoning_output_tokens": 119,
+              "total_tokens": 24430
+            },
+            "last_token_usage": {
+              "input_tokens": 24116,
+              "cached_input_tokens": 21248,
+              "output_tokens": 314,
+              "reasoning_output_tokens": 119,
+              "total_tokens": 24430
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/main.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "23698177b0faf1aba811e20ad4fb2e04370795c53eab3d2e198811afc9aec391"
+          },
+          "summary": "GitHub Actions CI workflow for rustc-demangle that runs builds, tests, fuzzing, rustfmt checks, and doc publishing on push to main. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15682,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051759435,
+            "finished_at_unix_ms": 1784051775117,
+            "total_token_usage": {
+              "input_tokens": 24635,
+              "cached_input_tokens": 21248,
+              "output_tokens": 663,
+              "reasoning_output_tokens": 467,
+              "total_tokens": 25298
+            },
+            "last_token_usage": {
+              "input_tokens": 24635,
+              "cached_input_tokens": 21248,
+              "output_tokens": 663,
+              "reasoning_output_tokens": 467,
+              "total_tokens": 25298
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/release.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b25549ecc139230f9793d40f1f289e53d6d0b3b1dc4125291556cbd322824cd1"
+          },
+          "summary": "Reviewed the GitHub Actions release workflow in .github/workflows/release.yml. It checks out the repository on pushes to main, updates to nightly Rust, and runs the third-party release-plz action with the expected GitHub and Cargo registry tokens; I found no concrete indicators of install-time compromise, credential harvesting, exfiltration, hidden payload loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16320,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051775118,
+            "finished_at_unix_ms": 1784051791438,
+            "total_token_usage": {
+              "input_tokens": 24279,
+              "cached_input_tokens": 21248,
+              "output_tokens": 771,
+              "reasoning_output_tokens": 560,
+              "total_tokens": 25050
+            },
+            "last_token_usage": {
+              "input_tokens": 24279,
+              "cached_input_tokens": 21248,
+              "output_tokens": 771,
+              "reasoning_output_tokens": 560,
+              "total_tokens": 25050
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "640f70391077bf65d146f6eb4ecdd6555217485a2108e41c6c07f5947a707380"
+          },
+          "summary": "Reviewed the changelog entries for rustc-demangle 0.1.27 and nearby releases. The file is a plain release log with version notes and comparison links; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12959,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051791439,
+            "finished_at_unix_ms": 1784051804398,
+            "total_token_usage": {
+              "input_tokens": 24364,
+              "cached_input_tokens": 11008,
+              "output_tokens": 415,
+              "reasoning_output_tokens": 219,
+              "total_tokens": 24779
+            },
+            "last_token_usage": {
+              "input_tokens": 24364,
+              "cached_input_tokens": 11008,
+              "output_tokens": 415,
+              "reasoning_output_tokens": 219,
+              "total_tokens": 24779
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_672d2892b76d4b258ca85fb90b745922",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784045810",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3e36da724804ea68ef207d5e6da76d7f1cd21c6cfb53c52d73ee4bceca4407a7"
+          },
+          "summary": "Reviewed .cargo_vcs_info.json, which only records the package's VCS commit SHA and source path metadata. I found no concrete signs of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14746,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045741156,
+            "finished_at_unix_ms": 1784045755903,
+            "total_token_usage": {
+              "input_tokens": 24022,
+              "cached_input_tokens": 21248,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 194,
+              "total_tokens": 24403
+            },
+            "last_token_usage": {
+              "input_tokens": 24022,
+              "cached_input_tokens": 21248,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 194,
+              "total_tokens": 24403
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/dependabot.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5e86faa011b6d47e660202df355016cec37157402601a826856f9f5a817595b0"
+          },
+          "summary": "Reviewed the Dependabot configuration in .github/dependabot.yml. It only schedules daily Cargo dependency update PRs for the repository root and does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10131,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045755903,
+            "finished_at_unix_ms": 1784045766035,
+            "total_token_usage": {
+              "input_tokens": 24037,
+              "cached_input_tokens": 23296,
+              "output_tokens": 335,
+              "reasoning_output_tokens": 153,
+              "total_tokens": 24372
+            },
+            "last_token_usage": {
+              "input_tokens": 24037,
+              "cached_input_tokens": 23296,
+              "output_tokens": 335,
+              "reasoning_output_tokens": 153,
+              "total_tokens": 24372
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/main.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "23698177b0faf1aba811e20ad4fb2e04370795c53eab3d2e198811afc9aec391"
+          },
+          "summary": "Reviewed the CI workflow in `.github/workflows/main.yml`, which runs Rust builds/tests, a fuzzing job, formatting checks, and a documentation publish step to `gh-pages` on pushes to `main`. I found no concrete malicious or supply-chain indicators in the workflow: no hidden install hooks, credential harvesting, exfiltration, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13031,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045766035,
+            "finished_at_unix_ms": 1784045779067,
+            "total_token_usage": {
+              "input_tokens": 24855,
+              "cached_input_tokens": 21760,
+              "output_tokens": 467,
+              "reasoning_output_tokens": 258,
+              "total_tokens": 25322
+            },
+            "last_token_usage": {
+              "input_tokens": 24855,
+              "cached_input_tokens": 21760,
+              "output_tokens": 467,
+              "reasoning_output_tokens": 258,
+              "total_tokens": 25322
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/release.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b25549ecc139230f9793d40f1f289e53d6d0b3b1dc4125291556cbd322824cd1"
+          },
+          "summary": "Reviewed the release workflow in `.github/workflows/release.yml`, which triggers on pushes to `main` and performs a normal checkout, nightly Rust setup, and `release-plz` publishing flow with GitHub and Cargo registry tokens. I checked for hidden install hooks, network/exfiltration, credential harvesting, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16093,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045779068,
+            "finished_at_unix_ms": 1784045795161,
+            "total_token_usage": {
+              "input_tokens": 24138,
+              "cached_input_tokens": 23296,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 24603
+            },
+            "last_token_usage": {
+              "input_tokens": 24138,
+              "cached_input_tokens": 23296,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 24603
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "640f70391077bf65d146f6eb4ecdd6555217485a2108e41c6c07f5947a707380"
+          },
+          "summary": "Reviewed the changelog entries for this package version history and release notes. It only contains human-readable release summaries and links, with no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15737,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045795162,
+            "finished_at_unix_ms": 1784045810899,
+            "total_token_usage": {
+              "input_tokens": 24237,
+              "cached_input_tokens": 21248,
+              "output_tokens": 372,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 24609
+            },
+            "last_token_usage": {
+              "input_tokens": 24237,
+              "cached_input_tokens": 21248,
+              "output_tokens": 372,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 24609
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_676987c3544849e7b83bfee34431696f",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054556",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2e57a1aeb6288b1a6f27d16934d90c71e2f542ed0a1e5094a0c4365abfed0170"
+          },
+          "summary": "Reviewed the normalized Cargo.toml for the rustc-demangle crate. It only declares package metadata, one optional std-workspace dependency, and feature flags; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16065,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054475040,
+            "finished_at_unix_ms": 1784054491105,
+            "total_token_usage": {
+              "input_tokens": 37814,
+              "cached_input_tokens": 33920,
+              "output_tokens": 624,
+              "reasoning_output_tokens": 327,
+              "total_tokens": 38438
+            },
+            "last_token_usage": {
+              "input_tokens": 37814,
+              "cached_input_tokens": 33920,
+              "output_tokens": 624,
+              "reasoning_output_tokens": 327,
+              "total_tokens": 38438
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f40373768026d1aba7b3655ead9f99a701714b8411ec43137acdb4c4838d7314"
+          },
+          "summary": "Reviewed the README for the rustc-demangle crate, which documents Rust and C API usage, build instructions, and licensing. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior described here.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22534,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054491106,
+            "finished_at_unix_ms": 1784054513641,
+            "total_token_usage": {
+              "input_tokens": 24526,
+              "cached_input_tokens": 21248,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 24945
+            },
+            "last_token_usage": {
+              "input_tokens": 24526,
+              "cached_input_tokens": 21248,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 24945
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/legacy.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d204d9b6c3d216fe9387e68a6789d6c015c50e18de884472389fc36d461136d9"
+          },
+          "summary": "src/legacy.rs implements the legacy Rust symbol demangler, parsing mangled symbol strings and formatting them for display. I reviewed it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18647,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054513642,
+            "finished_at_unix_ms": 1784054532289,
+            "total_token_usage": {
+              "input_tokens": 42282,
+              "cached_input_tokens": 34944,
+              "output_tokens": 569,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 42851
+            },
+            "last_token_usage": {
+              "input_tokens": 42282,
+              "cached_input_tokens": 34944,
+              "output_tokens": 569,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 42851
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8b1705c2844aae3bf837fdea33cfdfecc91ed98772fc401b319baa2b24aec282"
+          },
+          "summary": "Reviewed `src/lib.rs`, which implements Rust symbol demangling and optional stream processing for `std` builds. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden subprocess or payload execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24426,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054532290,
+            "finished_at_unix_ms": 1784054556717,
+            "total_token_usage": {
+              "input_tokens": 65930,
+              "cached_input_tokens": 55296,
+              "output_tokens": 723,
+              "reasoning_output_tokens": 318,
+              "total_tokens": 66653
+            },
+            "last_token_usage": {
+              "input_tokens": 65930,
+              "cached_input_tokens": 55296,
+              "output_tokens": 723,
+              "reasoning_output_tokens": 318,
+              "total_tokens": 66653
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -366,7 +882,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591502",
       "thirdpass_version": "0.6.0",
@@ -528,150 +1044,6 @@
               "total_tokens": 21159
             }
           },
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_aa17d544443d46a59b9ac1e6e17328b4",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782819114",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which implements Rust symbol demangling plus optional stream processing and tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation payloads, or persistence/tampering behavior.\nReviewed `src/legacy.rs`, which is a Rust symbol demangler implementation plus tests. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation/decoding pipelines, persistence, and other hidden payload behavior; none were present in this file.\nReviewed the GitHub Actions workflow in `.github/workflows/main.yml` for install-time execution, secret access, network/exfiltration, dynamic code loading, obfuscation, and persistence. It defines standard CI jobs for Rust testing, fuzz target building, formatting, and docs publishing, and I found no concrete malicious or supply-chain indicators in the workflow itself.\nReviewed the target README.md, which is a normal crate description and usage guide for rustc-demangle with documentation, build, license, and contribution sections. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the normalized `Cargo.toml` for install-time hooks, build scripts, dependency tricks, and other metadata that could hide payload execution. The manifest is a straightforward library package with `build = false`, no `build.rs`, no script hooks, no network/exfiltration or dynamic loading directives, and only a simple optional `rustc-std-workspace-core` dependency.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8b1705c2844aae3bf837fdea33cfdfecc91ed98772fc401b319baa2b24aec282"
-          },
-          "summary": "Reviewed `src/lib.rs`, which implements Rust symbol demangling plus optional stream processing and tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation payloads, or persistence/tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/legacy.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d204d9b6c3d216fe9387e68a6789d6c015c50e18de884472389fc36d461136d9"
-          },
-          "summary": "Reviewed `src/legacy.rs`, which is a Rust symbol demangler implementation plus tests. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation/decoding pipelines, persistence, and other hidden payload behavior; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".github/workflows/main.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "23698177b0faf1aba811e20ad4fb2e04370795c53eab3d2e198811afc9aec391"
-          },
-          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/main.yml` for install-time execution, secret access, network/exfiltration, dynamic code loading, obfuscation, and persistence. It defines standard CI jobs for Rust testing, fuzz target building, formatting, and docs publishing, and I found no concrete malicious or supply-chain indicators in the workflow itself.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f40373768026d1aba7b3655ead9f99a701714b8411ec43137acdb4c4838d7314"
-          },
-          "summary": "Reviewed the target README.md, which is a normal crate description and usage guide for rustc-demangle with documentation, build, license, and contribution sections. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2e57a1aeb6288b1a6f27d16934d90c71e2f542ed0a1e5094a0c4365abfed0170"
-          },
-          "summary": "Reviewed the normalized `Cargo.toml` for install-time hooks, build scripts, dependency tricks, and other metadata that could hide payload execution. The manifest is a straightforward library package with `build = false`, no `build.rs`, no script hooks, no network/exfiltration or dynamic loading directives, and only a simple optional `rustc-std-workspace-core` dependency.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_e89c60fde84f42ee83f891c4c3c4fd39",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782819173",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `.github/workflows/release.yml`, a release workflow that checks out the repo, switches to nightly Rust, and invokes `MarcoIeni/release-plz-action@v0.5` with GitHub and Cargo registry tokens. I found no concrete indicators of install-time malware, secret harvesting, exfiltration, hidden downloads, obfuscation, or persistence in this file.\nReviewed `CHANGELOG.md`, which is a plain release-notes file listing version 0.1.26 and 0.1.27 changes and compare links. No concrete malicious or supply-chain indicators were found in the changelog; there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in this target file.\nReviewed the Dependabot configuration in `.github/dependabot.yml`; it only defines a standard Cargo update schedule for the crate root and does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in this file.\nReviewed .cargo_vcs_info.json, which only records the package git SHA1 and an empty path_in_vcs value. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain signals in this file.",
-      "files": [
-        {
-          "file_path": ".github/workflows/release.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b25549ecc139230f9793d40f1f289e53d6d0b3b1dc4125291556cbd322824cd1"
-          },
-          "summary": "Reviewed `.github/workflows/release.yml`, a release workflow that checks out the repo, switches to nightly Rust, and invokes `MarcoIeni/release-plz-action@v0.5` with GitHub and Cargo registry tokens. I found no concrete indicators of install-time malware, secret harvesting, exfiltration, hidden downloads, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "CHANGELOG.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "640f70391077bf65d146f6eb4ecdd6555217485a2108e41c6c07f5947a707380"
-          },
-          "summary": "Reviewed `CHANGELOG.md`, which is a plain release-notes file listing version 0.1.26 and 0.1.27 changes and compare links. No concrete malicious or supply-chain indicators were found in the changelog; there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".github/dependabot.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5e86faa011b6d47e660202df355016cec37157402601a826856f9f5a817595b0"
-          },
-          "summary": "Reviewed the Dependabot configuration in `.github/dependabot.yml`; it only defines a standard Cargo update schedule for the crate root and does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3e36da724804ea68ef207d5e6da76d7f1cd21c6cfb53c52d73ee4bceca4407a7"
-          },
-          "summary": "Reviewed .cargo_vcs_info.json, which only records the package git SHA1 and an empty path_in_vcs value. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain signals in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

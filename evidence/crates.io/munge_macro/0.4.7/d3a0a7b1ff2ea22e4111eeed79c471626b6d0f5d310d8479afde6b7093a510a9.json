@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591769",
+  "latest_reviewed_at": "1784053711",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -139,50 +145,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 2,
+      "file_record_count": 7,
+      "file_record_count_with_metrics": 7
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 7,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 4,
-    "duration_ms_total": 36031,
-    "attempts_total": 3,
+    "file_records_with_metrics": 7,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 85575,
+    "attempts_total": 7,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 7,
+    "last_token_usage_records": 7,
     "total_token_usage": {
-      "input_tokens": 62630,
-      "cached_input_tokens": 52480,
-      "output_tokens": 1102,
-      "reasoning_output_tokens": 521,
-      "total_tokens": 63732
+      "input_tokens": 177140,
+      "cached_input_tokens": 151168,
+      "output_tokens": 2810,
+      "reasoning_output_tokens": 1357,
+      "total_tokens": 179950
     },
     "last_token_usage": {
-      "input_tokens": 62630,
-      "cached_input_tokens": 52480,
-      "output_tokens": 1102,
-      "reasoning_output_tokens": 521,
-      "total_tokens": 63732
+      "input_tokens": 177140,
+      "cached_input_tokens": 151168,
+      "output_tokens": 2810,
+      "reasoning_output_tokens": 1357,
+      "total_tokens": 179950
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_616ff36fdc2046d7b83bf1f28dc012c8",
+      "id": "rev_74e817facb2f4fd4a1b4f1cdfe93a1d7",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -190,22 +188,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783181736",
+      "created_at": "1784053711",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, a procedural macro implementation for `munge_with_path` that parses destructuring patterns and expands them into pointer-based Rust code. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/packing, or persistence behavior.\nReviewed the normalized Cargo.toml for a proc-macro crate. It declares only standard Rust metadata and dependencies, with no build script, install hook, network/exfiltration path, credential access, dynamic code loading, obfuscation, or persistence indicators in this file.\nReviewed the README for `munge_macro`/`munge` as a documentation-only file describing safe destructuring APIs and examples. I found no concrete malicious or supply-chain indicators in the README: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms present in this file.\nReviewed `.cargo_vcs_info.json`, which only records the package's VCS commit SHA1 and path-in-repo metadata. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "ff4385e4eaac46fb0e8bf19866505c79c0cd239f3fe6c6154e06f45edc0e32f3"
+            "value": "748c1a40ab4079329fcd92a7add8eed25bb283b11ed41782cd77230e84ff9eee"
           },
-          "summary": "Reviewed `src/lib.rs`, a procedural macro implementation for `munge_with_path` that parses destructuring patterns and expands them into pointer-based Rust code. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/packing, or persistence behavior.",
+          "summary": "Reviewed the crate provenance metadata in `.cargo_vcs_info.json`, which only records the source git commit and path in VCS. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence signals in this target file and found none.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10910,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053661910,
+            "finished_at_unix_ms": 1784053672821,
+            "total_token_usage": {
+              "input_tokens": 24166,
+              "cached_input_tokens": 21248,
+              "output_tokens": 346,
+              "reasoning_output_tokens": 159,
+              "total_tokens": 24512
+            },
+            "last_token_usage": {
+              "input_tokens": 24166,
+              "cached_input_tokens": 21248,
+              "output_tokens": 346,
+              "reasoning_output_tokens": 159,
+              "total_tokens": 24512
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -215,9 +232,29 @@
             "algorithm": "blake3",
             "value": "67aeabaef9d19d4f5a6648f58732527a4093902ed8ffe6f38bd7dad0f4f27817"
           },
-          "summary": "Reviewed the normalized Cargo.toml for a proc-macro crate. It declares only standard Rust metadata and dependencies, with no build script, install hook, network/exfiltration path, credential access, dynamic code loading, obfuscation, or persistence indicators in this file.",
+          "summary": "Reviewed the crate manifest for install-time hooks, hidden execution paths, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms. The file is a standard proc-macro package declaration with ordinary Rust dependencies and no concrete malicious or supply-chain indicators in the manifest itself.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10188,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053672822,
+            "finished_at_unix_ms": 1784053683011,
+            "total_token_usage": {
+              "input_tokens": 24446,
+              "cached_input_tokens": 21248,
+              "output_tokens": 360,
+              "reasoning_output_tokens": 172,
+              "total_tokens": 24806
+            },
+            "last_token_usage": {
+              "input_tokens": 24446,
+              "cached_input_tokens": 21248,
+              "output_tokens": 360,
+              "reasoning_output_tokens": 172,
+              "total_tokens": 24806
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -227,21 +264,61 @@
             "algorithm": "blake3",
             "value": "79671dc7ad20c56bac95e76d1b2836fde583692da34bd74154b55c2970d876ad"
           },
-          "summary": "Reviewed the README for `munge_macro`/`munge` as a documentation-only file describing safe destructuring APIs and examples. I found no concrete malicious or supply-chain indicators in the README: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms present in this file.",
+          "summary": "Reviewed the README.md for package documentation and usage examples for the `munge`/`munge_macro` crate. It contains only descriptive text and Rust examples; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10784,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053683011,
+            "finished_at_unix_ms": 1784053693796,
+            "total_token_usage": {
+              "input_tokens": 25139,
+              "cached_input_tokens": 19200,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 195,
+              "total_tokens": 25525
+            },
+            "last_token_usage": {
+              "input_tokens": 25139,
+              "cached_input_tokens": 19200,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 195,
+              "total_tokens": 25525
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "748c1a40ab4079329fcd92a7add8eed25bb283b11ed41782cd77230e84ff9eee"
+            "value": "ff4385e4eaac46fb0e8bf19866505c79c0cd239f3fe6c6154e06f45edc0e32f3"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package's VCS commit SHA1 and path-in-repo metadata. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "`src/lib.rs` defines a `munge_with_path` procedural macro that parses destructuring patterns and generates pointer-projection code using `syn`, `quote`, and `proc_macro2`. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17662,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053693797,
+            "finished_at_unix_ms": 1784053711459,
+            "total_token_usage": {
+              "input_tokens": 40759,
+              "cached_input_tokens": 36992,
+              "output_tokens": 616,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 41375
+            },
+            "last_token_usage": {
+              "input_tokens": 40759,
+              "cached_input_tokens": 36992,
+              "output_tokens": 616,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 41375
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -257,7 +334,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591769",
       "thirdpass_version": "0.6.0",

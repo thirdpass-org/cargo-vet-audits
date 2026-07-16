@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591880",
+  "latest_reviewed_at": "1784051732",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -160,43 +166,35 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 5
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 0
+      "review_count": 3,
+      "file_record_count": 13,
+      "file_record_count_with_metrics": 13
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 9,
-    "file_records_with_metrics": 5,
-    "file_records_without_metrics": 4,
-    "duration_ms_total": 67419,
-    "attempts_total": 5,
+    "reviewed_file_records": 13,
+    "file_records_with_metrics": 13,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 206233,
+    "attempts_total": 13,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 5,
-    "last_token_usage_records": 5,
+    "total_token_usage_records": 13,
+    "last_token_usage_records": 13,
     "total_token_usage": {
-      "input_tokens": 116872,
-      "cached_input_tokens": 100992,
-      "output_tokens": 2227,
-      "reasoning_output_tokens": 1179,
-      "total_tokens": 119099
+      "input_tokens": 347757,
+      "cached_input_tokens": 299904,
+      "output_tokens": 5932,
+      "reasoning_output_tokens": 3082,
+      "total_tokens": 353689
     },
     "last_token_usage": {
-      "input_tokens": 116872,
-      "cached_input_tokens": 100992,
-      "output_tokens": 2227,
-      "reasoning_output_tokens": 1179,
-      "total_tokens": 119099
+      "input_tokens": 347757,
+      "cached_input_tokens": 299904,
+      "output_tokens": 5932,
+      "reasoning_output_tokens": 3082,
+      "total_tokens": 353689
     },
     "model_context_windows": []
   },
@@ -211,7 +209,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591880",
       "thirdpass_version": "0.6.0",
@@ -379,7 +377,7 @@
       ]
     },
     {
-      "id": "rev_fe000d439ef842caa844aed78d201bea",
+      "id": "rev_9a4bd7e631af43e7a7a0024af3f5e5c3",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -387,22 +385,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782818391",
+      "created_at": "1784051732",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is a small Rust crate defining the unsafe marker traits `StableDeref` and `CloneStableDeref` plus standard-library implementations for common pointer and guard types. I found no concrete malicious or supply-chain indicators in the target file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed the normalized Cargo.toml for `stable_deref_trait` 1.2.1 and checked it for install-time hooks, build scripts, unusual package metadata, hidden execution paths, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence. The manifest only declares a library crate with features and a `src/lib.rs` target, and I found no concrete malicious or supply-chain indicators in the file.\nReviewed README.md, which is a plain crate description and usage snippet for `StableDeref`/`CloneStableDeref` with `no_std` and `alloc` feature notes. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nReviewed `.cargo_vcs_info.json`, which only records the crate's source-control SHA1 and an empty `path_in_vcs` field. I found no concrete malicious or supply-chain indicators in this file and no evidence of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "8989cfee2cc84c363b197f5eb66725648ab6cb6baf7da70b91d53e1169f7169f"
+            "value": "0a2e3ddda4739394db4f28336a90fa7808fb99aed412eee9a78d44e03c460513"
           },
-          "summary": "Reviewed `src/lib.rs`, which is a small Rust crate defining the unsafe marker traits `StableDeref` and `CloneStableDeref` plus standard-library implementations for common pointer and guard types. I found no concrete malicious or supply-chain indicators in the target file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which contains only VCS provenance metadata (`git.sha1` and `path_in_vcs`). I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14933,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051668513,
+            "finished_at_unix_ms": 1784051683446,
+            "total_token_usage": {
+              "input_tokens": 24173,
+              "cached_input_tokens": 21248,
+              "output_tokens": 390,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 24563
+            },
+            "last_token_usage": {
+              "input_tokens": 24173,
+              "cached_input_tokens": 21248,
+              "output_tokens": 390,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 24563
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -412,9 +429,29 @@
             "algorithm": "blake3",
             "value": "89cfe39ace4d7fb23871534474ca095d7dd5d5cefd21ea2b2c7dda0da80799a7"
           },
-          "summary": "Reviewed the normalized Cargo.toml for `stable_deref_trait` 1.2.1 and checked it for install-time hooks, build scripts, unusual package metadata, hidden execution paths, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence. The manifest only declares a library crate with features and a `src/lib.rs` target, and I found no concrete malicious or supply-chain indicators in the file.",
+          "summary": "Reviewed the normalized Cargo manifest for `stable_deref_trait` 1.2.1. It only declares package metadata, feature flags, and the library path; I found no install hooks, build scripts, network/exfiltration behavior, dynamic code loading, obfuscation, credential access, or persistence indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17796,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051683447,
+            "finished_at_unix_ms": 1784051701243,
+            "total_token_usage": {
+              "input_tokens": 24436,
+              "cached_input_tokens": 21248,
+              "output_tokens": 486,
+              "reasoning_output_tokens": 292,
+              "total_tokens": 24922
+            },
+            "last_token_usage": {
+              "input_tokens": 24436,
+              "cached_input_tokens": 21248,
+              "output_tokens": 486,
+              "reasoning_output_tokens": 292,
+              "total_tokens": 24922
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -424,21 +461,206 @@
             "algorithm": "blake3",
             "value": "6c1f5bdadceb868e98f6d0da7283538e5f319559664bb4ba8c96df7bf3d0bf91"
           },
-          "summary": "Reviewed README.md, which is a plain crate description and usage snippet for `StableDeref`/`CloneStableDeref` with `no_std` and `alloc` feature notes. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
+          "summary": "Reviewed the README for this crate, which documents the StableDeref and CloneStableDeref traits, their std/no_std/alloc feature behavior, and example Cargo usage. I found no concrete supply-chain or malicious indicators in the file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms described here.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13895,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051701244,
+            "finished_at_unix_ms": 1784051715140,
+            "total_token_usage": {
+              "input_tokens": 24423,
+              "cached_input_tokens": 21248,
+              "output_tokens": 444,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 24867
+            },
+            "last_token_usage": {
+              "input_tokens": 24423,
+              "cached_input_tokens": 21248,
+              "output_tokens": 444,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 24867
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8989cfee2cc84c363b197f5eb66725648ab6cb6baf7da70b91d53e1169f7169f"
+          },
+          "summary": "Reviewed src/lib.rs, which is a small unsafe marker-trait crate defining StableDeref and CloneStableDeref plus standard-library impls for boxes, strings, rc/arc, borrowed guards, and Cow wrappers. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17635,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051715140,
+            "finished_at_unix_ms": 1784051732776,
+            "total_token_usage": {
+              "input_tokens": 44081,
+              "cached_input_tokens": 35456,
+              "output_tokens": 596,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 44677
+            },
+            "last_token_usage": {
+              "input_tokens": 44081,
+              "cached_input_tokens": 35456,
+              "output_tokens": 596,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 44677
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_9b3aa72eba084359bed7b37a30b7ae17",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784045734",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "0a2e3ddda4739394db4f28336a90fa7808fb99aed412eee9a78d44e03c460513"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the crate's source-control SHA1 and an empty `path_in_vcs` field. I found no concrete malicious or supply-chain indicators in this file and no evidence of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the crate's VCS commit SHA and an empty `path_in_vcs` field. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14729,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045660218,
+            "finished_at_unix_ms": 1784045674948,
+            "total_token_usage": {
+              "input_tokens": 24444,
+              "cached_input_tokens": 21760,
+              "output_tokens": 323,
+              "reasoning_output_tokens": 132,
+              "total_tokens": 24767
+            },
+            "last_token_usage": {
+              "input_tokens": 24444,
+              "cached_input_tokens": 21760,
+              "output_tokens": 323,
+              "reasoning_output_tokens": 132,
+              "total_tokens": 24767
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "89cfe39ace4d7fb23871534474ca095d7dd5d5cefd21ea2b2c7dda0da80799a7"
+          },
+          "summary": "Reviewed the normalized Cargo manifest for `stable_deref_trait` 1.2.1. It only declares package metadata, feature flags, and the library path; I found no install hooks, network or exfiltration behavior, dynamic code loading, obfuscation, or persistence directives in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11994,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045674949,
+            "finished_at_unix_ms": 1784045686943,
+            "total_token_usage": {
+              "input_tokens": 24274,
+              "cached_input_tokens": 21248,
+              "output_tokens": 456,
+              "reasoning_output_tokens": 267,
+              "total_tokens": 24730
+            },
+            "last_token_usage": {
+              "input_tokens": 24274,
+              "cached_input_tokens": 21248,
+              "output_tokens": 456,
+              "reasoning_output_tokens": 267,
+              "total_tokens": 24730
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6c1f5bdadceb868e98f6d0da7283538e5f319559664bb4ba8c96df7bf3d0bf91"
+          },
+          "summary": "Reviewed the README for the stable_deref_trait crate. It contains only package documentation about the StableDeref and CloneStableDeref traits, feature flags, and usage examples; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 30229,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045686944,
+            "finished_at_unix_ms": 1784045717173,
+            "total_token_usage": {
+              "input_tokens": 24318,
+              "cached_input_tokens": 21248,
+              "output_tokens": 376,
+              "reasoning_output_tokens": 184,
+              "total_tokens": 24694
+            },
+            "last_token_usage": {
+              "input_tokens": 24318,
+              "cached_input_tokens": 21248,
+              "output_tokens": 376,
+              "reasoning_output_tokens": 184,
+              "total_tokens": 24694
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8989cfee2cc84c363b197f5eb66725648ab6cb6baf7da70b91d53e1169f7169f"
+          },
+          "summary": "This file is a documentation-heavy Rust crate root that defines the unsafe marker traits `StableDeref` and `CloneStableDeref` and provides `std`/`alloc` implementations for common pointer-like and guard types such as `Box`, `Vec`, `Rc`, `Arc`, `Cow`, and lock/borrow guards. I checked this target for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17603,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045717174,
+            "finished_at_unix_ms": 1784045734777,
+            "total_token_usage": {
+              "input_tokens": 40736,
+              "cached_input_tokens": 35456,
+              "output_tokens": 634,
+              "reasoning_output_tokens": 304,
+              "total_tokens": 41370
+            },
+            "last_token_usage": {
+              "input_tokens": 40736,
+              "cached_input_tokens": 35456,
+              "output_tokens": 634,
+              "reasoning_output_tokens": 304,
+              "total_tokens": 41370
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

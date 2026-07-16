@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590532",
+  "latest_reviewed_at": "1784059415",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -302,44 +308,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 5,
-      "file_record_count": 17,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 5
+      "review_count": 5,
+      "file_record_count": 22,
+      "file_record_count_with_metrics": 22
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 22,
-    "file_records_with_metrics": 5,
-    "file_records_without_metrics": 17,
-    "duration_ms_total": 75428,
-    "attempts_total": 5,
+    "file_records_with_metrics": 22,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 361384,
+    "attempts_total": 22,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 5,
-    "last_token_usage_records": 5,
+    "total_token_usage_records": 22,
+    "last_token_usage_records": 22,
     "total_token_usage": {
-      "input_tokens": 106794,
-      "cached_input_tokens": 89856,
-      "output_tokens": 2014,
-      "reasoning_output_tokens": 1102,
-      "total_tokens": 108808
+      "input_tokens": 781897,
+      "cached_input_tokens": 676864,
+      "output_tokens": 10754,
+      "reasoning_output_tokens": 5171,
+      "total_tokens": 792651
     },
     "last_token_usage": {
-      "input_tokens": 106794,
-      "cached_input_tokens": 89856,
-      "output_tokens": 2014,
-      "reasoning_output_tokens": 1102,
-      "total_tokens": 108808
+      "input_tokens": 781897,
+      "cached_input_tokens": 676864,
+      "output_tokens": 10754,
+      "reasoning_output_tokens": 5171,
+      "total_tokens": 792651
     },
     "model_context_windows": []
   },
@@ -354,7 +352,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590532",
       "thirdpass_version": "0.6.0",
@@ -522,7 +520,7 @@
       ]
     },
     {
-      "id": "rev_2d2db486c042460da31590963001b29e",
+      "id": "rev_5d1a9a9be28e461a92959cf9596ed033",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -530,168 +528,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783186302",
+      "created_at": "1784057929",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/array_string.rs`, which implements a fixed-capacity UTF-8 string type with constructors, push/pop/truncate/remove, formatting, and optional serde/borsh/zeroize support. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed the changelog for arrayvec releases and found only release-note content about versioned fixes and feature additions. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.\nReviewed this generated `Cargo.toml` manifest for install-time execution, build hooks, hidden downloads, credential access, obfuscation, and persistence behavior. It declares a normal library package with `build = false`, no build script, no install hooks, and only optional crates plus dev-dependencies; I found no concrete malicious or supply-chain indicators in this file.\nReviewed the GitHub Actions workflow for standard CI behavior: it checks out the repo, installs Rust toolchains, builds/tests across several Rust versions, runs a nostd target job, and exercises Miri. I found no concrete malicious or supply-chain indicators in this file, and no install hooks, network exfiltration, credential harvesting, dynamic code loading, obfuscation, or persistence behavior.\n`benches/arraystring.rs` is a straightforward benchmark harness for `ArrayString` push and `try_push` behavior, using fixed in-memory strings and tight loops. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "src/array_string.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "351fe385f9cd201a58e4bb4af74d1ec8002d905b86243c20252058e15ce0da45"
-          },
-          "summary": "Reviewed `src/array_string.rs`, which implements a fixed-capacity UTF-8 string type with constructors, push/pop/truncate/remove, formatting, and optional serde/borsh/zeroize support. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "CHANGELOG.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ab0c7e1fd303f0641c65114cf9029a0ff2cdbee6242d4c24c2318e3edf38a866"
-          },
-          "summary": "Reviewed the changelog for arrayvec releases and found only release-note content about versioned fixes and feature additions. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "aa650ed90b1d936c00a9b964c2e687ba12f9f87dcaa6b3d7be73622965d8c01e"
-          },
-          "summary": "Reviewed this generated `Cargo.toml` manifest for install-time execution, build hooks, hidden downloads, credential access, obfuscation, and persistence behavior. It declares a normal library package with `build = false`, no build script, no install hooks, and only optional crates plus dev-dependencies; I found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".github/workflows/ci.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "84b9e6be77b46d96d2fc23a408c66ac2caf3032edf4197208766063aa9ac9422"
-          },
-          "summary": "Reviewed the GitHub Actions workflow for standard CI behavior: it checks out the repo, installs Rust toolchains, builds/tests across several Rust versions, runs a nostd target job, and exercises Miri. I found no concrete malicious or supply-chain indicators in this file, and no install hooks, network exfiltration, credential harvesting, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/arraystring.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b442b90943d360e611c964decbfd16a51920668133129bd1c6a05e50d0a5661b"
-          },
-          "summary": "`benches/arraystring.rs` is a straightforward benchmark harness for `ArrayString` push and `try_push` behavior, using fixed in-memory strings and tight loops. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_44b0d92d99fa4c63815f52a501e1c92c",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783186419",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is the crate root for `arrayvec` and only contains documentation, feature gates, type aliases, capacity-check macros, and module/public re-exports. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/errors.rs`, which only defines a `CapacityError` type plus `Display`/`Debug`/`Error` implementations and a string constant. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed the README for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior. It is a normal crate README with badges, a brief description of a fixed-capacity vector, API documentation links, and license text; no concrete malicious or supply-chain indicators were found.\nReviewed `src/utils.rs`, which only defines a small generic helper for constructing `MaybeUninit` values and arrays. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nThe target file is a small Cargo VCS provenance record containing only a Git SHA1 and an empty `path_in_vcs` field. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "86d68e19292629dec0cba64d955c91ff5e46dba8a932972618b7416413416d0f"
-          },
-          "summary": "Reviewed `src/lib.rs`, which is the crate root for `arrayvec` and only contains documentation, feature gates, type aliases, capacity-check macros, and module/public re-exports. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/errors.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ab1c80c19edaea1bd882557d27a1e37f439b61d828aa937d208e9fb4698664c1"
-          },
-          "summary": "Reviewed `src/errors.rs`, which only defines a `CapacityError` type plus `Display`/`Debug`/`Error` implementations and a string constant. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8b5c6b07ee05082cc1217c027dd4ec9e44e8f95e5969efd57b499e61c058cb7c"
-          },
-          "summary": "Reviewed the README for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior. It is a normal crate README with badges, a brief description of a fixed-capacity vector, API documentation links, and license text; no concrete malicious or supply-chain indicators were found.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/utils.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5ab44d2863b195b1b136372330fc962a6b950da10a31c7b0b9b492d5c4d21518"
-          },
-          "summary": "Reviewed `src/utils.rs`, which only defines a small generic helper for constructing `MaybeUninit` values and arrays. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2fa5ea27eb33c5fe8ab4c5a3fbf7e72c2d5c7113238e9dec85451378095c2855"
-          },
-          "summary": "The target file is a small Cargo VCS provenance record containing only a Git SHA1 and an empty `path_in_vcs` field. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_7fbb7dee9ed3452f92bc056ef3ed40ce",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783186218",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/arrayvec.rs`, a fixed-capacity `ArrayVec` implementation with unsafe pointer and memory-management internals plus optional `serde`, `zeroize`, `borsh`, and `std::io::Write` support. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, or persistence tampering.",
       "files": [
         {
           "file_path": "src/arrayvec.rs",
@@ -699,39 +540,29 @@
             "algorithm": "blake3",
             "value": "edfe9a1035419d8fb03115b38d03a34b5c5705590cc47763e9ce330e5da642f2"
           },
-          "summary": "Reviewed `src/arrayvec.rs`, a fixed-capacity `ArrayVec` implementation with unsafe pointer and memory-management internals plus optional `serde`, `zeroize`, `borsh`, and `std::io::Write` support. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, or persistence tampering.",
+          "summary": "Reviewed src/arrayvec.rs, which implements the core fixed-capacity ArrayVec container, its mutation APIs, draining/retain logic, and by-value iteration. I checked for install-time hooks, subprocess or network activity, credential/secret access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_8ccadbb685774ea1baf66260a1ab91d2",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783186362",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/char.rs`, which only contains a small UTF-8 character encoder and self-tests. I checked for install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution and found no concrete malicious or supply-chain indicators.\nReviewed `src/arrayvec_impl.rs`, which defines an internal `ArrayVecImpl` trait for slice access, push/pop, and truncation using raw pointers and `unsafe` bounds checks. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `tests/serde.rs`, which is a pure serde test module for `ArrayVec` and `ArrayString` serialization/deserialization behavior. I checked for install hooks, network or exfiltration paths, credential or secret access, dynamic code loading, obfuscation, persistence, and other hidden execution triggers; none are present in this file.\nReviewed `benches/extend.rs`, which is a Bencher benchmark harness for `arrayvec::ArrayVec` extension paths (`extend`, `write`, and `try_extend_from_slice`) over fixed in-memory data. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\n`tests/borsh.rs` is a feature-gated test module that checks Borsh serialization and round-trip deserialization for `ArrayVec` and `ArrayString` using only local in-memory values and assertions. I reviewed it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "src/char.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5abd70790c8cfbc3e4474d7812b1d67582f9320d80d4ba3e702b34347da68ede"
+          "agent_run_metrics": {
+            "duration_ms": 31427,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057822800,
+            "finished_at_unix_ms": 1784057854228,
+            "total_token_usage": {
+              "input_tokens": 175336,
+              "cached_input_tokens": 151552,
+              "output_tokens": 1202,
+              "reasoning_output_tokens": 352,
+              "total_tokens": 176538
+            },
+            "last_token_usage": {
+              "input_tokens": 175336,
+              "cached_input_tokens": 151552,
+              "output_tokens": 1202,
+              "reasoning_output_tokens": 352,
+              "total_tokens": 176538
+            }
           },
-          "summary": "Reviewed `src/char.rs`, which only contains a small UTF-8 character encoder and self-tests. I checked for install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -741,33 +572,351 @@
             "algorithm": "blake3",
             "value": "a437c397dcf31962d27dad109450033d59127b2df50ec2a54274044a7f745c7a"
           },
-          "summary": "Reviewed `src/arrayvec_impl.rs`, which defines an internal `ArrayVecImpl` trait for slice access, push/pop, and truncation using raw pointers and `unsafe` bounds checks. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/arrayvec_impl.rs`, which contains the core `ArrayVecImpl` trait methods for slice views, push/pop, and truncation using raw-pointer writes and drops. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none were present in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24413,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057854229,
+            "finished_at_unix_ms": 1784057878642,
+            "total_token_usage": {
+              "input_tokens": 24948,
+              "cached_input_tokens": 21248,
+              "output_tokens": 500,
+              "reasoning_output_tokens": 293,
+              "total_tokens": 25448
+            },
+            "last_token_usage": {
+              "input_tokens": 24948,
+              "cached_input_tokens": 21248,
+              "output_tokens": 500,
+              "reasoning_output_tokens": 293,
+              "total_tokens": 25448
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/serde.rs",
+          "file_path": "src/char.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "6d0a3366dce26a147c86e82f2857f97959c113e054186b545475458084572f01"
+            "value": "5abd70790c8cfbc3e4474d7812b1d67582f9320d80d4ba3e702b34347da68ede"
           },
-          "summary": "Reviewed `tests/serde.rs`, which is a pure serde test module for `ArrayVec` and `ArrayString` serialization/deserialization behavior. I checked for install hooks, network or exfiltration paths, credential or secret access, dynamic code loading, obfuscation, persistence, and other hidden execution triggers; none are present in this file.",
+          "summary": "Reviewed `src/char.rs`, which contains a small UTF-8 encoding helper plus exhaustive unit tests for correct encoding and out-of-bounds handling. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13699,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057878643,
+            "finished_at_unix_ms": 1784057892343,
+            "total_token_usage": {
+              "input_tokens": 25539,
+              "cached_input_tokens": 21760,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 25934
+            },
+            "last_token_usage": {
+              "input_tokens": 25539,
+              "cached_input_tokens": 21760,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 25934
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "benches/extend.rs",
+          "file_path": "src/errors.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "3afbb0d37f7100157793ba750d09a40afe6e86c3b8892ee37ed69d4723bc15ac"
+            "value": "ab1c80c19edaea1bd882557d27a1e37f439b61d828aa937d208e9fb4698664c1"
           },
-          "summary": "Reviewed `benches/extend.rs`, which is a Bencher benchmark harness for `arrayvec::ArrayVec` extension paths (`extend`, `write`, and `try_extend_from_slice`) over fixed in-memory data. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed `src/errors.rs`, which defines the `CapacityError` type and its `new`, `element`, and `simplify` helpers plus `Display`/`Debug`/`Error` implementations. I found no concrete supply-chain or malicious indicators in this file: no install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19120,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057892343,
+            "finished_at_unix_ms": 1784057911464,
+            "total_token_usage": {
+              "input_tokens": 24366,
+              "cached_input_tokens": 23296,
+              "output_tokens": 397,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 24763
+            },
+            "last_token_usage": {
+              "input_tokens": 24366,
+              "cached_input_tokens": 23296,
+              "output_tokens": 397,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 24763
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "86d68e19292629dec0cba64d955c91ff5e46dba8a932972618b7416413416d0f"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is the crate root for the `arrayvec` library: it only declares feature gates, capacity-limit checks, internal modules, and public re-exports for `ArrayVec`, `ArrayString`, and `CapacityError`. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17791,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057911464,
+            "finished_at_unix_ms": 1784057929256,
+            "total_token_usage": {
+              "input_tokens": 24540,
+              "cached_input_tokens": 21248,
+              "output_tokens": 427,
+              "reasoning_output_tokens": 228,
+              "total_tokens": 24967
+            },
+            "last_token_usage": {
+              "input_tokens": 24540,
+              "cached_input_tokens": 21248,
+              "output_tokens": 427,
+              "reasoning_output_tokens": 228,
+              "total_tokens": 24967
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_802f3281f74b4f0fba84ce25c2a5374c",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784053887",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2fa5ea27eb33c5fe8ab4c5a3fbf7e72c2d5c7113238e9dec85451378095c2855"
+          },
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the crate's source-control SHA and an empty `path_in_vcs` field. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10744,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053827175,
+            "finished_at_unix_ms": 1784053837920,
+            "total_token_usage": {
+              "input_tokens": 24091,
+              "cached_input_tokens": 21248,
+              "output_tokens": 349,
+              "reasoning_output_tokens": 152,
+              "total_tokens": 24440
+            },
+            "last_token_usage": {
+              "input_tokens": 24091,
+              "cached_input_tokens": 21248,
+              "output_tokens": 349,
+              "reasoning_output_tokens": 152,
+              "total_tokens": 24440
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/ci.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "84b9e6be77b46d96d2fc23a408c66ac2caf3032edf4197208766063aa9ac9422"
+          },
+          "summary": "Reviewed the GitHub Actions workflow in .github/workflows/ci.yml. It defines standard CI jobs for Rust build, test, benchmark, nostd, and Miri runs, and I found no concrete indicators of install hooks, secret harvesting, network exfiltration, dynamic code loading, obfuscation, or persistence behavior in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13637,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053837921,
+            "finished_at_unix_ms": 1784053851558,
+            "total_token_usage": {
+              "input_tokens": 24741,
+              "cached_input_tokens": 21248,
+              "output_tokens": 526,
+              "reasoning_output_tokens": 327,
+              "total_tokens": 25267
+            },
+            "last_token_usage": {
+              "input_tokens": 24741,
+              "cached_input_tokens": 21248,
+              "output_tokens": 526,
+              "reasoning_output_tokens": 327,
+              "total_tokens": 25267
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ab0c7e1fd303f0641c65114cf9029a0ff2cdbee6242d4c24c2318e3edf38a866"
+          },
+          "summary": "Reviewed this changelog, which is a plain release-notes history for arrayvec 0.7.7 through older releases. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14709,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053851558,
+            "finished_at_unix_ms": 1784053866268,
+            "total_token_usage": {
+              "input_tokens": 26466,
+              "cached_input_tokens": 21248,
+              "output_tokens": 384,
+              "reasoning_output_tokens": 193,
+              "total_tokens": 26850
+            },
+            "last_token_usage": {
+              "input_tokens": 26466,
+              "cached_input_tokens": 21248,
+              "output_tokens": 384,
+              "reasoning_output_tokens": 193,
+              "total_tokens": 26850
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "aa650ed90b1d936c00a9b964c2e687ba12f9f87dcaa6b3d7be73622965d8c01e"
+          },
+          "summary": "Reviewed the normalized Cargo manifest for `arrayvec` 0.7.7. It declares a standard library crate with optional `borsh`, `serde`, and `zeroize` dependencies and test/bench targets, and I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11583,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053866268,
+            "finished_at_unix_ms": 1784053877852,
+            "total_token_usage": {
+              "input_tokens": 24677,
+              "cached_input_tokens": 21248,
+              "output_tokens": 421,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 25098
+            },
+            "last_token_usage": {
+              "input_tokens": 24677,
+              "cached_input_tokens": 21248,
+              "output_tokens": 421,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 25098
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8b5c6b07ee05082cc1217c027dd4ec9e44e8f95e5969efd57b499e61c058cb7c"
+          },
+          "summary": "The target README.md is a short project description and license notice for the arrayvec crate, with only documentation/badge links and no executable content. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 9845,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053877852,
+            "finished_at_unix_ms": 1784053887698,
+            "total_token_usage": {
+              "input_tokens": 24298,
+              "cached_input_tokens": 21248,
+              "output_tokens": 316,
+              "reasoning_output_tokens": 131,
+              "total_tokens": 24614
+            },
+            "last_token_usage": {
+              "input_tokens": 24298,
+              "cached_input_tokens": 21248,
+              "output_tokens": 316,
+              "reasoning_output_tokens": 131,
+              "total_tokens": 24614
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_80aa962bf4da43cba5da610156002af8",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059415",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/utils.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5ab44d2863b195b1b136372330fc962a6b950da10a31c7b0b9b492d5c4d21518"
+          },
+          "summary": "Reviewed `src/utils.rs`, which only defines a small `MakeMaybeUninit` helper for constructing `MaybeUninit<T>` values and arrays. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15004,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059351209,
+            "finished_at_unix_ms": 1784059366214,
+            "total_token_usage": {
+              "input_tokens": 24385,
+              "cached_input_tokens": 21760,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 24874
+            },
+            "last_token_usage": {
+              "input_tokens": 24385,
+              "cached_input_tokens": 21760,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 24874
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -777,16 +926,100 @@
             "algorithm": "blake3",
             "value": "40b58896aa1bdaab99c0627685a443006322af5e0ae623f150edd77b8c010ab5"
           },
-          "summary": "`tests/borsh.rs` is a feature-gated test module that checks Borsh serialization and round-trip deserialization for `ArrayVec` and `ArrayString` using only local in-memory values and assertions. I reviewed it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `tests/borsh.rs`, which contains only Borsh serialization and round-trip tests for `ArrayVec` and `ArrayString`. I checked for install-time hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found none.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13741,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059366214,
+            "finished_at_unix_ms": 1784059379956,
+            "total_token_usage": {
+              "input_tokens": 24717,
+              "cached_input_tokens": 21248,
+              "output_tokens": 490,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 25207
+            },
+            "last_token_usage": {
+              "input_tokens": 24717,
+              "cached_input_tokens": 21248,
+              "output_tokens": 490,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 25207
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/serde.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6d0a3366dce26a147c86e82f2857f97959c113e054186b545475458084572f01"
+          },
+          "summary": "Reviewed `tests/serde.rs`, which contains serde serialization/deserialization tests for `ArrayVec` and `ArrayString`, including expected token sequences and oversized-input rejection. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14392,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059379957,
+            "finished_at_unix_ms": 1784059394350,
+            "total_token_usage": {
+              "input_tokens": 24568,
+              "cached_input_tokens": 21248,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 25011
+            },
+            "last_token_usage": {
+              "input_tokens": 24568,
+              "cached_input_tokens": 21248,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 25011
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/tests.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "fc75981da94609303d6c3928fd4af802a6ab7c93ea6bdfe358a18d1df77056cf"
+          },
+          "summary": "Reviewed `tests/tests.rs`, which is a Rust test suite for `ArrayVec` and `ArrayString` behavior, including capacity, iteration, drop handling, string conversion, and const construction. I checked for install-time execution, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence tampering, and unrelated system probing, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21338,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059394350,
+            "finished_at_unix_ms": 1784059415689,
+            "total_token_usage": {
+              "input_tokens": 79440,
+              "cached_input_tokens": 69504,
+              "output_tokens": 857,
+              "reasoning_output_tokens": 369,
+              "total_tokens": 80297
+            },
+            "last_token_usage": {
+              "input_tokens": 79440,
+              "cached_input_tokens": 69504,
+              "output_tokens": 857,
+              "reasoning_output_tokens": 369,
+              "total_tokens": 80297
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_d9e51879e45f4e9da0be2c251f9d182f",
+      "id": "rev_ce23483c4df9426baa5210bf615859ab",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -794,22 +1027,105 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783186237",
+      "created_at": "1784056141",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/tests.rs`, which is a unit test suite for `ArrayVec` and `ArrayString` covering capacity handling, iteration, drop behavior, string conversion, drain/retain, and const constructors. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "tests/tests.rs",
+          "file_path": "benches/arraystring.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "fc75981da94609303d6c3928fd4af802a6ab7c93ea6bdfe358a18d1df77056cf"
+            "value": "b442b90943d360e611c964decbfd16a51920668133129bd1c6a05e50d0a5661b"
           },
-          "summary": "Reviewed `tests/tests.rs`, which is a unit test suite for `ArrayVec` and `ArrayString` covering capacity handling, iteration, drop behavior, string conversion, drain/retain, and const constructors. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `benches/arraystring.rs`, a pure benchmark harness for `ArrayString` push/try_push paths. I found no concrete supply-chain or malicious indicators in the target file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13741,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056087286,
+            "finished_at_unix_ms": 1784056101027,
+            "total_token_usage": {
+              "input_tokens": 38222,
+              "cached_input_tokens": 33920,
+              "output_tokens": 451,
+              "reasoning_output_tokens": 174,
+              "total_tokens": 38673
+            },
+            "last_token_usage": {
+              "input_tokens": 38222,
+              "cached_input_tokens": 33920,
+              "output_tokens": 451,
+              "reasoning_output_tokens": 174,
+              "total_tokens": 38673
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/extend.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3afbb0d37f7100157793ba750d09a40afe6e86c3b8892ee37ed69d4723bc15ac"
+          },
+          "summary": "Reviewed `benches/extend.rs`, which contains benchmark helpers for `ArrayVec` extension paths (`extend`, `write`, and `try_extend_from_slice`) over fixed in-memory byte arrays and iterators. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20973,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056101027,
+            "finished_at_unix_ms": 1784056122001,
+            "total_token_usage": {
+              "input_tokens": 24550,
+              "cached_input_tokens": 21248,
+              "output_tokens": 458,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 25008
+            },
+            "last_token_usage": {
+              "input_tokens": 24550,
+              "cached_input_tokens": 21248,
+              "output_tokens": 458,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 25008
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/array_string.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "351fe385f9cd201a58e4bb4af74d1ec8002d905b86243c20252058e15ce0da45"
+          },
+          "summary": "`src/array_string.rs` implements a fixed-capacity `ArrayString` type with UTF-8 string mutation, formatting, serde/borsh integration, and optional zeroization. I checked the file for install-time execution, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19799,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056122001,
+            "finished_at_unix_ms": 1784056141801,
+            "total_token_usage": {
+              "input_tokens": 60219,
+              "cached_input_tokens": 52736,
+              "output_tokens": 635,
+              "reasoning_output_tokens": 240,
+              "total_tokens": 60854
+            },
+            "last_token_usage": {
+              "input_tokens": 60219,
+              "cached_input_tokens": 52736,
+              "output_tokens": 635,
+              "reasoning_output_tokens": 240,
+              "total_tokens": 60854
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

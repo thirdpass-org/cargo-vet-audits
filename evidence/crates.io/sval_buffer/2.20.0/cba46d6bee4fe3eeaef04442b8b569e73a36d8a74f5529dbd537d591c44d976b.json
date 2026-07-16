@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591183",
+  "latest_reviewed_at": "1784055210",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -193,50 +199,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 3,
-      "file_record_count": 8,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 5,
+      "file_record_count": 17,
+      "file_record_count_with_metrics": 17
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 12,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 8,
-    "duration_ms_total": 60712,
-    "attempts_total": 4,
+    "reviewed_file_records": 17,
+    "file_records_with_metrics": 17,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 275262,
+    "attempts_total": 17,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 17,
+    "last_token_usage_records": 17,
     "total_token_usage": {
-      "input_tokens": 125781,
-      "cached_input_tokens": 106112,
-      "output_tokens": 2290,
-      "reasoning_output_tokens": 1192,
-      "total_tokens": 128071
+      "input_tokens": 696962,
+      "cached_input_tokens": 608128,
+      "output_tokens": 9653,
+      "reasoning_output_tokens": 4787,
+      "total_tokens": 706615
     },
     "last_token_usage": {
-      "input_tokens": 125781,
-      "cached_input_tokens": 106112,
-      "output_tokens": 2290,
-      "reasoning_output_tokens": 1192,
-      "total_tokens": 128071
+      "input_tokens": 696962,
+      "cached_input_tokens": 608128,
+      "output_tokens": 9653,
+      "reasoning_output_tokens": 4787,
+      "total_tokens": 706615
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_63b285c4aedc45dd9eb441f672f7564e",
+      "id": "rev_018bb36c66014cb99a42261e287363e5",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -244,88 +242,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782850700",
+      "created_at": "1784052764",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/fragments.rs`, which implements `TextBuf` and `BinaryBuf` fragment collectors plus `sval` stream/ref adapters and tests. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/decoding pipelines, and persistence tampering; none were present in this target file.\nReviewed `benches/value.rs`, which contains only benchmark helpers for `sval_buffer::ValueBuf` over small owned and borrowed data structures. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/error.rs`, which only defines the crate's internal error type and its `Display`/`std::error::Error` implementations. I checked for install hooks, subprocesses, network or exfiltration paths, credential access, dynamic code loading, obfuscation/decoding, and persistence/tampering behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/fragments.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "a12748c73df317e1ccd7d6c724f79d0392ddf0354c85817404cc6059b2a15e93"
+            "value": "bf9905ca3abd7643b64cd65085ad3f66c454ed5979c01dfdacfbe711a583c83a"
           },
-          "summary": "Reviewed `src/fragments.rs`, which implements `TextBuf` and `BinaryBuf` fragment collectors plus `sval` stream/ref adapters and tests. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/decoding pipelines, and persistence tampering; none were present in this target file.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the crate's source VCS commit (`1b9005f149b2b2c1b1e2eda14d3576286fe33b44`) and `path_in_vcs` value. No concrete supply-chain indicators were present in this file: there are no install hooks, subprocess launches, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13227,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052697446,
+            "finished_at_unix_ms": 1784052710673,
+            "total_token_usage": {
+              "input_tokens": 24101,
+              "cached_input_tokens": 21248,
+              "output_tokens": 497,
+              "reasoning_output_tokens": 276,
+              "total_tokens": 24598
+            },
+            "last_token_usage": {
+              "input_tokens": 24101,
+              "cached_input_tokens": 21248,
+              "output_tokens": 497,
+              "reasoning_output_tokens": 276,
+              "total_tokens": 24598
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
-        {
-          "file_path": "benches/value.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6fc19bb08d26213e18e9489b730c8d79df6694b56254bf0b9c4e1b149261f938"
-          },
-          "summary": "Reviewed `benches/value.rs`, which contains only benchmark helpers for `sval_buffer::ValueBuf` over small owned and borrowed data structures. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/error.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "372146f4f7833370e0b007e6b2f7ac07b8cd14c3c32287e07f374475d1595f71"
-          },
-          "summary": "Reviewed `src/error.rs`, which only defines the crate's internal error type and its `Display`/`std::error::Error` implementations. I checked for install hooks, subprocesses, network or exfiltration paths, credential access, dynamic code loading, obfuscation/decoding, and persistence/tampering behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_932b3615271a4f6db658ed84448ccdcf",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782850749",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the normalized `Cargo.toml` for `sval_buffer` 2.20.0. It only declares package metadata, feature flags, and straightforward dependencies; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/lib.rs`, which is a small `no_std` crate root that wires module imports, feature-gated `std`/`alloc` reexports, and public API exports for `sval_buffer`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed the target `README.md`, which is a brief crate description and badge list for `sval_buffer`. I checked for install hooks, hidden execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the target `.cargo_vcs_info.json`, which only records a git commit SHA and the source path in VCS. It contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or other executable behavior, so no concrete malicious or supply-chain indicators were found in this file.",
-      "files": [
         {
           "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
             "value": "92364b4ee071ea785b7803fb840c961b64ba4857806689567ba9e78b8be7bf85"
           },
-          "summary": "Reviewed the normalized `Cargo.toml` for `sval_buffer` 2.20.0. It only declares package metadata, feature flags, and straightforward dependencies; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed the normalized Cargo.toml for `sval_buffer` 2.20.0, focusing on package metadata, features, dependencies, and any install-time or runtime execution hooks. I found no concrete malicious or supply-chain indicators in this file: there are no build scripts, package hooks, network/exfiltration settings, credential access, dynamic code loading, obfuscation, or persistence mechanisms declared here.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b9ef5f1a7d3373f7a4c137f78c1eefff2e0bd15c3eb99a75980c1b1e1d0c099e"
+          "agent_run_metrics": {
+            "duration_ms": 11942,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052710674,
+            "finished_at_unix_ms": 1784052722616,
+            "total_token_usage": {
+              "input_tokens": 24475,
+              "cached_input_tokens": 21248,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 24962
+            },
+            "last_token_usage": {
+              "input_tokens": 24475,
+              "cached_input_tokens": 21248,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 24962
+            }
           },
-          "summary": "Reviewed `src/lib.rs`, which is a small `no_std` crate root that wires module imports, feature-gated `std`/`alloc` reexports, and public API exports for `sval_buffer`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -335,21 +318,319 @@
             "algorithm": "blake3",
             "value": "fa1b14806f961ca750b08398ac0f029bc1438cc238802e9501a0124ef4526dce"
           },
-          "summary": "Reviewed the target `README.md`, which is a brief crate description and badge list for `sval_buffer`. I checked for install hooks, hidden execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "README.md is a brief crate overview for `sval_buffer` with project badges and a one-line description of buffering `sval::Value` implementations. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12252,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052722617,
+            "finished_at_unix_ms": 1784052734869,
+            "total_token_usage": {
+              "input_tokens": 24189,
+              "cached_input_tokens": 13568,
+              "output_tokens": 476,
+              "reasoning_output_tokens": 285,
+              "total_tokens": 24665
+            },
+            "last_token_usage": {
+              "input_tokens": 24189,
+              "cached_input_tokens": 13568,
+              "output_tokens": 476,
+              "reasoning_output_tokens": 285,
+              "total_tokens": 24665
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
+        {
+          "file_path": "benches/value.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6fc19bb08d26213e18e9489b730c8d79df6694b56254bf0b9c4e1b149261f938"
+          },
+          "summary": "This benchmark file defines alloc-gated owned and borrowed data fixtures and measures `sval_buffer::ValueBuf` collection and ownership-conversion paths. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14234,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052734870,
+            "finished_at_unix_ms": 1784052749104,
+            "total_token_usage": {
+              "input_tokens": 24909,
+              "cached_input_tokens": 21248,
+              "output_tokens": 552,
+              "reasoning_output_tokens": 360,
+              "total_tokens": 25461
+            },
+            "last_token_usage": {
+              "input_tokens": 24909,
+              "cached_input_tokens": 21248,
+              "output_tokens": 552,
+              "reasoning_output_tokens": 360,
+              "total_tokens": 25461
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/error.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "372146f4f7833370e0b007e6b2f7ac07b8cd14c3c32287e07f374475d1595f71"
+          },
+          "summary": "Reviewed `src/error.rs`, which defines the crate's error type, formatting, and a debug-only `no_alloc` panic path. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15366,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052749105,
+            "finished_at_unix_ms": 1784052764472,
+            "total_token_usage": {
+              "input_tokens": 38584,
+              "cached_input_tokens": 35968,
+              "output_tokens": 536,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 39120
+            },
+            "last_token_usage": {
+              "input_tokens": 38584,
+              "cached_input_tokens": 35968,
+              "output_tokens": 536,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 39120
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_06e28d861ac44d1b986b545f2994be01",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784055210",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/value.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7e9455b40bce96f13240b66de6dfbaca1593ec305b70a4c224c63781e18e35ad"
+          },
+          "summary": "Reviewed src/value.rs, which implements buffering and re-streaming of `sval` values into `ValueBuf`/`Value` tree structures with some lifetime-related `unsafe` transmute use. I checked for install-time hooks, network or exfiltration, secret access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 41897,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055168639,
+            "finished_at_unix_ms": 1784055210537,
+            "total_token_usage": {
+              "input_tokens": 235041,
+              "cached_input_tokens": 214656,
+              "output_tokens": 1415,
+              "reasoning_output_tokens": 317,
+              "total_tokens": 236456
+            },
+            "last_token_usage": {
+              "input_tokens": 235041,
+              "cached_input_tokens": 214656,
+              "output_tokens": 1415,
+              "reasoning_output_tokens": 317,
+              "total_tokens": 236456
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_625dc31d35e94623b31908f832abd33e",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046740",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "bf9905ca3abd7643b64cd65085ad3f66c454ed5979c01dfdacfbe711a583c83a"
           },
-          "summary": "Reviewed the target `.cargo_vcs_info.json`, which only records a git commit SHA and the source path in VCS. It contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or other executable behavior, so no concrete malicious or supply-chain indicators were found in this file.",
+          "summary": "Reviewed the VCS metadata in .cargo_vcs_info.json, which only records a git SHA1 and the path_in_vcs value for the package. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11492,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046668645,
+            "finished_at_unix_ms": 1784046680138,
+            "total_token_usage": {
+              "input_tokens": 24110,
+              "cached_input_tokens": 21248,
+              "output_tokens": 349,
+              "reasoning_output_tokens": 156,
+              "total_tokens": 24459
+            },
+            "last_token_usage": {
+              "input_tokens": 24110,
+              "cached_input_tokens": 21248,
+              "output_tokens": 349,
+              "reasoning_output_tokens": 156,
+              "total_tokens": 24459
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "92364b4ee071ea785b7803fb840c961b64ba4857806689567ba9e78b8be7bf85"
+          },
+          "summary": "I reviewed the normalized Cargo.toml for install-time hooks, build scripts, path/URL dependencies, and other manifest-level mechanisms that could enable hidden execution. It describes a standard Rust library crate with ordinary dependencies and no concrete indicators of malicious behavior; I did not find install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence settings in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16856,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046680139,
+            "finished_at_unix_ms": 1784046696996,
+            "total_token_usage": {
+              "input_tokens": 24568,
+              "cached_input_tokens": 21248,
+              "output_tokens": 720,
+              "reasoning_output_tokens": 516,
+              "total_tokens": 25288
+            },
+            "last_token_usage": {
+              "input_tokens": 24568,
+              "cached_input_tokens": 21248,
+              "output_tokens": 720,
+              "reasoning_output_tokens": 516,
+              "total_tokens": 25288
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "fa1b14806f961ca750b08398ac0f029bc1438cc238802e9501a0124ef4526dce"
+          },
+          "summary": "Reviewed README.md, which only contains project badges and a brief description of `sval_buffer` as buffering support for `sval::Value`. I found no concrete malicious or supply-chain indicators in this file and no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence setup.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10751,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046696996,
+            "finished_at_unix_ms": 1784046707748,
+            "total_token_usage": {
+              "input_tokens": 24163,
+              "cached_input_tokens": 21248,
+              "output_tokens": 392,
+              "reasoning_output_tokens": 198,
+              "total_tokens": 24555
+            },
+            "last_token_usage": {
+              "input_tokens": 24163,
+              "cached_input_tokens": 21248,
+              "output_tokens": 392,
+              "reasoning_output_tokens": 198,
+              "total_tokens": 24555
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/value.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6fc19bb08d26213e18e9489b730c8d79df6694b56254bf0b9c4e1b149261f938"
+          },
+          "summary": "Reviewed `benches/value.rs`, which is a benchmark harness that defines alloc-gated sample data types and exercises `sval_buffer::ValueBuf` collection/ownership paths. I checked for install hooks, network or secret access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19161,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046707749,
+            "finished_at_unix_ms": 1784046726911,
+            "total_token_usage": {
+              "input_tokens": 25232,
+              "cached_input_tokens": 21760,
+              "output_tokens": 348,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 25580
+            },
+            "last_token_usage": {
+              "input_tokens": 25232,
+              "cached_input_tokens": 21760,
+              "output_tokens": 348,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 25580
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/error.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "372146f4f7833370e0b007e6b2f7ac07b8cd14c3c32287e07f374475d1595f71"
+          },
+          "summary": "Reviewed `src/error.rs`, which defines the crate's `Error` type, its formatting, and a debug-only `no_alloc` panic path. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13615,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046726911,
+            "finished_at_unix_ms": 1784046740527,
+            "total_token_usage": {
+              "input_tokens": 38657,
+              "cached_input_tokens": 33920,
+              "output_tokens": 495,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 39152
+            },
+            "last_token_usage": {
+              "input_tokens": 38657,
+              "cached_input_tokens": 33920,
+              "output_tokens": 495,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 39152
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -365,7 +646,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591183",
       "thirdpass_version": "0.6.0",
@@ -501,7 +782,7 @@
       ]
     },
     {
-      "id": "rev_bfae7f0c43564dca8d15211867a35d92",
+      "id": "rev_bf6ae94d90de481dad678c0235f4efd0",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -509,22 +790,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782850654",
+      "created_at": "1784055163",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/value.rs` is a Rust value-buffering implementation that collects `sval` streams into structured in-memory representations and replays them back out. I reviewed it for install hooks, subprocess execution, network or secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/value.rs",
+          "file_path": "src/fragments.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "7e9455b40bce96f13240b66de6dfbaca1593ec305b70a4c224c63781e18e35ad"
+            "value": "a12748c73df317e1ccd7d6c724f79d0392ddf0354c85817404cc6059b2a15e93"
           },
-          "summary": "`src/value.rs` is a Rust value-buffering implementation that collects `sval` streams into structured in-memory representations and replays them back out. I reviewed it for install hooks, subprocess execution, network or secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed src/fragments.rs, which defines TextBuf and TextCollector for buffering sval text fragments and display output into contiguous strings. I checked for install-time hooks, network or secret access, dynamic code loading, obfuscation, persistence, hidden subprocesses, and other exfiltration paths; none are present in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18215,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055129845,
+            "finished_at_unix_ms": 1784055148061,
+            "total_token_usage": {
+              "input_tokens": 25642,
+              "cached_input_tokens": 21248,
+              "output_tokens": 480,
+              "reasoning_output_tokens": 289,
+              "total_tokens": 26122
+            },
+            "last_token_usage": {
+              "input_tokens": 25642,
+              "cached_input_tokens": 21248,
+              "output_tokens": 480,
+              "reasoning_output_tokens": 289,
+              "total_tokens": 26122
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b9ef5f1a7d3373f7a4c137f78c1eefff2e0bd15c3eb99a75980c1b1e1d0c099e"
+          },
+          "summary": "`src/lib.rs` is a small `no_std` crate root that only declares documentation attributes, feature-gated standard-library shims, module declarations, and public re-exports. I checked this file for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15542,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055148061,
+            "finished_at_unix_ms": 1784055163604,
+            "total_token_usage": {
+              "input_tokens": 37510,
+              "cached_input_tokens": 33408,
+              "output_tokens": 616,
+              "reasoning_output_tokens": 314,
+              "total_tokens": 38126
+            },
+            "last_token_usage": {
+              "input_tokens": 37510,
+              "cached_input_tokens": 33408,
+              "output_tokens": 616,
+              "reasoning_output_tokens": 314,
+              "total_tokens": 38126
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

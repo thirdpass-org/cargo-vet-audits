@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "medium",
-  "latest_reviewed_at": "1783590767",
+  "latest_reviewed_at": "1784059297",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -280,50 +286,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 5,
-      "file_record_count": 15,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 5
+      "review_count": 5,
+      "file_record_count": 20,
+      "file_record_count_with_metrics": 20
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 20,
-    "file_records_with_metrics": 5,
-    "file_records_without_metrics": 15,
-    "duration_ms_total": 80403,
-    "attempts_total": 5,
+    "file_records_with_metrics": 20,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 326090,
+    "attempts_total": 20,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 5,
-    "last_token_usage_records": 5,
+    "total_token_usage_records": 20,
+    "last_token_usage_records": 20,
     "total_token_usage": {
-      "input_tokens": 130260,
-      "cached_input_tokens": 114176,
-      "output_tokens": 3574,
-      "reasoning_output_tokens": 2081,
-      "total_tokens": 133834
+      "input_tokens": 668504,
+      "cached_input_tokens": 578560,
+      "output_tokens": 11379,
+      "reasoning_output_tokens": 6050,
+      "total_tokens": 679883
     },
     "last_token_usage": {
-      "input_tokens": 130260,
-      "cached_input_tokens": 114176,
-      "output_tokens": 3574,
-      "reasoning_output_tokens": 2081,
-      "total_tokens": 133834
+      "input_tokens": 668504,
+      "cached_input_tokens": 578560,
+      "output_tokens": 11379,
+      "reasoning_output_tokens": 6050,
+      "total_tokens": 679883
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_010b89fed4aa460486595be59db7e12f",
+      "id": "rev_1d7d17d319a546039ca8449a94d68893",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -331,34 +329,154 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783182235",
+      "created_at": "1784057729",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "I reviewed `src/common.rs`, which defines macros for endian-aware integer, float, char, and nonzero wrapper types plus trait implementations. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/decoding pipelines, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nI reviewed the GitHub Actions workflow in `.github/workflows/ci.yml`, which runs Rust test, Miri, fmt, clippy, doc, and cross-build jobs across multiple toolchains and targets using `actions/checkout` and `dtolnay/rust-toolchain`. I found no concrete malicious or supply-chain indicators: no install hooks, credential/secret access, network or exfiltration steps, dynamic code loading, obfuscation, or persistence/tampering behavior.\nReviewed `src/util.rs`, which contains only compile-time helper macros for endian selection plus a test-only size/alignment assertion macro. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the package manifest in `Cargo.toml` for install-time execution, build scripts, dependency-driven code loading, network/exfiltration, credential access, obfuscation, and persistence behavior. The file only declares a small Rust library crate with optional dependency features and no concrete malicious or supply-chain indicators were found.\nReviewed `README.md`, which is a short crate description and usage example for `rend` (cross-platform endian-aware primitives). I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none in this target file.",
       "files": [
         {
-          "file_path": "src/common.rs",
+          "file_path": "src/context.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "fa52f724309055d3ee4fc6b0f25f4accb5a8c2ef6494059142ff73e435758655"
+            "value": "dea12faa8c40ac2bbed5c0ce68a74346cc869bd0295b52365613b147601b23cf"
           },
-          "summary": "I reviewed `src/common.rs`, which defines macros for endian-aware integer, float, char, and nonzero wrapper types plus trait implementations. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/decoding pipelines, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed src/context.rs, which only defines a small `ValueCheckContext` struct and a `Display` implementation that formats a contextual error message. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22365,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057678330,
+            "finished_at_unix_ms": 1784057700695,
+            "total_token_usage": {
+              "input_tokens": 24144,
+              "cached_input_tokens": 21248,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 24576
+            },
+            "last_token_usage": {
+              "input_tokens": 24144,
+              "cached_input_tokens": 21248,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 24576
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".github/workflows/ci.yml",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "52e7c6cb97aa5328a9ea6f6c7701d8f2e8acf1cb2d539517e284c226d36ff99b"
+            "value": "5dd8cedb1fdcc267ea20c085e5e7775cae06aa8c60de8d0cc3bdfb99fd79b7fa"
           },
-          "summary": "I reviewed the GitHub Actions workflow in `.github/workflows/ci.yml`, which runs Rust test, Miri, fmt, clippy, doc, and cross-build jobs across multiple toolchains and targets using `actions/checkout` and `dtolnay/rust-toolchain`. I found no concrete malicious or supply-chain indicators: no install hooks, credential/secret access, network or exfiltration steps, dynamic code loading, obfuscation, or persistence/tampering behavior.",
+          "summary": "`src/lib.rs` is a no_std Rust library that defines endian-aware numeric, nonzero, char, and atomic wrapper types plus unit tests. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 29269,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057700696,
+            "finished_at_unix_ms": 1784057729965,
+            "total_token_usage": {
+              "input_tokens": 84159,
+              "cached_input_tokens": 70016,
+              "output_tokens": 839,
+              "reasoning_output_tokens": 352,
+              "total_tokens": 84998
+            },
+            "last_token_usage": {
+              "input_tokens": 84159,
+              "cached_input_tokens": 70016,
+              "output_tokens": 839,
+              "reasoning_output_tokens": 352,
+              "total_tokens": 84998
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_5bee131c76164a0395ac206afd8d2efe",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059297",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/traits.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "66cac07f5f8e214304b301790b38a35e0acc531bf24b86acccf539316d6fab6e"
+          },
+          "summary": "Reviewed `src/traits.rs`, which defines a set of macro helpers for generating trait implementations and feature-gated unsafe marker impls for bytecheck/bytemuck. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15630,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059239123,
+            "finished_at_unix_ms": 1784059254754,
+            "total_token_usage": {
+              "input_tokens": 41184,
+              "cached_input_tokens": 34944,
+              "output_tokens": 478,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 41662
+            },
+            "last_token_usage": {
+              "input_tokens": 41184,
+              "cached_input_tokens": 34944,
+              "output_tokens": 478,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 41662
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/unaligned.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "24a6de25eb20860b3511f86d1fff96b6e24ba8487db9bec0913b98eac0755e51"
+          },
+          "summary": "Reviewed the macro-generated unaligned wrappers for integers, floats, `char`, and `NonZero*` types plus the unit tests in `src/unaligned.rs`. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 25087,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059254754,
+            "finished_at_unix_ms": 1784059279842,
+            "total_token_usage": {
+              "input_tokens": 62031,
+              "cached_input_tokens": 52736,
+              "output_tokens": 1173,
+              "reasoning_output_tokens": 783,
+              "total_tokens": 63204
+            },
+            "last_token_usage": {
+              "input_tokens": 62031,
+              "cached_input_tokens": 52736,
+              "output_tokens": 1173,
+              "reasoning_output_tokens": 783,
+              "total_tokens": 63204
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -368,40 +486,36 @@
             "algorithm": "blake3",
             "value": "c96386c0540dbc6f736dd078ebc8e4464f0b4e20f98130298232dec9b0be2223"
           },
-          "summary": "Reviewed `src/util.rs`, which contains only compile-time helper macros for endian selection plus a test-only size/alignment assertion macro. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/util.rs`, which only defines small compile-time macros for endian selection and test-only size/alignment assertions. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload-execution indicators, and found none in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c484d89bc385c8f623e45fd66f38ff564da8d942db1423fbb79c638f84547bb5"
+          "agent_run_metrics": {
+            "duration_ms": 17417,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059279842,
+            "finished_at_unix_ms": 1784059297259,
+            "total_token_usage": {
+              "input_tokens": 37680,
+              "cached_input_tokens": 33408,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 123,
+              "total_tokens": 38092
+            },
+            "last_token_usage": {
+              "input_tokens": 37680,
+              "cached_input_tokens": 33408,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 123,
+              "total_tokens": 38092
+            }
           },
-          "summary": "Reviewed the package manifest in `Cargo.toml` for install-time execution, build scripts, dependency-driven code loading, network/exfiltration, credential access, obfuscation, and persistence behavior. The file only declares a small Rust library crate with optional dependency features and no concrete malicious or supply-chain indicators were found.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "552db271b1188980a13792e0749de4edc8bd57b84a77665924814ab720f56860"
-          },
-          "summary": "Reviewed `README.md`, which is a short crate description and usage example for `rend` (cross-platform endian-aware primitives). I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_25278d7597954f66a5b65e34119f624e",
+      "id": "rev_7165e0c81bfd4ae9878a89c5db82c2d8",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -409,52 +523,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783182103",
+      "created_at": "1784053782",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which defines `rend`'s endian-aware integer, float, char, nonzero, and atomic wrapper types plus tests. I checked for install hooks, hidden subprocesses, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": ".cargo/config.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "5dd8cedb1fdcc267ea20c085e5e7775cae06aa8c60de8d0cc3bdfb99fd79b7fa"
+            "value": "194b650f1cc828d6e581482e339974fa3a3076d7af13e2684977e85b234e1824"
           },
-          "summary": "Reviewed `src/lib.rs`, which defines `rend`'s endian-aware integer, float, char, nonzero, and atomic wrapper types plus tests. I checked for install hooks, hidden subprocesses, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `.cargo/config.toml`, which only sets `rustdocflags` to enable `docsrs` during documentation builds and declares an empty `[env]` section. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14311,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053716398,
+            "finished_at_unix_ms": 1784053730709,
+            "total_token_usage": {
+              "input_tokens": 36395,
+              "cached_input_tokens": 30848,
+              "output_tokens": 462,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 36857
+            },
+            "last_token_usage": {
+              "input_tokens": 36395,
+              "cached_input_tokens": 30848,
+              "output_tokens": 462,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 36857
+            }
+          },
           "comment_count": 0,
           "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_2dc0decb94f84a168b71a5534e258f04",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783182330",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `example.md`, a short Rust documentation snippet demonstrating `rend` endian wrapper types, `from_native`/`into()` conversions, and `unsafe { transmute(...) }` only as a local representation check. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `.github/FUNDING.yml`, which only contains a GitHub Sponsors handle (`github: rkyv`). I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
+        },
         {
-          "file_path": "example.md",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "6b42cb05915401be0bf14f16c8898fd7c3b03f461100f6f57f31161e6f05c2e8"
+            "value": "6edfa8e18c75d71bc006a64df03dc047e8962f4b6a43ae671ce5dac81327c334"
           },
-          "summary": "Reviewed `example.md`, a short Rust documentation snippet demonstrating `rend` endian wrapper types, `from_native`/`into()` conversions, and `unsafe { transmute(...) }` only as a local representation check. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed the crate provenance metadata in `.cargo_vcs_info.json`; it contains only a Git SHA and empty `path_in_vcs` value. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12453,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053730710,
+            "finished_at_unix_ms": 1784053743164,
+            "total_token_usage": {
+              "input_tokens": 24136,
+              "cached_input_tokens": 23296,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 24540
+            },
+            "last_token_usage": {
+              "input_tokens": 24136,
+              "cached_input_tokens": 23296,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 24540
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -464,9 +599,93 @@
             "algorithm": "blake3",
             "value": "dbb7e5a994ea55c62877afbedd32c205ac040d3b0d67334314087795aa6e5298"
           },
-          "summary": "Reviewed `.github/FUNDING.yml`, which only contains a GitHub Sponsors handle (`github: rkyv`). I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `.github/FUNDING.yml`, which only declares a GitHub Sponsors account (`rkyv`). I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10339,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053743164,
+            "finished_at_unix_ms": 1784053753504,
+            "total_token_usage": {
+              "input_tokens": 24470,
+              "cached_input_tokens": 21760,
+              "output_tokens": 329,
+              "reasoning_output_tokens": 150,
+              "total_tokens": 24799
+            },
+            "last_token_usage": {
+              "input_tokens": 24470,
+              "cached_input_tokens": 21760,
+              "output_tokens": 329,
+              "reasoning_output_tokens": 150,
+              "total_tokens": 24799
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/ci.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "52e7c6cb97aa5328a9ea6f6c7701d8f2e8acf1cb2d539517e284c226d36ff99b"
+          },
+          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/ci.yml`, which defines routine Rust CI jobs for testing, Miri, cross-compilation, formatting, clippy, and docs. I checked for install-time hooks, secret or credential access, network exfiltration, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16893,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053753504,
+            "finished_at_unix_ms": 1784053770398,
+            "total_token_usage": {
+              "input_tokens": 39775,
+              "cached_input_tokens": 34432,
+              "output_tokens": 601,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 40376
+            },
+            "last_token_usage": {
+              "input_tokens": 39775,
+              "cached_input_tokens": 34432,
+              "output_tokens": 601,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 40376
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".vscode/tasks.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "30ed4c0ab0deb63b1414180ef8097e697b862944b0428583e768a359c9d45eec"
+          },
+          "summary": "Reviewed the VS Code task definition in `.vscode/tasks.json`; it only defines a default `cargo build` task for local development. I found no concrete supply-chain indicators in this file and no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12473,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053770399,
+            "finished_at_unix_ms": 1784053782872,
+            "total_token_usage": {
+              "input_tokens": 24245,
+              "cached_input_tokens": 21248,
+              "output_tokens": 479,
+              "reasoning_output_tokens": 285,
+              "total_tokens": 24724
+            },
+            "last_token_usage": {
+              "input_tokens": 24245,
+              "cached_input_tokens": 21248,
+              "output_tokens": 479,
+              "reasoning_output_tokens": 285,
+              "total_tokens": 24724
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -482,7 +701,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590767",
       "thirdpass_version": "0.6.0",
@@ -666,7 +885,7 @@
       ]
     },
     {
-      "id": "rev_c730afeec2af4320a39b5deb64baaa88",
+      "id": "rev_9f41d21d3d394b9a8fa580ed72f07401",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -674,76 +893,105 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783182160",
+      "created_at": "1784056006",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/unaligned.rs`, which defines packed endian-specific wrapper types for integers, floats, chars, and nonzero integers, plus unit tests for size/alignment and byte layout. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation/deobfuscation pipelines, or persistence/tampering behavior.\n`src/traits.rs` is a macro-only Rust module that forwards standard trait implementations (arithmetic, formatting, conversions, ordering, hashing, and optional bytemuck/bytecheck traits) for wrapper types. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "src/unaligned.rs",
+          "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "24a6de25eb20860b3511f86d1fff96b6e24ba8487db9bec0913b98eac0755e51"
+            "value": "c484d89bc385c8f623e45fd66f38ff564da8d942db1423fbb79c638f84547bb5"
           },
-          "summary": "Reviewed `src/unaligned.rs`, which defines packed endian-specific wrapper types for integers, floats, chars, and nonzero integers, plus unit tests for size/alignment and byte layout. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation/deobfuscation pipelines, or persistence/tampering behavior.",
+          "summary": "Reviewed the normalized Cargo manifest for `rend` 0.5.3. It defines a small no_std-oriented library with optional serialization-related dependencies and no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13630,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055936870,
+            "finished_at_unix_ms": 1784055950501,
+            "total_token_usage": {
+              "input_tokens": 24474,
+              "cached_input_tokens": 21248,
+              "output_tokens": 445,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 24919
+            },
+            "last_token_usage": {
+              "input_tokens": 24474,
+              "cached_input_tokens": 21248,
+              "output_tokens": 445,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 24919
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/traits.rs",
+          "file_path": "README.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "66cac07f5f8e214304b301790b38a35e0acc531bf24b86acccf539316d6fab6e"
+            "value": "552db271b1188980a13792e0749de4edc8bd57b84a77665924814ab720f56860"
           },
-          "summary": "`src/traits.rs` is a macro-only Rust module that forwards standard trait implementations (arithmetic, formatting, conversions, ordering, hashing, and optional bytemuck/bytecheck traits) for wrapper types. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed README.md, which documents the `rend` crate as a cross-platform endian-aware primitives library and includes only usage examples and documentation links. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence patterns, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_d5f6c205898f4a3584530cb91599daa2",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783182301",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the VS Code task definition in `.vscode/tasks.json`; it only defines a default `cargo build` task and does not contain install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/context.rs`, which only defines a small `ValueCheckContext` struct and a `Display` implementation that formats the two stored names into an error message. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\n`rustfmt.toml` contains only Rust formatting policy settings such as width limits, import grouping, comment wrapping, and literal/style normalization. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload-construction behavior, and found no concrete malicious or supply-chain indicators.\nI reviewed the `.cargo_vcs_info.json` target file, which only contains a Git commit SHA1 and an empty `path_in_vcs` field. It shows no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `.cargo/config.toml`, which only sets `rustdocflags = [\"--cfg\", \"docsrs\"]` under `[build]` and contains an empty `[env]` table. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-      "files": [
-        {
-          "file_path": ".vscode/tasks.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "30ed4c0ab0deb63b1414180ef8097e697b862944b0428583e768a359c9d45eec"
+          "agent_run_metrics": {
+            "duration_ms": 11712,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055950501,
+            "finished_at_unix_ms": 1784055962214,
+            "total_token_usage": {
+              "input_tokens": 24513,
+              "cached_input_tokens": 21248,
+              "output_tokens": 389,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 24902
+            },
+            "last_token_usage": {
+              "input_tokens": 24513,
+              "cached_input_tokens": 21248,
+              "output_tokens": 389,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 24902
+            }
           },
-          "summary": "Reviewed the VS Code task definition in `.vscode/tasks.json`; it only defines a default `cargo build` task and does not contain install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/context.rs",
+          "file_path": "example.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "dea12faa8c40ac2bbed5c0ce68a74346cc869bd0295b52365613b147601b23cf"
+            "value": "6b42cb05915401be0bf14f16c8898fd7c3b03f461100f6f57f31161e6f05c2e8"
           },
-          "summary": "Reviewed `src/context.rs`, which only defines a small `ValueCheckContext` struct and a `Display` implementation that formats the two stored names into an error message. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed the Rust documentation example in `example.md`, which demonstrates endian wrapper types and uses `unsafe { transmute }` only to show their in-memory byte layout. I did not find any concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11720,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055962215,
+            "finished_at_unix_ms": 1784055973935,
+            "total_token_usage": {
+              "input_tokens": 24287,
+              "cached_input_tokens": 21248,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 24709
+            },
+            "last_token_usage": {
+              "input_tokens": 24287,
+              "cached_input_tokens": 21248,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 24709
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -753,33 +1001,61 @@
             "algorithm": "blake3",
             "value": "bf54aa9f2168b188ab51e10c81eb2e5d121fa1ff9502778bff82724698beee8e"
           },
-          "summary": "`rustfmt.toml` contains only Rust formatting policy settings such as width limits, import grouping, comment wrapping, and literal/style normalization. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload-construction behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `rustfmt.toml`, which only configures Rust formatting behavior such as line width, import grouping, comment wrapping, and doc-comment formatting. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14806,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055973935,
+            "finished_at_unix_ms": 1784055988742,
+            "total_token_usage": {
+              "input_tokens": 24154,
+              "cached_input_tokens": 21248,
+              "output_tokens": 349,
+              "reasoning_output_tokens": 162,
+              "total_tokens": 24503
+            },
+            "last_token_usage": {
+              "input_tokens": 24154,
+              "cached_input_tokens": 21248,
+              "output_tokens": 349,
+              "reasoning_output_tokens": 162,
+              "total_tokens": 24503
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/common.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "6edfa8e18c75d71bc006a64df03dc047e8962f4b6a43ae671ce5dac81327c334"
+            "value": "fa52f724309055d3ee4fc6b0f25f4accb5a8c2ef6494059142ff73e435758655"
           },
-          "summary": "I reviewed the `.cargo_vcs_info.json` target file, which only contains a Git commit SHA1 and an empty `path_in_vcs` field. It shows no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed src/common.rs, which defines macro-generated endian-aware wrappers for integers, floats, chars, and nonzero types plus trait impls and const conversion helpers. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo/config.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "194b650f1cc828d6e581482e339974fa3a3076d7af13e2684977e85b234e1824"
+          "agent_run_metrics": {
+            "duration_ms": 17582,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055988743,
+            "finished_at_unix_ms": 1784056006326,
+            "total_token_usage": {
+              "input_tokens": 42597,
+              "cached_input_tokens": 35456,
+              "output_tokens": 591,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 43188
+            },
+            "last_token_usage": {
+              "input_tokens": 42597,
+              "cached_input_tokens": 35456,
+              "output_tokens": 591,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 43188
+            }
           },
-          "summary": "Reviewed `.cargo/config.toml`, which only sets `rustdocflags = [\"--cfg\", \"docsrs\"]` under `[build]` and contains an empty `[env]` table. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

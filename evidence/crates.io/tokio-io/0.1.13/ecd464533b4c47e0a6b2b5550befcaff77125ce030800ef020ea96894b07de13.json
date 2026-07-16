@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783588306",
+  "latest_reviewed_at": "1784063333",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -491,50 +497,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 8,
-      "file_record_count": 37,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 2,
-      "file_record_count_with_metrics": 2
+      "review_count": 9,
+      "file_record_count": 39,
+      "file_record_count_with_metrics": 39
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 39,
-    "file_records_with_metrics": 2,
-    "file_records_without_metrics": 37,
-    "duration_ms_total": 27773,
-    "attempts_total": 2,
+    "file_records_with_metrics": 39,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 579981,
+    "attempts_total": 39,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 2,
-    "last_token_usage_records": 2,
+    "total_token_usage_records": 39,
+    "last_token_usage_records": 39,
     "total_token_usage": {
-      "input_tokens": 40882,
-      "cached_input_tokens": 32256,
-      "output_tokens": 784,
-      "reasoning_output_tokens": 403,
-      "total_tokens": 41666
+      "input_tokens": 1159602,
+      "cached_input_tokens": 1017600,
+      "output_tokens": 18304,
+      "reasoning_output_tokens": 9001,
+      "total_tokens": 1177906
     },
     "last_token_usage": {
-      "input_tokens": 40882,
-      "cached_input_tokens": 32256,
-      "output_tokens": 784,
-      "reasoning_output_tokens": 403,
-      "total_tokens": 41666
+      "input_tokens": 1159602,
+      "cached_input_tokens": 1017600,
+      "output_tokens": 18304,
+      "reasoning_output_tokens": 9001,
+      "total_tokens": 1177906
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_0c5d2c74c6a24768a65624d193a1ac2a",
+      "id": "rev_1bff9132187c40f99dd4146f57da10bf",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -542,292 +540,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783184820",
+      "created_at": "1784059373",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/split.rs`, which implements `ReadHalf`/`WriteHalf` wrappers around `BiLock` for splitting and reuniting async I/O handles, plus tests for lock contention and `unsplit` panics. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed `src/framed_write.rs`, which is a Tokio framed I/O sink/stream wrapper for encoding frames into an `AsyncWrite` with an 8 KiB backpressure buffer. I checked it for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nI reviewed `src/_tokio_codec/framed_write.rs`, which is a Tokio framed-write adapter that buffers encoded items, flushes them to an `AsyncWrite`, and exposes the wrapped encoder/transport. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation pipelines, or persistence/tampering behavior.\nReviewed `src/_tokio_codec/framed.rs`, which is a Tokio framing adapter that wraps an async transport plus codec into combined `Stream`/`Sink` behavior and exposes accessors/parts helpers. I checked for install hooks, network or exfiltration logic, credential access, hidden subprocesses, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators; none were present in this file.\nReviewed `src/framed_read.rs`, which is a standard Tokio `Stream`/`Sink` adapter that wraps an `AsyncRead` plus `Decoder` and manages an internal buffer/EOF state. I checked for install hooks, hidden subprocess execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation/decoding pipelines, and persistence tampering; none are present in this file.",
       "files": [
         {
-          "file_path": "src/split.rs",
+          "file_path": "src/codec/encoder.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "62b78e7ee37ee7b6c280f853a999579a370fafc5458f8f80ded3e13022c40111"
+            "value": "1ae5bf2e900a1c7ea2000e2bb9b9f0e741a1c76fd6645481583d548d21b32ffd"
           },
-          "summary": "Reviewed `src/split.rs`, which implements `ReadHalf`/`WriteHalf` wrappers around `BiLock` for splitting and reuniting async I/O handles, plus tests for lock contention and `unsplit` panics. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "summary": "Reviewed `src/codec/encoder.rs`, which only defines the `Encoder` trait used by `FramedWrite` to encode items into a `BytesMut` buffer. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/framed_write.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f9f81d77038038ae8d4a918fb1ebe3066e91b885003792a48b138d908a9c5713"
+          "agent_run_metrics": {
+            "duration_ms": 12967,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059302625,
+            "finished_at_unix_ms": 1784059315592,
+            "total_token_usage": {
+              "input_tokens": 24324,
+              "cached_input_tokens": 21248,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 24719
+            },
+            "last_token_usage": {
+              "input_tokens": 24324,
+              "cached_input_tokens": 21248,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 24719
+            }
           },
-          "summary": "Reviewed `src/framed_write.rs`, which is a Tokio framed I/O sink/stream wrapper for encoding frames into an `AsyncWrite` with an 8 KiB backpressure buffer. I checked it for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/_tokio_codec/framed_write.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a92ab4a637341051a36c212e4117859ebcf3082d8e5a49925f96fc801c653705"
-          },
-          "summary": "I reviewed `src/_tokio_codec/framed_write.rs`, which is a Tokio framed-write adapter that buffers encoded items, flushes them to an `AsyncWrite`, and exposes the wrapped encoder/transport. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation pipelines, or persistence/tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/_tokio_codec/framed.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ed172ab247812065a09610b095bc084d4a24c30270d6f849152154594d2354d9"
-          },
-          "summary": "Reviewed `src/_tokio_codec/framed.rs`, which is a Tokio framing adapter that wraps an async transport plus codec into combined `Stream`/`Sink` behavior and exposes accessors/parts helpers. I checked for install hooks, network or exfiltration logic, credential access, hidden subprocesses, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/framed_read.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "78e1d0526f034fda4b48ad2dd16e5f4254f67a4d6c5d8f26abe1e41e21e8544f"
-          },
-          "summary": "Reviewed `src/framed_read.rs`, which is a standard Tokio `Stream`/`Sink` adapter that wraps an `AsyncRead` plus `Decoder` and manages an internal buffer/EOF state. I checked for install hooks, hidden subprocess execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation/decoding pipelines, and persistence tampering; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_197ea3a9fec843599b6c0b2d70477f1c",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783184964",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/io/copy.rs`, which implements a buffered async copy future that moves bytes from an `AsyncRead` to an `AsyncWrite` and flushes on EOF. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/async_read.rs`, which defines the `AsyncRead` trait and its default helpers for zeroing buffers, polling reads, framing, and splitting async I/O objects. I found no concrete supply-chain indicators: there are no install hooks, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation/deobfuscation, or persistence/environment-tampering behavior in this file.\nReviewed `src/allow_std.rs`, a small adapter that forwards `Read`/`Write` methods into `AsyncRead`/`AsyncWrite` with a no-op `shutdown`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.\nReviewed `src/window.rs`, which defines a small owned-buffer window wrapper with range setters and `AsRef`/`AsMut` slicing. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior; none are present in this file.\nReviewed `src/io/read_exact.rs`, which implements a small `ReadExact` future that repeatedly polls an `AsyncRead` until a buffer is filled or EOF occurs. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/io/copy.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3b7867c7ba159fb4a20ab18dce18d4de44d03f5e133165523f9865b61a2203c3"
-          },
-          "summary": "Reviewed `src/io/copy.rs`, which implements a buffered async copy future that moves bytes from an `AsyncRead` to an `AsyncWrite` and flushes on EOF. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/async_read.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "26ef13260405d65df5ccdc65b10328d70753f3f23b8c5fd8f3dad85ff19905db"
-          },
-          "summary": "Reviewed `src/async_read.rs`, which defines the `AsyncRead` trait and its default helpers for zeroing buffers, polling reads, framing, and splitting async I/O objects. I found no concrete supply-chain indicators: there are no install hooks, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation/deobfuscation, or persistence/environment-tampering behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/allow_std.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b325ce4a80677a26a173db3cc39ca72de5ad226995b7e1ecfb4c617f98e07359"
-          },
-          "summary": "Reviewed `src/allow_std.rs`, a small adapter that forwards `Read`/`Write` methods into `AsyncRead`/`AsyncWrite` with a no-op `shutdown`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/window.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "24c33fffed354f71914c7ff44971245d4cd67e4c72d96fe586c175efb72455ce"
-          },
-          "summary": "Reviewed `src/window.rs`, which defines a small owned-buffer window wrapper with range setters and `AsRef`/`AsMut` slicing. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/io/read_exact.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3e95b6a0df87b7d02dc83bee5d0cc1470f84c673ae825bf09dc5db56a2613a06"
-          },
-          "summary": "Reviewed `src/io/read_exact.rs`, which implements a small `ReadExact` future that repeatedly polls an `AsyncRead` until a buffer is filled or EOF occurs. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_211b7436260644f9bb18ca7e2e61efdc",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783185140",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/io/read.rs`, which defines a small `Future` wrapper that polls an `AsyncRead` implementation into a caller-provided buffer and returns the reader, buffer, and byte count. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/lines.rs`, a small async `Lines` stream adapter that reads buffered text lines, strips trailing `\\n`/`\\r`, and returns owned `String` values. I checked this file for install hooks, subprocess or network activity, credential/secret access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.\nReviewed `src/codec/bytes_codec.rs`, which is a small Tokio codec that only moves raw `Bytes` into and out of a `BytesMut` buffer. I checked for install-time hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.\nReviewed the `README.md` for any signs of hidden execution, install-time hooks, credential/secret harvesting, network exfiltration, dynamic code loading, obfuscation, or persistence behavior. The file is a standard crate readme with usage, documentation, and license information; it contains no concrete malicious or supply-chain indicators and no executable or installer logic.\nReviewed `src/codec/decoder.rs`, which defines the `Decoder` trait, its default `decode_eof` fallback, and the `framed` helper for building a `Framed` I/O wrapper. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/decoding pipelines, or persistence/environment-tampering behavior.",
-      "files": [
-        {
-          "file_path": "src/io/read.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5ded09c8dbd76e97b41d22c08f7a6112f5639608cc507e021df6096379a9667e"
-          },
-          "summary": "Reviewed `src/io/read.rs`, which defines a small `Future` wrapper that polls an `AsyncRead` implementation into a caller-provided buffer and returns the reader, buffer, and byte count. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lines.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "86d5280b4e324fdcea56880996dc7ded72b68b0d6f1c5b006dd192146aa9ce60"
-          },
-          "summary": "Reviewed `src/lines.rs`, a small async `Lines` stream adapter that reads buffered text lines, strips trailing `\\n`/`\\r`, and returns owned `String` values. I checked this file for install hooks, subprocess or network activity, credential/secret access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/codec/bytes_codec.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "65ab1921b44c2856a19cc4f68cbaa3e4214be79598689527fa795cfbb6dbd7db"
-          },
-          "summary": "Reviewed `src/codec/bytes_codec.rs`, which is a small Tokio codec that only moves raw `Bytes` into and out of a `BytesMut` buffer. I checked for install-time hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "48dddb001080b7508fd2042e8efa00aa532b5806670eccd9d85565886a4f82d5"
-          },
-          "summary": "Reviewed the `README.md` for any signs of hidden execution, install-time hooks, credential/secret harvesting, network exfiltration, dynamic code loading, obfuscation, or persistence behavior. The file is a standard crate readme with usage, documentation, and license information; it contains no concrete malicious or supply-chain indicators and no executable or installer logic.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/codec/decoder.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "192e563c5b1327305d2a471d7eb402c3ac7c5aa089658a53d3a866ccf52eef48"
-          },
-          "summary": "Reviewed `src/codec/decoder.rs`, which defines the `Decoder` trait, its default `decode_eof` fallback, and the `framed` helper for building a `Framed` I/O wrapper. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/decoding pipelines, or persistence/environment-tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_3b7a074ce2784a709f7902b943eb3756",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783184890",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/_tokio_codec/framed_read.rs`, which implements `FramedRead`/`FramedRead2` as a buffered `AsyncRead` + `Decoder` stream adapter. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file; it only manages buffered reads and frame decoding.\nReviewed `src/framed.rs`, which is a thin deprecated framing wrapper around `AsyncRead`/`AsyncWrite` plus `Decoder`/`Encoder` plumbing (`Framed`, `Fuse`, `FramedParts`) with buffer/codec accessors and trait forwards. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nReviewed `tests/async_read.rs`, which contains unit tests for `tokio_io::AsyncRead::read_buf` covering success, error propagation, zero-capacity handling, uninitialized-buffer behavior, and `WouldBlock` translation. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this target file.\n`src/async_write.rs` is a small Rust trait-and-adapter module that defines `AsyncWrite`/`AsyncRead` helper implementations for standard library types like `Box`, `&mut`, `BufWriter`, `BufReader`, `Cursor`, `Sink`, `Repeat`, `Take`, and `Chain`. I checked it for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.\nReviewed `src/codec/lines_codec.rs`, which implements a simple line-splitting `Decoder`/`Encoder` for UTF-8 text with optional carriage-return stripping. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-      "files": [
-        {
-          "file_path": "src/_tokio_codec/framed_read.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "10d53da9a65b974a62774d00804b3fadc16a5e1867d8ead5b20b8267de260efb"
-          },
-          "summary": "Reviewed `src/_tokio_codec/framed_read.rs`, which implements `FramedRead`/`FramedRead2` as a buffered `AsyncRead` + `Decoder` stream adapter. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file; it only manages buffered reads and frame decoding.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/framed.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e9e397ab8412d5c1c6f82ac597a93924ae517819dbf36b28023fed9d9d16aed9"
-          },
-          "summary": "Reviewed `src/framed.rs`, which is a thin deprecated framing wrapper around `AsyncRead`/`AsyncWrite` plus `Decoder`/`Encoder` plumbing (`Framed`, `Fuse`, `FramedParts`) with buffer/codec accessors and trait forwards. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/async_read.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "545f9c19b5564b1128c1a530e8594b4af537765622ef25b152fac89999cec852"
-          },
-          "summary": "Reviewed `tests/async_read.rs`, which contains unit tests for `tokio_io::AsyncRead::read_buf` covering success, error propagation, zero-capacity handling, uninitialized-buffer behavior, and `WouldBlock` translation. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/async_write.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2a9c6e06ca482d4365687728d666554cc1e518850082640687e34f89336f088b"
-          },
-          "summary": "`src/async_write.rs` is a small Rust trait-and-adapter module that defines `AsyncWrite`/`AsyncRead` helper implementations for standard library types like `Box`, `&mut`, `BufWriter`, `BufReader`, `Cursor`, `Sink`, `Repeat`, `Take`, and `Chain`. I checked it for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -837,183 +584,29 @@
             "algorithm": "blake3",
             "value": "a1b28bf4775891bf0851b7f9481f61b15565e2c40390891fda719064813a01e8"
           },
-          "summary": "Reviewed `src/codec/lines_codec.rs`, which implements a simple line-splitting `Decoder`/`Encoder` for UTF-8 text with optional carriage-return stripping. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "summary": "Reviewed `src/codec/lines_codec.rs`, which implements a deprecated `LinesCodec` for splitting byte streams into UTF-8 lines and encoding strings with `\\n`. I checked for install hooks, hidden subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_4388b03b6f8f4bf398e275be1a9bb11a",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783185315",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/io/mod.rs`, which is a small module aggregator that only declares submodules and re-exports I/O combinators and helper types. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/codec/encoder.rs`, which only defines the public `Encoder` trait used by `FramedWrite` to encode items into a `BytesMut` buffer. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the target file `.cargo_vcs_info.json`, which is a small provenance metadata blob containing only a Git SHA-1 reference. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/_tokio_codec/decoder.rs`, which is a two-line compatibility shim that only re-exports `codec::Decoder`. I checked it for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden control-flow, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/_tokio_codec/encoder.rs`, which is a minimal re-export of `codec::Encoder` and contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in this target file.",
-      "files": [
-        {
-          "file_path": "src/io/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "25dbfbc2f38f1158a151d888444375f67d983308c1e80ca27b559900252fe82f"
+          "agent_run_metrics": {
+            "duration_ms": 12509,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059315593,
+            "finished_at_unix_ms": 1784059328102,
+            "total_token_usage": {
+              "input_tokens": 24813,
+              "cached_input_tokens": 21248,
+              "output_tokens": 371,
+              "reasoning_output_tokens": 155,
+              "total_tokens": 25184
+            },
+            "last_token_usage": {
+              "input_tokens": 24813,
+              "cached_input_tokens": 21248,
+              "output_tokens": 371,
+              "reasoning_output_tokens": 155,
+              "total_tokens": 25184
+            }
           },
-          "summary": "Reviewed `src/io/mod.rs`, which is a small module aggregator that only declares submodules and re-exports I/O combinators and helper types. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/codec/encoder.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1ae5bf2e900a1c7ea2000e2bb9b9f0e741a1c76fd6645481583d548d21b32ffd"
-          },
-          "summary": "Reviewed `src/codec/encoder.rs`, which only defines the public `Encoder` trait used by `FramedWrite` to encode items into a `BytesMut` buffer. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e3aae230e508e340826c26e012b51c289ff413fb16191c2c8493e5807571476d"
-          },
-          "summary": "Reviewed the target file `.cargo_vcs_info.json`, which is a small provenance metadata blob containing only a Git SHA-1 reference. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/_tokio_codec/decoder.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "bda6b05106632d3c89657dedf8f77a605a3cddb13d3cde2cd0268034f9b2f6d8"
-          },
-          "summary": "Reviewed `src/_tokio_codec/decoder.rs`, which is a two-line compatibility shim that only re-exports `codec::Decoder`. I checked it for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden control-flow, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/_tokio_codec/encoder.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "bda0c0cfc7766010c6a554f9bd56f0f2755f93dbd1a7787b249a25470a69cce9"
-          },
-          "summary": "Reviewed `src/_tokio_codec/encoder.rs`, which is a minimal re-export of `codec::Encoder` and contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_552a4d9be3de481992900166190abb26",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783184749",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/length_delimited.rs`, which implements a deprecated Tokio length-delimited framing codec for reading and writing framed byte streams. I checked the file for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/length_delimited.rs`, which contains unit tests and a local `Mock` transport for Tokio length-delimited framing behavior. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/length_delimited.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "53e72de059cb6062aeed35a5a34fd04e9586c4e3fbbe0529f9b3df64fea40dff"
-          },
-          "summary": "Reviewed `src/length_delimited.rs`, which implements a deprecated Tokio length-delimited framing codec for reading and writing framed byte streams. I checked the file for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/length_delimited.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "70006010e0f0df0ce886e82cc69366aa3c8f55cacf124aac960c2e053e74ef76"
-          },
-          "summary": "Reviewed `tests/length_delimited.rs`, which contains unit tests and a local `Mock` transport for Tokio length-delimited framing behavior. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_64f33ffc624b4ee7b21cfb083e40b20e",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783185245",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the crate manifest for install-time hooks, build scripts, credential or secret access, network/exfiltration, dynamic code loading, obfuscation, and persistence mechanisms. The file is a normal `tokio-io` package manifest with only dependency declarations and no concrete malicious or supply-chain indicators.\nReviewed `src/io/flush.rs`, which defines a small `Flush<A>` future that repeatedly calls `AsyncWrite::poll_flush()` until the writer is flushed and then returns the object. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators.\nReviewed src/io/shutdown.rs, a small async future wrapper that repeatedly calls AsyncWrite::shutdown() until it succeeds and then returns the underlying object. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/codec/mod.rs`, which is a documentation-heavy Rust module that re-exports codec types and preserves a deprecated `length_delimited` compatibility module. I checked for install hooks, subprocesses, network or exfiltration code, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/_tokio_codec/mod.rs`, which is a small module re-exporting codec-related types and declaring internal submodules. I checked for install-time hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1d9673d10fad4edb19974ce9b56d7e2f94b1f29e2708b0e4feca740bea455412"
-          },
-          "summary": "Reviewed the crate manifest for install-time hooks, build scripts, credential or secret access, network/exfiltration, dynamic code loading, obfuscation, and persistence mechanisms. The file is a normal `tokio-io` package manifest with only dependency declarations and no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/io/flush.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0dc5405aa7f54fd9870627395dae6bdfd31cb58d6c620269115d146512cab863"
-          },
-          "summary": "Reviewed `src/io/flush.rs`, which defines a small `Flush<A>` future that repeatedly calls `AsyncWrite::poll_flush()` until the writer is flushed and then returns the object. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/io/shutdown.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ff1940b5171727ee63c67d6693d8e1f47dee171cea0a5b66e6a370f74305acb5"
-          },
-          "summary": "Reviewed src/io/shutdown.rs, a small async future wrapper that repeatedly calls AsyncWrite::shutdown() until it succeeds and then returns the underlying object. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -1023,9 +616,592 @@
             "algorithm": "blake3",
             "value": "d53ea85bb6cb25a0f608121bb54082e971b072a470a3db27e6f775ef635d0306"
           },
-          "summary": "Reviewed `src/codec/mod.rs`, which is a documentation-heavy Rust module that re-exports codec types and preserves a deprecated `length_delimited` compatibility module. I checked for install hooks, subprocesses, network or exfiltration code, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/codec/mod.rs`, which is a documentation-heavy module that re-exports Tokio codec types and a deprecated `length_delimited` compatibility module. I checked it for install-time hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14462,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059328103,
+            "finished_at_unix_ms": 1784059342565,
+            "total_token_usage": {
+              "input_tokens": 43208,
+              "cached_input_tokens": 36480,
+              "output_tokens": 515,
+              "reasoning_output_tokens": 211,
+              "total_tokens": 43723
+            },
+            "last_token_usage": {
+              "input_tokens": 43208,
+              "cached_input_tokens": 36480,
+              "output_tokens": 515,
+              "reasoning_output_tokens": 211,
+              "total_tokens": 43723
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/framed.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e9e397ab8412d5c1c6f82ac597a93924ae517819dbf36b28023fed9d9d16aed9"
+          },
+          "summary": "`src/framed.rs` is a standard Tokio framing wrapper that composes an `AsyncRead`/`AsyncWrite` transport with `Encoder`/`Decoder` codecs and buffer plumbing. I checked it for install-time hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17989,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059342566,
+            "finished_at_unix_ms": 1784059360555,
+            "total_token_usage": {
+              "input_tokens": 26628,
+              "cached_input_tokens": 23808,
+              "output_tokens": 506,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 27134
+            },
+            "last_token_usage": {
+              "input_tokens": 26628,
+              "cached_input_tokens": 23808,
+              "output_tokens": 506,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 27134
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/framed_read.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "78e1d0526f034fda4b48ad2dd16e5f4254f67a4d6c5d8f26abe1e41e21e8544f"
+          },
+          "summary": "`src/framed_read.rs` is a deprecated Tokio framing adapter that wraps an `AsyncRead` plus `Decoder`, manages an internal byte buffer, and drives decoding in a poll loop. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden execution paths; none were present.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13058,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059360556,
+            "finished_at_unix_ms": 1784059373614,
+            "total_token_usage": {
+              "input_tokens": 26038,
+              "cached_input_tokens": 23808,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 223,
+              "total_tokens": 26470
+            },
+            "last_token_usage": {
+              "input_tokens": 26038,
+              "cached_input_tokens": 23808,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 223,
+              "total_tokens": 26470
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_3283c82005f04746857d5b0a6a4dffb9",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784060622",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/framed_write.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f9f81d77038038ae8d4a918fb1ebe3066e91b885003792a48b138d908a9c5713"
+          },
+          "summary": "`src/framed_write.rs` implements deprecated `FramedWrite`/`FramedWrite2` wrappers that buffer encoded frames and flush them to an `AsyncWrite`, with passthrough `Decoder`/`Read`/`AsyncRead` behavior. I checked this file for install-time hooks, network or exfiltration logic, secret access, hidden downloads, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13962,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060556765,
+            "finished_at_unix_ms": 1784060570728,
+            "total_token_usage": {
+              "input_tokens": 25869,
+              "cached_input_tokens": 21248,
+              "output_tokens": 532,
+              "reasoning_output_tokens": 309,
+              "total_tokens": 26401
+            },
+            "last_token_usage": {
+              "input_tokens": 25869,
+              "cached_input_tokens": 21248,
+              "output_tokens": 532,
+              "reasoning_output_tokens": 309,
+              "total_tokens": 26401
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/io/copy.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3b7867c7ba159fb4a20ab18dce18d4de44d03f5e133165523f9865b61a2203c3"
+          },
+          "summary": "Reviewed `src/io/copy.rs`, which implements a `Copy` future that repeatedly reads from an `AsyncRead`, writes to an `AsyncWrite`, and flushes on EOF. I checked for install-time hooks, hidden subprocesses, network or credential exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12811,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060570729,
+            "finished_at_unix_ms": 1784060583540,
+            "total_token_usage": {
+              "input_tokens": 24822,
+              "cached_input_tokens": 21248,
+              "output_tokens": 509,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 25331
+            },
+            "last_token_usage": {
+              "input_tokens": 24822,
+              "cached_input_tokens": 21248,
+              "output_tokens": 509,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 25331
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/io/flush.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0dc5405aa7f54fd9870627395dae6bdfd31cb58d6c620269115d146512cab863"
+          },
+          "summary": "`src/io/flush.rs` defines a small `Flush` future that repeatedly calls `AsyncWrite::poll_flush` and returns the wrapped I/O object once flushing succeeds. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15516,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060583541,
+            "finished_at_unix_ms": 1784060599057,
+            "total_token_usage": {
+              "input_tokens": 24525,
+              "cached_input_tokens": 21248,
+              "output_tokens": 424,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 24949
+            },
+            "last_token_usage": {
+              "input_tokens": 24525,
+              "cached_input_tokens": 21248,
+              "output_tokens": 424,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 24949
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/io/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "25dbfbc2f38f1158a151d888444375f67d983308c1e80ca27b559900252fe82f"
+          },
+          "summary": "Reviewed `src/io/mod.rs`, which is a small module barrel that declares local I/O submodules and re-exports their public types/functions. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12218,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060599058,
+            "finished_at_unix_ms": 1784060611277,
+            "total_token_usage": {
+              "input_tokens": 24370,
+              "cached_input_tokens": 23296,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 210,
+              "total_tokens": 24771
+            },
+            "last_token_usage": {
+              "input_tokens": 24370,
+              "cached_input_tokens": 23296,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 210,
+              "total_tokens": 24771
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/io/read.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5ded09c8dbd76e97b41d22c08f7a6112f5639608cc507e021df6096379a9667e"
+          },
+          "summary": "Reviewed `src/io/read.rs`, which defines a small `Future` wrapper that polls an `AsyncRead` into a caller-provided buffer and returns the stream, buffer, and byte count. I found no concrete signs of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11432,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060611277,
+            "finished_at_unix_ms": 1784060622710,
+            "total_token_usage": {
+              "input_tokens": 24491,
+              "cached_input_tokens": 23296,
+              "output_tokens": 400,
+              "reasoning_output_tokens": 194,
+              "total_tokens": 24891
+            },
+            "last_token_usage": {
+              "input_tokens": 24491,
+              "cached_input_tokens": 23296,
+              "output_tokens": 400,
+              "reasoning_output_tokens": 194,
+              "total_tokens": 24891
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_3bd93802d048443a825180d57815900f",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784057808",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/allow_std.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b325ce4a80677a26a173db3cc39ca72de5ad226995b7e1ecfb4c617f98e07359"
+          },
+          "summary": "`src/allow_std.rs` only defines the `AllowStdIo<T>` wrapper and forwards `Read`/`Write` operations to the wrapped object, with a no-op async `shutdown`. I checked this file for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13567,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057739621,
+            "finished_at_unix_ms": 1784057753189,
+            "total_token_usage": {
+              "input_tokens": 24836,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 315,
+              "total_tokens": 25359
+            },
+            "last_token_usage": {
+              "input_tokens": 24836,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 315,
+              "total_tokens": 25359
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/async_read.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "26ef13260405d65df5ccdc65b10328d70753f3f23b8c5fd8f3dad85ff19905db"
+          },
+          "summary": "`src/async_read.rs` defines the `AsyncRead` trait and its default helpers for buffered reads, framing, and splitting, plus blanket impls for `Box`, `&mut`, and byte slices. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18186,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057753190,
+            "finished_at_unix_ms": 1784057771377,
+            "total_token_usage": {
+              "input_tokens": 25792,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 26281
+            },
+            "last_token_usage": {
+              "input_tokens": 25792,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 26281
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/async_write.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2a9c6e06ca482d4365687728d666554cc1e518850082640687e34f89336f088b"
+          },
+          "summary": "Reviewed `src/async_write.rs`, which defines asynchronous read/write trait methods and a few standard-library wrapper implementations. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13610,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057771377,
+            "finished_at_unix_ms": 1784057784987,
+            "total_token_usage": {
+              "input_tokens": 26947,
+              "cached_input_tokens": 21248,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 203,
+              "total_tokens": 27342
+            },
+            "last_token_usage": {
+              "input_tokens": 26947,
+              "cached_input_tokens": 21248,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 203,
+              "total_tokens": 27342
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/codec/bytes_codec.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "65ab1921b44c2856a19cc4f68cbaa3e4214be79598689527fa795cfbb6dbd7db"
+          },
+          "summary": "Reviewed `src/codec/bytes_codec.rs`, which only defines a deprecated `BytesCodec` that copies raw `BytesMut` buffers in and out without spawning subprocesses, reading secrets, performing network/exfiltration, loading remote code, or using obfuscation/persistence mechanisms. I found no concrete supply-chain or malicious behavior in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11622,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057784988,
+            "finished_at_unix_ms": 1784057796610,
+            "total_token_usage": {
+              "input_tokens": 24359,
+              "cached_input_tokens": 23296,
+              "output_tokens": 335,
+              "reasoning_output_tokens": 132,
+              "total_tokens": 24694
+            },
+            "last_token_usage": {
+              "input_tokens": 24359,
+              "cached_input_tokens": 23296,
+              "output_tokens": 335,
+              "reasoning_output_tokens": 132,
+              "total_tokens": 24694
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/codec/decoder.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "192e563c5b1327305d2a471d7eb402c3ac7c5aa089658a53d3a866ccf52eef48"
+          },
+          "summary": "Reviewed `src/codec/decoder.rs`, which defines the `Decoder` trait, its default `decode_eof` fallback, and a `framed` helper that constructs `_tokio_codec::Framed`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, hidden subprocesses, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11507,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057796611,
+            "finished_at_unix_ms": 1784057808118,
+            "total_token_usage": {
+              "input_tokens": 25405,
+              "cached_input_tokens": 19200,
+              "output_tokens": 435,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 25840
+            },
+            "last_token_usage": {
+              "input_tokens": 25405,
+              "cached_input_tokens": 19200,
+              "output_tokens": 435,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 25840
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_70b5523cca0f42f2a1f907dd6883bd4b",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056093",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/_tokio_codec/encoder.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "bda0c0cfc7766010c6a554f9bd56f0f2755f93dbd1a7787b249a25470a69cce9"
+          },
+          "summary": "Reviewed `src/_tokio_codec/encoder.rs`, which is only a thin compatibility re-export of `codec::Encoder`. I checked this target file for install-time behavior, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19046,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056014234,
+            "finished_at_unix_ms": 1784056033281,
+            "total_token_usage": {
+              "input_tokens": 24163,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 292,
+              "total_tokens": 24652
+            },
+            "last_token_usage": {
+              "input_tokens": 24163,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 292,
+              "total_tokens": 24652
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/_tokio_codec/framed.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ed172ab247812065a09610b095bc084d4a24c30270d6f849152154594d2354d9"
+          },
+          "summary": "Reviewed `src/_tokio_codec/framed.rs`, which is a framing adapter that wraps an async I/O object with `Decoder`/`Encoder` plumbing and exposes `Framed`/`FramedParts` helpers. I checked for install-time hooks, hidden subprocesses, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15614,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056033282,
+            "finished_at_unix_ms": 1784056048896,
+            "total_token_usage": {
+              "input_tokens": 40988,
+              "cached_input_tokens": 37504,
+              "output_tokens": 480,
+              "reasoning_output_tokens": 151,
+              "total_tokens": 41468
+            },
+            "last_token_usage": {
+              "input_tokens": 40988,
+              "cached_input_tokens": 37504,
+              "output_tokens": 480,
+              "reasoning_output_tokens": 151,
+              "total_tokens": 41468
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/_tokio_codec/framed_read.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "10d53da9a65b974a62774d00804b3fadc16a5e1867d8ead5b20b8267de260efb"
+          },
+          "summary": "Reviewed `src/_tokio_codec/framed_read.rs`, which implements `FramedRead`/`FramedRead2` as a standard async read-and-decode stream wrapper over `AsyncRead` and `Decoder`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, secret access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13928,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056048897,
+            "finished_at_unix_ms": 1784056062825,
+            "total_token_usage": {
+              "input_tokens": 26335,
+              "cached_input_tokens": 23296,
+              "output_tokens": 549,
+              "reasoning_output_tokens": 324,
+              "total_tokens": 26884
+            },
+            "last_token_usage": {
+              "input_tokens": 26335,
+              "cached_input_tokens": 23296,
+              "output_tokens": 549,
+              "reasoning_output_tokens": 324,
+              "total_tokens": 26884
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/_tokio_codec/framed_write.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a92ab4a637341051a36c212e4117859ebcf3082d8e5a49925f96fc801c653705"
+          },
+          "summary": "`src/_tokio_codec/framed_write.rs` implements a Tokio `FramedWrite`/`FramedWrite2` wrapper that buffers encoded frames, flushes them through `AsyncWrite`, and forwards decoder/read traits. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13322,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056062826,
+            "finished_at_unix_ms": 1784056076148,
+            "total_token_usage": {
+              "input_tokens": 25772,
+              "cached_input_tokens": 21248,
+              "output_tokens": 472,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 26244
+            },
+            "last_token_usage": {
+              "input_tokens": 25772,
+              "cached_input_tokens": 21248,
+              "output_tokens": 472,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 26244
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -1035,16 +1211,36 @@
             "algorithm": "blake3",
             "value": "3d5843cbbaff27f53b98fb2b35ed37e433e8a89026579855a78c03544292c263"
           },
-          "summary": "Reviewed `src/_tokio_codec/mod.rs`, which is a small module re-exporting codec-related types and declaring internal submodules. I checked for install-time hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed this module-only source file, which defines tokio codec frame utilities by re-exporting local decoder/encoder/framed types and contains only documentation and compatibility comments. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17167,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056076148,
+            "finished_at_unix_ms": 1784056093316,
+            "total_token_usage": {
+              "input_tokens": 37646,
+              "cached_input_tokens": 33408,
+              "output_tokens": 498,
+              "reasoning_output_tokens": 193,
+              "total_tokens": 38144
+            },
+            "last_token_usage": {
+              "input_tokens": 37646,
+              "cached_input_tokens": 33408,
+              "output_tokens": 498,
+              "reasoning_output_tokens": 193,
+              "total_tokens": 38144
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_7bafdac6e47f4765b410011ddbd539cd",
+      "id": "rev_b4274556b88a47bf918b8bfefec2905d",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1052,70 +1248,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783185039",
+      "created_at": "1784063333",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/io/write_all.rs`, which is a small `Future` implementation that repeatedly calls `AsyncWrite::poll_write` until the provided buffer is fully written, then returns the stream and buffer. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential or secret access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.\nReviewed `CHANGELOG.md`, which is a plain release history for `tokio-io` 0.1.13 and related prior versions. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none are present in this file.\nReviewed `src/io/read_until.rs`, which is a small async wrapper that reads from an `AsyncRead + BufRead` source until a delimiter and returns the buffer. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden side effects; none were present in this file.\nReviewed `src/io/read_to_end.rs`, which is a small Rust `Future` implementation that reads an `AsyncRead` stream into a `Vec<u8>` and returns the reader plus buffer on completion. I found no concrete malicious or supply-chain indicators in this file: no install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/lib.rs`, which is a small Tokio I/O library entry point defining type aliases, a `try_nb!` macro, module exports, and trait re-exports. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload indicators, and found no concrete malicious or supply-chain signals in this file.",
       "files": [
         {
-          "file_path": "src/io/write_all.rs",
+          "file_path": "tests/async_read.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "c6d5fd7e2776e3f829ec7c8a460cd590d4fa88baf41702ec6d79f71259e4cace"
+            "value": "545f9c19b5564b1128c1a530e8594b4af537765622ef25b152fac89999cec852"
           },
-          "summary": "Reviewed `src/io/write_all.rs`, which is a small `Future` implementation that repeatedly calls `AsyncWrite::poll_write` until the provided buffer is fully written, then returns the stream and buffer. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential or secret access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.",
+          "summary": "Reviewed `tests/async_read.rs`, which contains unit tests for `tokio_io::AsyncRead::read_buf` behavior across success, error, no-capacity, uninitialized-buffer, and WouldBlock cases. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10475,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063302503,
+            "finished_at_unix_ms": 1784063312979,
+            "total_token_usage": {
+              "input_tokens": 24962,
+              "cached_input_tokens": 21248,
+              "output_tokens": 389,
+              "reasoning_output_tokens": 173,
+              "total_tokens": 25351
+            },
+            "last_token_usage": {
+              "input_tokens": 24962,
+              "cached_input_tokens": 21248,
+              "output_tokens": 389,
+              "reasoning_output_tokens": 173,
+              "total_tokens": 25351
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "CHANGELOG.md",
+          "file_path": "tests/length_delimited.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "7c77adbc657bb1f5fec847aa8b440d6ad4b1661e9617a8dc0287f12f4dade529"
+            "value": "70006010e0f0df0ce886e82cc69366aa3c8f55cacf124aac960c2e053e74ef76"
           },
-          "summary": "Reviewed `CHANGELOG.md`, which is a plain release history for `tokio-io` 0.1.13 and related prior versions. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none are present in this file.",
+          "summary": "Reviewed `tests/length_delimited.rs`, which is a unit test module for the length-delimited codec using a local `Mock` reader/writer to exercise framing, endianness, max-frame-length, and would-block behavior. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence/tampering behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/io/read_until.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "23c6d6da6c192f72d2b61f35f14df825bc0130faa3e8728c3f8236ae4e558ae1"
+          "agent_run_metrics": {
+            "duration_ms": 20731,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063312980,
+            "finished_at_unix_ms": 1784063333711,
+            "total_token_usage": {
+              "input_tokens": 91368,
+              "cached_input_tokens": 82688,
+              "output_tokens": 860,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 92228
+            },
+            "last_token_usage": {
+              "input_tokens": 91368,
+              "cached_input_tokens": 82688,
+              "output_tokens": 860,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 92228
+            }
           },
-          "summary": "Reviewed `src/io/read_until.rs`, which is a small async wrapper that reads from an `AsyncRead + BufRead` source until a delimiter and returns the buffer. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden side effects; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/io/read_to_end.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5740e873a41017ed59db782014176dd27ffcafcddcc30dd8ba1806961a7339e5"
-          },
-          "summary": "Reviewed `src/io/read_to_end.rs`, which is a small Rust `Future` implementation that reads an `AsyncRead` stream into a `Vec<u8>` and returns the reader plus buffer on completion. I found no concrete malicious or supply-chain indicators in this file: no install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "fdb63a45ea24ab654adac3681009f033b4edb2819fa45d3e30b96616e9f7ba86"
-          },
-          "summary": "Reviewed `src/lib.rs`, which is a small Tokio I/O library entry point defining type aliases, a `try_nb!` macro, module exports, and trait re-exports. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload indicators, and found no concrete malicious or supply-chain signals in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
@@ -1131,7 +1330,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783588306",
       "thirdpass_version": "0.6.0",
@@ -1195,6 +1394,537 @@
               "output_tokens": 372,
               "reasoning_output_tokens": 195,
               "total_tokens": 20670
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_c32051fb22ab4fcf87726cd9419185a6",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784053828",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e3aae230e508e340826c26e012b51c289ff413fb16191c2c8493e5807571476d"
+          },
+          "summary": "Reviewed .cargo_vcs_info.json, which only records the package source git SHA1 metadata. It contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 9964,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053763819,
+            "finished_at_unix_ms": 1784053773784,
+            "total_token_usage": {
+              "input_tokens": 24156,
+              "cached_input_tokens": 21248,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 24535
+            },
+            "last_token_usage": {
+              "input_tokens": 24156,
+              "cached_input_tokens": 21248,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 24535
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7c77adbc657bb1f5fec847aa8b440d6ad4b1661e9617a8dc0287f12f4dade529"
+          },
+          "summary": "Reviewed `CHANGELOG.md`, which is a plain release-notes file for tokio-io 0.1.0 through 0.1.13, including the 0.1.13 tokio 0.2.x deprecation notice. I found no concrete malicious or supply-chain indicators in this file; it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11511,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053773785,
+            "finished_at_unix_ms": 1784053785297,
+            "total_token_usage": {
+              "input_tokens": 24685,
+              "cached_input_tokens": 21248,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 222,
+              "total_tokens": 25128
+            },
+            "last_token_usage": {
+              "input_tokens": 24685,
+              "cached_input_tokens": 21248,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 222,
+              "total_tokens": 25128
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1d9673d10fad4edb19974ce9b56d7e2f94b1f29e2708b0e4feca740bea455412"
+          },
+          "summary": "Reviewed the crate manifest for install-time execution, build scripts, dependency indirection, network/exfiltration hooks, credential access, obfuscation, and persistence. It only contains standard package metadata plus direct dependencies and dev-dependencies, with no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13772,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053785298,
+            "finished_at_unix_ms": 1784053799070,
+            "total_token_usage": {
+              "input_tokens": 24345,
+              "cached_input_tokens": 21248,
+              "output_tokens": 488,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 24833
+            },
+            "last_token_usage": {
+              "input_tokens": 24345,
+              "cached_input_tokens": 21248,
+              "output_tokens": 488,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 24833
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "48dddb001080b7508fd2042e8efa00aa532b5806670eccd9d85565886a4f82d5"
+          },
+          "summary": "Reviewed README.md, which is a plain usage/deprecation note for the tokio-io crate with links to docs, installation instructions, and licensing terms. I checked for install hooks, credential access, network/exfiltration behavior, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11351,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053799071,
+            "finished_at_unix_ms": 1784053810422,
+            "total_token_usage": {
+              "input_tokens": 24404,
+              "cached_input_tokens": 23296,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 228,
+              "total_tokens": 24826
+            },
+            "last_token_usage": {
+              "input_tokens": 24404,
+              "cached_input_tokens": 23296,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 228,
+              "total_tokens": 24826
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/_tokio_codec/decoder.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "bda6b05106632d3c89657dedf8f77a605a3cddb13d3cde2cd0268034f9b2f6d8"
+          },
+          "summary": "Reviewed `src/_tokio_codec/decoder.rs`, which only re-exports `codec::Decoder` behind a short comment. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17830,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053810423,
+            "finished_at_unix_ms": 1784053828253,
+            "total_token_usage": {
+              "input_tokens": 24136,
+              "cached_input_tokens": 21248,
+              "output_tokens": 460,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 24596
+            },
+            "last_token_usage": {
+              "input_tokens": 24136,
+              "cached_input_tokens": 21248,
+              "output_tokens": 460,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 24596
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_d45b690405fe4b40aee8849e9980f27d",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784061797",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/io/read_exact.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3e95b6a0df87b7d02dc83bee5d0cc1470f84c673ae825bf09dc5db56a2613a06"
+          },
+          "summary": "Reviewed `src/io/read_exact.rs`, which defines a `ReadExact` future that repeatedly reads from an `AsyncRead` into a caller-provided buffer until it is full or returns `UnexpectedEof`. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12447,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061724387,
+            "finished_at_unix_ms": 1784061736835,
+            "total_token_usage": {
+              "input_tokens": 24628,
+              "cached_input_tokens": 21248,
+              "output_tokens": 398,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 25026
+            },
+            "last_token_usage": {
+              "input_tokens": 24628,
+              "cached_input_tokens": 21248,
+              "output_tokens": 398,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 25026
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/io/read_to_end.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5740e873a41017ed59db782014176dd27ffcafcddcc30dd8ba1806961a7339e5"
+          },
+          "summary": "Reviewed `src/io/read_to_end.rs`, which implements a `Future` that drains an `AsyncRead` into a `Vec<u8>` and returns the reader plus buffer on success. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete supply-chain or malicious indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17764,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061736836,
+            "finished_at_unix_ms": 1784061754600,
+            "total_token_usage": {
+              "input_tokens": 38114,
+              "cached_input_tokens": 33920,
+              "output_tokens": 537,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 38651
+            },
+            "last_token_usage": {
+              "input_tokens": 38114,
+              "cached_input_tokens": 33920,
+              "output_tokens": 537,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 38651
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/io/read_until.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "23c6d6da6c192f72d2b61f35f14df825bc0130faa3e8728c3f8236ae4e558ae1"
+          },
+          "summary": "Reviewed `src/io/read_until.rs`, which defines the `ReadUntil` future that forwards to `AsyncRead + BufRead::read_until` and returns the buffer plus reader on success. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13677,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061754601,
+            "finished_at_unix_ms": 1784061768279,
+            "total_token_usage": {
+              "input_tokens": 24640,
+              "cached_input_tokens": 21248,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 277,
+              "total_tokens": 25127
+            },
+            "last_token_usage": {
+              "input_tokens": 24640,
+              "cached_input_tokens": 21248,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 277,
+              "total_tokens": 25127
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/io/shutdown.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ff1940b5171727ee63c67d6693d8e1f47dee171cea0a5b66e6a370f74305acb5"
+          },
+          "summary": "Reviewed `src/io/shutdown.rs`, which defines a small `Shutdown<A>` future that repeatedly calls `AsyncWrite::shutdown()` and returns the wrapped I/O object after completion. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence changes, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14701,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061768279,
+            "finished_at_unix_ms": 1784061782981,
+            "total_token_usage": {
+              "input_tokens": 37295,
+              "cached_input_tokens": 35456,
+              "output_tokens": 450,
+              "reasoning_output_tokens": 147,
+              "total_tokens": 37745
+            },
+            "last_token_usage": {
+              "input_tokens": 37295,
+              "cached_input_tokens": 35456,
+              "output_tokens": 450,
+              "reasoning_output_tokens": 147,
+              "total_tokens": 37745
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/io/write_all.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c6d5fd7e2776e3f829ec7c8a460cd590d4fa88baf41702ec6d79f71259e4cace"
+          },
+          "summary": "Reviewed `src/io/write_all.rs`, which implements the `WriteAll` future for repeatedly polling an `AsyncWrite` until a buffer is fully written and then returning the writer and buffer. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14861,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061782982,
+            "finished_at_unix_ms": 1784061797843,
+            "total_token_usage": {
+              "input_tokens": 24989,
+              "cached_input_tokens": 23296,
+              "output_tokens": 376,
+              "reasoning_output_tokens": 164,
+              "total_tokens": 25365
+            },
+            "last_token_usage": {
+              "input_tokens": 24989,
+              "cached_input_tokens": 23296,
+              "output_tokens": 376,
+              "reasoning_output_tokens": 164,
+              "total_tokens": 25365
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_e6232932e48e497393919b53f1a34726",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784062689",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/length_delimited.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "53e72de059cb6062aeed35a5a34fd04e9586c4e3fbbe0529f9b3df64fea40dff"
+          },
+          "summary": "`src/length_delimited.rs` implements the length-delimited framing builder plus `Framed`, `FramedRead`, and `FramedWrite` adapters for Tokio I/O. I reviewed it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22323,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062590740,
+            "finished_at_unix_ms": 1784062613063,
+            "total_token_usage": {
+              "input_tokens": 79678,
+              "cached_input_tokens": 71040,
+              "output_tokens": 900,
+              "reasoning_output_tokens": 385,
+              "total_tokens": 80578
+            },
+            "last_token_usage": {
+              "input_tokens": 79678,
+              "cached_input_tokens": 71040,
+              "output_tokens": 900,
+              "reasoning_output_tokens": 385,
+              "total_tokens": 80578
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "fdb63a45ea24ab654adac3681009f033b4edb2819fa45d3e30b96616e9f7ba86"
+          },
+          "summary": "src/lib.rs defines tokio-io’s public API surface: boxed `Future`/`Stream` aliases, the `try_nb!` macro, module exports, and trait-object assertions. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 28545,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062613063,
+            "finished_at_unix_ms": 1784062641609,
+            "total_token_usage": {
+              "input_tokens": 24707,
+              "cached_input_tokens": 21248,
+              "output_tokens": 531,
+              "reasoning_output_tokens": 328,
+              "total_tokens": 25238
+            },
+            "last_token_usage": {
+              "input_tokens": 24707,
+              "cached_input_tokens": 21248,
+              "output_tokens": 531,
+              "reasoning_output_tokens": 328,
+              "total_tokens": 25238
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lines.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "86d5280b4e324fdcea56880996dc7ded72b68b0d6f1c5b006dd192146aa9ce60"
+          },
+          "summary": "Reviewed `src/lines.rs`, which implements the `Lines` stream adapter for `AsyncRead + BufRead` and returns UTF-8 lines from an input source. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15546,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062641610,
+            "finished_at_unix_ms": 1784062657156,
+            "total_token_usage": {
+              "input_tokens": 24478,
+              "cached_input_tokens": 21248,
+              "output_tokens": 361,
+              "reasoning_output_tokens": 153,
+              "total_tokens": 24839
+            },
+            "last_token_usage": {
+              "input_tokens": 24478,
+              "cached_input_tokens": 21248,
+              "output_tokens": 361,
+              "reasoning_output_tokens": 153,
+              "total_tokens": 24839
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/split.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "62b78e7ee37ee7b6c280f853a999579a370fafc5458f8f80ded3e13022c40111"
+          },
+          "summary": "src/split.rs implements the async read/write split and unsplit halves using `BiLock`, plus tests for lock contention and reunion panics. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19555,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062657157,
+            "finished_at_unix_ms": 1784062676712,
+            "total_token_usage": {
+              "input_tokens": 25820,
+              "cached_input_tokens": 23296,
+              "output_tokens": 484,
+              "reasoning_output_tokens": 285,
+              "total_tokens": 26304
+            },
+            "last_token_usage": {
+              "input_tokens": 25820,
+              "cached_input_tokens": 23296,
+              "output_tokens": 484,
+              "reasoning_output_tokens": 285,
+              "total_tokens": 26304
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/window.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "24c33fffed354f71914c7ff44971245d4cd67e4c72d96fe586c175efb72455ce"
+          },
+          "summary": "`src/window.rs` defines a small `Window<T>` wrapper that tracks a byte-slice range over an owned buffer and exposes `new`, range setters, `into_inner`, `AsRef`, and `AsMut` accessors. I checked this file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12662,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062676713,
+            "finished_at_unix_ms": 1784062689376,
+            "total_token_usage": {
+              "input_tokens": 24984,
+              "cached_input_tokens": 21248,
+              "output_tokens": 405,
+              "reasoning_output_tokens": 185,
+              "total_tokens": 25389
+            },
+            "last_token_usage": {
+              "input_tokens": 24984,
+              "cached_input_tokens": 21248,
+              "output_tokens": 405,
+              "reasoning_output_tokens": 185,
+              "total_tokens": 25389
             }
           },
           "comment_count": 0,

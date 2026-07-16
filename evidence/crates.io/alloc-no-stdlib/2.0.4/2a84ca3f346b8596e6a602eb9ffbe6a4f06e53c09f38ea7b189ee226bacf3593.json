@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590184",
+  "latest_reviewed_at": "1784059060",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -281,50 +287,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 4,
-      "file_record_count": 16,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 5,
+      "file_record_count": 20,
+      "file_record_count_with_metrics": 20
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 20,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 16,
-    "duration_ms_total": 54555,
-    "attempts_total": 4,
+    "file_records_with_metrics": 20,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 338331,
+    "attempts_total": 20,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 20,
+    "last_token_usage_records": 20,
     "total_token_usage": {
-      "input_tokens": 103968,
-      "cached_input_tokens": 88320,
-      "output_tokens": 1797,
-      "reasoning_output_tokens": 817,
-      "total_tokens": 105765
+      "input_tokens": 625323,
+      "cached_input_tokens": 541056,
+      "output_tokens": 10953,
+      "reasoning_output_tokens": 5779,
+      "total_tokens": 636276
     },
     "last_token_usage": {
-      "input_tokens": 103968,
-      "cached_input_tokens": 88320,
-      "output_tokens": 1797,
-      "reasoning_output_tokens": 817,
-      "total_tokens": 105765
+      "input_tokens": 625323,
+      "cached_input_tokens": 541056,
+      "output_tokens": 10953,
+      "reasoning_output_tokens": 5779,
+      "total_tokens": 636276
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_0a6f344dd2fa4795a6f48dc20c507a0e",
+      "id": "rev_095cc77e2a09441daf6d4a396900b875",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -332,12 +330,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782931738",
+      "created_at": "1784059060",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`tests/lib.rs` is a Rust test harness for allocator macros and stack/global freelist behavior, with a small FFI bridge to `calloc`/`free` for allocation tests. I found no concrete supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential or secret access, dynamic code loading, obfuscation/deobfuscation, persistence, or hidden subprocess execution.\n`src/init.rs` is a set of `macro_rules!` helpers for building stack/heap/global allocator types and backing memory pools. I checked it for install-time execution, network/exfiltration, credential access, hidden downloads, obfuscation/deobfuscation, persistence, and other payload execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/allocated_memory/index_macro.rs`, which defines two exported macros that implement `Index`, `IndexMut`, `Deref`, and `DerefMut` by delegating to `slice()`/`slice_mut()` on a memory type. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain compromise indicators, and found none in this file.\nReviewed `src/bin/example.rs`, a Rust demo program that exercises the crate’s allocator macros, FFI-backed `calloc`/`free`, stack/heap allocation paths, and print-only test code. I found no concrete supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation/packing, or persistence/tampering behavior.\n`src/stack_allocator.rs` implements a generic stack-style allocator that manages slices, splits and reuses free regions, and clears allocations when needed. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "tests/lib.rs",
@@ -345,9 +342,78 @@
             "algorithm": "blake3",
             "value": "4369ecab5e5e565e0402fa194cb98e867afc073e4715ba2e9dc6273a603c4e36"
           },
-          "summary": "`tests/lib.rs` is a Rust test harness for allocator macros and stack/global freelist behavior, with a small FFI bridge to `calloc`/`free` for allocation tests. I found no concrete supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential or secret access, dynamic code loading, obfuscation/deobfuscation, persistence, or hidden subprocess execution.",
+          "summary": "Reviewed `tests/lib.rs`, which is a set of allocator test cases for the stack, calloc, and global backends built from `alloc_no_stdlib` macros and simple assertions. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24384,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059036479,
+            "finished_at_unix_ms": 1784059060864,
+            "total_token_usage": {
+              "input_tokens": 103408,
+              "cached_input_tokens": 86784,
+              "output_tokens": 996,
+              "reasoning_output_tokens": 401,
+              "total_tokens": 104404
+            },
+            "last_token_usage": {
+              "input_tokens": 103408,
+              "cached_input_tokens": 86784,
+              "output_tokens": 996,
+              "reasoning_output_tokens": 401,
+              "total_tokens": 104404
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_21130cbb89774ee98b922f324907bb47",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784057531",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/bin/tests.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9523dff862e3733e40ba34dc9d9ad0c10af37fdffbc3307aa86024f53caa1ad8"
+          },
+          "summary": "Reviewed `src/bin/tests.rs`, which contains straightforward allocator tests for heap allocation and free behavior under `stdlib`/`unsafe` feature gates. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15671,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057430435,
+            "finished_at_unix_ms": 1784057446107,
+            "total_token_usage": {
+              "input_tokens": 24650,
+              "cached_input_tokens": 21248,
+              "output_tokens": 374,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 25024
+            },
+            "last_token_usage": {
+              "input_tokens": 24650,
+              "cached_input_tokens": 21248,
+              "output_tokens": 374,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 25024
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -357,75 +423,29 @@
             "algorithm": "blake3",
             "value": "adf3ef1c86271876848b50138ea35c3b3300918884dbf7e37ebad1074b4ead27"
           },
-          "summary": "`src/init.rs` is a set of `macro_rules!` helpers for building stack/heap/global allocator types and backing memory pools. I checked it for install-time execution, network/exfiltration, credential access, hidden downloads, obfuscation/deobfuscation, persistence, and other payload execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "`src/init.rs` only contains macro definitions for building static arrays, stack-allocator traits, and allocator-backed memory-pool scaffolding. I checked it for install-time execution, network or credential access, hidden downloads, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/allocated_memory/index_macro.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cad8685eb171b9eacffecaf0416351ac49a64b3a2e1b1d21af5b518edd9fead0"
+          "agent_run_metrics": {
+            "duration_ms": 24028,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057446107,
+            "finished_at_unix_ms": 1784057470136,
+            "total_token_usage": {
+              "input_tokens": 26904,
+              "cached_input_tokens": 21248,
+              "output_tokens": 646,
+              "reasoning_output_tokens": 455,
+              "total_tokens": 27550
+            },
+            "last_token_usage": {
+              "input_tokens": 26904,
+              "cached_input_tokens": 21248,
+              "output_tokens": 646,
+              "reasoning_output_tokens": 455,
+              "total_tokens": 27550
+            }
           },
-          "summary": "Reviewed `src/allocated_memory/index_macro.rs`, which defines two exported macros that implement `Index`, `IndexMut`, `Deref`, and `DerefMut` by delegating to `slice()`/`slice_mut()` on a memory type. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain compromise indicators, and found none in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/bin/example.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6f2e111216b4cc155025e39c5730dc9d3f677eb4c3312b4893f3c17d74bf593e"
-          },
-          "summary": "Reviewed `src/bin/example.rs`, a Rust demo program that exercises the crate’s allocator macros, FFI-backed `calloc`/`free`, stack/heap allocation paths, and print-only test code. I found no concrete supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation/packing, or persistence/tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/stack_allocator.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0f2e724cddfe93a70a8d67d580932ae2ad51daa306578c79a7d0907dbc90111a"
-          },
-          "summary": "`src/stack_allocator.rs` implements a generic stack-style allocator that manages slices, splits and reuses free regions, and clears allocations when needed. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_3f543d8b905648f7acaed1944ac4fa90",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782931825",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed README.md, which is documentation for a no_std memory-allocation library and example usage modes on the stack, heap, calloc, and a static buffer. I found no concrete malicious or supply-chain indicators in the README: there are no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence signals described here.\nReviewed `src/lib.rs`, which exposes a no_std allocation helper API (`bzero`, `uninitialized`, `CallocBackingStore`, and allocator wrappers) built around raw-pointer and slice construction. I checked for install hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.\n`src/tests.rs` is a Rust test module for the allocator types, defining a local freelist wrapper and one `#[test]` that exercises allocation, free, and reuse behavior. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none in this file.\nReviewed `src/bin/tests.rs`, which contains straightforward heap allocator tests for `HeapAllocator`, `HeapAlloc`, and `HeapAllocUninitialized`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/bin/heap_alloc.rs`, which defines a small heap-backed `Rebox` wrapper and `HeapAllocator` implementation using `Vec` and boxed slices. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-      "files": [
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b17c4934a9437aec4d3747c2cdc017da64be9d37504891770fac5aa9037158e9"
-          },
-          "summary": "Reviewed README.md, which is documentation for a no_std memory-allocation library and example usage modes on the stack, heap, calloc, and a static buffer. I found no concrete malicious or supply-chain indicators in the README: there are no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence signals described here.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -435,9 +455,61 @@
             "algorithm": "blake3",
             "value": "672a7bf79f970d139197ad4352c2a87d1fd40b5006521d28018ddfeb4e204f3f"
           },
-          "summary": "Reviewed `src/lib.rs`, which exposes a no_std allocation helper API (`bzero`, `uninitialized`, `CallocBackingStore`, and allocator wrappers) built around raw-pointer and slice construction. I checked for install hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "`src/lib.rs` is a `no_std` allocation helper that re-exports allocator types, provides `bzero`/`uninitialized`, and wraps C-style allocation/free through `CallocBackingStore`. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18039,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057470136,
+            "finished_at_unix_ms": 1784057488176,
+            "total_token_usage": {
+              "input_tokens": 24786,
+              "cached_input_tokens": 21248,
+              "output_tokens": 543,
+              "reasoning_output_tokens": 330,
+              "total_tokens": 25329
+            },
+            "last_token_usage": {
+              "input_tokens": 24786,
+              "cached_input_tokens": 21248,
+              "output_tokens": 543,
+              "reasoning_output_tokens": 330,
+              "total_tokens": 25329
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/stack_allocator.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0f2e724cddfe93a70a8d67d580932ae2ad51daa306578c79a7d0907dbc90111a"
+          },
+          "summary": "Reviewed `src/stack_allocator.rs`, which implements a stack-style allocator that selects free slices, splits or recycles them, and optionally clears allocated memory through a caller-supplied initializer. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 25320,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057488176,
+            "finished_at_unix_ms": 1784057513496,
+            "total_token_usage": {
+              "input_tokens": 43299,
+              "cached_input_tokens": 36480,
+              "output_tokens": 1011,
+              "reasoning_output_tokens": 461,
+              "total_tokens": 44310
+            },
+            "last_token_usage": {
+              "input_tokens": 43299,
+              "cached_input_tokens": 36480,
+              "output_tokens": 1011,
+              "reasoning_output_tokens": 461,
+              "total_tokens": 44310
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -447,40 +519,36 @@
             "algorithm": "blake3",
             "value": "67cdfa3adf4946ba031896de1f8db30936040354b4ef27971f56ab0125902651"
           },
-          "summary": "`src/tests.rs` is a Rust test module for the allocator types, defining a local freelist wrapper and one `#[test]` that exercises allocation, free, and reuse behavior. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none in this file.",
+          "summary": "`src/tests.rs` is a unit test module for the allocator types in this crate: it builds a stack-backed freelist, allocates and frees cells, and asserts reuse behavior and a basic use-after-free comment. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/bin/tests.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9523dff862e3733e40ba34dc9d9ad0c10af37fdffbc3307aa86024f53caa1ad8"
+          "agent_run_metrics": {
+            "duration_ms": 17759,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057513497,
+            "finished_at_unix_ms": 1784057531257,
+            "total_token_usage": {
+              "input_tokens": 25168,
+              "cached_input_tokens": 21760,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 231,
+              "total_tokens": 25611
+            },
+            "last_token_usage": {
+              "input_tokens": 25168,
+              "cached_input_tokens": 21760,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 231,
+              "total_tokens": 25611
+            }
           },
-          "summary": "Reviewed `src/bin/tests.rs`, which contains straightforward heap allocator tests for `HeapAllocator`, `HeapAlloc`, and `HeapAllocUninitialized`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/bin/heap_alloc.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c9944881144004da82144b73cd5409304ccc21bef36800a85d0dcd56eb68ca29"
-          },
-          "summary": "Reviewed `src/bin/heap_alloc.rs`, which defines a small heap-backed `Rebox` wrapper and `HeapAllocator` implementation using `Vec` and boxed slices. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_5b815927cc3a4fada1928490acfa3163",
+      "id": "rev_2b04bdafe1584655a7c5831963e400e9",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -488,52 +556,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782931909",
+      "created_at": "1784055654",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the target file `.cargo_vcs_info.json`, which contains only Cargo VCS provenance metadata (a git SHA1 and an empty `path_in_vcs`). I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/allocated_memory/mod.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "dd811726c498da850806c464563d909ecfb7bffa0ec1c569f98eeef7601a17e6"
+            "value": "08cf2c838412c5223f0f88903db4f9f93ec4467de1528d8789821eed4f305611"
           },
-          "summary": "Reviewed the target file `.cargo_vcs_info.json`, which contains only Cargo VCS provenance metadata (a git SHA1 and an empty `path_in_vcs`). I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/allocated_memory/mod.rs`, which only defines a few slice-allocation traits and re-exports core indexing/range types. I checked for install hooks, subprocess execution, network or credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_928eb53968184becad86e1bfce1e3277",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782931890",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the normalized Cargo manifest for `alloc-no-stdlib` 2.0.4. It only declares package metadata, one example binary, and a named `unsafe` feature; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `src/allocated_stack_memory.rs`, which is a small Rust wrapper around a mutable slice plus `Default` and slice-access trait implementations. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/allocated_memory/mod.rs`, which is a small trait-only module defining slice wrapper/allocated-slice abstractions over `core` types. I found no concrete indicators of supply-chain compromise or malicious behavior: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, subprocess execution, or persistence logic in this target file.\nReviewed the Travis CI configuration in `.travis.yml`, which only defines Rust versions, OS targets, and cargo test commands for the package and its `alloc-stdlib` subcrate. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration steps, credential access, dynamic code loading, obfuscation, or persistence behavior.\n`src/allocator.rs` is a minimal Rust trait definition for an allocator abstraction with `alloc_cell` and `free_cell` methods. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3fe4977c750fc17266f96a2a45f5a1599bddae830b251ea9303410cfde74079b"
+          "agent_run_metrics": {
+            "duration_ms": 12214,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055570322,
+            "finished_at_unix_ms": 1784055582537,
+            "total_token_usage": {
+              "input_tokens": 24278,
+              "cached_input_tokens": 21248,
+              "output_tokens": 448,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 24726
+            },
+            "last_token_usage": {
+              "input_tokens": 24278,
+              "cached_input_tokens": 21248,
+              "output_tokens": 448,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 24726
+            }
           },
-          "summary": "Reviewed the normalized Cargo manifest for `alloc-no-stdlib` 2.0.4. It only declares package metadata, one example binary, and a named `unsafe` feature; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -543,33 +600,29 @@
             "algorithm": "blake3",
             "value": "718f878d7b165dbed8c35f6fb0803c01fba8f567e9edc3c8933bb3792ad26115"
           },
-          "summary": "Reviewed `src/allocated_stack_memory.rs`, which is a small Rust wrapper around a mutable slice plus `Default` and slice-access trait implementations. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/allocated_stack_memory.rs`, which is a small Rust wrapper around a mutable slice plus `Default` and slice-access trait impls. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/allocated_memory/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "08cf2c838412c5223f0f88903db4f9f93ec4467de1528d8789821eed4f305611"
+          "agent_run_metrics": {
+            "duration_ms": 15807,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055582537,
+            "finished_at_unix_ms": 1784055598344,
+            "total_token_usage": {
+              "input_tokens": 37277,
+              "cached_input_tokens": 33408,
+              "output_tokens": 570,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 37847
+            },
+            "last_token_usage": {
+              "input_tokens": 37277,
+              "cached_input_tokens": 33408,
+              "output_tokens": 570,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 37847
+            }
           },
-          "summary": "Reviewed `src/allocated_memory/mod.rs`, which is a small trait-only module defining slice wrapper/allocated-slice abstractions over `core` types. I found no concrete indicators of supply-chain compromise or malicious behavior: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, subprocess execution, or persistence logic in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".travis.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1d489c8f651cf4b6b53e5b5a3c6cab0eb1db6601ec11d9ab3ad75d0815020a89"
-          },
-          "summary": "Reviewed the Travis CI configuration in `.travis.yml`, which only defines Rust versions, OS targets, and cargo test commands for the package and its `alloc-stdlib` subcrate. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration steps, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -579,9 +632,93 @@
             "algorithm": "blake3",
             "value": "5f1e92bbd4df2c0598954d2eebcfe57be1dcb3194da642adeb1ad72163f0eea5"
           },
-          "summary": "`src/allocator.rs` is a minimal Rust trait definition for an allocator abstraction with `alloc_cell` and `free_cell` methods. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/allocator.rs`, which defines a small generic `Allocator<T>` trait with `alloc_cell` and `free_cell` methods and no implementation logic. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden control flow, and found no concrete malicious or supply-chain indicators in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 25045,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055598345,
+            "finished_at_unix_ms": 1784055623391,
+            "total_token_usage": {
+              "input_tokens": 24220,
+              "cached_input_tokens": 23296,
+              "output_tokens": 416,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 24636
+            },
+            "last_token_usage": {
+              "input_tokens": 24220,
+              "cached_input_tokens": 23296,
+              "output_tokens": 416,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 24636
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/bin/example.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6f2e111216b4cc155025e39c5730dc9d3f677eb4c3312b4893f3c17d74bf593e"
+          },
+          "summary": "`src/bin/example.rs` is a demo binary that exercises the crate's allocator APIs with local stack, calloc-backed, and heap allocations, prints a few values, and contains no install hooks or runtime code for network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13501,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055623392,
+            "finished_at_unix_ms": 1784055636894,
+            "total_token_usage": {
+              "input_tokens": 25175,
+              "cached_input_tokens": 21248,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 25604
+            },
+            "last_token_usage": {
+              "input_tokens": 25175,
+              "cached_input_tokens": 21248,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 25604
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/bin/heap_alloc.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c9944881144004da82144b73cd5409304ccc21bef36800a85d0dcd56eb68ca29"
+          },
+          "summary": "Reviewed `src/bin/heap_alloc.rs`, which defines a small heap-backed allocator wrapper (`Rebox` and `HeapAllocator`) that allocates boxed slices from a cloned default value and provides slice accessors. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17829,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055636895,
+            "finished_at_unix_ms": 1784055654724,
+            "total_token_usage": {
+              "input_tokens": 37548,
+              "cached_input_tokens": 33408,
+              "output_tokens": 479,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 38027
+            },
+            "last_token_usage": {
+              "input_tokens": 37548,
+              "cached_input_tokens": 33408,
+              "output_tokens": 479,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 38027
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -597,7 +734,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590184",
       "thirdpass_version": "0.6.0",
@@ -725,6 +862,183 @@
               "output_tokens": 309,
               "reasoning_output_tokens": 123,
               "total_tokens": 21224
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_c59d1f0383f5405b9a48ec295af3fae8",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784053327",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dd811726c498da850806c464563d909ecfb7bffa0ec1c569f98eeef7601a17e6"
+          },
+          "summary": "The reviewed `.cargo_vcs_info.json` is a small Cargo provenance metadata file containing only a git SHA and an empty `path_in_vcs` field. I found no concrete indicators in this file of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15206,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053253411,
+            "finished_at_unix_ms": 1784053268617,
+            "total_token_usage": {
+              "input_tokens": 24172,
+              "cached_input_tokens": 21248,
+              "output_tokens": 532,
+              "reasoning_output_tokens": 340,
+              "total_tokens": 24704
+            },
+            "last_token_usage": {
+              "input_tokens": 24172,
+              "cached_input_tokens": 21248,
+              "output_tokens": 532,
+              "reasoning_output_tokens": 340,
+              "total_tokens": 24704
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".travis.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1d489c8f651cf4b6b53e5b5a3c6cab0eb1db6601ec11d9ab3ad75d0815020a89"
+          },
+          "summary": "Reviewed the Travis CI config in .travis.yml, which only defines Rust build/test jobs across stable, nightly, and older toolchains on Linux/macOS and runs cargo test commands in the root and alloc-stdlib subcrate. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14163,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053268618,
+            "finished_at_unix_ms": 1784053282781,
+            "total_token_usage": {
+              "input_tokens": 24248,
+              "cached_input_tokens": 23296,
+              "output_tokens": 433,
+              "reasoning_output_tokens": 216,
+              "total_tokens": 24681
+            },
+            "last_token_usage": {
+              "input_tokens": 24248,
+              "cached_input_tokens": 23296,
+              "output_tokens": 433,
+              "reasoning_output_tokens": 216,
+              "total_tokens": 24681
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3fe4977c750fc17266f96a2a45f5a1599bddae830b251ea9303410cfde74079b"
+          },
+          "summary": "Reviewed this normalized Cargo manifest for install-time execution, dependency or build-script triggers, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior. It only contains package metadata, a feature flag, and a single example bin declaration, with no concrete supply-chain or malicious indicators in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15195,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053282782,
+            "finished_at_unix_ms": 1784053297977,
+            "total_token_usage": {
+              "input_tokens": 24644,
+              "cached_input_tokens": 21760,
+              "output_tokens": 601,
+              "reasoning_output_tokens": 412,
+              "total_tokens": 25245
+            },
+            "last_token_usage": {
+              "input_tokens": 24644,
+              "cached_input_tokens": 21760,
+              "output_tokens": 601,
+              "reasoning_output_tokens": 412,
+              "total_tokens": 25245
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b17c4934a9437aec4d3747c2cdc017da64be9d37504891770fac5aa9037158e9"
+          },
+          "summary": "This README explains allocator modes and unsafe usage patterns for a no_std memory allocation crate. I checked the target text for install hooks, hidden subprocesses, network/exfiltration, credential harvesting, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17081,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053297978,
+            "finished_at_unix_ms": 1784053315059,
+            "total_token_usage": {
+              "input_tokens": 26223,
+              "cached_input_tokens": 21760,
+              "output_tokens": 807,
+              "reasoning_output_tokens": 620,
+              "total_tokens": 27030
+            },
+            "last_token_usage": {
+              "input_tokens": 26223,
+              "cached_input_tokens": 21760,
+              "output_tokens": 807,
+              "reasoning_output_tokens": 620,
+              "total_tokens": 27030
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/allocated_memory/index_macro.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cad8685eb171b9eacffecaf0416351ac49a64b3a2e1b1d21af5b518edd9fead0"
+          },
+          "summary": "Reviewed `src/allocated_memory/index_macro.rs`, which only defines two `macro_rules!` helpers that generate `Index`, `IndexMut`, and `Deref`/`DerefMut` impls forwarding to `slice()`/`slice_mut()` on the wrapped memory type. I did not find concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12534,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053315060,
+            "finished_at_unix_ms": 1784053327594,
+            "total_token_usage": {
+              "input_tokens": 25355,
+              "cached_input_tokens": 23296,
+              "output_tokens": 428,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 25783
+            },
+            "last_token_usage": {
+              "input_tokens": 25355,
+              "cached_input_tokens": 23296,
+              "output_tokens": 428,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 25783
             }
           },
           "comment_count": 0,

@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590071",
+  "latest_reviewed_at": "1784059344",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -292,44 +298,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 5,
-      "file_record_count": 17,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 5,
+      "file_record_count": 21,
+      "file_record_count_with_metrics": 21
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 21,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 17,
-    "duration_ms_total": 51927,
-    "attempts_total": 4,
+    "file_records_with_metrics": 21,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 361980,
+    "attempts_total": 21,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 21,
+    "last_token_usage_records": 21,
     "total_token_usage": {
-      "input_tokens": 84074,
-      "cached_input_tokens": 70656,
-      "output_tokens": 1473,
-      "reasoning_output_tokens": 569,
-      "total_tokens": 85547
+      "input_tokens": 776535,
+      "cached_input_tokens": 680576,
+      "output_tokens": 11172,
+      "reasoning_output_tokens": 4953,
+      "total_tokens": 787707
     },
     "last_token_usage": {
-      "input_tokens": 84074,
-      "cached_input_tokens": 70656,
-      "output_tokens": 1473,
-      "reasoning_output_tokens": 569,
-      "total_tokens": 85547
+      "input_tokens": 776535,
+      "cached_input_tokens": 680576,
+      "output_tokens": 11172,
+      "reasoning_output_tokens": 4953,
+      "total_tokens": 787707
     },
     "model_context_windows": []
   },
@@ -344,7 +342,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590071",
       "thirdpass_version": "0.6.0",
@@ -480,7 +478,7 @@
       ]
     },
     {
-      "id": "rev_44ac5db489d24b96b156a0f1d84d1e08",
+      "id": "rev_6d30773984c746ed8cb65ac01cc9504d",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -488,208 +486,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783182632",
+      "created_at": "1784053792",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/portable.rs`, a procedural macro that validates `repr` attributes and generates an `unsafe impl Portable` with trait bounds on all fields. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/serde/respan.rs`, a small proc-macro helper that recursively reapplies a span to a `proc_macro2::TokenStream` and its nested groups. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.\nReviewed `.cargo_vcs_info.json`, which only records the package git SHA1 and `path_in_vcs` metadata. I found no concrete malicious or supply-chain indicators in this file, and it contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/serde/mod.rs`, which only declares two sibling modules (`receiver` and `respan`) and contains no executable logic. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
       "files": [
-        {
-          "file_path": "src/portable.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ef615db455c88296d849aa5b1e914cd9dd80075fcc1f11f35a15f67086929ed7"
-          },
-          "summary": "Reviewed `src/portable.rs`, a procedural macro that validates `repr` attributes and generates an `unsafe impl Portable` with trait bounds on all fields. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/serde/respan.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "67e50d2e20fe57ee3c59117c65402f440bbff137e51f396077a5768eb03d6d3b"
-          },
-          "summary": "Reviewed `src/serde/respan.rs`, a small proc-macro helper that recursively reapplies a span to a `proc_macro2::TokenStream` and its nested groups. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "d47617d0784425f3dd451fbab40b2222720ee57777d3af317f598df0f8743002"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package git SHA1 and `path_in_vcs` metadata. I found no concrete malicious or supply-chain indicators in this file, and it contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the package's source VCS SHA-1 and path. It contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/serde/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5673b0b5fb16aa3dcadd5bb45b84d6b1c9a2ad574d5f0b9d4270782c5b5d7cfb"
+          "agent_run_metrics": {
+            "duration_ms": 12290,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053736663,
+            "finished_at_unix_ms": 1784053748954,
+            "total_token_usage": {
+              "input_tokens": 24167,
+              "cached_input_tokens": 21248,
+              "output_tokens": 370,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 24537
+            },
+            "last_token_usage": {
+              "input_tokens": 24167,
+              "cached_input_tokens": 21248,
+              "output_tokens": 370,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 24537
+            }
           },
-          "summary": "Reviewed `src/serde/mod.rs`, which only declares two sibling modules (`receiver` and `respan`) and contains no executable logic. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_5a87bbbb282f4d43b060607d3bc03e0a",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783182403",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/archive/struct.rs`, which is a procedural-macro code generator for archived structs, resolver types, comparison impls, copy-optimization checks, and niche-handling impls. I found no concrete indicators of install hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, or persistence in this file.\n`src/attributes.rs` is a pure `syn`/`quote` attribute parser for `rkyv` derive metadata, generating token streams and type bounds for archive/serialize/deserialize helpers. I checked this file for install hooks, subprocess spawning, network or exfiltration behavior, secret/credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "src/archive/struct.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "30e810d825ba436da06c661873c83803a4ec2fd3398e4d3531d25f6de9005b96"
-          },
-          "summary": "Reviewed `src/archive/struct.rs`, which is a procedural-macro code generator for archived structs, resolver types, comparison impls, copy-optimization checks, and niche-handling impls. I found no concrete indicators of install hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/attributes.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0a8357dc92136f5bf3b88c8a4e7277e48734b7f0a2802fa57b2c010278fd4f0a"
-          },
-          "summary": "`src/attributes.rs` is a pure `syn`/`quote` attribute parser for `rkyv` derive metadata, generating token streams and type bounds for archive/serialize/deserialize helpers. I checked this file for install hooks, subprocess spawning, network or exfiltration behavior, secret/credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_bc0cb098792a49bb9ba289426319c7b3",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783182481",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the Rust proc-macro implementation in `src/deserialize.rs`, which generates `Deserialize` and `DeserializeWith` code for structs, enums, and remote types. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `src/serialize.rs`, a procedural macro implementation that generates `Serialize`/`SerializeWith` code for structs and enums in `rkyv`. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.\nReviewed `src/serde/receiver.rs`, which is a syntax-tree visitor that rewrites `Self` references in derive input types, paths, expressions, and generics to the concrete receiver type. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence changes, or hidden subprocess execution.\n`src/repr.rs` is a small Rust parser for `#[repr(...)]` attributes that classifies primitives, `C`, `transparent`, `align`, and `packed` modifiers into internal enums. I checked this file for install hooks, network or credential access, dynamic code loading, obfuscation/deobfuscation, persistence tampering, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.\nReviewed `src/archive/mod.rs`, which implements the `Archive` derive macro by parsing attributes, extending generic bounds, and generating struct/enum archive and portable-trait code. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-      "files": [
-        {
-          "file_path": "src/deserialize.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e2371f3f6f38c54af1e0dbc2a1020319466d84203200ef969143081d6cd9d388"
-          },
-          "summary": "Reviewed the Rust proc-macro implementation in `src/deserialize.rs`, which generates `Deserialize` and `DeserializeWith` code for structs, enums, and remote types. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/serialize.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "324ead26134d8c0527dd3315af2c2bae88356765fe70506abf71bc484433932d"
-          },
-          "summary": "Reviewed `src/serialize.rs`, a procedural macro implementation that generates `Serialize`/`SerializeWith` code for structs and enums in `rkyv`. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/serde/receiver.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "dbb6f1db5c935b9b5ab986ba0842e9dc5a0c3f1b9b9971ab4bc84704f75a4d9e"
-          },
-          "summary": "Reviewed `src/serde/receiver.rs`, which is a syntax-tree visitor that rewrites `Self` references in derive input types, paths, expressions, and generics to the concrete receiver type. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence changes, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/repr.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "995548a132b7480150bbd9fca2fea56c33956a8b5c35ce1ad53a6f96c9a5d77b"
-          },
-          "summary": "`src/repr.rs` is a small Rust parser for `#[repr(...)]` attributes that classifies primitives, `C`, `transparent`, `align`, and `packed` modifiers into internal enums. I checked this file for install hooks, network or credential access, dynamic code loading, obfuscation/deobfuscation, persistence tampering, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/archive/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2ba59a4359e8b1077c17196398e3357cb40c2951e7af23bc807da03be140f23f"
-          },
-          "summary": "Reviewed `src/archive/mod.rs`, which implements the `Archive` derive macro by parsing attributes, extending generic bounds, and generating struct/enum archive and portable-trait code. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_d4f97607d4554764b7078d5259d59548",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783182583",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/archive/printing.rs`, a small Rust helper that constructs naming and attribute metadata for archived types in the derive pipeline. I checked for install-time execution, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the normalized Cargo manifest for `rkyv_derive` 0.8.16. It defines a proc-macro crate with ordinary Rust dependencies and no install hooks, build script, network/exfiltration paths, dynamic code loading, obfuscation, or persistence behavior in the manifest.\nReviewed `src/lib.rs`, which is a normal procedural-macro entrypoint for `rkyv` that defines `Portable`, `Archive`, `Serialize`, and `Deserialize` derives and forwards parsed `syn::DeriveInput` values into local helper modules. I found no concrete malicious or supply-chain indicators in this file: no install hooks, no network or exfiltration logic, no credential access, no dynamic code loading, no obfuscation, and no persistence or environment tampering.\nReviewed `src/util.rs`, which contains small pure helper routines for stripping raw identifier prefixes, iterating over `syn` fields across structs/enums/unions, and removing generics from a `Path`. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.\nReviewed README.md, which is a project overview and usage example for the rkyv archive/serialization crate. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/archive/printing.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ffd4fb4c0fb0560fb0bebd2fbb335d8f90ff759f67c4d57960386f8c9a808ffe"
-          },
-          "summary": "Reviewed `src/archive/printing.rs`, a small Rust helper that constructs naming and attribute metadata for archived types in the derive pipeline. I checked for install-time execution, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -699,33 +530,29 @@
             "algorithm": "blake3",
             "value": "8e6e75c47957f4f068b1f27f052936fbff0f680427fbfcf6536d19e40619d87b"
           },
-          "summary": "Reviewed the normalized Cargo manifest for `rkyv_derive` 0.8.16. It defines a proc-macro crate with ordinary Rust dependencies and no install hooks, build script, network/exfiltration paths, dynamic code loading, obfuscation, or persistence behavior in the manifest.",
+          "summary": "Reviewed the normalized Cargo manifest for `rkyv_derive` 0.8.16, including package metadata, features, proc-macro library settings, and dependency declarations. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e490116d84d15e6333f9ff8e4d70994992bffd27fbbe2ecbf7e9f45df6898f4e"
+          "agent_run_metrics": {
+            "duration_ms": 11126,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053748955,
+            "finished_at_unix_ms": 1784053760081,
+            "total_token_usage": {
+              "input_tokens": 24535,
+              "cached_input_tokens": 21248,
+              "output_tokens": 462,
+              "reasoning_output_tokens": 258,
+              "total_tokens": 24997
+            },
+            "last_token_usage": {
+              "input_tokens": 24535,
+              "cached_input_tokens": 21248,
+              "output_tokens": 462,
+              "reasoning_output_tokens": 258,
+              "total_tokens": 24997
+            }
           },
-          "summary": "Reviewed `src/lib.rs`, which is a normal procedural-macro entrypoint for `rkyv` that defines `Portable`, `Archive`, `Serialize`, and `Deserialize` derives and forwards parsed `syn::DeriveInput` values into local helper modules. I found no concrete malicious or supply-chain indicators in this file: no install hooks, no network or exfiltration logic, no credential access, no dynamic code loading, no obfuscation, and no persistence or environment tampering.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/util.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2ec97b1d919bf3f4ba78d5925960be07d19cbb6e3650686f8779e31936d0b4e6"
-          },
-          "summary": "Reviewed `src/util.rs`, which contains small pure helper routines for stripping raw identifier prefixes, iterating over `syn` fields across structs/enums/unions, and removing generics from a `Path`. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -735,16 +562,68 @@
             "algorithm": "blake3",
             "value": "2db9863015dff135a4bd35fa047a36f4bb81cfe54810db40b41ac0594934271f"
           },
-          "summary": "Reviewed README.md, which is a project overview and usage example for the rkyv archive/serialization crate. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the README.md for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence. It is a documentation-only README with project links and a usage example for the rkyv crate; no concrete malicious or supply-chain indicators were found in the file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10943,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053760082,
+            "finished_at_unix_ms": 1784053771025,
+            "total_token_usage": {
+              "input_tokens": 25124,
+              "cached_input_tokens": 21248,
+              "output_tokens": 445,
+              "reasoning_output_tokens": 254,
+              "total_tokens": 25569
+            },
+            "last_token_usage": {
+              "input_tokens": 25124,
+              "cached_input_tokens": 21248,
+              "output_tokens": 445,
+              "reasoning_output_tokens": 254,
+              "total_tokens": 25569
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/archive/enum.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "afb514b29167c661af8bc294215636708623d2cb9b8dc7f7b9900fbe1d3429e4"
+          },
+          "summary": "Reviewed `src/archive/enum.rs`, a procedural-macro code generator for archived enum types, resolver types, niche handling, and comparison impls. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21410,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053771026,
+            "finished_at_unix_ms": 1784053792436,
+            "total_token_usage": {
+              "input_tokens": 95895,
+              "cached_input_tokens": 85760,
+              "output_tokens": 912,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 96807
+            },
+            "last_token_usage": {
+              "input_tokens": 95895,
+              "cached_input_tokens": 85760,
+              "output_tokens": 912,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 96807
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_f77e1d0db3cd42939e1fc4b67d22b10a",
+      "id": "rev_70ee296a1aa8443794e9ef5f3798514b",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -752,22 +631,459 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783182361",
+      "created_at": "1784057837",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/archive/enum.rs`, which generates archived/resolver enum types plus comparison and niching impls for the `rkyv_derive` macro. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
       "files": [
         {
-          "file_path": "src/archive/enum.rs",
+          "file_path": "src/attributes.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "afb514b29167c661af8bc294215636708623d2cb9b8dc7f7b9900fbe1d3429e4"
+            "value": "0a8357dc92136f5bf3b88c8a4e7277e48734b7f0a2802fa57b2c010278fd4f0a"
           },
-          "summary": "Reviewed `src/archive/enum.rs`, which generates archived/resolver enum types plus comparison and niching impls for the `rkyv_derive` macro. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "summary": "Reviewed `src/attributes.rs`, which contains rkyv derive attribute parsing and token-generation helpers for container, field, and variant metadata. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19948,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057734932,
+            "finished_at_unix_ms": 1784057754880,
+            "total_token_usage": {
+              "input_tokens": 42372,
+              "cached_input_tokens": 35968,
+              "output_tokens": 623,
+              "reasoning_output_tokens": 314,
+              "total_tokens": 42995
+            },
+            "last_token_usage": {
+              "input_tokens": 42372,
+              "cached_input_tokens": 35968,
+              "output_tokens": 623,
+              "reasoning_output_tokens": 314,
+              "total_tokens": 42995
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/deserialize.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e2371f3f6f38c54af1e0dbc2a1020319466d84203200ef969143081d6cd9d388"
+          },
+          "summary": "`src/deserialize.rs` is a normal proc-macro implementation that generates `Deserialize`/`DeserializeWith` code for structs and enums, adds trait bounds from field attributes, and rejects unions. I checked this file for install-time execution, network or exfiltration behavior, credential access, hidden downloads or dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22191,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057754881,
+            "finished_at_unix_ms": 1784057777072,
+            "total_token_usage": {
+              "input_tokens": 40132,
+              "cached_input_tokens": 34944,
+              "output_tokens": 636,
+              "reasoning_output_tokens": 324,
+              "total_tokens": 40768
+            },
+            "last_token_usage": {
+              "input_tokens": 40132,
+              "cached_input_tokens": 34944,
+              "output_tokens": 636,
+              "reasoning_output_tokens": 324,
+              "total_tokens": 40768
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e490116d84d15e6333f9ff8e4d70994992bffd27fbbe2ecbf7e9f45df6898f4e"
+          },
+          "summary": "`src/lib.rs` is the proc-macro entry point for the `rkyv` derive macros (`Portable`, `Archive`, `Serialize`, `Deserialize`), and it only parses `DeriveInput`, applies a local `serde::receiver::replace_receiver` transformation, and dispatches to in-crate derive functions. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21245,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057777073,
+            "finished_at_unix_ms": 1784057798319,
+            "total_token_usage": {
+              "input_tokens": 40650,
+              "cached_input_tokens": 34432,
+              "output_tokens": 666,
+              "reasoning_output_tokens": 323,
+              "total_tokens": 41316
+            },
+            "last_token_usage": {
+              "input_tokens": 40650,
+              "cached_input_tokens": 34432,
+              "output_tokens": 666,
+              "reasoning_output_tokens": 323,
+              "total_tokens": 41316
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/portable.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ef615db455c88296d849aa5b1e914cd9dd80075fcc1f11f35a15f67086929ed7"
+          },
+          "summary": "Reviewed `src/portable.rs`, a procedural macro derive that validates `repr` constraints and emits an `unsafe impl Portable` with trait bounds for each field type. I found no concrete supply-chain or malicious indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18630,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057798319,
+            "finished_at_unix_ms": 1784057816950,
+            "total_token_usage": {
+              "input_tokens": 37630,
+              "cached_input_tokens": 33408,
+              "output_tokens": 525,
+              "reasoning_output_tokens": 244,
+              "total_tokens": 38155
+            },
+            "last_token_usage": {
+              "input_tokens": 37630,
+              "cached_input_tokens": 33408,
+              "output_tokens": 525,
+              "reasoning_output_tokens": 244,
+              "total_tokens": 38155
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/repr.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "995548a132b7480150bbd9fca2fea56c33956a8b5c35ce1ad53a6f96c9a5d77b"
+          },
+          "summary": "Reviewed `src/repr.rs`, which only parses Rust `repr(...)` attributes into internal enum variants and checks whether enum/struct layouts are well-defined. I found no concrete indicators of install-time execution, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20234,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057816951,
+            "finished_at_unix_ms": 1784057837185,
+            "total_token_usage": {
+              "input_tokens": 39524,
+              "cached_input_tokens": 35968,
+              "output_tokens": 415,
+              "reasoning_output_tokens": 131,
+              "total_tokens": 39939
+            },
+            "last_token_usage": {
+              "input_tokens": 39524,
+              "cached_input_tokens": 35968,
+              "output_tokens": 415,
+              "reasoning_output_tokens": 131,
+              "total_tokens": 39939
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_ad218786fe684c2e8a8d65f524773944",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059344",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/serde/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5673b0b5fb16aa3dcadd5bb45b84d6b1c9a2ad574d5f0b9d4270782c5b5d7cfb"
+          },
+          "summary": "Reviewed `src/serde/mod.rs`, which only declares the `receiver` and `respan` submodules. I found no evidence in this target file of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20756,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059252394,
+            "finished_at_unix_ms": 1784059273151,
+            "total_token_usage": {
+              "input_tokens": 24093,
+              "cached_input_tokens": 21248,
+              "output_tokens": 335,
+              "reasoning_output_tokens": 149,
+              "total_tokens": 24428
+            },
+            "last_token_usage": {
+              "input_tokens": 24093,
+              "cached_input_tokens": 21248,
+              "output_tokens": 335,
+              "reasoning_output_tokens": 149,
+              "total_tokens": 24428
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/serde/receiver.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dbb6f1db5c935b9b5ab986ba0842e9dc5a0c3f1b9b9971ab4bc84704f75a4d9e"
+          },
+          "summary": "`src/serde/receiver.rs` is a Rust syntax-tree visitor that rewrites `Self` references in derive inputs, generics, paths, and expressions so they point at the concrete receiver type. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17835,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059273151,
+            "finished_at_unix_ms": 1784059290987,
+            "total_token_usage": {
+              "input_tokens": 40455,
+              "cached_input_tokens": 34944,
+              "output_tokens": 565,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 41020
+            },
+            "last_token_usage": {
+              "input_tokens": 40455,
+              "cached_input_tokens": 34944,
+              "output_tokens": 565,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 41020
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/serde/respan.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "67e50d2e20fe57ee3c59117c65402f440bbff137e51f396077a5768eb03d6d3b"
+          },
+          "summary": "Reviewed `src/serde/respan.rs`, which recursively rebuilds a `proc_macro2::TokenStream` with a caller-supplied span for each token and nested group. I checked for install-time execution, network or credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15682,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059290988,
+            "finished_at_unix_ms": 1784059306671,
+            "total_token_usage": {
+              "input_tokens": 36949,
+              "cached_input_tokens": 35456,
+              "output_tokens": 472,
+              "reasoning_output_tokens": 163,
+              "total_tokens": 37421
+            },
+            "last_token_usage": {
+              "input_tokens": 36949,
+              "cached_input_tokens": 35456,
+              "output_tokens": 472,
+              "reasoning_output_tokens": 163,
+              "total_tokens": 37421
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/serialize.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "324ead26134d8c0527dd3315af2c2bae88356765fe70506abf71bc484433932d"
+          },
+          "summary": "Reviewed `src/serialize.rs`, which is a procedural macro that generates `Serialize`/`SerializeWith` implementations for structs, enums, and remote types using rkyv field and variant attributes. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22459,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059306671,
+            "finished_at_unix_ms": 1784059329130,
+            "total_token_usage": {
+              "input_tokens": 74568,
+              "cached_input_tokens": 65920,
+              "output_tokens": 791,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 75359
+            },
+            "last_token_usage": {
+              "input_tokens": 74568,
+              "cached_input_tokens": 65920,
+              "output_tokens": 791,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 75359
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/util.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2ec97b1d919bf3f4ba78d5925960be07d19cbb6e3650686f8779e31936d0b4e6"
+          },
+          "summary": "Reviewed `src/util.rs`, which contains small helper routines for stripping raw identifier prefixes, iterating over struct/enum/union fields, and removing generic arguments from a `syn::Path`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14961,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059329131,
+            "finished_at_unix_ms": 1784059344093,
+            "total_token_usage": {
+              "input_tokens": 24651,
+              "cached_input_tokens": 21248,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 25030
+            },
+            "last_token_usage": {
+              "input_tokens": 24651,
+              "cached_input_tokens": 21248,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 25030
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_bbe343755d544e99949a5caacd67c927",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056015",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/archive/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2ba59a4359e8b1077c17196398e3357cb40c2951e7af23bc807da03be140f23f"
+          },
+          "summary": "Reviewed `src/archive/mod.rs`, which is a Rust procedural-macro module that builds archive-related derives and auto-trait impls for structs and enums. I checked it for install-time execution, network or credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20344,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055954680,
+            "finished_at_unix_ms": 1784055975024,
+            "total_token_usage": {
+              "input_tokens": 39630,
+              "cached_input_tokens": 34944,
+              "output_tokens": 754,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 40384
+            },
+            "last_token_usage": {
+              "input_tokens": 39630,
+              "cached_input_tokens": 34944,
+              "output_tokens": 754,
+              "reasoning_output_tokens": 310,
+              "total_tokens": 40384
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/archive/printing.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ffd4fb4c0fb0560fb0bebd2fbb335d8f90ff759f67c4d57960386f8c9a808ffe"
+          },
+          "summary": "src/archive/printing.rs is a proc-macro helper that builds archived type names, resolver names, and archived metadata from `syn` inputs, with optional `bytecheck` metadata added behind a feature gate. I reviewed it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17864,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055975025,
+            "finished_at_unix_ms": 1784055992889,
+            "total_token_usage": {
+              "input_tokens": 24637,
+              "cached_input_tokens": 21248,
+              "output_tokens": 582,
+              "reasoning_output_tokens": 370,
+              "total_tokens": 25219
+            },
+            "last_token_usage": {
+              "input_tokens": 24637,
+              "cached_input_tokens": 21248,
+              "output_tokens": 582,
+              "reasoning_output_tokens": 370,
+              "total_tokens": 25219
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/archive/struct.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "30e810d825ba436da06c661873c83803a4ec2fd3398e4d3531d25f6de9005b96"
+          },
+          "summary": "Reviewed `src/archive/struct.rs`, which generates `rkyv` archive, resolver, comparison, and niche-handling impls for structs using local token construction and pointer-based field writes. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22135,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055992890,
+            "finished_at_unix_ms": 1784056015025,
+            "total_token_usage": {
+              "input_tokens": 57449,
+              "cached_input_tokens": 50688,
+              "output_tokens": 767,
+              "reasoning_output_tokens": 337,
+              "total_tokens": 58216
+            },
+            "last_token_usage": {
+              "input_tokens": 57449,
+              "cached_input_tokens": 50688,
+              "output_tokens": 767,
+              "reasoning_output_tokens": 337,
+              "total_tokens": 58216
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

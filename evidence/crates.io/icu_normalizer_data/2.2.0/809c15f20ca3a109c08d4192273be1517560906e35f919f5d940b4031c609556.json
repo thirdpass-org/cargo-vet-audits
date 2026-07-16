@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783592127",
+  "latest_reviewed_at": "1784054820",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -239,49 +245,41 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 2,
-      "file_record_count": 10,
-      "file_record_count_with_metrics": 10
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 6,
-      "file_record_count_with_metrics": 0
+      "review_count": 5,
+      "file_record_count": 21,
+      "file_record_count_with_metrics": 21
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 16,
-    "file_records_with_metrics": 10,
-    "file_records_without_metrics": 6,
-    "duration_ms_total": 206338,
-    "attempts_total": 10,
+    "reviewed_file_records": 21,
+    "file_records_with_metrics": 21,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 390140,
+    "attempts_total": 21,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 10,
-    "last_token_usage_records": 10,
+    "total_token_usage_records": 21,
+    "last_token_usage_records": 21,
     "total_token_usage": {
-      "input_tokens": 804890,
-      "cached_input_tokens": 511488,
-      "output_tokens": 7933,
-      "reasoning_output_tokens": 3883,
-      "total_tokens": 812823
+      "input_tokens": 1125318,
+      "cached_input_tokens": 787200,
+      "output_tokens": 13596,
+      "reasoning_output_tokens": 6980,
+      "total_tokens": 1138914
     },
     "last_token_usage": {
-      "input_tokens": 804890,
-      "cached_input_tokens": 511488,
-      "output_tokens": 7933,
-      "reasoning_output_tokens": 3883,
-      "total_tokens": 812823
+      "input_tokens": 1125318,
+      "cached_input_tokens": 787200,
+      "output_tokens": 13596,
+      "reasoning_output_tokens": 6980,
+      "total_tokens": 1138914
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_13b571c567a545ac9e282e36b354f368",
+      "id": "rev_4ecc9794c481489595f38c71952f50d9",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -289,34 +287,122 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782838801",
+      "created_at": "1784054820",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed this package manifest for install-time execution hooks and other supply-chain red flags. It only declares a standard Rust build script (`build.rs`) and normal package metadata for ICU4X data; I found no concrete indicators of hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\n`data/mod.rs` is a generated Rust module that stitches together ICU normalizer data tables with `include!` and exposes a couple of provider macros. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the target README, which is a short package description for `icu_normalizer_data` and references its generated CLDR/ICU data provenance. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\n`src/lib.rs` is a small `no_std` ICU4X data crate that conditionally `include!`s generated normalizer data either from `ICU4X_DATA_DIR` or from the bundled `../data/mod.rs`. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `build.rs`, which only checks for the `ICU4X_DATA_DIR` environment variable and emits Cargo configuration directives. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.",
       "files": [
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b135c48d7f0b84cef9edf6ddcababf7889233d9e5f3a0d318b6f419147a0e13d"
+          },
+          "summary": "`src/lib.rs` is a small `no_std` ICU4X data crate shim that conditionally includes generated normalizer tables from either `ICU4X_DATA_DIR` or the bundled `../data/mod.rs`. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence logic, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16015,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054804580,
+            "finished_at_unix_ms": 1784054820595,
+            "total_token_usage": {
+              "input_tokens": 24260,
+              "cached_input_tokens": 21248,
+              "output_tokens": 613,
+              "reasoning_output_tokens": 395,
+              "total_tokens": 24873
+            },
+            "last_token_usage": {
+              "input_tokens": 24260,
+              "cached_input_tokens": 21248,
+              "output_tokens": 613,
+              "reasoning_output_tokens": 395,
+              "total_tokens": 24873
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_5b96fb0bee85415ab5748d86b14cae8a",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052237",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b2db15e19fe037f1583010f3318aa1a9ab666d398582bba338282ca6f19db688"
+          },
+          "summary": "Reviewed .cargo_vcs_info.json, which only records the source VCS commit SHA and original path for the package data. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19274,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052153069,
+            "finished_at_unix_ms": 1784052172343,
+            "total_token_usage": {
+              "input_tokens": 24155,
+              "cached_input_tokens": 21248,
+              "output_tokens": 409,
+              "reasoning_output_tokens": 223,
+              "total_tokens": 24564
+            },
+            "last_token_usage": {
+              "input_tokens": 24155,
+              "cached_input_tokens": 21248,
+              "output_tokens": 409,
+              "reasoning_output_tokens": 223,
+              "total_tokens": 24564
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
         {
           "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
             "value": "278bf3764cdcf6d2695b5909568adaa25f0b0c5e9cec609c615d4b31b99c38d0"
           },
-          "summary": "Reviewed this package manifest for install-time execution hooks and other supply-chain red flags. It only declares a standard Rust build script (`build.rs`) and normal package metadata for ICU4X data; I found no concrete indicators of hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed the generated Cargo manifest for the icu_normalizer_data crate, including its build-script declaration and package metadata. I found no concrete indicators of install-time execution abuse, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "data/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "66ef538728e9a2f14d40d03076b7bd8c376cb6ac5cb0865174fa31527d26bc7c"
+          "agent_run_metrics": {
+            "duration_ms": 18845,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052172344,
+            "finished_at_unix_ms": 1784052191189,
+            "total_token_usage": {
+              "input_tokens": 37523,
+              "cached_input_tokens": 33920,
+              "output_tokens": 696,
+              "reasoning_output_tokens": 398,
+              "total_tokens": 38219
+            },
+            "last_token_usage": {
+              "input_tokens": 37523,
+              "cached_input_tokens": 33920,
+              "output_tokens": 696,
+              "reasoning_output_tokens": 398,
+              "total_tokens": 38219
+            }
           },
-          "summary": "`data/mod.rs` is a generated Rust module that stitches together ICU normalizer data tables with `include!` and exposes a couple of provider macros. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -326,21 +412,29 @@
             "algorithm": "blake3",
             "value": "2252ca178679ca7a38bd54765d0892ca0bf541578c3f9ebf06f6451d986085b3"
           },
-          "summary": "Reviewed the target README, which is a short package description for `icu_normalizer_data` and references its generated CLDR/ICU data provenance. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed README.md, which contains only crate metadata and a short description of the ICU normalizer data package plus a link to the ICU4X home page. I found no concrete indicators of install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b135c48d7f0b84cef9edf6ddcababf7889233d9e5f3a0d318b6f419147a0e13d"
+          "agent_run_metrics": {
+            "duration_ms": 14033,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052191190,
+            "finished_at_unix_ms": 1784052205224,
+            "total_token_usage": {
+              "input_tokens": 24277,
+              "cached_input_tokens": 21248,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 24720
+            },
+            "last_token_usage": {
+              "input_tokens": 24277,
+              "cached_input_tokens": 21248,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 24720
+            }
           },
-          "summary": "`src/lib.rs` is a small `no_std` ICU4X data crate that conditionally `include!`s generated normalizer data either from `ICU4X_DATA_DIR` or from the bundled `../data/mod.rs`. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -350,16 +444,68 @@
             "algorithm": "blake3",
             "value": "2e98084ec328ed922046d741383604e467c21da34c07d33cbadd620985527c79"
           },
-          "summary": "Reviewed `build.rs`, which only checks for the `ICU4X_DATA_DIR` environment variable and emits Cargo configuration directives. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.",
+          "summary": "Reviewed `build.rs`, which only sets a Cargo cfg when `ICU4X_DATA_DIR` is present and declares rerun/check-cfg directives. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13972,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052205224,
+            "finished_at_unix_ms": 1784052219197,
+            "total_token_usage": {
+              "input_tokens": 24243,
+              "cached_input_tokens": 21248,
+              "output_tokens": 359,
+              "reasoning_output_tokens": 153,
+              "total_tokens": 24602
+            },
+            "last_token_usage": {
+              "input_tokens": 24243,
+              "cached_input_tokens": 21248,
+              "output_tokens": 359,
+              "reasoning_output_tokens": 153,
+              "total_tokens": 24602
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "data/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "66ef538728e9a2f14d40d03076b7bd8c376cb6ac5cb0865174fa31527d26bc7c"
+          },
+          "summary": "Reviewed `data/mod.rs`, which is a generated Rust module that only stitches together local normalizer table blobs with `include!` and exports provider macros. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18385,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052219198,
+            "finished_at_unix_ms": 1784052237584,
+            "total_token_usage": {
+              "input_tokens": 24509,
+              "cached_input_tokens": 19200,
+              "output_tokens": 468,
+              "reasoning_output_tokens": 274,
+              "total_tokens": 24977
+            },
+            "last_token_usage": {
+              "input_tokens": 24509,
+              "cached_input_tokens": 19200,
+              "output_tokens": 468,
+              "reasoning_output_tokens": 274,
+              "total_tokens": 24977
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_49f8f234a254444484e557720df5eef4",
+      "id": "rev_9bacebadd3ab4d80abac49c573a40361",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -367,12 +513,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782838816",
+      "created_at": "1784046223",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `.cargo_vcs_info.json`, which only records the upstream git SHA1 and VCS path metadata for the package. I found no concrete malicious or supply-chain indicators in this file, and no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior were present.",
       "files": [
         {
           "file_path": ".cargo_vcs_info.json",
@@ -380,9 +525,157 @@
             "algorithm": "blake3",
             "value": "b2db15e19fe037f1583010f3318aa1a9ab666d398582bba338282ca6f19db688"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the upstream git SHA1 and VCS path metadata for the package. I found no concrete malicious or supply-chain indicators in this file, and no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior were present.",
+          "summary": "Reviewed .cargo_vcs_info.json, which contains only VCS provenance metadata (a source git SHA-1 and the path_in_vcs mapping for provider/data/normalizer). I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise signals in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15899,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046140349,
+            "finished_at_unix_ms": 1784046156249,
+            "total_token_usage": {
+              "input_tokens": 24159,
+              "cached_input_tokens": 21248,
+              "output_tokens": 384,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 24543
+            },
+            "last_token_usage": {
+              "input_tokens": 24159,
+              "cached_input_tokens": 21248,
+              "output_tokens": 384,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 24543
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "278bf3764cdcf6d2695b5909568adaa25f0b0c5e9cec609c615d4b31b99c38d0"
+          },
+          "summary": "Reviewed the autogenerated Cargo manifest for icu_normalizer_data 2.2.0. It only declares package metadata, a local build script, and source tags; I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21524,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046156249,
+            "finished_at_unix_ms": 1784046177774,
+            "total_token_usage": {
+              "input_tokens": 38356,
+              "cached_input_tokens": 26240,
+              "output_tokens": 939,
+              "reasoning_output_tokens": 663,
+              "total_tokens": 39295
+            },
+            "last_token_usage": {
+              "input_tokens": 38356,
+              "cached_input_tokens": 26240,
+              "output_tokens": 939,
+              "reasoning_output_tokens": 663,
+              "total_tokens": 39295
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2252ca178679ca7a38bd54765d0892ca0bf541578c3f9ebf06f6451d986085b3"
+          },
+          "summary": "Reviewed this README, which only describes the icu_normalizer_data crate and its generation metadata plus a link to the ICU4X home page. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13863,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046177775,
+            "finished_at_unix_ms": 1784046191638,
+            "total_token_usage": {
+              "input_tokens": 24202,
+              "cached_input_tokens": 21248,
+              "output_tokens": 331,
+              "reasoning_output_tokens": 139,
+              "total_tokens": 24533
+            },
+            "last_token_usage": {
+              "input_tokens": 24202,
+              "cached_input_tokens": 21248,
+              "output_tokens": 331,
+              "reasoning_output_tokens": 139,
+              "total_tokens": 24533
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "build.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2e98084ec328ed922046d741383604e467c21da34c07d33cbadd620985527c79"
+          },
+          "summary": "Reviewed `build.rs`, which is a minimal Cargo build script that only checks the `ICU4X_DATA_DIR` environment variable and emits `cargo:` configuration directives. I found no concrete indicators of install-time execution beyond Cargo’s normal build-script mechanism, and no evidence of network/exfiltration, secret access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18719,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046191640,
+            "finished_at_unix_ms": 1784046210359,
+            "total_token_usage": {
+              "input_tokens": 36889,
+              "cached_input_tokens": 35456,
+              "output_tokens": 549,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 37438
+            },
+            "last_token_usage": {
+              "input_tokens": 36889,
+              "cached_input_tokens": 35456,
+              "output_tokens": 549,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 37438
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "data/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "66ef538728e9a2f14d40d03076b7bd8c376cb6ac5cb0865174fa31527d26bc7c"
+          },
+          "summary": "Reviewed `data/mod.rs`, which is a generated Rust module that only `include!`s local data tables and exports macros for ICU normalizer providers. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13273,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046210359,
+            "finished_at_unix_ms": 1784046223633,
+            "total_token_usage": {
+              "input_tokens": 37855,
+              "cached_input_tokens": 33408,
+              "output_tokens": 472,
+              "reasoning_output_tokens": 168,
+              "total_tokens": 38327
+            },
+            "last_token_usage": {
+              "input_tokens": 37855,
+              "cached_input_tokens": 33408,
+              "output_tokens": 472,
+              "reasoning_output_tokens": 168,
+              "total_tokens": 38327
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -398,7 +691,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591997",
       "thirdpass_version": "0.6.0",
@@ -575,7 +868,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783592127",
       "thirdpass_version": "0.6.0",

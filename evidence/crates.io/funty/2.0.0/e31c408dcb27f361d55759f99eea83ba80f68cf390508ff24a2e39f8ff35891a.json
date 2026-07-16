@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590087",
+  "latest_reviewed_at": "1784055062",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -118,50 +124,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 1,
-      "file_record_count_with_metrics": 1
+      "review_count": 4,
+      "file_record_count": 8,
+      "file_record_count_with_metrics": 8
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 5,
-    "file_records_with_metrics": 1,
-    "file_records_without_metrics": 4,
-    "duration_ms_total": 10947,
-    "attempts_total": 1,
+    "reviewed_file_records": 8,
+    "file_records_with_metrics": 8,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 105587,
+    "attempts_total": 8,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 1,
-    "last_token_usage_records": 1,
+    "total_token_usage_records": 8,
+    "last_token_usage_records": 8,
     "total_token_usage": {
-      "input_tokens": 20537,
-      "cached_input_tokens": 15104,
-      "output_tokens": 404,
-      "reasoning_output_tokens": 202,
-      "total_tokens": 20941
+      "input_tokens": 286674,
+      "cached_input_tokens": 240128,
+      "output_tokens": 3455,
+      "reasoning_output_tokens": 1556,
+      "total_tokens": 290129
     },
     "last_token_usage": {
-      "input_tokens": 20537,
-      "cached_input_tokens": 15104,
-      "output_tokens": 404,
-      "reasoning_output_tokens": 202,
-      "total_tokens": 20941
+      "input_tokens": 286674,
+      "cached_input_tokens": 240128,
+      "output_tokens": 3455,
+      "reasoning_output_tokens": 1556,
+      "total_tokens": 290129
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_852765c4914047eeb55be512d784e8e1",
+      "id": "rev_374ff6619f8b400b8de24a4124a7622d",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -169,12 +167,60 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782846818",
+      "created_at": "1784055062",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed .cargo_vcs_info.json, which only records the package's git SHA1 provenance (`25ca048375e389d703a0cefb377e32c4cc0a9dc5`). No concrete malicious or supply-chain indicators were found in this file; it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+      "files": [
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "402a29d8c367f0dbda5446062fda4a0f1c9bf2afd5ed2ee65f3beefc42629923"
+          },
+          "summary": "Reviewed the trait and macro definitions in src/lib.rs, which only forward primitive numeric methods to core/std implementations and define compile-time tests. I checked for install hooks, subprocess or network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 25573,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055037046,
+            "finished_at_unix_ms": 1784055062619,
+            "total_token_usage": {
+              "input_tokens": 120580,
+              "cached_input_tokens": 95488,
+              "output_tokens": 923,
+              "reasoning_output_tokens": 355,
+              "total_tokens": 121503
+            },
+            "last_token_usage": {
+              "input_tokens": 120580,
+              "cached_input_tokens": 95488,
+              "output_tokens": 923,
+              "reasoning_output_tokens": 355,
+              "total_tokens": 121503
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_37bdec603de7459dbe35ce3fd9888a9a",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046513",
+      "thirdpass_version": "0.6.0",
       "files": [
         {
           "file_path": ".cargo_vcs_info.json",
@@ -182,9 +228,93 @@
             "algorithm": "blake3",
             "value": "e6431513132d109201a3aa6dd9743513bd91236b260a4f89419428d8ab9270b9"
           },
-          "summary": "Reviewed .cargo_vcs_info.json, which only records the package's git SHA1 provenance (`25ca048375e389d703a0cefb377e32c4cc0a9dc5`). No concrete malicious or supply-chain indicators were found in this file; it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed .cargo_vcs_info.json, which only records the source git commit SHA for the crate archive. It contains no executable logic, and I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence indicators in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10322,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046480372,
+            "finished_at_unix_ms": 1784046490695,
+            "total_token_usage": {
+              "input_tokens": 24116,
+              "cached_input_tokens": 21248,
+              "output_tokens": 380,
+              "reasoning_output_tokens": 193,
+              "total_tokens": 24496
+            },
+            "last_token_usage": {
+              "input_tokens": 24116,
+              "cached_input_tokens": 21248,
+              "output_tokens": 380,
+              "reasoning_output_tokens": 193,
+              "total_tokens": 24496
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8f476695d7b1f84e737366499816d4f2fcf9513a96dc0d1cf2cc6112159069df"
+          },
+          "summary": "Reviewed the package manifest in Cargo.toml, which only declares package metadata, a single dev-dependency, and a simple `std` feature flag. I checked for install hooks, dependency tricks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11872,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046490696,
+            "finished_at_unix_ms": 1784046502568,
+            "total_token_usage": {
+              "input_tokens": 24467,
+              "cached_input_tokens": 21248,
+              "output_tokens": 467,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 24934
+            },
+            "last_token_usage": {
+              "input_tokens": 24467,
+              "cached_input_tokens": 21248,
+              "output_tokens": 467,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 24934
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "LICENSE.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "66948065f30734c8d410696c0db59931fa57b9ff0a2edbffa0d099ffcd383233"
+          },
+          "summary": "Reviewed LICENSE.txt, which is a plain MIT license notice with copyright attribution only. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11279,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046502568,
+            "finished_at_unix_ms": 1784046513848,
+            "total_token_usage": {
+              "input_tokens": 24246,
+              "cached_input_tokens": 23296,
+              "output_tokens": 282,
+              "reasoning_output_tokens": 102,
+              "total_tokens": 24528
+            },
+            "last_token_usage": {
+              "input_tokens": 24246,
+              "cached_input_tokens": 23296,
+              "output_tokens": 282,
+              "reasoning_output_tokens": 102,
+              "total_tokens": 24528
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -200,7 +330,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590087",
       "thirdpass_version": "0.6.0",
@@ -240,7 +370,7 @@
       ]
     },
     {
-      "id": "rev_bcfbc6086c6b4e45b266b2c989ca4eb1",
+      "id": "rev_9deb3dd92b30440583b7456345340d89",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -248,22 +378,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782846803",
+      "created_at": "1784052540",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/lib.rs` is a pure Rust trait-and-macro implementation that wraps primitive numeric types with forwarding methods and marker traits. I checked this file for install-time execution, hidden subprocesses, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.\nReviewed `Cargo.toml` for install-time hooks, build scripts, dependency behavior, feature-gated execution, and other supply-chain indicators. The manifest is minimal: it declares a small `funty` library package with one dev-dependency and a simple `std` feature, and I found no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence controls in this file.\nReviewed LICENSE.txt, which contains a standard MIT license notice and copyright text only. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior in this target file and found none.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "402a29d8c367f0dbda5446062fda4a0f1c9bf2afd5ed2ee65f3beefc42629923"
+            "value": "e6431513132d109201a3aa6dd9743513bd91236b260a4f89419428d8ab9270b9"
           },
-          "summary": "`src/lib.rs` is a pure Rust trait-and-macro implementation that wraps primitive numeric types with forwarding methods and marker traits. I checked this file for install-time execution, hidden subprocesses, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records a Git commit SHA for crate provenance. I found no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other executable content in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10821,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052505003,
+            "finished_at_unix_ms": 1784052515824,
+            "total_token_usage": {
+              "input_tokens": 24147,
+              "cached_input_tokens": 21248,
+              "output_tokens": 333,
+              "reasoning_output_tokens": 149,
+              "total_tokens": 24480
+            },
+            "last_token_usage": {
+              "input_tokens": 24147,
+              "cached_input_tokens": 21248,
+              "output_tokens": 333,
+              "reasoning_output_tokens": 149,
+              "total_tokens": 24480
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -273,9 +422,29 @@
             "algorithm": "blake3",
             "value": "8f476695d7b1f84e737366499816d4f2fcf9513a96dc0d1cf2cc6112159069df"
           },
-          "summary": "Reviewed `Cargo.toml` for install-time hooks, build scripts, dependency behavior, feature-gated execution, and other supply-chain indicators. The manifest is minimal: it declares a small `funty` library package with one dev-dependency and a simple `std` feature, and I found no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence controls in this file.",
+          "summary": "Reviewed the package manifest for install-time hooks, build scripts, dependency indirection, network/exfiltration setup, dynamic code loading, obfuscation, and persistence-related metadata. This Cargo.toml only declares a normal library package (`funty` 2.0.0) with standard metadata, a single dev-dependency, and an optional `std` feature; no concrete malicious or supply-chain indicators were present.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14109,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052515825,
+            "finished_at_unix_ms": 1784052529934,
+            "total_token_usage": {
+              "input_tokens": 24289,
+              "cached_input_tokens": 21248,
+              "output_tokens": 361,
+              "reasoning_output_tokens": 152,
+              "total_tokens": 24650
+            },
+            "last_token_usage": {
+              "input_tokens": 24289,
+              "cached_input_tokens": 21248,
+              "output_tokens": 361,
+              "reasoning_output_tokens": 152,
+              "total_tokens": 24650
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -285,9 +454,29 @@
             "algorithm": "blake3",
             "value": "66948065f30734c8d410696c0db59931fa57b9ff0a2edbffa0d099ffcd383233"
           },
-          "summary": "Reviewed LICENSE.txt, which contains a standard MIT license notice and copyright text only. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior in this target file and found none.",
+          "summary": "Reviewed the MIT license text in LICENSE.txt. It contains only standard permissive licensing terms and no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10664,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052529936,
+            "finished_at_unix_ms": 1784052540600,
+            "total_token_usage": {
+              "input_tokens": 24292,
+              "cached_input_tokens": 21248,
+              "output_tokens": 305,
+              "reasoning_output_tokens": 130,
+              "total_tokens": 24597
+            },
+            "last_token_usage": {
+              "input_tokens": 24292,
+              "cached_input_tokens": 21248,
+              "output_tokens": 305,
+              "reasoning_output_tokens": 130,
+              "total_tokens": 24597
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

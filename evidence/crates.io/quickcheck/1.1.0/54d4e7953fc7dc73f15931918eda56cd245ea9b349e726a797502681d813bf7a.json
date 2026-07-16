@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591034",
+  "latest_reviewed_at": "1784060229",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -300,50 +306,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 4,
-      "file_record_count": 15,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 2,
-      "file_record_count": 7,
-      "file_record_count_with_metrics": 7
+      "review_count": 7,
+      "file_record_count": 22,
+      "file_record_count_with_metrics": 22
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 22,
-    "file_records_with_metrics": 7,
-    "file_records_without_metrics": 15,
-    "duration_ms_total": 89006,
-    "attempts_total": 7,
+    "file_records_with_metrics": 22,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 327590,
+    "attempts_total": 22,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 7,
-    "last_token_usage_records": 7,
+    "total_token_usage_records": 22,
+    "last_token_usage_records": 22,
     "total_token_usage": {
-      "input_tokens": 162176,
-      "cached_input_tokens": 130176,
-      "output_tokens": 2931,
-      "reasoning_output_tokens": 1398,
-      "total_tokens": 165107
+      "input_tokens": 652009,
+      "cached_input_tokens": 553088,
+      "output_tokens": 10671,
+      "reasoning_output_tokens": 5359,
+      "total_tokens": 662680
     },
     "last_token_usage": {
-      "input_tokens": 162176,
-      "cached_input_tokens": 130176,
-      "output_tokens": 2931,
-      "reasoning_output_tokens": 1398,
-      "total_tokens": 165107
+      "input_tokens": 652009,
+      "cached_input_tokens": 553088,
+      "output_tokens": 10671,
+      "reasoning_output_tokens": 5359,
+      "total_tokens": 662680
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_41cf5339c1414783869f2ae6c426af3f",
+      "id": "rev_3f44529a43b242509eb8d1e4ee5dc941",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -351,46 +349,122 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782860638",
+      "created_at": "1784057261",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the README for this Rust crate, which is documentation for property-based testing usage, examples, installation notes, and feature/MSRV information. I checked for install hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/tester.rs`, which implements QuickCheck’s test runner, result handling, shrinking, and panic-to-error conversion. I checked for install hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\n`src/tests.rs` is a Rust test module full of QuickCheck properties for reversing vectors, sorting, sieve/prime checks, panic behavior, and arbitrary generation for `PathBuf`, `HashSet`, `HashMap`, and `CString`. I checked it for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, hidden subprocess execution, and other supply-chain indicators; none were present.\nReviewed the normalized Cargo manifest for `quickcheck` 1.1.0. It only declares package metadata, features, a library target, examples, and ordinary dependencies; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
       "files": [
         {
-          "file_path": "README.md",
+          "file_path": "rustfmt.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "74d3a10e2ce9055bfe6bfc55a4dbc46881a5cfbbb0bd22bf2c8c6df42be8cfe7"
+            "value": "4d4a35820d487daef592c7ca922d23302d73a81771af6526b61a8222b3c13bc6"
           },
-          "summary": "Reviewed the README for this Rust crate, which is documentation for property-based testing usage, examples, installation notes, and feature/MSRV information. I checked for install hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "`rustfmt.toml` contains only formatting preferences (`max_width = 79` and `use_small_heuristics = \"max\"`). I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13809,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057247846,
+            "finished_at_unix_ms": 1784057261656,
+            "total_token_usage": {
+              "input_tokens": 24144,
+              "cached_input_tokens": 21248,
+              "output_tokens": 453,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 24597
+            },
+            "last_token_usage": {
+              "input_tokens": 24144,
+              "cached_input_tokens": 21248,
+              "output_tokens": 453,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 24597
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_4419785dc16144af98c19c3da5056106",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784053093",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ddb18a4a5824f5212de50e9462c9d64b8e75d661566cf2ca5245cf8da5ad8705"
+          },
+          "summary": "This file only records source-control metadata for the crate (a git SHA and an empty path_in_vcs). I reviewed it for hidden execution, downloads, credential access, exfiltration, obfuscation, persistence, or install-time behavior and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14253,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053023234,
+            "finished_at_unix_ms": 1784053037488,
+            "total_token_usage": {
+              "input_tokens": 24122,
+              "cached_input_tokens": 21248,
+              "output_tokens": 462,
+              "reasoning_output_tokens": 277,
+              "total_tokens": 24584
+            },
+            "last_token_usage": {
+              "input_tokens": 24122,
+              "cached_input_tokens": 21248,
+              "output_tokens": 462,
+              "reasoning_output_tokens": 277,
+              "total_tokens": 24584
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/tester.rs",
+          "file_path": ".github/workflows/ci.yml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "2fd28f4c8b411c7498b8ee2cc383dcb04150670e02f2d123f41c6b4780e9579c"
+            "value": "5279ff5bf81278d63e27a6cce79ce2d44955605bd49e494b0468ce29ee7a3417"
           },
-          "summary": "Reviewed `src/tester.rs`, which implements QuickCheck’s test runner, result handling, shrinking, and panic-to-error conversion. I checked for install hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "The workflow defines a standard Rust CI matrix for build, doc, test, and rustfmt checks on push, PR, and a nightly schedule, using read-only repository permissions. I checked it for install-time hooks, network or credential exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/tests.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "639653ac1ac550b9c9cec4ad8d5863deeecd8ce231df825a9b61c84e47027c01"
+          "agent_run_metrics": {
+            "duration_ms": 17506,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053037489,
+            "finished_at_unix_ms": 1784053054995,
+            "total_token_usage": {
+              "input_tokens": 25058,
+              "cached_input_tokens": 21248,
+              "output_tokens": 529,
+              "reasoning_output_tokens": 321,
+              "total_tokens": 25587
+            },
+            "last_token_usage": {
+              "input_tokens": 25058,
+              "cached_input_tokens": 21248,
+              "output_tokens": 529,
+              "reasoning_output_tokens": 321,
+              "total_tokens": 25587
+            }
           },
-          "summary": "`src/tests.rs` is a Rust test module full of QuickCheck properties for reversing vectors, sorting, sieve/prime checks, panic behavior, and arbitrary generation for `PathBuf`, `HashSet`, `HashMap`, and `CString`. I checked it for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, hidden subprocess execution, and other supply-chain indicators; none were present.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -400,9 +474,93 @@
             "algorithm": "blake3",
             "value": "f3cf763f39f7f5443d26a8b6500d61bc1d9b2b1bf44730185f1abe89ea604df5"
           },
-          "summary": "Reviewed the normalized Cargo manifest for `quickcheck` 1.1.0. It only declares package metadata, features, a library target, examples, and ordinary dependencies; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed the normalized Cargo manifest for quickcheck 1.1.0. It only declares package metadata, feature flags, library/example targets, and ordinary dependencies; I found no install hooks, build script, network/exfiltration settings, credential access, dynamic code-loading indicators, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14056,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053054996,
+            "finished_at_unix_ms": 1784053069053,
+            "total_token_usage": {
+              "input_tokens": 24697,
+              "cached_input_tokens": 23808,
+              "output_tokens": 635,
+              "reasoning_output_tokens": 446,
+              "total_tokens": 25332
+            },
+            "last_token_usage": {
+              "input_tokens": 24697,
+              "cached_input_tokens": 23808,
+              "output_tokens": 635,
+              "reasoning_output_tokens": 446,
+              "total_tokens": 25332
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "74d3a10e2ce9055bfe6bfc55a4dbc46881a5cfbbb0bd22bf2c8c6df42be8cfe7"
+          },
+          "summary": "Reviewed the README for the quickcheck crate, which describes property-based testing usage, installation, MSRV policy, and examples. I found no concrete supply-chain indicators in the file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms were present.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12413,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053069054,
+            "finished_at_unix_ms": 1784053081467,
+            "total_token_usage": {
+              "input_tokens": 26605,
+              "cached_input_tokens": 21760,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 194,
+              "total_tokens": 26986
+            },
+            "last_token_usage": {
+              "input_tokens": 26605,
+              "cached_input_tokens": 21760,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 194,
+              "total_tokens": 26986
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/btree_set_range.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9270af92e40b4bc5718ef7bf9dfeb8d88360831c794d082ec675643c40a7a3f3"
+          },
+          "summary": "Reviewed this example program that property-tests `BTreeSet::range` against a small local `RangeBounds` helper and a panic-condition check. I did not find any concrete malicious or supply-chain indicators in the file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11801,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053081468,
+            "finished_at_unix_ms": 1784053093269,
+            "total_token_usage": {
+              "input_tokens": 24526,
+              "cached_input_tokens": 21248,
+              "output_tokens": 405,
+              "reasoning_output_tokens": 210,
+              "total_tokens": 24931
+            },
+            "last_token_usage": {
+              "input_tokens": 24526,
+              "cached_input_tokens": 21248,
+              "output_tokens": 405,
+              "reasoning_output_tokens": 210,
+              "total_tokens": 24931
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -418,7 +576,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591005",
       "thirdpass_version": "0.6.0",
@@ -586,7 +744,7 @@
       ]
     },
     {
-      "id": "rev_5522ec5f3fd3459aa9776ce4820df2d2",
+      "id": "rev_970740f824684ee89d3fa530d228b01d",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -594,130 +752,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782860575",
+      "created_at": "1784055455",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/arbitrary.rs`, which defines QuickCheck's `Gen`, `Arbitrary` trait, and a large set of generators/shrinkers for standard Rust types. I checked for install-time execution, subprocesses, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/arbitrary.rs",
+          "file_path": "examples/out_of_bounds.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "af4cfd58cdde61e5ce9f3787ee97685b2a036ef16e598b640c9cf81aa6f96152"
+            "value": "437b9d901129fcce042fd8ce90c1383e4c8d701430694bb434885b11dcb53802"
           },
-          "summary": "Reviewed `src/arbitrary.rs`, which defines QuickCheck's `Gen`, `Arbitrary` trait, and a large set of generators/shrinkers for standard Rust types. I checked for install-time execution, subprocesses, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `examples/out_of_bounds.rs`, a small QuickCheck example that builds a vector, discards in-bounds cases, and intentionally exercises an out-of-bounds panic path for property testing. I checked for install hooks, subprocess execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_5a3355872bb64a8595260906189baf66",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782860699",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the GitHub Actions CI workflow that checks out the repository, installs Rust via `dtolnay/rust-toolchain`, and runs build/doc/test plus rustfmt checks across a test matrix. I found no concrete indicators of install hooks, secret access, network exfiltration, dynamic code loading, obfuscation, or persistence in this target file.\n`src/lib.rs` is the crate’s public entry point for QuickCheck: it re-exports the core testing APIs, defines the `quickcheck!` macro that generates test functions, and includes a small feature-gated logging helper. I checked this file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `examples/btree_set_range.rs`, which is a small QuickCheck example that exercises `BTreeSet::range` behavior and a local `RangeBounds::contains` helper. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution patterns, and found no concrete malicious or supply-chain indicators.\nReviewed `examples/sort.rs`, a small QuickCheck demo that defines a recursive quicksort-like implementation and property tests for sortedness and length preservation. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this file.\nReviewed `examples/sieve.rs`, a small QuickCheck example that defines a sieve/prime-checking routine and two property tests in `main`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": ".github/workflows/ci.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5279ff5bf81278d63e27a6cce79ce2d44955605bd49e494b0468ce29ee7a3417"
+          "agent_run_metrics": {
+            "duration_ms": 12921,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055387955,
+            "finished_at_unix_ms": 1784055400876,
+            "total_token_usage": {
+              "input_tokens": 24182,
+              "cached_input_tokens": 21248,
+              "output_tokens": 439,
+              "reasoning_output_tokens": 234,
+              "total_tokens": 24621
+            },
+            "last_token_usage": {
+              "input_tokens": 24182,
+              "cached_input_tokens": 21248,
+              "output_tokens": 439,
+              "reasoning_output_tokens": 234,
+              "total_tokens": 24621
+            }
           },
-          "summary": "Reviewed the GitHub Actions CI workflow that checks out the repository, installs Rust via `dtolnay/rust-toolchain`, and runs build/doc/test plus rustfmt checks across a test matrix. I found no concrete indicators of install hooks, secret access, network exfiltration, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2e85dff6dd560e65941bea940fd259c5c35e03553e4ee48177f0e2fa73ebf204"
-          },
-          "summary": "`src/lib.rs` is the crate’s public entry point for QuickCheck: it re-exports the core testing APIs, defines the `quickcheck!` macro that generates test functions, and includes a small feature-gated logging helper. I checked this file for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/btree_set_range.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9270af92e40b4bc5718ef7bf9dfeb8d88360831c794d082ec675643c40a7a3f3"
-          },
-          "summary": "Reviewed `examples/btree_set_range.rs`, which is a small QuickCheck example that exercises `BTreeSet::range` behavior and a local `RangeBounds::contains` helper. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution patterns, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/sort.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8548d5bcd956b4709537d86253fc73e5b2b99fb55d317f0a29ab45754d7f276f"
-          },
-          "summary": "Reviewed `examples/sort.rs`, a small QuickCheck demo that defines a recursive quicksort-like implementation and property tests for sortedness and length preservation. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/sieve.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1a708ea47131ba37270ef9d32422d3476968312cffb9086ce57d074656680bb5"
-          },
-          "summary": "Reviewed `examples/sieve.rs`, a small QuickCheck example that defines a sieve/prime-checking routine and two property tests in `main`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_a55b4201b9e74cc8807d18ba6d7b73e7",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782860758",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `examples/reverse_single.rs`, which is a small QuickCheck example that defines a pure `reverse` helper and a property test in `main`. I found no concrete malicious or supply-chain indicators in this file; there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.\n`examples/reverse.rs` is a small QuickCheck example that defines a local list-reversal helper and property-tests that reversing twice returns the original vector. I checked for install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `examples/out_of_bounds.rs`, which is a small QuickCheck example that generates a vector and uses `TestResult::must_fail` to confirm an out-of-bounds index access panics when `index >= length`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.\nReviewed the `.cargo_vcs_info.json` metadata file, which only records the upstream git SHA1 and an empty `path_in_vcs` value. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.\n`rustfmt.toml` contains only two Rust formatting settings (`max_width` and `use_small_heuristics`) and no executable content. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators and found none.",
-      "files": [
-        {
-          "file_path": "examples/reverse_single.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6ac8accc98d0d9963896914eedd8d071dfcb8a4649c3f0153a7c68c4f2faf26c"
-          },
-          "summary": "Reviewed `examples/reverse_single.rs`, which is a small QuickCheck example that defines a pure `reverse` helper and a property test in `main`. I found no concrete malicious or supply-chain indicators in this file; there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -727,45 +796,238 @@
             "algorithm": "blake3",
             "value": "3ade4050c3807d4def85a0a0ddd69aad859445c9d704fbc9a12752affe5d514a"
           },
-          "summary": "`examples/reverse.rs` is a small QuickCheck example that defines a local list-reversal helper and property-tests that reversing twice returns the original vector. I checked for install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `examples/reverse.rs`, which is a small QuickCheck example that reverses a vector by repeated insertion at the front and checks the involution property `reverse(reverse(xs)) == xs`. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11979,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055400877,
+            "finished_at_unix_ms": 1784055412857,
+            "total_token_usage": {
+              "input_tokens": 24195,
+              "cached_input_tokens": 21248,
+              "output_tokens": 377,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24572
+            },
+            "last_token_usage": {
+              "input_tokens": 24195,
+              "cached_input_tokens": 21248,
+              "output_tokens": 377,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24572
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "examples/out_of_bounds.rs",
+          "file_path": "examples/reverse_single.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "437b9d901129fcce042fd8ce90c1383e4c8d701430694bb434885b11dcb53802"
+            "value": "6ac8accc98d0d9963896914eedd8d071dfcb8a4649c3f0153a7c68c4f2faf26c"
           },
-          "summary": "Reviewed `examples/out_of_bounds.rs`, which is a small QuickCheck example that generates a vector and uses `TestResult::must_fail` to confirm an out-of-bounds index access panics when `index >= length`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
+          "summary": "I reviewed `examples/reverse_single.rs`, which is a small QuickCheck example defining a generic `reverse` helper and a property test over one-element vectors. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18519,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055412858,
+            "finished_at_unix_ms": 1784055431378,
+            "total_token_usage": {
+              "input_tokens": 24237,
+              "cached_input_tokens": 21248,
+              "output_tokens": 355,
+              "reasoning_output_tokens": 143,
+              "total_tokens": 24592
+            },
+            "last_token_usage": {
+              "input_tokens": 24237,
+              "cached_input_tokens": 21248,
+              "output_tokens": 355,
+              "reasoning_output_tokens": 143,
+              "total_tokens": 24592
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "examples/sieve.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "ddb18a4a5824f5212de50e9462c9d64b8e75d661566cf2ca5245cf8da5ad8705"
+            "value": "1a708ea47131ba37270ef9d32422d3476968312cffb9086ce57d074656680bb5"
           },
-          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the upstream git SHA1 and an empty `path_in_vcs` value. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "summary": "Reviewed `examples/sieve.rs`, a small QuickCheck example that computes a sieve and asserts the results are prime and match a reference prime filter. I found no concrete indicators of malicious or supply-chain behavior in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence logic.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11547,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055431378,
+            "finished_at_unix_ms": 1784055442926,
+            "total_token_usage": {
+              "input_tokens": 24332,
+              "cached_input_tokens": 19200,
+              "output_tokens": 357,
+              "reasoning_output_tokens": 171,
+              "total_tokens": 24689
+            },
+            "last_token_usage": {
+              "input_tokens": 24332,
+              "cached_input_tokens": 19200,
+              "output_tokens": 357,
+              "reasoning_output_tokens": 171,
+              "total_tokens": 24689
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "rustfmt.toml",
+          "file_path": "examples/sort.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "4d4a35820d487daef592c7ca922d23302d73a81771af6526b61a8222b3c13bc6"
+            "value": "8548d5bcd956b4709537d86253fc73e5b2b99fb55d317f0a29ab45754d7f276f"
           },
-          "summary": "`rustfmt.toml` contains only two Rust formatting settings (`max_width` and `use_small_heuristics`) and no executable content. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators and found none.",
+          "summary": "Reviewed `examples/sort.rs`, which is a small QuickCheck demo implementing a deliberately buggy quicksort and two property tests. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12408,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055442926,
+            "finished_at_unix_ms": 1784055455335,
+            "total_token_usage": {
+              "input_tokens": 24462,
+              "cached_input_tokens": 23296,
+              "output_tokens": 435,
+              "reasoning_output_tokens": 254,
+              "total_tokens": 24897
+            },
+            "last_token_usage": {
+              "input_tokens": 24462,
+              "cached_input_tokens": 23296,
+              "output_tokens": 435,
+              "reasoning_output_tokens": 254,
+              "total_tokens": 24897
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_976a8107c2e2469c9b3f4d223a941ebf",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784060229",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2e85dff6dd560e65941bea940fd259c5c35e03553e4ee48177f0e2fa73ebf204"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a small public entrypoint for the QuickCheck crate: it re-exports APIs, defines the `quickcheck!` test macro, and conditionally wires up optional logging initialization. I found no concrete malicious or supply-chain indicators in this file; there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16742,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060172453,
+            "finished_at_unix_ms": 1784060189195,
+            "total_token_usage": {
+              "input_tokens": 25166,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 25655
+            },
+            "last_token_usage": {
+              "input_tokens": 25166,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 25655
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/tester.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2fd28f4c8b411c7498b8ee2cc383dcb04150670e02f2d123f41c6b4780e9579c"
+          },
+          "summary": "`src/tester.rs` implements QuickCheck's property-testing runner, test-result types, shrinking logic, and panic-to-error conversion, with configuration driven by a few `QUICKCHECK_*` environment variables. I checked it for install-time execution, subprocess spawning, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14190,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060189196,
+            "finished_at_unix_ms": 1784060203386,
+            "total_token_usage": {
+              "input_tokens": 41908,
+              "cached_input_tokens": 35456,
+              "output_tokens": 548,
+              "reasoning_output_tokens": 241,
+              "total_tokens": 42456
+            },
+            "last_token_usage": {
+              "input_tokens": 41908,
+              "cached_input_tokens": 35456,
+              "output_tokens": 548,
+              "reasoning_output_tokens": 241,
+              "total_tokens": 42456
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/tests.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "639653ac1ac550b9c9cec4ad8d5863deeecd8ce231df825a9b61c84e47027c01"
+          },
+          "summary": "src/tests.rs contains ordinary unit and property tests for QuickCheck behavior, including reversals, panic handling, sieve/prime properties, and generator coverage for PathBuf, HashMap, HashSet, and CString. I checked the file for install hooks, subprocesses, network/exfiltration, secret access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 26482,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060203387,
+            "finished_at_unix_ms": 1784060229870,
+            "total_token_usage": {
+              "input_tokens": 40924,
+              "cached_input_tokens": 35456,
+              "output_tokens": 968,
+              "reasoning_output_tokens": 478,
+              "total_tokens": 41892
+            },
+            "last_token_usage": {
+              "input_tokens": 40924,
+              "cached_input_tokens": 35456,
+              "output_tokens": 968,
+              "reasoning_output_tokens": 478,
+              "total_tokens": 41892
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -781,7 +1043,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591034",
       "thirdpass_version": "0.6.0",
@@ -845,6 +1107,55 @@
               "output_tokens": 260,
               "reasoning_output_tokens": 83,
               "total_tokens": 20815
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_c3069f65fa854a1c9bb8d0c67d772805",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058908",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/arbitrary.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "af4cfd58cdde61e5ce9f3787ee97685b2a036ef16e598b640c9cf81aa6f96152"
+          },
+          "summary": "Reviewed `src/arbitrary.rs`, which implements QuickCheck `Arbitrary` generation and shrinking for standard library types, including a `PathBuf` generator that samples local directories and a `PathBuf` shrinker that may call `canonicalize()` on the value being shrunk. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential/secret access, hidden dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 29958,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058878929,
+            "finished_at_unix_ms": 1784058908888,
+            "total_token_usage": {
+              "input_tokens": 111275,
+              "cached_input_tokens": 93952,
+              "output_tokens": 907,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 112182
+            },
+            "last_token_usage": {
+              "input_tokens": 111275,
+              "cached_input_tokens": 93952,
+              "output_tokens": 907,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 112182
             }
           },
           "comment_count": 0,

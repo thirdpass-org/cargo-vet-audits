@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589783",
+  "latest_reviewed_at": "1784059841",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -336,50 +342,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 5,
-      "file_record_count": 21,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 7,
+      "file_record_count": 30,
+      "file_record_count_with_metrics": 30
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 25,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 21,
-    "duration_ms_total": 52657,
-    "attempts_total": 4,
+    "reviewed_file_records": 30,
+    "file_records_with_metrics": 30,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 431110,
+    "attempts_total": 30,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 30,
+    "last_token_usage_records": 30,
     "total_token_usage": {
-      "input_tokens": 101257,
-      "cached_input_tokens": 74624,
-      "output_tokens": 1653,
-      "reasoning_output_tokens": 807,
-      "total_tokens": 102910
+      "input_tokens": 774320,
+      "cached_input_tokens": 647296,
+      "output_tokens": 12815,
+      "reasoning_output_tokens": 6740,
+      "total_tokens": 787135
     },
     "last_token_usage": {
-      "input_tokens": 101257,
-      "cached_input_tokens": 74624,
-      "output_tokens": 1653,
-      "reasoning_output_tokens": 807,
-      "total_tokens": 102910
+      "input_tokens": 774320,
+      "cached_input_tokens": 647296,
+      "output_tokens": 12815,
+      "reasoning_output_tokens": 6740,
+      "total_tokens": 787135
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_08f11719de23403ba909d5b60a8364bf",
+      "id": "rev_20a17d371d284e6e9c8452aaecc0cb20",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -387,12 +385,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782835351",
+      "created_at": "1784059841",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`tests/variantless.rs` is a minimal compile-time test that derives `Display` for an empty enum and asserts the trait implementation. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "tests/variantless.rs",
@@ -400,16 +397,36 @@
             "algorithm": "blake3",
             "value": "b28114ce436fc53c4012273d00460706043c4a110a5eb64b6d6d53c1c29327ba"
           },
-          "summary": "`tests/variantless.rs` is a minimal compile-time test that derives `Display` for an empty enum and asserts the trait implementation. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "This test file defines an empty enum using `#[derive(Display)]` and verifies the generated type implements `core::fmt::Display`. I checked the file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14419,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059827410,
+            "finished_at_unix_ms": 1784059841829,
+            "total_token_usage": {
+              "input_tokens": 24093,
+              "cached_input_tokens": 21248,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 24530
+            },
+            "last_token_usage": {
+              "input_tokens": 24093,
+              "cached_input_tokens": 21248,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 24530
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_175999100dd446b792f7c5e7d8bc6697",
+      "id": "rev_2b2f023667a14848a8decd78c36e3df3",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -417,90 +434,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782835264",
+      "created_at": "1784054800",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/ui/multi_line_allow.rs`, a small Rust UI test that derives `Display` for an enum with multi-line doc comments and an assertion that it implements `core::fmt::Display`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/compile_tests.rs`, which is a small `trybuild`-based test harness that runs compile-fail and pass cases under `rustversion` gating. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `tests/ui/multi_line_line_break_block.rs`, which is a small compile-time test for the `displaydoc::Display` derive on a doc-comment block. I found no concrete indicators of supply-chain compromise or malicious behavior in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence mechanisms were present.\nReviewed `tests/ui/enum_prefix.rs`, which is a small compile-test defining a `Display`-derived enum and a `static_assertions` check. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this target file.\nReviewed `tests/ui/enum_prefix_missing.rs`, which is a small compile-fail/ui test for the `displaydoc::Display` derive macro and a `static_assertions` check. It contains no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
-      "files": [
-        {
-          "file_path": "tests/ui/multi_line_allow.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3c1c2fe38cb6e51e4938bead1be363742312b96a38398c0d8634bb71c46ba2d4"
-          },
-          "summary": "Reviewed `tests/ui/multi_line_allow.rs`, a small Rust UI test that derives `Display` for an enum with multi-line doc comments and an assertion that it implements `core::fmt::Display`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/compile_tests.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ece5f1fb6d9a66e1a8d3f04fb809130ac8e854158f562aab1de02dc273d60a49"
-          },
-          "summary": "Reviewed `tests/compile_tests.rs`, which is a small `trybuild`-based test harness that runs compile-fail and pass cases under `rustversion` gating. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/multi_line_line_break_block.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "40c96d9fbeef1cb9f387237323f63f63cf6bd5c1c9284b56c6c8a7dad8b9d39b"
-          },
-          "summary": "Reviewed `tests/ui/multi_line_line_break_block.rs`, which is a small compile-time test for the `displaydoc::Display` derive on a doc-comment block. I found no concrete indicators of supply-chain compromise or malicious behavior in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence mechanisms were present.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/enum_prefix.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "894064e5889dc8c7c855e62f6b0d0445ba67c4c58f33e2f7e35dad798df24196"
-          },
-          "summary": "Reviewed `tests/ui/enum_prefix.rs`, which is a small compile-test defining a `Display`-derived enum and a `static_assertions` check. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/enum_prefix_missing.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6aaae421c6475369f24e0e1a4cfb6eae075ed9c9d165328fa7be409ff69db3be"
-          },
-          "summary": "Reviewed `tests/ui/enum_prefix_missing.rs`, which is a small compile-fail/ui test for the `displaydoc::Display` derive macro and a `static_assertions` check. It contains no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_6df1ef0429b84cb9a3f214fbb902bd86",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782835109",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed src/expand.rs, which is a proc-macro expansion module that generates Display implementations and generic where-clauses for structs and enums. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/happy.rs`, which contains only unit tests for `displaydoc` formatting behavior across structs, enums, block/line doc comments, and an optional `std` path test. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nReviewed `src/fmt.rs`, which is a small Rust helper for a proc-macro-style format-string expansion: it rewrites `{var}` shorthand into a literal format string plus tokenized arguments, with tests covering std and no-std behavior. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nI reviewed this Cargo manifest for install-time hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence-related settings. It describes a proc-macro crate with normal library and test dependencies, and I found no concrete malicious or supply-chain indicators in the manifest itself; the only automation metadata is a release-time pre-release hook, not an install-time execution path.\n`src/attr.rs` is a proc-macro helper that parses `#[displaydoc]` and doc attributes into `Display`/`VariantDisplay` token streams for formatting output. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocesses, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
           "file_path": "src/expand.rs",
@@ -508,21 +446,29 @@
             "algorithm": "blake3",
             "value": "465b38f76ed3b2467f22bc43f0e9f2829098b968ba695dfbe60456fbf6678cd1"
           },
-          "summary": "Reviewed src/expand.rs, which is a proc-macro expansion module that generates Display implementations and generic where-clauses for structs and enums. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/expand.rs`, which contains the procedural-macro expansion logic for generating `core::fmt::Display` implementations from struct and enum doc comments. I checked this file for install-time hooks, subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/happy.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b15225e048086203e0feb9009cbd4cda3fb0115e7934cd1f0131742905d3f7a7"
+          "agent_run_metrics": {
+            "duration_ms": 14139,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054729557,
+            "finished_at_unix_ms": 1784054743697,
+            "total_token_usage": {
+              "input_tokens": 42015,
+              "cached_input_tokens": 35456,
+              "output_tokens": 587,
+              "reasoning_output_tokens": 295,
+              "total_tokens": 42602
+            },
+            "last_token_usage": {
+              "input_tokens": 42015,
+              "cached_input_tokens": 35456,
+              "output_tokens": 587,
+              "reasoning_output_tokens": 295,
+              "total_tokens": 42602
+            }
           },
-          "summary": "Reviewed `tests/happy.rs`, which contains only unit tests for `displaydoc` formatting behavior across structs, enums, block/line doc comments, and an optional `std` path test. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -532,75 +478,29 @@
             "algorithm": "blake3",
             "value": "739dfdd4ef7ac310ff5627151be9daf7fbd8b0d8127e66a4c33e57d16f9f1091"
           },
-          "summary": "Reviewed `src/fmt.rs`, which is a small Rust helper for a proc-macro-style format-string expansion: it rewrites `{var}` shorthand into a literal format string plus tokenized arguments, with tests covering std and no-std behavior. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
+          "summary": "Reviewed `src/fmt.rs`, which implements `Display::expand_shorthand` for parsing display-format placeholders into a normalized format string and argument token stream. I checked for install-time execution, network or exfiltration, secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cb634a78b9d46089ed3e9a3799fdcf284514ea427fe2aaee9572dba416d65694"
+          "agent_run_metrics": {
+            "duration_ms": 11689,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054743697,
+            "finished_at_unix_ms": 1784054755386,
+            "total_token_usage": {
+              "input_tokens": 25135,
+              "cached_input_tokens": 21248,
+              "output_tokens": 420,
+              "reasoning_output_tokens": 217,
+              "total_tokens": 25555
+            },
+            "last_token_usage": {
+              "input_tokens": 25135,
+              "cached_input_tokens": 21248,
+              "output_tokens": 420,
+              "reasoning_output_tokens": 217,
+              "total_tokens": 25555
+            }
           },
-          "summary": "I reviewed this Cargo manifest for install-time hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence-related settings. It describes a proc-macro crate with normal library and test dependencies, and I found no concrete malicious or supply-chain indicators in the manifest itself; the only automation metadata is a release-time pre-release hook, not an install-time execution path.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/attr.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "dbf1fd0f8fcdd4f7426d0fb6e8c1d40b644b6fb53ca4555d93e3b94ea5e740da"
-          },
-          "summary": "`src/attr.rs` is a proc-macro helper that parses `#[displaydoc]` and doc attributes into `Display`/`VariantDisplay` token streams for formatting output. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocesses, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_8e6c65152a4d4ed59d5d81ea942eecfe",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782835194",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `README.md`, which is a normal crate usage/readme document describing the `displaydoc` derive macro, examples, options, FAQ, and licensing. I checked for install-time hooks, hidden downloads, credential access, dynamic code loading, obfuscation, persistence, and exfiltration indicators, and found no concrete malicious or supply-chain compromise evidence in this file.\n`CHANGELOG.md` is a plain release-history document listing versions, dated entries, and GitHub compare links for displaydoc 0.2.6 and earlier. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `src/lib.rs`, which is a normal proc-macro entrypoint for the `Display` derive and associated documentation. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/no_std.rs`, which is a no-std test exercising the `displaydoc::Display` derive on structs and enums to confirm generated code avoids stdlib references. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed `tests/num_in_field.rs`, which is a small unit test for a `displaydoc::Display` derive on a struct and an assertion helper that formats the struct and compares the output. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
-      "files": [
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0ffac9e358c35a22f4633d562856dab2d8daf502b153900ebe43a927e64e6985"
-          },
-          "summary": "Reviewed `README.md`, which is a normal crate usage/readme document describing the `displaydoc` derive macro, examples, options, FAQ, and licensing. I checked for install-time hooks, hidden downloads, credential access, dynamic code loading, obfuscation, persistence, and exfiltration indicators, and found no concrete malicious or supply-chain compromise evidence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "CHANGELOG.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "499bad4c990fc8222702a155aee42bf23d6b0ac7dff12391a5d1ea59c659bb65"
-          },
-          "summary": "`CHANGELOG.md` is a plain release-history document listing versions, dated entries, and GitHub compare links for displaydoc 0.2.6 and earlier. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -610,21 +510,142 @@
             "algorithm": "blake3",
             "value": "cb69da6e2df261cc0f227a56cfc8f90447711a47cebfa0c25c1ad6e48a7c64c3"
           },
-          "summary": "Reviewed `src/lib.rs`, which is a normal proc-macro entrypoint for the `Display` derive and associated documentation. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed src/lib.rs, which is a proc-macro entry point and crate documentation for a `Display` derive; this file only parses the macro input and forwards it to `expand::derive`, with no install hooks, network or exfiltration logic, secret access, dynamic downloads, obfuscation, or persistence behavior present in the target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14543,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054755387,
+            "finished_at_unix_ms": 1784054769931,
+            "total_token_usage": {
+              "input_tokens": 26016,
+              "cached_input_tokens": 21248,
+              "output_tokens": 580,
+              "reasoning_output_tokens": 387,
+              "total_tokens": 26596
+            },
+            "last_token_usage": {
+              "input_tokens": 26016,
+              "cached_input_tokens": 21248,
+              "output_tokens": 580,
+              "reasoning_output_tokens": 387,
+              "total_tokens": 26596
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
+        {
+          "file_path": "tests/compile_tests.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ece5f1fb6d9a66e1a8d3f04fb809130ac8e854158f562aab1de02dc273d60a49"
+          },
+          "summary": "Reviewed `tests/compile_tests.rs`, which is a small Rust test harness that runs `trybuild` compile-fail/pass cases against local UI fixtures and is conditionally ignored on non-nightly builds. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16280,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054769932,
+            "finished_at_unix_ms": 1784054786212,
+            "total_token_usage": {
+              "input_tokens": 24222,
+              "cached_input_tokens": 21248,
+              "output_tokens": 533,
+              "reasoning_output_tokens": 320,
+              "total_tokens": 24755
+            },
+            "last_token_usage": {
+              "input_tokens": 24222,
+              "cached_input_tokens": 21248,
+              "output_tokens": 533,
+              "reasoning_output_tokens": 320,
+              "total_tokens": 24755
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/happy.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b15225e048086203e0feb9009cbd4cda3fb0115e7934cd1f0131742905d3f7a7"
+          },
+          "summary": "Reviewed `tests/happy.rs`, which is a pure test module for `displaydoc::Display` formatting behavior across structs, enums, nested modules, and an optional `std` path case. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13869,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054786213,
+            "finished_at_unix_ms": 1784054800082,
+            "total_token_usage": {
+              "input_tokens": 40865,
+              "cached_input_tokens": 36480,
+              "output_tokens": 459,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 41324
+            },
+            "last_token_usage": {
+              "input_tokens": 40865,
+              "cached_input_tokens": 36480,
+              "output_tokens": 459,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 41324
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_4088c3cb447c40dbbcddc211e0dcce77",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056806",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
           "file_path": "tests/no_std.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "d67cc5988f9710a7287708ab51109e67ca18a5ff9bb875621119af54923effc8"
           },
-          "summary": "Reviewed `tests/no_std.rs`, which is a no-std test exercising the `displaydoc::Display` derive on structs and enums to confirm generated code avoids stdlib references. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "summary": "Reviewed `tests/no_std.rs`, which is a no_std test exercising the `displaydoc::Display` derive on structs and enums to confirm the generated code avoids stdlib references. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11189,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056732826,
+            "finished_at_unix_ms": 1784056744016,
+            "total_token_usage": {
+              "input_tokens": 24267,
+              "cached_input_tokens": 21248,
+              "output_tokens": 369,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 24636
+            },
+            "last_token_usage": {
+              "input_tokens": 24267,
+              "cached_input_tokens": 21248,
+              "output_tokens": 369,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 24636
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -634,39 +655,93 @@
             "algorithm": "blake3",
             "value": "128888cf19b0c3af07a451e2d4f09f9cbfc958c4eb3b9155cf476ee370fae9f3"
           },
-          "summary": "Reviewed `tests/num_in_field.rs`, which is a small unit test for a `displaydoc::Display` derive on a struct and an assertion helper that formats the struct and compares the output. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
+          "summary": "Reviewed `tests/num_in_field.rs`, which is a small Rust test exercising `displaydoc::Display` formatting for a struct with two string fields. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10984,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056744017,
+            "finished_at_unix_ms": 1784056755001,
+            "total_token_usage": {
+              "input_tokens": 24177,
+              "cached_input_tokens": 21248,
+              "output_tokens": 336,
+              "reasoning_output_tokens": 139,
+              "total_tokens": 24513
+            },
+            "last_token_usage": {
+              "input_tokens": 24177,
+              "cached_input_tokens": 21248,
+              "output_tokens": 336,
+              "reasoning_output_tokens": 139,
+              "total_tokens": 24513
+            }
+          },
           "comment_count": 0,
           "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_9f69ed9ea8c64cbaacf1ac9962d0de69",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782835337",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/ui/multiple.rs`, which is a small compile-time test using `#[derive(Display)]` on two structs and `static_assertions` to verify `core::fmt::Display` implementations. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nReviewed `tests/ui/multi_line.rs`, a small compile-time UI test that derives `Display` for an enum with single-line and multi-line doc comments and asserts the `Display` impl exists. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `tests/ui/multi_line_line_break.rs`, which is a small Rust compile-fail test that defines a `Display`-derived struct with a multi-line doc comment and a `static_assertions` check. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `tests/ui/without.rs`, a small compile-time UI test that imports `displaydoc::Display`, defines a placeholder type, and asserts `Display` is implemented; it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in the target file.\nI reviewed the target `.cargo_vcs_info.json`, which only contains a Git commit hash and an empty `path_in_vcs` field. No concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence were present in this file.",
-      "files": [
+        },
         {
-          "file_path": "tests/ui/multiple.rs",
+          "file_path": "tests/ui/enum_prefix.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "f1e27e87bde107c8353f2aeefb3b55e6de79ae90a73f78333ae17d1f522cc28a"
+            "value": "894064e5889dc8c7c855e62f6b0d0445ba67c4c58f33e2f7e35dad798df24196"
           },
-          "summary": "Reviewed `tests/ui/multiple.rs`, which is a small compile-time test using `#[derive(Display)]` on two structs and `static_assertions` to verify `core::fmt::Display` implementations. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
+          "summary": "Reviewed a small Rust UI test that derives `Display` for an enum with `#[prefix_enum_doc_attributes]` and asserts the `Display` impl exists. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21018,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056755002,
+            "finished_at_unix_ms": 1784056776020,
+            "total_token_usage": {
+              "input_tokens": 24125,
+              "cached_input_tokens": 21248,
+              "output_tokens": 326,
+              "reasoning_output_tokens": 134,
+              "total_tokens": 24451
+            },
+            "last_token_usage": {
+              "input_tokens": 24125,
+              "cached_input_tokens": 21248,
+              "output_tokens": 326,
+              "reasoning_output_tokens": 134,
+              "total_tokens": 24451
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/enum_prefix_missing.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6aaae421c6475369f24e0e1a4cfb6eae075ed9c9d165328fa7be409ff69db3be"
+          },
+          "summary": "Reviewed this UI test file, which only defines a small `Display` derive example for an enum and a compile-time assertion, then exits in `main`. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15105,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056776021,
+            "finished_at_unix_ms": 1784056791126,
+            "total_token_usage": {
+              "input_tokens": 24118,
+              "cached_input_tokens": 21248,
+              "output_tokens": 359,
+              "reasoning_output_tokens": 164,
+              "total_tokens": 24477
+            },
+            "last_token_usage": {
+              "input_tokens": 24118,
+              "cached_input_tokens": 21248,
+              "output_tokens": 359,
+              "reasoning_output_tokens": 164,
+              "total_tokens": 24477
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -676,45 +751,206 @@
             "algorithm": "blake3",
             "value": "d72d43693f8b59cffec5926a9d0eb416863b8c8a555c818609c6f30e747afb6c"
           },
-          "summary": "Reviewed `tests/ui/multi_line.rs`, a small compile-time UI test that derives `Display` for an enum with single-line and multi-line doc comments and asserts the `Display` impl exists. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "summary": "Reviewed `tests/ui/multi_line.rs`, which is a small compile-time UI test for `displaydoc` that defines an enum with single-line and multi-line doc comments and asserts it implements `core::fmt::Display`. I found no concrete malicious or supply-chain indicators in this file, and no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/multi_line_line_break.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8c019e476cb3ac550e7f2a0d974d308608cfe511c3a5a95132e8d2a053ff29dd"
+          "agent_run_metrics": {
+            "duration_ms": 15772,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056791126,
+            "finished_at_unix_ms": 1784056806899,
+            "total_token_usage": {
+              "input_tokens": 24201,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 200,
+              "total_tokens": 24602
+            },
+            "last_token_usage": {
+              "input_tokens": 24201,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 200,
+              "total_tokens": 24602
+            }
           },
-          "summary": "Reviewed `tests/ui/multi_line_line_break.rs`, which is a small Rust compile-fail test that defines a `Display`-derived struct with a multi-line doc comment and a `static_assertions` check. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
-        },
-        {
-          "file_path": "tests/ui/without.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cb559d5705c02f7489439b01167699dde67d89fda9ca2736f211f4d4bcb97cd6"
-          },
-          "summary": "Reviewed `tests/ui/without.rs`, a small compile-time UI test that imports `displaydoc::Display`, defines a placeholder type, and asserts `Display` is implemented; it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
+        }
+      ]
+    },
+    {
+      "id": "rev_8079fd3f2a32451ea0d431ac25cba94a",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052147",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "5b541f3a6cbec929eb097ceeda33802007e2819e99536252f9647eb54d018e1c"
           },
-          "summary": "I reviewed the target `.cargo_vcs_info.json`, which only contains a Git commit hash and an empty `path_in_vcs` field. No concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence were present in this file.",
+          "summary": "Reviewed the Cargo VCS metadata in `.cargo_vcs_info.json`, which only records the source git SHA and an empty `path_in_vcs` value. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators in this target file and found none.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11690,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052065580,
+            "finished_at_unix_ms": 1784052077270,
+            "total_token_usage": {
+              "input_tokens": 24113,
+              "cached_input_tokens": 21248,
+              "output_tokens": 345,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 24458
+            },
+            "last_token_usage": {
+              "input_tokens": 24113,
+              "cached_input_tokens": 21248,
+              "output_tokens": 345,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 24458
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "499bad4c990fc8222702a155aee42bf23d6b0ac7dff12391a5d1ea59c659bb65"
+          },
+          "summary": "Reviewed the changelog entries and release notes in `CHANGELOG.md`; it only documents version history and changelog links, with no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior present in the file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17502,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052077271,
+            "finished_at_unix_ms": 1784052094774,
+            "total_token_usage": {
+              "input_tokens": 24885,
+              "cached_input_tokens": 21248,
+              "output_tokens": 390,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 25275
+            },
+            "last_token_usage": {
+              "input_tokens": 24885,
+              "cached_input_tokens": 21248,
+              "output_tokens": 390,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 25275
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cb634a78b9d46089ed3e9a3799fdcf284514ea427fe2aaee9572dba416d65694"
+          },
+          "summary": "Reviewed the crate manifest in Cargo.toml for install-time execution, hidden subprocess hooks, network or credential access, dynamic code loading, obfuscation, and persistence tampering. The file only defines normal package metadata, dependencies, features, tests, and release automation metadata; I found no concrete malicious or supply-chain indicators in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15508,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052094775,
+            "finished_at_unix_ms": 1784052110283,
+            "total_token_usage": {
+              "input_tokens": 24938,
+              "cached_input_tokens": 21248,
+              "output_tokens": 628,
+              "reasoning_output_tokens": 441,
+              "total_tokens": 25566
+            },
+            "last_token_usage": {
+              "input_tokens": 24938,
+              "cached_input_tokens": 21248,
+              "output_tokens": 628,
+              "reasoning_output_tokens": 441,
+              "total_tokens": 25566
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0ffac9e358c35a22f4633d562856dab2d8daf502b153900ebe43a927e64e6985"
+          },
+          "summary": "Reviewed the README for the `displaydoc` crate, which documents the derive macro’s syntax, examples, and feature notes. It contains no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 25936,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052110284,
+            "finished_at_unix_ms": 1784052136221,
+            "total_token_usage": {
+              "input_tokens": 25274,
+              "cached_input_tokens": 21248,
+              "output_tokens": 482,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 25756
+            },
+            "last_token_usage": {
+              "input_tokens": 25274,
+              "cached_input_tokens": 21248,
+              "output_tokens": 482,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 25756
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/attr.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dbf1fd0f8fcdd4f7426d0fb6e8c1d40b644b6fb53ca4555d93e3b94ea5e740da"
+          },
+          "summary": "Reviewed `src/attr.rs`, which implements attribute parsing and formatting assembly for `displaydoc` derives. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11349,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052136221,
+            "finished_at_unix_ms": 1784052147571,
+            "total_token_usage": {
+              "input_tokens": 24976,
+              "cached_input_tokens": 21248,
+              "output_tokens": 396,
+              "reasoning_output_tokens": 215,
+              "total_tokens": 25372
+            },
+            "last_token_usage": {
+              "input_tokens": 24976,
+              "cached_input_tokens": 21248,
+              "output_tokens": 396,
+              "reasoning_output_tokens": 215,
+              "total_tokens": 25372
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -730,7 +966,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589783",
       "thirdpass_version": "0.6.0",
@@ -858,6 +1094,360 @@
               "output_tokens": 252,
               "reasoning_output_tokens": 84,
               "total_tokens": 21048
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_b7379c1bd7874614a558bfe1ba773a1e",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058495",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/ui/multi_line_allow.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3c1c2fe38cb6e51e4938bead1be363742312b96a38398c0d8634bb71c46ba2d4"
+          },
+          "summary": "Reviewed `tests/ui/multi_line_allow.rs`, a small compile-only UI test that derives `Display` for an enum with multi-line doc comments and an allowed extra doc attribute, then asserts the `Display` impl. I found no concrete indicators of install-time execution, network or exfiltration, secret access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14245,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058432555,
+            "finished_at_unix_ms": 1784058446801,
+            "total_token_usage": {
+              "input_tokens": 24220,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 279,
+              "total_tokens": 24709
+            },
+            "last_token_usage": {
+              "input_tokens": 24220,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 279,
+              "total_tokens": 24709
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/multi_line_line_break.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8c019e476cb3ac550e7f2a0d974d308608cfe511c3a5a95132e8d2a053ff29dd"
+          },
+          "summary": "Reviewed `tests/ui/multi_line_line_break.rs`, a small compile-time UI test that derives `Display` for a struct with multiline doc comments and an assertion that the trait is implemented. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12709,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058446801,
+            "finished_at_unix_ms": 1784058459510,
+            "total_token_usage": {
+              "input_tokens": 24133,
+              "cached_input_tokens": 21248,
+              "output_tokens": 320,
+              "reasoning_output_tokens": 113,
+              "total_tokens": 24453
+            },
+            "last_token_usage": {
+              "input_tokens": 24133,
+              "cached_input_tokens": 21248,
+              "output_tokens": 320,
+              "reasoning_output_tokens": 113,
+              "total_tokens": 24453
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/multi_line_line_break_block.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "40c96d9fbeef1cb9f387237323f63f63cf6bd5c1c9284b56c6c8a7dad8b9d39b"
+          },
+          "summary": "Reviewed this UI test file, which defines a `Display`-derived `TestType` with a multi-line doc comment and a compile-time assertion that it implements `core::fmt::Display`. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12415,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058459511,
+            "finished_at_unix_ms": 1784058471926,
+            "total_token_usage": {
+              "input_tokens": 24533,
+              "cached_input_tokens": 21760,
+              "output_tokens": 350,
+              "reasoning_output_tokens": 138,
+              "total_tokens": 24883
+            },
+            "last_token_usage": {
+              "input_tokens": 24533,
+              "cached_input_tokens": 21760,
+              "output_tokens": 350,
+              "reasoning_output_tokens": 138,
+              "total_tokens": 24883
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/multiple.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f1e27e87bde107c8353f2aeefb3b55e6de79ae90a73f78333ae17d1f522cc28a"
+          },
+          "summary": "`tests/ui/multiple.rs` is a small Rust compile-test that derives `Display` for two local structs and ends with an empty `main`; I checked it for install-time execution, network/exfiltration, secret access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11508,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058471927,
+            "finished_at_unix_ms": 1784058483435,
+            "total_token_usage": {
+              "input_tokens": 24090,
+              "cached_input_tokens": 23296,
+              "output_tokens": 446,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 24536
+            },
+            "last_token_usage": {
+              "input_tokens": 24090,
+              "cached_input_tokens": 23296,
+              "output_tokens": 446,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 24536
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/without.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cb559d5705c02f7489439b01167699dde67d89fda9ca2736f211f4d4bcb97cd6"
+          },
+          "summary": "Reviewed `tests/ui/without.rs`, which is a small compile-time test that imports `displaydoc::Display`, defines a dummy type, and asserts it implements `core::fmt::Display`. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12430,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058483435,
+            "finished_at_unix_ms": 1784058495866,
+            "total_token_usage": {
+              "input_tokens": 24070,
+              "cached_input_tokens": 21248,
+              "output_tokens": 316,
+              "reasoning_output_tokens": 112,
+              "total_tokens": 24386
+            },
+            "last_token_usage": {
+              "input_tokens": 24070,
+              "cached_input_tokens": 21248,
+              "output_tokens": 316,
+              "reasoning_output_tokens": 112,
+              "total_tokens": 24386
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_fb9f2af5173242b3ba269d706724cb2c",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046142",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5b541f3a6cbec929eb097ceeda33802007e2819e99536252f9647eb54d018e1c"
+          },
+          "summary": "Reviewed the crate metadata in `.cargo_vcs_info.json`, which only records a source-control commit hash and empty `path_in_vcs` field. I found no evidence in this target file of install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10894,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046068379,
+            "finished_at_unix_ms": 1784046079273,
+            "total_token_usage": {
+              "input_tokens": 24119,
+              "cached_input_tokens": 15104,
+              "output_tokens": 373,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24492
+            },
+            "last_token_usage": {
+              "input_tokens": 24119,
+              "cached_input_tokens": 15104,
+              "output_tokens": 373,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24492
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "499bad4c990fc8222702a155aee42bf23d6b0ac7dff12391a5d1ea59c659bb65"
+          },
+          "summary": "Reviewed this changelog entry file, which contains version history and release links for displaydoc 0.2.6. I found no concrete malicious or supply-chain indicators in the file, and it does not contain install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21846,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046079274,
+            "finished_at_unix_ms": 1784046101121,
+            "total_token_usage": {
+              "input_tokens": 24895,
+              "cached_input_tokens": 21248,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 25314
+            },
+            "last_token_usage": {
+              "input_tokens": 24895,
+              "cached_input_tokens": 21248,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 25314
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cb634a78b9d46089ed3e9a3799fdcf284514ea427fe2aaee9572dba416d65694"
+          },
+          "summary": "Reviewed the package manifest for `displaydoc` 0.2.6, including package metadata, dependency declarations, feature flags, test targets, and the `package.metadata.release` hook reference. I found no concrete signs of install-time execution, credential access, network exfiltration, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14346,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046101122,
+            "finished_at_unix_ms": 1784046115468,
+            "total_token_usage": {
+              "input_tokens": 24892,
+              "cached_input_tokens": 21248,
+              "output_tokens": 535,
+              "reasoning_output_tokens": 342,
+              "total_tokens": 25427
+            },
+            "last_token_usage": {
+              "input_tokens": 24892,
+              "cached_input_tokens": 21248,
+              "output_tokens": 535,
+              "reasoning_output_tokens": 342,
+              "total_tokens": 25427
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0ffac9e358c35a22f4633d562856dab2d8daf502b153900ebe43a927e64e6985"
+          },
+          "summary": "Reviewed the package README for the displaydoc derive macro documentation, examples, and feature notes. I found no concrete malicious or supply-chain indicators in this target file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms described here.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12494,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046115469,
+            "finished_at_unix_ms": 1784046127963,
+            "total_token_usage": {
+              "input_tokens": 25263,
+              "cached_input_tokens": 15104,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 248,
+              "total_tokens": 25695
+            },
+            "last_token_usage": {
+              "input_tokens": 25263,
+              "cached_input_tokens": 15104,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 248,
+              "total_tokens": 25695
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/attr.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dbf1fd0f8fcdd4f7426d0fb6e8c1d40b644b6fb53ca4555d93e3b94ea5e740da"
+          },
+          "summary": "Reviewed src/attr.rs, which only builds display formatting metadata from Rust attributes and doc comments for the derive macro. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14574,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046127964,
+            "finished_at_unix_ms": 1784046142539,
+            "total_token_usage": {
+              "input_tokens": 25428,
+              "cached_input_tokens": 21760,
+              "output_tokens": 434,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 25862
+            },
+            "last_token_usage": {
+              "input_tokens": 25428,
+              "cached_input_tokens": 21760,
+              "output_tokens": 434,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 25862
             }
           },
           "comment_count": 0,

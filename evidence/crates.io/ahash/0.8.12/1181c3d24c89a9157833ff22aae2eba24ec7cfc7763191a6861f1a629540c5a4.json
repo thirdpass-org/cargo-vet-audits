@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589924",
+  "latest_reviewed_at": "1784060860",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -324,50 +330,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 6,
-      "file_record_count": 20,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 6,
+      "file_record_count": 24,
+      "file_record_count_with_metrics": 24
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 24,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 20,
-    "duration_ms_total": 84447,
-    "attempts_total": 4,
+    "file_records_with_metrics": 24,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 431601,
+    "attempts_total": 24,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 24,
+    "last_token_usage_records": 24,
     "total_token_usage": {
-      "input_tokens": 112991,
-      "cached_input_tokens": 88320,
-      "output_tokens": 2334,
-      "reasoning_output_tokens": 1370,
-      "total_tokens": 115325
+      "input_tokens": 809075,
+      "cached_input_tokens": 679296,
+      "output_tokens": 13978,
+      "reasoning_output_tokens": 8012,
+      "total_tokens": 823053
     },
     "last_token_usage": {
-      "input_tokens": 112991,
-      "cached_input_tokens": 88320,
-      "output_tokens": 2334,
-      "reasoning_output_tokens": 1370,
-      "total_tokens": 115325
+      "input_tokens": 809075,
+      "cached_input_tokens": 679296,
+      "output_tokens": 13978,
+      "reasoning_output_tokens": 8012,
+      "total_tokens": 823053
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_13adcfbe28014ee7b8ec1827092bec02",
+      "id": "rev_2db95764bf0e433e9f7f60cf465d7dca",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -375,22 +373,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783194793",
+      "created_at": "1784059631",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/aes_hash.rs`, which is an AES-based Rust hasher implementation with specialized `Hasher` variants and tests. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/operations.rs`, which contains low-level hash/byte-shuffling helpers and platform-specific SIMD/AES fast paths plus unit tests. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden payload behavior; none were present in this file.\nReviewed `src/hash_map.rs`, which is a thin `HashMap` wrapper (`AHashMap`) plus `serde` support and standard iterator/trait forwarding. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden side effects; none were present in this file.",
       "files": [
         {
-          "file_path": "src/aes_hash.rs",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "f44c3a1f3e607695889b3942bc9920c6a3a04642aa17b0edeb39bdd455b36203"
+            "value": "cb85b6f7a32a73e25da03819ddbcbb05a30db0fc42231d28b43ac2f8e8928a2a"
           },
-          "summary": "Reviewed `src/aes_hash.rs`, which is an AES-based Rust hasher implementation with specialized `Hasher` variants and tests. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed src/lib.rs, which is the crate root for ahash and contains feature-gated reexports, type aliases, extension traits, and the Default implementation for AHasher. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17162,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059583359,
+            "finished_at_unix_ms": 1784059600522,
+            "total_token_usage": {
+              "input_tokens": 42228,
+              "cached_input_tokens": 35968,
+              "output_tokens": 668,
+              "reasoning_output_tokens": 378,
+              "total_tokens": 42896
+            },
+            "last_token_usage": {
+              "input_tokens": 42228,
+              "cached_input_tokens": 35968,
+              "output_tokens": 668,
+              "reasoning_output_tokens": 378,
+              "total_tokens": 42896
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -400,51 +417,29 @@
             "algorithm": "blake3",
             "value": "1ba653f02d594d708172808eb4aa81de9691c3aded966728ac33624566011817"
           },
-          "summary": "Reviewed `src/operations.rs`, which contains low-level hash/byte-shuffling helpers and platform-specific SIMD/AES fast paths plus unit tests. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden payload behavior; none were present in this file.",
+          "summary": "`src/operations.rs` contains low-level hashing helpers and architecture-specific SIMD/AES intrinsics plus unit tests for shuffle behavior. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation/packing, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/hash_map.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8dfd72b9ae23bfa05894e929065afc35618ea3b7d0846088df1d3d5e6b94e837"
+          "agent_run_metrics": {
+            "duration_ms": 16321,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059600523,
+            "finished_at_unix_ms": 1784059616844,
+            "total_token_usage": {
+              "input_tokens": 42760,
+              "cached_input_tokens": 35968,
+              "output_tokens": 685,
+              "reasoning_output_tokens": 394,
+              "total_tokens": 43445
+            },
+            "last_token_usage": {
+              "input_tokens": 42760,
+              "cached_input_tokens": 35968,
+              "output_tokens": 685,
+              "reasoning_output_tokens": 394,
+              "total_tokens": 43445
+            }
           },
-          "summary": "Reviewed `src/hash_map.rs`, which is a thin `HashMap` wrapper (`AHashMap`) plus `serde` support and standard iterator/trait forwarding. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden side effects; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_60fad84110a04158a7b5afe156440f06",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783194741",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/hash_quality_test.rs`, which contains hash-quality helper functions and `#[cfg(test)]` test suites for the fallback and AES hash implementations. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload triggers; none were present.\nReviewed `src/random_state.rs`, which implements `RandomState` seeding and `BuildHasher` construction for aHash, including optional runtime/compile-time RNG selection and a user-supplied `RandomSource`. No concrete malicious or supply-chain indicators were found in this file; I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/packing, and persistence/tampering, and none were present.",
-      "files": [
-        {
-          "file_path": "src/hash_quality_test.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6dc53d9c14977b30ee137e7cba85794e22139d821c32c8b1aafd237673df9872"
-          },
-          "summary": "Reviewed `src/hash_quality_test.rs`, which contains hash-quality helper functions and `#[cfg(test)]` test suites for the fallback and AES hash implementations. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload triggers; none were present.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -454,9 +449,174 @@
             "algorithm": "blake3",
             "value": "7b9e7b58307ba85e83e7d7206168c1107ea97dc7f32a37172db261ecdf0268f8"
           },
-          "summary": "Reviewed `src/random_state.rs`, which implements `RandomState` seeding and `BuildHasher` construction for aHash, including optional runtime/compile-time RNG selection and a user-supplied `RandomSource`. No concrete malicious or supply-chain indicators were found in this file; I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/packing, and persistence/tampering, and none were present.",
+          "summary": "`src/random_state.rs` defines the `RandomSource`/`RandomState` key-generation logic for aHash, including cfg-gated OS RNG, compile-time RNG, and fixed-seed fallbacks plus `BuildHasher` helpers. I reviewed it for install-time execution, network or secret access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators and found no concrete malicious behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15115,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059616844,
+            "finished_at_unix_ms": 1784059631959,
+            "total_token_usage": {
+              "input_tokens": 30601,
+              "cached_input_tokens": 21248,
+              "output_tokens": 540,
+              "reasoning_output_tokens": 334,
+              "total_tokens": 31141
+            },
+            "last_token_usage": {
+              "input_tokens": 30601,
+              "cached_input_tokens": 21248,
+              "output_tokens": 540,
+              "reasoning_output_tokens": 334,
+              "total_tokens": 31141
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_52c466a783624012a7d2b1330cd081c6",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784060860",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/specialize.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d28187d4d4bf3158228b6811dff63e2683d30a7363ad4569791a046544a52d71"
+          },
+          "summary": "Reviewed `src/specialize.rs`, which contains hash-specialization trait implementations and tests for primitive, string, and byte-slice inputs. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13981,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060792190,
+            "finished_at_unix_ms": 1784060806172,
+            "total_token_usage": {
+              "input_tokens": 26100,
+              "cached_input_tokens": 23296,
+              "output_tokens": 362,
+              "reasoning_output_tokens": 166,
+              "total_tokens": 26462
+            },
+            "last_token_usage": {
+              "input_tokens": 26100,
+              "cached_input_tokens": 23296,
+              "output_tokens": 362,
+              "reasoning_output_tokens": 166,
+              "total_tokens": 26462
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/bench.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e0e22ceb46f871697985b69d844197fbe5379e67d36fe9b773d6bdb3bd2a2a49"
+          },
+          "summary": "Reviewed `tests/bench.rs`, a Criterion benchmark harness that measures several hash functions and hash map variants. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence changes, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19185,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060806172,
+            "finished_at_unix_ms": 1784060825358,
+            "total_token_usage": {
+              "input_tokens": 25756,
+              "cached_input_tokens": 21248,
+              "output_tokens": 375,
+              "reasoning_output_tokens": 194,
+              "total_tokens": 26131
+            },
+            "last_token_usage": {
+              "input_tokens": 25756,
+              "cached_input_tokens": 21248,
+              "output_tokens": 375,
+              "reasoning_output_tokens": 194,
+              "total_tokens": 26131
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/map_tests.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cd30e177f14adf3b33c81031e7387d6e0c740046b48f614c685c32b8d243db82"
+          },
+          "summary": "`tests/map_tests.rs` is a test/benchmark harness for `ahash` that exercises bucket distribution, key lookup behavior, byte distribution, and Criterion benchmarks against `fxhash`. I reviewed it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence changes, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17577,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060825358,
+            "finished_at_unix_ms": 1784060842936,
+            "total_token_usage": {
+              "input_tokens": 43667,
+              "cached_input_tokens": 36480,
+              "output_tokens": 647,
+              "reasoning_output_tokens": 341,
+              "total_tokens": 44314
+            },
+            "last_token_usage": {
+              "input_tokens": 43667,
+              "cached_input_tokens": 36480,
+              "output_tokens": 647,
+              "reasoning_output_tokens": 341,
+              "total_tokens": 44314
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/nopanic.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "31828043940029921f18c4131151923f78dce64fa6b288f1a2377a0c9134a6b0"
+          },
+          "summary": "Reviewed `tests/nopanic.rs`, a Rust test module that exercises `ahash` hashing paths under the `no_panic` attribute and simple wrapper functions. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17275,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060842937,
+            "finished_at_unix_ms": 1784060860212,
+            "total_token_usage": {
+              "input_tokens": 24709,
+              "cached_input_tokens": 21248,
+              "output_tokens": 426,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 25135
+            },
+            "last_token_usage": {
+              "input_tokens": 24709,
+              "cached_input_tokens": 21248,
+              "output_tokens": 426,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 25135
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -472,7 +632,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589924",
       "thirdpass_version": "0.6.0",
@@ -608,7 +768,7 @@
       ]
     },
     {
-      "id": "rev_eae892172de4433d884e66ac77683cfe",
+      "id": "rev_bf355eff27df4136b6c78a521632bb4c",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -616,124 +776,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783194997",
+      "created_at": "1784058121",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `FAQ.md`, which is a prose FAQ describing aHash's DOS-resistance, cryptographic properties, performance characteristics, and CPU feature support. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious signals in this file.\nReviewed the target `README.md`, which is documentation for the `aHash` Rust hasher, its goals, feature flags, and usage examples. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload indicators, and found no concrete malicious or supply-chain signals in this file.\nReviewed `tests/nopanic.rs`, which is a unit test exercising `ahash` hashers under `#[no_panic]` wrappers and simple wrapper functions. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none were present in this file.\nReviewed `build.rs`, which only emits Cargo cfg directives, checks compiler support for `specialize`, and gates a target-architecture cfg for `folded_multiply`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload execution in this file.\nReviewed `.cargo_vcs_info.json`, which only records the package git SHA1 (`9aa1ba20f05ed582eda04ea625d5658c92195a57`) and an empty `path_in_vcs` field. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "FAQ.md",
+          "file_path": "src/hash_map.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "bead95cc3958fa3d92724688d599a733a3e80c81c9f9a507ac0561b24adebcdd"
+            "value": "8dfd72b9ae23bfa05894e929065afc35618ea3b7d0846088df1d3d5e6b94e837"
           },
-          "summary": "Reviewed `FAQ.md`, which is a prose FAQ describing aHash's DOS-resistance, cryptographic properties, performance characteristics, and CPU feature support. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious signals in this file.",
+          "summary": "Reviewed `src/hash_map.rs`, which is a thin `AHashMap` wrapper around `std::collections::HashMap` with constructors, forwarding methods, iterator traits, and optional serde support. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16846,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058066001,
+            "finished_at_unix_ms": 1784058082847,
+            "total_token_usage": {
+              "input_tokens": 42453,
+              "cached_input_tokens": 35456,
+              "output_tokens": 459,
+              "reasoning_output_tokens": 162,
+              "total_tokens": 42912
+            },
+            "last_token_usage": {
+              "input_tokens": 42453,
+              "cached_input_tokens": 35456,
+              "output_tokens": 459,
+              "reasoning_output_tokens": 162,
+              "total_tokens": 42912
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "README.md",
+          "file_path": "src/hash_quality_test.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "c5eaf760fafc6ac31ea95e1cc0a3db289258eecf77ec176449f9cf37efb1b4f6"
+            "value": "6dc53d9c14977b30ee137e7cba85794e22139d821c32c8b1aafd237673df9872"
           },
-          "summary": "Reviewed the target `README.md`, which is documentation for the `aHash` Rust hasher, its goals, feature flags, and usage examples. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload indicators, and found no concrete malicious or supply-chain signals in this file.",
+          "summary": "Reviewed src/hash_quality_test.rs, which contains deterministic hash-quality test helpers and unit tests for fallback and AES hashers. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/nopanic.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "31828043940029921f18c4131151923f78dce64fa6b288f1a2377a0c9134a6b0"
+          "agent_run_metrics": {
+            "duration_ms": 23151,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058082848,
+            "finished_at_unix_ms": 1784058105999,
+            "total_token_usage": {
+              "input_tokens": 61631,
+              "cached_input_tokens": 51200,
+              "output_tokens": 774,
+              "reasoning_output_tokens": 404,
+              "total_tokens": 62405
+            },
+            "last_token_usage": {
+              "input_tokens": 61631,
+              "cached_input_tokens": 51200,
+              "output_tokens": 774,
+              "reasoning_output_tokens": 404,
+              "total_tokens": 62405
+            }
           },
-          "summary": "Reviewed `tests/nopanic.rs`, which is a unit test exercising `ahash` hashers under `#[no_panic]` wrappers and simple wrapper functions. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "build.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0547aaaa2fc7c0e68bc0ea72004e080b3287f8f5fb01be5a054608a75cc58dcb"
-          },
-          "summary": "Reviewed `build.rs`, which only emits Cargo cfg directives, checks compiler support for `specialize`, and gates a target-architecture cfg for `folded_multiply`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload execution in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7d9bba4e47d8ccc024b52e6391b74a22812bbd50dd479651f9a098b500d89f1c"
-          },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package git SHA1 (`9aa1ba20f05ed582eda04ea625d5658c92195a57`) and an empty `path_in_vcs` field. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_f117578b3a3e4a79a74f81413e2f8697",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783194864",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/map_tests.rs`, which is a test/benchmark harness for `ahash` bucket-distribution and key-reference behavior using local word lists, seeded hashers, and Criterion benches. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/fallback_hash.rs`, which implements the `AHasher` fallback hashing logic and a few specialized `Hasher` wrappers for primitive and string inputs. I checked for install-time hooks, hidden subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\n`src/lib.rs` is the crate root for AHash, exposing the hasher types, `HashMap`/`HashSet` aliases, and test-only sanity checks. I reviewed it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators, and found no concrete malicious behavior in this file.\n`src/hash_set.rs` is a straightforward wrapper around `std::collections::HashSet` that adds `RandomState` defaults, operator forwarding, iterator/extend impls, and optional serde support. I checked for install-time execution, network or exfiltration paths, credential or secret access, dynamic code loading, obfuscation/decoding, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "tests/map_tests.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cd30e177f14adf3b33c81031e7387d6e0c740046b48f614c685c32b8d243db82"
-          },
-          "summary": "Reviewed `tests/map_tests.rs`, which is a test/benchmark harness for `ahash` bucket-distribution and key-reference behavior using local word lists, seeded hashers, and Criterion benches. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/fallback_hash.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "bc686402e19f3e3c3a647a1ca0a84786916f4e43bbccdd07e51c83bc547367bd"
-          },
-          "summary": "Reviewed `src/fallback_hash.rs`, which implements the `AHasher` fallback hashing logic and a few specialized `Hasher` wrappers for primitive and string inputs. I checked for install-time hooks, hidden subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cb85b6f7a32a73e25da03819ddbcbb05a30db0fc42231d28b43ac2f8e8928a2a"
-          },
-          "summary": "`src/lib.rs` is the crate root for AHash, exposing the hasher types, `HashMap`/`HashSet` aliases, and test-only sanity checks. I reviewed it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators, and found no concrete malicious behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -743,16 +852,36 @@
             "algorithm": "blake3",
             "value": "56143e7cab0e4c8f93440f4e2b069621f5e53af241688496f99e8db211008831"
           },
-          "summary": "`src/hash_set.rs` is a straightforward wrapper around `std::collections::HashSet` that adds `RandomState` defaults, operator forwarding, iterator/extend impls, and optional serde support. I checked for install-time execution, network or exfiltration paths, credential or secret access, dynamic code loading, obfuscation/decoding, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/hash_set.rs`, which is a thin `HashSet` wrapper (`AHashSet`) that forwards construction, set operations, iteration, and optional serde support to `std::collections::HashSet` with `RandomState`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15275,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058106000,
+            "finished_at_unix_ms": 1784058121275,
+            "total_token_usage": {
+              "input_tokens": 41402,
+              "cached_input_tokens": 35456,
+              "output_tokens": 548,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 41950
+            },
+            "last_token_usage": {
+              "input_tokens": 41402,
+              "cached_input_tokens": 35456,
+              "output_tokens": 548,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 41950
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_f3c5e2a9197344a2b2e48c9d9a314f18",
+      "id": "rev_d17a1eae0aac4622a62d0a54626b2391",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -760,76 +889,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783195011",
+      "created_at": "1784054293",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `rustfmt.toml`, which contains only a formatting setting (`max_width = 120`). I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other execution control and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "rustfmt.toml",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "e913bca4e3b25435575255c223e742ded67bc744dd04073d1aa462270569cb52"
+            "value": "7d9bba4e47d8ccc024b52e6391b74a22812bbd50dd479651f9a098b500d89f1c"
           },
-          "summary": "Reviewed `rustfmt.toml`, which contains only a formatting setting (`max_width = 120`). I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other execution control and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed .cargo_vcs_info.json, which only records a git SHA1 and an empty VCS path. I found no evidence in this file of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_fb25917e371842e7b54456205c50afd5",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783194938",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/specialize.rs` is a Rust hashing specialization module that conditionally dispatches `CallHasher` implementations for primitive integers, byte slices, `str`, and `String` to optimized hash helpers. I reviewed it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/bench.rs`, which is a Criterion benchmark harness for comparing `ahash`, `fxhash`, `fnv`, `seahash`, `siphash`, and map operations. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the manifest for install-time execution, build hooks, dependency-driven code loading, network/exfiltration, credential access, obfuscation, and persistence. The file is a conventional Rust crate `Cargo.toml` for `ahash` and did not show concrete malicious or supply-chain compromise indicators; its only build-time execution is a normal `build.rs` declaration with standard feature-detection/configuration metadata.\nReviewed `.github/workflows/rust.yml`, which defines CI jobs for building and testing the Rust crate across stable, nightly, and several targets. I did not find concrete supply-chain or malicious indicators in this file: there are no install hooks, secret/credential reads, network exfiltration, dynamic code loading, obfuscation, or persistence behaviors beyond routine CI commands and toolchain setup.\n`src/convert.rs` contains low-level byte conversion helpers and slice readers for integer and fixed-size array types, using `zerocopy::transmute!`, `to_ne_bytes`, and `TryFrom::try_from(...).unwrap()` for strict-size parsing. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/specialize.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d28187d4d4bf3158228b6811dff63e2683d30a7363ad4569791a046544a52d71"
+          "agent_run_metrics": {
+            "duration_ms": 16800,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054213188,
+            "finished_at_unix_ms": 1784054229989,
+            "total_token_usage": {
+              "input_tokens": 24151,
+              "cached_input_tokens": 21248,
+              "output_tokens": 484,
+              "reasoning_output_tokens": 302,
+              "total_tokens": 24635
+            },
+            "last_token_usage": {
+              "input_tokens": 24151,
+              "cached_input_tokens": 21248,
+              "output_tokens": 484,
+              "reasoning_output_tokens": 302,
+              "total_tokens": 24635
+            }
           },
-          "summary": "`src/specialize.rs` is a Rust hashing specialization module that conditionally dispatches `CallHasher` implementations for primitive integers, byte slices, `str`, and `String` to optimized hash helpers. I reviewed it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/bench.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e0e22ceb46f871697985b69d844197fbe5379e67d36fe9b773d6bdb3bd2a2a49"
-          },
-          "summary": "Reviewed `tests/bench.rs`, which is a Criterion benchmark harness for comparing `ahash`, `fxhash`, `fnv`, `seahash`, `siphash`, and map operations. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0e80d475cf883848d4591c366691c9580d46767adf147d302906338d7953bf68"
-          },
-          "summary": "Reviewed the manifest for install-time execution, build hooks, dependency-driven code loading, network/exfiltration, credential access, obfuscation, and persistence. The file is a conventional Rust crate `Cargo.toml` for `ahash` and did not show concrete malicious or supply-chain compromise indicators; its only build-time execution is a normal `build.rs` declaration with standard feature-detection/configuration metadata.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -839,9 +933,238 @@
             "algorithm": "blake3",
             "value": "13385bb7c40460ee78078fae9b750616e470e20b1d14bee8edde8373bf87d739"
           },
-          "summary": "Reviewed `.github/workflows/rust.yml`, which defines CI jobs for building and testing the Rust crate across stable, nightly, and several targets. I did not find concrete supply-chain or malicious indicators in this file: there are no install hooks, secret/credential reads, network exfiltration, dynamic code loading, obfuscation, or persistence behaviors beyond routine CI commands and toolchain setup.",
+          "summary": "Reviewed the GitHub Actions workflow in `.github/workflows/rust.yml`, which runs Rust CI across stable and nightly toolchains and several targets. I checked for install-time hooks, secret access, network exfiltration, dynamic code loading beyond standard CI tool/action setup, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18381,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054229990,
+            "finished_at_unix_ms": 1784054248372,
+            "total_token_usage": {
+              "input_tokens": 25645,
+              "cached_input_tokens": 21248,
+              "output_tokens": 829,
+              "reasoning_output_tokens": 618,
+              "total_tokens": 26474
+            },
+            "last_token_usage": {
+              "input_tokens": 25645,
+              "cached_input_tokens": 21248,
+              "output_tokens": 829,
+              "reasoning_output_tokens": 618,
+              "total_tokens": 26474
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0e80d475cf883848d4591c366691c9580d46767adf147d302906338d7953bf68"
+          },
+          "summary": "Reviewed the crate manifest in Cargo.toml, including the package metadata, declared build script, feature flags, and dependency list. No concrete malicious or supply-chain indicators were found: the build hook is a conventional Rust build script, and I did not find install hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, or persistence logic in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20546,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054248373,
+            "finished_at_unix_ms": 1784054268919,
+            "total_token_usage": {
+              "input_tokens": 39034,
+              "cached_input_tokens": 34432,
+              "output_tokens": 996,
+              "reasoning_output_tokens": 706,
+              "total_tokens": 40030
+            },
+            "last_token_usage": {
+              "input_tokens": 39034,
+              "cached_input_tokens": 34432,
+              "output_tokens": 996,
+              "reasoning_output_tokens": 706,
+              "total_tokens": 40030
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "FAQ.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "bead95cc3958fa3d92724688d599a733a3e80c81c9f9a507ac0561b24adebcdd"
+          },
+          "summary": "Reviewed FAQ.md, which is a prose FAQ explaining aHash's collision-resistance model, its non-cryptographic scope, and performance/hardware-acceleration details. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload indicators, and found no concrete malicious or supply-chain signs in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12261,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054268920,
+            "finished_at_unix_ms": 1784054281182,
+            "total_token_usage": {
+              "input_tokens": 26961,
+              "cached_input_tokens": 23296,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 254,
+              "total_tokens": 27418
+            },
+            "last_token_usage": {
+              "input_tokens": 26961,
+              "cached_input_tokens": 23296,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 254,
+              "total_tokens": 27418
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c5eaf760fafc6ac31ea95e1cc0a3db289258eecf77ec176449f9cf37efb1b4f6"
+          },
+          "summary": "Reviewed the README.md for aHash, which documents the crate’s hashing purpose, feature flags, usage examples, and external reference links. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12350,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054281183,
+            "finished_at_unix_ms": 1784054293534,
+            "total_token_usage": {
+              "input_tokens": 25506,
+              "cached_input_tokens": 23296,
+              "output_tokens": 477,
+              "reasoning_output_tokens": 285,
+              "total_tokens": 25983
+            },
+            "last_token_usage": {
+              "input_tokens": 25506,
+              "cached_input_tokens": 23296,
+              "output_tokens": 477,
+              "reasoning_output_tokens": 285,
+              "total_tokens": 25983
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_f4ea794ba99645c08427944bc5bfcfc7",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056434",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "build.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0547aaaa2fc7c0e68bc0ea72004e080b3287f8f5fb01be5a054608a75cc58dcb"
+          },
+          "summary": "Reviewed the build script in `build.rs`, which only emits Cargo cfg directives based on `version_check::supports_feature(\"specialize\")` and the target architecture from `CARGO_CFG_TARGET_ARCH`. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 25360,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056340002,
+            "finished_at_unix_ms": 1784056365362,
+            "total_token_usage": {
+              "input_tokens": 24258,
+              "cached_input_tokens": 21248,
+              "output_tokens": 455,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24713
+            },
+            "last_token_usage": {
+              "input_tokens": 24258,
+              "cached_input_tokens": 21248,
+              "output_tokens": 455,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24713
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "rustfmt.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e913bca4e3b25435575255c223e742ded67bc744dd04073d1aa462270569cb52"
+          },
+          "summary": "`rustfmt.toml` is a minimal formatter configuration that only sets `max_width = 120`. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16478,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056365363,
+            "finished_at_unix_ms": 1784056381841,
+            "total_token_usage": {
+              "input_tokens": 24787,
+              "cached_input_tokens": 21760,
+              "output_tokens": 605,
+              "reasoning_output_tokens": 424,
+              "total_tokens": 25392
+            },
+            "last_token_usage": {
+              "input_tokens": 24787,
+              "cached_input_tokens": 21760,
+              "output_tokens": 605,
+              "reasoning_output_tokens": 424,
+              "total_tokens": 25392
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/aes_hash.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f44c3a1f3e607695889b3942bc9920c6a3a04642aa17b0edeb39bdd455b36203"
+          },
+          "summary": "Reviewed src/aes_hash.rs, which implements the AHasher stream hasher and its specialized Hasher variants using AES-based mixing for byte slices and primitive values. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19500,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056381841,
+            "finished_at_unix_ms": 1784056401342,
+            "total_token_usage": {
+              "input_tokens": 42249,
+              "cached_input_tokens": 35456,
+              "output_tokens": 748,
+              "reasoning_output_tokens": 453,
+              "total_tokens": 42997
+            },
+            "last_token_usage": {
+              "input_tokens": 42249,
+              "cached_input_tokens": 35456,
+              "output_tokens": 748,
+              "reasoning_output_tokens": 453,
+              "total_tokens": 42997
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -851,9 +1174,61 @@
             "algorithm": "blake3",
             "value": "c2493ae87259d7ef2a239bdd24a7ea42f1a01fb86b402bc0ba51d57e32c14df1"
           },
-          "summary": "`src/convert.rs` contains low-level byte conversion helpers and slice readers for integer and fixed-size array types, using `zerocopy::transmute!`, `to_ne_bytes`, and `TryFrom::try_from(...).unwrap()` for strict-size parsing. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "`src/convert.rs` is a small set of trait and macro helpers for converting between fixed-size integer arrays and reading typed values from byte slices using `zerocopy::transmute!`, `split_at`, and `TryFrom::try_from`. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17970,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056401342,
+            "finished_at_unix_ms": 1784056419313,
+            "total_token_usage": {
+              "input_tokens": 25339,
+              "cached_input_tokens": 21248,
+              "output_tokens": 498,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 25837
+            },
+            "last_token_usage": {
+              "input_tokens": 25339,
+              "cached_input_tokens": 21248,
+              "output_tokens": 498,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 25837
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/fallback_hash.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "bc686402e19f3e3c3a647a1ca0a84786916f4e43bbccdd07e51c83bc547367bd"
+          },
+          "summary": "Reviewed `src/fallback_hash.rs`, which implements the fallback `AHasher` and its specialized `Hasher` variants for byte slices and primitive inputs. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15620,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056419314,
+            "finished_at_unix_ms": 1784056434934,
+            "total_token_usage": {
+              "input_tokens": 56847,
+              "cached_input_tokens": 50176,
+              "output_tokens": 611,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 57458
+            },
+            "last_token_usage": {
+              "input_tokens": 56847,
+              "cached_input_tokens": 50176,
+              "output_tokens": 611,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 57458
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

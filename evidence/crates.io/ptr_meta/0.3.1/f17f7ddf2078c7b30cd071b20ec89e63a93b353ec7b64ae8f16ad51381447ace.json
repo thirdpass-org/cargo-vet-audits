@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591072",
+  "latest_reviewed_at": "1784055931",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -161,50 +167,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 6,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 3,
+      "file_record_count": 9,
+      "file_record_count_with_metrics": 9
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 9,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 6,
-    "duration_ms_total": 33777,
-    "attempts_total": 3,
+    "file_records_with_metrics": 9,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 120689,
+    "attempts_total": 9,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 9,
+    "last_token_usage_records": 9,
     "total_token_usage": {
-      "input_tokens": 74364,
-      "cached_input_tokens": 63616,
-      "output_tokens": 1236,
-      "reasoning_output_tokens": 553,
-      "total_tokens": 75600
+      "input_tokens": 255718,
+      "cached_input_tokens": 221568,
+      "output_tokens": 4172,
+      "reasoning_output_tokens": 2142,
+      "total_tokens": 259890
     },
     "last_token_usage": {
-      "input_tokens": 74364,
-      "cached_input_tokens": 63616,
-      "output_tokens": 1236,
-      "reasoning_output_tokens": 553,
-      "total_tokens": 75600
+      "input_tokens": 255718,
+      "cached_input_tokens": 221568,
+      "output_tokens": 4172,
+      "reasoning_output_tokens": 2142,
+      "total_tokens": 259890
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_975f122a34864799b50f29e15030e329",
+      "id": "rev_0a8ae93c52c34b83896f801a08552a23",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -212,22 +210,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783181839",
+      "created_at": "1784053731",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/lib.rs` is a pointer-metadata library entry point that defines the `Pointee` trait, raw-pointer conversion helpers, and trait-object metadata utilities, with unit tests and documentation examples. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the normalized Cargo manifest for `ptr_meta` 0.3.1. It only declares package metadata, feature flags, an optional local derive dependency, and a library target; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\n`src/impls.rs` is a small Rust source file that only defines `unsafe impl Pointee` mappings for `dyn Any` and `dyn Error` trait-object variants to their corresponding `DynMetadata` types. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed the README for `ptr_meta`, which is a documentation-only crate overview with usage examples for pointer metadata and derive macros. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the provenance metadata in `.cargo_vcs_info.json`; it only records a git commit SHA and the crate path in version control. I found no concrete malicious or supply-chain indicators in this target file, and there were no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic present here.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "669be08dbc65b8ee4326fbbd99b08d351563f6cc133c1fb2c743addc9af1d341"
+            "value": "5cb42416d51c131ed1812178c69e8df85796ea770cf2d63e977b0d8e69244a69"
           },
-          "summary": "`src/lib.rs` is a pointer-metadata library entry point that defines the `Pointee` trait, raw-pointer conversion helpers, and trait-object metadata utilities, with unit tests and documentation examples. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which is a Cargo source-control metadata file containing only the upstream git SHA1 and path-in-VCS mapping. No concrete malicious or supply-chain indicators were present in this target file; it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12696,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053667169,
+            "finished_at_unix_ms": 1784053679865,
+            "total_token_usage": {
+              "input_tokens": 24100,
+              "cached_input_tokens": 21248,
+              "output_tokens": 329,
+              "reasoning_output_tokens": 129,
+              "total_tokens": 24429
+            },
+            "last_token_usage": {
+              "input_tokens": 24100,
+              "cached_input_tokens": 21248,
+              "output_tokens": 329,
+              "reasoning_output_tokens": 129,
+              "total_tokens": 24429
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -237,21 +254,29 @@
             "algorithm": "blake3",
             "value": "3ab7ac94beef6a982f536c4448f184936426765598646b56774435113a9c0816"
           },
-          "summary": "Reviewed the normalized Cargo manifest for `ptr_meta` 0.3.1. It only declares package metadata, feature flags, an optional local derive dependency, and a library target; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed the crate manifest for install-time hooks, dependency-side execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. The file only declares package metadata, a `ptr_meta_derive` optional dependency, and `derive`/`std` features; no concrete malicious or supply-chain indicators were found in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/impls.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9c84fd5ea35bb281c6c7a98b7672c1bd149d7d1210d8a355609197c2b949a939"
+          "agent_run_metrics": {
+            "duration_ms": 15429,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053679866,
+            "finished_at_unix_ms": 1784053695296,
+            "total_token_usage": {
+              "input_tokens": 24430,
+              "cached_input_tokens": 21248,
+              "output_tokens": 527,
+              "reasoning_output_tokens": 330,
+              "total_tokens": 24957
+            },
+            "last_token_usage": {
+              "input_tokens": 24430,
+              "cached_input_tokens": 21248,
+              "output_tokens": 527,
+              "reasoning_output_tokens": 330,
+              "total_tokens": 24957
+            }
           },
-          "summary": "`src/impls.rs` is a small Rust source file that only defines `unsafe impl Pointee` mappings for `dyn Any` and `dyn Error` trait-object variants to their corresponding `DynMetadata` types. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -261,28 +286,100 @@
             "algorithm": "blake3",
             "value": "b66097580f507e401ca7f9f0d60ea0d2661ad8ead2fe4f932cee4c16c9c5aa71"
           },
-          "summary": "Reviewed the README for `ptr_meta`, which is a documentation-only crate overview with usage examples for pointer metadata and derive macros. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed README.md, which is a standard crate README describing ptr_meta, its documentation links, and usage examples. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators; none are present in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12662,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053695296,
+            "finished_at_unix_ms": 1784053707959,
+            "total_token_usage": {
+              "input_tokens": 24723,
+              "cached_input_tokens": 21248,
+              "output_tokens": 540,
+              "reasoning_output_tokens": 360,
+              "total_tokens": 25263
+            },
+            "last_token_usage": {
+              "input_tokens": 24723,
+              "cached_input_tokens": 21248,
+              "output_tokens": 540,
+              "reasoning_output_tokens": 360,
+              "total_tokens": 25263
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "example.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "5cb42416d51c131ed1812178c69e8df85796ea770cf2d63e977b0d8e69244a69"
+            "value": "a64b60719ede6d8c31648c9293aa52067d452dee8627b1837394a8a281d52ca6"
           },
-          "summary": "Reviewed the provenance metadata in `.cargo_vcs_info.json`; it only records a git commit SHA and the crate path in version control. I found no concrete malicious or supply-chain indicators in this target file, and there were no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic present here.",
+          "summary": "Reviewed the example Rust snippet in `example.md`, which demonstrates `ptr_meta` metadata extraction, raw wide-pointer construction, and trait-object pointer use for documentation purposes. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12747,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053707960,
+            "finished_at_unix_ms": 1784053720707,
+            "total_token_usage": {
+              "input_tokens": 24845,
+              "cached_input_tokens": 21760,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 291,
+              "total_tokens": 25332
+            },
+            "last_token_usage": {
+              "input_tokens": 24845,
+              "cached_input_tokens": 21760,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 291,
+              "total_tokens": 25332
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/impls.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9c84fd5ea35bb281c6c7a98b7672c1bd149d7d1210d8a355609197c2b949a939"
+          },
+          "summary": "Reviewed `src/impls.rs`, which only defines `unsafe impl Pointee` metadata mappings for `dyn Any` and `dyn Error` trait-object combinations. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or subprocess execution.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10972,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053720707,
+            "finished_at_unix_ms": 1784053731680,
+            "total_token_usage": {
+              "input_tokens": 24483,
+              "cached_input_tokens": 21248,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 219,
+              "total_tokens": 24902
+            },
+            "last_token_usage": {
+              "input_tokens": 24483,
+              "cached_input_tokens": 21248,
+              "output_tokens": 419,
+              "reasoning_output_tokens": 219,
+              "total_tokens": 24902
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_be0ee7f20a2048d8bd575cda71de16d1",
+      "id": "rev_9bb20d9f997e4bd0b48128f5473bac9e",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -290,22 +387,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783181860",
+      "created_at": "1784055931",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`example.md` is a Rust usage example for `ptr_meta`, showing metadata extraction, construction of wide pointers, a derive macro, and a trait-object example. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, hidden subprocesses, and other supply-chain indicators, and found no concrete malicious markers in the file.",
       "files": [
         {
-          "file_path": "example.md",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "a64b60719ede6d8c31648c9293aa52067d452dee8627b1837394a8a281d52ca6"
+            "value": "669be08dbc65b8ee4326fbbd99b08d351563f6cc133c1fb2c743addc9af1d341"
           },
-          "summary": "`example.md` is a Rust usage example for `ptr_meta`, showing metadata extraction, construction of wide pointers, a derive macro, and a trait-object example. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, hidden subprocesses, and other supply-chain indicators, and found no concrete malicious markers in the file.",
+          "summary": "Reviewed `src/lib.rs`, which implements the `Pointee` trait, raw-pointer metadata conversion helpers, and `DynMetadata` utilities for trait objects. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload indicators, and found none in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22406,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055909002,
+            "finished_at_unix_ms": 1784055931409,
+            "total_token_usage": {
+              "input_tokens": 58773,
+              "cached_input_tokens": 51200,
+              "output_tokens": 634,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 59407
+            },
+            "last_token_usage": {
+              "input_tokens": 58773,
+              "cached_input_tokens": 51200,
+              "output_tokens": 634,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 59407
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -321,7 +437,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591072",
       "thirdpass_version": "0.6.0",

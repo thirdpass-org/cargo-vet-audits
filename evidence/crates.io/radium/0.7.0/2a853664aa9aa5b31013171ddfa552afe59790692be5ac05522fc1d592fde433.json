@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590125",
+  "latest_reviewed_at": "1784055096",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -173,44 +179,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 8,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 2,
-      "file_record_count_with_metrics": 2
+      "review_count": 4,
+      "file_record_count": 15,
+      "file_record_count_with_metrics": 15
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 10,
-    "file_records_with_metrics": 2,
-    "file_records_without_metrics": 8,
-    "duration_ms_total": 32164,
-    "attempts_total": 2,
+    "reviewed_file_records": 15,
+    "file_records_with_metrics": 15,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 222668,
+    "attempts_total": 15,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 2,
-    "last_token_usage_records": 2,
+    "total_token_usage_records": 15,
+    "last_token_usage_records": 15,
     "total_token_usage": {
-      "input_tokens": 41267,
-      "cached_input_tokens": 32768,
-      "output_tokens": 904,
-      "reasoning_output_tokens": 491,
-      "total_tokens": 42171
+      "input_tokens": 452440,
+      "cached_input_tokens": 379520,
+      "output_tokens": 7334,
+      "reasoning_output_tokens": 3953,
+      "total_tokens": 459774
     },
     "last_token_usage": {
-      "input_tokens": 41267,
-      "cached_input_tokens": 32768,
-      "output_tokens": 904,
-      "reasoning_output_tokens": 491,
-      "total_tokens": 42171
+      "input_tokens": 452440,
+      "cached_input_tokens": 379520,
+      "output_tokens": 7334,
+      "reasoning_output_tokens": 3953,
+      "total_tokens": 459774
     },
     "model_context_windows": []
   },
@@ -225,7 +223,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590125",
       "thirdpass_version": "0.6.0",
@@ -297,7 +295,7 @@
       ]
     },
     {
-      "id": "rev_9403ec7493a34cadb6c6e0b72314721d",
+      "id": "rev_7bcdfac683a241fea98dfa72bcd8b70a",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -305,22 +303,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782846956",
+      "created_at": "1784046558",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the crate manifest for install-time hooks, build-script activation, dependency tricks, network/exfiltration indicators, dynamic code loading, obfuscation, and persistence-related configuration. This `Cargo.toml` only declares basic package metadata plus a single dev-dependency, and I found no concrete malicious or supply-chain indicators in the manifest.\nReviewed LICENSE.txt, which contains a standard MIT License grant and disclaimer only. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other payload-like behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the target file, which is only a minimal Cargo VCS metadata record containing a single Git SHA-1. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this file.",
       "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ddc33ff4facb3755719f73912ff37a694f84ed3075b409da20ce07f1d0ca949c"
+          },
+          "summary": "Reviewed the package VCS metadata in `.cargo_vcs_info.json`, which only records a Git commit SHA. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10134,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046490037,
+            "finished_at_unix_ms": 1784046500172,
+            "total_token_usage": {
+              "input_tokens": 24123,
+              "cached_input_tokens": 21248,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 189,
+              "total_tokens": 24504
+            },
+            "last_token_usage": {
+              "input_tokens": 24123,
+              "cached_input_tokens": 21248,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 189,
+              "total_tokens": 24504
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
         {
           "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
             "value": "9db8262aaffd6fbb938aed074720323ea860317d659a2ce5d06c4d551f6f7775"
           },
-          "summary": "Reviewed the crate manifest for install-time hooks, build-script activation, dependency tricks, network/exfiltration indicators, dynamic code loading, obfuscation, and persistence-related configuration. This `Cargo.toml` only declares basic package metadata plus a single dev-dependency, and I found no concrete malicious or supply-chain indicators in the manifest.",
+          "summary": "Reviewed the normalized Cargo.toml for radium 0.7.0. It only declares package metadata, a single dev-dependency, and file inclusion settings; I found no install hooks, build scripts, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16200,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046500173,
+            "finished_at_unix_ms": 1784046516373,
+            "total_token_usage": {
+              "input_tokens": 24426,
+              "cached_input_tokens": 21248,
+              "output_tokens": 651,
+              "reasoning_output_tokens": 467,
+              "total_tokens": 25077
+            },
+            "last_token_usage": {
+              "input_tokens": 24426,
+              "cached_input_tokens": 21248,
+              "output_tokens": 651,
+              "reasoning_output_tokens": 467,
+              "total_tokens": 25077
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -330,75 +379,29 @@
             "algorithm": "blake3",
             "value": "484356a2e0c98844dd06b48b4ae327ff2bb09bef475b913b374f2fff252f639c"
           },
-          "summary": "Reviewed LICENSE.txt, which contains a standard MIT License grant and disclaimer only. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other payload-like behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the MIT license text in `LICENSE.txt` and found no concrete malicious or supply-chain indicators; it contains only standard licensing language and no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ddc33ff4facb3755719f73912ff37a694f84ed3075b409da20ce07f1d0ca949c"
+          "agent_run_metrics": {
+            "duration_ms": 11505,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046516373,
+            "finished_at_unix_ms": 1784046527879,
+            "total_token_usage": {
+              "input_tokens": 24402,
+              "cached_input_tokens": 21248,
+              "output_tokens": 367,
+              "reasoning_output_tokens": 189,
+              "total_tokens": 24769
+            },
+            "last_token_usage": {
+              "input_tokens": 24402,
+              "cached_input_tokens": 21248,
+              "output_tokens": 367,
+              "reasoning_output_tokens": 189,
+              "total_tokens": 24769
+            }
           },
-          "summary": "Reviewed the target file, which is only a minimal Cargo VCS metadata record containing a single Git SHA-1. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_f18d065a95f84e768dd09bdb40320be4",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782846919",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/lib.rs` is a `no_std` Rust library implementing the `Radium` trait, marker traits, and macro-generated adapters for atomic and `Cell`-backed types. I reviewed it for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nI reviewed `src/macros.rs`, which defines the `if_atomic!` macro and its internal helpers for compile-time selection of atomic-capability branches. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution in this file.\nReviewed `build.rs`, which is a straightforward Cargo build script that derives target atomic-support flags from `TARGET` and `CARGO_CFG_TARGET_ARCH` and emits `cargo:rustc-cfg` directives. I found no concrete indicators of install-time execution beyond normal build-script behavior, no network or exfiltration, no credential access, no dynamic code loading, no obfuscation, and no persistence or environment tampering.\nReviewed `README.md`, which describes the `radium` crate’s atomic/Cell abstraction, target-architecture compatibility notes, and build-script behavior. I found no concrete malicious or supply-chain indicators in the README: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence instructions.\n`src/types.rs` is a small type-alias module that maps `Radium*` names to atomic types or `Cell` fallbacks via the `if_atomic!` macro. I reviewed it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4f8599294e5bae1931b7d974136531e81701c8caf18e4506523651cf9322844e"
-          },
-          "summary": "`src/lib.rs` is a `no_std` Rust library implementing the `Radium` trait, marker traits, and macro-generated adapters for atomic and `Cell`-backed types. I reviewed it for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/macros.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "21eb5cf9df55c742775bd3798a541412a2d9c5bbcb7f25fe8ca503f6777d7144"
-          },
-          "summary": "I reviewed `src/macros.rs`, which defines the `if_atomic!` macro and its internal helpers for compile-time selection of atomic-capability branches. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "build.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4f53809e025880345d081a85e538b3bd4826df61df44e9f8e037035f32d1b36c"
-          },
-          "summary": "Reviewed `build.rs`, which is a straightforward Cargo build script that derives target atomic-support flags from `TARGET` and `CARGO_CFG_TARGET_ARCH` and emits `cargo:rustc-cfg` directives. I found no concrete indicators of install-time execution beyond normal build-script behavior, no network or exfiltration, no credential access, no dynamic code loading, no obfuscation, and no persistence or environment tampering.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -408,9 +411,319 @@
             "algorithm": "blake3",
             "value": "1018980985671379055cf1c087a3e2e501c32e3ce126aed0bf8a2ca28970b9d9"
           },
-          "summary": "Reviewed `README.md`, which describes the `radium` crate’s atomic/Cell abstraction, target-architecture compatibility notes, and build-script behavior. I found no concrete malicious or supply-chain indicators in the README: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence instructions.",
+          "summary": "Reviewed README.md, which is purely package documentation for the `radium` crate’s API, target-architecture compatibility, and `no_std` scope. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload indicators, and found none in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11109,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046527879,
+            "finished_at_unix_ms": 1784046538989,
+            "total_token_usage": {
+              "input_tokens": 24950,
+              "cached_input_tokens": 21248,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 213,
+              "total_tokens": 25354
+            },
+            "last_token_usage": {
+              "input_tokens": 24950,
+              "cached_input_tokens": 21248,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 213,
+              "total_tokens": 25354
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "build.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4f53809e025880345d081a85e538b3bd4826df61df44e9f8e037035f32d1b36c"
+          },
+          "summary": "Reviewed the build script’s target-detection logic, which only reads `TARGET` and `CARGO_CFG_TARGET_ARCH` and emits `cargo:rustc-cfg` flags for atomic-width support. I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19104,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046538989,
+            "finished_at_unix_ms": 1784046558094,
+            "total_token_usage": {
+              "input_tokens": 40518,
+              "cached_input_tokens": 34432,
+              "output_tokens": 646,
+              "reasoning_output_tokens": 359,
+              "total_tokens": 41164
+            },
+            "last_token_usage": {
+              "input_tokens": 40518,
+              "cached_input_tokens": 34432,
+              "output_tokens": 646,
+              "reasoning_output_tokens": 359,
+              "total_tokens": 41164
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_adb9f5a6d7d34073ae78a84b2ba7d321",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052611",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ddc33ff4facb3755719f73912ff37a694f84ed3075b409da20ce07f1d0ca949c"
+          },
+          "summary": "Reviewed .cargo_vcs_info.json, which only records the package's git SHA-1 provenance (`3f27e0d827338aee919213fd071b99819a1b9fff`). I found no evidence in this target file of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11869,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052538400,
+            "finished_at_unix_ms": 1784052550269,
+            "total_token_usage": {
+              "input_tokens": 24136,
+              "cached_input_tokens": 13056,
+              "output_tokens": 392,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 24528
+            },
+            "last_token_usage": {
+              "input_tokens": 24136,
+              "cached_input_tokens": 13056,
+              "output_tokens": 392,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 24528
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9db8262aaffd6fbb938aed074720323ea860317d659a2ce5d06c4d551f6f7775"
+          },
+          "summary": "Reviewed the normalized Cargo.toml for the `radium` crate. It only declares package metadata and a single dev-dependency, and I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this manifest.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16307,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052550270,
+            "finished_at_unix_ms": 1784052566578,
+            "total_token_usage": {
+              "input_tokens": 24384,
+              "cached_input_tokens": 21248,
+              "output_tokens": 679,
+              "reasoning_output_tokens": 497,
+              "total_tokens": 25063
+            },
+            "last_token_usage": {
+              "input_tokens": 24384,
+              "cached_input_tokens": 21248,
+              "output_tokens": 679,
+              "reasoning_output_tokens": 497,
+              "total_tokens": 25063
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "LICENSE.txt",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "484356a2e0c98844dd06b48b4ae327ff2bb09bef475b913b374f2fff252f639c"
+          },
+          "summary": "`LICENSE.txt` contains a standard MIT License notice for the radium package author. I reviewed it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17103,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052566579,
+            "finished_at_unix_ms": 1784052583683,
+            "total_token_usage": {
+              "input_tokens": 24280,
+              "cached_input_tokens": 21248,
+              "output_tokens": 309,
+              "reasoning_output_tokens": 134,
+              "total_tokens": 24589
+            },
+            "last_token_usage": {
+              "input_tokens": 24280,
+              "cached_input_tokens": 21248,
+              "output_tokens": 309,
+              "reasoning_output_tokens": 134,
+              "total_tokens": 24589
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1018980985671379055cf1c087a3e2e501c32e3ce126aed0bf8a2ca28970b9d9"
+          },
+          "summary": "Reviewed README.md, which describes the Radium trait, atomic/Cell portability, no_std support, and the build-script-based target-architecture detection approach. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms present in the README text.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12772,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052583683,
+            "finished_at_unix_ms": 1784052596456,
+            "total_token_usage": {
+              "input_tokens": 24972,
+              "cached_input_tokens": 21248,
+              "output_tokens": 535,
+              "reasoning_output_tokens": 336,
+              "total_tokens": 25507
+            },
+            "last_token_usage": {
+              "input_tokens": 24972,
+              "cached_input_tokens": 21248,
+              "output_tokens": 535,
+              "reasoning_output_tokens": 336,
+              "total_tokens": 25507
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "build.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4f53809e025880345d081a85e538b3bd4826df61df44e9f8e037035f32d1b36c"
+          },
+          "summary": "`build.rs` is a small Rust build script that inspects `TARGET` and `CARGO_CFG_TARGET_ARCH` to emit `cargo:rustc-cfg` flags for atomic-width feature selection. I checked it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15207,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052596456,
+            "finished_at_unix_ms": 1784052611664,
+            "total_token_usage": {
+              "input_tokens": 25293,
+              "cached_input_tokens": 21248,
+              "output_tokens": 450,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 25743
+            },
+            "last_token_usage": {
+              "input_tokens": 25293,
+              "cached_input_tokens": 21248,
+              "output_tokens": 450,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 25743
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_b809ae6ec3344abcb5cacec7962a9b32",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784055096",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4f8599294e5bae1931b7d974136531e81701c8caf18e4506523651cf9322844e"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a `no_std` trait-and-macro implementation that forwards `Radium` operations to atomic types and `Cell` wrappers, plus compile-time tests. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, persistence tampering, and hidden subprocess behavior; none were present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21691,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055047575,
+            "finished_at_unix_ms": 1784055069266,
+            "total_token_usage": {
+              "input_tokens": 82905,
+              "cached_input_tokens": 71040,
+              "output_tokens": 723,
+              "reasoning_output_tokens": 239,
+              "total_tokens": 83628
+            },
+            "last_token_usage": {
+              "input_tokens": 82905,
+              "cached_input_tokens": 71040,
+              "output_tokens": 723,
+              "reasoning_output_tokens": 239,
+              "total_tokens": 83628
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/macros.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "21eb5cf9df55c742775bd3798a541412a2d9c5bbcb7f25fe8ca503f6777d7144"
+          },
+          "summary": "Reviewed `src/macros.rs`, which defines `if_atomic!` and helper `macro_rules!` conditionals for compile-time selection of atomic-capability branches. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, or persistence mechanisms.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15351,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055069267,
+            "finished_at_unix_ms": 1784055084618,
+            "total_token_usage": {
+              "input_tokens": 42068,
+              "cached_input_tokens": 34944,
+              "output_tokens": 495,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 42563
+            },
+            "last_token_usage": {
+              "input_tokens": 42068,
+              "cached_input_tokens": 34944,
+              "output_tokens": 495,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 42563
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -420,9 +733,29 @@
             "algorithm": "blake3",
             "value": "e659c7d7732c2feb95d471197a4a596ea10b1e0784b8f2658565fb600175d928"
           },
-          "summary": "`src/types.rs` is a small type-alias module that maps `Radium*` names to atomic types or `Cell` fallbacks via the `if_atomic!` macro. I reviewed it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed src/types.rs, which only defines portable Radium* type aliases that resolve to atomic types on supported targets and `Cell` fallbacks otherwise. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12152,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055084619,
+            "finished_at_unix_ms": 1784055096771,
+            "total_token_usage": {
+              "input_tokens": 24716,
+              "cached_input_tokens": 23296,
+              "output_tokens": 398,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 25114
+            },
+            "last_token_usage": {
+              "input_tokens": 24716,
+              "cached_input_tokens": 23296,
+              "output_tokens": 398,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 25114
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591455",
+  "latest_reviewed_at": "1784062595",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -600,50 +606,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 7,
-      "file_record_count": 33,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 4,
-      "file_record_count": 16,
-      "file_record_count_with_metrics": 16
+      "review_count": 11,
+      "file_record_count": 49,
+      "file_record_count_with_metrics": 49
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 49,
-    "file_records_with_metrics": 16,
-    "file_records_without_metrics": 33,
-    "duration_ms_total": 480138,
-    "attempts_total": 16,
+    "file_records_with_metrics": 49,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 1068977,
+    "attempts_total": 49,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 16,
-    "last_token_usage_records": 16,
+    "total_token_usage_records": 49,
+    "last_token_usage_records": 49,
     "total_token_usage": {
-      "input_tokens": 966960,
-      "cached_input_tokens": 877568,
-      "output_tokens": 20043,
-      "reasoning_output_tokens": 10313,
-      "total_tokens": 987003
+      "input_tokens": 1939206,
+      "cached_input_tokens": 1706752,
+      "output_tokens": 37544,
+      "reasoning_output_tokens": 20007,
+      "total_tokens": 1976750
     },
     "last_token_usage": {
-      "input_tokens": 966960,
-      "cached_input_tokens": 877568,
-      "output_tokens": 20043,
-      "reasoning_output_tokens": 10313,
-      "total_tokens": 987003
+      "input_tokens": 1939206,
+      "cached_input_tokens": 1706752,
+      "output_tokens": 37544,
+      "reasoning_output_tokens": 20007,
+      "total_tokens": 1976750
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_06c8869cf5ba4355a9e9783c3a99554e",
+      "id": "rev_0183298a48fc41c9a37e199c54166b37",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -651,22 +649,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783177831",
+      "created_at": "1784061718",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/sha256/riscv_zknh.rs`, which is a small architecture-gated shim that only exposes the SHA-256 RISC-V Zknh backend and selects between `compact` and `unroll` compression implementations. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/sha512/soft.rs`, which only conditionally re-exports a `compress` implementation from `compact` or `unroll` backends and defines a small byte-to-`u64` conversion helper. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.\nReviewed `src/sha256/soft.rs`, which only conditionally re-exports one of two local SHA-256 compression implementations and defines a small byte-slicing helper to convert a 64-byte block into 16 big-endian `u32`s. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.\nReviewed `.cargo_vcs_info.json`, which only contains the package VCS commit hash and `path_in_vcs` metadata for `sha2`. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
       "files": [
         {
-          "file_path": "src/sha256/riscv_zknh.rs",
+          "file_path": "src/sha512/riscv_zknh/unroll.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "1a96c6423b4aa16977881e2ad7bbb7c97d98401a2eaf0e061eb4ffebfe210a1a"
+            "value": "147efd70e60b44dc9b315920f02aa462270c60ae05059cf1d3b832e1df3e85be"
           },
-          "summary": "Reviewed `src/sha256/riscv_zknh.rs`, which is a small architecture-gated shim that only exposes the SHA-256 RISC-V Zknh backend and selects between `compact` and `unroll` compression implementations. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/sha512/riscv_zknh/unroll.rs`, which is a RISC-V `zknh`-accelerated SHA-512 compression/unrolled round implementation. I checked for install-time execution, network/exfiltration, credential or secret access, dynamic code loading, obfuscation, and persistence behavior; no concrete malicious or supply-chain indicators were found.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 27462,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061620046,
+            "finished_at_unix_ms": 1784061647508,
+            "total_token_usage": {
+              "input_tokens": 40252,
+              "cached_input_tokens": 34432,
+              "output_tokens": 851,
+              "reasoning_output_tokens": 523,
+              "total_tokens": 41103
+            },
+            "last_token_usage": {
+              "input_tokens": 40252,
+              "cached_input_tokens": 34432,
+              "output_tokens": 851,
+              "reasoning_output_tokens": 523,
+              "total_tokens": 41103
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sha512/riscv_zknh/utils.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dc7adaad85d6bc47ffbefc0a470b14fd0bfcc9d3176900f481124625dc5aa8aa"
+          },
+          "summary": "Reviewed the RISC-V SHA-512 block-loading helpers in `src/sha512/riscv_zknh/utils.rs`, including the aligned/unaligned memory reads and the `opaque_load` table access. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20725,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061647509,
+            "finished_at_unix_ms": 1784061668235,
+            "total_token_usage": {
+              "input_tokens": 41630,
+              "cached_input_tokens": 34944,
+              "output_tokens": 826,
+              "reasoning_output_tokens": 508,
+              "total_tokens": 42456
+            },
+            "last_token_usage": {
+              "input_tokens": 41630,
+              "cached_input_tokens": 34944,
+              "output_tokens": 826,
+              "reasoning_output_tokens": 508,
+              "total_tokens": 42456
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -676,33 +725,93 @@
             "algorithm": "blake3",
             "value": "830891f486e76ad8fb41293da221ffaeadc3d1112968342ade98c5c3162ba3f6"
           },
-          "summary": "Reviewed `src/sha512/soft.rs`, which only conditionally re-exports a `compress` implementation from `compact` or `unroll` backends and defines a small byte-to-`u64` conversion helper. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
+          "summary": "`src/sha512/soft.rs` only conditionally selects between the `compact` and `unroll` SHA-512 compression backends and provides a small helper that parses a 128-byte block into 16 big-endian `u64` words. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16307,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061668235,
+            "finished_at_unix_ms": 1784061684543,
+            "total_token_usage": {
+              "input_tokens": 24191,
+              "cached_input_tokens": 21248,
+              "output_tokens": 558,
+              "reasoning_output_tokens": 337,
+              "total_tokens": 24749
+            },
+            "last_token_usage": {
+              "input_tokens": 24191,
+              "cached_input_tokens": 21248,
+              "output_tokens": 558,
+              "reasoning_output_tokens": 337,
+              "total_tokens": 24749
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/sha256/soft.rs",
+          "file_path": "src/sha512/soft/compact.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "9ebe18b7ed93251fcfa5fe4472f648ca3b413ff333e943f3bbca5fb7235b25e2"
+            "value": "206be73a411cdc1ae72575c8679919a514b05511379d8b81dccb3e0f360ef624"
           },
-          "summary": "Reviewed `src/sha256/soft.rs`, which only conditionally re-exports one of two local SHA-256 compression implementations and defines a small byte-slicing helper to convert a 64-byte block into 16 big-endian `u32`s. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
+          "summary": "Reviewed `src/sha512/soft/compact.rs`, which implements the SHA-512 block compression routine over 128-byte blocks using fixed constants and straightforward bitwise arithmetic. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22709,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061684543,
+            "finished_at_unix_ms": 1784061707253,
+            "total_token_usage": {
+              "input_tokens": 24762,
+              "cached_input_tokens": 23296,
+              "output_tokens": 509,
+              "reasoning_output_tokens": 306,
+              "total_tokens": 25271
+            },
+            "last_token_usage": {
+              "input_tokens": 24762,
+              "cached_input_tokens": 23296,
+              "output_tokens": 509,
+              "reasoning_output_tokens": 306,
+              "total_tokens": 25271
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/sha512/soft/unroll.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "8a02098842587a188078b950b82fa2772cedc2ffd9d294113c9d0b5d1ab31444"
+            "value": "b56aa070c779cf008e79bd01199f3cc23344dddce367d7e28800d3144ad58a2d"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only contains the package VCS commit hash and `path_in_vcs` metadata for `sha2`. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed `src/sha512/soft/unroll.rs`, which contains an inlined SHA-512 compression routine and round-constant accessor. I checked for install hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11281,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061707253,
+            "finished_at_unix_ms": 1784061718535,
+            "total_token_usage": {
+              "input_tokens": 25636,
+              "cached_input_tokens": 21248,
+              "output_tokens": 383,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 26019
+            },
+            "last_token_usage": {
+              "input_tokens": 25636,
+              "cached_input_tokens": 21248,
+              "output_tokens": 383,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 26019
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -718,7 +827,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591455",
       "thirdpass_version": "0.6.0",
@@ -758,6 +867,119 @@
       ]
     },
     {
+      "id": "rev_39c533a68cba479db7371dff58e3374c",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784062595",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/sha512/wasm32_simd128.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "49c3eed54c4fe9e27dce24c8d95ff281a742e5f67c69274358c4b85bec5d142f"
+          },
+          "summary": "This file is a WASM SIMD128 SHA-512 compression backend that performs only in-memory block mixing and state accumulation, guarded to compile only on wasm32 with simd128. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15465,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062547918,
+            "finished_at_unix_ms": 1784062563384,
+            "total_token_usage": {
+              "input_tokens": 42551,
+              "cached_input_tokens": 34944,
+              "output_tokens": 592,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 43143
+            },
+            "last_token_usage": {
+              "input_tokens": 42551,
+              "cached_input_tokens": 34944,
+              "output_tokens": 592,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 43143
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sha512/x86_avx2.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "31e1ceac09daf39bdf8f5fb0dbfa51b9646fa811133e667050d78ae2c4f6a2a5"
+          },
+          "summary": "Reviewed the x86/AVX2 SHA-512 compression backend in `src/sha512/x86_avx2.rs`. It is a pure hashing implementation built from SIMD intrinsics and constant table lookups; I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16458,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062563385,
+            "finished_at_unix_ms": 1784062579843,
+            "total_token_usage": {
+              "input_tokens": 42586,
+              "cached_input_tokens": 35968,
+              "output_tokens": 516,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 43102
+            },
+            "last_token_usage": {
+              "input_tokens": 42586,
+              "cached_input_tokens": 35968,
+              "output_tokens": 516,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 43102
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1dfe4c4021cae1080e48bf42b030ba47ac300346a13375b65cf1dfd6aa7b6f8b"
+          },
+          "summary": "Reviewed `tests/mod.rs`, which is a normal test module for SHA-2 digest implementations: it imports test helpers, registers known-answer and serialization tests for multiple hash variants, and checks 16 MiB deterministic random-input digests for SHA-256 and SHA-512. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16091,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062579843,
+            "finished_at_unix_ms": 1784062595934,
+            "total_token_usage": {
+              "input_tokens": 24660,
+              "cached_input_tokens": 21248,
+              "output_tokens": 550,
+              "reasoning_output_tokens": 333,
+              "total_tokens": 25210
+            },
+            "last_token_usage": {
+              "input_tokens": 24660,
+              "cached_input_tokens": 21248,
+              "output_tokens": 550,
+              "reasoning_output_tokens": 333,
+              "total_tokens": 25210
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
       "id": "rev_78c8595258a6415f88daf7252f046cfc",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
@@ -767,7 +989,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591239",
       "thirdpass_version": "0.6.0",
@@ -935,7 +1157,7 @@
       ]
     },
     {
-      "id": "rev_920e507a71de4d68a4487f18a3eb3a02",
+      "id": "rev_8d6d6a5c20a64362b3bee611869658a3",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -943,214 +1165,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783177466",
+      "created_at": "1784055885",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the changelog entries in `CHANGELOG.md`, which are plain release notes describing version history, feature flags, backend changes, and MSRV bumps. I found no concrete malicious or supply-chain indicators and no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `src/sha256/wasm32_simd128.rs`, which is a wasm32 SIMD-accelerated SHA-256 compression backend. I checked for install-time execution, hidden subprocess or dynamic code loading, network or exfiltration paths, credential access, obfuscation/deobfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/sha512/wasm32_simd128.rs`, which is a wasm32 SIMD SHA-512 compression backend implementing block loading, round updates, and state accumulation. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.\nReviewed `src/sha512/aarch64_sha3.rs`, which is a pure AArch64 SHA-3/SHA-512 compression backend implemented with ARM intrinsics and fixed constants. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/sha512/riscv_zknh/utils.rs`, which contains RISC-V SHA-512 block-loading helpers and an index-opaquing accessor implemented with inline assembly. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "CHANGELOG.md",
+          "file_path": "src/block_api.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "8f038bc353627a0b44f66f4add56ee680cf332d6172be9deda5b11551ce490c9"
+            "value": "936645fe9f81449ddf01ec60baa1950f20c5e4bcbde4fe462c2a09504080e3c3"
           },
-          "summary": "Reviewed the changelog entries in `CHANGELOG.md`, which are plain release notes describing version history, feature flags, backend changes, and MSRV bumps. I found no concrete malicious or supply-chain indicators and no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "summary": "`src/block_api.rs` contains the variable-output core implementations for SHA-256 and SHA-512, including block compression, truncation, zeroization, and serialized state handling. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha256/wasm32_simd128.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e9761bfa4652bb05fe0f47104107149f02bec6174d516b1f6dfbf136d3d34977"
+          "agent_run_metrics": {
+            "duration_ms": 31355,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055791693,
+            "finished_at_unix_ms": 1784055823049,
+            "total_token_usage": {
+              "input_tokens": 42882,
+              "cached_input_tokens": 34944,
+              "output_tokens": 642,
+              "reasoning_output_tokens": 344,
+              "total_tokens": 43524
+            },
+            "last_token_usage": {
+              "input_tokens": 42882,
+              "cached_input_tokens": 34944,
+              "output_tokens": 642,
+              "reasoning_output_tokens": 344,
+              "total_tokens": 43524
+            }
           },
-          "summary": "Reviewed `src/sha256/wasm32_simd128.rs`, which is a wasm32 SIMD-accelerated SHA-256 compression backend. I checked for install-time execution, hidden subprocess or dynamic code loading, network or exfiltration paths, credential access, obfuscation/deobfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha512/wasm32_simd128.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "49c3eed54c4fe9e27dce24c8d95ff281a742e5f67c69274358c4b85bec5d142f"
-          },
-          "summary": "Reviewed `src/sha512/wasm32_simd128.rs`, which is a wasm32 SIMD SHA-512 compression backend implementing block loading, round updates, and state accumulation. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha512/aarch64_sha3.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5dffa3c564d91096d4d9fd8b6da7cbbc910bc1d463bf43aaf2c26716bf907a19"
-          },
-          "summary": "Reviewed `src/sha512/aarch64_sha3.rs`, which is a pure AArch64 SHA-3/SHA-512 compression backend implemented with ARM intrinsics and fixed constants. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha512/riscv_zknh/utils.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "dc7adaad85d6bc47ffbefc0a470b14fd0bfcc9d3176900f481124625dc5aa8aa"
-          },
-          "summary": "Reviewed `src/sha512/riscv_zknh/utils.rs`, which contains RISC-V SHA-512 block-loading helpers and an index-opaquing accessor implemented with inline assembly. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_a0b141135a444e2e9dd826ffa6c17b5e",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783177552",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`README.md` is a documentation-only overview of the RustCrypto SHA-2 crate, including usage examples, backend selection notes, and license information. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.\nThis file implements the RISC-V zknh-accelerated SHA-256 compression loop and round logic using local constants and helper intrinsics. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed the x86/x86_64 SHA-256 compression backend in `src/sha256/x86_sha.rs`. It consists of CPU feature-gated SIMD round/schedule helpers and a block compressor; I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `src/sha512/riscv_zknh/unroll.rs`, which is a low-level SHA-512 compression implementation for the `zknh` target feature. I found no concrete indicators of malicious or supply-chain behavior in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload execution paths.\nReviewed `src/sha256/soft/unroll.rs`, which is a straight SHA-256 compression routine with an unrolled 64-round macro and constant-table reads. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "923dfb291024fdc3e77d85197f55c9f75fc5a19abc990861d707ec6fd1326765"
-          },
-          "summary": "`README.md` is a documentation-only overview of the RustCrypto SHA-2 crate, including usage examples, backend selection notes, and license information. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha256/riscv_zknh/unroll.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "287ba0b926a28355149fe16bc298f0b070f6d414d61bef111ccda4fb8b85a987"
-          },
-          "summary": "This file implements the RISC-V zknh-accelerated SHA-256 compression loop and round logic using local constants and helper intrinsics. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha256/x86_sha.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "fdbc770e2bb6bedb53a51fd1a41fb44e88cd684da16599d23887006f9b1bf72a"
-          },
-          "summary": "Reviewed the x86/x86_64 SHA-256 compression backend in `src/sha256/x86_sha.rs`. It consists of CPU feature-gated SIMD round/schedule helpers and a block compressor; I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha512/riscv_zknh/unroll.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "147efd70e60b44dc9b315920f02aa462270c60ae05059cf1d3b832e1df3e85be"
-          },
-          "summary": "Reviewed `src/sha512/riscv_zknh/unroll.rs`, which is a low-level SHA-512 compression implementation for the `zknh` target feature. I found no concrete indicators of malicious or supply-chain behavior in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload execution paths.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha256/soft/unroll.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "673504f8955a033f93b6dfaf9ef03e30bb0a0ab0b6b02368dafe78d3fe2489f4"
-          },
-          "summary": "Reviewed `src/sha256/soft/unroll.rs`, which is a straight SHA-256 compression routine with an unrolled 64-round macro and constant-table reads. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_b0029123140b406f8e5da3da27c5a09d",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783177616",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/sha256/riscv_zknh/utils.rs`, which contains RISC-V-specific helper routines for loading SHA-256 message blocks and an indexed lookup wrapper using inline assembly. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.\nI reviewed `src/sha512/soft/unroll.rs`, which is a straight SHA-512 block-compression implementation with an unrolled round macro and volatile reads of static round constants for codegen. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this target file.\nReviewed the crate manifest for install-time hooks, build scripts, dependency-based execution, hidden downloads, credential access, obfuscation, and persistence. This `Cargo.toml` only declares a normal `sha2` library crate with feature flags, platform-specific dependencies, tests, benches, and lint settings, and I found no concrete malicious or supply-chain indicators in the manifest.\nReviewed the AArch64 SHA-256 compression backend in `src/sha256/aarch64_sha2.rs`. It is a straight SIMD implementation of the hash round function and I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this target file.\n`src/consts.rs` is a static constants table for SHA-2 initial states and round constants, including derived byte-swapped lookup tables. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "src/sha256/riscv_zknh/utils.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0fe06aef326b8961da792ff214f8abc6640f60404511c6b9a73a431a30d542a9"
-          },
-          "summary": "Reviewed `src/sha256/riscv_zknh/utils.rs`, which contains RISC-V-specific helper routines for loading SHA-256 message blocks and an indexed lookup wrapper using inline assembly. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha512/soft/unroll.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b56aa070c779cf008e79bd01199f3cc23344dddce367d7e28800d3144ad58a2d"
-          },
-          "summary": "I reviewed `src/sha512/soft/unroll.rs`, which is a straight SHA-512 block-compression implementation with an unrolled round macro and volatile reads of static round constants for codegen. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "25b7ef31cb2d20dcbd4ea9f8c1ce85a5d90a3a0b2d5a41561fffec56852ee787"
-          },
-          "summary": "Reviewed the crate manifest for install-time hooks, build scripts, dependency-based execution, hidden downloads, credential access, obfuscation, and persistence. This `Cargo.toml` only declares a normal `sha2` library crate with feature flags, platform-specific dependencies, tests, benches, and lint settings, and I found no concrete malicious or supply-chain indicators in the manifest.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha256/aarch64_sha2.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cd6d1c46107b51611a156279627e31b272fd00d91a16308ff3e049dfcfedb722"
-          },
-          "summary": "Reviewed the AArch64 SHA-256 compression backend in `src/sha256/aarch64_sha2.rs`. It is a straight SIMD implementation of the hash round function and I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -1160,16 +1209,132 @@
             "algorithm": "blake3",
             "value": "bb7f90c18b4073f22be25c930c4311f64dc5756a549a6e54a0cb7c40720d043d"
           },
-          "summary": "`src/consts.rs` is a static constants table for SHA-2 initial states and round constants, including derived byte-swapped lookup tables. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/consts.rs`, which only defines SHA-2 initial state values and round-constant tables. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13489,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055823049,
+            "finished_at_unix_ms": 1784055836539,
+            "total_token_usage": {
+              "input_tokens": 26644,
+              "cached_input_tokens": 21248,
+              "output_tokens": 480,
+              "reasoning_output_tokens": 293,
+              "total_tokens": 27124
+            },
+            "last_token_usage": {
+              "input_tokens": 26644,
+              "cached_input_tokens": 21248,
+              "output_tokens": 480,
+              "reasoning_output_tokens": 293,
+              "total_tokens": 27124
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "10d201fa359402f9aca2a65ae88c4b2595f8d40720e3745f5531f46371a50c9d"
+          },
+          "summary": "Reviewed `src/lib.rs`, the crate root for a `no_std` SHA-2 implementation that reexports `digest` and defines the `Sha224`, `Sha256`, `Sha384`, `Sha512`, `Sha512_224`, and `Sha512_256` types via `buffer_fixed!`. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14953,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055836540,
+            "finished_at_unix_ms": 1784055851493,
+            "total_token_usage": {
+              "input_tokens": 24672,
+              "cached_input_tokens": 23296,
+              "output_tokens": 539,
+              "reasoning_output_tokens": 316,
+              "total_tokens": 25211
+            },
+            "last_token_usage": {
+              "input_tokens": 24672,
+              "cached_input_tokens": 23296,
+              "output_tokens": 539,
+              "reasoning_output_tokens": 316,
+              "total_tokens": 25211
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sha256.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0d3516533060be3d45adc1184174ccc8ab83d7bedafaffaa6b718d12c0d105c0"
+          },
+          "summary": "Reviewed src/sha256.rs, which is a SHA-256 compression dispatcher that selects soft, x86, aarch64, riscv, loongarch, or wasm SIMD backends via compile-time cfgs and runtime CPU feature checks. I found no concrete malicious or supply-chain indicators such as install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20123,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055851494,
+            "finished_at_unix_ms": 1784055871617,
+            "total_token_usage": {
+              "input_tokens": 25001,
+              "cached_input_tokens": 21248,
+              "output_tokens": 621,
+              "reasoning_output_tokens": 410,
+              "total_tokens": 25622
+            },
+            "last_token_usage": {
+              "input_tokens": 25001,
+              "cached_input_tokens": 21248,
+              "output_tokens": 621,
+              "reasoning_output_tokens": 410,
+              "total_tokens": 25622
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sha256/aarch64_sha2.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cd6d1c46107b51611a156279627e31b272fd00d91a16308ff3e049dfcfedb722"
+          },
+          "summary": "Reviewed the aarch64 SHA-256 compression backend in `src/sha256/aarch64_sha2.rs`; it only uses ARM SHA2 intrinsics to process message blocks and update the hash state. I found no install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14012,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055871618,
+            "finished_at_unix_ms": 1784055885630,
+            "total_token_usage": {
+              "input_tokens": 25372,
+              "cached_input_tokens": 21248,
+              "output_tokens": 477,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 25849
+            },
+            "last_token_usage": {
+              "input_tokens": 25372,
+              "cached_input_tokens": 21248,
+              "output_tokens": 477,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 25849
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_b077358d76054679a1c8bb0e0ad88da5",
+      "id": "rev_8eb11d6598ae4e6bac4509d9a05d3cd9",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1177,22 +1342,250 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783177400",
+      "created_at": "1784053580",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/sha512/x86_avx2.rs`, which is an AVX2-accelerated SHA-512 compression backend implemented with inline SIMD intrinsics and round-function macros. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation/decoding, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the LoongArch64 SHA-512 compression backend in `src/sha512/loongarch64_asm.rs`. It is a static inline-assembly hash implementation that loads state, processes fixed rounds, and writes the updated digest state; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/block_api.rs`, which implements SHA-256 and SHA-512 variable-output block cores, state serialization/deserialization, padding, and optional zeroization-on-drop. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, or hidden subprocess execution.\nReviewed the LoongArch64 SHA-256 compression backend in `src/sha256/loongarch64_asm.rs`. It is a self-contained assembly implementation that only loads the hash state and input blocks, processes 64 rounds, and writes the updated state back; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.",
       "files": [
         {
-          "file_path": "src/sha512/x86_avx2.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "31e1ceac09daf39bdf8f5fb0dbfa51b9646fa811133e667050d78ae2c4f6a2a5"
+            "value": "8a02098842587a188078b950b82fa2772cedc2ffd9d294113c9d0b5d1ab31444"
           },
-          "summary": "Reviewed `src/sha512/x86_avx2.rs`, which is an AVX2-accelerated SHA-512 compression backend implemented with inline SIMD intrinsics and round-function macros. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation/decoding, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "This target file is only Cargo VCS provenance metadata, recording a git SHA1 and the package path in VCS for `sha2`. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13985,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053506021,
+            "finished_at_unix_ms": 1784053520006,
+            "total_token_usage": {
+              "input_tokens": 24120,
+              "cached_input_tokens": 21248,
+              "output_tokens": 417,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24537
+            },
+            "last_token_usage": {
+              "input_tokens": 24120,
+              "cached_input_tokens": 21248,
+              "output_tokens": 417,
+              "reasoning_output_tokens": 220,
+              "total_tokens": 24537
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8f038bc353627a0b44f66f4add56ee680cf332d6172be9deda5b11551ce490c9"
+          },
+          "summary": "`CHANGELOG.md` is a plain release-history document for `sha2` 0.1.0 through 0.11.0. I checked the entries for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain compromise signals.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20341,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053520007,
+            "finished_at_unix_ms": 1784053540348,
+            "total_token_usage": {
+              "input_tokens": 27042,
+              "cached_input_tokens": 21248,
+              "output_tokens": 391,
+              "reasoning_output_tokens": 183,
+              "total_tokens": 27433
+            },
+            "last_token_usage": {
+              "input_tokens": 27042,
+              "cached_input_tokens": 21248,
+              "output_tokens": 391,
+              "reasoning_output_tokens": 183,
+              "total_tokens": 27433
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "25b7ef31cb2d20dcbd4ea9f8c1ce85a5d90a3a0b2d5a41561fffec56852ee787"
+          },
+          "summary": "Reviewed this normalized Cargo manifest for install hooks, build scripts, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior. It describes the `sha2` crate metadata, features, dependencies, and test/bench targets, and I found no concrete supply-chain or malicious indicators in the file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14736,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053540349,
+            "finished_at_unix_ms": 1784053555086,
+            "total_token_usage": {
+              "input_tokens": 24752,
+              "cached_input_tokens": 21248,
+              "output_tokens": 494,
+              "reasoning_output_tokens": 307,
+              "total_tokens": 25246
+            },
+            "last_token_usage": {
+              "input_tokens": 24752,
+              "cached_input_tokens": 21248,
+              "output_tokens": 494,
+              "reasoning_output_tokens": 307,
+              "total_tokens": 25246
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "923dfb291024fdc3e77d85197f55c9f75fc5a19abc990861d707ec6fd1326765"
+          },
+          "summary": "Reviewed the README for the sha2 crate, which describes a pure Rust SHA-2 hashing library, its supported backends, usage examples, and build configuration flags. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10482,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053555086,
+            "finished_at_unix_ms": 1784053565568,
+            "total_token_usage": {
+              "input_tokens": 25626,
+              "cached_input_tokens": 21248,
+              "output_tokens": 368,
+              "reasoning_output_tokens": 182,
+              "total_tokens": 25994
+            },
+            "last_token_usage": {
+              "input_tokens": 25626,
+              "cached_input_tokens": 21248,
+              "output_tokens": 368,
+              "reasoning_output_tokens": 182,
+              "total_tokens": 25994
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "28b6f8180e6a44a2d68aeac822327fa27e2003bc741f1964c77b50577d53e8a4"
+          },
+          "summary": "This file is a benchmark harness that uses `digest::bench_update!` to time `Sha256` and `Sha512` update paths at several input sizes. I checked the target for install hooks, subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14770,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053565569,
+            "finished_at_unix_ms": 1784053580339,
+            "total_token_usage": {
+              "input_tokens": 24727,
+              "cached_input_tokens": 21760,
+              "output_tokens": 567,
+              "reasoning_output_tokens": 283,
+              "total_tokens": 25294
+            },
+            "last_token_usage": {
+              "input_tokens": 24727,
+              "cached_input_tokens": 21760,
+              "output_tokens": 567,
+              "reasoning_output_tokens": 283,
+              "total_tokens": 25294
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_908d68a90daa453f96a75c2fc7e174a9",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784060551",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/sha512.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "250f99dbc1fb9ac0af79cbfa40213694f2ed41011d67d025942cc153ae8da18d"
+          },
+          "summary": "Reviewed the SHA-512 backend selection and `compress512` wrapper in `src/sha512.rs`. It only dispatches to local soft and architecture-specific compression implementations with compile-time gating and runtime CPU-feature checks; I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 28073,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060450773,
+            "finished_at_unix_ms": 1784060478846,
+            "total_token_usage": {
+              "input_tokens": 39276,
+              "cached_input_tokens": 35968,
+              "output_tokens": 965,
+              "reasoning_output_tokens": 666,
+              "total_tokens": 40241
+            },
+            "last_token_usage": {
+              "input_tokens": 39276,
+              "cached_input_tokens": 35968,
+              "output_tokens": 965,
+              "reasoning_output_tokens": 666,
+              "total_tokens": 40241
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sha512/aarch64_sha3.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5dffa3c564d91096d4d9fd8b6da7cbbc910bc1d463bf43aaf2c26716bf907a19"
+          },
+          "summary": "Reviewed `src/sha512/aarch64_sha3.rs`, which is a straightforward AArch64 SHA-3 compression routine implemented with ARM intrinsics and constant round data. I checked for install-time execution, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21726,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060478847,
+            "finished_at_unix_ms": 1784060500573,
+            "total_token_usage": {
+              "input_tokens": 27202,
+              "cached_input_tokens": 21248,
+              "output_tokens": 453,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 27655
+            },
+            "last_token_usage": {
+              "input_tokens": 27202,
+              "cached_input_tokens": 21248,
+              "output_tokens": 453,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 27655
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -1202,33 +1595,447 @@
             "algorithm": "blake3",
             "value": "fb2798804c6b332645cc2d432d4e1e3f0929715775dfdf4ee4e6297b9744e41e"
           },
-          "summary": "Reviewed the LoongArch64 SHA-512 compression backend in `src/sha512/loongarch64_asm.rs`. It is a static inline-assembly hash implementation that loads state, processes fixed rounds, and writes the updated digest state; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed `src/sha512/loongarch64_asm.rs`, which is a LoongArch64 inline-assembly SHA-512 compression backend that loads the hash state, processes 128-byte blocks, and writes the updated state back. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15906,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060500574,
+            "finished_at_unix_ms": 1784060516480,
+            "total_token_usage": {
+              "input_tokens": 46802,
+              "cached_input_tokens": 40576,
+              "output_tokens": 490,
+              "reasoning_output_tokens": 163,
+              "total_tokens": 47292
+            },
+            "last_token_usage": {
+              "input_tokens": 46802,
+              "cached_input_tokens": 40576,
+              "output_tokens": 490,
+              "reasoning_output_tokens": 163,
+              "total_tokens": 47292
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/block_api.rs",
+          "file_path": "src/sha512/riscv_zknh.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "936645fe9f81449ddf01ec60baa1950f20c5e4bcbde4fe462c2a09504080e3c3"
+            "value": "1334003d04d55eae5e4083815f4d46d54b01d48f750c02c6fb1fb4f565f2b09e"
           },
-          "summary": "Reviewed `src/block_api.rs`, which implements SHA-256 and SHA-512 variable-output block cores, state serialization/deserialization, padding, and optional zeroization-on-drop. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, or hidden subprocess execution.",
+          "summary": "Reviewed the RISC-V SHA-512 backend dispatcher and intrinsic wrappers in src/sha512/riscv_zknh.rs. The file only gates compilation to riscv32/riscv64, selects a compact or unrolled compressor, and exposes zknh-backed SHA-512 helper functions; I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17579,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060516481,
+            "finished_at_unix_ms": 1784060534060,
+            "total_token_usage": {
+              "input_tokens": 24888,
+              "cached_input_tokens": 21248,
+              "output_tokens": 463,
+              "reasoning_output_tokens": 233,
+              "total_tokens": 25351
+            },
+            "last_token_usage": {
+              "input_tokens": 24888,
+              "cached_input_tokens": 21248,
+              "output_tokens": 463,
+              "reasoning_output_tokens": 233,
+              "total_tokens": 25351
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
+        {
+          "file_path": "src/sha512/riscv_zknh/compact.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0a887ff10a8ade80a76891c638c04f6a399508abc62aa4723404422dd0c80245"
+          },
+          "summary": "Reviewed `src/sha512/riscv_zknh/compact.rs`, which is a compact SHA-512 compression implementation gated on the `zknh` target feature and performing only in-memory block/state transforms. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17030,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060534061,
+            "finished_at_unix_ms": 1784060551091,
+            "total_token_usage": {
+              "input_tokens": 25003,
+              "cached_input_tokens": 21248,
+              "output_tokens": 428,
+              "reasoning_output_tokens": 205,
+              "total_tokens": 25431
+            },
+            "last_token_usage": {
+              "input_tokens": 25003,
+              "cached_input_tokens": 21248,
+              "output_tokens": 428,
+              "reasoning_output_tokens": 205,
+              "total_tokens": 25431
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_9170ca3309724baf8b6d9cc53baeea92",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059250",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/sha256/soft.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9ebe18b7ed93251fcfa5fe4472f648ca3b413ff333e943f3bbca5fb7235b25e2"
+          },
+          "summary": "Reviewed `src/sha256/soft.rs`, which only conditionally re-exports one of two local SHA-256 compression implementations and contains a small helper that parses a 64-byte block into big-endian `u32` words. I found no concrete supply-chain or malicious indicators in this file, including install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 36162,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059153631,
+            "finished_at_unix_ms": 1784059189793,
+            "total_token_usage": {
+              "input_tokens": 24229,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 305,
+              "total_tokens": 24752
+            },
+            "last_token_usage": {
+              "input_tokens": 24229,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 305,
+              "total_tokens": 24752
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sha256/soft/compact.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8e01144f71a886b13396e8a4e01ce06931b7a59ca9bab74a6f8a529bb876fd8c"
+          },
+          "summary": "Reviewed the SHA-256 soft compression implementation in `src/sha256/soft/compact.rs`, which performs in-memory block hashing over `u32` state and message schedule data. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12952,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059189794,
+            "finished_at_unix_ms": 1784059202746,
+            "total_token_usage": {
+              "input_tokens": 24958,
+              "cached_input_tokens": 21248,
+              "output_tokens": 441,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 25399
+            },
+            "last_token_usage": {
+              "input_tokens": 24958,
+              "cached_input_tokens": 21248,
+              "output_tokens": 441,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 25399
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sha256/soft/unroll.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "673504f8955a033f93b6dfaf9ef03e30bb0a0ab0b6b02368dafe78d3fe2489f4"
+          },
+          "summary": "Reviewed `src/sha256/soft/unroll.rs`, which contains a SHA-256 block compression implementation using an unrolled macro and constant-table reads. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15886,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059202747,
+            "finished_at_unix_ms": 1784059218633,
+            "total_token_usage": {
+              "input_tokens": 25557,
+              "cached_input_tokens": 21248,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 26004
+            },
+            "last_token_usage": {
+              "input_tokens": 25557,
+              "cached_input_tokens": 21248,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 26004
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sha256/wasm32_simd128.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e9761bfa4652bb05fe0f47104107149f02bec6174d516b1f6dfbf136d3d34977"
+          },
+          "summary": "Reviewed the wasm32 SIMD SHA-256 compression backend in src/sha256/wasm32_simd128.rs. It only performs block loading, message-schedule expansion, SHA-256 rounds, and state accumulation; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16955,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059218633,
+            "finished_at_unix_ms": 1784059235588,
+            "total_token_usage": {
+              "input_tokens": 43726,
+              "cached_input_tokens": 37504,
+              "output_tokens": 599,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 44325
+            },
+            "last_token_usage": {
+              "input_tokens": 43726,
+              "cached_input_tokens": 37504,
+              "output_tokens": 599,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 44325
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sha256/x86_sha.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "fdbc770e2bb6bedb53a51fd1a41fb44e88cd684da16599d23887006f9b1bf72a"
+          },
+          "summary": "Reviewed `src/sha256/x86_sha.rs`, which is a CPU-specific SHA-256 compression backend using x86/x86_64 SIMD intrinsics and fixed round constants. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence mechanisms.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14996,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059235589,
+            "finished_at_unix_ms": 1784059250585,
+            "total_token_usage": {
+              "input_tokens": 25657,
+              "cached_input_tokens": 23296,
+              "output_tokens": 428,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 26085
+            },
+            "last_token_usage": {
+              "input_tokens": 25657,
+              "cached_input_tokens": 23296,
+              "output_tokens": 428,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 26085
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_92e0344d21c24c269e5da2529615166c",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784057673",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
           "file_path": "src/sha256/loongarch64_asm.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "6516f3cbcca7c3a25fb7b7a6b0627e772171d9e39fa63b05886d7e5e1b4a03da"
           },
-          "summary": "Reviewed the LoongArch64 SHA-256 compression backend in `src/sha256/loongarch64_asm.rs`. It is a self-contained assembly implementation that only loads the hash state and input blocks, processes 64 rounds, and writes the updated state back; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.",
+          "summary": "Reviewed the LoongArch64 SHA-256 compression backend in `src/sha256/loongarch64_asm.rs`. It is a straight-line inline-assembly implementation of the hash round function and block loop, and I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13594,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057596212,
+            "finished_at_unix_ms": 1784057609807,
+            "total_token_usage": {
+              "input_tokens": 28709,
+              "cached_input_tokens": 21248,
+              "output_tokens": 460,
+              "reasoning_output_tokens": 244,
+              "total_tokens": 29169
+            },
+            "last_token_usage": {
+              "input_tokens": 28709,
+              "cached_input_tokens": 21248,
+              "output_tokens": 460,
+              "reasoning_output_tokens": 244,
+              "total_tokens": 29169
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sha256/riscv_zknh.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1a96c6423b4aa16977881e2ad7bbb7c97d98401a2eaf0e061eb4ffebfe210a1a"
+          },
+          "summary": "Reviewed `src/sha256/riscv_zknh.rs`, which only gates the RISC-V Zknh SHA-256 backend to `riscv32`/`riscv64` and selects either the compact or unrolled `compress` implementation by cfg. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13126,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057609808,
+            "finished_at_unix_ms": 1784057622935,
+            "total_token_usage": {
+              "input_tokens": 24279,
+              "cached_input_tokens": 21248,
+              "output_tokens": 453,
+              "reasoning_output_tokens": 217,
+              "total_tokens": 24732
+            },
+            "last_token_usage": {
+              "input_tokens": 24279,
+              "cached_input_tokens": 21248,
+              "output_tokens": 453,
+              "reasoning_output_tokens": 217,
+              "total_tokens": 24732
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sha256/riscv_zknh/compact.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "183c5210886074e3a28aafb05bf4f08c013c4c15db43b4386dbff5a2ac1c52e8"
+          },
+          "summary": "Reviewed the RISC-V Zknh SHA-256 compression implementation in src/sha256/riscv_zknh/compact.rs. It is a straight hash-round routine with no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators visible in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17289,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057622935,
+            "finished_at_unix_ms": 1784057640225,
+            "total_token_usage": {
+              "input_tokens": 24769,
+              "cached_input_tokens": 21248,
+              "output_tokens": 452,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 25221
+            },
+            "last_token_usage": {
+              "input_tokens": 24769,
+              "cached_input_tokens": 21248,
+              "output_tokens": 452,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 25221
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sha256/riscv_zknh/unroll.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "287ba0b926a28355149fe16bc298f0b070f6d414d61bef111ccda4fb8b85a987"
+          },
+          "summary": "Reviewed the RISC-V Zknh SHA-256 compression implementation in src/sha256/riscv_zknh/unroll.rs. It is deterministic block-processing code with no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise patterns.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15069,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057640226,
+            "finished_at_unix_ms": 1784057655295,
+            "total_token_usage": {
+              "input_tokens": 25186,
+              "cached_input_tokens": 21248,
+              "output_tokens": 602,
+              "reasoning_output_tokens": 398,
+              "total_tokens": 25788
+            },
+            "last_token_usage": {
+              "input_tokens": 25186,
+              "cached_input_tokens": 21248,
+              "output_tokens": 602,
+              "reasoning_output_tokens": 398,
+              "total_tokens": 25788
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sha256/riscv_zknh/utils.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0fe06aef326b8961da792ff214f8abc6640f60404511c6b9a73a431a30d542a9"
+          },
+          "summary": "Reviewed `src/sha256/riscv_zknh/utils.rs`, which contains RISC-V-specific SHA-256 block-loading helpers and an opaque indexed load used to inhibit compiler inlining. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise patterns in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17752,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057655296,
+            "finished_at_unix_ms": 1784057673048,
+            "total_token_usage": {
+              "input_tokens": 24899,
+              "cached_input_tokens": 23296,
+              "output_tokens": 516,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 25415
+            },
+            "last_token_usage": {
+              "input_tokens": 24899,
+              "cached_input_tokens": 23296,
+              "output_tokens": 516,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 25415
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -1244,7 +2051,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591414",
       "thirdpass_version": "0.6.0",
@@ -1421,7 +2228,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591052",
       "thirdpass_version": "0.6.0",
@@ -1583,162 +2390,6 @@
               "total_tokens": 81894
             }
           },
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_eb085b0ce49e4cdb871c6305742d71ee",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783177697",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/sha256.rs`, which is a SHA-256 backend selector and `compress256` wrapper that dispatches to soft, CPU-feature-gated, or architecture-specific implementations. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\n`src/sha512.rs` is a cfg-gated SHA-512 compression dispatcher that selects among soft and architecture-specific backends, with a small amount of feature-checked `unsafe` for CPU-specific implementations. I checked for install hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none in this file.\nReviewed `src/sha256/riscv_zknh/compact.rs`, a compact SHA-256 compression implementation for the `zknh` target feature. I checked for install-time hooks, network or exfiltration paths, credential or environment access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/sha512/riscv_zknh/compact.rs`, which is a small RISC-V `zknh`-targeted SHA-512 compression implementation using local state updates and constant-time bitwise arithmetic. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other side effects, and found no concrete malicious or supply-chain indicators.\nThis file defines the public SHA-2 library surface, re-exporting `digest` and declaring the SHA-224/256/384/512 variants via macro-generated types. I checked this target file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "src/sha256.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0d3516533060be3d45adc1184174ccc8ab83d7bedafaffaa6b718d12c0d105c0"
-          },
-          "summary": "Reviewed `src/sha256.rs`, which is a SHA-256 backend selector and `compress256` wrapper that dispatches to soft, CPU-feature-gated, or architecture-specific implementations. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha512.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "250f99dbc1fb9ac0af79cbfa40213694f2ed41011d67d025942cc153ae8da18d"
-          },
-          "summary": "`src/sha512.rs` is a cfg-gated SHA-512 compression dispatcher that selects among soft and architecture-specific backends, with a small amount of feature-checked `unsafe` for CPU-specific implementations. I checked for install hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha256/riscv_zknh/compact.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "183c5210886074e3a28aafb05bf4f08c013c4c15db43b4386dbff5a2ac1c52e8"
-          },
-          "summary": "Reviewed `src/sha256/riscv_zknh/compact.rs`, a compact SHA-256 compression implementation for the `zknh` target feature. I checked for install-time hooks, network or exfiltration paths, credential or environment access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha512/riscv_zknh/compact.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0a887ff10a8ade80a76891c638c04f6a399508abc62aa4723404422dd0c80245"
-          },
-          "summary": "Reviewed `src/sha512/riscv_zknh/compact.rs`, which is a small RISC-V `zknh`-targeted SHA-512 compression implementation using local state updates and constant-time bitwise arithmetic. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other side effects, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "10d201fa359402f9aca2a65ae88c4b2595f8d40720e3745f5531f46371a50c9d"
-          },
-          "summary": "This file defines the public SHA-2 library surface, re-exporting `digest` and declaring the SHA-224/256/384/512 variants via macro-generated types. I checked this target file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_f0ec0fd1389c46df9db016b5cec34e1d",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783177776",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/sha256/soft/compact.rs`, which implements the SHA-256 compression round over 32-bit words and a block loop wrapper. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators in this file.\n`src/sha512/soft/compact.rs` contains the SHA-512 software compression routine: it expands 128-byte blocks into the 80-word schedule and updates the 8-word state with the standard round function. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed the RISC-V SHA-512 backend in `src/sha512/riscv_zknh.rs`, which only gates compilation to `riscv32`/`riscv64`, selects between compact and unrolled compression implementations, and wraps architecture intrinsics for SHA-512 operations. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.\nReviewed `tests/mod.rs`, which contains hash test macros plus two randomized SHA-256/SHA-512 test vectors. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior in this file and found no concrete malicious or supply-chain indicators.\nReviewed `benches/mod.rs`, which only defines two benchmark groups for `Sha256` and `Sha512` using `digest::bench_update!`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": "src/sha256/soft/compact.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8e01144f71a886b13396e8a4e01ce06931b7a59ca9bab74a6f8a529bb876fd8c"
-          },
-          "summary": "Reviewed `src/sha256/soft/compact.rs`, which implements the SHA-256 compression round over 32-bit words and a block loop wrapper. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha512/soft/compact.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "206be73a411cdc1ae72575c8679919a514b05511379d8b81dccb3e0f360ef624"
-          },
-          "summary": "`src/sha512/soft/compact.rs` contains the SHA-512 software compression routine: it expands 128-byte blocks into the 80-word schedule and updates the 8-word state with the standard round function. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sha512/riscv_zknh.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1334003d04d55eae5e4083815f4d46d54b01d48f750c02c6fb1fb4f565f2b09e"
-          },
-          "summary": "Reviewed the RISC-V SHA-512 backend in `src/sha512/riscv_zknh.rs`, which only gates compilation to `riscv32`/`riscv64`, selects between compact and unrolled compression implementations, and wraps architecture intrinsics for SHA-512 operations. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1dfe4c4021cae1080e48bf42b030ba47ac300346a13375b65cf1dfd6aa7b6f8b"
-          },
-          "summary": "Reviewed `tests/mod.rs`, which contains hash test macros plus two randomized SHA-256/SHA-512 test vectors. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior in this file and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "28b6f8180e6a44a2d68aeac822327fa27e2003bc741f1964c77b50577d53e8a4"
-          },
-          "summary": "Reviewed `benches/mod.rs`, which only defines two benchmark groups for `Sha256` and `Sha512` using `digest::bench_update!`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

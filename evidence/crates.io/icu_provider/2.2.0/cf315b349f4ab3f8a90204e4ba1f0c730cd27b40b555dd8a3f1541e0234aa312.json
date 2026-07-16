@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589225",
+  "latest_reviewed_at": "1784059997",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -337,50 +343,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 6,
-      "file_record_count": 22,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 7,
+      "file_record_count": 30,
+      "file_record_count_with_metrics": 30
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 25,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 22,
-    "duration_ms_total": 68410,
-    "attempts_total": 3,
+    "reviewed_file_records": 30,
+    "file_records_with_metrics": 30,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 537945,
+    "attempts_total": 30,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 30,
+    "last_token_usage_records": 30,
     "total_token_usage": {
-      "input_tokens": 172333,
-      "cached_input_tokens": 147584,
-      "output_tokens": 2264,
-      "reasoning_output_tokens": 1065,
-      "total_tokens": 174597
+      "input_tokens": 1104939,
+      "cached_input_tokens": 932480,
+      "output_tokens": 15969,
+      "reasoning_output_tokens": 7805,
+      "total_tokens": 1120908
     },
     "last_token_usage": {
-      "input_tokens": 172333,
-      "cached_input_tokens": 147584,
-      "output_tokens": 2264,
-      "reasoning_output_tokens": 1065,
-      "total_tokens": 174597
+      "input_tokens": 1104939,
+      "cached_input_tokens": 932480,
+      "output_tokens": 15969,
+      "reasoning_output_tokens": 7805,
+      "total_tokens": 1120908
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_19d12afdbd8843a981287a53f26c6956",
+      "id": "rev_22a14230495445309ff0cdd57f90b6e4",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -388,22 +386,105 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782839343",
+      "created_at": "1784058583",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/marker.rs`, which defines ICU provider marker traits, marker IDs, a marker-construction macro, and small const hash helpers/tests. I found no concrete signs of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `src/request.rs`, which defines ICU4X data request/identifier types and marker-attribute parsing/formatting logic. I checked the file for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution and found no concrete malicious or supply-chain indicators; the only notable behavior is narrow `unsafe` zero-copy casting used locally for validated ASCII marker attributes.\nReviewed src/hello_world.rs, which is a static ICU4X test/data provider that returns hard-coded multilingual Hello World strings and an optional JSON wrapper. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
+        {
+          "file_path": "src/hello_world.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "87fc1eefee528f378bef34b9b8f6642bed94ad6e7c62f2030c81e99d93ac3d41"
+          },
+          "summary": "Reviewed src/hello_world.rs, which defines a static hello-world data provider, JSON wrapper, formatter, and a test-only export hook. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22269,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058516341,
+            "finished_at_unix_ms": 1784058538610,
+            "total_token_usage": {
+              "input_tokens": 41129,
+              "cached_input_tokens": 34944,
+              "output_tokens": 636,
+              "reasoning_output_tokens": 339,
+              "total_tokens": 41765
+            },
+            "last_token_usage": {
+              "input_tokens": 41129,
+              "cached_input_tokens": 34944,
+              "output_tokens": 636,
+              "reasoning_output_tokens": 339,
+              "total_tokens": 41765
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0add6d638adc93d4bbb6c8619786b9e1078dd6bb40a4db083eb4f8f239fea3e0"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is the crate root for `icu_provider` and consists of module declarations, public re-exports, feature-gated logging shims, and a small compile-time test. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network/exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13436,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058538611,
+            "finished_at_unix_ms": 1784058552047,
+            "total_token_usage": {
+              "input_tokens": 26142,
+              "cached_input_tokens": 21248,
+              "output_tokens": 585,
+              "reasoning_output_tokens": 379,
+              "total_tokens": 26727
+            },
+            "last_token_usage": {
+              "input_tokens": 26142,
+              "cached_input_tokens": 21248,
+              "output_tokens": 585,
+              "reasoning_output_tokens": 379,
+              "total_tokens": 26727
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
         {
           "file_path": "src/marker.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "a7c4783a7764deae91c290645ea38ee5455751be38f652e5e0278d8b5d5e2dcd"
           },
-          "summary": "Reviewed `src/marker.rs`, which defines ICU provider marker traits, marker IDs, a marker-construction macro, and small const hash helpers/tests. I found no concrete signs of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed `src/marker.rs`, which defines ICU4X data-marker traits, marker IDs, hashing, locale fallback helpers, and the `data_marker!` macro. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15808,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058552048,
+            "finished_at_unix_ms": 1784058567857,
+            "total_token_usage": {
+              "input_tokens": 60654,
+              "cached_input_tokens": 51712,
+              "output_tokens": 622,
+              "reasoning_output_tokens": 228,
+              "total_tokens": 61276
+            },
+            "last_token_usage": {
+              "input_tokens": 60654,
+              "cached_input_tokens": 51712,
+              "output_tokens": 622,
+              "reasoning_output_tokens": 228,
+              "total_tokens": 61276
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -413,21 +494,29 @@
             "algorithm": "blake3",
             "value": "ef1b25c2abd15d3172e761da912bf5b0a0bb69cf96365f862d8c471c06ebacf8"
           },
-          "summary": "Reviewed `src/request.rs`, which defines ICU4X data request/identifier types and marker-attribute parsing/formatting logic. I checked the file for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution and found no concrete malicious or supply-chain indicators; the only notable behavior is narrow `unsafe` zero-copy casting used locally for validated ASCII marker attributes.",
+          "summary": "Reviewed `src/request.rs`, which defines ICU4X request and identifier types plus validated marker-attribute parsing/conversion helpers. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/hello_world.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "87fc1eefee528f378bef34b9b8f6642bed94ad6e7c62f2030c81e99d93ac3d41"
+          "agent_run_metrics": {
+            "duration_ms": 15752,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058567857,
+            "finished_at_unix_ms": 1784058583610,
+            "total_token_usage": {
+              "input_tokens": 41122,
+              "cached_input_tokens": 34944,
+              "output_tokens": 576,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 41698
+            },
+            "last_token_usage": {
+              "input_tokens": 41122,
+              "cached_input_tokens": 34944,
+              "output_tokens": 576,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 41698
+            }
           },
-          "summary": "Reviewed src/hello_world.rs, which is a static ICU4X test/data provider that returns hard-coded multilingual Hello World strings and an optional JSON wrapper. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
@@ -443,7 +532,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589225",
       "thirdpass_version": "0.6.0",
@@ -547,7 +636,7 @@
       ]
     },
     {
-      "id": "rev_6159a23dbe25499eb4213800e1e17815",
+      "id": "rev_471126d4527b48ad9474c96537b03dd3",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -555,286 +644,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782839429",
+      "created_at": "1784054927",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/export/payload.rs`, which implements export helpers for `DataPayload` including serde serialization, tokenization/baking, postcard sizing, hashing, and type-erased equality for `ExportMarker`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution in this file.\nReviewed the generated Rust crate manifest for `icu_provider` 2.2.0, including package metadata, feature flags, dependency declarations, build settings, and lint config. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `src/error.rs`, which defines ICU4X data error types, formatting, and context helpers. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/baked/zerotrie.rs`, which implements baked ICU trie-backed data lookup and iteration for locale identifiers. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation/packing, persistence, or hidden subprocess execution.\nReviewed `src/varule_traits.rs`, which defines Rust traits and macro helpers for ICU4X variable-length ULE encoding plus standard impls for arrays, `u16`, and `zerovec` wrappers. I found no concrete indicators of install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence in this file.",
       "files": [
-        {
-          "file_path": "src/export/payload.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "969e4087308a3b35a7761abdee81eaccbd38fcb35f6c9a12ab931df0a0b450da"
-          },
-          "summary": "Reviewed `src/export/payload.rs`, which implements export helpers for `DataPayload` including serde serialization, tokenization/baking, postcard sizing, hashing, and type-erased equality for `ExportMarker`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ad2c6919e2e140fa67123bb494f77ee2fcb493b7bf520332569aacf4f89c7546"
-          },
-          "summary": "Reviewed the generated Rust crate manifest for `icu_provider` 2.2.0, including package metadata, feature flags, dependency declarations, build settings, and lint config. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/error.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "bec9a20a2d3b75d37d427fae921a4b0cd66d04a6cda67200673a431f6b00a6df"
-          },
-          "summary": "Reviewed `src/error.rs`, which defines ICU4X data error types, formatting, and context helpers. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": "src/baked/zerotrie.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "3af187e9724b5320778e05418f7164797a68c74148484f7c4ddb6f32b76958b1"
           },
-          "summary": "Reviewed `src/baked/zerotrie.rs`, which implements baked ICU trie-backed data lookup and iteration for locale identifiers. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation/packing, persistence, or hidden subprocess execution.",
+          "summary": "Reviewed `src/baked/zerotrie.rs`, which defines ICU4X baked data trie-backed lookup types (`Data`, `DataRef`, and `DataForVarULEs`) plus helper iteration and index resolution logic. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/varule_traits.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d2dd28c04f27e794deb5ad9b6626245e753e26d24d6b15ff763bc67f8e573b32"
+          "agent_run_metrics": {
+            "duration_ms": 13045,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054828476,
+            "finished_at_unix_ms": 1784054841521,
+            "total_token_usage": {
+              "input_tokens": 25982,
+              "cached_input_tokens": 21248,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 264,
+              "total_tokens": 26469
+            },
+            "last_token_usage": {
+              "input_tokens": 25982,
+              "cached_input_tokens": 21248,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 264,
+              "total_tokens": 26469
+            }
           },
-          "summary": "Reviewed `src/varule_traits.rs`, which defines Rust traits and macro helpers for ICU4X variable-length ULE encoding plus standard impls for arrays, `u16`, and `zerovec` wrappers. I found no concrete indicators of install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_b8723581510d4c08be0ccb39b5e0b882",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782839619",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/baked.rs` is a small Rust module defining the baked-provider `DataStore` trait, a sealed private trait, and a conditional iterator API for alloc-enabled builds. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the package VCS metadata in `.cargo_vcs_info.json`; it only records a source git SHA1 and the original path in the upstream repository. No concrete malicious or supply-chain indicators were found in this file, and there were no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior present here.",
-      "files": [
-        {
-          "file_path": "src/baked.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e9460711e7fb2cdf218645a29934fa225d44d3b7d7f8e17561ac900876a6ec89"
-          },
-          "summary": "`src/baked.rs` is a small Rust module defining the baked-provider `DataStore` trait, a sealed private trait, and a conditional iterator API for alloc-enabled builds. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "de635f17c7a7d0aeda464a6ab44ad0b61c565163c5877f93d3aa6fba4b38ae0d"
-          },
-          "summary": "Reviewed the package VCS metadata in `.cargo_vcs_info.json`; it only records a source git SHA1 and the original path in the upstream repository. No concrete malicious or supply-chain indicators were found in this file, and there were no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior present here.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_e1304b3acc5e493b8cd98b3d2406e918",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782839517",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/export/mod.rs` defines ICU4X export traits, metadata, a macro for wiring exportable providers, and a `MultiExporter` that fans payload writes out to multiple exporters. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.\nReviewed `src/buf/serde.rs`, which is a Serde-based deserialization wrapper for `BufferProvider`/`DataPayload` that routes JSON, bincode, and postcard buffers into typed ICU4X data. I checked for install hooks, network or exfiltration paths, credential access, hidden downloads, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/lib.rs`, the crate root for `icu_provider`, including its feature gates, module exports, conditional logging shim, and the compile-time test. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden payload execution in this file.\n`src/dynutil.rs` defines macro helpers for upcasting `DataPayload` values and generating `DynamicDataProvider`/`IterableDynamicDataProvider` implementations by matching hashed marker IDs. I checked the file for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `src/constructors.rs`, which contains ICU4X constructor documentation plus `macro_rules!` helpers for generating data-provider constructors. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-      "files": [
-        {
-          "file_path": "src/export/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "115c4b7c13932bed3fae8704e44c4d77bff5814e230ddd54719e7e1669e6a2dc"
-          },
-          "summary": "`src/export/mod.rs` defines ICU4X export traits, metadata, a macro for wiring exportable providers, and a `MultiExporter` that fans payload writes out to multiple exporters. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/buf/serde.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "59dfabd624e6a113035e7e897eff14cb89b079d259f850db95658186f5b7b4a3"
-          },
-          "summary": "Reviewed `src/buf/serde.rs`, which is a Serde-based deserialization wrapper for `BufferProvider`/`DataPayload` that routes JSON, bincode, and postcard buffers into typed ICU4X data. I checked for install hooks, network or exfiltration paths, credential access, hidden downloads, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0add6d638adc93d4bbb6c8619786b9e1078dd6bb40a4db083eb4f8f239fea3e0"
-          },
-          "summary": "Reviewed `src/lib.rs`, the crate root for `icu_provider`, including its feature gates, module exports, conditional logging shim, and the compile-time test. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden payload execution in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/dynutil.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b93694ee032a91403874a06f91aed5b2b5096f1c71d1dafe42690f59ba79d8d7"
-          },
-          "summary": "`src/dynutil.rs` defines macro helpers for upcasting `DataPayload` values and generating `DynamicDataProvider`/`IterableDynamicDataProvider` implementations by matching hashed marker IDs. I checked the file for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/constructors.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6fdd200bbf1c91ab1306deed87a1bc696ad6f59b040c2ef55fbb206cfada9a8a"
-          },
-          "summary": "Reviewed `src/constructors.rs`, which contains ICU4X constructor documentation plus `macro_rules!` helpers for generating data-provider constructors. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_e58d1ba5a8784b259ca2ab161be39e35",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782839290",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/response.rs` defines the `DataPayload`/`DataResponse` container types and their conversion, cloning, mutation, and casting helpers around `yoke`/`Cart` storage. I reviewed it for install-time execution, subprocess spawning, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/data_provider.rs`, which defines ICU4X data-provider traits, blanket forwarding impls for references and shared pointers, a marker-bound provider wrapper, and unit tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, secret access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": "src/response.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c3cd0250367b27c9b163e15e86ffbd0d88f9c19411c673d768750ba24c2eb54a"
-          },
-          "summary": "`src/response.rs` defines the `DataPayload`/`DataResponse` container types and their conversion, cloning, mutation, and casting helpers around `yoke`/`Cart` storage. I reviewed it for install-time execution, subprocess spawning, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/data_provider.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2be8e712c29f72898517e339ec936a02a282293c41619181eadb3b3cef0b59a4"
-          },
-          "summary": "Reviewed `src/data_provider.rs`, which defines ICU4X data-provider traits, blanket forwarding impls for references and shared pointers, a marker-bound provider wrapper, and unit tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, secret access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_ee08cd349ad74ac3b4f001520c374ebc",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782839585",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed README.md, which is a documentation-only overview of icu_provider and its data-provider abstractions, examples, and external docs links. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators and found none.\nReviewed `src/serde_borrow_de_utils.rs`, which defines small serde helpers for borrowing `Cow<str>` and `Cow<[u8]>` values plus unit tests that verify deserialization preserves borrows. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `benches/data_locale_bench.rs`, which is a Criterion benchmark exercising `DataLocale` parsing, formatting, and string comparison over a fixed in-file list of BCP-47 samples. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration paths, credential or environment harvesting, dynamic code loading, obfuscation/packing, or persistence behavior in this file.\nReviewed `src/buf.rs`, which only defines the `BufferProvider` trait, `BufferMarker`, and the `BufferFormat` enum with feature-gated availability checks for JSON, bincode 1, and postcard 1 deserialization. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\n`src/fallback.rs` contains only ICU4X locale fallback configuration types and `Default` implementations for selecting language, script, or region fallback priority. I checked the file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d2f2695378f75bd7f17d1d5386961a67a9965bbd300e125697cc4ccbfa730ce0"
-          },
-          "summary": "Reviewed README.md, which is a documentation-only overview of icu_provider and its data-provider abstractions, examples, and external docs links. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators and found none.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/serde_borrow_de_utils.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6bda533840fedd114fcd853ffcc3ffaf9c4012f4feea7acd48beee12a9fc434f"
-          },
-          "summary": "Reviewed `src/serde_borrow_de_utils.rs`, which defines small serde helpers for borrowing `Cow<str>` and `Cow<[u8]>` values plus unit tests that verify deserialization preserves borrows. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/data_locale_bench.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1b84d3e3fa01e4a940fe4ee71118508d64312fc837ca6249792d7e11210e4b4a"
-          },
-          "summary": "Reviewed `benches/data_locale_bench.rs`, which is a Criterion benchmark exercising `DataLocale` parsing, formatting, and string comparison over a fixed in-file list of BCP-47 samples. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration paths, credential or environment harvesting, dynamic code loading, obfuscation/packing, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -844,9 +688,737 @@
             "algorithm": "blake3",
             "value": "09fba1886af06bb7a1356eb64ffe2e8af4e9d7feda926e32d3ae82b39e5eff79"
           },
-          "summary": "Reviewed `src/buf.rs`, which only defines the `BufferProvider` trait, `BufferMarker`, and the `BufferFormat` enum with feature-gated availability checks for JSON, bincode 1, and postcard 1 deserialization. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed `src/buf.rs`, which defines the `BufferProvider` trait, `BufferMarker`, and `BufferFormat::check_available` feature gating for ICU4X buffer deserialization. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14342,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054841521,
+            "finished_at_unix_ms": 1784054855864,
+            "total_token_usage": {
+              "input_tokens": 40296,
+              "cached_input_tokens": 34432,
+              "output_tokens": 602,
+              "reasoning_output_tokens": 304,
+              "total_tokens": 40898
+            },
+            "last_token_usage": {
+              "input_tokens": 40296,
+              "cached_input_tokens": 34432,
+              "output_tokens": 602,
+              "reasoning_output_tokens": 304,
+              "total_tokens": 40898
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/buf/serde.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "59dfabd624e6a113035e7e897eff14cb89b079d259f850db95658186f5b7b4a3"
+          },
+          "summary": "Reviewed `src/buf/serde.rs`, which is a Serde-based buffer deserialization wrapper for ICU4X data providers. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13009,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054855864,
+            "finished_at_unix_ms": 1784054868874,
+            "total_token_usage": {
+              "input_tokens": 26899,
+              "cached_input_tokens": 21760,
+              "output_tokens": 470,
+              "reasoning_output_tokens": 184,
+              "total_tokens": 27369
+            },
+            "last_token_usage": {
+              "input_tokens": 26899,
+              "cached_input_tokens": 21760,
+              "output_tokens": 470,
+              "reasoning_output_tokens": 184,
+              "total_tokens": 27369
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/constructors.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6fdd200bbf1c91ab1306deed87a1bc696ad6f59b040c2ef55fbb206cfada9a8a"
+          },
+          "summary": "Reviewed `src/constructors.rs`, which contains ICU4X constructor-documentation helpers and declarative macros for generating data-provider constructors. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12994,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054868874,
+            "finished_at_unix_ms": 1784054881869,
+            "total_token_usage": {
+              "input_tokens": 27457,
+              "cached_input_tokens": 23296,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 206,
+              "total_tokens": 27861
+            },
+            "last_token_usage": {
+              "input_tokens": 27457,
+              "cached_input_tokens": 23296,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 206,
+              "total_tokens": 27861
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/data_provider.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2be8e712c29f72898517e339ec936a02a282293c41619181eadb3b3cef0b59a4"
+          },
+          "summary": "Reviewed `src/data_provider.rs`, which defines the provider traits and blanket wrapper impls for ICU data loading plus unit tests. I found no concrete malicious or supply-chain indicators in the target file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation/packing, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 45316,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054881869,
+            "finished_at_unix_ms": 1784054927185,
+            "total_token_usage": {
+              "input_tokens": 59085,
+              "cached_input_tokens": 52736,
+              "output_tokens": 615,
+              "reasoning_output_tokens": 230,
+              "total_tokens": 59700
+            },
+            "last_token_usage": {
+              "input_tokens": 59085,
+              "cached_input_tokens": 52736,
+              "output_tokens": 615,
+              "reasoning_output_tokens": 230,
+              "total_tokens": 59700
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_48061d010e254018ada9b7531afdd1b8",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046299",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "de635f17c7a7d0aeda464a6ab44ad0b61c565163c5877f93d3aa6fba4b38ae0d"
+          },
+          "summary": "The target file is a small Cargo VCS metadata blob containing only the upstream git SHA1 and the original path in the repository. I checked it for install-time execution, network or exfiltration behavior, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10897,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046228544,
+            "finished_at_unix_ms": 1784046239441,
+            "total_token_usage": {
+              "input_tokens": 24129,
+              "cached_input_tokens": 21248,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 24576
+            },
+            "last_token_usage": {
+              "input_tokens": 24129,
+              "cached_input_tokens": 21248,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 24576
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ad2c6919e2e140fa67123bb494f77ee2fcb493b7bf520332569aacf4f89c7546"
+          },
+          "summary": "Reviewed this Cargo manifest for install-time execution, hidden subprocesses, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence hooks. It appears to be a normal ICU4X dependency crate manifest with standard feature flags and dependencies, and I found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14275,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046239442,
+            "finished_at_unix_ms": 1784046253717,
+            "total_token_usage": {
+              "input_tokens": 25320,
+              "cached_input_tokens": 23296,
+              "output_tokens": 416,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 25736
+            },
+            "last_token_usage": {
+              "input_tokens": 25320,
+              "cached_input_tokens": 23296,
+              "output_tokens": 416,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 25736
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d2f2695378f75bd7f17d1d5386961a67a9965bbd300e125697cc4ccbfa730ce0"
+          },
+          "summary": "Reviewed README.md, which is a normal crate overview for icu_provider and its data-provider traits, dynamic providers, and examples. I found no concrete malicious or supply-chain indicators in this file, and no signs of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14046,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046253718,
+            "finished_at_unix_ms": 1784046267764,
+            "total_token_usage": {
+              "input_tokens": 25131,
+              "cached_input_tokens": 21760,
+              "output_tokens": 559,
+              "reasoning_output_tokens": 377,
+              "total_tokens": 25690
+            },
+            "last_token_usage": {
+              "input_tokens": 25131,
+              "cached_input_tokens": 21760,
+              "output_tokens": 559,
+              "reasoning_output_tokens": 377,
+              "total_tokens": 25690
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data_locale_bench.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1b84d3e3fa01e4a940fe4ee71118508d64312fc837ca6249792d7e11210e4b4a"
+          },
+          "summary": "Reviewed `benches/data_locale_bench.rs`, which is a Criterion benchmark exercising `DataLocale::from_str`, `write_to_string`, and `strict_cmp` over a small static set of BCP-47 locale strings. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15051,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046267765,
+            "finished_at_unix_ms": 1784046282816,
+            "total_token_usage": {
+              "input_tokens": 24566,
+              "cached_input_tokens": 21248,
+              "output_tokens": 362,
+              "reasoning_output_tokens": 150,
+              "total_tokens": 24928
+            },
+            "last_token_usage": {
+              "input_tokens": 24566,
+              "cached_input_tokens": 21248,
+              "output_tokens": 362,
+              "reasoning_output_tokens": 150,
+              "total_tokens": 24928
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/baked.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e9460711e7fb2cdf218645a29934fa225d44d3b7d7f8e17561ac900876a6ec89"
+          },
+          "summary": "Reviewed src/baked.rs, which only defines the baked-provider scaffolding trait and a sealed private marker module for ICU4X data access. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete malicious indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16973,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046282817,
+            "finished_at_unix_ms": 1784046299790,
+            "total_token_usage": {
+              "input_tokens": 24555,
+              "cached_input_tokens": 21248,
+              "output_tokens": 451,
+              "reasoning_output_tokens": 241,
+              "total_tokens": 25006
+            },
+            "last_token_usage": {
+              "input_tokens": 24555,
+              "cached_input_tokens": 21248,
+              "output_tokens": 451,
+              "reasoning_output_tokens": 241,
+              "total_tokens": 25006
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_645f74f50f6d4fe1ab68720c4aa098e2",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059997",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/response.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c3cd0250367b27c9b163e15e86ffbd0d88f9c19411c673d768750ba24c2eb54a"
+          },
+          "summary": "Reviewed `src/response.rs`, which defines ICU4X data payload/response types, cart handling, casting, cloning, and debug formatting. I found no concrete supply-chain or malware indicators in this file: there are no install hooks, network or exfiltration paths, credential or secret access, dynamic code loading, obfuscation/deobfuscation, or persistence/environment-tampering behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18376,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059932142,
+            "finished_at_unix_ms": 1784059950519,
+            "total_token_usage": {
+              "input_tokens": 87033,
+              "cached_input_tokens": 75648,
+              "output_tokens": 679,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 87712
+            },
+            "last_token_usage": {
+              "input_tokens": 87033,
+              "cached_input_tokens": 75648,
+              "output_tokens": 679,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 87712
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/serde_borrow_de_utils.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6bda533840fedd114fcd853ffcc3ffaf9c4012f4feea7acd48beee12a9fc434f"
+          },
+          "summary": "Reviewed `src/serde_borrow_de_utils.rs`, which contains small serde helper wrappers for borrowing `Cow<str>` and `Cow<[u8]>` values plus unit tests exercising option, tuple, and array deserialization. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18736,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059950520,
+            "finished_at_unix_ms": 1784059969256,
+            "total_token_usage": {
+              "input_tokens": 24958,
+              "cached_input_tokens": 21248,
+              "output_tokens": 534,
+              "reasoning_output_tokens": 315,
+              "total_tokens": 25492
+            },
+            "last_token_usage": {
+              "input_tokens": 24958,
+              "cached_input_tokens": 21248,
+              "output_tokens": 534,
+              "reasoning_output_tokens": 315,
+              "total_tokens": 25492
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/varule_traits.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d2dd28c04f27e794deb5ad9b6626245e753e26d24d6b15ff763bc67f8e573b32"
+          },
+          "summary": "Reviewed `src/varule_traits.rs`, which defines ICU4X helper traits and blanket impls for encoding data structs into `VarULE` forms. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 28204,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059969257,
+            "finished_at_unix_ms": 1784059997461,
+            "total_token_usage": {
+              "input_tokens": 25825,
+              "cached_input_tokens": 21248,
+              "output_tokens": 398,
+              "reasoning_output_tokens": 192,
+              "total_tokens": 26223
+            },
+            "last_token_usage": {
+              "input_tokens": 25825,
+              "cached_input_tokens": 21248,
+              "output_tokens": 398,
+              "reasoning_output_tokens": 192,
+              "total_tokens": 26223
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_848945ba5b0f421994e2b63cda2ef2fe",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052305",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "de635f17c7a7d0aeda464a6ab44ad0b61c565163c5877f93d3aa6fba4b38ae0d"
+          },
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the source git SHA1 and the original path in the upstream VCS. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15606,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052218303,
+            "finished_at_unix_ms": 1784052233909,
+            "total_token_usage": {
+              "input_tokens": 24123,
+              "cached_input_tokens": 21248,
+              "output_tokens": 350,
+              "reasoning_output_tokens": 159,
+              "total_tokens": 24473
+            },
+            "last_token_usage": {
+              "input_tokens": 24123,
+              "cached_input_tokens": 21248,
+              "output_tokens": 350,
+              "reasoning_output_tokens": 159,
+              "total_tokens": 24473
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ad2c6919e2e140fa67123bb494f77ee2fcb493b7bf520332569aacf4f89c7546"
+          },
+          "summary": "Reviewed the normalized `Cargo.toml` for `icu_provider` 2.2.0, including package metadata, feature flags, dependencies, and lint settings. I found no concrete indicators of install-time execution, hidden subprocesses, network or exfiltration behavior, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18551,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052233910,
+            "finished_at_unix_ms": 1784052252462,
+            "total_token_usage": {
+              "input_tokens": 25554,
+              "cached_input_tokens": 11520,
+              "output_tokens": 527,
+              "reasoning_output_tokens": 334,
+              "total_tokens": 26081
+            },
+            "last_token_usage": {
+              "input_tokens": 25554,
+              "cached_input_tokens": 11520,
+              "output_tokens": 527,
+              "reasoning_output_tokens": 334,
+              "total_tokens": 26081
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d2f2695378f75bd7f17d1d5386961a67a9965bbd300e125697cc4ccbfa730ce0"
+          },
+          "summary": "I reviewed the README.md for icu_provider, which is a package overview of ICU4X data-provider traits, buffer/file/blob providers, and related documentation links. It contained no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24401,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052252463,
+            "finished_at_unix_ms": 1784052276865,
+            "total_token_usage": {
+              "input_tokens": 24962,
+              "cached_input_tokens": 21248,
+              "output_tokens": 376,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 25338
+            },
+            "last_token_usage": {
+              "input_tokens": 24962,
+              "cached_input_tokens": 21248,
+              "output_tokens": 376,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 25338
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/data_locale_bench.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1b84d3e3fa01e4a940fe4ee71118508d64312fc837ca6249792d7e11210e4b4a"
+          },
+          "summary": "Reviewed `benches/data_locale_bench.rs`, a Criterion benchmark that parses a fixed set of BCP47 strings into `DataLocale`, writes them back to strings, and compares them for strict equality. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16521,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052276866,
+            "finished_at_unix_ms": 1784052293387,
+            "total_token_usage": {
+              "input_tokens": 24649,
+              "cached_input_tokens": 21248,
+              "output_tokens": 505,
+              "reasoning_output_tokens": 306,
+              "total_tokens": 25154
+            },
+            "last_token_usage": {
+              "input_tokens": 24649,
+              "cached_input_tokens": 21248,
+              "output_tokens": 505,
+              "reasoning_output_tokens": 306,
+              "total_tokens": 25154
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/baked.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e9460711e7fb2cdf218645a29934fa225d44d3b7d7f8e17561ac900876a6ec89"
+          },
+          "summary": "`src/baked.rs` is a small ICU4X support module that defines a sealed `DataStore` trait and an optional `alloc` iterator API for baked data providers. I reviewed it for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11727,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052293388,
+            "finished_at_unix_ms": 1784052305116,
+            "total_token_usage": {
+              "input_tokens": 24351,
+              "cached_input_tokens": 23296,
+              "output_tokens": 384,
+              "reasoning_output_tokens": 185,
+              "total_tokens": 24735
+            },
+            "last_token_usage": {
+              "input_tokens": 24351,
+              "cached_input_tokens": 23296,
+              "output_tokens": 384,
+              "reasoning_output_tokens": 185,
+              "total_tokens": 24735
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_8fd07ff5bd86453faf9dcb0e53379757",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056921",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/dynutil.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b93694ee032a91403874a06f91aed5b2b5096f1c71d1dafe42690f59ba79d8d7"
+          },
+          "summary": "Reviewed src/dynutil.rs, which defines ICU4X helper traits and macros for upcasting `DataPayload` values and generating `DynamicDataProvider`/`IterableDynamicDataProvider` implementations. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence/tampering logic.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18983,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056841550,
+            "finished_at_unix_ms": 1784056860534,
+            "total_token_usage": {
+              "input_tokens": 41913,
+              "cached_input_tokens": 34944,
+              "output_tokens": 558,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 42471
+            },
+            "last_token_usage": {
+              "input_tokens": 41913,
+              "cached_input_tokens": 34944,
+              "output_tokens": 558,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 42471
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/error.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "bec9a20a2d3b75d37d427fae921a4b0cd66d04a6cda67200673a431f6b00a6df"
+          },
+          "summary": "Reviewed `src/error.rs`, which defines ICU4X data-provider error types, formatting, and helper methods for attaching context and logging. I found no concrete indicators of supply-chain compromise or malicious behavior in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence logic.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19407,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056860534,
+            "finished_at_unix_ms": 1784056879942,
+            "total_token_usage": {
+              "input_tokens": 75620,
+              "cached_input_tokens": 61824,
+              "output_tokens": 676,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 76296
+            },
+            "last_token_usage": {
+              "input_tokens": 75620,
+              "cached_input_tokens": 61824,
+              "output_tokens": 676,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 76296
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/export/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "115c4b7c13932bed3fae8704e44c4d77bff5814e230ddd54719e7e1669e6a2dc"
+          },
+          "summary": "`src/export/mod.rs` defines ICU4X export traits, a `make_exportable_provider!` macro, and a `MultiExporter` wrapper that forwards payloads and flush/close calls to in-process exporters. I checked this file for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12127,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056879942,
+            "finished_at_unix_ms": 1784056892070,
+            "total_token_usage": {
+              "input_tokens": 25742,
+              "cached_input_tokens": 21248,
+              "output_tokens": 452,
+              "reasoning_output_tokens": 244,
+              "total_tokens": 26194
+            },
+            "last_token_usage": {
+              "input_tokens": 25742,
+              "cached_input_tokens": 21248,
+              "output_tokens": 452,
+              "reasoning_output_tokens": 244,
+              "total_tokens": 26194
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/export/payload.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "969e4087308a3b35a7761abdee81eaccbd38fcb35f6c9a12ab931df0a0b450da"
+          },
+          "summary": "Reviewed `src/export/payload.rs`, which implements `ExportableDataPayload`, the `ExportBox` wrapper, and export helpers for serde serialization, databake tokenization, postcard sizing, and hashing. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16906,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056892071,
+            "finished_at_unix_ms": 1784056908977,
+            "total_token_usage": {
+              "input_tokens": 30207,
+              "cached_input_tokens": 21760,
+              "output_tokens": 612,
+              "reasoning_output_tokens": 263,
+              "total_tokens": 30819
+            },
+            "last_token_usage": {
+              "input_tokens": 30207,
+              "cached_input_tokens": 21760,
+              "output_tokens": 612,
+              "reasoning_output_tokens": 263,
+              "total_tokens": 30819
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -856,9 +1428,29 @@
             "algorithm": "blake3",
             "value": "6bbdcdc952597c50d409f61e9dc8a560eb80a8dc199e252ce7f457cc7ac9e338"
           },
-          "summary": "`src/fallback.rs` contains only ICU4X locale fallback configuration types and `Default` implementations for selecting language, script, or region fallback priority. I checked the file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/fallback.rs`, which only defines locale fallback enums/config defaults and inline documentation examples. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12777,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056908978,
+            "finished_at_unix_ms": 1784056921756,
+            "total_token_usage": {
+              "input_tokens": 25202,
+              "cached_input_tokens": 23296,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 25624
+            },
+            "last_token_usage": {
+              "input_tokens": 25202,
+              "cached_input_tokens": 23296,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 25624
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589006",
+  "latest_reviewed_at": "1784067967",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -522,50 +528,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 23,
-      "file_record_count": 37,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 5
+      "review_count": 26,
+      "file_record_count": 46,
+      "file_record_count_with_metrics": 46
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 42,
-    "file_records_with_metrics": 5,
-    "file_records_without_metrics": 37,
-    "duration_ms_total": 57059,
-    "attempts_total": 5,
+    "reviewed_file_records": 46,
+    "file_records_with_metrics": 46,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 890452,
+    "attempts_total": 46,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 5,
-    "last_token_usage_records": 5,
+    "total_token_usage_records": 46,
+    "last_token_usage_records": 46,
     "total_token_usage": {
-      "input_tokens": 108458,
-      "cached_input_tokens": 90368,
-      "output_tokens": 1929,
-      "reasoning_output_tokens": 951,
-      "total_tokens": 110387
+      "input_tokens": 2700522,
+      "cached_input_tokens": 2292864,
+      "output_tokens": 30570,
+      "reasoning_output_tokens": 12593,
+      "total_tokens": 2731092
     },
     "last_token_usage": {
-      "input_tokens": 108458,
-      "cached_input_tokens": 90368,
-      "output_tokens": 1929,
-      "reasoning_output_tokens": 951,
-      "total_tokens": 110387
+      "input_tokens": 2700522,
+      "cached_input_tokens": 2292864,
+      "output_tokens": 30570,
+      "reasoning_output_tokens": 12593,
+      "total_tokens": 2731092
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_01955a51dc654e9ea09a43f76544f151",
+      "id": "rev_0042ad96783c40df91d861cd940e310b",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -573,214 +571,476 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782814297",
+      "created_at": "1784065739",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/hir/translate.rs`, which is a Rust AST-to-HIR translator with stack-based handling for literals, groups, repetitions, alternations, and character classes. I checked for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/hir/translate.rs",
+          "file_path": "src/unicode_tables/mod.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "fc5f150fa47c8e729a5975fe35f827b1f6463b78022151bfbe24520a568f407f"
+            "value": "292e4e617575ddd1aa36e6c6e392c7ab152507493eb0e7f7c48513661597a942"
           },
-          "summary": "Reviewed `src/hir/translate.rs`, which is a Rust AST-to-HIR translator with stack-based handling for literals, groups, repetitions, alternations, and character classes. I checked for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/unicode_tables/mod.rs`, which only contains conditional `pub mod` declarations for Unicode table submodules behind feature flags. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain malicious behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18531,
+            "attempts": 1,
+            "started_at_unix_ms": 1784065668389,
+            "finished_at_unix_ms": 1784065686921,
+            "total_token_usage": {
+              "input_tokens": 24378,
+              "cached_input_tokens": 21248,
+              "output_tokens": 369,
+              "reasoning_output_tokens": 172,
+              "total_tokens": 24747
+            },
+            "last_token_usage": {
+              "input_tokens": 24378,
+              "cached_input_tokens": 21248,
+              "output_tokens": 369,
+              "reasoning_output_tokens": 172,
+              "total_tokens": 24747
+            }
+          },
           "comment_count": 0,
           "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_05a3f9e143d340b2be12d1da4e1bb2a3",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782814264",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/ast/parse.rs`, which is a regular-expression AST parser with extensive syntax handling for groups, classes, escapes, flags, comments, and nesting limits. I checked for install-time execution, subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
+        },
         {
-          "file_path": "src/ast/parse.rs",
+          "file_path": "src/unicode_tables/perl_decimal.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "e2ead52482b5a1da5729abd8a28abcfeb9d82e3f5ef4f23aa9066c1afe4df9e1"
+            "value": "d8b5872172da0b0e57b5402036c43a9333b45bf9b5abf280e6272233e8d19b6c"
           },
-          "summary": "Reviewed `src/ast/parse.rs`, which is a regular-expression AST parser with extensive syntax handling for groups, classes, escapes, flags, comments, and nesting limits. I checked for install-time execution, subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/unicode_tables/perl_decimal.rs`, which is a generated static Unicode table mapping `Decimal_Number` character ranges. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_140510ea7e274898b6d92f7459c17f6b",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782814464",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/unicode_tables/age.rs`, which is a generated Unicode age lookup table containing static character-range constants for versions 1.1 through 16.0. I checked for install-time hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload behavior; none were present in this target file.",
-      "files": [
-        {
-          "file_path": "src/unicode_tables/age.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9b73248aae3d49145ab5752bad97cc082a91eb3338867f776df0716232831327"
+          "agent_run_metrics": {
+            "duration_ms": 11142,
+            "attempts": 1,
+            "started_at_unix_ms": 1784065686922,
+            "finished_at_unix_ms": 1784065698064,
+            "total_token_usage": {
+              "input_tokens": 24968,
+              "cached_input_tokens": 23296,
+              "output_tokens": 393,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 25361
+            },
+            "last_token_usage": {
+              "input_tokens": 24968,
+              "cached_input_tokens": 23296,
+              "output_tokens": 393,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 25361
+            }
           },
-          "summary": "Reviewed `src/unicode_tables/age.rs`, which is a generated Unicode age lookup table containing static character-range constants for versions 1.1 through 16.0. I checked for install-time hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload behavior; none were present in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_172a971c2a6d42c0aa2ba9584ddfdef0",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782814615",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the generated Unicode word-break table definitions in `src/unicode_tables/word_break.rs`. No concrete malicious or supply-chain indicators were found: the file is static data only, with no install hooks, subprocess or network access, credential harvesting, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": "src/unicode_tables/word_break.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a542ef4a1b716f905f00fe9c73e76d3e3027edd97036685fcdf7e24e678a0045"
-          },
-          "summary": "Reviewed the generated Unicode word-break table definitions in `src/unicode_tables/word_break.rs`. No concrete malicious or supply-chain indicators were found: the file is static data only, with no install hooks, subprocess or network access, credential harvesting, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_1776bdfdf8384859883088e62e9bbf29",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782814201",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the generated Unicode boolean property table in `src/unicode_tables/property_bool.rs`. It is static data only, with no install hooks, subprocess spawning, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior present in the target file.",
-      "files": [
-        {
-          "file_path": "src/unicode_tables/property_bool.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d9872faa58ea8a71bae939e8ebbb9179dc6ad6f19b291749fdff19766935bd5f"
-          },
-          "summary": "Reviewed the generated Unicode boolean property table in `src/unicode_tables/property_bool.rs`. It is static data only, with no install hooks, subprocess spawning, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior present in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_18dc0839c8204dbfbc419dfb43bd825c",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782814665",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/unicode.rs`, which implements Unicode property canonicalization, case folding, and character-class construction for the regex engine. I checked for install-time execution, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/unicode.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2c99fd3edf9bd85b01d00cf9caa2c527a5585b29c18c6c28ec07b7dabce90e01"
-          },
-          "summary": "Reviewed `src/unicode.rs`, which implements Unicode property canonicalization, case folding, and character-class construction for the regex engine. I checked for install-time execution, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_246ff8769fc245e69e85b9bfade3ff22",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782815016",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/unicode_tables/perl_space.rs`, which is a small generated Rust Unicode whitespace table (`White_Space`) with static character ranges only. I found no concrete malicious or supply-chain indicators: there are no install hooks, subprocess launches, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `.cargo_vcs_info.json`, which is a small Cargo provenance metadata file containing a Git SHA1 and the package path in VCS. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\n`src/either.rs` defines a tiny `Either<Left, Right>` enum with `Left` and `Right` variants and no runtime logic. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators.",
-      "files": [
+        },
         {
           "file_path": "src/unicode_tables/perl_space.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "9c9afb97b372e9ea54a243cf4b69b88432a696169ed84ef013f34d9ca7c88a4b"
           },
-          "summary": "Reviewed `src/unicode_tables/perl_space.rs`, which is a small generated Rust Unicode whitespace table (`White_Space`) with static character ranges only. I found no concrete malicious or supply-chain indicators: there are no install hooks, subprocess launches, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed `src/unicode_tables/perl_space.rs`, which is a generated Unicode whitespace lookup table for `White_Space` ranges. I checked for install-time hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10709,
+            "attempts": 1,
+            "started_at_unix_ms": 1784065698065,
+            "finished_at_unix_ms": 1784065708774,
+            "total_token_usage": {
+              "input_tokens": 24321,
+              "cached_input_tokens": 21248,
+              "output_tokens": 337,
+              "reasoning_output_tokens": 141,
+              "total_tokens": 24658
+            },
+            "last_token_usage": {
+              "input_tokens": 24321,
+              "cached_input_tokens": 21248,
+              "output_tokens": 337,
+              "reasoning_output_tokens": 141,
+              "total_tokens": 24658
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
+        {
+          "file_path": "src/unicode_tables/perl_word.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5ebe14d8f590a67365782c66436526ffde88014979b3f1cee5886bf22735a447"
+          },
+          "summary": "Reviewed `src/unicode_tables/perl_word.rs`, which is a generated Unicode range table for Perl word-character matching. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 30228,
+            "attempts": 1,
+            "started_at_unix_ms": 1784065708775,
+            "finished_at_unix_ms": 1784065739003,
+            "total_token_usage": {
+              "input_tokens": 71014,
+              "cached_input_tokens": 57344,
+              "output_tokens": 647,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 71661
+            },
+            "last_token_usage": {
+              "input_tokens": 71014,
+              "cached_input_tokens": 57344,
+              "output_tokens": 647,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 71661
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_0063a05fbae14dc6933ef7ef90d64329",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784051663",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "344e5d9d197fa2a6a7c7e4006ada0c3540be82c3754189b04e766f594f7afd26"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which is a small Cargo provenance metadata file containing a Git SHA1 and the package path in VCS. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "This file is a Cargo VCS metadata stub that records the upstream git SHA and source path for `regex-syntax`. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12998,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051606521,
+            "finished_at_unix_ms": 1784051619520,
+            "total_token_usage": {
+              "input_tokens": 24124,
+              "cached_input_tokens": 21248,
+              "output_tokens": 446,
+              "reasoning_output_tokens": 254,
+              "total_tokens": 24570
+            },
+            "last_token_usage": {
+              "input_tokens": 24124,
+              "cached_input_tokens": 21248,
+              "output_tokens": 446,
+              "reasoning_output_tokens": 254,
+              "total_tokens": 24570
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b5e8fcba8a058e07333af4ef87ba7546e46068ce1949f7de2d128e81bd4a8924"
+          },
+          "summary": "I reviewed the normalized Cargo.toml for the regex-syntax crate. It describes a standard Rust library manifest with feature flags and one optional dependency, and I found no concrete signs of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15183,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051619521,
+            "finished_at_unix_ms": 1784051634704,
+            "total_token_usage": {
+              "input_tokens": 25452,
+              "cached_input_tokens": 21760,
+              "output_tokens": 650,
+              "reasoning_output_tokens": 397,
+              "total_tokens": 26102
+            },
+            "last_token_usage": {
+              "input_tokens": 25452,
+              "cached_input_tokens": 21760,
+              "output_tokens": 650,
+              "reasoning_output_tokens": 397,
+              "total_tokens": 26102
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "801bb04206eca5b80edfc3fe001b856dd9af8f39ebf32938b0a32d592f1bb949"
+          },
+          "summary": "Reviewed README.md, which documents the regex-syntax crate’s parser/HIR API, safety posture, features, and testing guidance. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14769,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051634705,
+            "finished_at_unix_ms": 1784051649474,
+            "total_token_usage": {
+              "input_tokens": 25395,
+              "cached_input_tokens": 21248,
+              "output_tokens": 548,
+              "reasoning_output_tokens": 358,
+              "total_tokens": 25943
+            },
+            "last_token_usage": {
+              "input_tokens": 25395,
+              "cached_input_tokens": 21248,
+              "output_tokens": 548,
+              "reasoning_output_tokens": 358,
+              "total_tokens": 25943
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/bench.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ada5776ff9ac50a1001c73d48826d7e50bfdb2ca573c4ae62248fba1cd693ee5"
+          },
+          "summary": "Reviewed `benches/bench.rs`, which contains benchmark-only functions that parse a fixed set of regex literals with `regex_syntax::Parser`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14355,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051649475,
+            "finished_at_unix_ms": 1784051663831,
+            "total_token_usage": {
+              "input_tokens": 37834,
+              "cached_input_tokens": 33408,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 133,
+              "total_tokens": 38256
+            },
+            "last_token_usage": {
+              "input_tokens": 37834,
+              "cached_input_tokens": 33408,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 133,
+              "total_tokens": 38256
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_05e3f2117bcd4b21a134e93a65afcc5c",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059674",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/error.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dcb8d7a101858814016886602a41b6354ef292cbea054e5727ba7751f256f1a2"
+          },
+          "summary": "Reviewed `src/error.rs`, which defines the crate's public error enum plus formatting helpers and tests for regex parse/HIR diagnostics. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence; no concrete malicious or supply-chain indicators were found in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17609,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059640014,
+            "finished_at_unix_ms": 1784059657624,
+            "total_token_usage": {
+              "input_tokens": 40916,
+              "cached_input_tokens": 35456,
+              "output_tokens": 591,
+              "reasoning_output_tokens": 305,
+              "total_tokens": 41507
+            },
+            "last_token_usage": {
+              "input_tokens": 40916,
+              "cached_input_tokens": 35456,
+              "output_tokens": 591,
+              "reasoning_output_tokens": 305,
+              "total_tokens": 41507
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/hir/interval.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9eeebb9a270520114656de6f8fae0ddfe10a3929980b4578e84b1539eb895bd9"
+          },
+          "summary": "Reviewed `src/hir/interval.rs`, which implements the crate's internal interval-set type with canonicalization, union/intersection/difference/negation, and Unicode case-folding support. I checked this file for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17083,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059657624,
+            "finished_at_unix_ms": 1784059674708,
+            "total_token_usage": {
+              "input_tokens": 61420,
+              "cached_input_tokens": 52224,
+              "output_tokens": 717,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 62137
+            },
+            "last_token_usage": {
+              "input_tokens": 61420,
+              "cached_input_tokens": 52224,
+              "output_tokens": 717,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 62137
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_1028f49acd634eee8e0a51ad7ca7a955",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058281",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/ast/print.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "150fea7699dfcd9f648afefe064b7e51be932fc60a1e6edbeeb4ba42ab9d335c"
+          },
+          "summary": "Reviewed `src/ast/print.rs`, which is a pure regex-AST pretty-printer plus roundtrip tests. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21713,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058205552,
+            "finished_at_unix_ms": 1784058227265,
+            "total_token_usage": {
+              "input_tokens": 59942,
+              "cached_input_tokens": 51712,
+              "output_tokens": 622,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 60564
+            },
+            "last_token_usage": {
+              "input_tokens": 59942,
+              "cached_input_tokens": 51712,
+              "output_tokens": 622,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 60564
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/ast/visitor.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "54e96f9abc31d3a32621509d77a8d58d1ca25917fd6b1bf1dd678f6cd78704ce"
+          },
+          "summary": "Reviewed the AST visitor/traversal implementation in `src/ast/visitor.rs`, including the heap-based depth-first walk and class-set handling. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 23725,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058227266,
+            "finished_at_unix_ms": 1784058250991,
+            "total_token_usage": {
+              "input_tokens": 103074,
+              "cached_input_tokens": 88320,
+              "output_tokens": 862,
+              "reasoning_output_tokens": 256,
+              "total_tokens": 103936
+            },
+            "last_token_usage": {
+              "input_tokens": 103074,
+              "cached_input_tokens": 88320,
+              "output_tokens": 862,
+              "reasoning_output_tokens": 256,
+              "total_tokens": 103936
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/debug.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "13b28ebcb1330b12ae437e364399040f81acd16670113c12fd72e9477196a1c5"
+          },
+          "summary": "Reviewed `src/debug.rs`, which contains small debug-formatting helpers for single bytes and arbitrary byte slices plus a UTF-8 decoding helper. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering; none are present.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18823,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058250991,
+            "finished_at_unix_ms": 1784058269814,
+            "total_token_usage": {
+              "input_tokens": 25070,
+              "cached_input_tokens": 21248,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 25531
+            },
+            "last_token_usage": {
+              "input_tokens": 25070,
+              "cached_input_tokens": 21248,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 25531
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -790,16 +1050,36 @@
             "algorithm": "blake3",
             "value": "4796d5928dc4e77c8551892edbea7f37104905bd7c51f640cd0cb8e2ae3111be"
           },
-          "summary": "`src/either.rs` defines a tiny `Either<Left, Right>` enum with `Left` and `Right` variants and no runtime logic. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/either.rs`, which defines a plain `Either<Left, Right>` enum with derives for `Clone`, `Debug`, `Eq`, and `PartialEq`. I found no concrete signs of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11869,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058269815,
+            "finished_at_unix_ms": 1784058281684,
+            "total_token_usage": {
+              "input_tokens": 24097,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 149,
+              "total_tokens": 24453
+            },
+            "last_token_usage": {
+              "input_tokens": 24097,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 149,
+              "total_tokens": 24453
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_3687e61cb1664e77b2ccbb3fea75ac81",
+      "id": "rev_1a5b68a1584949deb7704153c07e58c8",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -807,12 +1087,60 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782814425",
+      "created_at": "1784054408",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/hir/literal.rs`, which implements HIR literal extraction, sequence trimming/deduplication, preference-trie minimization, and byte-frequency ranking for regex prefilter optimization. I checked for install hooks, hidden subprocess execution, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation/decoding pipelines, and persistence or environment tampering; none were present in this target file.",
+      "files": [
+        {
+          "file_path": "src/ast/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d240fdb14ee92827ec324481092262ae07e10bd4f78f1518ecb0b0ca56cc0ab9"
+          },
+          "summary": "Reviewed `src/ast/mod.rs`, which defines the regex AST data types, error kinds, spans/positions, and custom `Drop` implementations for stack-safe cleanup. I checked for install-time hooks, subprocess execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 33600,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054374991,
+            "finished_at_unix_ms": 1784054408591,
+            "total_token_usage": {
+              "input_tokens": 159872,
+              "cached_input_tokens": 140288,
+              "output_tokens": 1184,
+              "reasoning_output_tokens": 345,
+              "total_tokens": 161056
+            },
+            "last_token_usage": {
+              "input_tokens": 159872,
+              "cached_input_tokens": 140288,
+              "output_tokens": 1184,
+              "reasoning_output_tokens": 345,
+              "total_tokens": 161056
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_22bb190fc8f94b4abbd4aad54c1ca648",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784060959",
+      "thirdpass_version": "0.6.0",
       "files": [
         {
           "file_path": "src/hir/literal.rs",
@@ -820,9 +1148,419 @@
             "algorithm": "blake3",
             "value": "d6bec453d83f06fbe14b536924f02ee1405dea1beaee9bb6fac618b9ee15cff5"
           },
-          "summary": "Reviewed `src/hir/literal.rs`, which implements HIR literal extraction, sequence trimming/deduplication, preference-trie minimization, and byte-frequency ranking for regex prefilter optimization. I checked for install hooks, hidden subprocess execution, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation/decoding pipelines, and persistence or environment tampering; none were present in this target file.",
+          "summary": "Reviewed src/hir/literal.rs, which implements HIR literal extraction plus Seq/Literal helper logic and tests. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 41502,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060917589,
+            "finished_at_unix_ms": 1784060959091,
+            "total_token_usage": {
+              "input_tokens": 263795,
+              "cached_input_tokens": 230656,
+              "output_tokens": 1440,
+              "reasoning_output_tokens": 373,
+              "total_tokens": 265235
+            },
+            "last_token_usage": {
+              "input_tokens": 263795,
+              "cached_input_tokens": 230656,
+              "output_tokens": 1440,
+              "reasoning_output_tokens": 373,
+              "total_tokens": 265235
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_29fef988275c4a3995ff1a583250b12f",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784045655",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "344e5d9d197fa2a6a7c7e4006ada0c3540be82c3754189b04e766f594f7afd26"
+          },
+          "summary": "Reviewed the Cargo VCS metadata in `.cargo_vcs_info.json`, which only records a source git SHA (`140167995737fa11dfe11b8af8b9aa143b790b4e`) and the VCS path (`regex-syntax`). I found no concrete malicious or supply-chain indicators in this file, and it contains no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence logic.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11173,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045606595,
+            "finished_at_unix_ms": 1784045617769,
+            "total_token_usage": {
+              "input_tokens": 24014,
+              "cached_input_tokens": 21248,
+              "output_tokens": 427,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 24441
+            },
+            "last_token_usage": {
+              "input_tokens": 24014,
+              "cached_input_tokens": 21248,
+              "output_tokens": 427,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 24441
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b5e8fcba8a058e07333af4ef87ba7546e46068ce1949f7de2d128e81bd4a8924"
+          },
+          "summary": "Reviewed the normalized `Cargo.toml` for `regex-syntax` 0.8.11. It only declares standard package metadata, feature flags, a library target, one benchmark target, and an optional `arbitrary` dependency; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10570,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045617770,
+            "finished_at_unix_ms": 1784045628340,
+            "total_token_usage": {
+              "input_tokens": 24535,
+              "cached_input_tokens": 21248,
+              "output_tokens": 383,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 24918
+            },
+            "last_token_usage": {
+              "input_tokens": 24535,
+              "cached_input_tokens": 21248,
+              "output_tokens": 383,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 24918
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "801bb04206eca5b80edfc3fe001b856dd9af8f39ebf32938b0a32d592f1bb949"
+          },
+          "summary": "Reviewed the README for `regex-syntax` 0.8.11, which describes the crate’s parser/HIR API, safety stance, feature flags, testing, and motivation. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15662,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045628341,
+            "finished_at_unix_ms": 1784045644003,
+            "total_token_usage": {
+              "input_tokens": 24836,
+              "cached_input_tokens": 21248,
+              "output_tokens": 357,
+              "reasoning_output_tokens": 161,
+              "total_tokens": 25193
+            },
+            "last_token_usage": {
+              "input_tokens": 24836,
+              "cached_input_tokens": 21248,
+              "output_tokens": 357,
+              "reasoning_output_tokens": 161,
+              "total_tokens": 25193
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/bench.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ada5776ff9ac50a1001c73d48826d7e50bfdb2ca573c4ae62248fba1cd693ee5"
+          },
+          "summary": "Reviewed benches/bench.rs, which is a Rust benchmark harness that repeatedly parses a fixed set of regex literals with `regex_syntax::Parser`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11318,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045644004,
+            "finished_at_unix_ms": 1784045655323,
+            "total_token_usage": {
+              "input_tokens": 24414,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 242,
+              "total_tokens": 24854
+            },
+            "last_token_usage": {
+              "input_tokens": 24414,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 242,
+              "total_tokens": 24854
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_2e0aec2d7a3a4b5aad4bd674877480da",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784066432",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/unicode_tables/property_names.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "82358f4aeefca380ea85d62e8df05746f9ec74bc1123df23ec91058aa864aced"
+          },
+          "summary": "Reviewed the generated Unicode property-name alias table in `src/unicode_tables/property_names.rs`. It is a static string mapping with no install hooks, subprocesses, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, or persistence mechanisms present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16019,
+            "attempts": 1,
+            "started_at_unix_ms": 1784066416292,
+            "finished_at_unix_ms": 1784066432311,
+            "total_token_usage": {
+              "input_tokens": 42880,
+              "cached_input_tokens": 38528,
+              "output_tokens": 644,
+              "reasoning_output_tokens": 353,
+              "total_tokens": 43524
+            },
+            "last_token_usage": {
+              "input_tokens": 42880,
+              "cached_input_tokens": 38528,
+              "output_tokens": 644,
+              "reasoning_output_tokens": 353,
+              "total_tokens": 43524
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_2fdb48f4fca5485faa55c1557e9c060c",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784067967",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/utf8.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9485c470dc32f96f9034aa841e7c32220047926e7f751066edfee63a534bf33d"
+          },
+          "summary": "Reviewed `src/utf8.rs`, which implements UTF-8 byte-range construction and iteration for Unicode scalar ranges, along with unit tests. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation/deobfuscation pipelines, or persistence/environment tampering.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 26220,
+            "attempts": 1,
+            "started_at_unix_ms": 1784067941365,
+            "finished_at_unix_ms": 1784067967585,
+            "total_token_usage": {
+              "input_tokens": 60900,
+              "cached_input_tokens": 50176,
+              "output_tokens": 670,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 61570
+            },
+            "last_token_usage": {
+              "input_tokens": 60900,
+              "cached_input_tokens": 50176,
+              "output_tokens": 670,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 61570
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_3602c4de92324b65a7893f92b33e5061",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056531",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/ast/parse.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e2ead52482b5a1da5729abd8a28abcfeb9d82e3f5ef4f23aa9066c1afe4df9e1"
+          },
+          "summary": "Reviewed `src/ast/parse.rs`, which implements the regex AST parser, including escape handling, group/class parsing, repetition parsing, and nested-limit checks. I found no concrete indicators of install-time execution, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 61657,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056469466,
+            "finished_at_unix_ms": 1784056531123,
+            "total_token_usage": {
+              "input_tokens": 187952,
+              "cached_input_tokens": 161280,
+              "output_tokens": 1183,
+              "reasoning_output_tokens": 344,
+              "total_tokens": 189135
+            },
+            "last_token_usage": {
+              "input_tokens": 187952,
+              "cached_input_tokens": 161280,
+              "output_tokens": 1183,
+              "reasoning_output_tokens": 344,
+              "total_tokens": 189135
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_3fd080958cb94f4495cadba25e97ce1b",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784064478",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/unicode_tables/age.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9b73248aae3d49145ab5752bad97cc082a91eb3338867f776df0716232831327"
+          },
+          "summary": "Reviewed `src/unicode_tables/age.rs`, which is a generated Unicode age lookup table consisting only of static character-range constants. I checked for install-time hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24852,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064453731,
+            "finished_at_unix_ms": 1784064478583,
+            "total_token_usage": {
+              "input_tokens": 101857,
+              "cached_input_tokens": 91392,
+              "output_tokens": 994,
+              "reasoning_output_tokens": 366,
+              "total_tokens": 102851
+            },
+            "last_token_usage": {
+              "input_tokens": 101857,
+              "cached_input_tokens": 91392,
+              "output_tokens": 994,
+              "reasoning_output_tokens": 366,
+              "total_tokens": 102851
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_43bc4c5bb225446e937ab676a0255597",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784064448",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/unicode.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2c99fd3edf9bd85b01d00cf9caa2c527a5585b29c18c6c28ec07b7dabce90e01"
+          },
+          "summary": "This file implements Unicode property/class lookup, case-folding helpers, and symbolic-name normalization for regex syntax. I checked for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20946,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064427329,
+            "finished_at_unix_ms": 1784064448276,
+            "total_token_usage": {
+              "input_tokens": 80993,
+              "cached_input_tokens": 70528,
+              "output_tokens": 911,
+              "reasoning_output_tokens": 394,
+              "total_tokens": 81904
+            },
+            "last_token_usage": {
+              "input_tokens": 80993,
+              "cached_input_tokens": 70528,
+              "output_tokens": 911,
+              "reasoning_output_tokens": 394,
+              "total_tokens": 81904
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -838,7 +1576,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589006",
       "thirdpass_version": "0.6.0",
@@ -1006,7 +1744,7 @@
       ]
     },
     {
-      "id": "rev_47aae550fda24d039687a795a8f8de58",
+      "id": "rev_48febeb22b1c4a00973e983616e6637c",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1014,282 +1752,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782814724",
+      "created_at": "1784064912",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed src/hir/print.rs, a Rust HIR-to-regex printer that serializes literals, classes, lookarounds, captures, concatenations, alternations, and repetitions into pattern text. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/ast/print.rs`, which is a pure regex-AST printer that formats `Ast` nodes into pattern text and includes roundtrip tests. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/hir/print.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "927b0667f0ff983055b3b2dacbbca520c9d5d39759c29aa9b172d655d7fb59d8"
-          },
-          "summary": "Reviewed src/hir/print.rs, a Rust HIR-to-regex printer that serializes literals, classes, lookarounds, captures, concatenations, alternations, and repetitions into pattern text. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/ast/print.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "150fea7699dfcd9f648afefe064b7e51be932fc60a1e6edbeeb4ba42ab9d335c"
-          },
-          "summary": "Reviewed `src/ast/print.rs`, which is a pure regex-AST printer that formats `Ast` nodes into pattern text and includes roundtrip tests. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_47b6a391bdce417faf3a68b6619b44f6",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782814969",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/debug.rs` contains small debug-formatting helpers for bytes and UTF-8 decoding: `Byte`, `Bytes`, and `utf8_decode`. I reviewed it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `README.md`, which is a standard project overview for the `regex-syntax` Rust crate describing its parser types, safety posture, feature flags, testing, and motivation. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/unicode_tables/perl_decimal.rs`, which is a generated Unicode data table mapping the `Decimal_Number` property to character ranges. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `benches/bench.rs`, which is a set of Rust benchmark cases that repeatedly parses fixed regular-expression literals with `regex_syntax::Parser`. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden side effects, and found no concrete malicious or supply-chain indicators in this file.\n`src/unicode_tables/mod.rs` is a small module index that conditionally exposes Unicode-related table modules behind feature flags. I checked it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/debug.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "13b28ebcb1330b12ae437e364399040f81acd16670113c12fd72e9477196a1c5"
-          },
-          "summary": "`src/debug.rs` contains small debug-formatting helpers for bytes and UTF-8 decoding: `Byte`, `Bytes`, and `utf8_decode`. I reviewed it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "801bb04206eca5b80edfc3fe001b856dd9af8f39ebf32938b0a32d592f1bb949"
-          },
-          "summary": "Reviewed `README.md`, which is a standard project overview for the `regex-syntax` Rust crate describing its parser types, safety posture, feature flags, testing, and motivation. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/unicode_tables/perl_decimal.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d8b5872172da0b0e57b5402036c43a9333b45bf9b5abf280e6272233e8d19b6c"
-          },
-          "summary": "Reviewed `src/unicode_tables/perl_decimal.rs`, which is a generated Unicode data table mapping the `Decimal_Number` property to character ranges. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/bench.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ada5776ff9ac50a1001c73d48826d7e50bfdb2ca573c4ae62248fba1cd693ee5"
-          },
-          "summary": "Reviewed `benches/bench.rs`, which is a set of Rust benchmark cases that repeatedly parses fixed regular-expression literals with `regex_syntax::Parser`. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden side effects, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/unicode_tables/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "292e4e617575ddd1aa36e6c6e392c7ab152507493eb0e7f7c48513661597a942"
-          },
-          "summary": "`src/unicode_tables/mod.rs` is a small module index that conditionally exposes Unicode-related table modules behind feature flags. I checked it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_49fbea986f2d41148d2f361ce5a46b71",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782814895",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/rank.rs`, which contains only a static 256-entry `BYTE_FREQUENCIES` lookup table for byte-ranking/heuristic use. I checked for install-time hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found none.\nReviewed `src/error.rs`, which is a pure Rust error/display module for regex parse and translation errors. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior; none are present in this file.\n`src/hir/visitor.rs` defines a constant-stack HIR visitor for regex syntax traversal, with a `Visitor` trait and iterative depth-first walk over concatenation, alternation, capture, and repetition nodes. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete malicious or supply-chain indicators.\nReviewed the normalized Cargo manifest for `regex-syntax` 0.8.11 and found no concrete supply-chain indicators in this file: there are no build scripts, install hooks, network/exfiltration paths, dynamic code-loading directives, obfuscation, or persistence-related settings. The manifest is a conventional library/package declaration with an optional `arbitrary` dependency and docs.rs metadata only.\nI reviewed `src/parser.rs`, which is a straightforward regex parser builder/wrapper that forwards configuration into AST parsing and HIR translation. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-      "files": [
-        {
-          "file_path": "src/rank.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "71fba238303349efd1fe63388cfdefdd02c64e20f43131eca9d1e297f76318b0"
-          },
-          "summary": "Reviewed `src/rank.rs`, which contains only a static 256-entry `BYTE_FREQUENCIES` lookup table for byte-ranking/heuristic use. I checked for install-time hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found none.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/error.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "dcb8d7a101858814016886602a41b6354ef292cbea054e5727ba7751f256f1a2"
-          },
-          "summary": "Reviewed `src/error.rs`, which is a pure Rust error/display module for regex parse and translation errors. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/hir/visitor.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "913eabf21638c8df077d0b25752a4531517b3295b0ea5f8c133e1c2de9225d24"
-          },
-          "summary": "`src/hir/visitor.rs` defines a constant-stack HIR visitor for regex syntax traversal, with a `Visitor` trait and iterative depth-first walk over concatenation, alternation, capture, and repetition nodes. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b5e8fcba8a058e07333af4ef87ba7546e46068ce1949f7de2d128e81bd4a8924"
-          },
-          "summary": "Reviewed the normalized Cargo manifest for `regex-syntax` 0.8.11 and found no concrete supply-chain indicators in this file: there are no build scripts, install hooks, network/exfiltration paths, dynamic code-loading directives, obfuscation, or persistence-related settings. The manifest is a conventional library/package declaration with an optional `arbitrary` dependency and docs.rs metadata only.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/parser.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1e978b12099c998414ac8c775961645207a4c4c578b34ce730e4b0597f7181d6"
-          },
-          "summary": "I reviewed `src/parser.rs`, which is a straightforward regex parser builder/wrapper that forwards configuration into AST parsing and HIR translation. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_4d83db72c2374acb9960a6b3e6a57bae",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782814579",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/ast/mod.rs`, which defines the regex AST types, spans, error kinds, display helpers, and custom `Drop` implementations for deep AST/set trees. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation/packing, or persistence/environment tampering.",
-      "files": [
-        {
-          "file_path": "src/ast/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d240fdb14ee92827ec324481092262ae07e10bd4f78f1518ecb0b0ca56cc0ab9"
-          },
-          "summary": "Reviewed `src/ast/mod.rs`, which defines the regex AST types, spans, error kinds, display helpers, and custom `Drop` implementations for deep AST/set trees. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation/packing, or persistence/environment tampering.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_5ac0bc98c8f74d068efbffa46e2ae115",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782814764",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/hir/interval.rs`, which implements the crate’s internal interval-set arithmetic for regex HIR, including canonicalization, union/intersection/difference, negation, and Unicode case-folding support. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden execution behavior; none were present in this file.\nReviewed `src/utf8.rs`, which implements UTF-8 byte-range construction and iteration for Unicode scalar ranges, plus unit tests. I checked for install hooks, subprocess execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain style payload behavior, and found no concrete malicious indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/hir/interval.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9eeebb9a270520114656de6f8fae0ddfe10a3929980b4578e84b1539eb895bd9"
-          },
-          "summary": "Reviewed `src/hir/interval.rs`, which implements the crate’s internal interval-set arithmetic for regex HIR, including canonicalization, union/intersection/difference, negation, and Unicode case-folding support. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden execution behavior; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/utf8.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9485c470dc32f96f9034aa841e7c32220047926e7f751066edfee63a534bf33d"
-          },
-          "summary": "Reviewed `src/utf8.rs`, which implements UTF-8 byte-range construction and iteration for Unicode scalar ranges, plus unit tests. I checked for install hooks, subprocess execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain style payload behavior, and found no concrete malicious indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_6b862b3cc4cc4ff88054002c4d051aec",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782814226",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/unicode_tables/general_category.rs`, which is an autogenerated Unicode general-category table for `regex-syntax` 0.8.11. It contains only static character-range data and no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
       "files": [
         {
           "file_path": "src/unicode_tables/general_category.rs",
@@ -1297,46 +1764,36 @@
             "algorithm": "blake3",
             "value": "278781a82c8d74f3fdef2ed93f920513cb8542bc1eab1b3ab0b1dc0b1c91dd41"
           },
-          "summary": "Reviewed `src/unicode_tables/general_category.rs`, which is an autogenerated Unicode general-category table for `regex-syntax` 0.8.11. It contains only static character-range data and no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "summary": "Reviewed `src/unicode_tables/general_category.rs`, which is a large auto-generated Rust data table of Unicode general-category ranges for `regex-syntax` 16.0.0. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_8260daee560747b596a561dba0c4e43f",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782814549",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/unicode_tables/script.rs`, which is a generated table of Unicode script ranges and names for regex classification. I checked for install hooks, subprocess execution, network or exfiltration logic, credential/secret access, dynamic code loading, obfuscation/packing, and persistence behavior; none are present in this file.",
-      "files": [
-        {
-          "file_path": "src/unicode_tables/script.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f3fa5ea2e9d1e94f05daf8791d23cb31baaf574df7ac14da1987e69a103efe7d"
+          "agent_run_metrics": {
+            "duration_ms": 28216,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064883951,
+            "finished_at_unix_ms": 1784064912167,
+            "total_token_usage": {
+              "input_tokens": 71920,
+              "cached_input_tokens": 64384,
+              "output_tokens": 990,
+              "reasoning_output_tokens": 346,
+              "total_tokens": 72910
+            },
+            "last_token_usage": {
+              "input_tokens": 71920,
+              "cached_input_tokens": 64384,
+              "output_tokens": 990,
+              "reasoning_output_tokens": 346,
+              "total_tokens": 72910
+            }
           },
-          "summary": "Reviewed `src/unicode_tables/script.rs`, which is a generated table of Unicode script ranges and names for regex classification. I checked for install hooks, subprocess execution, network or exfiltration logic, credential/secret access, dynamic code loading, obfuscation/packing, and persistence behavior; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_8358746db34a4d9a9d017a6c158811c6",
+      "id": "rev_53c9e731c724438d806175ae21b28f3b",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1344,12 +1801,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782814493",
+      "created_at": "1784067379",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/unicode_tables/script_extension.rs`, a generated Unicode script-extension lookup table containing only static `const` ranges and name-to-table mappings for Unicode 16.0.0. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
       "files": [
         {
           "file_path": "src/unicode_tables/script_extension.rs",
@@ -1357,16 +1813,36 @@
             "algorithm": "blake3",
             "value": "35091147efb4e10c25be673ead5062e832493ddcbd0f1f2cb9eb1890f03b46d3"
           },
-          "summary": "Reviewed `src/unicode_tables/script_extension.rs`, a generated Unicode script-extension lookup table containing only static `const` ranges and name-to-table mappings for Unicode 16.0.0. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "summary": "Reviewed the generated Unicode script-extension lookup tables in `src/unicode_tables/script_extension.rs` and found only static character-range data plus name-to-table mappings. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete indicators of malicious or supply-chain behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14763,
+            "attempts": 1,
+            "started_at_unix_ms": 1784067364559,
+            "finished_at_unix_ms": 1784067379323,
+            "total_token_usage": {
+              "input_tokens": 42422,
+              "cached_input_tokens": 36480,
+              "output_tokens": 637,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 43059
+            },
+            "last_token_usage": {
+              "input_tokens": 42422,
+              "cached_input_tokens": 36480,
+              "output_tokens": 637,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 43059
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_909cf6e9f80e48b5a6d79cbe386d0cbf",
+      "id": "rev_676441766e434608857ebdfe7e94cc8c",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1374,22 +1850,90 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782814817",
+      "created_at": "1784065326",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/ast/visitor.rs`, which implements a non-recursive AST traversal visitor for regex syntax nodes using explicit heap stacks and callback hooks. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/lib.rs`, which is a pure Rust library entry point for regex escaping and character-class helpers plus documentation/tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.\nI reviewed this generated Rust data file, which is a static Unicode property-name lookup table for `regex-syntax`. It contains no install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
-          "file_path": "src/ast/visitor.rs",
+          "file_path": "src/unicode_tables/grapheme_cluster_break.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "54e96f9abc31d3a32621509d77a8d58d1ca25917fd6b1bf1dd678f6cd78704ce"
+            "value": "7aa319fa81f54f3b572d91d5e6d97275d341fc40578ed5e22606ff8929d84f01"
           },
-          "summary": "Reviewed `src/ast/visitor.rs`, which implements a non-recursive AST traversal visitor for regex syntax nodes using explicit heap stacks and callback hooks. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed this generated Rust Unicode grapheme-cluster-break table of character range constants and found no concrete malicious or supply-chain indicators. The file is static data only; I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess behavior, and none are present.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13510,
+            "attempts": 1,
+            "started_at_unix_ms": 1784065312795,
+            "finished_at_unix_ms": 1784065326305,
+            "total_token_usage": {
+              "input_tokens": 43422,
+              "cached_input_tokens": 23808,
+              "output_tokens": 521,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 43943
+            },
+            "last_token_usage": {
+              "input_tokens": 43422,
+              "cached_input_tokens": 23808,
+              "output_tokens": 521,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 43943
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_68de6f37fe37423987dfa33a877e1550",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784063995",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/hir/visitor.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "913eabf21638c8df077d0b25752a4531517b3295b0ea5f8c133e1c2de9225d24"
+          },
+          "summary": "Reviewed `src/hir/visitor.rs`, which implements a depth-first HIR visitor with an explicit heap-backed stack to avoid recursive stack growth. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11757,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063939036,
+            "finished_at_unix_ms": 1784063950793,
+            "total_token_usage": {
+              "input_tokens": 26607,
+              "cached_input_tokens": 21248,
+              "output_tokens": 423,
+              "reasoning_output_tokens": 221,
+              "total_tokens": 27030
+            },
+            "last_token_usage": {
+              "input_tokens": 26607,
+              "cached_input_tokens": 21248,
+              "output_tokens": 423,
+              "reasoning_output_tokens": 221,
+              "total_tokens": 27030
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -1399,58 +1943,100 @@
             "algorithm": "blake3",
             "value": "ca7d33b50d5f1cca25c991d365acca9198df2b7a158f34c60e77c77159bef82b"
           },
-          "summary": "Reviewed `src/lib.rs`, which is a pure Rust library entry point for regex escaping and character-class helpers plus documentation/tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/lib.rs`, which exposes regular-expression escaping helpers plus Unicode word-character predicates and re-exports parser types. I checked for install-time hooks, subprocess or network activity, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15657,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063950794,
+            "finished_at_unix_ms": 1784063966451,
+            "total_token_usage": {
+              "input_tokens": 43007,
+              "cached_input_tokens": 35968,
+              "output_tokens": 508,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 43515
+            },
+            "last_token_usage": {
+              "input_tokens": 43007,
+              "cached_input_tokens": 35968,
+              "output_tokens": 508,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 43515
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/unicode_tables/property_names.rs",
+          "file_path": "src/parser.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "82358f4aeefca380ea85d62e8df05746f9ec74bc1123df23ec91058aa864aced"
+            "value": "1e978b12099c998414ac8c775961645207a4c4c578b34ce730e4b0597f7181d6"
           },
-          "summary": "I reviewed this generated Rust data file, which is a static Unicode property-name lookup table for `regex-syntax`. It contains no install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/parser.rs`, which defines the public regex `Parser`/`ParserBuilder` API and forwards parsing from concrete syntax to AST/HIR translation with configurable limits and flags. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16432,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063966451,
+            "finished_at_unix_ms": 1784063982883,
+            "total_token_usage": {
+              "input_tokens": 41526,
+              "cached_input_tokens": 35968,
+              "output_tokens": 499,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 42025
+            },
+            "last_token_usage": {
+              "input_tokens": 41526,
+              "cached_input_tokens": 35968,
+              "output_tokens": 499,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 42025
+            }
+          },
           "comment_count": 0,
           "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_9c1c4453506441caa47c21ced07e2085",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782814354",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed src/hir/mod.rs, which implements the regex-syntax crate’s high-level IR types, smart constructors, error/display types, and tests. I checked for install-time hooks, subprocess execution, network/exfiltration, credential or environment harvesting, dynamic code loading, obfuscation/decoding pipelines, and persistence tampering; none were present beyond a benign test-only thread spawn used to verify stack-safe destruction.",
-      "files": [
+        },
         {
-          "file_path": "src/hir/mod.rs",
+          "file_path": "src/rank.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "2310b7da579190271f1589f98eafbf49c29748e2f8b7b839a2f33b0447641ead"
+            "value": "71fba238303349efd1fe63388cfdefdd02c64e20f43131eca9d1e297f76318b0"
           },
-          "summary": "Reviewed src/hir/mod.rs, which implements the regex-syntax crate’s high-level IR types, smart constructors, error/display types, and tests. I checked for install-time hooks, subprocess execution, network/exfiltration, credential or environment harvesting, dynamic code loading, obfuscation/decoding pipelines, and persistence tampering; none were present beyond a benign test-only thread spawn used to verify stack-safe destruction.",
+          "summary": "Reviewed `src/rank.rs`, which contains a static 256-entry `BYTE_FREQUENCIES` table used for byte ranking/scoring. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13091,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063982884,
+            "finished_at_unix_ms": 1784063995976,
+            "total_token_usage": {
+              "input_tokens": 40501,
+              "cached_input_tokens": 34944,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 145,
+              "total_tokens": 40933
+            },
+            "last_token_usage": {
+              "input_tokens": 40501,
+              "cached_input_tokens": 34944,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 145,
+              "total_tokens": 40933
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_b1e4b1beffab4020a742381bfcb05d25",
+      "id": "rev_8058d2a56f94450c8290136c4ce2b19e",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1458,12 +2044,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782814323",
+      "created_at": "1784064878",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/unicode_tables/case_folding_simple.rs`, which is a generated Unicode simple case-folding lookup table for regex matching. I checked it for install-time hooks, subprocess execution, network or exfiltration paths, secret/credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
           "file_path": "src/unicode_tables/case_folding_simple.rs",
@@ -1471,16 +2056,36 @@
             "algorithm": "blake3",
             "value": "8f999ce0ddb068e7dad50a92ab7a865f2eb9ea837217598801c89173ff444535"
           },
-          "summary": "Reviewed `src/unicode_tables/case_folding_simple.rs`, which is a generated Unicode simple case-folding lookup table for regex matching. I checked it for install-time hooks, subprocess execution, network or exfiltration paths, secret/credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the generated Unicode case-folding lookup table in `src/unicode_tables/case_folding_simple.rs`; it is static data only and I found no install hooks, subprocess execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20678,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064857866,
+            "finished_at_unix_ms": 1784064878545,
+            "total_token_usage": {
+              "input_tokens": 42149,
+              "cached_input_tokens": 36480,
+              "output_tokens": 915,
+              "reasoning_output_tokens": 338,
+              "total_tokens": 43064
+            },
+            "last_token_usage": {
+              "input_tokens": 42149,
+              "cached_input_tokens": 36480,
+              "output_tokens": 915,
+              "reasoning_output_tokens": 338,
+              "total_tokens": 43064
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_c19803546ed64eec8c58a8eecf0c6557",
+      "id": "rev_8bdd134dfcec45e893852ca7062c385c",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1488,29 +2093,48 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782814380",
+      "created_at": "1784063477",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/unicode_tables/sentence_break.rs`, which is a generated Unicode sentence-break property table made of static character ranges and name mappings. I checked for install-time hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "src/unicode_tables/sentence_break.rs",
+          "file_path": "src/hir/translate.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "112f57ec5b9a8a47a7993e935f1da2f0298b7b2c90b3ea5223a0d54e58a6a13a"
+            "value": "fc5f150fa47c8e729a5975fe35f827b1f6463b78022151bfbe24520a568f407f"
           },
-          "summary": "Reviewed `src/unicode_tables/sentence_break.rs`, which is a generated Unicode sentence-break property table made of static character ranges and name mappings. I checked for install-time hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed the AST-to-HIR translator in `src/hir/translate.rs`, which turns regex AST nodes into HIR while enforcing UTF-8, Unicode, flag, and class translation rules. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 32135,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063445259,
+            "finished_at_unix_ms": 1784063477395,
+            "total_token_usage": {
+              "input_tokens": 114592,
+              "cached_input_tokens": 83200,
+              "output_tokens": 1156,
+              "reasoning_output_tokens": 447,
+              "total_tokens": 115748
+            },
+            "last_token_usage": {
+              "input_tokens": 114592,
+              "cached_input_tokens": 83200,
+              "output_tokens": 1156,
+              "reasoning_output_tokens": 447,
+              "total_tokens": 115748
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_c8c314f9cb8a4d6c869fa6849fd145e8",
+      "id": "rev_a820ef8492994674b769bb6d25cc28e8",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1518,12 +2142,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782814643",
+      "created_at": "1784066767",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/unicode_tables/property_values.rs`, which is a large auto-generated static Unicode property lookup table for regex syntax matching. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network/exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
           "file_path": "src/unicode_tables/property_values.rs",
@@ -1531,16 +2154,36 @@
             "algorithm": "blake3",
             "value": "01ff724f3db13ff47bbce81c6004d888f885573d1ee3e1a6b277d571ce0bd94b"
           },
-          "summary": "Reviewed `src/unicode_tables/property_values.rs`, which is a large auto-generated static Unicode property lookup table for regex syntax matching. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network/exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed the autogenerated Unicode property-value lookup tables in src/unicode_tables/property_values.rs. The file is static data only, and I found no concrete indicators of install-time execution, subprocess spawning, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence tampering.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20242,
+            "attempts": 1,
+            "started_at_unix_ms": 1784066746794,
+            "finished_at_unix_ms": 1784066767037,
+            "total_token_usage": {
+              "input_tokens": 87116,
+              "cached_input_tokens": 73600,
+              "output_tokens": 851,
+              "reasoning_output_tokens": 357,
+              "total_tokens": 87967
+            },
+            "last_token_usage": {
+              "input_tokens": 87116,
+              "cached_input_tokens": 73600,
+              "output_tokens": 851,
+              "reasoning_output_tokens": 357,
+              "total_tokens": 87967
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_c9960ecaa6744e95971e0f67d19b0930",
+      "id": "rev_aaba4909e2fa48eb84732bba40eceb63",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1548,29 +2191,48 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782814516",
+      "created_at": "1784062834",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/unicode_tables/grapheme_cluster_break.rs`, which is a generated Unicode Grapheme_Cluster_Break lookup table of static character ranges. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
-          "file_path": "src/unicode_tables/grapheme_cluster_break.rs",
+          "file_path": "src/hir/print.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "7aa319fa81f54f3b572d91d5e6d97275d341fc40578ed5e22606ff8929d84f01"
+            "value": "927b0667f0ff983055b3b2dacbbca520c9d5d39759c29aa9b172d655d7fb59d8"
           },
-          "summary": "Reviewed `src/unicode_tables/grapheme_cluster_break.rs`, which is a generated Unicode Grapheme_Cluster_Break lookup table of static character ranges. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed src/hir/print.rs, which is a deterministic HIR-to-regex printer that walks literals, classes, lookarounds, captures, concatenations, alternations, and repetitions and writes them to a fmt::Write sink. I found no concrete malicious indicators in this file: no install hooks, subprocess spawning, network/exfiltration, credential or secret access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17594,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062816807,
+            "finished_at_unix_ms": 1784062834402,
+            "total_token_usage": {
+              "input_tokens": 60751,
+              "cached_input_tokens": 52224,
+              "output_tokens": 753,
+              "reasoning_output_tokens": 338,
+              "total_tokens": 61504
+            },
+            "last_token_usage": {
+              "input_tokens": 60751,
+              "cached_input_tokens": 52224,
+              "output_tokens": 753,
+              "reasoning_output_tokens": 338,
+              "total_tokens": 61504
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_f4cab6cf67114913a5095c1792816c0c",
+      "id": "rev_b3ab0bc3711b436fb700a2e723d1c688",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1578,22 +2240,237 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782814683",
+      "created_at": "1784066093",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/unicode_tables/perl_word.rs`, which is a generated Unicode range table for the Perl `\\w` character class. I checked it for install-time hooks, subprocesses, network or exfiltration behavior, secret/credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "src/unicode_tables/perl_word.rs",
+          "file_path": "src/unicode_tables/property_bool.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "5ebe14d8f590a67365782c66436526ffde88014979b3f1cee5886bf22735a447"
+            "value": "d9872faa58ea8a71bae939e8ebbb9179dc6ad6f19b291749fdff19766935bd5f"
           },
-          "summary": "Reviewed `src/unicode_tables/perl_word.rs`, which is a generated Unicode range table for the Perl `\\w` character class. I checked it for install-time hooks, subprocesses, network or exfiltration behavior, secret/credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "summary": "`src/unicode_tables/property_bool.rs` is a generated Rust data table of Unicode boolean property ranges and name mappings for regex-syntax 0.8.11 / Unicode 16.0.0. I checked it for install hooks, subprocess or network activity, secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22718,
+            "attempts": 1,
+            "started_at_unix_ms": 1784066070969,
+            "finished_at_unix_ms": 1784066093688,
+            "total_token_usage": {
+              "input_tokens": 43411,
+              "cached_input_tokens": 36992,
+              "output_tokens": 983,
+              "reasoning_output_tokens": 382,
+              "total_tokens": 44394
+            },
+            "last_token_usage": {
+              "input_tokens": 43411,
+              "cached_input_tokens": 36992,
+              "output_tokens": 983,
+              "reasoning_output_tokens": 382,
+              "total_tokens": 44394
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_b41b030efc0b4913b25c2a4bed82b192",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784062027",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/hir/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2310b7da579190271f1589f98eafbf49c29748e2f8b7b839a2f33b0447641ead"
+          },
+          "summary": "Reviewed `src/hir/mod.rs`, which defines the regex HIR types, smart constructors, character-class and look-around helpers, destructor logic, and unit tests. I checked this file for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, persistence/tampering, and other hidden subprocess activity, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 36329,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061991096,
+            "finished_at_unix_ms": 1784062027426,
+            "total_token_usage": {
+              "input_tokens": 199819,
+              "cached_input_tokens": 164864,
+              "output_tokens": 1239,
+              "reasoning_output_tokens": 353,
+              "total_tokens": 201058
+            },
+            "last_token_usage": {
+              "input_tokens": 199819,
+              "cached_input_tokens": 164864,
+              "output_tokens": 1239,
+              "reasoning_output_tokens": 353,
+              "total_tokens": 201058
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_c115812b504743a3954795e6ec4fede7",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784067103",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/unicode_tables/script.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f3fa5ea2e9d1e94f05daf8791d23cb31baaf574df7ac14da1987e69a103efe7d"
+          },
+          "summary": "Reviewed src/unicode_tables/script.rs, which is a generated Unicode script-range table for regex matching. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20091,
+            "attempts": 1,
+            "started_at_unix_ms": 1784067083767,
+            "finished_at_unix_ms": 1784067103859,
+            "total_token_usage": {
+              "input_tokens": 43323,
+              "cached_input_tokens": 36480,
+              "output_tokens": 980,
+              "reasoning_output_tokens": 510,
+              "total_tokens": 44303
+            },
+            "last_token_usage": {
+              "input_tokens": 43323,
+              "cached_input_tokens": 36480,
+              "output_tokens": 980,
+              "reasoning_output_tokens": 510,
+              "total_tokens": 44303
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_dbae78c726bb4458b32eacc0b054e9b9",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784067683",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/unicode_tables/word_break.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a542ef4a1b716f905f00fe9c73e76d3e3027edd97036685fcdf7e24e678a0045"
+          },
+          "summary": "The file is a generated Rust data table of Unicode word-break ranges used by regex-syntax. I checked it for install-time hooks, subprocess execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20251,
+            "attempts": 1,
+            "started_at_unix_ms": 1784067662867,
+            "finished_at_unix_ms": 1784067683119,
+            "total_token_usage": {
+              "input_tokens": 57654,
+              "cached_input_tokens": 51712,
+              "output_tokens": 948,
+              "reasoning_output_tokens": 359,
+              "total_tokens": 58602
+            },
+            "last_token_usage": {
+              "input_tokens": 57654,
+              "cached_input_tokens": 51712,
+              "output_tokens": 948,
+              "reasoning_output_tokens": 359,
+              "total_tokens": 58602
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_e81a0b090da84666a11a4645c6eb1be3",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784067657",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/unicode_tables/sentence_break.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "112f57ec5b9a8a47a7993e935f1da2f0298b7b2c90b3ea5223a0d54e58a6a13a"
+          },
+          "summary": "`src/unicode_tables/sentence_break.rs` is an autogenerated Unicode sentence-break data table made up of static character ranges and property names. I checked it for install-time hooks, subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17673,
+            "attempts": 1,
+            "started_at_unix_ms": 1784067639808,
+            "finished_at_unix_ms": 1784067657482,
+            "total_token_usage": {
+              "input_tokens": 65791,
+              "cached_input_tokens": 55296,
+              "output_tokens": 752,
+              "reasoning_output_tokens": 349,
+              "total_tokens": 66543
+            },
+            "last_token_usage": {
+              "input_tokens": 65791,
+              "cached_input_tokens": 55296,
+              "output_tokens": 752,
+              "reasoning_output_tokens": 349,
+              "total_tokens": 66543
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

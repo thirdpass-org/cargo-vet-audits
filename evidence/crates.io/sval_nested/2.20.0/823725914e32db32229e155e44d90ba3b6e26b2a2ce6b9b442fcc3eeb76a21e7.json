@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591216",
+  "latest_reviewed_at": "1784058783",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -193,50 +199,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 4,
-      "file_record_count": 8,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 6,
+      "file_record_count": 17,
+      "file_record_count_with_metrics": 17
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 12,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 8,
-    "duration_ms_total": 75038,
-    "attempts_total": 4,
+    "reviewed_file_records": 17,
+    "file_records_with_metrics": 17,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 314034,
+    "attempts_total": 17,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 17,
+    "last_token_usage_records": 17,
     "total_token_usage": {
-      "input_tokens": 127825,
-      "cached_input_tokens": 109056,
-      "output_tokens": 3033,
-      "reasoning_output_tokens": 1695,
-      "total_tokens": 130858
+      "input_tokens": 733548,
+      "cached_input_tokens": 638976,
+      "output_tokens": 10271,
+      "reasoning_output_tokens": 4926,
+      "total_tokens": 743819
     },
     "last_token_usage": {
-      "input_tokens": 127825,
-      "cached_input_tokens": 109056,
-      "output_tokens": 3033,
-      "reasoning_output_tokens": 1695,
-      "total_tokens": 130858
+      "input_tokens": 733548,
+      "cached_input_tokens": 638976,
+      "output_tokens": 10271,
+      "reasoning_output_tokens": 4926,
+      "total_tokens": 743819
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_1f3532b53c4647528c4784e117ce8cf6",
+      "id": "rev_03370fb6e1e44597b51b89c52ca86470",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -244,46 +242,90 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782851408",
+      "created_at": "1784058783",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/flat_enum.rs`, which is a Rust helper for flattening nested enum values into a streaming interface using an in-memory queue and recursive dispatch. I checked for install-time hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, persistence tampering, and other hidden payload mechanics, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the Rust example in `examples/stream_nested_simple.rs`, which implements a nested `sval_nested::Stream` and prints streamed primitives and container delimiters to stdout for demonstration. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/error.rs`, which defines a small error wrapper for buffering and invalid-value cases plus an optional `std::error::Error` implementation. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution patterns; none were present in this file.\nReviewed the crate manifest for install-time execution, build hooks, dependency-based control transfer, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior. The target file is a normal Rust package manifest for `sval_nested` 2.20.0 with standard library/example metadata and dependencies, and I found no concrete malicious or supply-chain indicators in this file.\nReviewed the target README.md, which is a brief crate description and badge links for `sval_nested`; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
       "files": [
         {
-          "file_path": "src/flat_enum.rs",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "f04f5ddf79cf132364b7cc447943c6bcfa158e0d9768b4aa017040c9497c1f2f"
+            "value": "0bb70b08750402707dbd1f0d28a8abfb9148129e97b3a3987ff783182762e698"
           },
-          "summary": "Reviewed `src/flat_enum.rs`, which is a Rust helper for flattening nested enum values into a streaming interface using an in-memory queue and recursive dispatch. I checked for install-time hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, persistence tampering, and other hidden payload mechanics, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "`src/lib.rs` defines the crate's recursive streaming traits, default adapter functions, and a large self-test module for nested values. I checked this file for install-time hooks, network or exfiltration paths, secret or environment access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 28119,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058755501,
+            "finished_at_unix_ms": 1784058783621,
+            "total_token_usage": {
+              "input_tokens": 159368,
+              "cached_input_tokens": 138752,
+              "output_tokens": 1066,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 160434
+            },
+            "last_token_usage": {
+              "input_tokens": 159368,
+              "cached_input_tokens": 138752,
+              "output_tokens": 1066,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 160434
+            }
+          },
           "comment_count": 0,
           "comments": []
-        },
+        }
+      ]
+    },
+    {
+      "id": "rev_2ae227461b764985b5da73a6df76bad3",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052855",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
-          "file_path": "examples/stream_nested_simple.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "b3a4fbd28827f11480977b92a1dd3a65466454eef78914681d04ebf4d4f58e7a"
+            "value": "077c885112cf4a0aa02878385baf75d9a6b63c8062d031723a5bf57f788d3664"
           },
-          "summary": "Reviewed the Rust example in `examples/stream_nested_simple.rs`, which implements a nested `sval_nested::Stream` and prints streamed primitives and container delimiters to stdout for demonstration. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package's git SHA1 and VCS path metadata. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/error.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "671e8de96de5c22ade151414fbc4b02b43c45941e82d88eca819c700ba249aad"
+          "agent_run_metrics": {
+            "duration_ms": 12365,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052769041,
+            "finished_at_unix_ms": 1784052781407,
+            "total_token_usage": {
+              "input_tokens": 24138,
+              "cached_input_tokens": 21248,
+              "output_tokens": 436,
+              "reasoning_output_tokens": 244,
+              "total_tokens": 24574
+            },
+            "last_token_usage": {
+              "input_tokens": 24138,
+              "cached_input_tokens": 21248,
+              "output_tokens": 436,
+              "reasoning_output_tokens": 244,
+              "total_tokens": 24574
+            }
           },
-          "summary": "Reviewed `src/error.rs`, which defines a small error wrapper for buffering and invalid-value cases plus an optional `std::error::Error` implementation. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution patterns; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -293,9 +335,29 @@
             "algorithm": "blake3",
             "value": "7d7a2ebe396b001b424f1f53e0e671371fd899817c815c4134471856f2749a17"
           },
-          "summary": "Reviewed the crate manifest for install-time execution, build hooks, dependency-based control transfer, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior. The target file is a normal Rust package manifest for `sval_nested` 2.20.0 with standard library/example metadata and dependencies, and I found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the normalized Cargo.toml for package metadata, feature flags, dependency declarations, and any install-time or script hooks. It contains standard crate metadata and dependencies only; I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14236,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052781408,
+            "finished_at_unix_ms": 1784052795644,
+            "total_token_usage": {
+              "input_tokens": 24505,
+              "cached_input_tokens": 21248,
+              "output_tokens": 508,
+              "reasoning_output_tokens": 319,
+              "total_tokens": 25013
+            },
+            "last_token_usage": {
+              "input_tokens": 24505,
+              "cached_input_tokens": 21248,
+              "output_tokens": 508,
+              "reasoning_output_tokens": 319,
+              "total_tokens": 25013
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -305,76 +367,100 @@
             "algorithm": "blake3",
             "value": "f02ebacace55698468f9b2d48da33f701ad7ab3274fce7aee67d04e2b6b7d0b6"
           },
-          "summary": "Reviewed the target README.md, which is a brief crate description and badge links for `sval_nested`; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed the README for `sval_nested`, which only contains crate badges and a short description of a recursive `sval::Stream` variant. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11045,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052795645,
+            "finished_at_unix_ms": 1784052806690,
+            "total_token_usage": {
+              "input_tokens": 24145,
+              "cached_input_tokens": 21248,
+              "output_tokens": 354,
+              "reasoning_output_tokens": 165,
+              "total_tokens": 24499
+            },
+            "last_token_usage": {
+              "input_tokens": 24145,
+              "cached_input_tokens": 21248,
+              "output_tokens": 354,
+              "reasoning_output_tokens": 165,
+              "total_tokens": 24499
+            }
+          },
           "comment_count": 0,
           "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_2a1d1c8b9e9e4a11b51bd8c5f6c573af",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782851296",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed src/lib.rs, which implements the recursive `sval_nested` streaming traits, default adapters, and test scaffolding for nested values. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
+        },
         {
-          "file_path": "src/lib.rs",
+          "file_path": "examples/stream_nested_simple.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "0bb70b08750402707dbd1f0d28a8abfb9148129e97b3a3987ff783182762e698"
+            "value": "b3a4fbd28827f11480977b92a1dd3a65466454eef78914681d04ebf4d4f58e7a"
           },
-          "summary": "Reviewed src/lib.rs, which implements the recursive `sval_nested` streaming traits, default adapters, and test scaffolding for nested values. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `examples/stream_nested_simple.rs`, which is a small demonstration program implementing `sval_nested::Stream` and printing streamed values to stdout. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16574,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052806691,
+            "finished_at_unix_ms": 1784052823265,
+            "total_token_usage": {
+              "input_tokens": 39889,
+              "cached_input_tokens": 35456,
+              "output_tokens": 471,
+              "reasoning_output_tokens": 162,
+              "total_tokens": 40360
+            },
+            "last_token_usage": {
+              "input_tokens": 39889,
+              "cached_input_tokens": 35456,
+              "output_tokens": 471,
+              "reasoning_output_tokens": 162,
+              "total_tokens": 40360
+            }
+          },
           "comment_count": 0,
           "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_5abbe67f4bf843b2a5ec11aa49e0b9db",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782851424",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the `.cargo_vcs_info.json` metadata, which only records the source git SHA-1 and VCS path for the crate. I checked for install hooks, network or credential access, dynamic code loading, obfuscation, and persistence behavior in this target file and found no concrete malicious or supply-chain indicators.",
-      "files": [
+        },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/error.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "077c885112cf4a0aa02878385baf75d9a6b63c8062d031723a5bf57f788d3664"
+            "value": "671e8de96de5c22ade151414fbc4b02b43c45941e82d88eca819c700ba249aad"
           },
-          "summary": "Reviewed the `.cargo_vcs_info.json` metadata, which only records the source git SHA-1 and VCS path for the crate. I checked for install hooks, network or credential access, dynamic code loading, obfuscation, and persistence behavior in this target file and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/error.rs`, which defines a small error wrapper for buffering/invalid-value cases plus a `no_alloc` helper and `std::error::Error` integration. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 32442,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052823266,
+            "finished_at_unix_ms": 1784052855709,
+            "total_token_usage": {
+              "input_tokens": 38291,
+              "cached_input_tokens": 33920,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 38776
+            },
+            "last_token_usage": {
+              "input_tokens": 38291,
+              "cached_input_tokens": 33920,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 38776
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_c96aa5cb6851433fa60a8c0b62d86a3f",
+      "id": "rev_5c9eaf4a25b64dd5a6bdefb9242819be",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -382,12 +468,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782851336",
+      "created_at": "1784055232",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/flat.rs` is a Rust streaming adapter that flattens nested `sval` values by buffering text/binary/value segments and forwarding them into an underlying stream state machine. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential or environment harvesting, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.",
       "files": [
         {
           "file_path": "src/flat.rs",
@@ -395,9 +480,206 @@
             "algorithm": "blake3",
             "value": "85aa8620236e3aa4a1377b1da9c2d87d70d3fbe3abbcf0c742f2605e44017c6a"
           },
-          "summary": "`src/flat.rs` is a Rust streaming adapter that flattens nested `sval` values by buffering text/binary/value segments and forwarding them into an underlying stream state machine. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential or environment harvesting, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.",
+          "summary": "Reviewed `src/flat.rs`, which implements the `FlatStream` adapter and state machine for flattening nested `sval` values into an underlying stream. I checked for install-time hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 26541,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055206133,
+            "finished_at_unix_ms": 1784055232675,
+            "total_token_usage": {
+              "input_tokens": 117333,
+              "cached_input_tokens": 98560,
+              "output_tokens": 813,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 118146
+            },
+            "last_token_usage": {
+              "input_tokens": 117333,
+              "cached_input_tokens": 98560,
+              "output_tokens": 813,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 118146
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_7015357c8f9346ab99c16db355c4096a",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046818",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "077c885112cf4a0aa02878385baf75d9a6b63c8062d031723a5bf57f788d3664"
+          },
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package's git SHA and its path in VCS. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12929,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046745326,
+            "finished_at_unix_ms": 1784046758255,
+            "total_token_usage": {
+              "input_tokens": 24090,
+              "cached_input_tokens": 21248,
+              "output_tokens": 347,
+              "reasoning_output_tokens": 161,
+              "total_tokens": 24437
+            },
+            "last_token_usage": {
+              "input_tokens": 24090,
+              "cached_input_tokens": 21248,
+              "output_tokens": 347,
+              "reasoning_output_tokens": 161,
+              "total_tokens": 24437
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7d7a2ebe396b001b424f1f53e0e671371fd899817c815c4134471856f2749a17"
+          },
+          "summary": "Reviewed the normalized Cargo manifest for `sval_nested` 2.20.0. It only declares package metadata, feature flags, library/example targets, and version-pinned dependencies on `sval`, `sval_buffer`, `sval_ref`, and `sval_derive_macros`; I found no install hooks, build scripts, network or exfiltration code, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17400,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046758256,
+            "finished_at_unix_ms": 1784046775656,
+            "total_token_usage": {
+              "input_tokens": 24542,
+              "cached_input_tokens": 21248,
+              "output_tokens": 581,
+              "reasoning_output_tokens": 365,
+              "total_tokens": 25123
+            },
+            "last_token_usage": {
+              "input_tokens": 24542,
+              "cached_input_tokens": 21248,
+              "output_tokens": 581,
+              "reasoning_output_tokens": 365,
+              "total_tokens": 25123
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f02ebacace55698468f9b2d48da33f701ad7ab3274fce7aee67d04e2b6b7d0b6"
+          },
+          "summary": "Reviewed README.md, which is a short crate description and badge/link block for `sval_nested`. I checked it for install-time hooks, hidden execution, network or credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13133,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046775657,
+            "finished_at_unix_ms": 1784046788791,
+            "total_token_usage": {
+              "input_tokens": 24228,
+              "cached_input_tokens": 23296,
+              "output_tokens": 425,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 24653
+            },
+            "last_token_usage": {
+              "input_tokens": 24228,
+              "cached_input_tokens": 23296,
+              "output_tokens": 425,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 24653
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/stream_nested_simple.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b3a4fbd28827f11480977b92a1dd3a65466454eef78914681d04ebf4d4f58e7a"
+          },
+          "summary": "Reviewed `examples/stream_nested_simple.rs`, which is a straightforward example `Stream` implementation that formats nested `sval_nested` values to stdout. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15472,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046788791,
+            "finished_at_unix_ms": 1784046804263,
+            "total_token_usage": {
+              "input_tokens": 39216,
+              "cached_input_tokens": 36480,
+              "output_tokens": 444,
+              "reasoning_output_tokens": 149,
+              "total_tokens": 39660
+            },
+            "last_token_usage": {
+              "input_tokens": 39216,
+              "cached_input_tokens": 36480,
+              "output_tokens": 444,
+              "reasoning_output_tokens": 149,
+              "total_tokens": 39660
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/error.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "671e8de96de5c22ade151414fbc4b02b43c45941e82d88eca819c700ba249aad"
+          },
+          "summary": "Reviewed src/error.rs, which only defines a small error wrapper and Display/Error implementations for buffer, invalid-value, and no-alloc cases. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14145,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046804264,
+            "finished_at_unix_ms": 1784046818409,
+            "total_token_usage": {
+              "input_tokens": 24975,
+              "cached_input_tokens": 21248,
+              "output_tokens": 535,
+              "reasoning_output_tokens": 344,
+              "total_tokens": 25510
+            },
+            "last_token_usage": {
+              "input_tokens": 24975,
+              "cached_input_tokens": 21248,
+              "output_tokens": 535,
+              "reasoning_output_tokens": 344,
+              "total_tokens": 25510
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -413,7 +695,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591216",
       "thirdpass_version": "0.6.0",
@@ -541,6 +823,55 @@
               "output_tokens": 1228,
               "reasoning_output_tokens": 750,
               "total_tokens": 55776
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_fcce58e0ab954c0aab1ebc1b86ca0694",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784057158",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/flat_enum.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f04f5ddf79cf132364b7cc447943c6bcfa158e0d9768b4aa017040c9497c1f2f"
+          },
+          "summary": "Reviewed src/flat_enum.rs, which implements FlatStreamEnum to queue nested enum variants and forward them into sval stream/enum tagging and value handling. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24595,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057133827,
+            "finished_at_unix_ms": 1784057158422,
+            "total_token_usage": {
+              "input_tokens": 41003,
+              "cached_input_tokens": 35968,
+              "output_tokens": 773,
+              "reasoning_output_tokens": 376,
+              "total_tokens": 41776
+            },
+            "last_token_usage": {
+              "input_tokens": 41003,
+              "cached_input_tokens": 35968,
+              "output_tokens": 773,
+              "reasoning_output_tokens": 376,
+              "total_tokens": 41776
             }
           },
           "comment_count": 0,

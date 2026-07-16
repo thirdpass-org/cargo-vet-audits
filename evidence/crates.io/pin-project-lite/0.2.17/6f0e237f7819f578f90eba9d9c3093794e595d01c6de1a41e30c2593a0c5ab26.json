@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590777",
+  "latest_reviewed_at": "1784065318",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -952,44 +958,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 14,
-      "file_record_count": 63,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 4,
-      "file_record_count": 18,
-      "file_record_count_with_metrics": 18
+      "review_count": 19,
+      "file_record_count": 85,
+      "file_record_count_with_metrics": 85
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 81,
-    "file_records_with_metrics": 18,
-    "file_records_without_metrics": 63,
-    "duration_ms_total": 312764,
-    "attempts_total": 18,
+    "reviewed_file_records": 85,
+    "file_records_with_metrics": 85,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 1325017,
+    "attempts_total": 85,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 18,
-    "last_token_usage_records": 18,
+    "total_token_usage_records": 85,
+    "last_token_usage_records": 85,
     "total_token_usage": {
-      "input_tokens": 456166,
-      "cached_input_tokens": 397056,
-      "output_tokens": 8273,
-      "reasoning_output_tokens": 3945,
-      "total_tokens": 464439
+      "input_tokens": 2370011,
+      "cached_input_tokens": 2062848,
+      "output_tokens": 39713,
+      "reasoning_output_tokens": 19814,
+      "total_tokens": 2409724
     },
     "last_token_usage": {
-      "input_tokens": 456166,
-      "cached_input_tokens": 397056,
-      "output_tokens": 8273,
-      "reasoning_output_tokens": 3945,
-      "total_tokens": 464439
+      "input_tokens": 2370011,
+      "cached_input_tokens": 2062848,
+      "output_tokens": 39713,
+      "reasoning_output_tokens": 19814,
+      "total_tokens": 2409724
     },
     "model_context_windows": []
   },
@@ -1004,7 +1002,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590540",
       "thirdpass_version": "0.6.0",
@@ -1172,7 +1170,7 @@
       ]
     },
     {
-      "id": "rev_223ff26854b14564abb01913f0e406c1",
+      "id": "rev_1c329c852cc645d9a402d03f504824b4",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1180,148 +1178,169 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782746129",
+      "created_at": "1784062063",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/expand/multifields/enum.expanded.rs`, a generated Rust macro-expansion test for `pin_project_lite` that defines an enum and its projection/replacement helpers. I checked the file for install-time hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation/deobfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this target file.\nReviewed `tests/proper_unpin.rs`, a compile-time test module exercising `pin_project_lite`’s `Unpin` behavior across structs, enums, and `#[project(!Unpin)]` cases. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file; it is limited to type-level assertions and macro usage.\nReviewed `tests/ui/pin_project/invalid-bounds.rs`, a compile-fail UI test for the `pin_project!` macro that exercises invalid generic bound syntax. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this target file.\nReviewed `README.md`, which is a usage and license document for the `pin-project-lite` Rust crate. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious or suspicious behavior in this file.\nReviewed `tests/expand/naming/enum-mut.expanded.rs`, which is a small Rust test fixture showing the expanded `pin_project_lite` projection code for an enum and a `main` stub. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
-          "file_path": "tests/expand/multifields/enum.expanded.rs",
+          "file_path": "tests/expand/naming/struct-none.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "c9ca20a2a3311ec290761b3f19508e830318d53bca406c0c2f8da6eeef8b6527"
+            "value": "3b7f6c00a89a43ce701859b3b9133dfa3f62e078c6054ea29fb397651dd70d20"
           },
-          "summary": "Reviewed `tests/expand/multifields/enum.expanded.rs`, a generated Rust macro-expansion test for `pin_project_lite` that defines an enum and its projection/replacement helpers. I checked the file for install-time hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation/deobfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this target file.",
+          "summary": "Reviewed `tests/expand/naming/struct-none.rs`, which is a small Rust macro test defining a `pin_project!` expansion for a generic struct and a trivial `main`. I found no concrete indicators of install-time execution, network or credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13828,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061971152,
+            "finished_at_unix_ms": 1784061984980,
+            "total_token_usage": {
+              "input_tokens": 24191,
+              "cached_input_tokens": 21248,
+              "output_tokens": 464,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 24655
+            },
+            "last_token_usage": {
+              "input_tokens": 24191,
+              "cached_input_tokens": 21248,
+              "output_tokens": 464,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 24655
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/proper_unpin.rs",
+          "file_path": "tests/expand/naming/struct-ref.expanded.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "25857ab501c7857d4b1b68aeb5b0f6df166beaeccc45f2fe23e7460593953fbf"
+            "value": "2f1ca687fda1925f25f23babc0e5b5e0f8be2cd5424f37ff5e7f4cfa1ee70e42"
           },
-          "summary": "Reviewed `tests/proper_unpin.rs`, a compile-time test module exercising `pin_project_lite`’s `Unpin` behavior across structs, enums, and `#[project(!Unpin)]` cases. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file; it is limited to type-level assertions and macro usage.",
+          "summary": "Reviewed the generated Rust test expansion in `tests/expand/naming/struct-ref.expanded.rs`, which defines pin-projection structs and helper methods plus compile-time assertions around `unsafe` projection internals. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14672,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061984981,
+            "finished_at_unix_ms": 1784061999653,
+            "total_token_usage": {
+              "input_tokens": 25002,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 25442
+            },
+            "last_token_usage": {
+              "input_tokens": 25002,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 227,
+              "total_tokens": 25442
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/ui/pin_project/invalid-bounds.rs",
+          "file_path": "tests/expand/naming/struct-ref.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "d79de3f31c612f6b8f9a0cc694163a0f0c0eb6a9e5388054031cfef4fea40499"
+            "value": "c50e1f0d4b40e21a61099c51f3977101ad92f927ece11fa0d9855c77531c882f"
           },
-          "summary": "Reviewed `tests/ui/pin_project/invalid-bounds.rs`, a compile-fail UI test for the `pin_project!` macro that exercises invalid generic bound syntax. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this target file.",
+          "summary": "Reviewed `tests/expand/naming/struct-ref.rs`, a small Rust test fixture that invokes `pin_project!` to define a pinned struct and a generated project-ref type, then exits via an empty `main`. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20649,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061999654,
+            "finished_at_unix_ms": 1784062020303,
+            "total_token_usage": {
+              "input_tokens": 36722,
+              "cached_input_tokens": 33408,
+              "output_tokens": 552,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 37274
+            },
+            "last_token_usage": {
+              "input_tokens": 36722,
+              "cached_input_tokens": 33408,
+              "output_tokens": 552,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 37274
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "README.md",
+          "file_path": "tests/expand/not_unpin/enum.expanded.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "d46274e1f03dbe9a8811193423ae1737952d03df3080a8034aa0b28b7aa8eb32"
+            "value": "8093597d42d12f311f4396d4565ea478d0f0568c2cb2d8ac9eab4018e9187c94"
           },
-          "summary": "Reviewed `README.md`, which is a usage and license document for the `pin-project-lite` Rust crate. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious or suspicious behavior in this file.",
+          "summary": "Reviewed a generated Rust test expansion for `pin_project_lite` enum projection logic. It only defines projection enums, `project`/`project_ref` helpers, and `Unpin`/drop-guard trait impls; I found no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14302,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062020304,
+            "finished_at_unix_ms": 1784062034606,
+            "total_token_usage": {
+              "input_tokens": 24912,
+              "cached_input_tokens": 21248,
+              "output_tokens": 459,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 25371
+            },
+            "last_token_usage": {
+              "input_tokens": 24912,
+              "cached_input_tokens": 21248,
+              "output_tokens": 459,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 25371
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/expand/naming/enum-mut.expanded.rs",
+          "file_path": "tests/expand/not_unpin/enum.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "25ea2e8311ff205050cadc83caec5d5de6b133892f7415748949a40fcfdb47fb"
+            "value": "b1f237b914c8f0180691edb2084d7d6d5342305c4243d61e0d51ae797e7330b8"
           },
-          "summary": "Reviewed `tests/expand/naming/enum-mut.expanded.rs`, which is a small Rust test fixture showing the expanded `pin_project_lite` projection code for an enum and a `main` stub. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `tests/expand/not_unpin/enum.rs`, a small `pin_project_lite` test that defines an enum with `#[project(!Unpin)]` and generated projection types, then ends in `main`. I found no concrete signs of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_27606d7783ee46c48c40e1b76ef5cc19",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782746391",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the test file `tests/ui/pin_project/overlapping_unpin_struct.rs`, which is a small compile-fail UI test exercising `pin_project!` and an `Unpin` bound check. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed this Rust UI test file, which exercises `pin_project_lite::pin_project!` and `Unpin` trait behavior with a deliberately odd trait bound to validate compiler handling. I found no concrete indicators of malicious or supply-chain behavior in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence logic.\nReviewed `tests/ui/pin_project/packed.rs`, a small compile-fail test that exercises `pin_project!` on `#[repr(packed)]` structs to confirm the macro rejects unaligned pinned field references. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nI reviewed `tests/expand/multifields/enum.rs`, which is a small Rust test exercising the `pin_project!` macro on an enum with pinned and unpinned fields. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `tests/expand/default/enum.rs`, which is a small Rust test fixture using `pin_project_lite` to define an enum projection macro example and a no-op `main`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-      "files": [
-        {
-          "file_path": "tests/ui/pin_project/overlapping_unpin_struct.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a7be89aa9fcda492bc907dcc51f6f66190f383093527b0b799893a8529d1aa71"
+          "agent_run_metrics": {
+            "duration_ms": 29067,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062034607,
+            "finished_at_unix_ms": 1784062063674,
+            "total_token_usage": {
+              "input_tokens": 24210,
+              "cached_input_tokens": 21248,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24671
+            },
+            "last_token_usage": {
+              "input_tokens": 24210,
+              "cached_input_tokens": 21248,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24671
+            }
           },
-          "summary": "Reviewed the test file `tests/ui/pin_project/overlapping_unpin_struct.rs`, which is a small compile-fail UI test exercising `pin_project!` and an `Unpin` bound check. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/pin_project/negative_impls_stable.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a6afb447a7e605c75a0ba04d04c4200d56cead8308c7143162a571522f206e67"
-          },
-          "summary": "Reviewed this Rust UI test file, which exercises `pin_project_lite::pin_project!` and `Unpin` trait behavior with a deliberately odd trait bound to validate compiler handling. I found no concrete indicators of malicious or supply-chain behavior in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence logic.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/pin_project/packed.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "76d89d9be69fd850022facc73860bd8cc52a8bf40c35d871c01dd3212401852f"
-          },
-          "summary": "Reviewed `tests/ui/pin_project/packed.rs`, a small compile-fail test that exercises `pin_project!` on `#[repr(packed)]` structs to confirm the macro rejects unaligned pinned field references. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/multifields/enum.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4836c17ea11f49ca63a690e68d36f817957354bdbc1217f569fc010378e86782"
-          },
-          "summary": "I reviewed `tests/expand/multifields/enum.rs`, which is a small Rust test exercising the `pin_project!` macro on an enum with pinned and unpinned fields. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/default/enum.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "34f3a84a2291c6f3ebaaf8baabd376bf1e832566d7e442e046759bbf3e7ca1d5"
-          },
-          "summary": "Reviewed `tests/expand/default/enum.rs`, which is a small Rust test fixture using `pin_project_lite` to define an enum projection macro example and a no-op `main`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
@@ -1337,7 +1356,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590637",
       "thirdpass_version": "0.6.0",
@@ -1505,7 +1524,7 @@
       ]
     },
     {
-      "id": "rev_43d965f3cdae4a8385335f0eeaf34da4",
+      "id": "rev_3cf2033ecf664e88b6031dd958b9a8b2",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1513,262 +1532,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782745745",
+      "created_at": "1784054406",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is a declarative-macro implementation of `pin_project_lite` plus a small `__private` support module for pin projection, drop guards, and conditional `Unpin` behavior. I checked for install hooks, network or exfiltration, credential or environment access, dynamic code loading, obfuscation/decoding, subprocess execution, and persistence/tampering, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": "tests/auxiliary/mod.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "36a9c2651ab8f524ab41146fb79b80c323cc4c992dfef4bfdee506b17d621b11"
+            "value": "f14837cbda9285d643688b1168141aa6a7bef68479fda0137eccfe9689be6450"
           },
-          "summary": "Reviewed `src/lib.rs`, which is a declarative-macro implementation of `pin_project_lite` plus a small `__private` support module for pin projection, drop guards, and conditional `Unpin` behavior. I checked for install hooks, network or exfiltration, credential or environment access, dynamic code loading, obfuscation/decoding, subprocess execution, and persistence/tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `tests/auxiliary/mod.rs`, which only defines two test helper macros that assert `Unpin` and non-`Unpin` traits via `static_assertions`. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_4edff0fe69bf4b95a44092173f6fef10",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782745799",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "I reviewed `tests/test.rs`, which is a Rust test suite exercising `pin_project!` expansions for structs, enums, lifetimes, DSTs, visibility, and pinned-drop behavior. I found no concrete malicious or supply-chain indicators in this target file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, persistence changes, or hidden subprocess execution.\nReviewed `CHANGELOG.md`, which is a release-history document for `pin-project-lite` listing version notes and GitHub comparison links. I checked the file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed the package manifest for install-time execution, build hooks, dependency-based payload loading, network/exfiltration, credential access, obfuscation, and persistence. This `Cargo.toml` describes a normal library crate with tests and lint settings, and I found no concrete malicious or supply-chain indicators such as `build.rs`, install scripts, remote sources, or hidden execution paths.",
-      "files": [
-        {
-          "file_path": "tests/test.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e2acf90f8ec7f7b4fb72532673fc3d149764a1afdb92d627f62acbd61b902249"
+          "agent_run_metrics": {
+            "duration_ms": 11661,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054336545,
+            "finished_at_unix_ms": 1784054348207,
+            "total_token_usage": {
+              "input_tokens": 24176,
+              "cached_input_tokens": 21248,
+              "output_tokens": 346,
+              "reasoning_output_tokens": 144,
+              "total_tokens": 24522
+            },
+            "last_token_usage": {
+              "input_tokens": 24176,
+              "cached_input_tokens": 21248,
+              "output_tokens": 346,
+              "reasoning_output_tokens": 144,
+              "total_tokens": 24522
+            }
           },
-          "summary": "I reviewed `tests/test.rs`, which is a Rust test suite exercising `pin_project!` expansions for structs, enums, lifetimes, DSTs, visibility, and pinned-drop behavior. I found no concrete malicious or supply-chain indicators in this target file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, persistence changes, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "CHANGELOG.md",
+          "file_path": "tests/compiletest.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "de3f0236e3fa3ae4c37ead8a181ddba180748a8b5270aa7b8dffc9f457260693"
+            "value": "474639ca227ba06757efad173959a99895b143d26ca067ab46225bbf95608688"
           },
-          "summary": "Reviewed `CHANGELOG.md`, which is a release-history document for `pin-project-lite` listing version notes and GitHub comparison links. I checked the file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `tests/compiletest.rs`, which is a small test harness that runs `trybuild` UI compile-fail and pass cases behind a nightly-only gate. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "44566118bed54667356b6e39a3d2467c7dcc73e77ee90567062052bbb3705be8"
+          "agent_run_metrics": {
+            "duration_ms": 12176,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054348208,
+            "finished_at_unix_ms": 1784054360385,
+            "total_token_usage": {
+              "input_tokens": 24173,
+              "cached_input_tokens": 21248,
+              "output_tokens": 454,
+              "reasoning_output_tokens": 258,
+              "total_tokens": 24627
+            },
+            "last_token_usage": {
+              "input_tokens": 24173,
+              "cached_input_tokens": 21248,
+              "output_tokens": 454,
+              "reasoning_output_tokens": 258,
+              "total_tokens": 24627
+            }
           },
-          "summary": "Reviewed the package manifest for install-time execution, build hooks, dependency-based payload loading, network/exfiltration, credential access, obfuscation, and persistence. This `Cargo.toml` describes a normal library crate with tests and lint settings, and I found no concrete malicious or supply-chain indicators such as `build.rs`, install scripts, remote sources, or hidden execution paths.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_5889e375ec7e4147b29f1ab1e1385ea1",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782745967",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the expanded Rust test fixture in `tests/expand/pinned_drop/enum.expanded.rs`, which contains generated pin-project projection/drop code for an enum and a trivial `main`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/expand/pub/enum.expanded.rs`, which is a macro-expanded Rust test artifact defining `Enum` projection helpers and `main()`. I checked for install-time hooks, network or exfiltration calls, credential or secret access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none were present.\nReviewed the expanded `pinned_drop` test fixture for `Struct<T, U>` and checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload behavior. The file is a macro expansion test that defines projection helpers, `Drop`, and `Unpin` plumbing only; no concrete malicious or supply-chain indicators were found.\nReviewed this expanded Rust test fixture for `pin_project_lite` enum projection code. It contains only macro-generated pinning helpers and a `main`, with no concrete signs of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed the generated Rust expansion in `tests/expand/default/struct.expanded.rs`, which is macro output for `pin_project_lite` projecting pinned and unpinned fields. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "tests/expand/pinned_drop/enum.expanded.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5fd2d76e1850d46b8fece993c3f0ca202c2ee9f172b0d49e6afd5f294ac03c69"
-          },
-          "summary": "Reviewed the expanded Rust test fixture in `tests/expand/pinned_drop/enum.expanded.rs`, which contains generated pin-project projection/drop code for an enum and a trivial `main`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/pub/enum.expanded.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4936bfc45f58fa62a20d3bfc06b8cfa426eedf642976d603f157a77d0f8e775b"
-          },
-          "summary": "Reviewed `tests/expand/pub/enum.expanded.rs`, which is a macro-expanded Rust test artifact defining `Enum` projection helpers and `main()`. I checked for install-time hooks, network or exfiltration calls, credential or secret access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none were present.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/pinned_drop/struct.expanded.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4bb6191e72b6e13b2a18c94f1d513621250550f065df77a66c7c9b3b57e00c28"
-          },
-          "summary": "Reviewed the expanded `pinned_drop` test fixture for `Struct<T, U>` and checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload behavior. The file is a macro expansion test that defines projection helpers, `Drop`, and `Unpin` plumbing only; no concrete malicious or supply-chain indicators were found.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/not_unpin/enum.expanded.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8093597d42d12f311f4396d4565ea478d0f0568c2cb2d8ac9eab4018e9187c94"
-          },
-          "summary": "Reviewed this expanded Rust test fixture for `pin_project_lite` enum projection code. It contains only macro-generated pinning helpers and a `main`, with no concrete signs of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/default/struct.expanded.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1aca4e6ad0fded29268d0ec19db2a94a4f4bf7bdefdbe1079a3e1ea455dffbd2"
-          },
-          "summary": "Reviewed the generated Rust expansion in `tests/expand/default/struct.expanded.rs`, which is macro output for `pin_project_lite` projecting pinned and unpinned fields. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_5fc60eff674244c694a834a627250ef8",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782746205",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed this Rust test fixture, which defines an `Enum<T, U>` and the generated `pin_project_lite` projection/unpin boilerplate for enum projection. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/include/basic.rs`, which is a set of `pin_project!` test fixtures defining safe structs and enums plus empty `PinnedDrop` implementations. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/ui/pin_project/conflict-unpin.rs`, which is a Rust compile-fail test covering conflicting `Unpin` implementations for several `pin_project!` structs. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed this Rust UI test file, which defines three `pin_project!` structs (`Foo`, `Bar`, `Baz`) and conflicting `Unpin` impls to exercise compile-time behavior. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `tests/expand/naming/enum-none.expanded.rs`, which is a small Rust macro-expansion test defining an `Enum<T, U>` and generated helper items for `pin_project_lite`. I checked for install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
-      "files": [
-        {
-          "file_path": "tests/expand/naming/enum-ref.expanded.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d44ee39d432e75401d05dcc55405a7d40d9f33d642d29edbf5169f1c78155ee8"
-          },
-          "summary": "Reviewed this Rust test fixture, which defines an `Enum<T, U>` and the generated `pin_project_lite` projection/unpin boilerplate for enum projection. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/include/basic.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "52d08d426f20ccd7299a33207b566968007ff78aae110fb268865c6835ccc754"
-          },
-          "summary": "Reviewed `tests/include/basic.rs`, which is a set of `pin_project!` test fixtures defining safe structs and enums plus empty `PinnedDrop` implementations. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/pin_project/conflict-unpin.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7ada5ec8f79cfd2d8f6d3ba10d2a376e60233ad4a8d145bae68c17cd56170cc3"
-          },
-          "summary": "Reviewed `tests/ui/pin_project/conflict-unpin.rs`, which is a Rust compile-fail test covering conflicting `Unpin` implementations for several `pin_project!` structs. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/not_unpin/conflict-unpin.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "30831b5c43d4952e1525a927c2bff520ea11300ce898882d6b6e39e5494a3c5e"
-          },
-          "summary": "Reviewed this Rust UI test file, which defines three `pin_project!` structs (`Foo`, `Bar`, `Baz`) and conflicting `Unpin` impls to exercise compile-time behavior. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/naming/enum-none.expanded.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e1c20ad7495ebfbdcac0d6f24c53269d3e1bbf7f4843730f5d5c482b76738c3e"
-          },
-          "summary": "Reviewed `tests/expand/naming/enum-none.expanded.rs`, which is a small Rust macro-expansion test defining an `Enum<T, U>` and generated helper items for `pin_project_lite`. I checked for install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_75ff293a760741e19a80e71264f39860",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782745896",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the generated Rust test expansion in `tests/expand/multifields/struct.expanded.rs`, which contains pin-projection boilerplate, unsafe pinning internals, and a `main` stub. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\n`tests/drop_order.rs` is a Rust test module that exercises `pin_project_lite` drop ordering and `project_replace` panic behavior using local `Cell`, `Drop`, and `catch_unwind` checks. I reviewed it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this target file.\nReviewed the generated Rust expansion for `pin_project_lite` enum projection helpers in `tests/expand/default/enum.expanded.rs`. It contains only macro-expanded type definitions, unsafe pin-projection boilerplate, and a trivial `main`, with no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.\nReviewed `tests/expand/naming/enum-all.expanded.rs`, which is a generated Rust macro-expansion test for `pin_project_lite` that defines an enum and the corresponding projection helpers. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none in this file.\nReviewed this Rust test artifact, which is macro-expanded `pin_project_lite` code generating projection structs and helper methods around `Struct<T, U>`. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess behavior and found no concrete malicious or supply-chain indicators in the file.",
-      "files": [
-        {
-          "file_path": "tests/expand/multifields/struct.expanded.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "84f068396798c2d1a78b5df853f4da63c241c0d936a5013a234b6864e5877b22"
-          },
-          "summary": "Reviewed the generated Rust test expansion in `tests/expand/multifields/struct.expanded.rs`, which contains pin-projection boilerplate, unsafe pinning internals, and a `main` stub. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -1778,9 +1608,61 @@
             "algorithm": "blake3",
             "value": "9815251c3ad6956a2acc885d55e73fa9b2ac1d219d228f43a020464875e24b67"
           },
-          "summary": "`tests/drop_order.rs` is a Rust test module that exercises `pin_project_lite` drop ordering and `project_replace` panic behavior using local `Cell`, `Drop`, and `catch_unwind` checks. I reviewed it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this target file.",
+          "summary": "Reviewed `tests/drop_order.rs`, a Rust test module that exercises `pin_project` drop ordering and `project_replace` panic behavior using local `Cell`, `Pin`, and `catch_unwind`. No concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence were present in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15692,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054360385,
+            "finished_at_unix_ms": 1784054376078,
+            "total_token_usage": {
+              "input_tokens": 41374,
+              "cached_input_tokens": 36992,
+              "output_tokens": 673,
+              "reasoning_output_tokens": 379,
+              "total_tokens": 42047
+            },
+            "last_token_usage": {
+              "input_tokens": 41374,
+              "cached_input_tokens": 36992,
+              "output_tokens": 673,
+              "reasoning_output_tokens": 379,
+              "total_tokens": 42047
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/.rustfmt.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5b2b9ee131f018353e448771833ee834ded030b30ace67d7dc8448e1c4bc1bbe"
+          },
+          "summary": "Reviewed `tests/expand/.rustfmt.toml`, which only sets `disable_all_formatting = true` for rustfmt in the `tests/expand` tree. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12099,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054376078,
+            "finished_at_unix_ms": 1784054388178,
+            "total_token_usage": {
+              "input_tokens": 24110,
+              "cached_input_tokens": 21248,
+              "output_tokens": 441,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 24551
+            },
+            "last_token_usage": {
+              "input_tokens": 24110,
+              "cached_input_tokens": 21248,
+              "output_tokens": 441,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 24551
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -1790,9 +1672,287 @@
             "algorithm": "blake3",
             "value": "380384da85298517d0d6d5f9ee3829408e6b6b0236105ae743eda0a4dd45e09f"
           },
-          "summary": "Reviewed the generated Rust expansion for `pin_project_lite` enum projection helpers in `tests/expand/default/enum.expanded.rs`. It contains only macro-expanded type definitions, unsafe pin-projection boilerplate, and a trivial `main`, with no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.",
+          "summary": "Reviewed the generated pin-project expansion in `tests/expand/default/enum.expanded.rs`. It only defines enum projection helpers, replacement guards, and Unpin/drop checks for a test case, and I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18306,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054388178,
+            "finished_at_unix_ms": 1784054406485,
+            "total_token_usage": {
+              "input_tokens": 25305,
+              "cached_input_tokens": 21248,
+              "output_tokens": 587,
+              "reasoning_output_tokens": 386,
+              "total_tokens": 25892
+            },
+            "last_token_usage": {
+              "input_tokens": 25305,
+              "cached_input_tokens": 21248,
+              "output_tokens": 587,
+              "reasoning_output_tokens": 386,
+              "total_tokens": 25892
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_51f9afe3acd247eab3afd55f3d5fc58a",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784064902",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/ui/pin_project/negative_impls_stable.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a6afb447a7e605c75a0ba04d04c4200d56cead8308c7143162a571522f206e67"
+          },
+          "summary": "Reviewed `tests/ui/pin_project/negative_impls_stable.rs`, which is a small compile-test exercising `pin_project_lite` negative-impl behavior with a local `Foo` type and `Unpin` assertions. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12045,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064842939,
+            "finished_at_unix_ms": 1784064854985,
+            "total_token_usage": {
+              "input_tokens": 24256,
+              "cached_input_tokens": 23296,
+              "output_tokens": 439,
+              "reasoning_output_tokens": 215,
+              "total_tokens": 24695
+            },
+            "last_token_usage": {
+              "input_tokens": 24256,
+              "cached_input_tokens": 23296,
+              "output_tokens": 439,
+              "reasoning_output_tokens": 215,
+              "total_tokens": 24695
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/pin_project/overlapping_lifetime_names.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "62601219a866db103af9b8c28c02b4d9ca5e14a5ee23b096be3aefd25e4ea58d"
+          },
+          "summary": "Reviewed the UI test case in `tests/ui/pin_project/overlapping_lifetime_names.rs`, which only exercises `pin_project!` with an intentionally overlapping lifetime name to trigger compiler errors. I found no concrete malicious or supply-chain indicators: there are no install hooks, subprocesses, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13548,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064854985,
+            "finished_at_unix_ms": 1784064868534,
+            "total_token_usage": {
+              "input_tokens": 24191,
+              "cached_input_tokens": 23296,
+              "output_tokens": 397,
+              "reasoning_output_tokens": 171,
+              "total_tokens": 24588
+            },
+            "last_token_usage": {
+              "input_tokens": 24191,
+              "cached_input_tokens": 23296,
+              "output_tokens": 397,
+              "reasoning_output_tokens": 171,
+              "total_tokens": 24588
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/pin_project/overlapping_unpin_struct.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a7be89aa9fcda492bc907dcc51f6f66190f383093527b0b799893a8529d1aa71"
+          },
+          "summary": "Reviewed a small Rust compile-fail test that checks `pin_project!` preserves `Unpin` behavior for a `PhantomPinned` field. I found no concrete signs of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain malicious behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10579,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064868534,
+            "finished_at_unix_ms": 1784064879114,
+            "total_token_usage": {
+              "input_tokens": 24211,
+              "cached_input_tokens": 21248,
+              "output_tokens": 389,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 24600
+            },
+            "last_token_usage": {
+              "input_tokens": 24211,
+              "cached_input_tokens": 21248,
+              "output_tokens": 389,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 24600
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/pin_project/packed.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "76d89d9be69fd850022facc73860bd8cc52a8bf40c35d871c01dd3212401852f"
+          },
+          "summary": "Reviewed a Rust UI test that expands `pin_project!` over `repr(packed)` structs to confirm the macro rejects unaligned pinned field references at compile time. I found no evidence of install-time hooks, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11928,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064879114,
+            "finished_at_unix_ms": 1784064891043,
+            "total_token_usage": {
+              "input_tokens": 24226,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 24691
+            },
+            "last_token_usage": {
+              "input_tokens": 24226,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 262,
+              "total_tokens": 24691
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/pin_project/unpin_sneaky.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "fb150558e537341b1198f213e697b548f599e77f857f9eb5257db56a070f74d8"
+          },
+          "summary": "Reviewed this Rust UI test file, which exercises `pin_project!` and an `impl Unpin for __Origin` compile error path. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11446,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064891044,
+            "finished_at_unix_ms": 1784064902490,
+            "total_token_usage": {
+              "input_tokens": 24143,
+              "cached_input_tokens": 23296,
+              "output_tokens": 408,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 24551
+            },
+            "last_token_usage": {
+              "input_tokens": 24143,
+              "cached_input_tokens": 23296,
+              "output_tokens": 408,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 24551
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_5736a7388b7245c088597157b8f2283d",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058200",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/expand/multifields/struct.expanded.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "84f068396798c2d1a78b5df853f4da63c241c0d936a5013a234b6864e5877b22"
+          },
+          "summary": "Reviewed the macro-expanded Rust test fixture for `pin_project_lite` that defines projection structs and helper methods (`project`, `project_ref`, `project_replace`) plus pinning/drop guards. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14846,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058126164,
+            "finished_at_unix_ms": 1784058141010,
+            "total_token_usage": {
+              "input_tokens": 25638,
+              "cached_input_tokens": 21248,
+              "output_tokens": 471,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 26109
+            },
+            "last_token_usage": {
+              "input_tokens": 25638,
+              "cached_input_tokens": 21248,
+              "output_tokens": 471,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 26109
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/multifields/struct.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c814edefeb5d873f55ca3971b0dbd30d64c267b8a01b19c36d10928e55e58b1e"
+          },
+          "summary": "Reviewed `tests/expand/multifields/struct.rs`, which is a small Rust test fixture that defines a `pin_project!` struct with pinned and unpinned fields and an empty `main`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16913,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058141011,
+            "finished_at_unix_ms": 1784058157925,
+            "total_token_usage": {
+              "input_tokens": 24280,
+              "cached_input_tokens": 21248,
+              "output_tokens": 455,
+              "reasoning_output_tokens": 239,
+              "total_tokens": 24735
+            },
+            "last_token_usage": {
+              "input_tokens": 24280,
+              "cached_input_tokens": 21248,
+              "output_tokens": 455,
+              "reasoning_output_tokens": 239,
+              "total_tokens": 24735
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -1802,28 +1962,100 @@
             "algorithm": "blake3",
             "value": "380384da85298517d0d6d5f9ee3829408e6b6b0236105ae743eda0a4dd45e09f"
           },
-          "summary": "Reviewed `tests/expand/naming/enum-all.expanded.rs`, which is a generated Rust macro-expansion test for `pin_project_lite` that defines an enum and the corresponding projection helpers. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none in this file.",
+          "summary": "Reviewed the generated pin-project expansion for `Enum<T, U>`, including the unsafe projection, reference projection, and replacement helpers. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15213,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058157925,
+            "finished_at_unix_ms": 1784058173138,
+            "total_token_usage": {
+              "input_tokens": 25843,
+              "cached_input_tokens": 21248,
+              "output_tokens": 456,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 26299
+            },
+            "last_token_usage": {
+              "input_tokens": 25843,
+              "cached_input_tokens": 21248,
+              "output_tokens": 456,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 26299
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/expand/naming/struct-all.expanded.rs",
+          "file_path": "tests/expand/naming/enum-all.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "6a9cee9509917f9cc19ad02120622a3619fd4f8fa9ee4d6801dd54e2c83949c4"
+            "value": "34f3a84a2291c6f3ebaaf8baabd376bf1e832566d7e442e046759bbf3e7ca1d5"
           },
-          "summary": "Reviewed this Rust test artifact, which is macro-expanded `pin_project_lite` code generating projection structs and helper methods around `Struct<T, U>`. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess behavior and found no concrete malicious or supply-chain indicators in the file.",
+          "summary": "Reviewed `tests/expand/naming/enum-all.rs`, a small compile-test that expands `pin_project!` for an enum with projected types and an empty `main`. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15679,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058173139,
+            "finished_at_unix_ms": 1784058188819,
+            "total_token_usage": {
+              "input_tokens": 36940,
+              "cached_input_tokens": 35456,
+              "output_tokens": 641,
+              "reasoning_output_tokens": 327,
+              "total_tokens": 37581
+            },
+            "last_token_usage": {
+              "input_tokens": 36940,
+              "cached_input_tokens": 35456,
+              "output_tokens": 641,
+              "reasoning_output_tokens": 327,
+              "total_tokens": 37581
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/naming/enum-mut.expanded.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "25ea2e8311ff205050cadc83caec5d5de6b133892f7415748949a40fcfdb47fb"
+          },
+          "summary": "Reviewed the expanded Rust test fixture for `Enum<T, U>` pin-projection code generation. It contains only macro-expanded projection, `Unpin`, and `Drop`-guard scaffolding plus a `main` stub; I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11499,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058188819,
+            "finished_at_unix_ms": 1784058200319,
+            "total_token_usage": {
+              "input_tokens": 24674,
+              "cached_input_tokens": 21248,
+              "output_tokens": 427,
+              "reasoning_output_tokens": 217,
+              "total_tokens": 25101
+            },
+            "last_token_usage": {
+              "input_tokens": 24674,
+              "cached_input_tokens": 21248,
+              "output_tokens": 427,
+              "reasoning_output_tokens": 217,
+              "total_tokens": 25101
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_953dae3ed9a14f4f9bbf2dfca89e901b",
+      "id": "rev_5e09e2c37a5d40d1882ff37673d91015",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -1831,202 +2063,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782746627",
+      "created_at": "1784064452",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/expand/naming/struct-all.rs`, a small Rust test fixture that invokes `pin_project!` to generate a projected struct type and then exits from `main`. I checked for install hooks, hidden subprocess or runtime execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/expand/not_unpin/struct.rs`, which is a small Rust test fixture invoking `pin_project!` to generate projections for a generic struct and then exiting in `main()`. I found no concrete indicators of malicious or supply-chain behavior in this file: no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence logic.\nReviewed `tests/auxiliary/mod.rs`, which only defines two test helper macros that wrap `static_assertions` checks for `Unpin`. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution behavior in this target file.\nReviewed `tests/expand/naming/struct-mut.rs`, which is a small Rust test fixture invoking `pin_project!` to define a generic struct with pinned and unpinned fields and an empty `main`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution behavior.\nReviewed `tests/expand/naming/struct-ref.rs`, which is a small Rust test fixture that invokes `pin_project!` to define a struct and a custom projection-ref name, then exits in `main()`. I found no concrete malicious or supply-chain indicators in the file: no install hooks, network or exfiltration code, credential or secret access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
-          "file_path": "tests/expand/naming/struct-all.rs",
+          "file_path": "tests/ui/not_unpin/negative_impls_stable.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "ad59a1736f03601a768d805469bf75ad90b602bc481c2a3fc346a2322d638e57"
+            "value": "b2a38390b5d85600410aced333365c50eefc8458cb0a45cd23ceabd2f010a0ef"
           },
-          "summary": "Reviewed `tests/expand/naming/struct-all.rs`, a small Rust test fixture that invokes `pin_project!` to generate a projected struct type and then exits from `main`. I checked for install hooks, hidden subprocess or runtime execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "The target file is a small Rust UI test that exercises `pin_project!` with a negative `Unpin` projection and a manual `Unpin` impl for a phantom-pinned type. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/not_unpin/struct.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9325213a2af8ea53f3e9ffe478f9803d8a94a28513a9ba8fe252b53a8b4085b8"
+          "agent_run_metrics": {
+            "duration_ms": 12955,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064396106,
+            "finished_at_unix_ms": 1784064409062,
+            "total_token_usage": {
+              "input_tokens": 24334,
+              "cached_input_tokens": 23296,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 24819
+            },
+            "last_token_usage": {
+              "input_tokens": 24334,
+              "cached_input_tokens": 23296,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 24819
+            }
           },
-          "summary": "Reviewed `tests/expand/not_unpin/struct.rs`, which is a small Rust test fixture invoking `pin_project!` to generate projections for a generic struct and then exiting in `main()`. I found no concrete indicators of malicious or supply-chain behavior in this file: no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence logic.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/auxiliary/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f14837cbda9285d643688b1168141aa6a7bef68479fda0137eccfe9689be6450"
-          },
-          "summary": "Reviewed `tests/auxiliary/mod.rs`, which only defines two test helper macros that wrap `static_assertions` checks for `Unpin`. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution behavior in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/naming/struct-mut.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "64fa51829c0585335e1f7d680afd49aadd30ffc0666798b18a359aac419b6e98"
-          },
-          "summary": "Reviewed `tests/expand/naming/struct-mut.rs`, which is a small Rust test fixture invoking `pin_project!` to define a generic struct with pinned and unpinned fields and an empty `main`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/naming/struct-ref.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c50e1f0d4b40e21a61099c51f3977101ad92f927ece11fa0d9855c77531c882f"
-          },
-          "summary": "Reviewed `tests/expand/naming/struct-ref.rs`, which is a small Rust test fixture that invokes `pin_project!` to define a struct and a custom projection-ref name, then exits in `main()`. I found no concrete malicious or supply-chain indicators in the file: no install hooks, network or exfiltration code, credential or secret access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_9709f50b0bdb42f9ad0645ba8179f46a",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782746050",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed this Rust macro expansion test file, which defines generated pin-projection helpers for a simple `Struct<T, U>` and a `main` stub. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.\nReviewed `tests/expand/naming/struct-none.expanded.rs`, which is a generated Rust macro-expansion test for `pin_project_lite` that defines projection helpers, `Unpin`/`Drop` guards, and a trivial `main`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution; none were present.\nReviewed this generated Rust test expansion for `pin_project_lite` and found no concrete malicious or supply-chain indicators in the file. The code is macro-expanded projection logic with standard `unsafe` pinning operations; I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and none were present.\nReviewed `tests/expand/pub/struct.expanded.rs`, which is a macro-expansion fixture for `pin_project_lite` generating projection types and `unsafe` pin projections for a simple public struct. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed this generated Rust expansion test for `pin_project_lite`: it defines `Struct`, projected wrapper types, `project`/`project_ref` helpers, and an `Unpin` assertion, with no install hooks, network or credential access, dynamic code loading, obfuscation, or persistence behavior present in the file.",
-      "files": [
-        {
-          "file_path": "tests/expand/naming/struct-mut.expanded.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "91e928ce9785868af8c8d3686c68c5b641b21606bed5ed2153116501699d35eb"
-          },
-          "summary": "Reviewed this Rust macro expansion test file, which defines generated pin-projection helpers for a simple `Struct<T, U>` and a `main` stub. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/naming/struct-none.expanded.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1aca4e6ad0fded29268d0ec19db2a94a4f4bf7bdefdbe1079a3e1ea455dffbd2"
-          },
-          "summary": "Reviewed `tests/expand/naming/struct-none.expanded.rs`, which is a generated Rust macro-expansion test for `pin_project_lite` that defines projection helpers, `Unpin`/`Drop` guards, and a trivial `main`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution; none were present.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/naming/struct-ref.expanded.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2f1ca687fda1925f25f23babc0e5b5e0f8be2cd5424f37ff5e7f4cfa1ee70e42"
-          },
-          "summary": "Reviewed this generated Rust test expansion for `pin_project_lite` and found no concrete malicious or supply-chain indicators in the file. The code is macro-expanded projection logic with standard `unsafe` pinning operations; I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and none were present.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/pub/struct.expanded.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "94b722877082ae4b2ab3e0b55d2c63eccf7666ab7f08c989aeb11b295c1eca3f"
-          },
-          "summary": "Reviewed `tests/expand/pub/struct.expanded.rs`, which is a macro-expansion fixture for `pin_project_lite` generating projection types and `unsafe` pin projections for a simple public struct. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/not_unpin/struct.expanded.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "845fd90142fd928e66d96e97dcf98ab473ea69b806b0d66ac23c74d0d1991f77"
-          },
-          "summary": "Reviewed this generated Rust expansion test for `pin_project_lite`: it defines `Struct`, projected wrapper types, `project`/`project_ref` helpers, and an `Unpin` assertion, with no install hooks, network or credential access, dynamic code loading, obfuscation, or persistence behavior present in the file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_a1e404bc198a4b6a877a3f01c53edea3",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782746555",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/expand/multifields/struct.rs`, which is a small Rust macro expansion test defining a pinned struct and an empty `main`. I found no concrete malicious or supply-chain indicators: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `tests/expand/naming/enum-mut.rs`, a small Rust test that invokes `pin_project!` to define an enum projection type and then exits in `main`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `tests/expand/naming/enum-ref.rs`, a small Rust test that invokes `pin_project!` to generate `EnumProjRef` for an enum with pinned and unpinned fields, plus an empty `main`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential or secret access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed this Rust UI test file, which exercises `pin_project!` against a conflicting `Drop` implementation to trigger compiler error E0119. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the target file.\nReviewed `tests/expand/naming/enum-none.rs`, which is a small Rust test case invoking `pin_project!` to define an enum with pinned and unpinned fields and an empty `main`. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-      "files": [
-        {
-          "file_path": "tests/expand/multifields/struct.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c814edefeb5d873f55ca3971b0dbd30d64c267b8a01b19c36d10928e55e58b1e"
-          },
-          "summary": "Reviewed `tests/expand/multifields/struct.rs`, which is a small Rust macro expansion test defining a pinned struct and an empty `main`. I found no concrete malicious or supply-chain indicators: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/naming/enum-mut.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8b9aae17061bf2bb539907cd6bfcf5ad3aeea6b9d8c222bab75a6d27f808961d"
-          },
-          "summary": "Reviewed `tests/expand/naming/enum-mut.rs`, a small Rust test that invokes `pin_project!` to define an enum projection type and then exits in `main`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/naming/enum-ref.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "365901bf652a4a77ef3b0293d8f7d20382626c09d1655bdeb95bc33534ea8587"
-          },
-          "summary": "Reviewed `tests/expand/naming/enum-ref.rs`, a small Rust test that invokes `pin_project!` to generate `EnumProjRef` for an enum with pinned and unpinned fields, plus an empty `main`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential or secret access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -2036,9 +2107,786 @@
             "algorithm": "blake3",
             "value": "664b08a201fe00306005e597c37469a44e2fd7458601ac790a9d4bb204f7014a"
           },
-          "summary": "Reviewed this Rust UI test file, which exercises `pin_project!` against a conflicting `Drop` implementation to trigger compiler error E0119. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the target file.",
+          "summary": "Reviewed `tests/ui/pin_project/conflict-drop.rs`, a compile-fail UI test that defines a `pin_project!` struct and an overlapping `Drop` impl to trigger E0119. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior; none are present in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 9985,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064409062,
+            "finished_at_unix_ms": 1784064419048,
+            "total_token_usage": {
+              "input_tokens": 24177,
+              "cached_input_tokens": 23296,
+              "output_tokens": 327,
+              "reasoning_output_tokens": 120,
+              "total_tokens": 24504
+            },
+            "last_token_usage": {
+              "input_tokens": 24177,
+              "cached_input_tokens": 23296,
+              "output_tokens": 327,
+              "reasoning_output_tokens": 120,
+              "total_tokens": 24504
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/pin_project/conflict-unpin.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7ada5ec8f79cfd2d8f6d3ba10d2a376e60233ad4a8d145bae68c17cd56170cc3"
+          },
+          "summary": "Reviewed this Rust compile-fail test file, which only exercises conflicting `Unpin` implementations for `pin_project!` expansions. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 9980,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064419048,
+            "finished_at_unix_ms": 1784064429029,
+            "total_token_usage": {
+              "input_tokens": 24869,
+              "cached_input_tokens": 19200,
+              "output_tokens": 343,
+              "reasoning_output_tokens": 145,
+              "total_tokens": 25212
+            },
+            "last_token_usage": {
+              "input_tokens": 24869,
+              "cached_input_tokens": 19200,
+              "output_tokens": 343,
+              "reasoning_output_tokens": 145,
+              "total_tokens": 25212
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/pin_project/invalid-bounds.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d79de3f31c612f6b8f9a0cc694163a0f0c0eb6a9e5388054031cfef4fea40499"
+          },
+          "summary": "Reviewed `tests/ui/pin_project/invalid-bounds.rs`, which is a compile-fail test exercising `pin_project!` parsing around invalid generic bounds and where-clauses. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11133,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064429030,
+            "finished_at_unix_ms": 1784064440163,
+            "total_token_usage": {
+              "input_tokens": 24663,
+              "cached_input_tokens": 23296,
+              "output_tokens": 385,
+              "reasoning_output_tokens": 183,
+              "total_tokens": 25048
+            },
+            "last_token_usage": {
+              "input_tokens": 24663,
+              "cached_input_tokens": 23296,
+              "output_tokens": 385,
+              "reasoning_output_tokens": 183,
+              "total_tokens": 25048
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/pin_project/invalid.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "44d7736b889f1556bcb8b71900eadd634c7be79659f2376b116410c3c16aef00"
+          },
+          "summary": "This Rust UI test file contains negative cases for the `pin_project!` macro, checking that invalid `#[pin()]`, stray `#[pin]`, and duplicate `#[pin]` annotations produce compile-time errors. I reviewed it for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12402,
+            "attempts": 1,
+            "started_at_unix_ms": 1784064440164,
+            "finished_at_unix_ms": 1784064452566,
+            "total_token_usage": {
+              "input_tokens": 24250,
+              "cached_input_tokens": 21248,
+              "output_tokens": 526,
+              "reasoning_output_tokens": 306,
+              "total_tokens": 24776
+            },
+            "last_token_usage": {
+              "input_tokens": 24250,
+              "cached_input_tokens": 21248,
+              "output_tokens": 526,
+              "reasoning_output_tokens": 306,
+              "total_tokens": 24776
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_6387850206004b8abfbc8e3a33d1e8f3",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784051598",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b7e1887830262efc25ab66ee2487880d3a89c2ce7568a8acd4749f5bf0d07906"
+          },
+          "summary": "Reviewed the crate VCS metadata in .cargo_vcs_info.json, which only records the upstream git SHA1 and empty path mapping. No install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence indicators were present in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13940,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051527699,
+            "finished_at_unix_ms": 1784051541639,
+            "total_token_usage": {
+              "input_tokens": 24134,
+              "cached_input_tokens": 13568,
+              "output_tokens": 459,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 24593
+            },
+            "last_token_usage": {
+              "input_tokens": 24134,
+              "cached_input_tokens": 13568,
+              "output_tokens": 459,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 24593
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "de3f0236e3fa3ae4c37ead8a181ddba180748a8b5270aa7b8dffc9f457260693"
+          },
+          "summary": "Reviewed the changelog entry history for pin-project-lite 0.2.17 and found only release notes and version links. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and none are present in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 28716,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051541640,
+            "finished_at_unix_ms": 1784051570356,
+            "total_token_usage": {
+              "input_tokens": 27067,
+              "cached_input_tokens": 23296,
+              "output_tokens": 400,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 27467
+            },
+            "last_token_usage": {
+              "input_tokens": 27067,
+              "cached_input_tokens": 23296,
+              "output_tokens": 400,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 27467
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "44566118bed54667356b6e39a3d2467c7dcc73e77ee90567062052bbb3705be8"
+          },
+          "summary": "I reviewed the normalized Cargo.toml for package metadata, library/test declarations, dependency configuration, and lint settings. I found no concrete malicious or supply-chain indicators and no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence directives in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17666,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051570357,
+            "finished_at_unix_ms": 1784051588023,
+            "total_token_usage": {
+              "input_tokens": 25128,
+              "cached_input_tokens": 13568,
+              "output_tokens": 456,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 25584
+            },
+            "last_token_usage": {
+              "input_tokens": 25128,
+              "cached_input_tokens": 13568,
+              "output_tokens": 456,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 25584
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d46274e1f03dbe9a8811193423ae1737952d03df3080a8034aa0b28b7aa8eb32"
+          },
+          "summary": "Reviewed README.md, which documents the pin-project-lite crate usage, examples, feature comparisons, and license terms. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain signals in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10878,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051588024,
+            "finished_at_unix_ms": 1784051598902,
+            "total_token_usage": {
+              "input_tokens": 25196,
+              "cached_input_tokens": 13568,
+              "output_tokens": 363,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 25559
+            },
+            "last_token_usage": {
+              "input_tokens": 25196,
+              "cached_input_tokens": 13568,
+              "output_tokens": 363,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 25559
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_70ef847990fb4b66af943d86f0b30cd7",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784045593",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b7e1887830262efc25ab66ee2487880d3a89c2ce7568a8acd4749f5bf0d07906"
+          },
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package VCS commit hash and an empty `path_in_vcs` field. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12549,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045529216,
+            "finished_at_unix_ms": 1784045541765,
+            "total_token_usage": {
+              "input_tokens": 24009,
+              "cached_input_tokens": 21248,
+              "output_tokens": 331,
+              "reasoning_output_tokens": 139,
+              "total_tokens": 24340
+            },
+            "last_token_usage": {
+              "input_tokens": 24009,
+              "cached_input_tokens": 21248,
+              "output_tokens": 331,
+              "reasoning_output_tokens": 139,
+              "total_tokens": 24340
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "de3f0236e3fa3ae4c37ead8a181ddba180748a8b5270aa7b8dffc9f457260693"
+          },
+          "summary": "Reviewed the changelog entries for pin-project-lite 0.2.17 and earlier releases. It is a plain release history noting yanked versions, documentation fixes, lint suppressions, and a release-immutability note; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13551,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045541766,
+            "finished_at_unix_ms": 1784045555318,
+            "total_token_usage": {
+              "input_tokens": 26545,
+              "cached_input_tokens": 13056,
+              "output_tokens": 431,
+              "reasoning_output_tokens": 216,
+              "total_tokens": 26976
+            },
+            "last_token_usage": {
+              "input_tokens": 26545,
+              "cached_input_tokens": 13056,
+              "output_tokens": 431,
+              "reasoning_output_tokens": 216,
+              "total_tokens": 26976
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "44566118bed54667356b6e39a3d2467c7dcc73e77ee90567062052bbb3705be8"
+          },
+          "summary": "Reviewed the normalized `Cargo.toml` for `pin-project-lite` 0.2.17. It only declares package metadata, a library target, test targets, dev-dependencies, and lint configuration; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 23433,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045555318,
+            "finished_at_unix_ms": 1784045578751,
+            "total_token_usage": {
+              "input_tokens": 25060,
+              "cached_input_tokens": 21248,
+              "output_tokens": 585,
+              "reasoning_output_tokens": 385,
+              "total_tokens": 25645
+            },
+            "last_token_usage": {
+              "input_tokens": 25060,
+              "cached_input_tokens": 21248,
+              "output_tokens": 585,
+              "reasoning_output_tokens": 385,
+              "total_tokens": 25645
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d46274e1f03dbe9a8811193423ae1737952d03df3080a8034aa0b28b7aa8eb32"
+          },
+          "summary": "Reviewed the README for pin-project-lite, which is a normal crate overview documenting usage, examples, feature differences, and license terms. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14525,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045578752,
+            "finished_at_unix_ms": 1784045593277,
+            "total_token_usage": {
+              "input_tokens": 25050,
+              "cached_input_tokens": 21248,
+              "output_tokens": 388,
+              "reasoning_output_tokens": 195,
+              "total_tokens": 25438
+            },
+            "last_token_usage": {
+              "input_tokens": 25050,
+              "cached_input_tokens": 21248,
+              "output_tokens": 388,
+              "reasoning_output_tokens": 195,
+              "total_tokens": 25438
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_7db753ea6f0d4fdb9c573b9e1dddab99",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784060931",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/expand/naming/struct-all.expanded.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6a9cee9509917f9cc19ad02120622a3619fd4f8fa9ee4d6801dd54e2c83949c4"
+          },
+          "summary": "Reviewed this macro-expanded Rust test fixture for `pin_project_lite`, which defines projection structs and `project`/`project_ref`/`project_replace` helpers around a local `Struct<T, U>`. I checked for install-time hooks, subprocess launches, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17255,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060848879,
+            "finished_at_unix_ms": 1784060866134,
+            "total_token_usage": {
+              "input_tokens": 25801,
+              "cached_input_tokens": 23296,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 261,
+              "total_tokens": 26284
+            },
+            "last_token_usage": {
+              "input_tokens": 25801,
+              "cached_input_tokens": 23296,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 261,
+              "total_tokens": 26284
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/naming/struct-all.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ad59a1736f03601a768d805469bf75ad90b602bc481c2a3fc346a2322d638e57"
+          },
+          "summary": "Reviewed a small Rust test file that only invokes `pin_project!` to generate projection types for a generic struct and then exits. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11102,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060866135,
+            "finished_at_unix_ms": 1784060877238,
+            "total_token_usage": {
+              "input_tokens": 24157,
+              "cached_input_tokens": 23296,
+              "output_tokens": 421,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 24578
+            },
+            "last_token_usage": {
+              "input_tokens": 24157,
+              "cached_input_tokens": 23296,
+              "output_tokens": 421,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 24578
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/naming/struct-mut.expanded.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "91e928ce9785868af8c8d3686c68c5b641b21606bed5ed2153116501699d35eb"
+          },
+          "summary": "Reviewed this generated Rust test expansion for `pin_project_lite`, which defines projection helpers, `Unpin` plumbing, and a `main` stub. I checked it for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11724,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060877238,
+            "finished_at_unix_ms": 1784060888963,
+            "total_token_usage": {
+              "input_tokens": 24969,
+              "cached_input_tokens": 21248,
+              "output_tokens": 370,
+              "reasoning_output_tokens": 166,
+              "total_tokens": 25339
+            },
+            "last_token_usage": {
+              "input_tokens": 24969,
+              "cached_input_tokens": 21248,
+              "output_tokens": 370,
+              "reasoning_output_tokens": 166,
+              "total_tokens": 25339
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/naming/struct-mut.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "64fa51829c0585335e1f7d680afd49aadd30ffc0666798b18a359aac419b6e98"
+          },
+          "summary": "Reviewed `tests/expand/naming/struct-mut.rs`, which is a small macro-expansion test that defines a `pin_project!` struct with pinned and unpinned fields and an empty `main`. I found no install-time hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21236,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060888964,
+            "finished_at_unix_ms": 1784060910200,
+            "total_token_usage": {
+              "input_tokens": 24246,
+              "cached_input_tokens": 23296,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 233,
+              "total_tokens": 24693
+            },
+            "last_token_usage": {
+              "input_tokens": 24246,
+              "cached_input_tokens": 23296,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 233,
+              "total_tokens": 24693
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/naming/struct-none.expanded.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1aca4e6ad0fded29268d0ec19db2a94a4f4bf7bdefdbe1079a3e1ea455dffbd2"
+          },
+          "summary": "Reviewed this generated Rust macro-expansion test file, which defines a simple `Struct` and the expanded `pin_project_lite` projection, `Unpin`, and packed-field assertion helpers. I checked the file for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none were present.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21339,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060910201,
+            "finished_at_unix_ms": 1784060931540,
+            "total_token_usage": {
+              "input_tokens": 40013,
+              "cached_input_tokens": 36992,
+              "output_tokens": 799,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 40812
+            },
+            "last_token_usage": {
+              "input_tokens": 40013,
+              "cached_input_tokens": 36992,
+              "output_tokens": 799,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 40812
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_93904b1c67dd416cb6971d3885a1ec37",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784065318",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/ui/pin_project/unsupported.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "99799880adea85ecd394ad4ddb2b0adae4f5d7882c20cb302a52bde9795421ed"
+          },
+          "summary": "Reviewed `tests/ui/pin_project/unsupported.rs`, a compile-fail UI test that feeds unsupported item forms into `pin_project!` to assert parser errors. I checked for install-time execution, network or credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10324,
+            "attempts": 1,
+            "started_at_unix_ms": 1784065279331,
+            "finished_at_unix_ms": 1784065289655,
+            "total_token_usage": {
+              "input_tokens": 24247,
+              "cached_input_tokens": 21248,
+              "output_tokens": 352,
+              "reasoning_output_tokens": 159,
+              "total_tokens": 24599
+            },
+            "last_token_usage": {
+              "input_tokens": 24247,
+              "cached_input_tokens": 21248,
+              "output_tokens": 352,
+              "reasoning_output_tokens": 159,
+              "total_tokens": 24599
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/pinned_drop/call-drop-inner.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e92553f765dfaecedd4b679da3f60e378c4f67f9450cb05bf9e406925584bfd8"
+          },
+          "summary": "Reviewed `tests/ui/pinned_drop/call-drop-inner.rs`, a small `pin_project_lite` UI test that defines a pinned struct `S`, delegates its `PinnedDrop` implementation to `__drop_inner`, and instantiates the type in `main`. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12728,
+            "attempts": 1,
+            "started_at_unix_ms": 1784065289656,
+            "finished_at_unix_ms": 1784065302384,
+            "total_token_usage": {
+              "input_tokens": 24161,
+              "cached_input_tokens": 23296,
+              "output_tokens": 399,
+              "reasoning_output_tokens": 178,
+              "total_tokens": 24560
+            },
+            "last_token_usage": {
+              "input_tokens": 24161,
+              "cached_input_tokens": 23296,
+              "output_tokens": 399,
+              "reasoning_output_tokens": 178,
+              "total_tokens": 24560
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/pinned_drop/conditional-drop-impl.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6b0eb39547481a45280df91c657c303cba8b50352377e397e18ad0b323eac151"
+          },
+          "summary": "Reviewed `tests/ui/pinned_drop/conditional-drop-impl.rs`, a small compile-fail UI test that exercises conditional `Drop` and `PinnedDrop` implementations and expects E0367 errors. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution paths in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16043,
+            "attempts": 1,
+            "started_at_unix_ms": 1784065302385,
+            "finished_at_unix_ms": 1784065318428,
+            "total_token_usage": {
+              "input_tokens": 37068,
+              "cached_input_tokens": 33408,
+              "output_tokens": 578,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 37646
+            },
+            "last_token_usage": {
+              "input_tokens": 37068,
+              "cached_input_tokens": 33408,
+              "output_tokens": 578,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 37646
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_962c23031345445d9e38b66de06a9b9e",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059663",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/expand/naming/enum-mut.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8b9aae17061bf2bb539907cd6bfcf5ad3aeea6b9d8c222bab75a6d27f808961d"
+          },
+          "summary": "Reviewed a small Rust test file that only invokes `pin_project!` to define an enum with pinned and unpinned fields, then exits in `main`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 9632,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059592889,
+            "finished_at_unix_ms": 1784059602522,
+            "total_token_usage": {
+              "input_tokens": 24143,
+              "cached_input_tokens": 21248,
+              "output_tokens": 309,
+              "reasoning_output_tokens": 108,
+              "total_tokens": 24452
+            },
+            "last_token_usage": {
+              "input_tokens": 24143,
+              "cached_input_tokens": 21248,
+              "output_tokens": 309,
+              "reasoning_output_tokens": 108,
+              "total_tokens": 24452
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/naming/enum-none.expanded.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e1c20ad7495ebfbdcac0d6f24c53269d3e1bbf7f4843730f5d5c482b76738c3e"
+          },
+          "summary": "Reviewed this Rust expansion test file, which defines a small `Enum<T, U>` and the `pin_project_lite`-generated `Unpin`/`Drop`-guard scaffolding around it. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators in the file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19232,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059602522,
+            "finished_at_unix_ms": 1784059621755,
+            "total_token_usage": {
+              "input_tokens": 24440,
+              "cached_input_tokens": 21248,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 231,
+              "total_tokens": 24887
+            },
+            "last_token_usage": {
+              "input_tokens": 24440,
+              "cached_input_tokens": 21248,
+              "output_tokens": 447,
+              "reasoning_output_tokens": 231,
+              "total_tokens": 24887
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -2048,9 +2896,319 @@
             "algorithm": "blake3",
             "value": "7e1f24459681d55e2d47eb18ec5be9dcdc52529c3a71a21665634c1742ef3ef2"
           },
-          "summary": "Reviewed `tests/expand/naming/enum-none.rs`, which is a small Rust test case invoking `pin_project!` to define an enum with pinned and unpinned fields and an empty `main`. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "summary": "Reviewed `tests/expand/naming/enum-none.rs`, a small Rust test that invokes `pin_project!` on an enum with a pinned field and a unit variant. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14469,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059621755,
+            "finished_at_unix_ms": 1784059636225,
+            "total_token_usage": {
+              "input_tokens": 24128,
+              "cached_input_tokens": 21248,
+              "output_tokens": 321,
+              "reasoning_output_tokens": 107,
+              "total_tokens": 24449
+            },
+            "last_token_usage": {
+              "input_tokens": 24128,
+              "cached_input_tokens": 21248,
+              "output_tokens": 321,
+              "reasoning_output_tokens": 107,
+              "total_tokens": 24449
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/naming/enum-ref.expanded.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d44ee39d432e75401d05dcc55405a7d40d9f33d642d29edbf5169f1c78155ee8"
+          },
+          "summary": "Reviewed this generated Rust expansion for `Enum<T, U>` projection and `Unpin` plumbing in `pin-project-lite`. I checked for install-time hooks, network or exfiltration, secret access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13937,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059636226,
+            "finished_at_unix_ms": 1784059650163,
+            "total_token_usage": {
+              "input_tokens": 24712,
+              "cached_input_tokens": 23296,
+              "output_tokens": 464,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 25176
+            },
+            "last_token_usage": {
+              "input_tokens": 24712,
+              "cached_input_tokens": 23296,
+              "output_tokens": 464,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 25176
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/naming/enum-ref.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "365901bf652a4a77ef3b0293d8f7d20382626c09d1655bdeb95bc33534ea8587"
+          },
+          "summary": "Reviewed `tests/expand/naming/enum-ref.rs`, a small Rust test that invokes `pin_project!` to define an enum and a generated projection-ref type. I found no concrete signs of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12836,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059650164,
+            "finished_at_unix_ms": 1784059663000,
+            "total_token_usage": {
+              "input_tokens": 24311,
+              "cached_input_tokens": 21248,
+              "output_tokens": 435,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 24746
+            },
+            "last_token_usage": {
+              "input_tokens": 24311,
+              "cached_input_tokens": 21248,
+              "output_tokens": 435,
+              "reasoning_output_tokens": 246,
+              "total_tokens": 24746
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_9e5dc93379324740abe48d45653d67bd",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784062822",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/expand/not_unpin/struct.expanded.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "845fd90142fd928e66d96e97dcf98ab473ea69b806b0d66ac23c74d0d1991f77"
+          },
+          "summary": "Reviewed this Rust macro-expanded test fixture for `pin_project_lite`; it contains generated projection helpers, an `Unpin` bound, and an assertion against packed structs, with only local `unsafe` pinning used for projection. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13270,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062752379,
+            "finished_at_unix_ms": 1784062765649,
+            "total_token_usage": {
+              "input_tokens": 24920,
+              "cached_input_tokens": 23296,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 25357
+            },
+            "last_token_usage": {
+              "input_tokens": 24920,
+              "cached_input_tokens": 23296,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 25357
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/not_unpin/struct.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9325213a2af8ea53f3e9ffe478f9803d8a94a28513a9ba8fe252b53a8b4085b8"
+          },
+          "summary": "Reviewed `tests/expand/not_unpin/struct.rs`, which is a small macro-expansion test that defines a pinned struct and a `main` stub. I found no concrete signs of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11351,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062765649,
+            "finished_at_unix_ms": 1784062777001,
+            "total_token_usage": {
+              "input_tokens": 24162,
+              "cached_input_tokens": 21248,
+              "output_tokens": 370,
+              "reasoning_output_tokens": 165,
+              "total_tokens": 24532
+            },
+            "last_token_usage": {
+              "input_tokens": 24162,
+              "cached_input_tokens": 21248,
+              "output_tokens": 370,
+              "reasoning_output_tokens": 165,
+              "total_tokens": 24532
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/pinned_drop/enum.expanded.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5fd2d76e1850d46b8fece993c3f0ca202c2ee9f172b0d49e6afd5f294ac03c69"
+          },
+          "summary": "Reviewed this expanded Rust test file for `pin_project_lite` enum projection and `Drop`/`Unpin` code generation. It only contains generated pattern-matching, `unsafe` pin projection helpers, and a no-op `main`, with no install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior present.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13626,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062777002,
+            "finished_at_unix_ms": 1784062790628,
+            "total_token_usage": {
+              "input_tokens": 25101,
+              "cached_input_tokens": 23296,
+              "output_tokens": 540,
+              "reasoning_output_tokens": 329,
+              "total_tokens": 25641
+            },
+            "last_token_usage": {
+              "input_tokens": 25101,
+              "cached_input_tokens": 23296,
+              "output_tokens": 540,
+              "reasoning_output_tokens": 329,
+              "total_tokens": 25641
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/pinned_drop/enum.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "eabb6f6228bbbfb7f5f225b218fcdcb1abd46cf1a54de39c0ba246888173abcd"
+          },
+          "summary": "Reviewed `tests/expand/pinned_drop/enum.rs`, which is a small `pin_project_lite` test fixture defining a pinned enum and a no-op `PinnedDrop` implementation. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18387,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062790629,
+            "finished_at_unix_ms": 1784062809016,
+            "total_token_usage": {
+              "input_tokens": 24655,
+              "cached_input_tokens": 21760,
+              "output_tokens": 417,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 25072
+            },
+            "last_token_usage": {
+              "input_tokens": 24655,
+              "cached_input_tokens": 21760,
+              "output_tokens": 417,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 25072
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/pinned_drop/struct.expanded.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4bb6191e72b6e13b2a18c94f1d513621250550f065df77a66c7c9b3b57e00c28"
+          },
+          "summary": "Reviewed the macro-expanded `pin_project_lite` test artifact in `tests/expand/pinned_drop/struct.expanded.rs`, which only defines projection helpers, a generated `Drop` implementation, and a stub `main`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13763,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062809016,
+            "finished_at_unix_ms": 1784062822780,
+            "total_token_usage": {
+              "input_tokens": 25041,
+              "cached_input_tokens": 21248,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 268,
+              "total_tokens": 25524
+            },
+            "last_token_usage": {
+              "input_tokens": 25041,
+              "cached_input_tokens": 21248,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 268,
+              "total_tokens": 25524
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_9ef017ac7e4f4c82988bc76ae010de72",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054331",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "36a9c2651ab8f524ab41146fb79b80c323cc4c992dfef4bfdee506b17d621b11"
+          },
+          "summary": "Reviewed the Rust source in `src/lib.rs`, which defines the `pin_project!` macro and its internal helpers for projection, `Unpin`, and pinned-drop code generation. I checked for install hooks, subprocess or network access, secret harvesting, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24243,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054307071,
+            "finished_at_unix_ms": 1784054331315,
+            "total_token_usage": {
+              "input_tokens": 113802,
+              "cached_input_tokens": 96000,
+              "output_tokens": 1055,
+              "reasoning_output_tokens": 462,
+              "total_tokens": 114857
+            },
+            "last_token_usage": {
+              "input_tokens": 113802,
+              "cached_input_tokens": 96000,
+              "output_tokens": 1055,
+              "reasoning_output_tokens": 462,
+              "total_tokens": 114857
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -2066,7 +3224,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590777",
       "thirdpass_version": "0.6.0",
@@ -2170,7 +3328,7 @@
       ]
     },
     {
-      "id": "rev_bc524503051448969ab6f5e1886fd9fd",
+      "id": "rev_aa4b4a403b584fc68ec110f7834d06c8",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -2178,65 +3336,176 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782746771",
+      "created_at": "1784063997",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/compiletest.rs`, a minimal Rust test harness that conditionally runs `trybuild` compile-fail and pass cases over local test fixtures. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.\nReviewed tests/expandtest.rs, which is a small Rust test harness that runs `macrotest::expand_args` over `tests/expand/**/*.rs` with `--all-features`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the `.cargo_vcs_info.json` VCS metadata record, which only contains a source control SHA1 and an empty `path_in_vcs` field. No concrete malicious or supply-chain indicators were found in this file; there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior present here.\nReviewed `tests/expand/.rustfmt.toml`, which contains a single Rustfmt setting (`disable_all_formatting = true`). It is a static formatter configuration file, and I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in the target file.",
       "files": [
-        {
-          "file_path": "tests/compiletest.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "474639ca227ba06757efad173959a99895b143d26ca067ab46225bbf95608688"
-          },
-          "summary": "Reviewed `tests/compiletest.rs`, a minimal Rust test harness that conditionally runs `trybuild` compile-fail and pass cases over local test fixtures. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": "tests/expandtest.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "683ca3ce912e9ec16e45c5a55e3ed2940acef17514736540552d536c46f05cf3"
           },
-          "summary": "Reviewed tests/expandtest.rs, which is a small Rust test harness that runs `macrotest::expand_args` over `tests/expand/**/*.rs` with `--all-features`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed a small Rust test harness that conditionally runs `macrotest::expand_args` over `tests/expand/**/*.rs` with `--all-features`. It contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14156,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063914663,
+            "finished_at_unix_ms": 1784063928819,
+            "total_token_usage": {
+              "input_tokens": 24123,
+              "cached_input_tokens": 23296,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 24509
+            },
+            "last_token_usage": {
+              "input_tokens": 24123,
+              "cached_input_tokens": 23296,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 24509
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "tests/include/basic.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "b7e1887830262efc25ab66ee2487880d3a89c2ce7568a8acd4749f5bf0d07906"
+            "value": "52d08d426f20ccd7299a33207b566968007ff78aae110fb268865c6835ccc754"
           },
-          "summary": "Reviewed the `.cargo_vcs_info.json` VCS metadata record, which only contains a source control SHA1 and an empty `path_in_vcs` field. No concrete malicious or supply-chain indicators were found in this file; there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior present here.",
+          "summary": "Reviewed `tests/include/basic.rs`, which contains `pin_project_lite!` test definitions for structs, enums, and `PinnedDrop` implementations. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12620,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063928819,
+            "finished_at_unix_ms": 1784063941439,
+            "total_token_usage": {
+              "input_tokens": 25093,
+              "cached_input_tokens": 21760,
+              "output_tokens": 469,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 25562
+            },
+            "last_token_usage": {
+              "input_tokens": 25093,
+              "cached_input_tokens": 21760,
+              "output_tokens": 469,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 25562
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/expand/.rustfmt.toml",
+          "file_path": "tests/proper_unpin.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "5b2b9ee131f018353e448771833ee834ded030b30ace67d7dc8448e1c4bc1bbe"
+            "value": "25857ab501c7857d4b1b68aeb5b0f6df166beaeccc45f2fe23e7460593953fbf"
           },
-          "summary": "Reviewed `tests/expand/.rustfmt.toml`, which contains a single Rustfmt setting (`disable_all_formatting = true`). It is a static formatter configuration file, and I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in the target file.",
+          "summary": "Reviewed `tests/proper_unpin.rs`, a pure Rust unit test file that exercises `pin_project_lite`'s `Unpin` behavior across structs and enums. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12313,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063941440,
+            "finished_at_unix_ms": 1784063953753,
+            "total_token_usage": {
+              "input_tokens": 24596,
+              "cached_input_tokens": 21248,
+              "output_tokens": 373,
+              "reasoning_output_tokens": 168,
+              "total_tokens": 24969
+            },
+            "last_token_usage": {
+              "input_tokens": 24596,
+              "cached_input_tokens": 21248,
+              "output_tokens": 373,
+              "reasoning_output_tokens": 168,
+              "total_tokens": 24969
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/test.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e2acf90f8ec7f7b4fb72532673fc3d149764a1afdb92d627f62acbd61b902249"
+          },
+          "summary": "Reviewed `tests/test.rs`, which is a Rust test suite exercising `pin_project!` macro behavior for projection, replacement, trait bounds, DST/dyn support, visibility, and pinned-drop semantics. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 32974,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063953754,
+            "finished_at_unix_ms": 1784063986729,
+            "total_token_usage": {
+              "input_tokens": 87911,
+              "cached_input_tokens": 81664,
+              "output_tokens": 1044,
+              "reasoning_output_tokens": 429,
+              "total_tokens": 88955
+            },
+            "last_token_usage": {
+              "input_tokens": 87911,
+              "cached_input_tokens": 81664,
+              "output_tokens": 1044,
+              "reasoning_output_tokens": 429,
+              "total_tokens": 88955
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/not_unpin/conflict-unpin.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "30831b5c43d4952e1525a927c2bff520ea11300ce898882d6b6e39e5494a3c5e"
+          },
+          "summary": "Reviewed `tests/ui/not_unpin/conflict-unpin.rs`, which is a small compile-fail test exercising `pin_project!` with conflicting `Unpin` impls for three generic structs. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other payload-like behavior, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10549,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063986729,
+            "finished_at_unix_ms": 1784063997279,
+            "total_token_usage": {
+              "input_tokens": 24284,
+              "cached_input_tokens": 21248,
+              "output_tokens": 361,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 24645
+            },
+            "last_token_usage": {
+              "input_tokens": 24284,
+              "cached_input_tokens": 21248,
+              "output_tokens": 361,
+              "reasoning_output_tokens": 157,
+              "total_tokens": 24645
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_c9f88b8469174cefb9f5e427afde68f1",
+      "id": "rev_aa6f70ac0ecf48278a98f9bf040e7297",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -2244,46 +3513,137 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782746701",
+      "created_at": "1784063457",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/ui/pin_project/unpin_sneaky.rs`, a small compile-fail Rust UI test that invokes `pin_project!` and then attempts an invalid `impl Unpin for __Origin` to trigger expected compiler errors. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.\nReviewed `tests/expand/default/struct.rs`, which is a minimal Rust test invoking `pin_project!` to define a generic struct with one pinned and one unpinned field, followed by an empty `main`. I found no concrete supply-chain or malicious indicators: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed `tests/expand/naming/struct-none.rs`, a small compile-time test that invokes `pin_project!` to define a generic struct with one pinned and one unpinned field, then exits in `main`. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/expand/pub/struct.rs`, which is a small Rust test fixture that invokes `pin_project!` to define a public struct with one pinned and one unpinned field and a खाली `main`. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nThe target file is a small Rust compile-fail test for `pin_project!` that defines a struct with an overlapping lifetime name to trigger compiler errors. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "tests/ui/pin_project/unpin_sneaky.rs",
+          "file_path": "tests/expand/pinned_drop/struct.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "fb150558e537341b1198f213e697b548f599e77f857f9eb5257db56a070f74d8"
+            "value": "7932f3b76051038ef2cb4e309a56ec5e5c88474ee96b7bfd049299ce4a67f1c2"
           },
-          "summary": "Reviewed `tests/ui/pin_project/unpin_sneaky.rs`, a small compile-fail Rust UI test that invokes `pin_project!` and then attempts an invalid `impl Unpin for __Origin` to trigger expected compiler errors. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
+          "summary": "Reviewed `tests/expand/pinned_drop/struct.rs`, which is a small `pin_project!` test defining a pinned struct and a no-op `PinnedDrop` implementation. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12163,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063378305,
+            "finished_at_unix_ms": 1784063390468,
+            "total_token_usage": {
+              "input_tokens": 24191,
+              "cached_input_tokens": 21248,
+              "output_tokens": 430,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 24621
+            },
+            "last_token_usage": {
+              "input_tokens": 24191,
+              "cached_input_tokens": 21248,
+              "output_tokens": 430,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 24621
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/expand/default/struct.rs",
+          "file_path": "tests/expand/pub/enum.expanded.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "3b7f6c00a89a43ce701859b3b9133dfa3f62e078c6054ea29fb397651dd70d20"
+            "value": "4936bfc45f58fa62a20d3bfc06b8cfa426eedf642976d603f157a77d0f8e775b"
           },
-          "summary": "Reviewed `tests/expand/default/struct.rs`, which is a minimal Rust test invoking `pin_project!` to define a generic struct with one pinned and one unpinned field, followed by an empty `main`. I found no concrete supply-chain or malicious indicators: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "summary": "Reviewed `tests/expand/pub/enum.expanded.rs`, which is a generated `pin_project_lite` expansion for an enum with projection and `Unpin`/drop-check scaffolding. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence changes, or subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14542,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063390469,
+            "finished_at_unix_ms": 1784063405012,
+            "total_token_usage": {
+              "input_tokens": 39593,
+              "cached_input_tokens": 34432,
+              "output_tokens": 587,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 40180
+            },
+            "last_token_usage": {
+              "input_tokens": 39593,
+              "cached_input_tokens": 34432,
+              "output_tokens": 587,
+              "reasoning_output_tokens": 257,
+              "total_tokens": 40180
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/expand/naming/struct-none.rs",
+          "file_path": "tests/expand/pub/enum.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "3b7f6c00a89a43ce701859b3b9133dfa3f62e078c6054ea29fb397651dd70d20"
+            "value": "28b4157e87739a84f59278b6dd645c7f8bdaf5377446f44143e579b77a8bf160"
           },
-          "summary": "Reviewed `tests/expand/naming/struct-none.rs`, a small compile-time test that invokes `pin_project!` to define a generic struct with one pinned and one unpinned field, then exits in `main`. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed this Rust test fixture defining a `pin_project!` enum expansion and a trivial `main`; it contains only static type/macro declarations with no install hooks, network or credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10539,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063405012,
+            "finished_at_unix_ms": 1784063415552,
+            "total_token_usage": {
+              "input_tokens": 24169,
+              "cached_input_tokens": 21248,
+              "output_tokens": 366,
+              "reasoning_output_tokens": 189,
+              "total_tokens": 24535
+            },
+            "last_token_usage": {
+              "input_tokens": 24169,
+              "cached_input_tokens": 21248,
+              "output_tokens": 366,
+              "reasoning_output_tokens": 189,
+              "total_tokens": 24535
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/pub/struct.expanded.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "94b722877082ae4b2ab3e0b55d2c63eccf7666ab7f08c989aeb11b295c1eca3f"
+          },
+          "summary": "Reviewed `tests/expand/pub/struct.expanded.rs`, which is a macro-expanded Rust test fixture for pin projection and only defines generated projection structs, safe wrapper methods around localized `unsafe` pin operations, and a `main` stub. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 29212,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063415553,
+            "finished_at_unix_ms": 1784063444765,
+            "total_token_usage": {
+              "input_tokens": 39594,
+              "cached_input_tokens": 36480,
+              "output_tokens": 602,
+              "reasoning_output_tokens": 268,
+              "total_tokens": 40196
+            },
+            "last_token_usage": {
+              "input_tokens": 39594,
+              "cached_input_tokens": 36480,
+              "output_tokens": 602,
+              "reasoning_output_tokens": 268,
+              "total_tokens": 40196
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -2293,21 +3653,206 @@
             "algorithm": "blake3",
             "value": "06f406f8b5c0a03d791cbf836b48f9e7fac15ec4ab66b470fab7148a894821de"
           },
-          "summary": "Reviewed `tests/expand/pub/struct.rs`, which is a small Rust test fixture that invokes `pin_project!` to define a public struct with one pinned and one unpinned field and a खाली `main`. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `tests/expand/pub/struct.rs`, which contains a small `pin_project_lite::pin_project!` test case defining a public generic struct and a `main` stub. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12484,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063444766,
+            "finished_at_unix_ms": 1784063457250,
+            "total_token_usage": {
+              "input_tokens": 24120,
+              "cached_input_tokens": 21248,
+              "output_tokens": 365,
+              "reasoning_output_tokens": 162,
+              "total_tokens": 24485
+            },
+            "last_token_usage": {
+              "input_tokens": 24120,
+              "cached_input_tokens": 21248,
+              "output_tokens": 365,
+              "reasoning_output_tokens": 162,
+              "total_tokens": 24485
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_d602d4243e0a4e10a844f8f15fd752bc",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056493",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/expand/default/enum.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "34f3a84a2291c6f3ebaaf8baabd376bf1e832566d7e442e046759bbf3e7ca1d5"
+          },
+          "summary": "Reviewed this Rust test fixture that exercises the `pin_project!` macro on an enum with pinned and unpinned fields. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14588,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056417077,
+            "finished_at_unix_ms": 1784056431666,
+            "total_token_usage": {
+              "input_tokens": 36724,
+              "cached_input_tokens": 33408,
+              "output_tokens": 446,
+              "reasoning_output_tokens": 154,
+              "total_tokens": 37170
+            },
+            "last_token_usage": {
+              "input_tokens": 36724,
+              "cached_input_tokens": 33408,
+              "output_tokens": 446,
+              "reasoning_output_tokens": 154,
+              "total_tokens": 37170
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/ui/pin_project/overlapping_lifetime_names.rs",
+          "file_path": "tests/expand/default/struct.expanded.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "62601219a866db103af9b8c28c02b4d9ca5e14a5ee23b096be3aefd25e4ea58d"
+            "value": "1aca4e6ad0fded29268d0ec19db2a94a4f4bf7bdefdbe1079a3e1ea455dffbd2"
           },
-          "summary": "The target file is a small Rust compile-fail test for `pin_project!` that defines a struct with an overlapping lifetime name to trigger compiler errors. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the expanded `pin_project_lite` test artifact for `Struct<T, U>`; it only contains generated pin-projection helpers, Unpin/drop assertions, and a trivial `main`, with no install-time hooks, subprocess launches, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16260,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056431667,
+            "finished_at_unix_ms": 1784056447928,
+            "total_token_usage": {
+              "input_tokens": 24972,
+              "cached_input_tokens": 21248,
+              "output_tokens": 630,
+              "reasoning_output_tokens": 431,
+              "total_tokens": 25602
+            },
+            "last_token_usage": {
+              "input_tokens": 24972,
+              "cached_input_tokens": 21248,
+              "output_tokens": 630,
+              "reasoning_output_tokens": 431,
+              "total_tokens": 25602
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/default/struct.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3b7f6c00a89a43ce701859b3b9133dfa3f62e078c6054ea29fb397651dd70d20"
+          },
+          "summary": "Reviewed this test file, which only defines a minimal `pin_project!` struct with one pinned and one unpinned field plus an empty `main`. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13035,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056447928,
+            "finished_at_unix_ms": 1784056460964,
+            "total_token_usage": {
+              "input_tokens": 24213,
+              "cached_input_tokens": 21248,
+              "output_tokens": 390,
+              "reasoning_output_tokens": 187,
+              "total_tokens": 24603
+            },
+            "last_token_usage": {
+              "input_tokens": 24213,
+              "cached_input_tokens": 21248,
+              "output_tokens": 390,
+              "reasoning_output_tokens": 187,
+              "total_tokens": 24603
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/multifields/enum.expanded.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c9ca20a2a3311ec290761b3f19508e830318d53bca406c0c2f8da6eeef8b6527"
+          },
+          "summary": "The target file is expanded Rust test code generated by `pin_project_lite` for an enum projection/replacement implementation and related `Unpin`/drop constraints. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20008,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056460964,
+            "finished_at_unix_ms": 1784056480973,
+            "total_token_usage": {
+              "input_tokens": 24916,
+              "cached_input_tokens": 21248,
+              "output_tokens": 453,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 25369
+            },
+            "last_token_usage": {
+              "input_tokens": 24916,
+              "cached_input_tokens": 21248,
+              "output_tokens": 453,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 25369
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/expand/multifields/enum.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4836c17ea11f49ca63a690e68d36f817957354bdbc1217f569fc010378e86782"
+          },
+          "summary": "Reviewed `tests/expand/multifields/enum.rs`, a small Rust test fixture that defines a `pin_project!` enum with pinned and unpinned fields plus a no-op `main`. I found no concrete malicious or supply-chain indicators in the file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12452,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056480973,
+            "finished_at_unix_ms": 1784056493426,
+            "total_token_usage": {
+              "input_tokens": 24210,
+              "cached_input_tokens": 19200,
+              "output_tokens": 507,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 24717
+            },
+            "last_token_usage": {
+              "input_tokens": 24210,
+              "cached_input_tokens": 19200,
+              "output_tokens": 507,
+              "reasoning_output_tokens": 301,
+              "total_tokens": 24717
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -2323,7 +3868,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590720",
       "thirdpass_version": "0.6.0",
@@ -2485,162 +4030,6 @@
               "total_tokens": 21027
             }
           },
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_e31586b47c9343908a6f6f344160c82b",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782746475",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/expand/naming/enum-all.rs`, which is a small Rust test exercising the `pin_project!` macro on an enum with projected, ref, and replace variants. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nThe target file is a small Rust test case that exercises `pin_project!` on an enum with `#[project(!Unpin)]` and named projection types. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/ui/pinned_drop/call-drop-inner.rs`, a small Rust compile-test that defines a `pin_project!` struct with a `PinnedDrop` implementation calling `__drop_inner(this)` and instantiates the type in `main`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/expand/pinned_drop/struct.rs`, which is a small Rust test case defining a pinned struct and a `PinnedDrop` implementation that only binds `this` and discards it. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `tests/expand/pub/enum.rs`, which is a small macro-based Rust test that defines a public enum with `pin_project!` and a no-op `main()`. I checked for install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "tests/expand/naming/enum-all.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "34f3a84a2291c6f3ebaaf8baabd376bf1e832566d7e442e046759bbf3e7ca1d5"
-          },
-          "summary": "Reviewed `tests/expand/naming/enum-all.rs`, which is a small Rust test exercising the `pin_project!` macro on an enum with projected, ref, and replace variants. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/not_unpin/enum.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b1f237b914c8f0180691edb2084d7d6d5342305c4243d61e0d51ae797e7330b8"
-          },
-          "summary": "The target file is a small Rust test case that exercises `pin_project!` on an enum with `#[project(!Unpin)]` and named projection types. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/pinned_drop/call-drop-inner.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e92553f765dfaecedd4b679da3f60e378c4f67f9450cb05bf9e406925584bfd8"
-          },
-          "summary": "Reviewed `tests/ui/pinned_drop/call-drop-inner.rs`, a small Rust compile-test that defines a `pin_project!` struct with a `PinnedDrop` implementation calling `__drop_inner(this)` and instantiates the type in `main`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/pinned_drop/struct.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7932f3b76051038ef2cb4e309a56ec5e5c88474ee96b7bfd049299ce4a67f1c2"
-          },
-          "summary": "Reviewed `tests/expand/pinned_drop/struct.rs`, which is a small Rust test case defining a pinned struct and a `PinnedDrop` implementation that only binds `this` and discards it. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/pub/enum.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "28b4157e87739a84f59278b6dd645c7f8bdaf5377446f44143e579b77a8bf160"
-          },
-          "summary": "Reviewed `tests/expand/pub/enum.rs`, which is a small macro-based Rust test that defines a public enum with `pin_project!` and a no-op `main()`. I checked for install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_fd9bf72ac69a4d6eb7f654ca900e6153",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782746287",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/ui/pin_project/unsupported.rs`, which is a compile-fail UI test exercising unsupported `pin_project!` inputs (`struct` braces/tuple/unit forms, `enum`, and `union`) and a trivial `main`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed this Rust UI test file for `pin_project_lite`; it only exercises compile-time `Drop`/`PinnedDrop` trait bound errors and contains no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `tests/ui/pin_project/invalid.rs`, which contains compile-fail macro tests for malformed `pin_project!` attribute usage. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain malicious behavior in this file.\nReviewed this test file, which defines a `pin_project!` enum with a `PinnedDrop` impl and an empty `main`; it appears to be a normal compile-time expansion test. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in the target file.\nI reviewed `tests/ui/not_unpin/negative_impls_stable.rs`, a small Rust UI test exercising `pin_project_lite` and `Unpin`/negative-impl edge cases. It contains only local type definitions and a compile-time assertion path; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.",
-      "files": [
-        {
-          "file_path": "tests/ui/pin_project/unsupported.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "99799880adea85ecd394ad4ddb2b0adae4f5d7882c20cb302a52bde9795421ed"
-          },
-          "summary": "Reviewed `tests/ui/pin_project/unsupported.rs`, which is a compile-fail UI test exercising unsupported `pin_project!` inputs (`struct` braces/tuple/unit forms, `enum`, and `union`) and a trivial `main`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/pinned_drop/conditional-drop-impl.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6b0eb39547481a45280df91c657c303cba8b50352377e397e18ad0b323eac151"
-          },
-          "summary": "Reviewed this Rust UI test file for `pin_project_lite`; it only exercises compile-time `Drop`/`PinnedDrop` trait bound errors and contains no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/pin_project/invalid.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "44d7736b889f1556bcb8b71900eadd634c7be79659f2376b116410c3c16aef00"
-          },
-          "summary": "Reviewed `tests/ui/pin_project/invalid.rs`, which contains compile-fail macro tests for malformed `pin_project!` attribute usage. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain malicious behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/expand/pinned_drop/enum.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "eabb6f6228bbbfb7f5f225b218fcdcb1abd46cf1a54de39c0ba246888173abcd"
-          },
-          "summary": "Reviewed this test file, which defines a `pin_project!` enum with a `PinnedDrop` impl and an empty `main`; it appears to be a normal compile-time expansion test. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/not_unpin/negative_impls_stable.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b2a38390b5d85600410aced333365c50eefc8458cb0a45cd23ceabd2f010a0ef"
-          },
-          "summary": "I reviewed `tests/ui/not_unpin/negative_impls_stable.rs`, a small Rust UI test exercising `pin_project_lite` and `Unpin`/negative-impl edge cases. It contains only local type definitions and a compile-time assertion path; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

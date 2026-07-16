@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590954",
+  "latest_reviewed_at": "1784059157",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -336,50 +342,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 4,
-      "file_record_count": 18,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 2,
-      "file_record_count": 7,
-      "file_record_count_with_metrics": 7
+      "review_count": 6,
+      "file_record_count": 25,
+      "file_record_count_with_metrics": 25
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 25,
-    "file_records_with_metrics": 7,
-    "file_records_without_metrics": 18,
-    "duration_ms_total": 166635,
-    "attempts_total": 7,
+    "file_records_with_metrics": 25,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 466840,
+    "attempts_total": 25,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 7,
-    "last_token_usage_records": 7,
+    "total_token_usage_records": 25,
+    "last_token_usage_records": 25,
     "total_token_usage": {
-      "input_tokens": 237485,
-      "cached_input_tokens": 204800,
-      "output_tokens": 5224,
-      "reasoning_output_tokens": 2516,
-      "total_tokens": 242709
+      "input_tokens": 846860,
+      "cached_input_tokens": 729856,
+      "output_tokens": 14568,
+      "reasoning_output_tokens": 7075,
+      "total_tokens": 861428
     },
     "last_token_usage": {
-      "input_tokens": 237485,
-      "cached_input_tokens": 204800,
-      "output_tokens": 5224,
-      "reasoning_output_tokens": 2516,
-      "total_tokens": 242709
+      "input_tokens": 846860,
+      "cached_input_tokens": 729856,
+      "output_tokens": 14568,
+      "reasoning_output_tokens": 7075,
+      "total_tokens": 861428
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_1ad4384f634b44419039c8c5fdc25437",
+      "id": "rev_2d16c9f6bd0e42a488431be4b205c5bd",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -387,58 +385,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783175962",
+      "created_at": "1784059157",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/os/unix/consts.rs`, which is a platform-conditional set of `RTLD_*` constant definitions for Unix dynamic loading. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.\nThis file is a GitHub Actions CI workflow that checks out the repository and runs Rust builds/tests across Linux, Windows, macOS, and a few cross targets. I reviewed it for install-time execution, hidden downloads, credential or secret access, data exfiltration, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in the target file.\nReviewed `src/error.rs`, which only defines error wrapper types and formatting/display logic for dynamic loading failures on Unix and Windows. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\n`src/safe.rs` is the safe wrapper around platform-specific dynamic library loading and symbol access. I reviewed the file for install-time execution, network/exfiltration, credential access, dynamic code loading beyond explicit library loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/markers.rs`, which is a small compile-time test module asserting `Send`, `Sync`, and `Display` bounds for `libloading` types across Unix and Windows targets. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/os/unix/consts.rs",
+          "file_path": "tests/library_filename.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "4c1a7f1d205b45d7ed6d55b2c44798934776315c298c7ff917859c93a81b51af"
+            "value": "19cdd4bd82d210c88027af7be8234753a418395f4ca73ad30ac02cf84404e2ec"
           },
-          "summary": "Reviewed `src/os/unix/consts.rs`, which is a platform-conditional set of `RTLD_*` constant definitions for Unix dynamic loading. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `tests/library_filename.rs`, which is a small unit test for `libloading::library_filename` across platform-specific extensions. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".github/workflows/libloading.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "641af8e53de75929d58c6eaa4eea9a78db0369b5da09a34d2bb6f68ff56a53d3"
+          "agent_run_metrics": {
+            "duration_ms": 11899,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059117460,
+            "finished_at_unix_ms": 1784059129359,
+            "total_token_usage": {
+              "input_tokens": 36808,
+              "cached_input_tokens": 33408,
+              "output_tokens": 421,
+              "reasoning_output_tokens": 129,
+              "total_tokens": 37229
+            },
+            "last_token_usage": {
+              "input_tokens": 36808,
+              "cached_input_tokens": 33408,
+              "output_tokens": 421,
+              "reasoning_output_tokens": 129,
+              "total_tokens": 37229
+            }
           },
-          "summary": "This file is a GitHub Actions CI workflow that checks out the repository and runs Rust builds/tests across Linux, Windows, macOS, and a few cross targets. I reviewed it for install-time execution, hidden downloads, credential or secret access, data exfiltration, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/error.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "eda679faa89b988b56b5e5b55bb52e0c11cea82f260db073b84d340fdaea85e3"
-          },
-          "summary": "Reviewed `src/error.rs`, which only defines error wrapper types and formatting/display logic for dynamic loading failures on Unix and Windows. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/safe.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5b23dce61495e190778e6275c3fec330d3878a5f634bc78ad468bc6aa2a063ac"
-          },
-          "summary": "`src/safe.rs` is the safe wrapper around platform-specific dynamic library loading and symbol access. I reviewed the file for install-time execution, network/exfiltration, credential access, dynamic code loading beyond explicit library loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -448,9 +429,238 @@
             "algorithm": "blake3",
             "value": "9c12070ea332fbec1dcd457f913a5d638e405636d996cab64987af3b984502ff"
           },
-          "summary": "Reviewed `tests/markers.rs`, which is a small compile-time test module asserting `Send`, `Sync`, and `Display` bounds for `libloading` types across Unix and Windows targets. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `tests/markers.rs`, which is a small test module asserting that `libloading` types implement `Send`, `Sync`, and `Display` across platform-specific variants. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocesses, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15569,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059129360,
+            "finished_at_unix_ms": 1784059144930,
+            "total_token_usage": {
+              "input_tokens": 24564,
+              "cached_input_tokens": 19200,
+              "output_tokens": 370,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 24934
+            },
+            "last_token_usage": {
+              "input_tokens": 24564,
+              "cached_input_tokens": 19200,
+              "output_tokens": 370,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 24934
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/windows.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "57d05c05da1d53e88a07674f323f4112ba2833b13158c530d226fe6bc546bdb6"
+          },
+          "summary": "Reviewed `tests/windows.rs`, which contains Windows-only unit tests for loading local DLLs by ordinal and verifying symbol lookup behavior. I checked for install hooks, network or exfiltration, credential access, hidden downloads, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious or suspicious behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12843,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059144931,
+            "finished_at_unix_ms": 1784059157774,
+            "total_token_usage": {
+              "input_tokens": 24658,
+              "cached_input_tokens": 19200,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 25065
+            },
+            "last_token_usage": {
+              "input_tokens": 24658,
+              "cached_input_tokens": 19200,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 218,
+              "total_tokens": 25065
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_4f2e19bea78b4af099c08cc88b490553",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784057632",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/safe.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5b23dce61495e190778e6275c3fec330d3878a5f634bc78ad468bc6aa2a063ac"
+          },
+          "summary": "Reviewed `src/safe.rs`, which is a normal safe wrapper around platform-specific dynamic library loading and symbol access (`Library`, `Symbol`, `new`, `get`, `close`, and lifetime-preserving/raw conversions). I checked for install-time hooks, network or exfiltration behavior, credential access, hidden downloads or dynamic code loading beyond the expected library-loading API, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16517,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057553247,
+            "finished_at_unix_ms": 1784057569765,
+            "total_token_usage": {
+              "input_tokens": 43580,
+              "cached_input_tokens": 36480,
+              "output_tokens": 650,
+              "reasoning_output_tokens": 316,
+              "total_tokens": 44230
+            },
+            "last_token_usage": {
+              "input_tokens": 43580,
+              "cached_input_tokens": 36480,
+              "output_tokens": 650,
+              "reasoning_output_tokens": 316,
+              "total_tokens": 44230
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/test_helpers.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0885740222aba01a0a32ceb7d1c37040579a17e80958adefcec677da27e5da7d"
+          },
+          "summary": "Reviewed src/test_helpers.rs, which is a small cdylib test helper exporting a few C ABI identity functions and static symbols for the crate's tests. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16008,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057569765,
+            "finished_at_unix_ms": 1784057585774,
+            "total_token_usage": {
+              "input_tokens": 37121,
+              "cached_input_tokens": 33408,
+              "output_tokens": 434,
+              "reasoning_output_tokens": 152,
+              "total_tokens": 37555
+            },
+            "last_token_usage": {
+              "input_tokens": 37121,
+              "cached_input_tokens": 33408,
+              "output_tokens": 434,
+              "reasoning_output_tokens": 152,
+              "total_tokens": 37555
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/util.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "481ee8feaa84367ccefe21ac5218debe9e4b62a0a275e1e66e352cdf8df9e707"
+          },
+          "summary": "Reviewed `src/util.rs`, which contains small helper functions for converting byte slices into `CStr`/`CString` values and checking type-size compatibility. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16093,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057585774,
+            "finished_at_unix_ms": 1784057601868,
+            "total_token_usage": {
+              "input_tokens": 24625,
+              "cached_input_tokens": 21760,
+              "output_tokens": 503,
+              "reasoning_output_tokens": 204,
+              "total_tokens": 25128
+            },
+            "last_token_usage": {
+              "input_tokens": 24625,
+              "cached_input_tokens": 21760,
+              "output_tokens": 503,
+              "reasoning_output_tokens": 204,
+              "total_tokens": 25128
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/constants.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "97c613929f523123095818ef2e94cb81ec918748835c5faaa2e699af4ac23ba2"
+          },
+          "summary": "Reviewed `tests/constants.rs`, which only contains a Unix test module with compile-time assertions that `libloading`'s RTLD constants match `libc` values. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12977,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057601869,
+            "finished_at_unix_ms": 1784057614846,
+            "total_token_usage": {
+              "input_tokens": 24201,
+              "cached_input_tokens": 23296,
+              "output_tokens": 351,
+              "reasoning_output_tokens": 161,
+              "total_tokens": 24552
+            },
+            "last_token_usage": {
+              "input_tokens": 24201,
+              "cached_input_tokens": 23296,
+              "output_tokens": 351,
+              "reasoning_output_tokens": 161,
+              "total_tokens": 24552
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/functions.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c52123063f353aa0641237f650af5ab49e1d9e0aa3cb4f036033d354803f3b0c"
+          },
+          "summary": "`tests/functions.rs` is a test harness for `libloading` that compiles a local helper module with `rustc`, loads it from disk, and exercises symbol lookup and platform-specific library behavior. I checked for install hooks, network or exfiltration, credential access, dynamic remote code loading, obfuscation, persistence, and hidden subprocess behavior beyond the local test compile step, and found no concrete malicious indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17282,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057614847,
+            "finished_at_unix_ms": 1784057632130,
+            "total_token_usage": {
+              "input_tokens": 40651,
+              "cached_input_tokens": 36992,
+              "output_tokens": 581,
+              "reasoning_output_tokens": 289,
+              "total_tokens": 41232
+            },
+            "last_token_usage": {
+              "input_tokens": 40651,
+              "cached_input_tokens": 36992,
+              "output_tokens": 581,
+              "reasoning_output_tokens": 289,
+              "total_tokens": 41232
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -466,7 +676,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590888",
       "thirdpass_version": "0.6.0",
@@ -634,84 +844,6 @@
       ]
     },
     {
-      "id": "rev_892c541599494e5686dfdfe9ed2ef355",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783176127",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is the crate root and public documentation/helper entrypoint for `libloading`, plus the `library_filename` helper. I found no concrete supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading from remote sources, obfuscation, or persistence behavior.\nReviewed `tests/library_filename.rs`, a small cross-platform unit test that checks `libloading::library_filename` produces the expected platform-specific library name. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading from untrusted sources, obfuscation, or persistence behavior in this file.\nReviewed `tests/constants.rs`, which only contains compile-time assertions that `libloading::os::unix` constants match `libc` values under `#[cfg(all(test, unix))]`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `src/os/mod.rs`, which is a small platform-gated module index exposing `unix` and `windows` dynamic-loading bindings with only documentation comments and conditional `pub mod` declarations. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none are present in this file.\nReviewed .cargo_vcs_info.json, which only records the package's VCS provenance (a git SHA1 and empty path_in_vcs). I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "59c1e9692dea43f7367d860ab78ea6452349fecdf8dd640eaf389172cac0cfb5"
-          },
-          "summary": "Reviewed `src/lib.rs`, which is the crate root and public documentation/helper entrypoint for `libloading`, plus the `library_filename` helper. I found no concrete supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading from remote sources, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/library_filename.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "19cdd4bd82d210c88027af7be8234753a418395f4ca73ad30ac02cf84404e2ec"
-          },
-          "summary": "Reviewed `tests/library_filename.rs`, a small cross-platform unit test that checks `libloading::library_filename` produces the expected platform-specific library name. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading from untrusted sources, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/constants.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "97c613929f523123095818ef2e94cb81ec918748835c5faaa2e699af4ac23ba2"
-          },
-          "summary": "Reviewed `tests/constants.rs`, which only contains compile-time assertions that `libloading::os::unix` constants match `libc` values under `#[cfg(all(test, unix))]`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/os/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e14cfdd783b59d6b3aaad3999429feccd6ea96f2a2dff002f866388dbca0030d"
-          },
-          "summary": "Reviewed `src/os/mod.rs`, which is a small platform-gated module index exposing `unix` and `windows` dynamic-loading bindings with only documentation comments and conditional `pub mod` declarations. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ba314806f34c1a26413dfdf61a92d30e499a17d29485f37731688fe5f0618213"
-          },
-          "summary": "Reviewed .cargo_vcs_info.json, which only records the package's VCS provenance (a git SHA1 and empty path_in_vcs). I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
       "id": "rev_a435e423c21d4afc90c90171cee43bff",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
@@ -721,7 +853,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590954",
       "thirdpass_version": "0.6.0",
@@ -793,7 +925,7 @@
       ]
     },
     {
-      "id": "rev_cd5db01e0ec1400190e4abdbb99db30a",
+      "id": "rev_e1f617a3f3654c09b9d0ea242277a1d4",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -801,34 +933,105 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783176065",
+      "created_at": "1784053500",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the normalized `Cargo.toml` for `libloading` 0.8.9. It only contains package metadata, library/test target declarations, dependency lists, docs.rs settings, and lint configuration; I found no install hooks, build scripts, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `tests/windows.rs`, which contains Windows-only unit tests that load local test DLLs (`tests/nagisa32.dll` / `tests/nagisa64.dll`) and verify ordinal lookup and library loading behavior. I found no concrete indicators of malicious or supply-chain behavior in this file: no install hooks, network/exfiltration, credential access, dynamic code loading from remote sources, obfuscation/packing, or persistence/tampering logic.\nReviewed `src/changelog.rs`, which is a release-notes-only module made up of doc comments and empty `pub mod` markers for historical versions. I checked for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `src/test_helpers.rs`, which is a small `cdylib` test helper module exposing a few `no_mangle` C ABI exports for identity and static-value checks. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed src/util.rs, which contains small CString/CStr conversion helpers and a type-size compatibility check. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ba314806f34c1a26413dfdf61a92d30e499a17d29485f37731688fe5f0618213"
+          },
+          "summary": "Reviewed .cargo_vcs_info.json, which only records Cargo VCS metadata for the package source commit (`git.sha1`) and an empty `path_in_vcs`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 40873,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053401292,
+            "finished_at_unix_ms": 1784053442165,
+            "total_token_usage": {
+              "input_tokens": 24379,
+              "cached_input_tokens": 21760,
+              "output_tokens": 681,
+              "reasoning_output_tokens": 379,
+              "total_tokens": 25060
+            },
+            "last_token_usage": {
+              "input_tokens": 24379,
+              "cached_input_tokens": 21760,
+              "output_tokens": 681,
+              "reasoning_output_tokens": 379,
+              "total_tokens": 25060
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/libloading.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "641af8e53de75929d58c6eaa4eea9a78db0369b5da09a34d2bb6f68ff56a53d3"
+          },
+          "summary": "Reviewed the GitHub Actions workflow that runs Rust CI across native, Windows, MSYS2, iOS, and cross-build targets. I checked for install-time execution, secret/credential access, network exfiltration, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15915,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053442165,
+            "finished_at_unix_ms": 1784053458080,
+            "total_token_usage": {
+              "input_tokens": 38909,
+              "cached_input_tokens": 34432,
+              "output_tokens": 635,
+              "reasoning_output_tokens": 333,
+              "total_tokens": 39544
+            },
+            "last_token_usage": {
+              "input_tokens": 38909,
+              "cached_input_tokens": 34432,
+              "output_tokens": 635,
+              "reasoning_output_tokens": 333,
+              "total_tokens": 39544
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
         {
           "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
             "value": "2bf6858d41def2e4175a1e0e044fdc4897c4976d5240dbf943fbf9611393e88c"
           },
-          "summary": "Reviewed the normalized `Cargo.toml` for `libloading` 0.8.9. It only contains package metadata, library/test target declarations, dependency lists, docs.rs settings, and lint configuration; I found no install hooks, build scripts, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed the normalized Cargo manifest for `libloading` 0.8.9. It only declares package metadata, library/test targets, platform-gated dependencies, and lint settings; I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/windows.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "57d05c05da1d53e88a07674f323f4112ba2833b13158c530d226fe6bc546bdb6"
+          "agent_run_metrics": {
+            "duration_ms": 12017,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053458081,
+            "finished_at_unix_ms": 1784053470099,
+            "total_token_usage": {
+              "input_tokens": 24592,
+              "cached_input_tokens": 21248,
+              "output_tokens": 431,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 25023
+            },
+            "last_token_usage": {
+              "input_tokens": 24592,
+              "cached_input_tokens": 21248,
+              "output_tokens": 431,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 25023
+            }
           },
-          "summary": "Reviewed `tests/windows.rs`, which contains Windows-only unit tests that load local test DLLs (`tests/nagisa32.dll` / `tests/nagisa64.dll`) and verify ordinal lookup and library loading behavior. I found no concrete indicators of malicious or supply-chain behavior in this file: no install hooks, network/exfiltration, credential access, dynamic code loading from remote sources, obfuscation/packing, or persistence/tampering logic.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -838,40 +1041,68 @@
             "algorithm": "blake3",
             "value": "515c3bd4b40676337c280bbbd4c985c389aadc8000757a27fe182331f39dd38a"
           },
-          "summary": "Reviewed `src/changelog.rs`, which is a release-notes-only module made up of doc comments and empty `pub mod` markers for historical versions. I checked for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/changelog.rs`, which is a pure release-notes module containing versioned documentation entries for libloading 0.3.0 through 0.8.9. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise patterns in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15909,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053470099,
+            "finished_at_unix_ms": 1784053486009,
+            "total_token_usage": {
+              "input_tokens": 43567,
+              "cached_input_tokens": 35968,
+              "output_tokens": 586,
+              "reasoning_output_tokens": 292,
+              "total_tokens": 44153
+            },
+            "last_token_usage": {
+              "input_tokens": 43567,
+              "cached_input_tokens": 35968,
+              "output_tokens": 586,
+              "reasoning_output_tokens": 292,
+              "total_tokens": 44153
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/test_helpers.rs",
+          "file_path": "src/error.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "0885740222aba01a0a32ceb7d1c37040579a17e80958adefcec677da27e5da7d"
+            "value": "eda679faa89b988b56b5e5b55bb52e0c11cea82f260db073b84d340fdaea85e3"
           },
-          "summary": "Reviewed `src/test_helpers.rs`, which is a small `cdylib` test helper module exposing a few `no_mangle` C ABI exports for identity and static-value checks. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/error.rs`, which only defines error wrapper types and `Display`/`std::error::Error` implementations for `dlopen`/`LoadLibrary` and CString conversion failures. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/util.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "481ee8feaa84367ccefe21ac5218debe9e4b62a0a275e1e66e352cdf8df9e707"
+          "agent_run_metrics": {
+            "duration_ms": 14568,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053486010,
+            "finished_at_unix_ms": 1784053500579,
+            "total_token_usage": {
+              "input_tokens": 25767,
+              "cached_input_tokens": 21248,
+              "output_tokens": 517,
+              "reasoning_output_tokens": 314,
+              "total_tokens": 26284
+            },
+            "last_token_usage": {
+              "input_tokens": 25767,
+              "cached_input_tokens": 21248,
+              "output_tokens": 517,
+              "reasoning_output_tokens": 314,
+              "total_tokens": 26284
+            }
           },
-          "summary": "Reviewed src/util.rs, which contains small CString/CStr conversion helpers and a type-size compatibility check. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_cf9e2d6e224041d1b7ca7c70cfd3cb8e",
+      "id": "rev_f66f9663c048420daa7ff8df7016670f",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -879,22 +1110,105 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783175883",
+      "created_at": "1784055797",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/os/windows/mod.rs`, which is a Windows-specific dynamic loading wrapper around `LoadLibraryExW`, `GetModuleHandleExW`, `GetProcAddress`, and related handle-management helpers. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential or secret access, obfuscation/packing, persistence tampering, or hidden dynamic code loading beyond the expected DLL loader API surface.\nReviewed `src/os/unix/mod.rs`, which is a Unix dynamic-loading wrapper around `dlopen`/`dlsym`/`dlclose` with error handling and symbol conversion logic. I checked for install-time hooks, network or exfiltration, credential access, hidden downloads, dynamic code loading beyond the documented library loading API, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/functions.rs`, which is a test suite for `libloading` that compiles a local helper module with `rustc` and exercises symbol loading, null-terminated name handling, type compatibility, and platform-specific library lookups. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading from untrusted sources, obfuscation, or persistence in this file.",
       "files": [
         {
-          "file_path": "src/os/windows/mod.rs",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "87989cafdb166b411ae5eab52e181a0995c44bb23589c573298ab8a34857e445"
+            "value": "59c1e9692dea43f7367d860ab78ea6452349fecdf8dd640eaf389172cac0cfb5"
           },
-          "summary": "Reviewed `src/os/windows/mod.rs`, which is a Windows-specific dynamic loading wrapper around `LoadLibraryExW`, `GetModuleHandleExW`, `GetProcAddress`, and related handle-management helpers. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential or secret access, obfuscation/packing, persistence tampering, or hidden dynamic code loading beyond the expected DLL loader API surface.",
+          "summary": "Reviewed `src/lib.rs`, which is the crate root for `libloading` and mainly exposes the public API plus the `library_filename` helper that assembles platform-appropriate shared-library names. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading beyond the crate’s documented library-loading purpose, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12823,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055715900,
+            "finished_at_unix_ms": 1784055728724,
+            "total_token_usage": {
+              "input_tokens": 24912,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 25377
+            },
+            "last_token_usage": {
+              "input_tokens": 24912,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 25377
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/os/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e14cfdd783b59d6b3aaad3999429feccd6ea96f2a2dff002f866388dbca0030d"
+          },
+          "summary": "Reviewed `src/os/mod.rs`, which is only a small module-dispatch file that conditionally exposes the `unix` and `windows` dynamic-loading bindings. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11706,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055728725,
+            "finished_at_unix_ms": 1784055740432,
+            "total_token_usage": {
+              "input_tokens": 24277,
+              "cached_input_tokens": 21248,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 261,
+              "total_tokens": 24738
+            },
+            "last_token_usage": {
+              "input_tokens": 24277,
+              "cached_input_tokens": 21248,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 261,
+              "total_tokens": 24738
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/os/unix/consts.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4c1a7f1d205b45d7ed6d55b2c44798934776315c298c7ff917859c93a81b51af"
+          },
+          "summary": "Reviewed `src/os/unix/consts.rs`, which only defines platform-specific `RTLD_*` constants and compile-time target selection logic for Unix-like dynamic loader flags. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20113,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055740432,
+            "finished_at_unix_ms": 1784055760546,
+            "total_token_usage": {
+              "input_tokens": 40246,
+              "cached_input_tokens": 34944,
+              "output_tokens": 477,
+              "reasoning_output_tokens": 166,
+              "total_tokens": 40723
+            },
+            "last_token_usage": {
+              "input_tokens": 40246,
+              "cached_input_tokens": 34944,
+              "output_tokens": 477,
+              "reasoning_output_tokens": 166,
+              "total_tokens": 40723
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -904,21 +1218,61 @@
             "algorithm": "blake3",
             "value": "7a2da2e98ca552379a9419c9fe7af46a84287f3185729b86219b83f9534b2c70"
           },
-          "summary": "Reviewed `src/os/unix/mod.rs`, which is a Unix dynamic-loading wrapper around `dlopen`/`dlsym`/`dlclose` with error handling and symbol conversion logic. I checked for install-time hooks, network or exfiltration, credential access, hidden downloads, dynamic code loading beyond the documented library loading API, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/os/unix/mod.rs`, which implements the Unix backend for `libloading` by wrapping `dlopen`/`dlsym`/`dlclose`/`dlerror` to load shared objects and resolve symbols. I checked this file for install-time hooks, network or credential access, hidden downloads, obfuscation/deobfuscation, persistence tampering, and other supply-chain indicators, and found no concrete malicious behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17324,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055760547,
+            "finished_at_unix_ms": 1784055777871,
+            "total_token_usage": {
+              "input_tokens": 43843,
+              "cached_input_tokens": 35968,
+              "output_tokens": 637,
+              "reasoning_output_tokens": 325,
+              "total_tokens": 44480
+            },
+            "last_token_usage": {
+              "input_tokens": 43843,
+              "cached_input_tokens": 35968,
+              "output_tokens": 637,
+              "reasoning_output_tokens": 325,
+              "total_tokens": 44480
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/functions.rs",
+          "file_path": "src/os/windows/mod.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "c52123063f353aa0641237f650af5ab49e1d9e0aa3cb4f036033d354803f3b0c"
+            "value": "87989cafdb166b411ae5eab52e181a0995c44bb23589c573298ab8a34857e445"
           },
-          "summary": "Reviewed `tests/functions.rs`, which is a test suite for `libloading` that compiles a local helper module with `rustc` and exercises symbol loading, null-terminated name handling, type compatibility, and platform-specific library lookups. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading from untrusted sources, obfuscation, or persistence in this file.",
+          "summary": "Reviewed the Windows-specific `libloading` wrapper that binds to `kernel32.dll` and exposes DLL load, handle, symbol lookup, and flag constants. I checked this file for install-time execution, network/exfiltration, credential access, hidden downloads, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19769,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055777872,
+            "finished_at_unix_ms": 1784055797642,
+            "total_token_usage": {
+              "input_tokens": 62675,
+              "cached_input_tokens": 53248,
+              "output_tokens": 737,
+              "reasoning_output_tokens": 363,
+              "total_tokens": 63412
+            },
+            "last_token_usage": {
+              "input_tokens": 62675,
+              "cached_input_tokens": 53248,
+              "output_tokens": 737,
+              "reasoning_output_tokens": 363,
+              "total_tokens": 63412
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589602",
+  "latest_reviewed_at": "1784060311",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -347,50 +353,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 6,
-      "file_record_count": 22,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 6,
+      "file_record_count": 26,
+      "file_record_count_with_metrics": 26
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 26,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 22,
-    "duration_ms_total": 60847,
-    "attempts_total": 4,
+    "file_records_with_metrics": 26,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 513929,
+    "attempts_total": 26,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 26,
+    "last_token_usage_records": 26,
     "total_token_usage": {
-      "input_tokens": 85724,
-      "cached_input_tokens": 70656,
-      "output_tokens": 1503,
-      "reasoning_output_tokens": 728,
-      "total_tokens": 87227
+      "input_tokens": 1132721,
+      "cached_input_tokens": 1007232,
+      "output_tokens": 17419,
+      "reasoning_output_tokens": 8892,
+      "total_tokens": 1150140
     },
     "last_token_usage": {
-      "input_tokens": 85724,
-      "cached_input_tokens": 70656,
-      "output_tokens": 1503,
-      "reasoning_output_tokens": 728,
-      "total_tokens": 87227
+      "input_tokens": 1132721,
+      "cached_input_tokens": 1007232,
+      "output_tokens": 17419,
+      "reasoning_output_tokens": 8892,
+      "total_tokens": 1150140
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_7b53aebf8cb14dbc981838fdc5ed54fe",
+      "id": "rev_0720d991f7304d1990b57f8ee991b15d",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -398,58 +396,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782861170",
+      "created_at": "1784057361",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/format_description/public/mod.rs`, which only builds token-stream representations of owned time-format description items for versioned enums. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/time.rs`, which is a small parser/expander for time literals that converts parsed components into a `::time::Time` token via an unchecked constructor. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nI reviewed `src/offset.rs`, which parses a UTC offset token stream and emits a `time::UtcOffset::__from_hms_unchecked(...)` constructor call. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/to_tokens.rs`, which is a small proc-macro helper module for converting Rust values into `TokenStream`/`TokenTree` outputs. I checked for install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/format_description/public/component.rs`, a proc-macro helper that maps formatting component variants into token streams via `declare_component!` and `ToTokenStream`. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
-          "file_path": "src/format_description/public/mod.rs",
+          "file_path": "src/format_description/lexer.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "31f92d1395169438eab0641978910b8f7c7cf55a1713c1a7adf21e0955f9485c"
+            "value": "cffb1997ace1257fe4d20aa176efaf5ffc68531060c715e3bb4d0a96660b8cfd"
           },
-          "summary": "Reviewed `src/format_description/public/mod.rs`, which only builds token-stream representations of owned time-format description items for versioned enums. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/format_description/lexer.rs`, which tokenizes format-description input into literals, bracket tokens, and component parts while tracking spans and validating UTF-8/escape sequences. I checked for install-time execution, subprocess or network activity, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21132,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057260041,
+            "finished_at_unix_ms": 1784057281173,
+            "total_token_usage": {
+              "input_tokens": 54433,
+              "cached_input_tokens": 48640,
+              "output_tokens": 862,
+              "reasoning_output_tokens": 434,
+              "total_tokens": 55295
+            },
+            "last_token_usage": {
+              "input_tokens": 54433,
+              "cached_input_tokens": 48640,
+              "output_tokens": 862,
+              "reasoning_output_tokens": 434,
+              "total_tokens": 55295
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/time.rs",
+          "file_path": "src/format_description/mod.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "16ae981187510e66719331b7b8205fea1b619b26d995b0da6d40fc897594fc58"
+            "value": "5cddd18228c87dcda4b557afb89451971d85e02d49594e231091f75d07331b7b"
           },
-          "summary": "Reviewed `src/time.rs`, which is a small parser/expander for time literals that converts parsed components into a `::time::Time` token via an unchecked constructor. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/format_description/mod.rs`, which contains local format-description parsing, span tracking, and error conversion helpers. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence; the file appears limited to parser plumbing and error handling.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/offset.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3e97f24678475d146a42a67dca0aa4032f20f163e513ee8be608675c9f77af4c"
+          "agent_run_metrics": {
+            "duration_ms": 30107,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057281174,
+            "finished_at_unix_ms": 1784057311281,
+            "total_token_usage": {
+              "input_tokens": 25206,
+              "cached_input_tokens": 21248,
+              "output_tokens": 554,
+              "reasoning_output_tokens": 352,
+              "total_tokens": 25760
+            },
+            "last_token_usage": {
+              "input_tokens": 25206,
+              "cached_input_tokens": 21248,
+              "output_tokens": 554,
+              "reasoning_output_tokens": 352,
+              "total_tokens": 25760
+            }
           },
-          "summary": "I reviewed `src/offset.rs`, which parses a UTC offset token stream and emits a `time::UtcOffset::__from_hms_unchecked(...)` constructor call. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/to_tokens.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f89d1fc49554bebdebc820760bb102254e60c67765f9870095965196b613659e"
-          },
-          "summary": "Reviewed `src/to_tokens.rs`, which is a small proc-macro helper module for converting Rust values into `TokenStream`/`TokenTree` outputs. I checked for install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -459,9 +472,351 @@
             "algorithm": "blake3",
             "value": "c7846abe0035c9539f2d0f26b7d9452ec545f5ca94376d9776e5ea133f5d6550"
           },
-          "summary": "Reviewed `src/format_description/public/component.rs`, a proc-macro helper that maps formatting component variants into token streams via `declare_component!` and `ToTokenStream`. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/format_description/public/component.rs`, which defines a `declare_component!` macro that expands to a `Component` enum and a `ToTokenStream` implementation for emitting parser components. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior; none are present in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12928,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057311281,
+            "finished_at_unix_ms": 1784057324210,
+            "total_token_usage": {
+              "input_tokens": 24555,
+              "cached_input_tokens": 23296,
+              "output_tokens": 469,
+              "reasoning_output_tokens": 264,
+              "total_tokens": 25024
+            },
+            "last_token_usage": {
+              "input_tokens": 24555,
+              "cached_input_tokens": 23296,
+              "output_tokens": 469,
+              "reasoning_output_tokens": 264,
+              "total_tokens": 25024
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/format_description/public/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "31f92d1395169438eab0641978910b8f7c7cf55a1713c1a7adf21e0955f9485c"
+          },
+          "summary": "Reviewed `src/format_description/public/mod.rs`, which only implements `ToTokenStream` for owned format-description items across v1/v2/v3 by emitting Rust tokens for literals, components, compounds, optionals, and first-match branches. I found no concrete malicious or supply-chain indicators in this file: no install-time hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15432,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057324211,
+            "finished_at_unix_ms": 1784057339643,
+            "total_token_usage": {
+              "input_tokens": 25046,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 25535
+            },
+            "last_token_usage": {
+              "input_tokens": 25046,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 25535
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/format_description/public/modifier.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7a5d2fa897a4e052bc8ce9cd6ddca104b0ae221717640501a23572841703e0bb"
+          },
+          "summary": "Reviewed the proc-macro source that defines token-conversion helpers and modifier structs/enums for time format descriptions. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21657,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057339644,
+            "finished_at_unix_ms": 1784057361301,
+            "total_token_usage": {
+              "input_tokens": 68134,
+              "cached_input_tokens": 64384,
+              "output_tokens": 953,
+              "reasoning_output_tokens": 443,
+              "total_tokens": 69087
+            },
+            "last_token_usage": {
+              "input_tokens": 68134,
+              "cached_input_tokens": 64384,
+              "output_tokens": 953,
+              "reasoning_output_tokens": 443,
+              "total_tokens": 69087
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_3908213d532542e69ad69ba85386a8ba",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784055508",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/format_description/ast.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "078c0b8ca9580f4b92542c44873eeb1ea2c3513e1dd105c9bb96bd785c6413fd"
+          },
+          "summary": "Reviewed src/format_description/ast.rs, which is a Rust parser/AST builder for format descriptions and nested modifiers. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 30106,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055424432,
+            "finished_at_unix_ms": 1784055454539,
+            "total_token_usage": {
+              "input_tokens": 86998,
+              "cached_input_tokens": 78080,
+              "output_tokens": 1070,
+              "reasoning_output_tokens": 445,
+              "total_tokens": 88068
+            },
+            "last_token_usage": {
+              "input_tokens": 86998,
+              "cached_input_tokens": 78080,
+              "output_tokens": 1070,
+              "reasoning_output_tokens": 445,
+              "total_tokens": 88068
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/format_description/format_item.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1232d422cff008c1c445af52449a91eb587e850d4c061b7c14fae8715ce3e3f7"
+          },
+          "summary": "This file implements AST-to-format-item parsing and modifier conversion for `time-macros`, with version-specific validation and enum-based dispatch over format components. I checked this target for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 54186,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055454539,
+            "finished_at_unix_ms": 1784055508725,
+            "total_token_usage": {
+              "input_tokens": 204415,
+              "cached_input_tokens": 190976,
+              "output_tokens": 2014,
+              "reasoning_output_tokens": 785,
+              "total_tokens": 206429
+            },
+            "last_token_usage": {
+              "input_tokens": 204415,
+              "cached_input_tokens": 190976,
+              "output_tokens": 2014,
+              "reasoning_output_tokens": 785,
+              "total_tokens": 206429
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_6408d0b94a5c41b9912e800c5cb9ec63",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784060311",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/quote.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c28f50039a3e60282862839040554e18aecc1d686199a77fbe19f2581f3cdcb1"
+          },
+          "summary": "Reviewed src/quote.rs, which is a proc-macro quoting helper built from macro_rules definitions that assemble TokenStream and TokenTree values. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence tampering in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15459,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060226710,
+            "finished_at_unix_ms": 1784060242169,
+            "total_token_usage": {
+              "input_tokens": 25592,
+              "cached_input_tokens": 21248,
+              "output_tokens": 496,
+              "reasoning_output_tokens": 297,
+              "total_tokens": 26088
+            },
+            "last_token_usage": {
+              "input_tokens": 25592,
+              "cached_input_tokens": 21248,
+              "output_tokens": 496,
+              "reasoning_output_tokens": 297,
+              "total_tokens": 26088
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/serde_format_description.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7f6f80acb43eb9623f2293e5a2584c725fa634ff8205807c089504173e0e508f"
+          },
+          "summary": "Reviewed `src/serde_format_description.rs`, which generates Serde helper modules for time format descriptions and conditionally emits parsing/formatting visitors based on crate features. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading from remote input, obfuscation/deobfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14928,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060242170,
+            "finished_at_unix_ms": 1784060257098,
+            "total_token_usage": {
+              "input_tokens": 25495,
+              "cached_input_tokens": 21248,
+              "output_tokens": 417,
+              "reasoning_output_tokens": 200,
+              "total_tokens": 25912
+            },
+            "last_token_usage": {
+              "input_tokens": 25495,
+              "cached_input_tokens": 21248,
+              "output_tokens": 417,
+              "reasoning_output_tokens": 200,
+              "total_tokens": 25912
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/time.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "16ae981187510e66719331b7b8205fea1b619b26d995b0da6d40fc897594fc58"
+          },
+          "summary": "Reviewed src/time.rs, which parses time-literal tokens into a validated Time struct and then emits a `::time::Time::__from_hms_nanos_unchecked` construction for code generation. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17071,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060257099,
+            "finished_at_unix_ms": 1784060274170,
+            "total_token_usage": {
+              "input_tokens": 39545,
+              "cached_input_tokens": 32384,
+              "output_tokens": 688,
+              "reasoning_output_tokens": 377,
+              "total_tokens": 40233
+            },
+            "last_token_usage": {
+              "input_tokens": 39545,
+              "cached_input_tokens": 32384,
+              "output_tokens": 688,
+              "reasoning_output_tokens": 377,
+              "total_tokens": 40233
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/to_tokens.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f89d1fc49554bebdebc820760bb102254e60c67765f9870095965196b613659e"
+          },
+          "summary": "Reviewed `src/to_tokens.rs`, which defines proc-macro helper traits for turning booleans, strings, integers, token trees, and `NonZero<u16>` into `TokenStream` values. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24031,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060274171,
+            "finished_at_unix_ms": 1784060298202,
+            "total_token_usage": {
+              "input_tokens": 25942,
+              "cached_input_tokens": 23808,
+              "output_tokens": 745,
+              "reasoning_output_tokens": 434,
+              "total_tokens": 26687
+            },
+            "last_token_usage": {
+              "input_tokens": 25942,
+              "cached_input_tokens": 23808,
+              "output_tokens": 745,
+              "reasoning_output_tokens": 434,
+              "total_tokens": 26687
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/utc_datetime.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "526ec746507c7dc5ca6c09622fe0a77f2dce877731ce59d85e9bf764e8b27639"
+          },
+          "summary": "`src/utc_datetime.rs` is a small proc-macro helper that parses a UTC date/time token stream, rejects trailing tokens, and expands to `::time::UtcDateTime::new(...)`. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13026,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060298203,
+            "finished_at_unix_ms": 1784060311229,
+            "total_token_usage": {
+              "input_tokens": 24455,
+              "cached_input_tokens": 21248,
+              "output_tokens": 570,
+              "reasoning_output_tokens": 357,
+              "total_tokens": 25025
+            },
+            "last_token_usage": {
+              "input_tokens": 24455,
+              "cached_input_tokens": 21248,
+              "output_tokens": 570,
+              "reasoning_output_tokens": 357,
+              "total_tokens": 25025
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -477,7 +832,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589602",
       "thirdpass_version": "0.6.0",
@@ -613,7 +968,7 @@
       ]
     },
     {
-      "id": "rev_b0dac240df8d4c32bedc6eec6526cb7d",
+      "id": "rev_c1174233be09456b8c5bdc235fa7a964",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -621,46 +976,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782861102",
+      "created_at": "1784058998",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the package manifest for `time-macros` and found only normal crate metadata for a proc-macro library (`src/lib.rs`) with fixed dependencies on `num-conv` and `time-core`. I checked for install-time hooks, build scripts, custom binaries, network/exfiltration pathways, credential access, dynamic code loading, obfuscation, and persistence indicators, and none are declared in this file.\nI reviewed src/date.rs, which implements date literal parsing for the macro and converts validated year/week/month/ordinal inputs into a `time::Date` token stream. I checked for install-time hooks, hidden subprocess execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/quote.rs`, which is a macro-based token-quoting implementation for `proc_macro` that builds `TokenStream` and `TokenTree` values from syntax fragments and interpolated expressions. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and hidden subprocess execution; none are present in this file.\n`src/helpers/mod.rs` is a small proc-macro helper module for parsing token streams and computing calendar/date conversions. I reviewed it for install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence; none of those indicators are present in this file.\nReviewed `src/error.rs`, which is a proc-macro error helper that formats compiler diagnostics into `compile_error!` token streams. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
-          "file_path": "Cargo.toml",
+          "file_path": "src/format_description/public/optimizing.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "b8acef75796266b1704f0ed549fcfb32b2ae80be59f5aae5896ecd2a60394669"
+            "value": "2630a8e180494af08d021d770fbfc7c66a942413a0a9b6b460e6bc70552a4b68"
           },
-          "summary": "Reviewed the package manifest for `time-macros` and found only normal crate metadata for a proc-macro library (`src/lib.rs`) with fixed dependencies on `num-conv` and `time-core`. I checked for install-time hooks, build scripts, custom binaries, network/exfiltration pathways, credential access, dynamic code loading, obfuscation, and persistence indicators, and none are declared in this file.",
+          "summary": "This file implements in-place optimization passes for format-description AST nodes, recursively folding literals, flattening nested compounds/firsts, and simplifying formatting-only cases. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/date.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d36b736ec746eef01142fcb85353964e61e364bc2e84537bb97371c77b9719fd"
+          "agent_run_metrics": {
+            "duration_ms": 40309,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058886300,
+            "finished_at_unix_ms": 1784058926609,
+            "total_token_usage": {
+              "input_tokens": 148292,
+              "cached_input_tokens": 137472,
+              "output_tokens": 1831,
+              "reasoning_output_tokens": 835,
+              "total_tokens": 150123
+            },
+            "last_token_usage": {
+              "input_tokens": 148292,
+              "cached_input_tokens": 137472,
+              "output_tokens": 1831,
+              "reasoning_output_tokens": 835,
+              "total_tokens": 150123
+            }
           },
-          "summary": "I reviewed src/date.rs, which implements date literal parsing for the macro and converts validated year/week/month/ordinal inputs into a `time::Date` token stream. I checked for install-time hooks, hidden subprocess execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/quote.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c28f50039a3e60282862839040554e18aecc1d686199a77fbe19f2581f3cdcb1"
-          },
-          "summary": "Reviewed `src/quote.rs`, which is a macro-based token-quoting implementation for `proc_macro` that builds `TokenStream` and `TokenTree` values from syntax fragments and interpolated expressions. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and hidden subprocess execution; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -670,141 +1020,29 @@
             "algorithm": "blake3",
             "value": "21c172e62028853847163c95299c5f511bb391fbd5c875fcc2f9f842b26ed026"
           },
-          "summary": "`src/helpers/mod.rs` is a small proc-macro helper module for parsing token streams and computing calendar/date conversions. I reviewed it for install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence; none of those indicators are present in this file.",
+          "summary": "Reviewed `src/helpers/mod.rs`, which contains token-stream parsing helpers and calendar arithmetic utilities for extracting literals, consuming punctuation/idents, and converting year/month/week values. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/error.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3f7d0ee33830d5ad9ea17297b14acbf7cc3b405603f53882d3a67b360eeb5598"
+          "agent_run_metrics": {
+            "duration_ms": 12517,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058926610,
+            "finished_at_unix_ms": 1784058939127,
+            "total_token_usage": {
+              "input_tokens": 25228,
+              "cached_input_tokens": 21248,
+              "output_tokens": 441,
+              "reasoning_output_tokens": 241,
+              "total_tokens": 25669
+            },
+            "last_token_usage": {
+              "input_tokens": 25228,
+              "cached_input_tokens": 21248,
+              "output_tokens": 441,
+              "reasoning_output_tokens": 241,
+              "total_tokens": 25669
+            }
           },
-          "summary": "Reviewed `src/error.rs`, which is a proc-macro error helper that formats compiler diagnostics into `compile_error!` token streams. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_d9033fd3cf5f4d35ae2f38d9e4362cd9",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782860957",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which defines the crate’s proc-macro entry points and token-parsing/expansion logic for `date`, `datetime`, `utc_datetime`, `offset`, `time`, and optional `format_description`/`serde_format_description` expansion. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload execution in this file.\nReviewed src/format_description/public/modifier.rs, which defines macro-generated token conversion helpers and a set of public modifier structs/enums for formatting descriptions. I checked for install hooks, subprocesses, network or exfiltration calls, credential/env access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/format_description/lexer.rs`, a Rust lexer that tokenizes format-description bytes into literals, brackets, and component parts while tracking spans and escape handling. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence; none were present in this file.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5ea72948298f428b50e4b00ba9968fd6f713c7423796636739780e0df53acbd9"
-          },
-          "summary": "Reviewed `src/lib.rs`, which defines the crate’s proc-macro entry points and token-parsing/expansion logic for `date`, `datetime`, `utc_datetime`, `offset`, `time`, and optional `format_description`/`serde_format_description` expansion. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload execution in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/format_description/public/modifier.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7a5d2fa897a4e052bc8ce9cd6ddca104b0ae221717640501a23572841703e0bb"
-          },
-          "summary": "Reviewed src/format_description/public/modifier.rs, which defines macro-generated token conversion helpers and a set of public modifier structs/enums for formatting descriptions. I checked for install hooks, subprocesses, network or exfiltration calls, credential/env access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/format_description/lexer.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cffb1997ace1257fe4d20aa176efaf5ffc68531060c715e3bb4d0a96660b8cfd"
-          },
-          "summary": "Reviewed `src/format_description/lexer.rs`, a Rust lexer that tokenizes format-description bytes into literals, brackets, and component parts while tracking spans and escape handling. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_dbcfe2c888024da7bb524e0bd8b5db56",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782861032",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/format_description/ast.rs`, which is a parser/AST builder for format-description tokens and nested components. I checked for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence/tampering paths, and found no concrete malicious or supply-chain indicators.\nReviewed `src/format_description/public/optimizing.rs`, which contains in-place optimization passes for format-description AST nodes such as literal merging, compound/first flattening, and feature-gated simplifications. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence/tampering logic.\nReviewed `src/serde_format_description.rs`, which generates serde serialization/deserialization wrappers and helper module code for time format descriptions. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/format_description/mod.rs`, which is a Rust parser/utility module for format-description spans, error conversion, and AST assembly. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.\n`src/helpers/string.rs` is a small proc-macro helper that parses Rust string, raw string, and byte-string literals into byte vectors, including escape handling for `\\x`, `\\u`, and line continuations. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/format_description/ast.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "078c0b8ca9580f4b92542c44873eeb1ea2c3513e1dd105c9bb96bd785c6413fd"
-          },
-          "summary": "Reviewed `src/format_description/ast.rs`, which is a parser/AST builder for format-description tokens and nested components. I checked for install hooks, subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence/tampering paths, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/format_description/public/optimizing.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2630a8e180494af08d021d770fbfc7c66a942413a0a9b6b460e6bc70552a4b68"
-          },
-          "summary": "Reviewed `src/format_description/public/optimizing.rs`, which contains in-place optimization passes for format-description AST nodes such as literal merging, compound/first flattening, and feature-gated simplifications. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence/tampering logic.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/serde_format_description.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7f6f80acb43eb9623f2293e5a2584c725fa634ff8205807c089504173e0e508f"
-          },
-          "summary": "Reviewed `src/serde_format_description.rs`, which generates serde serialization/deserialization wrappers and helper module code for time format descriptions. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/format_description/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5cddd18228c87dcda4b557afb89451971d85e02d49594e231091f75d07331b7b"
-          },
-          "summary": "Reviewed `src/format_description/mod.rs`, which is a Rust parser/utility module for format-description spans, error conversion, and AST assembly. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -814,16 +1052,100 @@
             "algorithm": "blake3",
             "value": "5d8740e88bb60996a282a16c25ab11ca421ae621f9ed13eae8e6d1cc508fef5a"
           },
-          "summary": "`src/helpers/string.rs` is a small proc-macro helper that parses Rust string, raw string, and byte-string literals into byte vectors, including escape handling for `\\x`, `\\u`, and line continuations. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/helpers/string.rs`, which implements proc-macro string and byte-string literal parsing plus escape decoding. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential or environment access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13551,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058939128,
+            "finished_at_unix_ms": 1784058952679,
+            "total_token_usage": {
+              "input_tokens": 25668,
+              "cached_input_tokens": 21248,
+              "output_tokens": 551,
+              "reasoning_output_tokens": 351,
+              "total_tokens": 26219
+            },
+            "last_token_usage": {
+              "input_tokens": 25668,
+              "cached_input_tokens": 21248,
+              "output_tokens": 551,
+              "reasoning_output_tokens": 351,
+              "total_tokens": 26219
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5ea72948298f428b50e4b00ba9968fd6f713c7423796636739780e0df53acbd9"
+          },
+          "summary": "I reviewed `src/lib.rs`, the proc-macro entry point that parses token streams and expands date/time macros at compile time. I found no concrete supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 33878,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058952680,
+            "finished_at_unix_ms": 1784058986558,
+            "total_token_usage": {
+              "input_tokens": 55236,
+              "cached_input_tokens": 48640,
+              "output_tokens": 819,
+              "reasoning_output_tokens": 427,
+              "total_tokens": 56055
+            },
+            "last_token_usage": {
+              "input_tokens": 55236,
+              "cached_input_tokens": 48640,
+              "output_tokens": 819,
+              "reasoning_output_tokens": 427,
+              "total_tokens": 56055
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/offset.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3e97f24678475d146a42a67dca0aa4032f20f163e513ee8be608675c9f77af4c"
+          },
+          "summary": "Reviewed `src/offset.rs`, which parses a UTC offset token stream and emits a `UtcOffset::__from_hms_unchecked` construction for the macro expansion. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12381,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058986558,
+            "finished_at_unix_ms": 1784058998940,
+            "total_token_usage": {
+              "input_tokens": 25137,
+              "cached_input_tokens": 21760,
+              "output_tokens": 444,
+              "reasoning_output_tokens": 242,
+              "total_tokens": 25581
+            },
+            "last_token_usage": {
+              "input_tokens": 25137,
+              "cached_input_tokens": 21760,
+              "output_tokens": 444,
+              "reasoning_output_tokens": 242,
+              "total_tokens": 25581
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_eb2f3e423c5a4b29bb36a35613f46528",
+      "id": "rev_c63b9596986c454fb9083cfbeb999554",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -831,76 +1153,169 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782861207",
+      "created_at": "1784053147",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/datetime.rs` is a small proc-macro parser/codegen module that builds a `PrimitiveDateTime` token stream from parsed date, time, and optional offset components. I checked it for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\n`src/utc_datetime.rs` is a small proc-macro parsing/TokenStream-construction helper that combines a parsed date and time into `::time::UtcDateTime::new(...)`. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the target `.cargo_vcs_info.json`, which only records a VCS commit SHA-1 and the package path in the upstream repository. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other payload execution in this file.",
       "files": [
-        {
-          "file_path": "src/datetime.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8f8382dc3acd32d5678e79d6b2a7c9a66645b95119e011efec3c2f6201e34a20"
-          },
-          "summary": "`src/datetime.rs` is a small proc-macro parser/codegen module that builds a `PrimitiveDateTime` token stream from parsed date, time, and optional offset components. I checked it for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/utc_datetime.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "526ec746507c7dc5ca6c09622fe0a77f2dce877731ce59d85e9bf764e8b27639"
-          },
-          "summary": "`src/utc_datetime.rs` is a small proc-macro parsing/TokenStream-construction helper that combines a parsed date and time into `::time::UtcDateTime::new(...)`. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "6f6894d71ca4b29a49eda81f88af9810587d3cee35abdae6a191100710540e28"
           },
-          "summary": "Reviewed the target `.cargo_vcs_info.json`, which only records a VCS commit SHA-1 and the package path in the upstream repository. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other payload execution in this file.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which contains only the crate's git SHA1 and VCS path metadata. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10810,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053077221,
+            "finished_at_unix_ms": 1784053088032,
+            "total_token_usage": {
+              "input_tokens": 24131,
+              "cached_input_tokens": 21248,
+              "output_tokens": 330,
+              "reasoning_output_tokens": 129,
+              "total_tokens": 24461
+            },
+            "last_token_usage": {
+              "input_tokens": 24131,
+              "cached_input_tokens": 21248,
+              "output_tokens": 330,
+              "reasoning_output_tokens": 129,
+              "total_tokens": 24461
+            }
+          },
           "comment_count": 0,
           "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_ed5d6d8e2e0244028f79a8d246411a6e",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782860888",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/format_description/format_item.rs`, which is a parser and conversion layer for format-description AST items into owned/public format items. I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
+        },
         {
-          "file_path": "src/format_description/format_item.rs",
+          "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "1232d422cff008c1c445af52449a91eb587e850d4c061b7c14fae8715ce3e3f7"
+            "value": "b8acef75796266b1704f0ed549fcfb32b2ae80be59f5aae5896ecd2a60394669"
           },
-          "summary": "Reviewed `src/format_description/format_item.rs`, which is a parser and conversion layer for format-description AST items into owned/public format items. I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the normalized Cargo.toml for the `time-macros` proc-macro crate. It defines package metadata, feature flags, lint settings, and two Rust dependencies, and I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
-          "confidence": "medium",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13111,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053088032,
+            "finished_at_unix_ms": 1784053101144,
+            "total_token_usage": {
+              "input_tokens": 25242,
+              "cached_input_tokens": 21248,
+              "output_tokens": 527,
+              "reasoning_output_tokens": 339,
+              "total_tokens": 25769
+            },
+            "last_token_usage": {
+              "input_tokens": 25242,
+              "cached_input_tokens": 21248,
+              "output_tokens": 527,
+              "reasoning_output_tokens": 339,
+              "total_tokens": 25769
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/date.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d36b736ec746eef01142fcb85353964e61e364bc2e84537bb97371c77b9719fd"
+          },
+          "summary": "Reviewed `src/date.rs`, which parses date literal syntax for the `time-macros` crate and emits a `Date` token stream after validating year, week, month, day, and ordinal ranges. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14049,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053101145,
+            "finished_at_unix_ms": 1784053115194,
+            "total_token_usage": {
+              "input_tokens": 25379,
+              "cached_input_tokens": 21248,
+              "output_tokens": 628,
+              "reasoning_output_tokens": 430,
+              "total_tokens": 26007
+            },
+            "last_token_usage": {
+              "input_tokens": 25379,
+              "cached_input_tokens": 21248,
+              "output_tokens": 628,
+              "reasoning_output_tokens": 430,
+              "total_tokens": 26007
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/datetime.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8f8382dc3acd32d5678e79d6b2a7c9a66645b95119e011efec3c2f6201e34a20"
+          },
+          "summary": "Reviewed `src/datetime.rs`, which parses `date time [offset]` macro input into a `DateTime` struct and emits a `::time::PrimitiveDateTime::new(...).assume_offset(...)` token stream. I checked this file for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14601,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053115195,
+            "finished_at_unix_ms": 1784053129796,
+            "total_token_usage": {
+              "input_tokens": 37677,
+              "cached_input_tokens": 33408,
+              "output_tokens": 614,
+              "reasoning_output_tokens": 307,
+              "total_tokens": 38291
+            },
+            "last_token_usage": {
+              "input_tokens": 37677,
+              "cached_input_tokens": 33408,
+              "output_tokens": 614,
+              "reasoning_output_tokens": 307,
+              "total_tokens": 38291
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/error.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3f7d0ee33830d5ad9ea17297b14acbf7cc3b405603f53882d3a67b360eeb5598"
+          },
+          "summary": "Reviewed `src/error.rs`, which defines the crate's internal `Error` enum, formatting, span helpers, and conversion to `compile_error!` token streams for macro diagnostics. I checked for install-time execution, network or secret access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17812,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053129797,
+            "finished_at_unix_ms": 1784053147610,
+            "total_token_usage": {
+              "input_tokens": 25191,
+              "cached_input_tokens": 21248,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 205,
+              "total_tokens": 25595
+            },
+            "last_token_usage": {
+              "input_tokens": 25191,
+              "cached_input_tokens": 21248,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 205,
+              "total_tokens": 25595
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

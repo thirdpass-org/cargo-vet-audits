@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591911",
+  "latest_reviewed_at": "1784052861",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -139,47 +145,265 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 0
+      "review_count": 3,
+      "file_record_count": 10,
+      "file_record_count_with_metrics": 10
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 7,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 3,
-    "duration_ms_total": 54639,
-    "attempts_total": 4,
+    "reviewed_file_records": 10,
+    "file_records_with_metrics": 10,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 144309,
+    "attempts_total": 10,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 10,
+    "last_token_usage_records": 10,
     "total_token_usage": {
-      "input_tokens": 87156,
-      "cached_input_tokens": 70656,
-      "output_tokens": 1743,
-      "reasoning_output_tokens": 981,
-      "total_tokens": 88899
+      "input_tokens": 246420,
+      "cached_input_tokens": 210816,
+      "output_tokens": 4445,
+      "reasoning_output_tokens": 2387,
+      "total_tokens": 250865
     },
     "last_token_usage": {
-      "input_tokens": 87156,
-      "cached_input_tokens": 70656,
-      "output_tokens": 1743,
-      "reasoning_output_tokens": 981,
-      "total_tokens": 88899
+      "input_tokens": 246420,
+      "cached_input_tokens": 210816,
+      "output_tokens": 4445,
+      "reasoning_output_tokens": 2387,
+      "total_tokens": 250865
     },
     "model_context_windows": []
   },
   "reviews": [
+    {
+      "id": "rev_232756de236546dc98f63474d151e654",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052861",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1fd4a40955d89896603a49cd5723f687e5005a81db3f53f9d9aa405d8707607f"
+          },
+          "summary": "Reviewed the crate VCS metadata in `.cargo_vcs_info.json`, which only records the source git SHA-1 and original path in the upstream repository. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18092,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052813580,
+            "finished_at_unix_ms": 1784052831672,
+            "total_token_usage": {
+              "input_tokens": 24132,
+              "cached_input_tokens": 21248,
+              "output_tokens": 339,
+              "reasoning_output_tokens": 132,
+              "total_tokens": 24471
+            },
+            "last_token_usage": {
+              "input_tokens": 24132,
+              "cached_input_tokens": 21248,
+              "output_tokens": 339,
+              "reasoning_output_tokens": 132,
+              "total_tokens": 24471
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cad100c1747bb33aabe3ad5a7959fe0c90f2a658a40a068cae72403c68afba19"
+          },
+          "summary": "Reviewed the generated Cargo.toml for package metadata, features, dependencies, and any install/build hooks. It only declares the `value-bag-sval2` library with feature-gated `sval` dependencies; I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14796,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052831673,
+            "finished_at_unix_ms": 1784052846469,
+            "total_token_usage": {
+              "input_tokens": 24632,
+              "cached_input_tokens": 21248,
+              "output_tokens": 600,
+              "reasoning_output_tokens": 398,
+              "total_tokens": 25232
+            },
+            "last_token_usage": {
+              "input_tokens": 24632,
+              "cached_input_tokens": 21248,
+              "output_tokens": 600,
+              "reasoning_output_tokens": 398,
+              "total_tokens": 25232
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a0e55e62ed9c8e8e76bf42aea4e19580dd93ddf68762500822d1343e5068384b"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a minimal `no_std` re-export crate for `value-bag` dependencies behind feature gates (`serde1`, `json`, `test`). I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution; none are present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15094,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052846470,
+            "finished_at_unix_ms": 1784052861564,
+            "total_token_usage": {
+              "input_tokens": 37523,
+              "cached_input_tokens": 33920,
+              "output_tokens": 507,
+              "reasoning_output_tokens": 203,
+              "total_tokens": 38030
+            },
+            "last_token_usage": {
+              "input_tokens": 37523,
+              "cached_input_tokens": 33920,
+              "output_tokens": 507,
+              "reasoning_output_tokens": 203,
+              "total_tokens": 38030
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_3d17ce914a2d4f4c8aa88878d5e8092a",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046825",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1fd4a40955d89896603a49cd5723f687e5005a81db3f53f9d9aa405d8707607f"
+          },
+          "summary": "Reviewed the cargo VCS metadata in `.cargo_vcs_info.json`; it only records the source git SHA and the path within the original VCS checkout. No install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic are present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11434,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046783924,
+            "finished_at_unix_ms": 1784046795359,
+            "total_token_usage": {
+              "input_tokens": 24168,
+              "cached_input_tokens": 21248,
+              "output_tokens": 415,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 24583
+            },
+            "last_token_usage": {
+              "input_tokens": 24168,
+              "cached_input_tokens": 21248,
+              "output_tokens": 415,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 24583
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cad100c1747bb33aabe3ad5a7959fe0c90f2a658a40a068cae72403c68afba19"
+          },
+          "summary": "Reviewed the normalized Cargo manifest for `value-bag-sval2` 1.12.0. It defines a library crate with feature-gated dependencies only, and I found no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17295,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046795359,
+            "finished_at_unix_ms": 1784046812655,
+            "total_token_usage": {
+              "input_tokens": 24616,
+              "cached_input_tokens": 21248,
+              "output_tokens": 430,
+              "reasoning_output_tokens": 234,
+              "total_tokens": 25046
+            },
+            "last_token_usage": {
+              "input_tokens": 24616,
+              "cached_input_tokens": 21248,
+              "output_tokens": 430,
+              "reasoning_output_tokens": 234,
+              "total_tokens": 25046
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a0e55e62ed9c8e8e76bf42aea4e19580dd93ddf68762500822d1343e5068384b"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a small `no_std` facade that only re-exports sibling `sval` crates behind feature flags. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12959,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046812655,
+            "finished_at_unix_ms": 1784046825615,
+            "total_token_usage": {
+              "input_tokens": 24193,
+              "cached_input_tokens": 21248,
+              "output_tokens": 411,
+              "reasoning_output_tokens": 215,
+              "total_tokens": 24604
+            },
+            "last_token_usage": {
+              "input_tokens": 24193,
+              "cached_input_tokens": 21248,
+              "output_tokens": 411,
+              "reasoning_output_tokens": 215,
+              "total_tokens": 24604
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
     {
       "id": "rev_779d419d5eb7417486f3dd21c562587b",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -190,7 +414,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591911",
       "thirdpass_version": "0.6.0",
@@ -320,60 +544,6 @@
               "total_tokens": 21148
             }
           },
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_cae58f6871184101a74f642d53c1ea00",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782851635",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the normalized Cargo manifest for `value-bag-sval2` 1.12.0. It only declares package metadata, feature flags, a library target, and straightforward dependency versions; I found no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence indicators in this file.\nReviewed `src/lib.rs`, which is a `no_std` crate shim that only re-exports sibling `sval*` crates behind feature flags. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none is present in this file.\nReviewed the `.cargo_vcs_info.json` provenance file, which only records a Git SHA1 and the path-in-vcs metadata for this crate snapshot. It contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cad100c1747bb33aabe3ad5a7959fe0c90f2a658a40a068cae72403c68afba19"
-          },
-          "summary": "Reviewed the normalized Cargo manifest for `value-bag-sval2` 1.12.0. It only declares package metadata, feature flags, a library target, and straightforward dependency versions; I found no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a0e55e62ed9c8e8e76bf42aea4e19580dd93ddf68762500822d1343e5068384b"
-          },
-          "summary": "Reviewed `src/lib.rs`, which is a `no_std` crate shim that only re-exports sibling `sval*` crates behind feature flags. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none is present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1fd4a40955d89896603a49cd5723f687e5005a81db3f53f9d9aa405d8707607f"
-          },
-          "summary": "Reviewed the `.cargo_vcs_info.json` provenance file, which only records a Git SHA1 and the path-in-vcs metadata for this crate snapshot. It contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

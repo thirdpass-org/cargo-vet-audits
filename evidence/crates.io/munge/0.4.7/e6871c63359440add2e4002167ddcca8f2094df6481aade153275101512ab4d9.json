@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591694",
+  "latest_reviewed_at": "1784059233",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -348,204 +354,40 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 4,
-      "file_record_count": 16,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 2,
-      "file_record_count": 10,
-      "file_record_count_with_metrics": 10
+      "review_count": 6,
+      "file_record_count": 26,
+      "file_record_count_with_metrics": 26
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 26,
-    "file_records_with_metrics": 10,
-    "file_records_without_metrics": 16,
-    "duration_ms_total": 156712,
-    "attempts_total": 10,
+    "file_records_with_metrics": 26,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 420432,
+    "attempts_total": 26,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 10,
-    "last_token_usage_records": 10,
+    "total_token_usage_records": 26,
+    "last_token_usage_records": 26,
     "total_token_usage": {
-      "input_tokens": 234658,
-      "cached_input_tokens": 200448,
-      "output_tokens": 4632,
-      "reasoning_output_tokens": 2442,
-      "total_tokens": 239290
+      "input_tokens": 792803,
+      "cached_input_tokens": 685184,
+      "output_tokens": 12836,
+      "reasoning_output_tokens": 6488,
+      "total_tokens": 805639
     },
     "last_token_usage": {
-      "input_tokens": 234658,
-      "cached_input_tokens": 200448,
-      "output_tokens": 4632,
-      "reasoning_output_tokens": 2442,
-      "total_tokens": 239290
+      "input_tokens": 792803,
+      "cached_input_tokens": 685184,
+      "output_tokens": 12836,
+      "reasoning_output_tokens": 6488,
+      "total_tokens": 805639
     },
     "model_context_windows": []
   },
   "reviews": [
-    {
-      "id": "rev_0a977f311c8641f1b9b6a5be275c3337",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783181587",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed this generated Cargo manifest for install-time hooks, build scripts, hidden subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. It is a straightforward package declaration for the `munge` crate with a normal library target and dependencies, and it does not contain concrete malicious or supply-chain indicators in the file itself.\nReviewed README.md, which is a documentation file describing the `munge` Rust library and showing normal usage examples for destructuring `MaybeUninit`, `Cell`, and custom `Destructure`/`Restructure` implementations. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence signals, and found no concrete malicious or supply-chain indicators in this file.\nReviewed this UI test file, which only exercises `munge!` with struct and tuple rest patterns against `MaybeUninit`; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in the target file.\nReviewed `tests/ui/packed.rs`, a small UI test that exercises `munge!` on a packed nested struct with `MaybeUninit` and then validates initialization. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `tests/ui/no_drilling_through_deref.rs`, a small UI test that defines a `Deref`-implementing wrapper and exercises the `munge!` macro against a `Cell<Bar>` value to verify it does not drill through deref coercions. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-      "files": [
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4624899ec1c301fa415e68aa5376876bae317f2a76c7aa8deb140bfb45fc628e"
-          },
-          "summary": "Reviewed this generated Cargo manifest for install-time hooks, build scripts, hidden subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. It is a straightforward package declaration for the `munge` crate with a normal library target and dependencies, and it does not contain concrete malicious or supply-chain indicators in the file itself.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "79671dc7ad20c56bac95e76d1b2836fde583692da34bd74154b55c2970d876ad"
-          },
-          "summary": "Reviewed README.md, which is a documentation file describing the `munge` Rust library and showing normal usage examples for destructuring `MaybeUninit`, `Cell`, and custom `Destructure`/`Restructure` implementations. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence signals, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/rest_patterns_ref_only.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cf277a060459162eaa0eb47042d8e8026d6af7b842357633d93aa11f42cf4a53"
-          },
-          "summary": "Reviewed this UI test file, which only exercises `munge!` with struct and tuple rest patterns against `MaybeUninit`; I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/packed.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5325f134dd7dfd179e48e27cb7332132893645bc597ae390c42739fa67638107"
-          },
-          "summary": "Reviewed `tests/ui/packed.rs`, a small UI test that exercises `munge!` on a packed nested struct with `MaybeUninit` and then validates initialization. I found no concrete malicious or supply-chain indicators in the target file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/no_drilling_through_deref.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6869629294bfecde688d36612f7ced0a189b4d3b07a9f72c4639e563692ca019"
-          },
-          "summary": "Reviewed `tests/ui/no_drilling_through_deref.rs`, a small UI test that defines a `Deref`-implementing wrapper and exercises the `munge!` macro against a `Cell<Bar>` value to verify it does not drill through deref coercions. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_1d2b89c0456b45edb104d5f9913ece10",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783181652",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/ui/double_borrow.rs`, which is a small compile-time/runtime borrow-check test using `munge!` and `MaybeUninit` to exercise mutable field access. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.\nReviewed this UI test file, which exercises the `munge!` macro by initializing fields of a `MaybeUninit<Example>` and then reusing a borrowed field after `assume_init()`. I found no concrete supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed this markdown documentation file, which contains Rust examples for `munge` usage with `MaybeUninit`, `Cell`, and custom `Destructure`/`Restructure` implementations. I found no concrete malicious or supply-chain indicators in the target file: there are no install hooks, network or exfiltration behavior, credential access, hidden downloads, dynamic code loading, obfuscation, or persistence logic.\nReviewed `tests/ui/no_drilling_through_refs.rs`, which is a small UI test exercising the `munge!` macro with `Cell` and `MaybeUninit` to verify reference-drilling behavior. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `tests/ui/no_accessing_through_unions.rs`, which is a small Rust UI test exercising `munge!` on a `union` and then reading a `Cell` value. I checked it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "tests/ui/double_borrow.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b523b472ac4e923893d93fbb55e9a855e3d8a3c7cce200ca6d0c53a9a6276636"
-          },
-          "summary": "Reviewed `tests/ui/double_borrow.rs`, which is a small compile-time/runtime borrow-check test using `munge!` and `MaybeUninit` to exercise mutable field access. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/move_while_borrowed.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "fa29c223401d3febbb5c837c0960a55f4875354b63e608dba901a6a824ec9d4b"
-          },
-          "summary": "Reviewed this UI test file, which exercises the `munge!` macro by initializing fields of a `MaybeUninit<Example>` and then reusing a borrowed field after `assume_init()`. I found no concrete supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "example.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "346ed957f69f629d551f75fd6da99bd12cc30deff01baf7f3682075f78d31449"
-          },
-          "summary": "Reviewed this markdown documentation file, which contains Rust examples for `munge` usage with `MaybeUninit`, `Cell`, and custom `Destructure`/`Restructure` implementations. I found no concrete malicious or supply-chain indicators in the target file: there are no install hooks, network or exfiltration behavior, credential access, hidden downloads, dynamic code loading, obfuscation, or persistence logic.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/no_drilling_through_refs.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "772e2ad64762a70d07b3aef8b164b5a6935c8c23f48ab7cd68b53f949d2d9835"
-          },
-          "summary": "Reviewed `tests/ui/no_drilling_through_refs.rs`, which is a small UI test exercising the `munge!` macro with `Cell` and `MaybeUninit` to verify reference-drilling behavior. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/ui/no_accessing_through_unions.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "04cbcf4659d72566c1017ec81fc835df444d8483e7a4263e9df361b93b4dfe8b"
-          },
-          "summary": "Reviewed `tests/ui/no_accessing_through_unions.rs`, which is a small Rust UI test exercising `munge!` on a `union` and then reading a `Cell` value. I checked it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
     {
       "id": "rev_3877dec8915a49afb5bcca3678c4ccbd",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -556,7 +398,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591694",
       "thirdpass_version": "0.6.0",
@@ -724,7 +566,7 @@
       ]
     },
     {
-      "id": "rev_6b133a4356394f618a81255e7e9bd2ea",
+      "id": "rev_587854616ea54b0080a076d4fab9d5ae",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -732,76 +574,137 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783181680",
+      "created_at": "1784053691",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/tests.rs`, which only defines a gated `trybuild` UI test that compiles `tests/ui/*.rs` under the test harness. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed the `.cargo_vcs_info.json` metadata file, which only records the source VCS commit (`sha1`) and `path_in_vcs` for the crate. No concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence were present in this target file.",
       "files": [
-        {
-          "file_path": "tests/tests.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cc661f852556dcd1ca60361752545a53108fe92b1b15d228c1626eb920515636"
-          },
-          "summary": "Reviewed `tests/tests.rs`, which only defines a gated `trybuild` UI test that compiles `tests/ui/*.rs` under the test harness. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "6e4a461a10de4e76b6b3bc7738e0a21330b02308b6a80cb88c0591234a016c5d"
           },
-          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the source VCS commit (`sha1`) and `path_in_vcs` for the crate. No concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence were present in this target file.",
+          "summary": "Reviewed the crate provenance metadata in `.cargo_vcs_info.json`, which only records the source git SHA and the path within the VCS. I found no indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload behavior in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_916f916cbc13430889556b4add93b12e",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783181519",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is a `no_std` macro crate defining `munge!`, the `Destructure`/`Restructure` unsafe traits, borrow/move marker types, and extensive unit tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence/environment-tampering behavior.\n`src/impls.rs` is a Rust trait-implementation module for `MaybeUninit`, `Cell`, `UnsafeCell`, and `ManuallyDrop`, containing only pointer casts, `read`, and `transmute` used to implement restructure/destructure behavior. I checked it for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/__macro.rs`, a small Rust helper module for destructuring/restructuring macro support. I checked for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation/packing, and persistence or environment tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/internal.rs`, which only defines a few generic traits and two wrapper types (`Borrow` and `Move`) for destructuring values using `ManuallyDrop`. I checked for install-time hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7f08503f6c2b36271be31203aec602ba23b8ac642ef0e707dcd00a8787d6d8c3"
+          "agent_run_metrics": {
+            "duration_ms": 12132,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053624610,
+            "finished_at_unix_ms": 1784053636742,
+            "total_token_usage": {
+              "input_tokens": 24137,
+              "cached_input_tokens": 21248,
+              "output_tokens": 374,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 24511
+            },
+            "last_token_usage": {
+              "input_tokens": 24137,
+              "cached_input_tokens": 21248,
+              "output_tokens": 374,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 24511
+            }
           },
-          "summary": "Reviewed `src/lib.rs`, which is a `no_std` macro crate defining `munge!`, the `Destructure`/`Restructure` unsafe traits, borrow/move marker types, and extensive unit tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence/environment-tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/impls.rs",
+          "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "d35418c2c45c9d4124dcc9ebac68095bdb817c30ca3f3b0368c279f6aa39a7bc"
+            "value": "4624899ec1c301fa415e68aa5376876bae317f2a76c7aa8deb140bfb45fc628e"
           },
-          "summary": "`src/impls.rs` is a Rust trait-implementation module for `MaybeUninit`, `Cell`, `UnsafeCell`, and `ManuallyDrop`, containing only pointer casts, `read`, and `transmute` used to implement restructure/destructure behavior. I checked it for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the package manifest in Cargo.toml for install-time hooks, build scripts, dependency redirections, network/exfiltration behavior, dynamic code loading, obfuscation, and persistence. It is a normal Rust crate manifest for `munge` with a fixed dependency on `munge_macro` and no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11480,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053636743,
+            "finished_at_unix_ms": 1784053648224,
+            "total_token_usage": {
+              "input_tokens": 24458,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 24898
+            },
+            "last_token_usage": {
+              "input_tokens": 24458,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 24898
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "79671dc7ad20c56bac95e76d1b2836fde583692da34bd74154b55c2970d876ad"
+          },
+          "summary": "Reviewed README.md, which is a documentation file describing the munge crate and its safe destructuring API with usage examples. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12325,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053648225,
+            "finished_at_unix_ms": 1784053660550,
+            "total_token_usage": {
+              "input_tokens": 25132,
+              "cached_input_tokens": 21248,
+              "output_tokens": 357,
+              "reasoning_output_tokens": 172,
+              "total_tokens": 25489
+            },
+            "last_token_usage": {
+              "input_tokens": 25132,
+              "cached_input_tokens": 21248,
+              "output_tokens": 357,
+              "reasoning_output_tokens": 172,
+              "total_tokens": 25489
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "example.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "346ed957f69f629d551f75fd6da99bd12cc30deff01baf7f3682075f78d31449"
+          },
+          "summary": "Reviewed example.md, a markdown usage guide for `munge` that contains Rust code examples for destructuring `MaybeUninit`, `Cell`, and custom `Destructure`/`Restructure` implementations. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18381,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053660550,
+            "finished_at_unix_ms": 1784053678932,
+            "total_token_usage": {
+              "input_tokens": 39346,
+              "cached_input_tokens": 33920,
+              "output_tokens": 596,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 39942
+            },
+            "last_token_usage": {
+              "input_tokens": 39346,
+              "cached_input_tokens": 33920,
+              "output_tokens": 596,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 39942
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -811,21 +714,206 @@
             "algorithm": "blake3",
             "value": "3fd147700c9c7d1d9716da94bd978704f8415fec82c395910745927c1d95d4ba"
           },
-          "summary": "Reviewed `src/__macro.rs`, a small Rust helper module for destructuring/restructuring macro support. I checked for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation/packing, and persistence or environment tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/__macro.rs`, which defines internal helper functions and marker traits for `munge`'s destructuring/restructuring macros, including a few `unsafe` pointer and `unreachable_unchecked` wrappers. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12466,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053678933,
+            "finished_at_unix_ms": 1784053691399,
+            "total_token_usage": {
+              "input_tokens": 24789,
+              "cached_input_tokens": 21248,
+              "output_tokens": 488,
+              "reasoning_output_tokens": 281,
+              "total_tokens": 25277
+            },
+            "last_token_usage": {
+              "input_tokens": 24789,
+              "cached_input_tokens": 21248,
+              "output_tokens": 488,
+              "reasoning_output_tokens": 281,
+              "total_tokens": 25277
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_9bdca736a1e24cd8923c8cfdaa364c9e",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784057732",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/ui/move_while_borrowed.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "fa29c223401d3febbb5c837c0960a55f4875354b63e608dba901a6a824ec9d4b"
+          },
+          "summary": "Reviewed a Rust UI test that uses `munge!` with `MaybeUninit` to split a borrowed `Example` into field writers, initialize both fields, and then `assume_init` the struct. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14785,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057663554,
+            "finished_at_unix_ms": 1784057678340,
+            "total_token_usage": {
+              "input_tokens": 24197,
+              "cached_input_tokens": 21248,
+              "output_tokens": 390,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 24587
+            },
+            "last_token_usage": {
+              "input_tokens": 24197,
+              "cached_input_tokens": 21248,
+              "output_tokens": 390,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 24587
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/internal.rs",
+          "file_path": "tests/ui/no_accessing_through_unions.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "84fd557afb838ff67dfca6699226a6da5ae6e21910813d383fa5fd743203901c"
+            "value": "04cbcf4659d72566c1017ec81fc835df444d8483e7a4263e9df361b93b4dfe8b"
           },
-          "summary": "Reviewed `src/internal.rs`, which only defines a few generic traits and two wrapper types (`Borrow` and `Move`) for destructuring values using `ManuallyDrop`. I checked for install-time hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `tests/ui/no_accessing_through_unions.rs`, a small UI test that uses `munge!` with a `union` wrapped in `Cell` to exercise field access through a union pattern. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12467,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057678341,
+            "finished_at_unix_ms": 1784057690808,
+            "total_token_usage": {
+              "input_tokens": 24174,
+              "cached_input_tokens": 21248,
+              "output_tokens": 482,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 24656
+            },
+            "last_token_usage": {
+              "input_tokens": 24174,
+              "cached_input_tokens": 21248,
+              "output_tokens": 482,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 24656
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/no_drilling_through_deref.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6869629294bfecde688d36612f7ced0a189b4d3b07a9f72c4639e563692ca019"
+          },
+          "summary": "Reviewed `tests/ui/no_drilling_through_deref.rs`, which is a small compile-time test exercising `munge!` against a `Deref` implementation wrapped in `Cell`. I found no concrete supply-chain or malicious indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11680,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057690808,
+            "finished_at_unix_ms": 1784057702489,
+            "total_token_usage": {
+              "input_tokens": 24258,
+              "cached_input_tokens": 23296,
+              "output_tokens": 475,
+              "reasoning_output_tokens": 266,
+              "total_tokens": 24733
+            },
+            "last_token_usage": {
+              "input_tokens": 24258,
+              "cached_input_tokens": 23296,
+              "output_tokens": 475,
+              "reasoning_output_tokens": 266,
+              "total_tokens": 24733
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/no_drilling_through_refs.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "772e2ad64762a70d07b3aef8b164b5a6935c8c23f48ab7cd68b53f949d2d9835"
+          },
+          "summary": "This UI test exercises the `munge!` macro against `Cell<Foo>` and `MaybeUninit<Foo>` to verify it does not drill through shared references while still allowing field access. I checked this target for install-time execution, network or exfiltration, secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in the file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10987,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057702490,
+            "finished_at_unix_ms": 1784057713478,
+            "total_token_usage": {
+              "input_tokens": 24187,
+              "cached_input_tokens": 21248,
+              "output_tokens": 366,
+              "reasoning_output_tokens": 153,
+              "total_tokens": 24553
+            },
+            "last_token_usage": {
+              "input_tokens": 24187,
+              "cached_input_tokens": 21248,
+              "output_tokens": 366,
+              "reasoning_output_tokens": 153,
+              "total_tokens": 24553
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/packed.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5325f134dd7dfd179e48e27cb7332132893645bc597ae390c42739fa67638107"
+          },
+          "summary": "Reviewed `tests/ui/packed.rs`, which is a small UI test for `munge` on a `#[repr(packed)]` nested struct and validates safe initialization through `MaybeUninit`. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19096,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057713478,
+            "finished_at_unix_ms": 1784057732574,
+            "total_token_usage": {
+              "input_tokens": 23304,
+              "cached_input_tokens": 19712,
+              "output_tokens": 344,
+              "reasoning_output_tokens": 139,
+              "total_tokens": 23648
+            },
+            "last_token_usage": {
+              "input_tokens": 23304,
+              "cached_input_tokens": 19712,
+              "output_tokens": 344,
+              "reasoning_output_tokens": 139,
+              "total_tokens": 23648
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -841,7 +929,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591621",
       "thirdpass_version": "0.6.0",
@@ -1001,6 +1089,232 @@
               "output_tokens": 406,
               "reasoning_output_tokens": 205,
               "total_tokens": 21194
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_f5fdaadb40664a0a881e3fb3758ffd5d",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059233",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/ui/rest_patterns_ref_only.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cf277a060459162eaa0eb47042d8e8026d6af7b842357633d93aa11f42cf4a53"
+          },
+          "summary": "Reviewed `tests/ui/rest_patterns_ref_only.rs`, a small Rust UI test that exercises the `munge!` macro with `MaybeUninit` for struct and tuple rest patterns. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11817,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059222075,
+            "finished_at_unix_ms": 1784059233892,
+            "total_token_usage": {
+              "input_tokens": 24163,
+              "cached_input_tokens": 19200,
+              "output_tokens": 382,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 24545
+            },
+            "last_token_usage": {
+              "input_tokens": 24163,
+              "cached_input_tokens": 19200,
+              "output_tokens": 382,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 24545
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_fda809bcda75449cabf23538f69ace43",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056007",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/impls.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d35418c2c45c9d4124dcc9ebac68095bdb817c30ca3f3b0368c279f6aa39a7bc"
+          },
+          "summary": "`src/impls.rs` defines unsafe `Destructure`/`Restructure` implementations for `MaybeUninit`, `Cell`, `UnsafeCell`, and `ManuallyDrop`, using pointer casts and a few `transmute` calls to rebuild borrowed or moved wrapper values. I checked this target file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 27535,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055891751,
+            "finished_at_unix_ms": 1784055919287,
+            "total_token_usage": {
+              "input_tokens": 128898,
+              "cached_input_tokens": 111744,
+              "output_tokens": 1212,
+              "reasoning_output_tokens": 515,
+              "total_tokens": 130110
+            },
+            "last_token_usage": {
+              "input_tokens": 128898,
+              "cached_input_tokens": 111744,
+              "output_tokens": 1212,
+              "reasoning_output_tokens": 515,
+              "total_tokens": 130110
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/internal.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "84fd557afb838ff67dfca6699226a6da5ae6e21910813d383fa5fd743203901c"
+          },
+          "summary": "Reviewed `src/internal.rs`, which defines destructuring traits plus `Borrow<T>` and `Move<T>` wrappers around `Destructure` types. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12088,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055919288,
+            "finished_at_unix_ms": 1784055931376,
+            "total_token_usage": {
+              "input_tokens": 24455,
+              "cached_input_tokens": 21248,
+              "output_tokens": 479,
+              "reasoning_output_tokens": 277,
+              "total_tokens": 24934
+            },
+            "last_token_usage": {
+              "input_tokens": 24455,
+              "cached_input_tokens": 21248,
+              "output_tokens": 479,
+              "reasoning_output_tokens": 277,
+              "total_tokens": 24934
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7f08503f6c2b36271be31203aec602ba23b8ac642ef0e707dcd00a8787d6d8c3"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a `no_std` macro-and-traits implementation for destructuring `MaybeUninit`, `Cell`, `UnsafeCell`, and `ManuallyDrop`, plus unit tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, persistence changes, or hidden subprocess execution.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18086,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055931376,
+            "finished_at_unix_ms": 1784055949463,
+            "total_token_usage": {
+              "input_tokens": 61474,
+              "cached_input_tokens": 52224,
+              "output_tokens": 758,
+              "reasoning_output_tokens": 337,
+              "total_tokens": 62232
+            },
+            "last_token_usage": {
+              "input_tokens": 61474,
+              "cached_input_tokens": 52224,
+              "output_tokens": 758,
+              "reasoning_output_tokens": 337,
+              "total_tokens": 62232
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/tests.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cc661f852556dcd1ca60361752545a53108fe92b1b15d228c1626eb920515636"
+          },
+          "summary": "Reviewed a small Rust test harness in tests/tests.rs that conditionally skips under non-nightly and Miri, then runs trybuild compile-fail cases from tests/ui/*.rs. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 36537,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055949463,
+            "finished_at_unix_ms": 1784055986001,
+            "total_token_usage": {
+              "input_tokens": 24114,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 263,
+              "total_tokens": 24579
+            },
+            "last_token_usage": {
+              "input_tokens": 24114,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 263,
+              "total_tokens": 24579
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/ui/double_borrow.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b523b472ac4e923893d93fbb55e9a855e3d8a3c7cce200ca6d0c53a9a6276636"
+          },
+          "summary": "`tests/ui/double_borrow.rs` is a small Rust UI test for the `munge!` macro that exercises repeated borrows from a `MaybeUninit<Example>` and writes values through the borrowed fields. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21858,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055986001,
+            "finished_at_unix_ms": 1784056007860,
+            "total_token_usage": {
+              "input_tokens": 37059,
+              "cached_input_tokens": 33408,
+              "output_tokens": 596,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 37655
+            },
+            "last_token_usage": {
+              "input_tokens": 37059,
+              "cached_input_tokens": 33408,
+              "output_tokens": 596,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 37655
             }
           },
           "comment_count": 0,

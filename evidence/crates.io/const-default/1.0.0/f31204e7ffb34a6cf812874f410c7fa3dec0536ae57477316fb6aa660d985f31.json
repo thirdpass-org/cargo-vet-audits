@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590781",
+  "latest_reviewed_at": "1784055904",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -182,50 +188,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 8,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 3,
+      "file_record_count": 11,
+      "file_record_count_with_metrics": 11
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 11,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 8,
-    "duration_ms_total": 32701,
-    "attempts_total": 3,
+    "file_records_with_metrics": 11,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 151637,
+    "attempts_total": 11,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 11,
+    "last_token_usage_records": 11,
     "total_token_usage": {
-      "input_tokens": 62288,
-      "cached_input_tokens": 52992,
-      "output_tokens": 1047,
-      "reasoning_output_tokens": 487,
-      "total_tokens": 63335
+      "input_tokens": 275063,
+      "cached_input_tokens": 234624,
+      "output_tokens": 4830,
+      "reasoning_output_tokens": 2549,
+      "total_tokens": 279893
     },
     "last_token_usage": {
-      "input_tokens": 62288,
-      "cached_input_tokens": 52992,
-      "output_tokens": 1047,
-      "reasoning_output_tokens": 487,
-      "total_tokens": 63335
+      "input_tokens": 275063,
+      "cached_input_tokens": 234624,
+      "output_tokens": 4830,
+      "reasoning_output_tokens": 2549,
+      "total_tokens": 279893
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_8b861834e16f44fc941cff98edaab41f",
+      "id": "rev_d529a6436e954c97af7dcbd1caa17961",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -233,22 +231,186 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783178794",
+      "created_at": "1784055904",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the README for any install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence instructions. It only describes the crate’s `ConstDefault` trait, usage, and derive examples, with no concrete malicious or supply-chain indicators present.\nReviewed the `.rustfmt.toml` formatter configuration, which only sets Rust formatting preferences such as line width, import layout, edition, and shorthand style. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this target file.\nReviewed .cargo_vcs_info.json, which contains only a Git commit SHA1 pointer and no executable logic. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence triggers in the target file, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "README.md",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "3cb6be87862c4d7e581070225f2cfd2eba9861fbb60bc8528bd860cf61ff4345"
+            "value": "ef9a4fbc5e4a7bd35fb3cc9f32e6b7679e52a67de5620de7a3051a558741763f"
           },
-          "summary": "Reviewed the README for any install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence instructions. It only describes the crate’s `ConstDefault` trait, usage, and derive examples, with no concrete malicious or supply-chain indicators present.",
+          "summary": "src/lib.rs is a small no_std-friendly Rust library that defines the `ConstDefault` trait, a `const_default` helper, and blanket implementations for common core/std/alloc types plus optional derive re-export and macros. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21047,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055857564,
+            "finished_at_unix_ms": 1784055878612,
+            "total_token_usage": {
+              "input_tokens": 40052,
+              "cached_input_tokens": 34944,
+              "output_tokens": 625,
+              "reasoning_output_tokens": 316,
+              "total_tokens": 40677
+            },
+            "last_token_usage": {
+              "input_tokens": 40052,
+              "cached_input_tokens": 34944,
+              "output_tokens": 625,
+              "reasoning_output_tokens": 316,
+              "total_tokens": 40677
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/derive.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c87a225816a2b044c43deb9ae19d8c3b499419d3fbc153094616fab8a5f6aa7f"
+          },
+          "summary": "`tests/derive.rs` is a Rust test module for the `ConstDefault` derive macro, covering primitive fields, tuple structs, atomics behind a feature gate, nested structs, cell/RefCell types, and type aliases. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14307,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055878612,
+            "finished_at_unix_ms": 1784055892920,
+            "total_token_usage": {
+              "input_tokens": 25543,
+              "cached_input_tokens": 21248,
+              "output_tokens": 481,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 26024
+            },
+            "last_token_usage": {
+              "input_tokens": 25543,
+              "cached_input_tokens": 21248,
+              "output_tokens": 481,
+              "reasoning_output_tokens": 273,
+              "total_tokens": 26024
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/trait-impls.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "380dceb34021f15797a2bcdc2f4e35ab0d606ffdb1664b2dd9baaeb18840ea36"
+          },
+          "summary": "Reviewed `tests/trait-impls.rs`, which is a test module asserting that `ConstDefault::DEFAULT` matches `Default::default()` across primitives, tuples, arrays, atomics, cells, and refcells. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11513,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055892921,
+            "finished_at_unix_ms": 1784055904434,
+            "total_token_usage": {
+              "input_tokens": 25226,
+              "cached_input_tokens": 21248,
+              "output_tokens": 398,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 25624
+            },
+            "last_token_usage": {
+              "input_tokens": 25226,
+              "cached_input_tokens": 21248,
+              "output_tokens": 398,
+              "reasoning_output_tokens": 186,
+              "total_tokens": 25624
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_db208b849fc64eeb8ac3483049c26ee8",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784053657",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a269ba3b931a15da49018aa52204833684593f788750dda37b0db4840e69d95d"
+          },
+          "summary": "Reviewed the package VCS metadata in `.cargo_vcs_info.json`, which only records a source git SHA and does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior. No concrete malicious or supply-chain indicators were found in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10294,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053585152,
+            "finished_at_unix_ms": 1784053595447,
+            "total_token_usage": {
+              "input_tokens": 24092,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 165,
+              "total_tokens": 24448
+            },
+            "last_token_usage": {
+              "input_tokens": 24092,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 165,
+              "total_tokens": 24448
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".github/workflows/rust.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8bbe7a8b7bd352916eab0c43f64151eb7aa740d8b539ba298e289c891d098b79"
+          },
+          "summary": "Reviewed a GitHub Actions CI workflow that checks out the repo, installs Rust toolchains and components, then runs cargo check, test, fmt, doc, clippy, and audit across multiple OS targets. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, secret or credential access, network or exfiltration logic, dynamic code loading, obfuscation, persistence, or hidden subprocess behavior beyond ordinary CI tooling.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12950,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053595448,
+            "finished_at_unix_ms": 1784053608399,
+            "total_token_usage": {
+              "input_tokens": 24800,
+              "cached_input_tokens": 23296,
+              "output_tokens": 492,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 25292
+            },
+            "last_token_usage": {
+              "input_tokens": 24800,
+              "cached_input_tokens": 23296,
+              "output_tokens": 492,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 25292
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -258,21 +420,93 @@
             "algorithm": "blake3",
             "value": "76958fa21d3f3b978634b8596a6fdd7583e319e69ffe6312b8c27c81abed87ef"
           },
-          "summary": "Reviewed the `.rustfmt.toml` formatter configuration, which only sets Rust formatting preferences such as line width, import layout, edition, and shorthand style. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this target file.",
+          "summary": "Reviewed .rustfmt.toml, which only sets Rust formatting preferences such as line width, import layout, edition, and shorthand rules. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain activity in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14046,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053608399,
+            "finished_at_unix_ms": 1784053622446,
+            "total_token_usage": {
+              "input_tokens": 24166,
+              "cached_input_tokens": 21248,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 223,
+              "total_tokens": 24588
+            },
+            "last_token_usage": {
+              "input_tokens": 24166,
+              "cached_input_tokens": 21248,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 223,
+              "total_tokens": 24588
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "a269ba3b931a15da49018aa52204833684593f788750dda37b0db4840e69d95d"
+            "value": "c2d1e448c12090c685f967f4615ff66cadada1366a3d7acc86cdd4c621b19c5e"
           },
-          "summary": "Reviewed .cargo_vcs_info.json, which contains only a Git commit SHA1 pointer and no executable logic. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence triggers in the target file, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed the normalized Cargo.toml for the const-default crate. It only declares package metadata, an optional derive dependency, and feature flags; I found no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13971,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053622446,
+            "finished_at_unix_ms": 1784053636418,
+            "total_token_usage": {
+              "input_tokens": 24341,
+              "cached_input_tokens": 19200,
+              "output_tokens": 509,
+              "reasoning_output_tokens": 323,
+              "total_tokens": 24850
+            },
+            "last_token_usage": {
+              "input_tokens": 24341,
+              "cached_input_tokens": 19200,
+              "output_tokens": 509,
+              "reasoning_output_tokens": 323,
+              "total_tokens": 24850
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3cb6be87862c4d7e581070225f2cfd2eba9861fbb60bc8528bd860cf61ff4345"
+          },
+          "summary": "README.md is a short crate overview for a `ConstDefault` trait and derive macro, with usage examples and dependency instructions. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20808,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053636419,
+            "finished_at_unix_ms": 1784053657228,
+            "total_token_usage": {
+              "input_tokens": 24555,
+              "cached_input_tokens": 19200,
+              "output_tokens": 500,
+              "reasoning_output_tokens": 311,
+              "total_tokens": 25055
+            },
+            "last_token_usage": {
+              "input_tokens": 24555,
+              "cached_input_tokens": 19200,
+              "output_tokens": 500,
+              "reasoning_output_tokens": 311,
+              "total_tokens": 25055
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -288,7 +522,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590781",
       "thirdpass_version": "0.6.0",
@@ -386,84 +620,6 @@
               "total_tokens": 21090
             }
           },
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_f56a0948cd1f4c6aaf859b4f11d1830b",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783178754",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which defines the `ConstDefault` trait and a set of compile-time default implementations for standard library, `alloc`, atomics, tuples, and arrays. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/derive.rs`, which contains unit tests for the `ConstDefault` derive macro across primitives, atomics, structs, tuple structs, and type aliases. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution in this file.\nReviewed `tests/trait-impls.rs`, which is a pure Rust test module comparing `ConstDefault` and `Default` behavior for primitives, tuples, arrays, atomics behind a feature gate, and cell types. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.\nReviewed this GitHub Actions workflow for install-time execution, hidden subprocesses, credential or secret harvesting, network or exfiltration behavior, dynamic code loading, obfuscation, and persistence tampering. It appears to be a standard Rust CI pipeline that checks, tests, formats, documents, runs clippy, and performs cargo audit, with no concrete malicious or supply-chain indicators in the target file.\nReviewed this normalized `Cargo.toml` for supply-chain indicators. It only defines package metadata, an optional local derive dependency, and feature flags; I found no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ef9a4fbc5e4a7bd35fb3cc9f32e6b7679e52a67de5620de7a3051a558741763f"
-          },
-          "summary": "Reviewed `src/lib.rs`, which defines the `ConstDefault` trait and a set of compile-time default implementations for standard library, `alloc`, atomics, tuples, and arrays. I checked this file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/derive.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c87a225816a2b044c43deb9ae19d8c3b499419d3fbc153094616fab8a5f6aa7f"
-          },
-          "summary": "Reviewed `tests/derive.rs`, which contains unit tests for the `ConstDefault` derive macro across primitives, atomics, structs, tuple structs, and type aliases. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/trait-impls.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "380dceb34021f15797a2bcdc2f4e35ab0d606ffdb1664b2dd9baaeb18840ea36"
-          },
-          "summary": "Reviewed `tests/trait-impls.rs`, which is a pure Rust test module comparing `ConstDefault` and `Default` behavior for primitives, tuples, arrays, atomics behind a feature gate, and cell types. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".github/workflows/rust.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8bbe7a8b7bd352916eab0c43f64151eb7aa740d8b539ba298e289c891d098b79"
-          },
-          "summary": "Reviewed this GitHub Actions workflow for install-time execution, hidden subprocesses, credential or secret harvesting, network or exfiltration behavior, dynamic code loading, obfuscation, and persistence tampering. It appears to be a standard Rust CI pipeline that checks, tests, formats, documents, runs clippy, and performs cargo audit, with no concrete malicious or supply-chain indicators in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c2d1e448c12090c685f967f4615ff66cadada1366a3d7acc86cdd4c621b19c5e"
-          },
-          "summary": "Reviewed this normalized `Cargo.toml` for supply-chain indicators. It only defines package metadata, an optional local derive dependency, and feature flags; I found no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

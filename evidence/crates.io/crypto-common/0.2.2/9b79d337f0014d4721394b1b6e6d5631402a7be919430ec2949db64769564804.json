@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591370",
+  "latest_reviewed_at": "1784054756",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -182,90 +188,40 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 7,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 4,
+      "file_record_count": 16,
+      "file_record_count_with_metrics": 16
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 11,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 7,
-    "duration_ms_total": 55836,
-    "attempts_total": 4,
+    "reviewed_file_records": 16,
+    "file_records_with_metrics": 16,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 244998,
+    "attempts_total": 16,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 16,
+    "last_token_usage_records": 16,
     "total_token_usage": {
-      "input_tokens": 113739,
-      "cached_input_tokens": 96000,
-      "output_tokens": 1910,
-      "reasoning_output_tokens": 965,
-      "total_tokens": 115649
+      "input_tokens": 502225,
+      "cached_input_tokens": 420480,
+      "output_tokens": 8332,
+      "reasoning_output_tokens": 4562,
+      "total_tokens": 510557
     },
     "last_token_usage": {
-      "input_tokens": 113739,
-      "cached_input_tokens": 96000,
-      "output_tokens": 1910,
-      "reasoning_output_tokens": 965,
-      "total_tokens": 115649
+      "input_tokens": 502225,
+      "cached_input_tokens": 420480,
+      "output_tokens": 8332,
+      "reasoning_output_tokens": 4562,
+      "total_tokens": 510557
     },
     "model_context_windows": []
   },
   "reviews": [
-    {
-      "id": "rev_3664ea1ae0ff4d8583115613aea4d2aa",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782834966",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`README.md` is a plain project overview for RustCrypto's `crypto-common` crate, covering semver policy, licensing, and badge/reference links. I reviewed it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `.cargo_vcs_info.json`, which only records upstream provenance metadata (`git.sha1` and `path_in_vcs`) for the crate. I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
-      "files": [
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2c7966c3c3ceed60c6afced3aba4581b17c8b778b45d859a6b46db7e5aa7476d"
-          },
-          "summary": "`README.md` is a plain project overview for RustCrypto's `crypto-common` crate, covering semver policy, licensing, and badge/reference links. I reviewed it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3747708c55e819c9b41ee1d97da8d49d7495b6247bd4409305d2d4da9d1e7cc4"
-          },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records upstream provenance metadata (`git.sha1` and `path_in_vcs`) for the crate. I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
     {
       "id": "rev_63e6420483124f84af83bab8d2dd899b",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -276,7 +232,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591370",
       "thirdpass_version": "0.6.0",
@@ -412,7 +368,7 @@
       ]
     },
     {
-      "id": "rev_dbea1fc0e9624bdea511842e41b6438f",
+      "id": "rev_899c1c6525fa403387729d08843f4995",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -420,12 +376,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782834932",
+      "created_at": "1784054756",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/hazmat.rs`, which is a Rust trait-and-macro helper module for serializing and deserializing internal cryptographic state into fixed-size byte arrays. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed src/lib.rs, a no_std Rust trait-and-type definition file for crypto-common that defines key/IV/block sizing helpers, initialization traits, and small error types. I found no concrete malicious or supply-chain indicators in this file, and no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed the changelog for release notes and version history only; it contains no install hooks, no network or exfiltration logic, no credential access, no dynamic code loading, no obfuscation, and no persistence behavior. The file is informational and documents crate version changes, including the 0.2.2, 0.2.1, and older releases, with no concrete malicious or supply-chain indicators found.\nReviewed the manifest for a normal Rust library crate, `crypto-common`, with optional `getrandom`, `rand_core`, and `zeroize` features and a direct `src/lib.rs` library target. No concrete supply-chain or malicious indicators were found in this file: there are no install hooks or build scripts, no network or exfiltration behavior, no credential access, no dynamic code loading, no obfuscation, and no persistence/tampering directives.\nReviewed src/generate.rs, which only defines a Generate trait and implementations that obtain random bytes/words from CryptoRng or the optional getrandom SysRng wrapper. I checked for install-time execution, network or secret access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
         {
           "file_path": "src/hazmat.rs",
@@ -433,9 +388,29 @@
             "algorithm": "blake3",
             "value": "5157db6cc1cd80175f034264ba4ed289558c944ad37b058514f85d8bcdd6e4ea"
           },
-          "summary": "Reviewed `src/hazmat.rs`, which is a Rust trait-and-macro helper module for serializing and deserializing internal cryptographic state into fixed-size byte arrays. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed src/hazmat.rs, which implements `SerializableState` helpers for integers and fixed-size byte/word arrays using direct little-endian conversions and array chunking. I checked this file for install-time execution, network/exfiltration, secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15256,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054714284,
+            "finished_at_unix_ms": 1784054729541,
+            "total_token_usage": {
+              "input_tokens": 39834,
+              "cached_input_tokens": 34432,
+              "output_tokens": 583,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 40417
+            },
+            "last_token_usage": {
+              "input_tokens": 39834,
+              "cached_input_tokens": 34432,
+              "output_tokens": 583,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 40417
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -445,9 +420,78 @@
             "algorithm": "blake3",
             "value": "08778d558352fe65a5e1e09f4b012743cf9bb716e1bb24fef811551df9acbc69"
           },
-          "summary": "Reviewed src/lib.rs, a no_std Rust trait-and-type definition file for crypto-common that defines key/IV/block sizing helpers, initialization traits, and small error types. I found no concrete malicious or supply-chain indicators in this file, and no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/lib.rs`, which defines the crate's core `no_std` crypto traits, type aliases, and error types, plus compile-time doc metadata and deprecated RNG helpers behind features. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 27283,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054729541,
+            "finished_at_unix_ms": 1784054756825,
+            "total_token_usage": {
+              "input_tokens": 100855,
+              "cached_input_tokens": 89344,
+              "output_tokens": 1141,
+              "reasoning_output_tokens": 533,
+              "total_tokens": 101996
+            },
+            "last_token_usage": {
+              "input_tokens": 100855,
+              "cached_input_tokens": 89344,
+              "output_tokens": 1141,
+              "reasoning_output_tokens": 533,
+              "total_tokens": 101996
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_9e87b7b3973b4acf8cf76f43aa38e902",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046100",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3747708c55e819c9b41ee1d97da8d49d7495b6247bd4409305d2d4da9d1e7cc4"
+          },
+          "summary": "Reviewed the Cargo VCS metadata in .cargo_vcs_info.json, which only records the upstream git SHA and path-in-vcs for the crate. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16028,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046022999,
+            "finished_at_unix_ms": 1784046039027,
+            "total_token_usage": {
+              "input_tokens": 24032,
+              "cached_input_tokens": 21248,
+              "output_tokens": 397,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 24429
+            },
+            "last_token_usage": {
+              "input_tokens": 24032,
+              "cached_input_tokens": 21248,
+              "output_tokens": 397,
+              "reasoning_output_tokens": 201,
+              "total_tokens": 24429
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -457,9 +501,29 @@
             "algorithm": "blake3",
             "value": "4e789a7ff54d6c933ba22b792bb724cd0469db366640c3fba6c82d920b06b75e"
           },
-          "summary": "Reviewed the changelog for release notes and version history only; it contains no install hooks, no network or exfiltration logic, no credential access, no dynamic code loading, no obfuscation, and no persistence behavior. The file is informational and documents crate version changes, including the 0.2.2, 0.2.1, and older releases, with no concrete malicious or supply-chain indicators found.",
+          "summary": "Reviewed the changelog entries for crypto-common 0.2.2 and found only release history and dependency/API notes. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and none are present in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13512,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046039028,
+            "finished_at_unix_ms": 1784046052540,
+            "total_token_usage": {
+              "input_tokens": 25256,
+              "cached_input_tokens": 21248,
+              "output_tokens": 433,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 25689
+            },
+            "last_token_usage": {
+              "input_tokens": 25256,
+              "cached_input_tokens": 21248,
+              "output_tokens": 433,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 25689
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -469,9 +533,61 @@
             "algorithm": "blake3",
             "value": "02171b70a875471ad150bc57ecc2cf8d0de0c7f2e34a286c690f6f275986141b"
           },
-          "summary": "Reviewed the manifest for a normal Rust library crate, `crypto-common`, with optional `getrandom`, `rand_core`, and `zeroize` features and a direct `src/lib.rs` library target. No concrete supply-chain or malicious indicators were found in this file: there are no install hooks or build scripts, no network or exfiltration behavior, no credential access, no dynamic code loading, no obfuscation, and no persistence/tampering directives.",
+          "summary": "Reviewed the normalized Cargo.toml for package metadata, feature flags, dependencies, and any build/install hooks. I found no concrete indicators of install-time execution, network exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this manifest.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14207,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046052541,
+            "finished_at_unix_ms": 1784046066748,
+            "total_token_usage": {
+              "input_tokens": 24701,
+              "cached_input_tokens": 21248,
+              "output_tokens": 583,
+              "reasoning_output_tokens": 406,
+              "total_tokens": 25284
+            },
+            "last_token_usage": {
+              "input_tokens": 24701,
+              "cached_input_tokens": 21248,
+              "output_tokens": 583,
+              "reasoning_output_tokens": 406,
+              "total_tokens": 25284
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2c7966c3c3ceed60c6afced3aba4581b17c8b778b45d859a6b46db7e5aa7476d"
+          },
+          "summary": "`README.md` is a standard crate overview for RustCrypto's `crypto-common`, listing purpose, SemVer policy, license terms, and badge links. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14579,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046066751,
+            "finished_at_unix_ms": 1784046081331,
+            "total_token_usage": {
+              "input_tokens": 24494,
+              "cached_input_tokens": 15104,
+              "output_tokens": 354,
+              "reasoning_output_tokens": 168,
+              "total_tokens": 24848
+            },
+            "last_token_usage": {
+              "input_tokens": 24494,
+              "cached_input_tokens": 15104,
+              "output_tokens": 354,
+              "reasoning_output_tokens": 168,
+              "total_tokens": 24848
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -481,9 +597,206 @@
             "algorithm": "blake3",
             "value": "83a947613885bda62eb3ca6d5ae927f97c9d28ba56466f2ed583c8fc79185a8e"
           },
-          "summary": "Reviewed src/generate.rs, which only defines a Generate trait and implementations that obtain random bytes/words from CryptoRng or the optional getrandom SysRng wrapper. I checked for install-time execution, network or secret access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "`src/generate.rs` defines a `Generate` trait and straightforward RNG-backed implementations for `u32`, `u64`, byte arrays, and `hybrid_array::Array` types, with optional `getrandom` support for ambient OS randomness. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess use, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18812,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046081332,
+            "finished_at_unix_ms": 1784046100145,
+            "total_token_usage": {
+              "input_tokens": 24862,
+              "cached_input_tokens": 15104,
+              "output_tokens": 555,
+              "reasoning_output_tokens": 335,
+              "total_tokens": 25417
+            },
+            "last_token_usage": {
+              "input_tokens": 24862,
+              "cached_input_tokens": 15104,
+              "output_tokens": 555,
+              "reasoning_output_tokens": 335,
+              "total_tokens": 25417
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_b5cc111a553b487998d3bdaa85e09ab4",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052117",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3747708c55e819c9b41ee1d97da8d49d7495b6247bd4409305d2d4da9d1e7cc4"
+          },
+          "summary": "Reviewed this Cargo VCS metadata file, which only records the source git SHA-1 and repository path. I checked it for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17481,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052048217,
+            "finished_at_unix_ms": 1784052065699,
+            "total_token_usage": {
+              "input_tokens": 24164,
+              "cached_input_tokens": 21248,
+              "output_tokens": 418,
+              "reasoning_output_tokens": 234,
+              "total_tokens": 24582
+            },
+            "last_token_usage": {
+              "input_tokens": 24164,
+              "cached_input_tokens": 21248,
+              "output_tokens": 418,
+              "reasoning_output_tokens": 234,
+              "total_tokens": 24582
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4e789a7ff54d6c933ba22b792bb724cd0469db366640c3fba6c82d920b06b75e"
+          },
+          "summary": "Reviewed CHANGELOG.md, which only lists version history and release notes for crypto-common 0.2.2 through 0.1.0. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other executable content.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11961,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052065700,
+            "finished_at_unix_ms": 1784052077662,
+            "total_token_usage": {
+              "input_tokens": 25322,
+              "cached_input_tokens": 21248,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 25759
+            },
+            "last_token_usage": {
+              "input_tokens": 25322,
+              "cached_input_tokens": 21248,
+              "output_tokens": 437,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 25759
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "02171b70a875471ad150bc57ecc2cf8d0de0c7f2e34a286c690f6f275986141b"
+          },
+          "summary": "Reviewed the package manifest for install-time hooks, build-script execution, hidden downloads, credential access, obfuscation, and persistence behavior. It is a normal Rust crate manifest for `crypto-common` 0.2.2 with optional `getrandom`/`rand_core` features and no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12834,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052077664,
+            "finished_at_unix_ms": 1784052090499,
+            "total_token_usage": {
+              "input_tokens": 24800,
+              "cached_input_tokens": 21248,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 295,
+              "total_tokens": 25285
+            },
+            "last_token_usage": {
+              "input_tokens": 24800,
+              "cached_input_tokens": 21248,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 295,
+              "total_tokens": 25285
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2c7966c3c3ceed60c6afced3aba4581b17c8b778b45d859a6b46db7e5aa7476d"
+          },
+          "summary": "README.md is a standard RustCrypto crate description and licensing note with documentation badges and links. I checked it for install-time execution, credential access, network exfiltration, dynamic code loading, obfuscation, and persistence indicators, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14283,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052090500,
+            "finished_at_unix_ms": 1784052104783,
+            "total_token_usage": {
+              "input_tokens": 24563,
+              "cached_input_tokens": 21248,
+              "output_tokens": 537,
+              "reasoning_output_tokens": 363,
+              "total_tokens": 25100
+            },
+            "last_token_usage": {
+              "input_tokens": 24563,
+              "cached_input_tokens": 21248,
+              "output_tokens": 537,
+              "reasoning_output_tokens": 363,
+              "total_tokens": 25100
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/generate.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "83a947613885bda62eb3ca6d5ae927f97c9d28ba56466f2ed583c8fc79185a8e"
+          },
+          "summary": "Reviewed `src/generate.rs`, which defines a `Generate` trait and concrete implementations that draw bytes and integers from a cryptographic RNG, including optional system RNG helpers behind the `getrandom` feature. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12926,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052104784,
+            "finished_at_unix_ms": 1784052117710,
+            "total_token_usage": {
+              "input_tokens": 25603,
+              "cached_input_tokens": 21760,
+              "output_tokens": 499,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 26102
+            },
+            "last_token_usage": {
+              "input_tokens": 25603,
+              "cached_input_tokens": 21760,
+              "output_tokens": 499,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 26102
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

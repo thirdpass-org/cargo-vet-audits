@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591791",
+  "latest_reviewed_at": "1784052533",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -150,49 +156,41 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 0
+      "review_count": 3,
+      "file_record_count": 12,
+      "file_record_count_with_metrics": 12
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 8,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 4,
-    "duration_ms_total": 49389,
-    "attempts_total": 4,
+    "reviewed_file_records": 12,
+    "file_records_with_metrics": 12,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 161675,
+    "attempts_total": 12,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 12,
+    "last_token_usage_records": 12,
     "total_token_usage": {
-      "input_tokens": 96188,
-      "cached_input_tokens": 81280,
-      "output_tokens": 1686,
-      "reasoning_output_tokens": 840,
-      "total_tokens": 97874
+      "input_tokens": 363604,
+      "cached_input_tokens": 315776,
+      "output_tokens": 5412,
+      "reasoning_output_tokens": 2556,
+      "total_tokens": 369016
     },
     "last_token_usage": {
-      "input_tokens": 96188,
-      "cached_input_tokens": 81280,
-      "output_tokens": 1686,
-      "reasoning_output_tokens": 840,
-      "total_tokens": 97874
+      "input_tokens": 363604,
+      "cached_input_tokens": 315776,
+      "output_tokens": 5412,
+      "reasoning_output_tokens": 2556,
+      "total_tokens": 369016
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_54f699258c3c4ebda253472119573a2e",
+      "id": "rev_35faf6496a8744d9994c29e78c3875af",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -200,22 +198,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782843140",
+      "created_at": "1784046508",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is a small `no_std` Rust crate entrypoint defining and re-exporting async I/O traits plus standard-library adapter impls for boxed, pinned, and byte-slice types. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed the target `Cargo.toml` for install-time execution, build hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. It is a normalized Rust package manifest for `futures-io` with `build = false`, no build script, and no manifest-level indicators of malicious or supply-chain behavior.\nI reviewed the target `README.md`, which is a brief crate introduction and Cargo usage snippet for `futures-io`. It contains no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other payload-execution indicators.\nReviewed `.cargo_vcs_info.json`, which only records the package's git SHA1 and VCS path metadata. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "6f194c5247b56807f5421afa99aaefd781e22015bdc69aa4ca63d9409a2eb039"
+            "value": "4017daabba0580273601421a35b8fcb641e2a8a9339cf9252507298d22a06443"
           },
-          "summary": "Reviewed `src/lib.rs`, which is a small `no_std` Rust crate entrypoint defining and re-exporting async I/O traits plus standard-library adapter impls for boxed, pinned, and byte-slice types. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed the VCS metadata file, which only records the package's source git SHA and path in version control. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11590,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046453076,
+            "finished_at_unix_ms": 1784046464667,
+            "total_token_usage": {
+              "input_tokens": 24111,
+              "cached_input_tokens": 21248,
+              "output_tokens": 274,
+              "reasoning_output_tokens": 93,
+              "total_tokens": 24385
+            },
+            "last_token_usage": {
+              "input_tokens": 24111,
+              "cached_input_tokens": 21248,
+              "output_tokens": 274,
+              "reasoning_output_tokens": 93,
+              "total_tokens": 24385
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -225,9 +242,29 @@
             "algorithm": "blake3",
             "value": "64daa8e32375f66886730607e5012e65617ad74788b39ee1ad446ee8e3544adb"
           },
-          "summary": "Reviewed the target `Cargo.toml` for install-time execution, build hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. It is a normalized Rust package manifest for `futures-io` with `build = false`, no build script, and no manifest-level indicators of malicious or supply-chain behavior.",
+          "summary": "Reviewed the package manifest for `futures-io` and found a normal library-only crate declaration with no build script, binaries, or dependency entries that would enable install-time execution. I also checked for signs of network/exfiltration hooks, credential access, dynamic code loading, obfuscation, or persistence metadata in this file and found none.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12631,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046464667,
+            "finished_at_unix_ms": 1784046477299,
+            "total_token_usage": {
+              "input_tokens": 24489,
+              "cached_input_tokens": 21248,
+              "output_tokens": 510,
+              "reasoning_output_tokens": 311,
+              "total_tokens": 24999
+            },
+            "last_token_usage": {
+              "input_tokens": 24489,
+              "cached_input_tokens": 21248,
+              "output_tokens": 510,
+              "reasoning_output_tokens": 311,
+              "total_tokens": 24999
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -237,21 +274,61 @@
             "algorithm": "blake3",
             "value": "f78fb3a501c087b4f040397dd82a5efc17d07a11da9f922735bbbf04620a487c"
           },
-          "summary": "I reviewed the target `README.md`, which is a brief crate introduction and Cargo usage snippet for `futures-io`. It contains no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other payload-execution indicators.",
+          "summary": "Reviewed README.md, which is a plain package overview for the futures-io crate with installation and license information. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11585,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046477299,
+            "finished_at_unix_ms": 1784046488885,
+            "total_token_usage": {
+              "input_tokens": 24228,
+              "cached_input_tokens": 23296,
+              "output_tokens": 334,
+              "reasoning_output_tokens": 148,
+              "total_tokens": 24562
+            },
+            "last_token_usage": {
+              "input_tokens": 24228,
+              "cached_input_tokens": 23296,
+              "output_tokens": 334,
+              "reasoning_output_tokens": 148,
+              "total_tokens": 24562
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "4017daabba0580273601421a35b8fcb641e2a8a9339cf9252507298d22a06443"
+            "value": "6f194c5247b56807f5421afa99aaefd781e22015bdc69aa4ca63d9409a2eb039"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package's git SHA1 and VCS path metadata. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none.",
+          "summary": "`src/lib.rs` is a normal no_std async I/O trait crate: it defines `AsyncRead`, `AsyncWrite`, `AsyncSeek`, and `AsyncBufRead`, plus std-backed delegation impls for common types like `Box`, `&mut`, `Pin`, `Vec<u8>`, and `&[u8]`. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19638,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046488886,
+            "finished_at_unix_ms": 1784046508524,
+            "total_token_usage": {
+              "input_tokens": 61342,
+              "cached_input_tokens": 52736,
+              "output_tokens": 739,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 62081
+            },
+            "last_token_usage": {
+              "input_tokens": 61342,
+              "cached_input_tokens": 52736,
+              "output_tokens": 739,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 62081
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -267,7 +344,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591791",
       "thirdpass_version": "0.6.0",
@@ -395,6 +472,151 @@
               "output_tokens": 310,
               "reasoning_output_tokens": 134,
               "total_tokens": 21171
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_868e4fbc923e4b98929165a087f487b9",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052533",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4017daabba0580273601421a35b8fcb641e2a8a9339cf9252507298d22a06443"
+          },
+          "summary": "Reviewed the Cargo VCS metadata file, which only records the upstream git SHA1 and `path_in_vcs`; it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12470,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052476387,
+            "finished_at_unix_ms": 1784052488858,
+            "total_token_usage": {
+              "input_tokens": 24206,
+              "cached_input_tokens": 21248,
+              "output_tokens": 475,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 24681
+            },
+            "last_token_usage": {
+              "input_tokens": 24206,
+              "cached_input_tokens": 21248,
+              "output_tokens": 475,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 24681
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "64daa8e32375f66886730607e5012e65617ad74788b39ee1ad446ee8e3544adb"
+          },
+          "summary": "Reviewed the normalized Cargo manifest for `futures-io` and found only standard package metadata, feature flags, and lint settings. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and none were present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10961,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052488859,
+            "finished_at_unix_ms": 1784052499820,
+            "total_token_usage": {
+              "input_tokens": 24436,
+              "cached_input_tokens": 21248,
+              "output_tokens": 378,
+              "reasoning_output_tokens": 189,
+              "total_tokens": 24814
+            },
+            "last_token_usage": {
+              "input_tokens": 24436,
+              "cached_input_tokens": 21248,
+              "output_tokens": 378,
+              "reasoning_output_tokens": 189,
+              "total_tokens": 24814
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f78fb3a501c087b4f040397dd82a5efc17d07a11da9f922735bbbf04620a487c"
+          },
+          "summary": "Reviewed the README for the `futures-io` crate, which only describes the async I/O traits it exposes, basic Cargo usage, and licensing. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12827,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052499821,
+            "finished_at_unix_ms": 1784052512648,
+            "total_token_usage": {
+              "input_tokens": 24282,
+              "cached_input_tokens": 21248,
+              "output_tokens": 390,
+              "reasoning_output_tokens": 196,
+              "total_tokens": 24672
+            },
+            "last_token_usage": {
+              "input_tokens": 24282,
+              "cached_input_tokens": 21248,
+              "output_tokens": 390,
+              "reasoning_output_tokens": 196,
+              "total_tokens": 24672
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6f194c5247b56807f5421afa99aaefd781e22015bdc69aa4ca63d9409a2eb039"
+          },
+          "summary": "Reviewed `src/lib.rs`, which defines the crate's async I/O traits (`AsyncRead`, `AsyncWrite`, `AsyncSeek`, `AsyncBufRead`) and standard-library delegation impls for boxed, pinned, and slice-backed types. I checked for install-time execution, network or exfiltration code, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20584,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052512649,
+            "finished_at_unix_ms": 1784052533233,
+            "total_token_usage": {
+              "input_tokens": 60322,
+              "cached_input_tokens": 52224,
+              "output_tokens": 626,
+              "reasoning_output_tokens": 197,
+              "total_tokens": 60948
+            },
+            "last_token_usage": {
+              "input_tokens": 60322,
+              "cached_input_tokens": 52224,
+              "output_tokens": 626,
+              "reasoning_output_tokens": 197,
+              "total_tokens": 60948
             }
           },
           "comment_count": 0,

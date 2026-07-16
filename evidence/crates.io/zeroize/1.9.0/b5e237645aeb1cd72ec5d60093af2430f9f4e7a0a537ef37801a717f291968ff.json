@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590682",
+  "latest_reviewed_at": "1784056615",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -237,50 +243,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 3,
-      "file_record_count": 12,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 5,
+      "file_record_count": 21,
+      "file_record_count_with_metrics": 21
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 16,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 12,
-    "duration_ms_total": 54861,
-    "attempts_total": 4,
+    "reviewed_file_records": 21,
+    "file_records_with_metrics": 21,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 297157,
+    "attempts_total": 21,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 21,
+    "last_token_usage_records": 21,
     "total_token_usage": {
-      "input_tokens": 86305,
-      "cached_input_tokens": 70656,
-      "output_tokens": 1862,
-      "reasoning_output_tokens": 946,
-      "total_tokens": 88167
+      "input_tokens": 604917,
+      "cached_input_tokens": 510976,
+      "output_tokens": 10237,
+      "reasoning_output_tokens": 5308,
+      "total_tokens": 615154
     },
     "last_token_usage": {
-      "input_tokens": 86305,
-      "cached_input_tokens": 70656,
-      "output_tokens": 1862,
-      "reasoning_output_tokens": 946,
-      "total_tokens": 88167
+      "input_tokens": 604917,
+      "cached_input_tokens": 510976,
+      "output_tokens": 10237,
+      "reasoning_output_tokens": 5308,
+      "total_tokens": 615154
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_12746ee69a2c45c1b706e76a72c5c215",
+      "id": "rev_212f2af78f894e84a4f6473e0eb8dadc",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -288,100 +286,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782821498",
+      "created_at": "1784045916",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/barrier.rs`, which implements an `optimization_barrier` helper using `asm!` on supported architectures and a `black_box`/`read_volatile` fallback elsewhere. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors.\nReviewed `src/aarch64.rs`, which only defines `Zeroize` implementations for ARM64 SIMD register types using a volatile write of zeroes plus an optimization barrier. I found no concrete malicious or supply-chain indicators in this file: no install-time hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence/tampering behavior.\nReviewed `src/x86.rs`, which only defines `Zeroize` implementations for x86/x86_64 SIMD register types by writing zeros with a volatile write and an optimization barrier. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `.cargo_vcs_info.json`, which is a small Cargo provenance metadata file containing a git commit hash and the source path in VCS. It does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/stack.rs`, which defines a documented `zeroize_stack` helper that allocates a zeroed stack buffer and passes it to an optimization barrier to encourage stack wiping. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
-        {
-          "file_path": "src/barrier.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "91deaba1d83f1a1706d701f5bb40e1b9d488bc0b9b3453f870876542cdc31f2a"
-          },
-          "summary": "Reviewed `src/barrier.rs`, which implements an `optimization_barrier` helper using `asm!` on supported architectures and a `black_box`/`read_volatile` fallback elsewhere. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/aarch64.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4d6c226922e90dbe54b3e58182b8da8125e4832922a66174c166100a8df321ff"
-          },
-          "summary": "Reviewed `src/aarch64.rs`, which only defines `Zeroize` implementations for ARM64 SIMD register types using a volatile write of zeroes plus an optimization barrier. I found no concrete malicious or supply-chain indicators in this file: no install-time hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence/tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/x86.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9c8f39481626305e66c15bbbf53f841ac1c684283194c8f026ef0cf4603d4339"
-          },
-          "summary": "Reviewed `src/x86.rs`, which only defines `Zeroize` implementations for x86/x86_64 SIMD register types by writing zeros with a volatile write and an optimization barrier. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "a2394d547deb7fd597c44346318788abf9ab8604f5247af8af646e671a05609b"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which is a small Cargo provenance metadata file containing a git commit hash and the source path in VCS. It does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the crate's VCS provenance (`git.sha1` and `path_in_vcs`). I found no concrete signs of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/stack.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "825fe611f59a7378e9e9ccb4b6a7bcbff891058cc1e5fe05f622237082509fdd"
+          "agent_run_metrics": {
+            "duration_ms": 10945,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045857191,
+            "finished_at_unix_ms": 1784045868137,
+            "total_token_usage": {
+              "input_tokens": 23991,
+              "cached_input_tokens": 21248,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 195,
+              "total_tokens": 24372
+            },
+            "last_token_usage": {
+              "input_tokens": 23991,
+              "cached_input_tokens": 21248,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 195,
+              "total_tokens": 24372
+            }
           },
-          "summary": "Reviewed `src/stack.rs`, which defines a documented `zeroize_stack` helper that allocates a zeroed stack buffer and passes it to an optimization barrier to encourage stack wiping. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_a546ab09887745c68d1f1f06ad30ec0c",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782821412",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`tests/zeroize.rs` is an integration test module for the `zeroize` crate, covering arrays, tuples, `Vec`, `String`, `CString`, `Box`, `Arc`, and wrapper types to verify memory is overwritten on zeroization and drop. I checked it for install hooks, network/exfiltration, credential or secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `CHANGELOG.md`, which contains only human-readable release notes for `zeroize` versions 0.9.0 through 1.9.0. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none in this file.\nReviewed the normalized Cargo manifest for `zeroize` 1.9.0. It declares a library crate with optional `serde` and `zeroize_derive` dependencies, test targets, and lint settings, and I found no concrete malicious or supply-chain indicators in this file: no install hooks, no network/exfiltration behavior, no credential access, no dynamic code loading, no obfuscation, and no persistence/tampering directives.\nI reviewed README.md, which documents the zeroize crate as a pure-Rust library for securely wiping memory and links to docs and badges. I found no concrete malicious or supply-chain indicators in this file: no install hooks, no network or exfiltration behavior, no credential access, no dynamic code loading, no obfuscation, and no persistence mechanisms.\nReviewed `tests/alloc.rs`, which is a test-only harness for zeroization behavior using a custom global allocator plus `SecretBox`/`ObserveSecretBox` wrappers. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": "tests/zeroize.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b9b24fc5d3e48edda6e5a982189b589a2889319e2fea97f88159da9214ca5a18"
-          },
-          "summary": "`tests/zeroize.rs` is an integration test module for the `zeroize` crate, covering arrays, tuples, `Vec`, `String`, `CString`, `Box`, `Arc`, and wrapper types to verify memory is overwritten on zeroization and drop. I checked it for install hooks, network/exfiltration, credential or secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -391,9 +330,29 @@
             "algorithm": "blake3",
             "value": "b5e7f334ffb988d016413d85e5ba3b6530dbcf63d581b441630b0f308ad43d0d"
           },
-          "summary": "Reviewed `CHANGELOG.md`, which contains only human-readable release notes for `zeroize` versions 0.9.0 through 1.9.0. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none in this file.",
+          "summary": "Reviewed CHANGELOG.md, which is a plain release-history document for zeroize 1.9.0 and earlier versions. It contains only human-readable change notes and version links; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12282,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045868138,
+            "finished_at_unix_ms": 1784045880420,
+            "total_token_usage": {
+              "input_tokens": 26428,
+              "cached_input_tokens": 23296,
+              "output_tokens": 476,
+              "reasoning_output_tokens": 275,
+              "total_tokens": 26904
+            },
+            "last_token_usage": {
+              "input_tokens": 26428,
+              "cached_input_tokens": 23296,
+              "output_tokens": 476,
+              "reasoning_output_tokens": 275,
+              "total_tokens": 26904
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -403,9 +362,29 @@
             "algorithm": "blake3",
             "value": "d1ec56dd5ccb0b52401515ee192b837d1290bae99349141ce96e1b1970d7f2a5"
           },
-          "summary": "Reviewed the normalized Cargo manifest for `zeroize` 1.9.0. It declares a library crate with optional `serde` and `zeroize_derive` dependencies, test targets, and lint settings, and I found no concrete malicious or supply-chain indicators in this file: no install hooks, no network/exfiltration behavior, no credential access, no dynamic code loading, no obfuscation, and no persistence/tampering directives.",
+          "summary": "Reviewed the normalized Cargo.toml for `zeroize` 1.9.0 and found only package metadata, feature flags, dependencies, test targets, and lint settings. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence/tampering controls, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11526,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045880421,
+            "finished_at_unix_ms": 1784045891947,
+            "total_token_usage": {
+              "input_tokens": 24798,
+              "cached_input_tokens": 21248,
+              "output_tokens": 442,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 25240
+            },
+            "last_token_usage": {
+              "input_tokens": 24798,
+              "cached_input_tokens": 21248,
+              "output_tokens": 442,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 25240
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -415,9 +394,287 @@
             "algorithm": "blake3",
             "value": "6e115341196400b4b999ce8dd4fc4526b6db2a89455207aefa5b3c573d75c57c"
           },
-          "summary": "I reviewed README.md, which documents the zeroize crate as a pure-Rust library for securely wiping memory and links to docs and badges. I found no concrete malicious or supply-chain indicators in this file: no install hooks, no network or exfiltration behavior, no credential access, no dynamic code loading, no obfuscation, and no persistence mechanisms.",
+          "summary": "Reviewed README.md, which documents the RustCrypto `zeroize` crate as a pure-Rust, no_std memory-zeroing library and provides a simple usage example. I found no concrete malicious or supply-chain indicators in this file; it contains no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12770,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045891949,
+            "finished_at_unix_ms": 1784045904719,
+            "total_token_usage": {
+              "input_tokens": 24849,
+              "cached_input_tokens": 21248,
+              "output_tokens": 448,
+              "reasoning_output_tokens": 254,
+              "total_tokens": 25297
+            },
+            "last_token_usage": {
+              "input_tokens": 24849,
+              "cached_input_tokens": 21248,
+              "output_tokens": 448,
+              "reasoning_output_tokens": 254,
+              "total_tokens": 25297
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/aarch64.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4d6c226922e90dbe54b3e58182b8da8125e4832922a66174c166100a8df321ff"
+          },
+          "summary": "Reviewed `src/aarch64.rs`, which only provides `Zeroize` implementations for AArch64 SIMD register types by writing zeroed values with a volatile write and an optimization barrier. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11317,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045904720,
+            "finished_at_unix_ms": 1784045916037,
+            "total_token_usage": {
+              "input_tokens": 24156,
+              "cached_input_tokens": 15104,
+              "output_tokens": 408,
+              "reasoning_output_tokens": 213,
+              "total_tokens": 24564
+            },
+            "last_token_usage": {
+              "input_tokens": 24156,
+              "cached_input_tokens": 15104,
+              "output_tokens": 408,
+              "reasoning_output_tokens": 213,
+              "total_tokens": 24564
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_2d9b109925ea41ec9ac72d9719220892",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056615",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/zeroize.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b9b24fc5d3e48edda6e5a982189b589a2889319e2fea97f88159da9214ca5a18"
+          },
+          "summary": "Reviewed `tests/zeroize.rs`, which is an integration test suite for zeroization behavior across arrays, tuples, `Vec`, `String`, `CString`, `Box`, and `Arc`. I found no concrete supply-chain or malicious indicators in the target file: there are no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors, and the only risky-looking unsafe test code is explicitly confined to test assertions.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15031,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056578481,
+            "finished_at_unix_ms": 1784056593512,
+            "total_token_usage": {
+              "input_tokens": 25957,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 26446
+            },
+            "last_token_usage": {
+              "input_tokens": 25957,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 26446
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/zeroize_derive.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4ced3e568cc9a7d3136234287163eeb1d96aaeac5ceb4bd47d9ff7d6829c5c8e"
+          },
+          "summary": "`tests/zeroize_derive.rs` is an integration test module for the `zeroize_derive` proc-macros, covering zeroization behavior, drop inheritance, skipped fields, generic bounds, and deref handling. I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21542,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056593513,
+            "finished_at_unix_ms": 1784056615056,
+            "total_token_usage": {
+              "input_tokens": 39940,
+              "cached_input_tokens": 34432,
+              "output_tokens": 569,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 40509
+            },
+            "last_token_usage": {
+              "input_tokens": 39940,
+              "cached_input_tokens": 34432,
+              "output_tokens": 569,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 40509
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_4aef67c0b89847bbbc4bd3fb2f51ca05",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054640",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/barrier.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "91deaba1d83f1a1706d701f5bb40e1b9d488bc0b9b3453f870876542cdc31f2a"
+          },
+          "summary": "Reviewed `src/barrier.rs`, which implements an optimization barrier using inline assembly on supported targets and a `black_box`/volatile fallback elsewhere. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14657,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054562159,
+            "finished_at_unix_ms": 1784054576817,
+            "total_token_usage": {
+              "input_tokens": 39392,
+              "cached_input_tokens": 33920,
+              "output_tokens": 510,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 39902
+            },
+            "last_token_usage": {
+              "input_tokens": 39392,
+              "cached_input_tokens": 33920,
+              "output_tokens": 510,
+              "reasoning_output_tokens": 199,
+              "total_tokens": 39902
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "de9821d61fbb30146b0806a76fe09c5f18028bcbeec96708b23c383bcfa6a91f"
+          },
+          "summary": "Reviewed src/lib.rs, the crate root for a no_std zeroization library that defines the Zeroize/ZeroizeOnDrop traits, blanket impls, and volatile write helpers for scalars, slices, Vec/String/CString, and Zeroizing<T>. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19594,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054576818,
+            "finished_at_unix_ms": 1784054596412,
+            "total_token_usage": {
+              "input_tokens": 63316,
+              "cached_input_tokens": 50688,
+              "output_tokens": 880,
+              "reasoning_output_tokens": 480,
+              "total_tokens": 64196
+            },
+            "last_token_usage": {
+              "input_tokens": 63316,
+              "cached_input_tokens": 50688,
+              "output_tokens": 880,
+              "reasoning_output_tokens": 480,
+              "total_tokens": 64196
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/stack.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "825fe611f59a7378e9e9ccb4b6a7bcbff891058cc1e5fe05f622237082509fdd"
+          },
+          "summary": "Reviewed `src/stack.rs`, which defines `zeroize_stack` as a stack-buffer zeroization helper with documentation explaining its intended use and limitations. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14765,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054596413,
+            "finished_at_unix_ms": 1784054611179,
+            "total_token_usage": {
+              "input_tokens": 38211,
+              "cached_input_tokens": 33920,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 164,
+              "total_tokens": 38672
+            },
+            "last_token_usage": {
+              "input_tokens": 38211,
+              "cached_input_tokens": 33920,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 164,
+              "total_tokens": 38672
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/x86.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9c8f39481626305e66c15bbbf53f841ac1c684283194c8f026ef0cf4603d4339"
+          },
+          "summary": "Reviewed `src/x86.rs`, which only defines `Zeroize` implementations for x86 SIMD register types by writing zeroed values through a volatile write and an optimization barrier. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12026,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054611180,
+            "finished_at_unix_ms": 1784054623206,
+            "total_token_usage": {
+              "input_tokens": 24350,
+              "cached_input_tokens": 21248,
+              "output_tokens": 387,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 24737
+            },
+            "last_token_usage": {
+              "input_tokens": 24350,
+              "cached_input_tokens": 21248,
+              "output_tokens": 387,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 24737
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -427,9 +684,206 @@
             "algorithm": "blake3",
             "value": "bd095adae976c487e0f5b585705ee7f706d65dcff3a14a26a8eb2fdd27474625"
           },
-          "summary": "Reviewed `tests/alloc.rs`, which is a test-only harness for zeroization behavior using a custom global allocator plus `SecretBox`/`ObserveSecretBox` wrappers. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "`tests/alloc.rs` contains test-only heap zeroization checks: a custom global allocator verifies freed 160-byte buffers are overwritten with zeroes, and wrapper types drop boxed secrets after zeroizing them. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17664,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054623207,
+            "finished_at_unix_ms": 1784054640872,
+            "total_token_usage": {
+              "input_tokens": 38250,
+              "cached_input_tokens": 33920,
+              "output_tokens": 725,
+              "reasoning_output_tokens": 430,
+              "total_tokens": 38975
+            },
+            "last_token_usage": {
+              "input_tokens": 38250,
+              "cached_input_tokens": 33920,
+              "output_tokens": 725,
+              "reasoning_output_tokens": 430,
+              "total_tokens": 38975
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_9c017353d48642f99d8562ff91aa3955",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784051884",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a2394d547deb7fd597c44346318788abf9ab8604f5247af8af646e671a05609b"
+          },
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the upstream git SHA and `path_in_vcs` for the package source. I found no concrete malicious or supply-chain indicators in this file and no evidence of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14422,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051816282,
+            "finished_at_unix_ms": 1784051830705,
+            "total_token_usage": {
+              "input_tokens": 24126,
+              "cached_input_tokens": 21248,
+              "output_tokens": 418,
+              "reasoning_output_tokens": 225,
+              "total_tokens": 24544
+            },
+            "last_token_usage": {
+              "input_tokens": 24126,
+              "cached_input_tokens": 21248,
+              "output_tokens": 418,
+              "reasoning_output_tokens": 225,
+              "total_tokens": 24544
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b5e7f334ffb988d016413d85e5ba3b6530dbcf63d581b441630b0f308ad43d0d"
+          },
+          "summary": "Reviewed the changelog entries for zeroize 1.9.0 and prior releases. It is a release-history document only, and I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10713,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051830706,
+            "finished_at_unix_ms": 1784051841419,
+            "total_token_usage": {
+              "input_tokens": 26266,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 164,
+              "total_tokens": 26622
+            },
+            "last_token_usage": {
+              "input_tokens": 26266,
+              "cached_input_tokens": 21248,
+              "output_tokens": 356,
+              "reasoning_output_tokens": 164,
+              "total_tokens": 26622
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d1ec56dd5ccb0b52401515ee192b837d1290bae99349141ce96e1b1970d7f2a5"
+          },
+          "summary": "Reviewed the normalized Cargo manifest for the `zeroize` crate: it defines package metadata, features, library/test targets, dependencies, and lint settings. I checked for install hooks, hidden subprocesses, network or credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12292,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051841420,
+            "finished_at_unix_ms": 1784051853712,
+            "total_token_usage": {
+              "input_tokens": 24819,
+              "cached_input_tokens": 21248,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 185,
+              "total_tokens": 25198
+            },
+            "last_token_usage": {
+              "input_tokens": 24819,
+              "cached_input_tokens": 21248,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 185,
+              "total_tokens": 25198
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6e115341196400b4b999ce8dd4fc4526b6db2a89455207aefa5b3c573d75c57c"
+          },
+          "summary": "Reviewed the crate README, which is a normal project overview for the `zeroize` RustCrypto crate: it describes secure memory wiping, MSRV, examples, licensing, and badge/link metadata. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17329,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051853714,
+            "finished_at_unix_ms": 1784051871043,
+            "total_token_usage": {
+              "input_tokens": 25492,
+              "cached_input_tokens": 23808,
+              "output_tokens": 543,
+              "reasoning_output_tokens": 325,
+              "total_tokens": 26035
+            },
+            "last_token_usage": {
+              "input_tokens": 25492,
+              "cached_input_tokens": 23808,
+              "output_tokens": 543,
+              "reasoning_output_tokens": 325,
+              "total_tokens": 26035
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/aarch64.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4d6c226922e90dbe54b3e58182b8da8125e4832922a66174c166100a8df321ff"
+          },
+          "summary": "Reviewed `src/aarch64.rs`, which contains `Zeroize` implementations for ARM64 SIMD register types using `volatile_write` and an optimization barrier to clear register contents. I found no concrete malicious or supply-chain indicators in this file, and none of the checked categories were present: install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence tampering.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13421,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051871044,
+            "finished_at_unix_ms": 1784051884465,
+            "total_token_usage": {
+              "input_tokens": 24271,
+              "cached_input_tokens": 21248,
+              "output_tokens": 503,
+              "reasoning_output_tokens": 293,
+              "total_tokens": 24774
+            },
+            "last_token_usage": {
+              "input_tokens": 24271,
+              "cached_input_tokens": 21248,
+              "output_tokens": 503,
+              "reasoning_output_tokens": 293,
+              "total_tokens": 24774
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -445,7 +899,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590682",
       "thirdpass_version": "0.6.0",
@@ -575,48 +1029,6 @@
               "total_tokens": 21217
             }
           },
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_ead72e08b3b343468fe8752e131d74ff",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782821342",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is the crate’s core zeroization implementation: trait definitions, blanket impls for scalars/arrays/slices/`Vec`/`String`/`CString`, and volatile-memory wipe helpers. I found no concrete malicious or supply-chain indicators in this file; there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.\nReviewed `tests/zeroize_derive.rs`, which is a Rust integration test module for the `zeroize_derive` macros covering zeroization, `Drop` behavior, field skipping, generics, and `Deref` inheritance. I found no concrete malicious or supply-chain indicators in this file; there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "de9821d61fbb30146b0806a76fe09c5f18028bcbeec96708b23c383bcfa6a91f"
-          },
-          "summary": "Reviewed `src/lib.rs`, which is the crate’s core zeroization implementation: trait definitions, blanket impls for scalars/arrays/slices/`Vec`/`String`/`CString`, and volatile-memory wipe helpers. I found no concrete malicious or supply-chain indicators in this file; there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/zeroize_derive.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4ced3e568cc9a7d3136234287163eeb1d96aaeac5ceb4bd47d9ff7d6829c5c8e"
-          },
-          "summary": "Reviewed `tests/zeroize_derive.rs`, which is a Rust integration test module for the `zeroize_derive` macros covering zeroization, `Drop` behavior, field skipping, generics, and `Deref` inheritance. I found no concrete malicious or supply-chain indicators in this file; there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

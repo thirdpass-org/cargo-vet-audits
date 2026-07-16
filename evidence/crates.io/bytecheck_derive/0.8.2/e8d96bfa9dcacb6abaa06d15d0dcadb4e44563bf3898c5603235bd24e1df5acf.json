@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590868",
+  "latest_reviewed_at": "1784055917",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -172,126 +178,40 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 7,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 3,
+      "file_record_count": 10,
+      "file_record_count_with_metrics": 10
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 10,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 7,
-    "duration_ms_total": 57103,
-    "attempts_total": 3,
+    "file_records_with_metrics": 10,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 158566,
+    "attempts_total": 10,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 10,
+    "last_token_usage_records": 10,
     "total_token_usage": {
-      "input_tokens": 73608,
-      "cached_input_tokens": 57984,
-      "output_tokens": 1487,
-      "reasoning_output_tokens": 813,
-      "total_tokens": 75095
+      "input_tokens": 294824,
+      "cached_input_tokens": 247296,
+      "output_tokens": 5223,
+      "reasoning_output_tokens": 2821,
+      "total_tokens": 300047
     },
     "last_token_usage": {
-      "input_tokens": 73608,
-      "cached_input_tokens": 57984,
-      "output_tokens": 1487,
-      "reasoning_output_tokens": 813,
-      "total_tokens": 75095
+      "input_tokens": 294824,
+      "cached_input_tokens": 247296,
+      "output_tokens": 5223,
+      "reasoning_output_tokens": 2821,
+      "total_tokens": 300047
     },
     "model_context_windows": []
   },
   "reviews": [
-    {
-      "id": "rev_3e39d4dc5d0a47d884146d6090ae8c81",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783181425",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, a procedural macro implementation for deriving `CheckBytes` over structs, enums, and rejecting unions. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, subprocess execution, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/repr.rs`, which is a small Rust parser for `#[repr(...)]` attributes that maps representation hints into local enums. I checked for install hooks, hidden subprocesses, network or credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this file.\nReviewed `src/attributes.rs`, which is a small `syn`-based parser for `bytecheck` derive attributes (`bounds`, `crate`, `verify`, and field-level `omit_bounds`). I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the normalized `Cargo.toml` for `bytecheck_derive` and found no concrete supply-chain indicators in this file: it declares a proc-macro library with normal `proc-macro2`, `quote`, and `syn` dependencies, and it does not define build scripts, install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.\nReviewed `src/util.rs`, which only provides small AST helper routines for iterating over struct/enum/union fields and stripping a raw identifier prefix. I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "af9cffa8bf213e56e7283f598ea386897c88e9e004ad00986e8e7ec5581c57e3"
-          },
-          "summary": "Reviewed `src/lib.rs`, a procedural macro implementation for deriving `CheckBytes` over structs, enums, and rejecting unions. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, subprocess execution, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/repr.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c63ab07b5df5bfd6c869fb4e8ef37c88f558e45d4c9faca77dc9278b444432b0"
-          },
-          "summary": "Reviewed `src/repr.rs`, which is a small Rust parser for `#[repr(...)]` attributes that maps representation hints into local enums. I checked for install hooks, hidden subprocesses, network or credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/attributes.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f95d27a790082d90e5534b6474ac988ceee5ba2ebadd6f53ee508a9d868ebf0b"
-          },
-          "summary": "Reviewed `src/attributes.rs`, which is a small `syn`-based parser for `bytecheck` derive attributes (`bounds`, `crate`, `verify`, and field-level `omit_bounds`). I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9d6cb6a1ba57467f5573441ead48a0a0ae87c8c8aa7aecae0f0f9e9b22de4d50"
-          },
-          "summary": "Reviewed the normalized `Cargo.toml` for `bytecheck_derive` and found no concrete supply-chain indicators in this file: it declares a proc-macro library with normal `proc-macro2`, `quote`, and `syn` dependencies, and it does not define build scripts, install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/util.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "721283b631f4d6c147818e28a3bf28f0da4e90a62326622dd57f18ff954e0f44"
-          },
-          "summary": "Reviewed `src/util.rs`, which only provides small AST helper routines for iterating over struct/enum/union fields and stripping a raw identifier prefix. I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
     {
       "id": "rev_6fcf94bf12a0403290d739e7371fbc1e",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -302,7 +222,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590868",
       "thirdpass_version": "0.6.0",
@@ -406,7 +326,7 @@
       ]
     },
     {
-      "id": "rev_b05e274b87924e10ae44701c9b2c69ca",
+      "id": "rev_c42471fe8bbc4a60b1d0ea97e929473f",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -414,34 +334,250 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783181453",
+      "created_at": "1784055917",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the `README.md` for install-time execution cues, hidden downloads, credential access, dynamic code loading, obfuscation, and persistence behavior. It is a normal crate README describing `bytecheck`/`bytecheck_derive`, links to documentation, and includes a Rust usage example; no concrete malicious or supply-chain indicators were found in this file.\nReviewed the target `.cargo_vcs_info.json` metadata file, which only records a Git SHA1 and the package path in version control. I found no indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
       "files": [
         {
-          "file_path": "README.md",
+          "file_path": "src/repr.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "8a4513702ce5beaf5f1b7536fa1122cadbb320c47ea844d359df629a430d649c"
+            "value": "c63ab07b5df5bfd6c869fb4e8ef37c88f558e45d4c9faca77dc9278b444432b0"
           },
-          "summary": "Reviewed the `README.md` for install-time execution cues, hidden downloads, credential access, dynamic code loading, obfuscation, and persistence behavior. It is a normal crate README describing `bytecheck`/`bytecheck_derive`, links to documentation, and includes a Rust usage example; no concrete malicious or supply-chain indicators were found in this file.",
+          "summary": "Reviewed `src/repr.rs`, which only parses Rust `repr(...)` attributes into `Repr`/`Primitive` enums and emits tokenized primitive identifiers. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess behavior, and found no concrete indicators of malicious or supply-chain activity.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12166,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055889393,
+            "finished_at_unix_ms": 1784055901560,
+            "total_token_usage": {
+              "input_tokens": 24898,
+              "cached_input_tokens": 21248,
+              "output_tokens": 439,
+              "reasoning_output_tokens": 230,
+              "total_tokens": 25337
+            },
+            "last_token_usage": {
+              "input_tokens": 24898,
+              "cached_input_tokens": 21248,
+              "output_tokens": 439,
+              "reasoning_output_tokens": 230,
+              "total_tokens": 25337
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
+        {
+          "file_path": "src/util.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "721283b631f4d6c147818e28a3bf28f0da4e90a62326622dd57f18ff954e0f44"
+          },
+          "summary": "Reviewed `src/util.rs`, which contains small `syn` helper utilities for iterating over struct/enum/union fields and normalizing raw identifiers. I found no concrete indicators of install-time execution, subprocess spawning, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16226,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055901560,
+            "finished_at_unix_ms": 1784055917786,
+            "total_token_usage": {
+              "input_tokens": 24828,
+              "cached_input_tokens": 21760,
+              "output_tokens": 469,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 25297
+            },
+            "last_token_usage": {
+              "input_tokens": 24828,
+              "cached_input_tokens": 21760,
+              "output_tokens": 469,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 25297
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_c5a0d0cce061411f91b3e1aa2ba9c1e4",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784053687",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "93b2699514e290396ed4066cf05cdcac4675af56e6966b9de4f364d2bbd4cccb"
           },
-          "summary": "Reviewed the target `.cargo_vcs_info.json` metadata file, which only records a Git SHA1 and the package path in version control. I found no indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package's VCS provenance (`git.sha1` and `path_in_vcs`). I found no concrete malicious or supply-chain indicators in this file, and it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14865,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053614844,
+            "finished_at_unix_ms": 1784053629710,
+            "total_token_usage": {
+              "input_tokens": 24175,
+              "cached_input_tokens": 19200,
+              "output_tokens": 568,
+              "reasoning_output_tokens": 365,
+              "total_tokens": 24743
+            },
+            "last_token_usage": {
+              "input_tokens": 24175,
+              "cached_input_tokens": 19200,
+              "output_tokens": 568,
+              "reasoning_output_tokens": 365,
+              "total_tokens": 24743
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9d6cb6a1ba57467f5573441ead48a0a0ae87c8c8aa7aecae0f0f9e9b22de4d50"
+          },
+          "summary": "Reviewed the normalized Cargo.toml for `bytecheck_derive` 0.8.2. It defines a standard proc-macro crate with `syn`, `quote`, and `proc-macro2` dependencies and no install hooks, build script, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence indicators in this manifest.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11687,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053629710,
+            "finished_at_unix_ms": 1784053641398,
+            "total_token_usage": {
+              "input_tokens": 24486,
+              "cached_input_tokens": 21248,
+              "output_tokens": 453,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 24939
+            },
+            "last_token_usage": {
+              "input_tokens": 24486,
+              "cached_input_tokens": 21248,
+              "output_tokens": 453,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 24939
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8a4513702ce5beaf5f1b7536fa1122cadbb320c47ea844d359df629a430d649c"
+          },
+          "summary": "Reviewed the README for the bytecheck/bytecheck_derive crate. It is plain documentation with badges, links, and a Rust usage example; I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10924,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053641399,
+            "finished_at_unix_ms": 1784053652323,
+            "total_token_usage": {
+              "input_tokens": 25039,
+              "cached_input_tokens": 21248,
+              "output_tokens": 431,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 25470
+            },
+            "last_token_usage": {
+              "input_tokens": 25039,
+              "cached_input_tokens": 21248,
+              "output_tokens": 431,
+              "reasoning_output_tokens": 243,
+              "total_tokens": 25470
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/attributes.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f95d27a790082d90e5534b6474ac988ceee5ba2ebadd6f53ee508a9d868ebf0b"
+          },
+          "summary": "`src/attributes.rs` is a Rust attribute parser for the `bytecheck` derive support, handling `bounds`, `crate`, `verify`, and field-level `omit_bounds` metadata. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16027,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053652324,
+            "finished_at_unix_ms": 1784053668351,
+            "total_token_usage": {
+              "input_tokens": 39274,
+              "cached_input_tokens": 33920,
+              "output_tokens": 685,
+              "reasoning_output_tokens": 357,
+              "total_tokens": 39959
+            },
+            "last_token_usage": {
+              "input_tokens": 39274,
+              "cached_input_tokens": 33920,
+              "output_tokens": 685,
+              "reasoning_output_tokens": 357,
+              "total_tokens": 39959
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "af9cffa8bf213e56e7283f598ea386897c88e9e004ad00986e8e7ec5581c57e3"
+          },
+          "summary": "`src/lib.rs` is a procedural macro entry point that generates `CheckBytes` implementations for structs and enums, including attribute-driven bounds and optional verification hooks. I checked the file for install-time execution, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19568,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053668352,
+            "finished_at_unix_ms": 1784053687920,
+            "total_token_usage": {
+              "input_tokens": 58516,
+              "cached_input_tokens": 50688,
+              "output_tokens": 691,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 59207
+            },
+            "last_token_usage": {
+              "input_tokens": 58516,
+              "cached_input_tokens": 50688,
+              "output_tokens": 691,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 59207
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591427",
+  "latest_reviewed_at": "1784053917",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -150,44 +156,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 2,
+      "file_record_count": 8,
+      "file_record_count_with_metrics": 8
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 8,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 5,
-    "duration_ms_total": 51752,
-    "attempts_total": 3,
+    "file_records_with_metrics": 8,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 136353,
+    "attempts_total": 8,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 8,
+    "last_token_usage_records": 8,
     "total_token_usage": {
-      "input_tokens": 84256,
-      "cached_input_tokens": 73728,
-      "output_tokens": 1731,
-      "reasoning_output_tokens": 932,
-      "total_tokens": 85987
+      "input_tokens": 338773,
+      "cached_input_tokens": 304000,
+      "output_tokens": 4758,
+      "reasoning_output_tokens": 2242,
+      "total_tokens": 343531
     },
     "last_token_usage": {
-      "input_tokens": 84256,
-      "cached_input_tokens": 73728,
-      "output_tokens": 1731,
-      "reasoning_output_tokens": 932,
-      "total_tokens": 85987
+      "input_tokens": 338773,
+      "cached_input_tokens": 304000,
+      "output_tokens": 4758,
+      "reasoning_output_tokens": 2242,
+      "total_tokens": 343531
     },
     "model_context_windows": []
   },
@@ -202,7 +200,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591427",
       "thirdpass_version": "0.6.0",
@@ -306,7 +304,7 @@
       ]
     },
     {
-      "id": "rev_c3f0bb6e78584e63bfcb8a4a6b89cef1",
+      "id": "rev_d89f4673563740f196e48635b05b43e1",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -314,22 +312,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783186488",
+      "created_at": "1784053917",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is a normal `no_std`-friendly Rust library for safely casting between byte slices and numeric slices using alignment and length checks plus `unsafe` pointer reinterprets. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, hidden downloads, obfuscation/deobfuscation, or persistence/environment tampering.\nReviewed `CHANGELOG.md`, which is a release history for the `byte-slice-cast` crate documenting version notes and links between tagged releases. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior present.\nReviewed the package manifest for `byte-slice-cast` 1.2.3. It describes a small Rust library with a single `src/lib.rs` target, no build script, no binaries/examples/tests/benches, and no dependencies or feature-gated execution paths that would suggest install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.\nReviewed `README.md`, which is a short project description and license/contribution notice for a Rust crate that casts between byte slices and numeric slices. I checked for install hooks, hidden execution, network/exfiltration, credential access, obfuscation, and persistence indicators in the target file and found none.\nReviewed `.cargo_vcs_info.json`, which contains only VCS provenance metadata (`git.sha1` and an empty `path_in_vcs`). I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
       "files": [
         {
-          "file_path": "src/lib.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "0e764cec642d2adfa7ca798c4365b9ebc5cf5582c11cb315a0fbdf402087e8b1"
+            "value": "861cd9ec2fbdc074ba37ad842c4f25b80d8367528738e1cebc6ab867c20d9d4a"
           },
-          "summary": "Reviewed `src/lib.rs`, which is a normal `no_std`-friendly Rust library for safely casting between byte slices and numeric slices using alignment and length checks plus `unsafe` pointer reinterprets. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, hidden downloads, obfuscation/deobfuscation, or persistence/environment tampering.",
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records a git commit SHA and an empty `path_in_vcs` field. I found no concrete malicious or supply-chain indicators in this file, and it contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11484,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053833203,
+            "finished_at_unix_ms": 1784053844687,
+            "total_token_usage": {
+              "input_tokens": 24144,
+              "cached_input_tokens": 21248,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 219,
+              "total_tokens": 24576
+            },
+            "last_token_usage": {
+              "input_tokens": 24144,
+              "cached_input_tokens": 21248,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 219,
+              "total_tokens": 24576
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -339,9 +356,29 @@
             "algorithm": "blake3",
             "value": "9dbeb09237d6e91e091ec4ca49d5e54154dfc521a9c7b141dfeb39fedd01b0ad"
           },
-          "summary": "Reviewed `CHANGELOG.md`, which is a release history for the `byte-slice-cast` crate documenting version notes and links between tagged releases. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior present.",
+          "summary": "Reviewed the changelog for release notes and version history only; it contains ordinary project update entries and links, with no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10722,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053844688,
+            "finished_at_unix_ms": 1784053855410,
+            "total_token_usage": {
+              "input_tokens": 25478,
+              "cached_input_tokens": 21248,
+              "output_tokens": 343,
+              "reasoning_output_tokens": 165,
+              "total_tokens": 25821
+            },
+            "last_token_usage": {
+              "input_tokens": 25478,
+              "cached_input_tokens": 21248,
+              "output_tokens": 343,
+              "reasoning_output_tokens": 165,
+              "total_tokens": 25821
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -351,9 +388,29 @@
             "algorithm": "blake3",
             "value": "5d92c545b7833e3f20506dcc50d8c3018da6dba392b2ebb6101ac081bae93ddf"
           },
-          "summary": "Reviewed the package manifest for `byte-slice-cast` 1.2.3. It describes a small Rust library with a single `src/lib.rs` target, no build script, no binaries/examples/tests/benches, and no dependencies or feature-gated execution paths that would suggest install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.",
+          "summary": "Reviewed the normalized Cargo.toml for byte-slice-cast 1.2.3. It only declares package metadata, a std feature flag, the library target, and an empty dependency section; I found no install hooks, build scripts, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14576,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053855411,
+            "finished_at_unix_ms": 1784053869987,
+            "total_token_usage": {
+              "input_tokens": 24449,
+              "cached_input_tokens": 21248,
+              "output_tokens": 473,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 24922
+            },
+            "last_token_usage": {
+              "input_tokens": 24449,
+              "cached_input_tokens": 21248,
+              "output_tokens": 473,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 24922
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -363,21 +420,61 @@
             "algorithm": "blake3",
             "value": "d974d761ecf20ccbbf8afac8bafcd09978ce64b73a272a1865c667a8a547bac3"
           },
-          "summary": "Reviewed `README.md`, which is a short project description and license/contribution notice for a Rust crate that casts between byte slices and numeric slices. I checked for install hooks, hidden execution, network/exfiltration, credential access, obfuscation, and persistence indicators in the target file and found none.",
+          "summary": "Reviewed the README for byte-slice-cast, which is a brief crate description, license notice, and contribution blurb with badges linking to crates.io, GitHub Actions, and docs.rs. I found no concrete malicious or supply-chain indicators in this file, and it contains no install hooks, credential access, network/exfiltration logic, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11530,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053869988,
+            "finished_at_unix_ms": 1784053881519,
+            "total_token_usage": {
+              "input_tokens": 24297,
+              "cached_input_tokens": 23296,
+              "output_tokens": 387,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 24684
+            },
+            "last_token_usage": {
+              "input_tokens": 24297,
+              "cached_input_tokens": 23296,
+              "output_tokens": 387,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 24684
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "861cd9ec2fbdc074ba37ad842c4f25b80d8367528738e1cebc6ab867c20d9d4a"
+            "value": "0e764cec642d2adfa7ca798c4365b9ebc5cf5582c11cb315a0fbdf402087e8b1"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which contains only VCS provenance metadata (`git.sha1` and an empty `path_in_vcs`). I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "summary": "Reviewed `src/lib.rs`, which implements byte-slice casting traits and alignment/length validation for primitive numeric types and arrays, plus unit tests. I checked this file for install hooks, network or credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 36289,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053881520,
+            "finished_at_unix_ms": 1784053917809,
+            "total_token_usage": {
+              "input_tokens": 156149,
+              "cached_input_tokens": 143232,
+              "output_tokens": 1392,
+              "reasoning_output_tokens": 479,
+              "total_tokens": 157541
+            },
+            "last_token_usage": {
+              "input_tokens": 156149,
+              "cached_input_tokens": 143232,
+              "output_tokens": 1392,
+              "reasoning_output_tokens": 479,
+              "total_tokens": 157541
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

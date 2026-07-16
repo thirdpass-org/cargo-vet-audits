@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783588775",
+  "latest_reviewed_at": "1784064006",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -589,44 +595,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 10,
-      "file_record_count": 44,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 12,
+      "file_record_count": 51,
+      "file_record_count_with_metrics": 51
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 48,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 44,
-    "duration_ms_total": 78255,
-    "attempts_total": 4,
+    "reviewed_file_records": 51,
+    "file_records_with_metrics": 51,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 823708,
+    "attempts_total": 51,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 51,
+    "last_token_usage_records": 51,
     "total_token_usage": {
-      "input_tokens": 118216,
-      "cached_input_tokens": 96000,
-      "output_tokens": 2741,
-      "reasoning_output_tokens": 1786,
-      "total_tokens": 120957
+      "input_tokens": 1482921,
+      "cached_input_tokens": 1280384,
+      "output_tokens": 27300,
+      "reasoning_output_tokens": 15412,
+      "total_tokens": 1510221
     },
     "last_token_usage": {
-      "input_tokens": 118216,
-      "cached_input_tokens": 96000,
-      "output_tokens": 2741,
-      "reasoning_output_tokens": 1786,
-      "total_tokens": 120957
+      "input_tokens": 1482921,
+      "cached_input_tokens": 1280384,
+      "output_tokens": 27300,
+      "reasoning_output_tokens": 15412,
+      "total_tokens": 1510221
     },
     "model_context_windows": []
   },
@@ -641,7 +639,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783588775",
       "thirdpass_version": "0.6.0",
@@ -777,7 +775,7 @@
       ]
     },
     {
-      "id": "rev_4ed6ab3283184dce8879736d9754b798",
+      "id": "rev_71379f5692a74784a3da6c64074d862c",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -785,340 +783,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782815704",
+      "created_at": "1784054470",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "I reviewed `src/backends/unsupported.rs`, which is a small runtime-failure stub that re-exports utility helpers and always returns `Error::UNSUPPORTED` from `fill_inner`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.\nReviewed `.cargo_vcs_info.json`, which only records the crate's VCS commit SHA and an empty `path_in_vcs` field. I found no concrete malicious or supply-chain indicators in this file, and no evidence of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
-        {
-          "file_path": "src/backends/unsupported.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "722f7d84ce5b8acf40dfafc30e125a60c2f573c9f3bdf84cee26c03953290bde"
-          },
-          "summary": "I reviewed `src/backends/unsupported.rs`, which is a small runtime-failure stub that re-exports utility helpers and always returns `Error::UNSUPPORTED` from `fill_inner`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9fd91a1c333c65c019eb04a0d1729aa23cca32f684ee6e7900d5a623bb8dc41c"
-          },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the crate's VCS commit SHA and an empty `path_in_vcs` field. I found no concrete malicious or supply-chain indicators in this file, and no evidence of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_6a0f6962e42341dfaec3abc6fcb546e7",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782815594",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/backends/solid.rs` is a small FFI backend that forwards buffer filling to the native `SOLID_RNG_SampleRandomBytes` API and translates negative return codes into `Error`; I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators in this file.\n`tests/sys_rng.rs` is a small test module that exercises `SysRng` by sampling random `u64` values and asserting they are nonzero and not trivially repeated. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.\nReviewed `src/utils/sanitizer.rs`, which only defines an MSAN-specific `unpoison` helper that conditionally calls `__msan_unpoison` on an output buffer. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/backends/extern_impl.rs`, which only declares externally supplied implementations for `fill_uninit`, `u32`, and `u64` and forwards the integer helpers to `crate::util`. I checked this file for install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in the target file.\nReviewed `src/backends/fuchsia.rs`, which is a small Fuchsia backend wrapper that delegates random-byte filling to the system `zx_cprng_draw` FFI and re-exports internal helpers. I checked for install hooks, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/backends/solid.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cd885e94ee3925979473f3de2f09ed711d58562957d5e954fc5430c2abb46cd6"
-          },
-          "summary": "`src/backends/solid.rs` is a small FFI backend that forwards buffer filling to the native `SOLID_RNG_SampleRandomBytes` API and translates negative return codes into `Error`; I checked it for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/sys_rng.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2e303f59872d22260e52cfe7c233e6f12861bebf8279f2ac49d2db9883f3cfdc"
-          },
-          "summary": "`tests/sys_rng.rs` is a small test module that exercises `SysRng` by sampling random `u64` values and asserting they are nonzero and not trivially repeated. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/utils/sanitizer.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7693e990a0d60882c39f0e5b26f8583d19e70e0d65772b5df40d04cc30a37eef"
-          },
-          "summary": "Reviewed `src/utils/sanitizer.rs`, which only defines an MSAN-specific `unpoison` helper that conditionally calls `__msan_unpoison` on an output buffer. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/extern_impl.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a5f171f9d71930cbfd23cc556ff0692ac2257f529e2bcc7de4bb7a38332a0331"
-          },
-          "summary": "Reviewed `src/backends/extern_impl.rs`, which only declares externally supplied implementations for `fill_uninit`, `u32`, and `u64` and forwards the integer helpers to `crate::util`. I checked this file for install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/fuchsia.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d92bb89511e7ab0be5bd575bca04405f5e2e2f4ed86e529706e883d23edf4e9b"
-          },
-          "summary": "Reviewed `src/backends/fuchsia.rs`, which is a small Fuchsia backend wrapper that delegates random-byte filling to the system `zx_cprng_draw` FFI and re-exports internal helpers. I checked for install hooks, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_74ef42e300ce4151baef4a1ff016ee92",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782815056",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `CHANGELOG.md`, which is a conventional release history for `getrandom` with version notes and comparison links. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other payload-like behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the `README.md` for the `getrandom` crate, which documents platform-specific RNG backends, opt-in backend configuration, custom backend interfaces, and platform support notes. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-      "files": [
-        {
-          "file_path": "CHANGELOG.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ee99923111eb058ac3c960b49de79284a38dda068e339418897af4dfbdbcf067"
-          },
-          "summary": "Reviewed `CHANGELOG.md`, which is a conventional release history for `getrandom` with version notes and comparison links. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other payload-like behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": "README.md",
           "file_hash": {
             "algorithm": "blake3",
             "value": "a2f173fe7c58cfeab6a95431029b265b220a1236db7caffa9eca039a34161389"
           },
-          "summary": "Reviewed the `README.md` for the `getrandom` crate, which documents platform-specific RNG backends, opt-in backend configuration, custom backend interfaces, and platform support notes. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
+          "summary": "Reviewed the README for the `getrandom` crate, which documents platform entropy sources, opt-in backends, custom backend hooks, and usage guidance. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_8bfd9099c11c45998fd312f25c29f6f4",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782815301",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/backends/linux_android_with_fallback.rs`, which implements Linux/Android random-byte generation by resolving `getrandom` at runtime and falling back to `/dev/urandom` when the syscall is unavailable or blocked. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading from untrusted sources, obfuscation, or persistence behavior in this file.\nReviewed `src/lib.rs`, which is the public `getrandom` entry point exposing `fill`, `fill_uninit`, `u32`, and `u64` wrappers over backend RNG implementations. I checked this file for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence/tampering behavior, and found no concrete malicious or supply-chain indicators in the target file.\nReviewed `src/backends/wasi_p2_3.rs`, which is a small WASI random backend that imports `get-random-u64` from the WASI random interface and uses it to fill buffers. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\n`src/backends/wasm_js.rs` is a small WASM backend that fills buffers with randomness via `globalThis.crypto.getRandomValues`, including chunking logic for large outputs and an atomics-specific copy path. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `src/backends/netbsd.rs`, which implements NetBSD random-byte retrieval by weakly resolving `getrandom` with `dlsym` and falling back to `KERN_ARND` via `sysctl`. I checked for install-time execution, network/exfiltration, credential access, dynamic loading beyond the expected symbol lookup, obfuscation, persistence, and hidden downloads, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/backends/linux_android_with_fallback.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f273273b597ed273e07b6701693c5280bce317f807ebdf6efd91c3224b20a436"
+          "agent_run_metrics": {
+            "duration_ms": 13522,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054403845,
+            "finished_at_unix_ms": 1784054417368,
+            "total_token_usage": {
+              "input_tokens": 44359,
+              "cached_input_tokens": 35968,
+              "output_tokens": 474,
+              "reasoning_output_tokens": 204,
+              "total_tokens": 44833
+            },
+            "last_token_usage": {
+              "input_tokens": 44359,
+              "cached_input_tokens": 35968,
+              "output_tokens": 474,
+              "reasoning_output_tokens": 204,
+              "total_tokens": 44833
+            }
           },
-          "summary": "Reviewed `src/backends/linux_android_with_fallback.rs`, which implements Linux/Android random-byte generation by resolving `getrandom` at runtime and falling back to `/dev/urandom` when the syscall is unavailable or blocked. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading from untrusted sources, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2196cc992068245d5406323922cd19c517c052df89c2a062da893137335cbd0a"
-          },
-          "summary": "Reviewed `src/lib.rs`, which is the public `getrandom` entry point exposing `fill`, `fill_uninit`, `u32`, and `u64` wrappers over backend RNG implementations. I checked this file for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence/tampering behavior, and found no concrete malicious or supply-chain indicators in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/wasi_p2_3.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "fd3e17a7e84652b68d614fb0a693e613b7ae2f6fbb3a547a65472918d667b899"
-          },
-          "summary": "Reviewed `src/backends/wasi_p2_3.rs`, which is a small WASI random backend that imports `get-random-u64` from the WASI random interface and uses it to fill buffers. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/wasm_js.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1a554d95c0f2a3f87a812ecf8fecd39a640e5792056f896022efcb12db31de29"
-          },
-          "summary": "`src/backends/wasm_js.rs` is a small WASM backend that fills buffers with randomness via `globalThis.crypto.getRandomValues`, including chunking logic for large outputs and an atomics-specific copy path. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/netbsd.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8f005a6d863d065d7e142092ba0eecec4c7d16d950aed11aeb4313daa5ba6e14"
-          },
-          "summary": "Reviewed `src/backends/netbsd.rs`, which implements NetBSD random-byte retrieval by weakly resolving `getrandom` with `dlsym` and falling back to `KERN_ARND` via `sysctl`. I checked for install-time execution, network/exfiltration, credential access, dynamic loading beyond the expected symbol lookup, obfuscation, persistence, and hidden downloads, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_8f6a6c652f2a4170874cb7b142954c00",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782815506",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/utils/lazy_bool.rs`, which is a small helper that lazily caches a boolean in an `AtomicU8` using relaxed atomics and a cold initialization path. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/sys_rng.rs`, which is a thin `SysRng` wrapper implementing `TryRng`/`TryCryptoRng` by delegating directly to crate-local `u32()`, `u64()`, and `fill()` helpers. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior in this file and found no concrete malicious or supply-chain indicators.\nReviewed `src/backends/getentropy.rs`, which is a small backend wrapper that fills a buffer by repeatedly calling `libc::getentropy` in bounded 256-byte chunks and translating errno into the crate's error type. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/backends/esp_idf.rs`, which is a small ESP-IDF backend wrapper that calls the platform `esp_fill_random` FFI to fill a buffer with entropy. I found no concrete indicators of install-time execution, network/exfiltration, secret access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `src/backends/apple_other.rs`, which is a narrow Apple-platform entropy shim that forwards a mutable buffer to `libc::CCRandomGenerateBytes` and maps failure to an internal error. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-      "files": [
-        {
-          "file_path": "src/utils/lazy_bool.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8212d171527d8e33d1b44b7dcd8ada9a3ee68919a6af8123343769eba6942ee6"
-          },
-          "summary": "Reviewed `src/utils/lazy_bool.rs`, which is a small helper that lazily caches a boolean in an `AtomicU8` using relaxed atomics and a cold initialization path. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/sys_rng.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2d2d3c0a8aef143c7b063c6b724a9f5fc00060f2d4113cb68d874a8d3bd60681"
-          },
-          "summary": "Reviewed `src/sys_rng.rs`, which is a thin `SysRng` wrapper implementing `TryRng`/`TryCryptoRng` by delegating directly to crate-local `u32()`, `u64()`, and `fill()` helpers. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior in this file and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/getentropy.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "62ec30a09d604e10ab456bd3a3eec87ef4bdea01312da51106f9de51f20fd601"
-          },
-          "summary": "Reviewed `src/backends/getentropy.rs`, which is a small backend wrapper that fills a buffer by repeatedly calling `libc::getentropy` in bounded 256-byte chunks and translating errno into the crate's error type. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/esp_idf.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e169b7997d46de07a9f04d1f91fe8d121685718874afbfccc8eb1fb325f8390e"
-          },
-          "summary": "Reviewed `src/backends/esp_idf.rs`, which is a small ESP-IDF backend wrapper that calls the platform `esp_fill_random` FFI to fill a buffer with entropy. I found no concrete indicators of install-time execution, network/exfiltration, secret access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/apple_other.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8fee7cd97456d79b13ff86ccfaba167e2867a50bd4a8946f93b977fc31585e4b"
-          },
-          "summary": "Reviewed `src/backends/apple_other.rs`, which is a narrow Apple-platform entropy shim that forwards a mutable buffer to `libc::CCRandomGenerateBytes` and maps failure to an internal error. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_b3c04335018d4dc7ba8d715173efeb6d",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782815673",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/backends/getrandom.rs`, which is a small backend wrapper around `libc::getrandom` that fills a buffer via `sys_fill_exact` and exposes helper imports. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain malware behavior in this file.\nReviewed SECURITY.md, which is a plain security policy describing supported versions, private vulnerability reporting, and a GitHub security advisory link. I checked it for install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `src/error_std_impls.rs`, which only implements `From<Error> for std::io::Error` by converting a raw OS error code when present and otherwise wrapping the error with `io::Error::other`. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\n`src/backends/custom.rs` is a thin custom-backend shim that forwards buffer filling to an externally supplied `__getrandom_v03_custom` function and re-exports helper routines. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior here.\nReviewed `build.rs`, which is a small Cargo build script that only checks `CARGO_CFG_SANITIZE` for `memory` and emits a Rust cfg flag for memory-sanitizer builds. I found no concrete indicators of install hooks beyond the expected build-script behavior, and no network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence logic.",
-      "files": [
-        {
-          "file_path": "src/backends/getrandom.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "19358a4f8cc10574c500e347b1695c6b77cd9c9d6852f697efa7536f481cc42c"
-          },
-          "summary": "Reviewed `src/backends/getrandom.rs`, which is a small backend wrapper around `libc::getrandom` that fills a buffer via `sys_fill_exact` and exposes helper imports. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain malware behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -1128,177 +827,29 @@
             "algorithm": "blake3",
             "value": "8a468300b39a06ea8a942996c3d19a3bcf8f04cf339801cf38b6af37c5de969a"
           },
-          "summary": "Reviewed SECURITY.md, which is a plain security policy describing supported versions, private vulnerability reporting, and a GitHub security advisory link. I checked it for install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed SECURITY.md, which only contains supported-version guidance and a private vulnerability-reporting process for the project. I found no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/error_std_impls.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ae7133bedd23024bbae868a1f492b6afe04d3c036a96796c19df3fa14223472f"
+          "agent_run_metrics": {
+            "duration_ms": 13050,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054417368,
+            "finished_at_unix_ms": 1784054430419,
+            "total_token_usage": {
+              "input_tokens": 24245,
+              "cached_input_tokens": 21248,
+              "output_tokens": 536,
+              "reasoning_output_tokens": 356,
+              "total_tokens": 24781
+            },
+            "last_token_usage": {
+              "input_tokens": 24245,
+              "cached_input_tokens": 21248,
+              "output_tokens": 536,
+              "reasoning_output_tokens": 356,
+              "total_tokens": 24781
+            }
           },
-          "summary": "Reviewed `src/error_std_impls.rs`, which only implements `From<Error> for std::io::Error` by converting a raw OS error code when present and otherwise wrapping the error with `io::Error::other`. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/custom.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cd3c93f020dd83861d838cc9ef0ff20cb4cfdc1db360eb1cea1d3907b8596205"
-          },
-          "summary": "`src/backends/custom.rs` is a thin custom-backend shim that forwards buffer filling to an externally supplied `__getrandom_v03_custom` function and re-exports helper routines. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior here.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "build.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4ca53d6f1323ffd37de7717596cf93fec7b3c88027b3c6a07ebf88c1de610911"
-          },
-          "summary": "Reviewed `build.rs`, which is a small Cargo build script that only checks `CARGO_CFG_SANITIZE` for `memory` and emits a Rust cfg flag for memory-sanitizer builds. I found no concrete indicators of install hooks beyond the expected build-script behavior, and no network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence logic.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_c22b0731e5214fbeb7e7029282ac5c1b",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782815369",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/util.rs`, a small Rust helper module for `MaybeUninit` slice casts and integer initialization helpers. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior; none were present in this file.\nReviewed `src/backends/vxworks.rs`, which implements the VxWorks randomness backend by initializing the RNG with `randSecure` and filling buffers with `randABytes`. I found no concrete indicators of install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `src/backends/hermit.rs`, which is a small Hermit OS RNG backend that forwards to `sys_secure_rand32`, `sys_secure_rand64`, and `sys_read_entropy` to fill buffers. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/backends/windows.rs`, which is a Windows RNG backend binding to `ProcessPrng` via `raw-dylib` and a small `fill_inner` wrapper that returns an error only when the OS call fails. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/utils/lazy_ptr.rs`, a small atomic lazy-initialization helper that caches a non-null pointer after a caller-provided initializer runs. I checked for install hooks, hidden subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this file.",
-      "files": [
-        {
-          "file_path": "src/util.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "06d93306ec725b2d668130923ad4d0d65fd1cf4388505a01e75862a33ebc1b41"
-          },
-          "summary": "Reviewed `src/util.rs`, a small Rust helper module for `MaybeUninit` slice casts and integer initialization helpers. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/vxworks.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cce16be9ab80dce36077d41d78b33e72458dc15fb252571ea8a877be6cf642d9"
-          },
-          "summary": "Reviewed `src/backends/vxworks.rs`, which implements the VxWorks randomness backend by initializing the RNG with `randSecure` and filling buffers with `randABytes`. I found no concrete indicators of install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/hermit.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "820d923f812dda4003dffb5760f032e99f581aae3e068599adbac1eb2d0b6a37"
-          },
-          "summary": "Reviewed `src/backends/hermit.rs`, which is a small Hermit OS RNG backend that forwards to `sys_secure_rand32`, `sys_secure_rand64`, and `sys_read_entropy` to fill buffers. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/windows.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2a7bf5cf979ecb0d7d81cfe3fdd3f160eb1015c36682f425654bbb71f53d2ad4"
-          },
-          "summary": "Reviewed `src/backends/windows.rs`, which is a Windows RNG backend binding to `ProcessPrng` via `raw-dylib` and a small `fill_inner` wrapper that returns an error only when the OS call fails. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/utils/lazy_ptr.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d96884242cc050999678ca25fc9fe4a815804d4c7c1f8ea66da4749a1400b2f2"
-          },
-          "summary": "Reviewed `src/utils/lazy_ptr.rs`, a small atomic lazy-initialization helper that caches a non-null pointer after a caller-provided initializer runs. I checked for install hooks, hidden subprocess execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_c588b038839b498f8c42d5e1498f53d6",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782815222",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/backends/linux_raw.rs`, which is a direct Linux/Android `getrandom` syscall backend implemented with `asm!` across several architectures and a retry loop for EINTR. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nReviewed the manifest for install-time hooks, build-script execution, dependency activation, and any network/exfiltration or obfuscation paths. The file defines a small Rust library with a minimal build script and a cross-compilation workaround entry, and I found no concrete malicious or supply-chain indicators in the target file: no hidden subprocesses beyond the normal build.rs hook, no credential access, no dynamic code loading, no persistence, and no obfuscation.\nReviewed `src/backends/rndr.rs`, which implements the AArch64 RNDR-backed randomness path with runtime feature detection and bounded retry logic. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nI reviewed `benches/buffer.rs`, which is a benchmark harness for `getrandom` buffer-filling APIs (`fill`, `fill_uninit`, `u32`, `u64`) and size-parameterized benchmark macros. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/backends/efi_rng.rs`, which is a UEFI entropy backend that locates `EFI_RNG_PROTOCOL`, opens it, and reads raw random bytes into the caller buffer. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/backends/linux_raw.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "dc2ce77d731ba9651e6e8689b441752e3adfae40aa982e54885b2c8ea6c85cf3"
-          },
-          "summary": "Reviewed `src/backends/linux_raw.rs`, which is a direct Linux/Android `getrandom` syscall backend implemented with `asm!` across several architectures and a retry loop for EINTR. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d8f544bd6441d025b5f8c8f7b0f6072251d1cb92849f46740875549d8a1c409c"
-          },
-          "summary": "Reviewed the manifest for install-time hooks, build-script execution, dependency activation, and any network/exfiltration or obfuscation paths. The file defines a small Rust library with a minimal build script and a cross-compilation workaround entry, and I found no concrete malicious or supply-chain indicators in the target file: no hidden subprocesses beyond the normal build.rs hook, no credential access, no dynamic code loading, no persistence, and no obfuscation.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/rndr.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5193ddd9de43201d87bbb0a2806d71fb4fd69c6ecfc5b5562483be4d5069bb1f"
-          },
-          "summary": "Reviewed `src/backends/rndr.rs`, which implements the AArch64 RNDR-backed randomness path with runtime feature detection and bounded retry logic. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -1308,165 +859,61 @@
             "algorithm": "blake3",
             "value": "bedcfcb93739b6e3a293284aa286d8638ccde818e5021b30e52b3e4b755853f7"
           },
-          "summary": "I reviewed `benches/buffer.rs`, which is a benchmark harness for `getrandom` buffer-filling APIs (`fill`, `fill_uninit`, `u32`, `u64`) and size-parameterized benchmark macros. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the benchmark-only Rust source in benches/buffer.rs, which measures getrandom fill/fill_uninit performance across several buffer sizes. I checked for install hooks, network or credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12549,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054430419,
+            "finished_at_unix_ms": 1784054442969,
+            "total_token_usage": {
+              "input_tokens": 25019,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 216,
+              "total_tokens": 25420
+            },
+            "last_token_usage": {
+              "input_tokens": 25019,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 216,
+              "total_tokens": 25420
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/backends/efi_rng.rs",
+          "file_path": "build.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "8e81a9a680b858f393b8f3385ff4b8c13fd231b709c67d89d859e8c1c716a563"
+            "value": "4ca53d6f1323ffd37de7717596cf93fec7b3c88027b3c6a07ebf88c1de610911"
           },
-          "summary": "Reviewed `src/backends/efi_rng.rs`, which is a UEFI entropy backend that locates `EFI_RNG_PROTOCOL`, opens it, and reads raw random bytes into the caller buffer. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed build.rs, which is a small build script that only declares a rerun trigger and sets `getrandom_msan` when `CARGO_CFG_SANITIZE` contains `memory`. I found no concrete indicators of install-time hooks, network or exfiltration, secret access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_ede8d59baf134136b40564345729f49b",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782815439",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/backends/windows_legacy.rs`, which is a small Windows-only RNG backend that forwards to `RtlGenRandom` in `advapi32.dll` and chunks large buffers to avoid integer overflow. I checked for install-time execution, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/utils/sys_fill_exact.rs`, a small helper that repeatedly calls a supplied `sys_fill` callback until a buffer is fully populated, handling short reads, `EINTR`, and unexpected return values. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none are present in this file.\nReviewed the Solaris backend in `src/backends/solaris.rs`, which only chunks an output buffer and fills it via the local `libc::getrandom` syscall while translating syscall return values into crate errors. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.\nReviewed `src/backends/wasi_p1.rs`, which is a small WASI Preview 1 backend that forwards entropy requests to the imported `wasi_snapshot_preview1::random_get` function and translates WASI return codes into `Error`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload behavior in this file.\nReviewed `src/utils/get_errno.rs`, which is a small platform-specific errno accessor that selects the appropriate libc errno symbol by target and reads the current thread-local errno value. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/backends/windows_legacy.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ea9a29c183d0c9da62d3a0eceb5d12a972d48a3874b14148019db6504112c2e0"
+          "agent_run_metrics": {
+            "duration_ms": 11627,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054442970,
+            "finished_at_unix_ms": 1784054454597,
+            "total_token_usage": {
+              "input_tokens": 24161,
+              "cached_input_tokens": 23296,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 232,
+              "total_tokens": 24590
+            },
+            "last_token_usage": {
+              "input_tokens": 24161,
+              "cached_input_tokens": 23296,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 232,
+              "total_tokens": 24590
+            }
           },
-          "summary": "Reviewed `src/backends/windows_legacy.rs`, which is a small Windows-only RNG backend that forwards to `RtlGenRandom` in `advapi32.dll` and chunks large buffers to avoid integer overflow. I checked for install-time execution, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/utils/sys_fill_exact.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3a3e934561d62148b9f81bbef01f8399eddd8d9f10957f21222c03279b10bd45"
-          },
-          "summary": "Reviewed `src/utils/sys_fill_exact.rs`, a small helper that repeatedly calls a supplied `sys_fill` callback until a buffer is fully populated, handling short reads, `EINTR`, and unexpected return values. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/solaris.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f2ec8bd2957f66a6ed0bf1dd5dd258587f5c2d47723a23bdd214202742077713"
-          },
-          "summary": "Reviewed the Solaris backend in `src/backends/solaris.rs`, which only chunks an output buffer and fills it via the local `libc::getrandom` syscall while translating syscall return values into crate errors. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/wasi_p1.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a0c19e80cde1acdddf29fcf8ad9d3e7e5829453d105ee043ff5e2cb1d9324bfc"
-          },
-          "summary": "Reviewed `src/backends/wasi_p1.rs`, which is a small WASI Preview 1 backend that forwards entropy requests to the imported `wasi_snapshot_preview1::random_get` function and translates WASI return codes into `Error`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden payload behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/utils/get_errno.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0aa27c2652fd23be91478b927e7f523987831abe3df4daa7d90177f67e870062"
-          },
-          "summary": "Reviewed `src/utils/get_errno.rs`, which is a small platform-specific errno accessor that selects the appropriate libc errno symbol by target and reads the current thread-local errno value. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_fd6a6eac8bf54279886757efecd4bb4e",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782815143",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "I reviewed `tests/mod.rs`, which contains deterministic and property-style tests for `getrandom` APIs across buffer sizes and threading. I did not find concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess behavior in this file.\nReviewed src/backends/use_file.rs, which implements the file-backed random byte backend by opening and reading from /dev/urandom, with Linux-specific readiness polling on /dev/random and futex-based coordination. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other payload-like behavior; none were present.\nReviewed `src/backends/rdrand.rs`, which implements the x86/x86-64 RDRAND backend with CPUID gating, a short self-test, and byte filling from the hardware RNG. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/error.rs`, which defines the crate’s `Error` type, platform-specific raw OS error encoding/decoding, and `Display`/`Debug` formatting. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\n`src/backends.rs` is a compile-time backend selector for `getrandom`, dispatching to platform-specific modules via `cfg_if!` and `pub use` without any runtime logic. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering in this file and found no concrete malicious or supply-chain indicators.",
-      "files": [
-        {
-          "file_path": "tests/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "290045a360464e7240ffe6c8444149b08aa6da0f9274df935bb829e453989690"
-          },
-          "summary": "I reviewed `tests/mod.rs`, which contains deterministic and property-style tests for `getrandom` APIs across buffer sizes and threading. I did not find concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/use_file.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2c57a160779499fc1a483f992d4508eb2951b5b32aadf556457f8a443cfe1b77"
-          },
-          "summary": "Reviewed src/backends/use_file.rs, which implements the file-backed random byte backend by opening and reading from /dev/urandom, with Linux-specific readiness polling on /dev/random and futex-based coordination. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other payload-like behavior; none were present.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/rdrand.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0344b988321b0ad05eeec22c8eabdbfbd675efcaad09a327362d720cc038bdff"
-          },
-          "summary": "Reviewed `src/backends/rdrand.rs`, which implements the x86/x86-64 RDRAND backend with CPUID gating, a short self-test, and byte filling from the hardware RNG. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/error.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0e2d51406e25bea49f60b27f401291891a0f47ca2940a8cdd71d46826c1297df"
-          },
-          "summary": "Reviewed `src/error.rs`, which defines the crate’s `Error` type, platform-specific raw OS error encoding/decoding, and `Display`/`Debug` formatting. I found no concrete supply-chain or malicious indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -1476,9 +923,1543 @@
             "algorithm": "blake3",
             "value": "40ad65abfa65443aa5130fd9d33434ea6e34d8724e32dfb47536a28f43fbac5c"
           },
-          "summary": "`src/backends.rs` is a compile-time backend selector for `getrandom`, dispatching to platform-specific modules via `cfg_if!` and `pub use` without any runtime logic. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering in this file and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/backends.rs`, which is a compile-time dispatcher that selects a platform-specific random-number backend via `cfg_if!` and emits `compile_error!` for unsupported targets. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15435,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054454598,
+            "finished_at_unix_ms": 1784054470033,
+            "total_token_usage": {
+              "input_tokens": 25777,
+              "cached_input_tokens": 21248,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 300,
+              "total_tokens": 26270
+            },
+            "last_token_usage": {
+              "input_tokens": 25777,
+              "cached_input_tokens": 21248,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 300,
+              "total_tokens": 26270
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_9dc7f30eefb94794848148eb57a98dc0",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784051669",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9fd91a1c333c65c019eb04a0d1729aa23cca32f684ee6e7900d5a623bb8dc41c"
+          },
+          "summary": "I reviewed the target `.cargo_vcs_info.json`, which only records the upstream Git SHA and an empty VCS path. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11847,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051612795,
+            "finished_at_unix_ms": 1784051624643,
+            "total_token_usage": {
+              "input_tokens": 24149,
+              "cached_input_tokens": 21248,
+              "output_tokens": 380,
+              "reasoning_output_tokens": 189,
+              "total_tokens": 24529
+            },
+            "last_token_usage": {
+              "input_tokens": 24149,
+              "cached_input_tokens": 21248,
+              "output_tokens": 380,
+              "reasoning_output_tokens": 189,
+              "total_tokens": 24529
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ee99923111eb058ac3c960b49de79284a38dda068e339418897af4dfbdbcf067"
+          },
+          "summary": "Reviewed the changelog text for release-note content and checked for install hooks, network or exfiltration references, credential access, dynamic code loading, obfuscation, and persistence behavior. It only documents version history and dependency/backend changes, with no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20120,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051624644,
+            "finished_at_unix_ms": 1784051644764,
+            "total_token_usage": {
+              "input_tokens": 44862,
+              "cached_input_tokens": 35968,
+              "output_tokens": 445,
+              "reasoning_output_tokens": 155,
+              "total_tokens": 45307
+            },
+            "last_token_usage": {
+              "input_tokens": 44862,
+              "cached_input_tokens": 35968,
+              "output_tokens": 445,
+              "reasoning_output_tokens": 155,
+              "total_tokens": 45307
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d8f544bd6441d025b5f8c8f7b0f6072251d1cb92849f46740875549d8a1c409c"
+          },
+          "summary": "Reviewed the crate manifest for install-time hooks, build-script execution, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence. The file is a normal Rust package manifest with a build script reference and a NetBSD cross-build helper that downloads and extracts a system library for that target, but I found no concrete malicious or supply-chain compromise indicators in the manifest itself.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24659,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051644765,
+            "finished_at_unix_ms": 1784051669424,
+            "total_token_usage": {
+              "input_tokens": 39732,
+              "cached_input_tokens": 25216,
+              "output_tokens": 1212,
+              "reasoning_output_tokens": 925,
+              "total_tokens": 40944
+            },
+            "last_token_usage": {
+              "input_tokens": 39732,
+              "cached_input_tokens": 25216,
+              "output_tokens": 1212,
+              "reasoning_output_tokens": 925,
+              "total_tokens": 40944
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_a1b6c2d754f74998b8c08be588b25d81",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058298",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/backends/fuchsia.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d92bb89511e7ab0be5bd575bca04405f5e2e2f4ed86e529706e883d23edf4e9b"
+          },
+          "summary": "Reviewed the Fuchsia backend wrapper in `src/backends/fuchsia.rs`; it only declares the Zircon `zx_cprng_draw` FFI and forwards output into the caller buffer for random-byte generation. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12738,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058208363,
+            "finished_at_unix_ms": 1784058221101,
+            "total_token_usage": {
+              "input_tokens": 24211,
+              "cached_input_tokens": 21248,
+              "output_tokens": 469,
+              "reasoning_output_tokens": 264,
+              "total_tokens": 24680
+            },
+            "last_token_usage": {
+              "input_tokens": 24211,
+              "cached_input_tokens": 21248,
+              "output_tokens": 469,
+              "reasoning_output_tokens": 264,
+              "total_tokens": 24680
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/getentropy.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "62ec30a09d604e10ab456bd3a3eec87ef4bdea01312da51106f9de51f20fd601"
+          },
+          "summary": "Reviewed `src/backends/getentropy.rs`, which is a small platform-specific wrapper around `libc::getentropy` that fills output chunks and maps errno on failure. I checked it for install-time execution, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14593,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058221102,
+            "finished_at_unix_ms": 1784058235695,
+            "total_token_usage": {
+              "input_tokens": 24358,
+              "cached_input_tokens": 21248,
+              "output_tokens": 367,
+              "reasoning_output_tokens": 169,
+              "total_tokens": 24725
+            },
+            "last_token_usage": {
+              "input_tokens": 24358,
+              "cached_input_tokens": 21248,
+              "output_tokens": 367,
+              "reasoning_output_tokens": 169,
+              "total_tokens": 24725
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/getrandom.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "19358a4f8cc10574c500e347b1695c6b77cd9c9d6852f697efa7536f481cc42c"
+          },
+          "summary": "Reviewed `src/backends/getrandom.rs`, which is a small platform backend that fills a buffer by calling `libc::getrandom` through `sys_fill_exact`. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 26100,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058235696,
+            "finished_at_unix_ms": 1784058261796,
+            "total_token_usage": {
+              "input_tokens": 37570,
+              "cached_input_tokens": 33408,
+              "output_tokens": 576,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 38146
+            },
+            "last_token_usage": {
+              "input_tokens": 37570,
+              "cached_input_tokens": 33408,
+              "output_tokens": 576,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 38146
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/hermit.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "820d923f812dda4003dffb5760f032e99f581aae3e068599adbac1eb2d0b6a37"
+          },
+          "summary": "Reviewed the Hermit backend in `src/backends/hermit.rs`, which only wraps Hermit OS entropy syscalls (`sys_secure_rand32`, `sys_secure_rand64`, and `sys_read_entropy`) to fill buffers with random bytes and map error codes. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20073,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058261797,
+            "finished_at_unix_ms": 1784058281870,
+            "total_token_usage": {
+              "input_tokens": 24543,
+              "cached_input_tokens": 21248,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 24950
+            },
+            "last_token_usage": {
+              "input_tokens": 24543,
+              "cached_input_tokens": 21248,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 24950
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/linux_android_with_fallback.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f273273b597ed273e07b6701693c5280bce317f807ebdf6efd91c3224b20a436"
+          },
+          "summary": "Reviewed the Linux/Android random-source backend in `src/backends/linux_android_with_fallback.rs`; it only resolves `getrandom` via libc, probes kernel support, and falls back to the file-based path when needed. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16185,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058281871,
+            "finished_at_unix_ms": 1784058298056,
+            "total_token_usage": {
+              "input_tokens": 25045,
+              "cached_input_tokens": 21760,
+              "output_tokens": 653,
+              "reasoning_output_tokens": 342,
+              "total_tokens": 25698
+            },
+            "last_token_usage": {
+              "input_tokens": 25045,
+              "cached_input_tokens": 21760,
+              "output_tokens": 653,
+              "reasoning_output_tokens": 342,
+              "total_tokens": 25698
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_a9778228a759474e80e3e62295f84010",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784063515",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/utils/lazy_bool.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8212d171527d8e33d1b44b7dcd8ada9a3ee68919a6af8123343769eba6942ee6"
+          },
+          "summary": "Reviewed a small `LazyBool` helper that memoizes a `bool` with an `AtomicU8` and relaxed, unsynchronized initialization. I found no concrete indicators of supply-chain abuse in this file: there are no install hooks, network or exfiltration code, secret access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16410,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063447953,
+            "finished_at_unix_ms": 1784063464364,
+            "total_token_usage": {
+              "input_tokens": 37454,
+              "cached_input_tokens": 35456,
+              "output_tokens": 526,
+              "reasoning_output_tokens": 248,
+              "total_tokens": 37980
+            },
+            "last_token_usage": {
+              "input_tokens": 37454,
+              "cached_input_tokens": 35456,
+              "output_tokens": 526,
+              "reasoning_output_tokens": 248,
+              "total_tokens": 37980
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/utils/lazy_ptr.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d96884242cc050999678ca25fc9fe4a815804d4c7c1f8ea66da4749a1400b2f2"
+          },
+          "summary": "Reviewed `src/utils/lazy_ptr.rs`, which defines a small `LazyPtr<T>` helper that caches a non-null pointer with unsynchronized atomic loads/stores and fallible or infallible initialization. I found no concrete signs of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11781,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063464365,
+            "finished_at_unix_ms": 1784063476146,
+            "total_token_usage": {
+              "input_tokens": 24790,
+              "cached_input_tokens": 23296,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 221,
+              "total_tokens": 25222
+            },
+            "last_token_usage": {
+              "input_tokens": 24790,
+              "cached_input_tokens": 23296,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 221,
+              "total_tokens": 25222
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/utils/sanitizer.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7693e990a0d60882c39f0e5b26f8583d19e70e0d65772b5df40d04cc30a37eef"
+          },
+          "summary": "Reviewed `src/utils/sanitizer.rs`, a small MSAN helper that conditionally calls `__msan_unpoison` on a buffer when `getrandom_msan` is enabled. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13872,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063476147,
+            "finished_at_unix_ms": 1784063490020,
+            "total_token_usage": {
+              "input_tokens": 37386,
+              "cached_input_tokens": 35456,
+              "output_tokens": 585,
+              "reasoning_output_tokens": 282,
+              "total_tokens": 37971
+            },
+            "last_token_usage": {
+              "input_tokens": 37386,
+              "cached_input_tokens": 35456,
+              "output_tokens": 585,
+              "reasoning_output_tokens": 282,
+              "total_tokens": 37971
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/utils/sys_fill_exact.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3a3e934561d62148b9f81bbef01f8399eddd8d9f10957f21222c03279b10bd45"
+          },
+          "summary": "Reviewed `src/utils/sys_fill_exact.rs`, which contains a small helper that repeatedly calls a supplied fill function until a buffer is populated, handling `EINTR` and marking written bytes as initialized. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11754,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063490020,
+            "finished_at_unix_ms": 1784063501775,
+            "total_token_usage": {
+              "input_tokens": 24516,
+              "cached_input_tokens": 21248,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 24977
+            },
+            "last_token_usage": {
+              "input_tokens": 24516,
+              "cached_input_tokens": 21248,
+              "output_tokens": 461,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 24977
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "290045a360464e7240ffe6c8444149b08aa6da0f9274df935bb829e453989690"
+          },
+          "summary": "`tests/mod.rs` contains deterministic test cases for `getrandom` APIs (`fill`, `fill_uninit`, `u32`, `u64`) that check zero-length handling, statistical variation, large-buffer behavior, and multithreaded use. I reviewed it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior; none were present.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13952,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063501776,
+            "finished_at_unix_ms": 1784063515728,
+            "total_token_usage": {
+              "input_tokens": 25845,
+              "cached_input_tokens": 23296,
+              "output_tokens": 458,
+              "reasoning_output_tokens": 244,
+              "total_tokens": 26303
+            },
+            "last_token_usage": {
+              "input_tokens": 25845,
+              "cached_input_tokens": 23296,
+              "output_tokens": 458,
+              "reasoning_output_tokens": 244,
+              "total_tokens": 26303
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_bdaaa3ae583c4f7cb8b95e57553511fa",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056550",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/backends/apple_other.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8fee7cd97456d79b13ff86ccfaba167e2867a50bd4a8946f93b977fc31585e4b"
+          },
+          "summary": "Reviewed this Apple-platform RNG backend wrapper, which only calls `libc::CCRandomGenerateBytes` to fill a byte slice and maps failures to an internal error code. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12312,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056474773,
+            "finished_at_unix_ms": 1784056487086,
+            "total_token_usage": {
+              "input_tokens": 24252,
+              "cached_input_tokens": 21248,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 24684
+            },
+            "last_token_usage": {
+              "input_tokens": 24252,
+              "cached_input_tokens": 21248,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 24684
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/custom.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cd3c93f020dd83861d838cc9ef0ff20cb4cfdc1db360eb1cea1d3907b8596205"
+          },
+          "summary": "Reviewed src/backends/custom.rs, which is a thin wrapper that forwards entropy buffer filling to an externally supplied __getrandom_v03_custom function via an unsafe Rust FFI declaration. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16154,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056487086,
+            "finished_at_unix_ms": 1784056503240,
+            "total_token_usage": {
+              "input_tokens": 24187,
+              "cached_input_tokens": 21248,
+              "output_tokens": 608,
+              "reasoning_output_tokens": 409,
+              "total_tokens": 24795
+            },
+            "last_token_usage": {
+              "input_tokens": 24187,
+              "cached_input_tokens": 21248,
+              "output_tokens": 608,
+              "reasoning_output_tokens": 409,
+              "total_tokens": 24795
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/efi_rng.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8e81a9a680b858f393b8f3385ff4b8c13fd231b709c67d89d859e8c1c716a563"
+          },
+          "summary": "Reviewed `src/backends/efi_rng.rs`, which is a UEFI RNG backend that locates the EFI_RNG_PROTOCOL through boot services and uses it to fill buffers with random bytes. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13996,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056503241,
+            "finished_at_unix_ms": 1784056517237,
+            "total_token_usage": {
+              "input_tokens": 24833,
+              "cached_input_tokens": 21248,
+              "output_tokens": 442,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 25275
+            },
+            "last_token_usage": {
+              "input_tokens": 24833,
+              "cached_input_tokens": 21248,
+              "output_tokens": 442,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 25275
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/esp_idf.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e169b7997d46de07a9f04d1f91fe8d121685718874afbfccc8eb1fb325f8390e"
+          },
+          "summary": "This file is a small ESP-IDF backend that re-exports random helpers and delegates byte filling to the external `esp_fill_random` C API; I found no concrete malicious indicators in this file, and I checked for install hooks, secret access, network/exfiltration, dynamic code loading, obfuscation, and persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17406,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056517237,
+            "finished_at_unix_ms": 1784056534644,
+            "total_token_usage": {
+              "input_tokens": 24479,
+              "cached_input_tokens": 23808,
+              "output_tokens": 659,
+              "reasoning_output_tokens": 461,
+              "total_tokens": 25138
+            },
+            "last_token_usage": {
+              "input_tokens": 24479,
+              "cached_input_tokens": 23808,
+              "output_tokens": 659,
+              "reasoning_output_tokens": 461,
+              "total_tokens": 25138
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/extern_impl.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a5f171f9d71930cbfd23cc556ff0692ac2257f529e2bcc7de4bb7a38332a0331"
+          },
+          "summary": "Reviewed src/backends/extern_impl.rs, which only declares an external fill_uninit entrypoint and forwards u32/u64 generation to crate::util helpers. I found no concrete indicators of install hooks, network or credential access, hidden downloads, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15803,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056534645,
+            "finished_at_unix_ms": 1784056550448,
+            "total_token_usage": {
+              "input_tokens": 24269,
+              "cached_input_tokens": 21248,
+              "output_tokens": 503,
+              "reasoning_output_tokens": 312,
+              "total_tokens": 24772
+            },
+            "last_token_usage": {
+              "input_tokens": 24269,
+              "cached_input_tokens": 21248,
+              "output_tokens": 503,
+              "reasoning_output_tokens": 312,
+              "total_tokens": 24772
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_c35999bb1ea2491f9afee5532570adb0",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784045676",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9fd91a1c333c65c019eb04a0d1729aa23cca32f684ee6e7900d5a623bb8dc41c"
+          },
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the package git SHA and an empty `path_in_vcs`. No concrete malicious or supply-chain indicators were present in this file, and there were no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors to inspect here.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13680,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045629569,
+            "finished_at_unix_ms": 1784045643250,
+            "total_token_usage": {
+              "input_tokens": 36329,
+              "cached_input_tokens": 33408,
+              "output_tokens": 442,
+              "reasoning_output_tokens": 154,
+              "total_tokens": 36771
+            },
+            "last_token_usage": {
+              "input_tokens": 36329,
+              "cached_input_tokens": 33408,
+              "output_tokens": 442,
+              "reasoning_output_tokens": 154,
+              "total_tokens": 36771
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ee99923111eb058ac3c960b49de79284a38dda068e339418897af4dfbdbcf067"
+          },
+          "summary": "`CHANGELOG.md` is a plain release-history document for `getrandom` 0.0.0 through 0.4.3, listing versioned feature, fix, and dependency changes with release links. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12540,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045643250,
+            "finished_at_unix_ms": 1784045655791,
+            "total_token_usage": {
+              "input_tokens": 34918,
+              "cached_input_tokens": 21248,
+              "output_tokens": 410,
+              "reasoning_output_tokens": 198,
+              "total_tokens": 35328
+            },
+            "last_token_usage": {
+              "input_tokens": 34918,
+              "cached_input_tokens": 21248,
+              "output_tokens": 410,
+              "reasoning_output_tokens": 198,
+              "total_tokens": 35328
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d8f544bd6441d025b5f8c8f7b0f6072251d1cb92849f46740875549d8a1c409c"
+          },
+          "summary": "Reviewed the Cargo manifest for getrandom 0.4.3, including its build-script declaration, feature/dependency graph, and the cross-build metadata that downloads NetBSD base.tar.xz for a specific target. I found no concrete indicators of malicious install hooks, credential harvesting, exfiltration, hidden code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20545,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045655792,
+            "finished_at_unix_ms": 1784045676337,
+            "total_token_usage": {
+              "input_tokens": 25336,
+              "cached_input_tokens": 21248,
+              "output_tokens": 1060,
+              "reasoning_output_tokens": 856,
+              "total_tokens": 26396
+            },
+            "last_token_usage": {
+              "input_tokens": 25336,
+              "cached_input_tokens": 21248,
+              "output_tokens": 1060,
+              "reasoning_output_tokens": 856,
+              "total_tokens": 26396
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_c5de4da221e846ca90abd9c697ef9f9e",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784062906",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/error_std_impls.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ae7133bedd23024bbae868a1f492b6afe04d3c036a96796c19df3fa14223472f"
+          },
+          "summary": "Reviewed `src/error_std_impls.rs`, which only provides a `From<Error> for std::io::Error` conversion by mapping raw OS error codes or wrapping the error in `io::Error::other`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14783,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062828105,
+            "finished_at_unix_ms": 1784062842888,
+            "total_token_usage": {
+              "input_tokens": 36689,
+              "cached_input_tokens": 33408,
+              "output_tokens": 510,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 37199
+            },
+            "last_token_usage": {
+              "input_tokens": 36689,
+              "cached_input_tokens": 33408,
+              "output_tokens": 510,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 37199
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2196cc992068245d5406323922cd19c517c052df89c2a062da893137335cbd0a"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is the crate's public random-bytes API and backend dispatch layer. I checked for install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, and persistence/tampering behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15727,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062842889,
+            "finished_at_unix_ms": 1784062858616,
+            "total_token_usage": {
+              "input_tokens": 25261,
+              "cached_input_tokens": 21248,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 25748
+            },
+            "last_token_usage": {
+              "input_tokens": 25261,
+              "cached_input_tokens": 21248,
+              "output_tokens": 487,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 25748
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/sys_rng.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2d2d3c0a8aef143c7b063c6b724a9f5fc00060f2d4113cb68d874a8d3bd60681"
+          },
+          "summary": "`src/sys_rng.rs` is a small wrapper that exposes `SysRng` as a `TryRng`/`TryCryptoRng` adapter over the crate's internal `u32`, `u64`, and `fill` helpers. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14352,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062858617,
+            "finished_at_unix_ms": 1784062872970,
+            "total_token_usage": {
+              "input_tokens": 24447,
+              "cached_input_tokens": 21248,
+              "output_tokens": 497,
+              "reasoning_output_tokens": 284,
+              "total_tokens": 24944
+            },
+            "last_token_usage": {
+              "input_tokens": 24447,
+              "cached_input_tokens": 21248,
+              "output_tokens": 497,
+              "reasoning_output_tokens": 284,
+              "total_tokens": 24944
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/util.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "06d93306ec725b2d668130923ad4d0d65fd1cf4388505a01e75862a33ebc1b41"
+          },
+          "summary": "src/util.rs contains low-level helpers for `MaybeUninit` slice casting, zero-filling, and constructing `u32`/`u64` values via `crate::fill_uninit`; I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22976,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062872970,
+            "finished_at_unix_ms": 1784062895947,
+            "total_token_usage": {
+              "input_tokens": 37893,
+              "cached_input_tokens": 35968,
+              "output_tokens": 935,
+              "reasoning_output_tokens": 437,
+              "total_tokens": 38828
+            },
+            "last_token_usage": {
+              "input_tokens": 37893,
+              "cached_input_tokens": 35968,
+              "output_tokens": 935,
+              "reasoning_output_tokens": 437,
+              "total_tokens": 38828
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/utils/get_errno.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0aa27c2652fd23be91478b927e7f523987831abe3df4daa7d90177f67e870062"
+          },
+          "summary": "Reviewed `src/utils/get_errno.rs`, which is a small platform-conditional helper that selects the appropriate libc errno accessor and returns the current thread-local errno value via a raw pointer read. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain malicious behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11050,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062895947,
+            "finished_at_unix_ms": 1784062906998,
+            "total_token_usage": {
+              "input_tokens": 24387,
+              "cached_input_tokens": 21248,
+              "output_tokens": 403,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 24790
+            },
+            "last_token_usage": {
+              "input_tokens": 24387,
+              "cached_input_tokens": 21248,
+              "output_tokens": 403,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 24790
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_cf733858305a409d8580da03bdaaeb0b",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059735",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/backends/linux_raw.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dc2ce77d731ba9651e6e8689b441752e3adfae40aa982e54885b2c8ea6c85cf3"
+          },
+          "summary": "Reviewed `src/backends/linux_raw.rs`, which is a Linux/Android `getrandom` backend that issues direct architecture-specific syscalls and copies returned bytes into the destination buffer. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11776,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059662798,
+            "finished_at_unix_ms": 1784059674575,
+            "total_token_usage": {
+              "input_tokens": 25537,
+              "cached_input_tokens": 23296,
+              "output_tokens": 411,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 25948
+            },
+            "last_token_usage": {
+              "input_tokens": 25537,
+              "cached_input_tokens": 23296,
+              "output_tokens": 411,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 25948
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/netbsd.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8f005a6d863d065d7e142092ba0eecec4c7d16d950aed11aeb4313daa5ba6e14"
+          },
+          "summary": "Reviewed the NetBSD backend that resolves `getrandom` with `dlsym` and falls back to `sysctl(KERN_ARND)` for older kernels. I checked this file for install-time execution, credential access, network or exfiltration behavior, hidden downloads, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17605,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059674576,
+            "finished_at_unix_ms": 1784059692182,
+            "total_token_usage": {
+              "input_tokens": 24744,
+              "cached_input_tokens": 19200,
+              "output_tokens": 501,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 25245
+            },
+            "last_token_usage": {
+              "input_tokens": 24744,
+              "cached_input_tokens": 19200,
+              "output_tokens": 501,
+              "reasoning_output_tokens": 296,
+              "total_tokens": 25245
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/rdrand.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0344b988321b0ad05eeec22c8eabdbfbd675efcaad09a327362d720cc038bdff"
+          },
+          "summary": "Reviewed `src/backends/rdrand.rs`, which implements the x86/x86-64 RDRAND-backed random source with CPUID gating, a short self-test, and retry logic. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15886,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059692182,
+            "finished_at_unix_ms": 1784059708069,
+            "total_token_usage": {
+              "input_tokens": 42662,
+              "cached_input_tokens": 36992,
+              "output_tokens": 657,
+              "reasoning_output_tokens": 349,
+              "total_tokens": 43319
+            },
+            "last_token_usage": {
+              "input_tokens": 42662,
+              "cached_input_tokens": 36992,
+              "output_tokens": 657,
+              "reasoning_output_tokens": 349,
+              "total_tokens": 43319
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/rndr.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5193ddd9de43201d87bbb0a2806d71fb4fd69c6ecfc5b5562483be4d5069bb1f"
+          },
+          "summary": "Reviewed the AArch64 RNDR backend in `src/backends/rndr.rs`, which only performs hardware RNG reads via inline assembly, runtime feature detection, and error handling. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14847,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059708070,
+            "finished_at_unix_ms": 1784059722917,
+            "total_token_usage": {
+              "input_tokens": 25278,
+              "cached_input_tokens": 21248,
+              "output_tokens": 471,
+              "reasoning_output_tokens": 276,
+              "total_tokens": 25749
+            },
+            "last_token_usage": {
+              "input_tokens": 25278,
+              "cached_input_tokens": 21248,
+              "output_tokens": 471,
+              "reasoning_output_tokens": 276,
+              "total_tokens": 25749
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/solaris.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f2ec8bd2957f66a6ed0bf1dd5dd258587f5c2d47723a23bdd214202742077713"
+          },
+          "summary": "Reviewed `src/backends/solaris.rs`, which is a small Solaris backend that fills buffers via `libc::getrandom` in bounded chunks and maps syscall failures through `errno`. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13005,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059722917,
+            "finished_at_unix_ms": 1784059735923,
+            "total_token_usage": {
+              "input_tokens": 24558,
+              "cached_input_tokens": 21248,
+              "output_tokens": 411,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 24969
+            },
+            "last_token_usage": {
+              "input_tokens": 24558,
+              "cached_input_tokens": 21248,
+              "output_tokens": 411,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 24969
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_d118f11b63c446eb9d238697cd139813",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784064006",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/sys_rng.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2e303f59872d22260e52cfe7c233e6f12861bebf8279f2ac49d2db9883f3cfdc"
+          },
+          "summary": "Reviewed `tests/sys_rng.rs`, which contains two unit tests that call `SysRng.try_next_u64()` and assert basic nonzero/unequal output behavior. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13118,
+            "attempts": 1,
+            "started_at_unix_ms": 1784063993820,
+            "finished_at_unix_ms": 1784064006939,
+            "total_token_usage": {
+              "input_tokens": 24191,
+              "cached_input_tokens": 23296,
+              "output_tokens": 477,
+              "reasoning_output_tokens": 281,
+              "total_tokens": 24668
+            },
+            "last_token_usage": {
+              "input_tokens": 24191,
+              "cached_input_tokens": 23296,
+              "output_tokens": 477,
+              "reasoning_output_tokens": 281,
+              "total_tokens": 24668
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_d1824b38a3324265a9bd62d71301e7c8",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784061030",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/backends/solid.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cd885e94ee3925979473f3de2f09ed711d58562957d5e954fc5430c2abb46cd6"
+          },
+          "summary": "Reviewed `src/backends/solid.rs`, which is a small FFI wrapper that forwards buffer filling to `SOLID_RNG_SampleRandomBytes` and converts its return code into `Result`. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 31951,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060937680,
+            "finished_at_unix_ms": 1784060969631,
+            "total_token_usage": {
+              "input_tokens": 36971,
+              "cached_input_tokens": 33408,
+              "output_tokens": 600,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 37571
+            },
+            "last_token_usage": {
+              "input_tokens": 36971,
+              "cached_input_tokens": 33408,
+              "output_tokens": 600,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 37571
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/unsupported.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "722f7d84ce5b8acf40dfafc30e125a60c2f573c9f3bdf84cee26c03953290bde"
+          },
+          "summary": "Reviewed this unsupported backend stub, which only re-exports utility helpers and returns `Error::UNSUPPORTED` from `fill_inner`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12747,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060969632,
+            "finished_at_unix_ms": 1784060982379,
+            "total_token_usage": {
+              "input_tokens": 24135,
+              "cached_input_tokens": 21248,
+              "output_tokens": 428,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 24563
+            },
+            "last_token_usage": {
+              "input_tokens": 24135,
+              "cached_input_tokens": 21248,
+              "output_tokens": 428,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 24563
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/use_file.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2c57a160779499fc1a483f992d4508eb2951b5b32aadf556457f8a443cfe1b77"
+          },
+          "summary": "Reviewed `src/backends/use_file.rs`, which implements the entropy-file backend by opening `/dev/urandom`, synchronizing the cached file descriptor, and on Linux optionally polling `/dev/random` before reads. I found no concrete indicators of install-time execution, network or exfiltration, credential harvesting, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14435,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060982379,
+            "finished_at_unix_ms": 1784060996815,
+            "total_token_usage": {
+              "input_tokens": 40607,
+              "cached_input_tokens": 33408,
+              "output_tokens": 535,
+              "reasoning_output_tokens": 239,
+              "total_tokens": 41142
+            },
+            "last_token_usage": {
+              "input_tokens": 40607,
+              "cached_input_tokens": 33408,
+              "output_tokens": 535,
+              "reasoning_output_tokens": 239,
+              "total_tokens": 41142
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/vxworks.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cce16be9ab80dce36077d41d78b33e72458dc15fb252571ea8a877be6cf642d9"
+          },
+          "summary": "Reviewed `src/backends/vxworks.rs`, which implements VxWorks-specific random-byte filling via `libc::randSecure`, `usleep`, and `randABytes` with chunking and errno translation. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15336,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060996816,
+            "finished_at_unix_ms": 1784061012153,
+            "total_token_usage": {
+              "input_tokens": 24461,
+              "cached_input_tokens": 21248,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 215,
+              "total_tokens": 24883
+            },
+            "last_token_usage": {
+              "input_tokens": 24461,
+              "cached_input_tokens": 21248,
+              "output_tokens": 422,
+              "reasoning_output_tokens": 215,
+              "total_tokens": 24883
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/wasi_p1.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a0c19e80cde1acdddf29fcf8ad9d3e7e5829453d105ee043ff5e2cb1d9324bfc"
+          },
+          "summary": "`src/backends/wasi_p1.rs` is a small WASI Preview 1 entropy backend that imports `wasi_snapshot_preview1::random_get` and translates its return code into `Error`. I reviewed it for install-time hooks, network or credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17848,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061012153,
+            "finished_at_unix_ms": 1784061030002,
+            "total_token_usage": {
+              "input_tokens": 24468,
+              "cached_input_tokens": 23296,
+              "output_tokens": 460,
+              "reasoning_output_tokens": 256,
+              "total_tokens": 24928
+            },
+            "last_token_usage": {
+              "input_tokens": 24468,
+              "cached_input_tokens": 23296,
+              "output_tokens": 460,
+              "reasoning_output_tokens": 256,
+              "total_tokens": 24928
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_ecfc0e27a18b4262b23b5ce6634f0df9",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784062107",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/backends/wasi_p2_3.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "fd3e17a7e84652b68d614fb0a693e613b7ae2f6fbb3a547a65472918d667b899"
+          },
+          "summary": "Reviewed `src/backends/wasi_p2_3.rs`, which is a small WASI p2/p3 random-source backend that binds to `wasi:random/random` imports and copies returned `u64` values into caller buffers. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12370,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062021737,
+            "finished_at_unix_ms": 1784062034108,
+            "total_token_usage": {
+              "input_tokens": 24689,
+              "cached_input_tokens": 21248,
+              "output_tokens": 467,
+              "reasoning_output_tokens": 256,
+              "total_tokens": 25156
+            },
+            "last_token_usage": {
+              "input_tokens": 24689,
+              "cached_input_tokens": 21248,
+              "output_tokens": 467,
+              "reasoning_output_tokens": 256,
+              "total_tokens": 25156
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/wasm_js.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1a554d95c0f2a3f87a812ecf8fecd39a640e5792056f896022efcb12db31de29"
+          },
+          "summary": "Reviewed the WASM JS backend in `src/backends/wasm_js.rs`, which only routes randomness requests to `globalThis.crypto.getRandomValues` and handles WASM atomics buffer quirks. I found no concrete malicious or supply-chain indicators in the file: no install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21619,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062034108,
+            "finished_at_unix_ms": 1784062055728,
+            "total_token_usage": {
+              "input_tokens": 24728,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 25217
+            },
+            "last_token_usage": {
+              "input_tokens": 24728,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 25217
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/windows.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2a7bf5cf979ecb0d7d81cfe3fdd3f160eb1015c36682f425654bbb71f53d2ad4"
+          },
+          "summary": "Reviewed the Windows RNG backend in `src/backends/windows.rs`, which binds directly to the Windows `ProcessPrng` API and returns an error only when the OS call fails. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15086,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062055729,
+            "finished_at_unix_ms": 1784062070815,
+            "total_token_usage": {
+              "input_tokens": 24894,
+              "cached_input_tokens": 23296,
+              "output_tokens": 410,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 25304
+            },
+            "last_token_usage": {
+              "input_tokens": 24894,
+              "cached_input_tokens": 23296,
+              "output_tokens": 410,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 25304
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/windows_legacy.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ea9a29c183d0c9da62d3a0eceb5d12a972d48a3874b14148019db6504112c2e0"
+          },
+          "summary": "I reviewed the Windows legacy RNG backend in `src/backends/windows_legacy.rs`. It only exposes a thin `RtlGenRandom` FFI wrapper with bounded chunking and error propagation, and I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21232,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062070816,
+            "finished_at_unix_ms": 1784062092048,
+            "total_token_usage": {
+              "input_tokens": 24587,
+              "cached_input_tokens": 23296,
+              "output_tokens": 504,
+              "reasoning_output_tokens": 305,
+              "total_tokens": 25091
+            },
+            "last_token_usage": {
+              "input_tokens": 24587,
+              "cached_input_tokens": 23296,
+              "output_tokens": 504,
+              "reasoning_output_tokens": 305,
+              "total_tokens": 25091
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/error.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0e2d51406e25bea49f60b27f401291891a0f47ca2940a8cdd71d46826c1297df"
+          },
+          "summary": "Reviewed src/error.rs, which only defines the crate's error type and platform-specific OS/custom error-code mapping plus Debug/Display formatting. I found no concrete malicious or supply-chain indicators in this file: no install-time hooks, network or exfiltration code, credential/secret access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15001,
+            "attempts": 1,
+            "started_at_unix_ms": 1784062092049,
+            "finished_at_unix_ms": 1784062107051,
+            "total_token_usage": {
+              "input_tokens": 42893,
+              "cached_input_tokens": 36480,
+              "output_tokens": 624,
+              "reasoning_output_tokens": 340,
+              "total_tokens": 43517
+            },
+            "last_token_usage": {
+              "input_tokens": 42893,
+              "cached_input_tokens": 36480,
+              "output_tokens": 624,
+              "reasoning_output_tokens": 340,
+              "total_tokens": 43517
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591117",
+  "latest_reviewed_at": "1784054962",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -161,44 +167,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 6,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 4,
+      "file_record_count": 14,
+      "file_record_count_with_metrics": 14
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 9,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 6,
-    "duration_ms_total": 39330,
-    "attempts_total": 3,
+    "reviewed_file_records": 14,
+    "file_records_with_metrics": 14,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 228242,
+    "attempts_total": 14,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 14,
+    "last_token_usage_records": 14,
     "total_token_usage": {
-      "input_tokens": 64107,
-      "cached_input_tokens": 52992,
-      "output_tokens": 1421,
-      "reasoning_output_tokens": 701,
-      "total_tokens": 65528
+      "input_tokens": 406527,
+      "cached_input_tokens": 328704,
+      "output_tokens": 7156,
+      "reasoning_output_tokens": 3773,
+      "total_tokens": 413683
     },
     "last_token_usage": {
-      "input_tokens": 64107,
-      "cached_input_tokens": 52992,
-      "output_tokens": 1421,
-      "reasoning_output_tokens": 701,
-      "total_tokens": 65528
+      "input_tokens": 406527,
+      "cached_input_tokens": 328704,
+      "output_tokens": 7156,
+      "reasoning_output_tokens": 3773,
+      "total_tokens": 413683
     },
     "model_context_windows": []
   },
@@ -213,7 +211,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591117",
       "thirdpass_version": "0.6.0",
@@ -317,7 +315,7 @@
       ]
     },
     {
-      "id": "rev_767780af09ad43feab59f1fd8893a671",
+      "id": "rev_bb764246a7ba4a6e80929e780cff4713",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -325,12 +323,11 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782841248",
+      "created_at": "1784046475",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed .cargo_vcs_info.json, which contains only crate provenance metadata (a Git SHA-1 and path_in_vcs mapping) and no executable logic. I also checked for any package references to this file and found no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior tied to it.",
       "files": [
         {
           "file_path": ".cargo_vcs_info.json",
@@ -338,39 +335,29 @@
             "algorithm": "blake3",
             "value": "735c3c2072d3ac50bdae8780f62c277edcd04dfb20c96525232a7dcedcc8dc1d"
           },
-          "summary": "Reviewed .cargo_vcs_info.json, which contains only crate provenance metadata (a Git SHA-1 and path_in_vcs mapping) and no executable logic. I also checked for any package references to this file and found no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior tied to it.",
+          "summary": "Reviewed the Cargo VCS metadata in `.cargo_vcs_info.json`, which only records the upstream git SHA1 and the path in the original repository. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_c6b90b8ad68749a59acf269935a9d736",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782841227",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/lib.rs` is a Rust `proc_macro_derive(ZeroFrom)` implementation that generates `ZeroFrom` trait impls from struct and enum syntax, with helper logic for lifetime and generic handling. I checked this file for install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators.\nReviewed the crate manifest for `zerofrom-derive` 0.1.7. It declares a proc-macro library and standard Rust dependencies, and I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `examples/zf_derive.rs`, which is a local Rust example exercising the `ZeroFrom` derive across structs, enums, generics, and `clone`/`may_borrow` annotations. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this target file.\nReviewed `src/visitor.rs`, which is a small `syn` AST visitor that detects whether a type contains local type parameters or non-'static lifetimes, plus unit tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, credential access, dynamic code loading, obfuscation/decoding, or persistence behavior.\nReviewed the target `README.md`, which is a brief crate description for `zerofrom-derive` and a link to ICU4X; it contains no executable content, install hooks, downloads, dynamic loading, obfuscation, secret access, or persistence behavior. I checked the file for supply-chain indicators and found no concrete malicious or suspicious markers.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4fa6695133f84fd4f396d7ea7f2d105107684cada1beb2baf6863b8331db1ba0"
+          "agent_run_metrics": {
+            "duration_ms": 10704,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046385167,
+            "finished_at_unix_ms": 1784046395871,
+            "total_token_usage": {
+              "input_tokens": 24568,
+              "cached_input_tokens": 21760,
+              "output_tokens": 332,
+              "reasoning_output_tokens": 137,
+              "total_tokens": 24900
+            },
+            "last_token_usage": {
+              "input_tokens": 24568,
+              "cached_input_tokens": 21760,
+              "output_tokens": 332,
+              "reasoning_output_tokens": 137,
+              "total_tokens": 24900
+            }
           },
-          "summary": "`src/lib.rs` is a Rust `proc_macro_derive(ZeroFrom)` implementation that generates `ZeroFrom` trait impls from struct and enum syntax, with helper logic for lifetime and generic handling. I checked this file for install hooks, network or exfiltration behavior, credential or environment access, dynamic code loading, obfuscation, and persistence/tampering, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -380,33 +367,29 @@
             "algorithm": "blake3",
             "value": "33977d79815bc6d836f38931272b67ef53c192ed67b524fbcadf73c7035a17fb"
           },
-          "summary": "Reviewed the crate manifest for `zerofrom-derive` 0.1.7. It declares a proc-macro library and standard Rust dependencies, and I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed the normalized Cargo.toml for this proc-macro crate, including package metadata, build settings, library/example declarations, and dependency pins. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/zf_derive.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "534bae6228b03ac79acd8b369b2bb4c5e3dc8ce1fde98fde7ea4f0de555d7fc3"
+          "agent_run_metrics": {
+            "duration_ms": 22142,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046395872,
+            "finished_at_unix_ms": 1784046418015,
+            "total_token_usage": {
+              "input_tokens": 24872,
+              "cached_input_tokens": 21248,
+              "output_tokens": 476,
+              "reasoning_output_tokens": 283,
+              "total_tokens": 25348
+            },
+            "last_token_usage": {
+              "input_tokens": 24872,
+              "cached_input_tokens": 21248,
+              "output_tokens": 476,
+              "reasoning_output_tokens": 283,
+              "total_tokens": 25348
+            }
           },
-          "summary": "Reviewed `examples/zf_derive.rs`, which is a local Rust example exercising the `ZeroFrom` derive across structs, enums, generics, and `clone`/`may_borrow` annotations. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/visitor.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cb9a40a7e1ce51921c5896503d014e42f6eb9e32a7b383c930370f978d94ac10"
-          },
-          "summary": "Reviewed `src/visitor.rs`, which is a small `syn` AST visitor that detects whether a type contains local type parameters or non-'static lifetimes, plus unit tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, credential access, dynamic code loading, obfuscation/decoding, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -416,9 +399,319 @@
             "algorithm": "blake3",
             "value": "5b04b538f8e21aaf7bdafcea58bf0ece4ef6ff320f74732d40d0bdc3127f4000"
           },
-          "summary": "Reviewed the target `README.md`, which is a brief crate description for `zerofrom-derive` and a link to ICU4X; it contains no executable content, install hooks, downloads, dynamic loading, obfuscation, secret access, or persistence behavior. I checked the file for supply-chain indicators and found no concrete malicious or suspicious markers.",
+          "summary": "Reviewed `README.md`, which is a short package description for `zerofrom-derive` plus a link to the ICU4X project. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20596,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046418015,
+            "finished_at_unix_ms": 1784046438611,
+            "total_token_usage": {
+              "input_tokens": 24320,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 24785
+            },
+            "last_token_usage": {
+              "input_tokens": 24320,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 270,
+              "total_tokens": 24785
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/zf_derive.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "534bae6228b03ac79acd8b369b2bb4c5e3dc8ce1fde98fde7ea4f0de555d7fc3"
+          },
+          "summary": "Reviewed `examples/zf_derive.rs`, which is a benign `ZeroFrom` derive example covering `Cow`, `ZeroVec`, `ZeroMap`, tuples, and generic cases. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11968,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046438612,
+            "finished_at_unix_ms": 1784046450581,
+            "total_token_usage": {
+              "input_tokens": 25028,
+              "cached_input_tokens": 21248,
+              "output_tokens": 532,
+              "reasoning_output_tokens": 328,
+              "total_tokens": 25560
+            },
+            "last_token_usage": {
+              "input_tokens": 25028,
+              "cached_input_tokens": 21248,
+              "output_tokens": 532,
+              "reasoning_output_tokens": 328,
+              "total_tokens": 25560
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4fa6695133f84fd4f396d7ea7f2d105107684cada1beb2baf6863b8331db1ba0"
+          },
+          "summary": "Reviewed `src/lib.rs`, a procedural macro that generates `ZeroFrom` implementations by parsing struct/field attributes and rewriting lifetimes and generic parameters. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 25332,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046450582,
+            "finished_at_unix_ms": 1784046475914,
+            "total_token_usage": {
+              "input_tokens": 60668,
+              "cached_input_tokens": 50688,
+              "output_tokens": 769,
+              "reasoning_output_tokens": 362,
+              "total_tokens": 61437
+            },
+            "last_token_usage": {
+              "input_tokens": 60668,
+              "cached_input_tokens": 50688,
+              "output_tokens": 769,
+              "reasoning_output_tokens": 362,
+              "total_tokens": 61437
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_c87f175affea4813929100ce9f77d2ed",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054962",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/visitor.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cb9a40a7e1ce51921c5896503d014e42f6eb9e32a7b383c930370f978d94ac10"
+          },
+          "summary": "I reviewed `src/visitor.rs`, which implements a `syn` visitor that marks whether a type contains local type-parameter references or non-`'static` lifetimes, plus unit tests for that detection logic. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12757,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054949795,
+            "finished_at_unix_ms": 1784054962553,
+            "total_token_usage": {
+              "input_tokens": 25546,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 26035
+            },
+            "last_token_usage": {
+              "input_tokens": 25546,
+              "cached_input_tokens": 21248,
+              "output_tokens": 489,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 26035
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_ce4ec935991c47a38cc88ead95776122",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052486",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "735c3c2072d3ac50bdae8780f62c277edcd04dfb20c96525232a7dcedcc8dc1d"
+          },
+          "summary": "Reviewed .cargo_vcs_info.json, which only records the crate's source-control commit SHA and path-in-vcs metadata. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other runtime behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19208,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052400905,
+            "finished_at_unix_ms": 1784052420113,
+            "total_token_usage": {
+              "input_tokens": 24147,
+              "cached_input_tokens": 21248,
+              "output_tokens": 532,
+              "reasoning_output_tokens": 340,
+              "total_tokens": 24679
+            },
+            "last_token_usage": {
+              "input_tokens": 24147,
+              "cached_input_tokens": 21248,
+              "output_tokens": 532,
+              "reasoning_output_tokens": 340,
+              "total_tokens": 24679
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "33977d79815bc6d836f38931272b67ef53c192ed67b524fbcadf73c7035a17fb"
+          },
+          "summary": "Reviewed the crate manifest for a proc-macro derive package (`zerofrom-derive`) with standard library metadata, dependency declarations, and lint settings. I checked for install hooks, build scripts, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15141,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052420115,
+            "finished_at_unix_ms": 1784052435256,
+            "total_token_usage": {
+              "input_tokens": 24891,
+              "cached_input_tokens": 11008,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 25384
+            },
+            "last_token_usage": {
+              "input_tokens": 24891,
+              "cached_input_tokens": 11008,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 288,
+              "total_tokens": 25384
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5b04b538f8e21aaf7bdafcea58bf0ece4ef6ff320f74732d40d0bdc3127f4000"
+          },
+          "summary": "Reviewed the README for `zerofrom-derive`; it is a short package description with a crates.io badge, a note that the crate provides `ZeroFrom` derives, and a link to the ICU4X homepage. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12991,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052435257,
+            "finished_at_unix_ms": 1784052448249,
+            "total_token_usage": {
+              "input_tokens": 24199,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 197,
+              "total_tokens": 24600
+            },
+            "last_token_usage": {
+              "input_tokens": 24199,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 197,
+              "total_tokens": 24600
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/zf_derive.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "534bae6228b03ac79acd8b369b2bb4c5e3dc8ce1fde98fde7ea4f0de555d7fc3"
+          },
+          "summary": "Reviewed `examples/zf_derive.rs`, which is a small Rust example exercising the `ZeroFrom` derive macro across structs, enums, generics, and borrowing cases. I checked for install-time execution, hidden subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17686,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052448250,
+            "finished_at_unix_ms": 1784052465936,
+            "total_token_usage": {
+              "input_tokens": 25885,
+              "cached_input_tokens": 19200,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 26317
+            },
+            "last_token_usage": {
+              "input_tokens": 25885,
+              "cached_input_tokens": 19200,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 26317
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4fa6695133f84fd4f396d7ea7f2d105107684cada1beb2baf6863b8331db1ba0"
+          },
+          "summary": "`src/lib.rs` is a proc-macro derive implementation for `ZeroFrom` that parses Rust syntax and generates trait impls based on lifetimes, type parameters, and `#[zerofrom(...)]` attributes. I checked for install-time hooks, subprocess execution, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20387,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052465937,
+            "finished_at_unix_ms": 1784052486324,
+            "total_token_usage": {
+              "input_tokens": 58296,
+              "cached_input_tokens": 45568,
+              "output_tokens": 814,
+              "reasoning_output_tokens": 391,
+              "total_tokens": 59110
+            },
+            "last_token_usage": {
+              "input_tokens": 58296,
+              "cached_input_tokens": 45568,
+              "output_tokens": 814,
+              "reasoning_output_tokens": 391,
+              "total_tokens": 59110
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

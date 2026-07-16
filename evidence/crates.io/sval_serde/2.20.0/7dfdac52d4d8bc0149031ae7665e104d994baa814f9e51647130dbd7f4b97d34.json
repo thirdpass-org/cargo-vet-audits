@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783591728",
+  "latest_reviewed_at": "1784055233",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -171,48 +177,217 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 6,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 4,
+      "file_record_count": 15,
+      "file_record_count_with_metrics": 15
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 10,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 6,
-    "duration_ms_total": 65720,
-    "attempts_total": 4,
+    "reviewed_file_records": 15,
+    "file_records_with_metrics": 15,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 247566,
+    "attempts_total": 15,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 15,
+    "last_token_usage_records": 15,
     "total_token_usage": {
-      "input_tokens": 86321,
-      "cached_input_tokens": 67072,
-      "output_tokens": 1795,
-      "reasoning_output_tokens": 1031,
-      "total_tokens": 88116
+      "input_tokens": 475597,
+      "cached_input_tokens": 408448,
+      "output_tokens": 7340,
+      "reasoning_output_tokens": 3658,
+      "total_tokens": 482937
     },
     "last_token_usage": {
-      "input_tokens": 86321,
-      "cached_input_tokens": 67072,
-      "output_tokens": 1795,
-      "reasoning_output_tokens": 1031,
-      "total_tokens": 88116
+      "input_tokens": 475597,
+      "cached_input_tokens": 408448,
+      "output_tokens": 7340,
+      "reasoning_output_tokens": 3658,
+      "total_tokens": 482937
     },
     "model_context_windows": []
   },
   "reviews": [
+    {
+      "id": "rev_135be4d83130471fa9ecf915b80ebf54",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046848",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "43553751d93b553e89b377f319b311b5f1e8b37eed4277edebcc6a8a8821b860"
+          },
+          "summary": "Reviewed the Cargo VCS metadata in `.cargo_vcs_info.json`, which only records the upstream git commit `1b9005f149b2b2c1b1e2eda14d3576286fe33b44` and `path_in_vcs: serde`. No concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence were present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11425,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046753310,
+            "finished_at_unix_ms": 1784046764735,
+            "total_token_usage": {
+              "input_tokens": 24155,
+              "cached_input_tokens": 21248,
+              "output_tokens": 396,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 24551
+            },
+            "last_token_usage": {
+              "input_tokens": 24155,
+              "cached_input_tokens": 21248,
+              "output_tokens": 396,
+              "reasoning_output_tokens": 177,
+              "total_tokens": 24551
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "af80783d97939e157d787734b1ae55ad79beb0f4f37819d23f1232c8be23d72a"
+          },
+          "summary": "Reviewed the generated Cargo.toml for the sval_serde 2.20.0 crate. It only declares normal package metadata, feature flags, library path, and dependency versions; I found no install hooks, network or exfiltration logic, dynamic code loading, obfuscation, or persistence-related settings in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14541,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046764735,
+            "finished_at_unix_ms": 1784046779277,
+            "total_token_usage": {
+              "input_tokens": 24518,
+              "cached_input_tokens": 23296,
+              "output_tokens": 476,
+              "reasoning_output_tokens": 285,
+              "total_tokens": 24994
+            },
+            "last_token_usage": {
+              "input_tokens": 24518,
+              "cached_input_tokens": 23296,
+              "output_tokens": 476,
+              "reasoning_output_tokens": 285,
+              "total_tokens": 24994
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "65981b94e52ad16a70c23f19781b9b7f0faaaf54d0861792a2cdc71770dad059"
+          },
+          "summary": "Reviewed the README for `sval_serde`; it only contains the crate name, documentation/crates badges, and a brief description of the serde integration. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence cues, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14862,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046779277,
+            "finished_at_unix_ms": 1784046794139,
+            "total_token_usage": {
+              "input_tokens": 24154,
+              "cached_input_tokens": 21248,
+              "output_tokens": 359,
+              "reasoning_output_tokens": 164,
+              "total_tokens": 24513
+            },
+            "last_token_usage": {
+              "input_tokens": 24154,
+              "cached_input_tokens": 21248,
+              "output_tokens": 359,
+              "reasoning_output_tokens": 164,
+              "total_tokens": 24513
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e9394f895960c6e376906831895f8f69d39a1147a6c1d51deebf84b37326267e"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a small `no_std` crate root that documents and re-exports the `to_serialize` and `to_value` modules for bridging `sval::Value` into `serde::Serialize`. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15488,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046794140,
+            "finished_at_unix_ms": 1784046809629,
+            "total_token_usage": {
+              "input_tokens": 24260,
+              "cached_input_tokens": 21248,
+              "output_tokens": 468,
+              "reasoning_output_tokens": 248,
+              "total_tokens": 24728
+            },
+            "last_token_usage": {
+              "input_tokens": 24260,
+              "cached_input_tokens": 21248,
+              "output_tokens": 468,
+              "reasoning_output_tokens": 248,
+              "total_tokens": 24728
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/to_serialize.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1e9f2e3aae436865aed3cba0be5157b87338468484d7d3a40099b32967a4e98a"
+          },
+          "summary": "Reviewed `src/to_serialize.rs`, which is a serde adapter that forwards `sval` values into a `serde_core::Serializer` across scalars, sequences, maps, structs, tuples, and enums. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 38881,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046809629,
+            "finished_at_unix_ms": 1784046848511,
+            "total_token_usage": {
+              "input_tokens": 63820,
+              "cached_input_tokens": 53248,
+              "output_tokens": 672,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 64492
+            },
+            "last_token_usage": {
+              "input_tokens": 63820,
+              "cached_input_tokens": 53248,
+              "output_tokens": 672,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 64492
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
     {
       "id": "rev_1c7f0aead2a442d38f00bcf335054fcf",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -223,7 +398,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783591728",
       "thirdpass_version": "0.6.0",
@@ -359,7 +534,7 @@
       ]
     },
     {
-      "id": "rev_20667eff7f5244369a04acf64b59be61",
+      "id": "rev_c8644f15534640398793b8dec8e61f20",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -367,22 +542,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782851535",
+      "created_at": "1784052841",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/to_value.rs`, which is a serde-to-sval adapter implementing `serde_core::Serializer` and forwarding serialized values into an `sval::Stream`. I checked this file for install-time execution, subprocess spawning, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.\nReviewed the package manifest for install-time hooks, build scripts, unusual dependencies, and metadata that could enable network exfiltration, credential access, dynamic code loading, obfuscation, or persistence. The file is a straightforward library manifest for a serde/sval integration crate, with `build = false` and only direct crates.io dependencies; no concrete malicious or supply-chain indicators were found.\n`src/lib.rs` is a small crate root that documents and re-exports `ToSerialize`/`ToValue` for bridging `sval::Value` into `serde::Serialize` under `#![no_std]`. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the target `README.md`, which is a brief package description and badge section for `sval_serde` integration with `serde`. It contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior, and I found no concrete malicious or supply-chain indicators in this file.\nI reviewed the target `.cargo_vcs_info.json`, which is a small Cargo provenance metadata file containing only a git SHA1 and the VCS path. It does not contain or reference install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
       "files": [
         {
-          "file_path": "src/to_value.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "149d843ffe77e52656661909160d4eead7d8aab929a366edf77f72a04b11b9de"
+            "value": "43553751d93b553e89b377f319b311b5f1e8b37eed4277edebcc6a8a8821b860"
           },
-          "summary": "Reviewed `src/to_value.rs`, which is a serde-to-sval adapter implementing `serde_core::Serializer` and forwarding serialized values into an `sval::Stream`. I checked this file for install-time execution, subprocess spawning, network/exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed the package VCS metadata in .cargo_vcs_info.json, which only records the source git SHA1 and the path_in_vcs mapping for the crate. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11530,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052771874,
+            "finished_at_unix_ms": 1784052783405,
+            "total_token_usage": {
+              "input_tokens": 24136,
+              "cached_input_tokens": 21248,
+              "output_tokens": 355,
+              "reasoning_output_tokens": 163,
+              "total_tokens": 24491
+            },
+            "last_token_usage": {
+              "input_tokens": 24136,
+              "cached_input_tokens": 21248,
+              "output_tokens": 355,
+              "reasoning_output_tokens": 163,
+              "total_tokens": 24491
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -392,21 +586,29 @@
             "algorithm": "blake3",
             "value": "af80783d97939e157d787734b1ae55ad79beb0f4f37819d23f1232c8be23d72a"
           },
-          "summary": "Reviewed the package manifest for install-time hooks, build scripts, unusual dependencies, and metadata that could enable network exfiltration, credential access, dynamic code loading, obfuscation, or persistence. The file is a straightforward library manifest for a serde/sval integration crate, with `build = false` and only direct crates.io dependencies; no concrete malicious or supply-chain indicators were found.",
+          "summary": "Reviewed this crate manifest; it only declares package metadata, features, and ordinary serde/sval dependencies. I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms in the target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e9394f895960c6e376906831895f8f69d39a1147a6c1d51deebf84b37326267e"
+          "agent_run_metrics": {
+            "duration_ms": 11992,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052783406,
+            "finished_at_unix_ms": 1784052795398,
+            "total_token_usage": {
+              "input_tokens": 24494,
+              "cached_input_tokens": 21248,
+              "output_tokens": 455,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 24949
+            },
+            "last_token_usage": {
+              "input_tokens": 24494,
+              "cached_input_tokens": 21248,
+              "output_tokens": 455,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 24949
+            }
           },
-          "summary": "`src/lib.rs` is a small crate root that documents and re-exports `ToSerialize`/`ToValue` for bridging `sval::Value` into `serde::Serialize` under `#![no_std]`. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -416,28 +618,100 @@
             "algorithm": "blake3",
             "value": "65981b94e52ad16a70c23f19781b9b7f0faaaf54d0861792a2cdc71770dad059"
           },
-          "summary": "Reviewed the target `README.md`, which is a brief package description and badge section for `sval_serde` integration with `serde`. It contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior, and I found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed README.md, which is a short package overview for `sval_serde` with badge links and a one-line description of the serde integration. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in the target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15465,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052795399,
+            "finished_at_unix_ms": 1784052810864,
+            "total_token_usage": {
+              "input_tokens": 24216,
+              "cached_input_tokens": 21248,
+              "output_tokens": 492,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 24708
+            },
+            "last_token_usage": {
+              "input_tokens": 24216,
+              "cached_input_tokens": 21248,
+              "output_tokens": 492,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 24708
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/lib.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "43553751d93b553e89b377f319b311b5f1e8b37eed4277edebcc6a8a8821b860"
+            "value": "e9394f895960c6e376906831895f8f69d39a1147a6c1d51deebf84b37326267e"
           },
-          "summary": "I reviewed the target `.cargo_vcs_info.json`, which is a small Cargo provenance metadata file containing only a git SHA1 and the VCS path. It does not contain or reference install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/lib.rs`, which is a minimal crate root for `sval_serde`: it documents the `ToSerialize`/`ToValue` wrappers, enables `no_std`, and re-exports the module APIs. I found no concrete indicators of install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13452,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052810865,
+            "finished_at_unix_ms": 1784052824317,
+            "total_token_usage": {
+              "input_tokens": 37086,
+              "cached_input_tokens": 35456,
+              "output_tokens": 521,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 37607
+            },
+            "last_token_usage": {
+              "input_tokens": 37086,
+              "cached_input_tokens": 35456,
+              "output_tokens": 521,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 37607
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/to_serialize.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1e9f2e3aae436865aed3cba0be5157b87338468484d7d3a40099b32967a4e98a"
+          },
+          "summary": "Reviewed `src/to_serialize.rs`, which implements a `sval::Value` to `serde_core::Serializer` adapter with stream handlers for primitives, sequences, maps, records, tuples, and enums. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17462,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052824318,
+            "finished_at_unix_ms": 1784052841781,
+            "total_token_usage": {
+              "input_tokens": 59009,
+              "cached_input_tokens": 50688,
+              "output_tokens": 705,
+              "reasoning_output_tokens": 297,
+              "total_tokens": 59714
+            },
+            "last_token_usage": {
+              "input_tokens": 59009,
+              "cached_input_tokens": 50688,
+              "output_tokens": 705,
+              "reasoning_output_tokens": 297,
+              "total_tokens": 59714
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_fb0596dc506d4c0bb3a6d16e889cfd8b",
+      "id": "rev_e11735038acd468d975728364640de37",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -445,22 +719,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782851457",
+      "created_at": "1784055233",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/to_serialize.rs`, which is a serde bridge that forwards `sval::Value` data into a `serde_core::Serializer` across scalars, sequences, maps, records, tuples, and enums. I checked the file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators; the only `unsafe` usage is a local ABI cast in `new_borrowed` with an in-file safety comment.",
       "files": [
         {
-          "file_path": "src/to_serialize.rs",
+          "file_path": "src/to_value.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "1e9f2e3aae436865aed3cba0be5157b87338468484d7d3a40099b32967a4e98a"
+            "value": "149d843ffe77e52656661909160d4eead7d8aab929a366edf77f72a04b11b9de"
           },
-          "summary": "Reviewed `src/to_serialize.rs`, which is a serde bridge that forwards `sval::Value` data into a `serde_core::Serializer` across scalars, sequences, maps, records, tuples, and enums. I checked the file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators; the only `unsafe` usage is a local ABI cast in `new_borrowed` with an in-file safety comment.",
+          "summary": "Reviewed `src/to_value.rs`, which is a Serde-to-`sval` adapter that forwards primitive values, sequences, maps, structs, and enum variants into streaming callbacks. I checked the file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other hidden payload indicators, and found no concrete malicious or supply-chain signals.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16748,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055216581,
+            "finished_at_unix_ms": 1784055233329,
+            "total_token_usage": {
+              "input_tokens": 59428,
+              "cached_input_tokens": 51200,
+              "output_tokens": 646,
+              "reasoning_output_tokens": 252,
+              "total_tokens": 60074
+            },
+            "last_token_usage": {
+              "input_tokens": 59428,
+              "cached_input_tokens": 51200,
+              "output_tokens": 646,
+              "reasoning_output_tokens": 252,
+              "total_tokens": 60074
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

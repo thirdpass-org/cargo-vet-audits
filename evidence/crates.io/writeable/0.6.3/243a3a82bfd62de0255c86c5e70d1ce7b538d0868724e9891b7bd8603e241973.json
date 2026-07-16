@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589536",
+  "latest_reviewed_at": "1784058623",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -282,50 +288,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 4,
-      "file_record_count": 17,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 6,
+      "file_record_count": 25,
+      "file_record_count_with_metrics": 25
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 20,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 17,
-    "duration_ms_total": 63456,
-    "attempts_total": 3,
+    "reviewed_file_records": 25,
+    "file_records_with_metrics": 25,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 410672,
+    "attempts_total": 25,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 25,
+    "last_token_usage_records": 25,
     "total_token_usage": {
-      "input_tokens": 110595,
-      "cached_input_tokens": 95104,
-      "output_tokens": 1804,
-      "reasoning_output_tokens": 950,
-      "total_tokens": 112399
+      "input_tokens": 793558,
+      "cached_input_tokens": 691456,
+      "output_tokens": 12257,
+      "reasoning_output_tokens": 6179,
+      "total_tokens": 805815
     },
     "last_token_usage": {
-      "input_tokens": 110595,
-      "cached_input_tokens": 95104,
-      "output_tokens": 1804,
-      "reasoning_output_tokens": 950,
-      "total_tokens": 112399
+      "input_tokens": 793558,
+      "cached_input_tokens": 691456,
+      "output_tokens": 12257,
+      "reasoning_output_tokens": 6179,
+      "total_tokens": 805815
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_04c3806f08794f95a688238476221741",
+      "id": "rev_168cbfbd015b4d35a683b5968145b283",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -333,100 +331,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782840644",
+      "created_at": "1784052397",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/testing.rs` defines a small in-memory test writer and helper functions for converting `Writeable`/`TryWriteable` values into strings plus part ranges. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `src/parts_write_adapter.rs`, which is a small ICU4X adapter layer that forwards `fmt::Write`/`Writeable` behavior through `WithPart` and `CoreWriteAsPartsWrite` without introducing side effects. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `examples/writeable_message.rs`, which is a small ICU4X example implementing `Writeable`/`Display` and printing a greeting slice from generated parts. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none were present.\nReviewed `src/either.rs`, which is a small `Writeable` adapter that forwards formatting and string-conversion methods to either side of `either::Either`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `README.md`, which is purely project documentation for the `writeable` Rust trait API, examples, benchmarks, and links to ICU4X resources. I found no concrete malicious or supply-chain indicators in the README: there are no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms described or implied in this file.",
       "files": [
         {
-          "file_path": "src/testing.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "2f1f7c396492aac3c5c761c04de1456957a1b05f7b40a200c7e7dc427d558250"
+            "value": "85031290e5bfa794f5022fcfe621a00407b020500289d1175d36b54160d7c98e"
           },
-          "summary": "`src/testing.rs` defines a small in-memory test writer and helper functions for converting `Writeable`/`TryWriteable` values into strings plus part ranges. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed the crate VCS metadata in `.cargo_vcs_info.json`, which only records a git commit SHA and the path inside the source tree. No concrete malicious or supply-chain indicators were present in this file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic here.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/parts_write_adapter.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "610981e47dfcad55486418de2963bfb5bc1a69a46ad80a56bcd81b779047e597"
+          "agent_run_metrics": {
+            "duration_ms": 16605,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052309682,
+            "finished_at_unix_ms": 1784052326288,
+            "total_token_usage": {
+              "input_tokens": 24122,
+              "cached_input_tokens": 21248,
+              "output_tokens": 387,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 24509
+            },
+            "last_token_usage": {
+              "input_tokens": 24122,
+              "cached_input_tokens": 21248,
+              "output_tokens": 387,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 24509
+            }
           },
-          "summary": "Reviewed `src/parts_write_adapter.rs`, which is a small ICU4X adapter layer that forwards `fmt::Write`/`Writeable` behavior through `WithPart` and `CoreWriteAsPartsWrite` without introducing side effects. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/writeable_message.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "82caf183723afc30fc0fa0c9cdb595b94acfad739db27296e947b5a8a8b1f718"
-          },
-          "summary": "Reviewed `examples/writeable_message.rs`, which is a small ICU4X example implementing `Writeable`/`Display` and printing a greeting slice from generated parts. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none were present.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/either.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ed35a673859fddd61f56d4ea8d07299905fa5105ff283b2197cee75945ac3dbf"
-          },
-          "summary": "Reviewed `src/either.rs`, which is a small `Writeable` adapter that forwards formatting and string-conversion methods to either side of `either::Either`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "687375372dad8d3ae9a1c4a2b3a0b9d96dd7613a24330fd4f049f2288dc42e25"
-          },
-          "summary": "Reviewed `README.md`, which is purely project documentation for the `writeable` Rust trait API, examples, benchmarks, and links to ICU4X resources. I found no concrete malicious or supply-chain indicators in the README: there are no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms described or implied in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_2d002e167aca4677b20528ac64ef7d1a",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782840575",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/try_writeable.rs`, which defines the `TryWriteable` trait, adapters between `TryWriteable` and `Writeable`, and test/assertion macros for formatting output. I checked the file for install hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.\nI reviewed the crate metadata in Cargo.toml for install-time execution, build scripts, dependency-driven code loading, network/exfiltration behavior, credential access, obfuscation, and persistence hooks. No concrete malicious or supply-chain indicators were found: the package disables build scripts (`build = false`), declares a normal library layout, and contains no metadata suggesting hidden execution or outbound behavior.\nReviewed `src/cmp.rs`, which implements a no-allocation lexicographic comparator for `Writeable` values by streaming them into a `fmt::Write` sink and comparing the emitted bytes. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.\nReviewed `src/to_string_or_borrow.rs`, which implements an in-memory `Writeable` helper that tries to reuse a borrowed UTF-8 prefix and falls back to allocating an owned `String` when the output diverges. I checked for install hooks, subprocesses, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence; none were present in this file.\n`src/concat.rs` contains a small `Writeable`/`TryWriteable` concatenation adapter plus a recursive macro that nests `Concat` values. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/try_writeable.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5528309381a9403b75b79d2beffbd1de7d722c16d4bac28c92cc0dda33f8c785"
-          },
-          "summary": "Reviewed `src/try_writeable.rs`, which defines the `TryWriteable` trait, adapters between `TryWriteable` and `Writeable`, and test/assertion macros for formatting output. I checked the file for install hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -436,45 +375,125 @@
             "algorithm": "blake3",
             "value": "1ff2515592f21cfe874eb0756d2d430fc9d827a436f557b5236800158c67ab28"
           },
-          "summary": "I reviewed the crate metadata in Cargo.toml for install-time execution, build scripts, dependency-driven code loading, network/exfiltration behavior, credential access, obfuscation, and persistence hooks. No concrete malicious or supply-chain indicators were found: the package disables build scripts (`build = false`), declares a normal library layout, and contains no metadata suggesting hidden execution or outbound behavior.",
+          "summary": "Reviewed the crate manifest for install-time hooks, build scripts, network or exfiltration settings, credential access, dynamic code loading, obfuscation, and persistence behavior. This `Cargo.toml` is a normal library manifest for `writeable` 0.6.3 with optional `either` and dev-only test/benchmark dependencies, and I found no concrete malicious or supply-chain indicators in the file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12805,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052326289,
+            "finished_at_unix_ms": 1784052339094,
+            "total_token_usage": {
+              "input_tokens": 24945,
+              "cached_input_tokens": 21248,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 25428
+            },
+            "last_token_usage": {
+              "input_tokens": 24945,
+              "cached_input_tokens": 21248,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 278,
+              "total_tokens": 25428
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/cmp.rs",
+          "file_path": "README.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "445d871e5f319965feb6218a1c4582bd3ee89a6eaeefeb35dcf8f5e16f4d1074"
+            "value": "687375372dad8d3ae9a1c4a2b3a0b9d96dd7613a24330fd4f049f2288dc42e25"
           },
-          "summary": "Reviewed `src/cmp.rs`, which implements a no-allocation lexicographic comparator for `Writeable` values by streaming them into a `fmt::Write` sink and comparing the emitted bytes. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
+          "summary": "Reviewed README.md, which documents the `Writeable` and `TryWriteable` traits, includes usage examples and benchmark tables, and links to project resources. I found no concrete signs of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 26318,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052339095,
+            "finished_at_unix_ms": 1784052365413,
+            "total_token_usage": {
+              "input_tokens": 37845,
+              "cached_input_tokens": 33920,
+              "output_tokens": 674,
+              "reasoning_output_tokens": 370,
+              "total_tokens": 38519
+            },
+            "last_token_usage": {
+              "input_tokens": 37845,
+              "cached_input_tokens": 33920,
+              "output_tokens": 674,
+              "reasoning_output_tokens": 370,
+              "total_tokens": 38519
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/to_string_or_borrow.rs",
+          "file_path": "benches/writeable.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "62bfce9c0219d1422b8fe36c414ca237f605c285f89fb19d88cf1296348f0421"
+            "value": "c151a3d7ce3518a8a5d08d193ae34a7c36fded0342d390aea1a415097389aac9"
           },
-          "summary": "Reviewed `src/to_string_or_borrow.rs`, which implements an in-memory `Writeable` helper that tries to reuse a borrowed UTF-8 prefix and falls back to allocating an owned `String` when the output diverges. I checked for install hooks, subprocesses, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence; none were present in this file.",
+          "summary": "`benches/writeable.rs` is a Criterion benchmark harness for the `writeable` crate, defining sample `Writeable`/`Display` types and timing string formatting paths. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19355,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052365414,
+            "finished_at_unix_ms": 1784052384769,
+            "total_token_usage": {
+              "input_tokens": 41841,
+              "cached_input_tokens": 35456,
+              "output_tokens": 491,
+              "reasoning_output_tokens": 196,
+              "total_tokens": 42332
+            },
+            "last_token_usage": {
+              "input_tokens": 41841,
+              "cached_input_tokens": 35456,
+              "output_tokens": 491,
+              "reasoning_output_tokens": 196,
+              "total_tokens": 42332
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/concat.rs",
+          "file_path": "examples/writeable_message.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "9fca875f8517bc16c98daeaff82646689626dd38618f2ce0ea4cb5d2456c526d"
+            "value": "82caf183723afc30fc0fa0c9cdb595b94acfad739db27296e947b5a8a8b1f718"
           },
-          "summary": "`src/concat.rs` contains a small `Writeable`/`TryWriteable` concatenation adapter plus a recursive macro that nests `Concat` values. I checked for install-time hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `examples/writeable_message.rs`, which is a small `Writeable` example that formats a greeting and prints a selected part of the generated string. I found no concrete supply-chain or malicious indicators in the file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12395,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052384771,
+            "finished_at_unix_ms": 1784052397166,
+            "total_token_usage": {
+              "input_tokens": 24486,
+              "cached_input_tokens": 21248,
+              "output_tokens": 414,
+              "reasoning_output_tokens": 221,
+              "total_tokens": 24900
+            },
+            "last_token_usage": {
+              "input_tokens": 24486,
+              "cached_input_tokens": 21248,
+              "output_tokens": 414,
+              "reasoning_output_tokens": 221,
+              "total_tokens": 24900
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -490,7 +509,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589536",
       "thirdpass_version": "0.6.0",
@@ -594,7 +613,7 @@
       ]
     },
     {
-      "id": "rev_5f7acc341bc94db9954b89116412453f",
+      "id": "rev_4aabcd6a0b814e81bf54f6b024778a99",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -602,76 +621,105 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782840680",
+      "created_at": "1784054944",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed tests/writeable.rs, which is a small unit test defining a `WriteableMessage` helper, implementing `Writeable`, and asserting the display/writeable macro behavior. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/data/data.rs`, which is a static test-data constant containing a list of kebab-case strings. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed the `.cargo_vcs_info.json` metadata file, which only records a git SHA1 and the path in the source repository. It contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior, so no concrete supply-chain or malicious indicators were found in this file.",
       "files": [
         {
-          "file_path": "tests/writeable.rs",
+          "file_path": "src/cmp.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "f9b20c3aeed641bca95c2501f83860dcbb01bfe3db6c3c578912ed4b48049166"
+            "value": "445d871e5f319965feb6218a1c4582bd3ee89a6eaeefeb35dcf8f5e16f4d1074"
           },
-          "summary": "Reviewed tests/writeable.rs, which is a small unit test defining a `WriteableMessage` helper, implementing `Writeable`, and asserting the display/writeable macro behavior. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/cmp.rs`, which implements an infallible `fmt::Write` comparator and the `cmp_utf8`/`cmp_str` helpers for lexicographically comparing a `Writeable` against byte or string input without allocating. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12761,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054881434,
+            "finished_at_unix_ms": 1784054894195,
+            "total_token_usage": {
+              "input_tokens": 25319,
+              "cached_input_tokens": 21248,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 187,
+              "total_tokens": 25714
+            },
+            "last_token_usage": {
+              "input_tokens": 25319,
+              "cached_input_tokens": 21248,
+              "output_tokens": 395,
+              "reasoning_output_tokens": 187,
+              "total_tokens": 25714
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/data/data.rs",
+          "file_path": "src/concat.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "9160d8f1e76c156d538fcff7e1bbeeade5936c9dbe2d42e5935e3af973d29e69"
+            "value": "9fca875f8517bc16c98daeaff82646689626dd38618f2ce0ea4cb5d2456c526d"
           },
-          "summary": "Reviewed `tests/data/data.rs`, which is a static test-data constant containing a list of kebab-case strings. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, subprocess launches, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/concat.rs`, which defines the `Concat` adapter and `concat_writeable!` macro for chaining `Writeable` and `TryWriteable` values. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12291,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054894196,
+            "finished_at_unix_ms": 1784054906487,
+            "total_token_usage": {
+              "input_tokens": 25224,
+              "cached_input_tokens": 21248,
+              "output_tokens": 496,
+              "reasoning_output_tokens": 302,
+              "total_tokens": 25720
+            },
+            "last_token_usage": {
+              "input_tokens": 25224,
+              "cached_input_tokens": 21248,
+              "output_tokens": 496,
+              "reasoning_output_tokens": 302,
+              "total_tokens": 25720
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/either.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "85031290e5bfa794f5022fcfe621a00407b020500289d1175d36b54160d7c98e"
+            "value": "ed35a673859fddd61f56d4ea8d07299905fa5105ff283b2197cee75945ac3dbf"
           },
-          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records a git SHA1 and the path in the source repository. It contains no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior, so no concrete supply-chain or malicious indicators were found in this file.",
+          "summary": "Reviewed `src/either.rs`, which is a small `Writeable` adapter that forwards formatting and string-conversion methods to either branch of `either::Either`. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_d3abce80d2ad4eb2a55eaa358a6e26fb",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782840493",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "I reviewed `benches/writeable.rs`, a Criterion benchmark that exercises `Writeable` and `Display` implementations over fixed in-memory strings and a small composite struct. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration calls, credential or environment harvesting, dynamic code loading, obfuscation/deobfuscation, persistence, or hidden subprocess execution in this file.\nReviewed `src/impls.rs`, which contains `Writeable` trait implementations for numeric types, strings, characters, and smart pointers plus unit tests. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, hidden downloads, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/ops.rs`, which only defines arithmetic and bitwise operator impls plus tests for `LengthHint` (`Add`, `AddAssign`, `Sum`, `Mul`, `BitOr`). I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence/environment-tampering behavior.\nReviewed `src/lib.rs`, which defines the `Writeable`/`TryWriteable` traits, `LengthHint`, `Part`, adapter types, and testing macros for a no_std-friendly Rust library. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-      "files": [
-        {
-          "file_path": "benches/writeable.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c151a3d7ce3518a8a5d08d193ae34a7c36fded0342d390aea1a415097389aac9"
+          "agent_run_metrics": {
+            "duration_ms": 12066,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054906488,
+            "finished_at_unix_ms": 1784054918554,
+            "total_token_usage": {
+              "input_tokens": 37691,
+              "cached_input_tokens": 35456,
+              "output_tokens": 451,
+              "reasoning_output_tokens": 169,
+              "total_tokens": 38142
+            },
+            "last_token_usage": {
+              "input_tokens": 37691,
+              "cached_input_tokens": 35456,
+              "output_tokens": 451,
+              "reasoning_output_tokens": 169,
+              "total_tokens": 38142
+            }
           },
-          "summary": "I reviewed `benches/writeable.rs`, a Criterion benchmark that exercises `Writeable` and `Display` implementations over fixed in-memory strings and a small composite struct. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration calls, credential or environment harvesting, dynamic code loading, obfuscation/deobfuscation, persistence, or hidden subprocess execution in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -681,21 +729,29 @@
             "algorithm": "blake3",
             "value": "2b454abe2d90ddb96c682ecca86996769473b38192c3452c95d4720bcc50432f"
           },
-          "summary": "Reviewed `src/impls.rs`, which contains `Writeable` trait implementations for numeric types, strings, characters, and smart pointers plus unit tests. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, hidden downloads, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/impls.rs`, which contains `Writeable` trait implementations for numeric primitives, `str`, `String`, `char`, and smart-pointer wrappers plus unit tests for formatting behavior. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/ops.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f5a2e2c1db38f953ad718b138652b64f39c4a5d01e15d0a4ecb66932541e9cd0"
+          "agent_run_metrics": {
+            "duration_ms": 12975,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054918554,
+            "finished_at_unix_ms": 1784054931530,
+            "total_token_usage": {
+              "input_tokens": 41071,
+              "cached_input_tokens": 35456,
+              "output_tokens": 542,
+              "reasoning_output_tokens": 242,
+              "total_tokens": 41613
+            },
+            "last_token_usage": {
+              "input_tokens": 41071,
+              "cached_input_tokens": 35456,
+              "output_tokens": 542,
+              "reasoning_output_tokens": 242,
+              "total_tokens": 41613
+            }
           },
-          "summary": "Reviewed `src/ops.rs`, which only defines arithmetic and bitwise operator impls plus tests for `LengthHint` (`Add`, `AddAssign`, `Sum`, `Mul`, `BitOr`). I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence/environment-tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -705,9 +761,464 @@
             "algorithm": "blake3",
             "value": "388c0ad742c61144550f64768c84710cd238b23e514a5fa464d51432dc8344aa"
           },
-          "summary": "Reviewed `src/lib.rs`, which defines the `Writeable`/`TryWriteable` traits, `LengthHint`, `Part`, adapter types, and testing macros for a no_std-friendly Rust library. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed `src/lib.rs`, which defines the `Writeable`/`TryWriteable` traits, `LengthHint`, `Part`, adapter types, and testing/display macros for a formatting-focused Rust crate. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13371,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054931531,
+            "finished_at_unix_ms": 1784054944902,
+            "total_token_usage": {
+              "input_tokens": 42924,
+              "cached_input_tokens": 37504,
+              "output_tokens": 515,
+              "reasoning_output_tokens": 216,
+              "total_tokens": 43439
+            },
+            "last_token_usage": {
+              "input_tokens": 42924,
+              "cached_input_tokens": 37504,
+              "output_tokens": 515,
+              "reasoning_output_tokens": 216,
+              "total_tokens": 43439
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_6ec1c88e71fb470b96f3323b59145259",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058623",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/data/data.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9160d8f1e76c156d538fcff7e1bbeeade5936c9dbe2d42e5935e3af973d29e69"
+          },
+          "summary": "Reviewed `tests/data/data.rs`, which only defines a static string slice of kebab-case test inputs and contains no executable logic. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11965,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058586761,
+            "finished_at_unix_ms": 1784058598726,
+            "total_token_usage": {
+              "input_tokens": 24259,
+              "cached_input_tokens": 21248,
+              "output_tokens": 367,
+              "reasoning_output_tokens": 179,
+              "total_tokens": 24626
+            },
+            "last_token_usage": {
+              "input_tokens": 24259,
+              "cached_input_tokens": 21248,
+              "output_tokens": 367,
+              "reasoning_output_tokens": 179,
+              "total_tokens": 24626
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/writeable.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f9b20c3aeed641bca95c2501f83860dcbb01bfe3db6c3c578912ed4b48049166"
+          },
+          "summary": "Reviewed `tests/writeable.rs`, which is a small unit test defining a `WriteableMessage` wrapper and verifying `Writeable`/`Display` output. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24570,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058598727,
+            "finished_at_unix_ms": 1784058623297,
+            "total_token_usage": {
+              "input_tokens": 37204,
+              "cached_input_tokens": 33408,
+              "output_tokens": 449,
+              "reasoning_output_tokens": 152,
+              "total_tokens": 37653
+            },
+            "last_token_usage": {
+              "input_tokens": 37204,
+              "cached_input_tokens": 33408,
+              "output_tokens": 449,
+              "reasoning_output_tokens": 152,
+              "total_tokens": 37653
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_c4a9b91a7138468c92e48f056bc9d13b",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056977",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/ops.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f5a2e2c1db38f953ad718b138652b64f39c4a5d01e15d0a4ecb66932541e9cd0"
+          },
+          "summary": "`src/ops.rs` only defines arithmetic and bitwise operator traits plus tests for `LengthHint` aggregation behavior. I checked it for install-time execution, subprocesses, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14894,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056902640,
+            "finished_at_unix_ms": 1784056917535,
+            "total_token_usage": {
+              "input_tokens": 40212,
+              "cached_input_tokens": 34944,
+              "output_tokens": 530,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 40742
+            },
+            "last_token_usage": {
+              "input_tokens": 40212,
+              "cached_input_tokens": 34944,
+              "output_tokens": 530,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 40742
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/parts_write_adapter.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "610981e47dfcad55486418de2963bfb5bc1a69a46ad80a56bcd81b779047e597"
+          },
+          "summary": "Reviewed `src/parts_write_adapter.rs`, which only defines a thin `fmt::Write`/`PartsWrite` wrapper and the `WithPart` adapter for propagating `Part` metadata during normal write operations. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10805,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056917536,
+            "finished_at_unix_ms": 1784056928341,
+            "total_token_usage": {
+              "input_tokens": 24887,
+              "cached_input_tokens": 21248,
+              "output_tokens": 423,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 25310
+            },
+            "last_token_usage": {
+              "input_tokens": 24887,
+              "cached_input_tokens": 21248,
+              "output_tokens": 423,
+              "reasoning_output_tokens": 214,
+              "total_tokens": 25310
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/testing.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2f1f7c396492aac3c5c761c04de1456957a1b05f7b40a200c7e7dc427d558250"
+          },
+          "summary": "Reviewed `src/testing.rs`, which defines a small test-only `TestWriter` helper and two hidden conversion functions that collect formatted output into strings and part spans. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10725,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056928341,
+            "finished_at_unix_ms": 1784056939067,
+            "total_token_usage": {
+              "input_tokens": 24650,
+              "cached_input_tokens": 21248,
+              "output_tokens": 408,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 25058
+            },
+            "last_token_usage": {
+              "input_tokens": 24650,
+              "cached_input_tokens": 21248,
+              "output_tokens": 408,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 25058
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/to_string_or_borrow.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "62bfce9c0219d1422b8fe36c414ca237f605c285f89fb19d88cf1296348f0421"
+          },
+          "summary": "Reviewed `src/to_string_or_borrow.rs`, which implements a helper that compares a `Writeable`'s output against reference bytes and returns either a borrowed `Cow<str>` or an owned `String` after local UTF-8 validation. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found none.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22105,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056939067,
+            "finished_at_unix_ms": 1784056961173,
+            "total_token_usage": {
+              "input_tokens": 25902,
+              "cached_input_tokens": 21248,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 26359
+            },
+            "last_token_usage": {
+              "input_tokens": 25902,
+              "cached_input_tokens": 21248,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 247,
+              "total_tokens": 26359
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/try_writeable.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5528309381a9403b75b79d2beffbd1de7d722c16d4bac28c92cc0dda33f8c785"
+          },
+          "summary": "Reviewed `src/try_writeable.rs`, which defines the `TryWriteable` trait, infallible/infallible adapter wrappers, and test assertion macros for formatting output. I checked the file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16713,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056961173,
+            "finished_at_unix_ms": 1784056977887,
+            "total_token_usage": {
+              "input_tokens": 41997,
+              "cached_input_tokens": 34944,
+              "output_tokens": 623,
+              "reasoning_output_tokens": 325,
+              "total_tokens": 42620
+            },
+            "last_token_usage": {
+              "input_tokens": 41997,
+              "cached_input_tokens": 34944,
+              "output_tokens": 623,
+              "reasoning_output_tokens": 325,
+              "total_tokens": 42620
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_fce758153d8c4a2aa060c9dd8ef4f309",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046380",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "85031290e5bfa794f5022fcfe621a00407b020500289d1175d36b54160d7c98e"
+          },
+          "summary": "Reviewed the `.cargo_vcs_info.json` provenance metadata, which only records a git SHA-1 and the package path in VCS. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18847,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046295847,
+            "finished_at_unix_ms": 1784046314694,
+            "total_token_usage": {
+              "input_tokens": 24093,
+              "cached_input_tokens": 21248,
+              "output_tokens": 372,
+              "reasoning_output_tokens": 185,
+              "total_tokens": 24465
+            },
+            "last_token_usage": {
+              "input_tokens": 24093,
+              "cached_input_tokens": 21248,
+              "output_tokens": 372,
+              "reasoning_output_tokens": 185,
+              "total_tokens": 24465
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1ff2515592f21cfe874eb0756d2d430fc9d827a436f557b5236800158c67ab28"
+          },
+          "summary": "Reviewed the crate manifest for `writeable` 0.6.3. It defines package metadata, features, dependencies, and lint settings, and I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11689,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046314695,
+            "finished_at_unix_ms": 1784046326384,
+            "total_token_usage": {
+              "input_tokens": 24962,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 340,
+              "total_tokens": 25485
+            },
+            "last_token_usage": {
+              "input_tokens": 24962,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 340,
+              "total_tokens": 25485
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "687375372dad8d3ae9a1c4a2b3a0b9d96dd7613a24330fd4f049f2288dc42e25"
+          },
+          "summary": "Reviewed the README for the `writeable` crate, which documents the `Writeable` and `TryWriteable` traits, includes benchmark numbers, and shows a normal Rust usage example. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12524,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046326385,
+            "finished_at_unix_ms": 1784046338910,
+            "total_token_usage": {
+              "input_tokens": 24615,
+              "cached_input_tokens": 21248,
+              "output_tokens": 471,
+              "reasoning_output_tokens": 281,
+              "total_tokens": 25086
+            },
+            "last_token_usage": {
+              "input_tokens": 24615,
+              "cached_input_tokens": 21248,
+              "output_tokens": 471,
+              "reasoning_output_tokens": 281,
+              "total_tokens": 25086
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/writeable.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c151a3d7ce3518a8a5d08d193ae34a7c36fded0342d390aea1a415097389aac9"
+          },
+          "summary": "`benches/writeable.rs` is a Criterion benchmark harness for `writeable` and `Display` string formatting paths, with only local string construction, formatting, and comparison logic. I checked for install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 25186,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046338910,
+            "finished_at_unix_ms": 1784046364097,
+            "total_token_usage": {
+              "input_tokens": 40197,
+              "cached_input_tokens": 36992,
+              "output_tokens": 557,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 40754
+            },
+            "last_token_usage": {
+              "input_tokens": 40197,
+              "cached_input_tokens": 36992,
+              "output_tokens": 557,
+              "reasoning_output_tokens": 251,
+              "total_tokens": 40754
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/writeable_message.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "82caf183723afc30fc0fa0c9cdb595b94acfad739db27296e947b5a8a8b1f718"
+          },
+          "summary": "Reviewed `examples/writeable_message.rs`, a small ICU4X example that defines a `Writeable` wrapper, emits labeled parts for \"Hello world 😅\", and prints the greeting slice. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16251,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046364097,
+            "finished_at_unix_ms": 1784046380349,
+            "total_token_usage": {
+              "input_tokens": 24517,
+              "cached_input_tokens": 23296,
+              "output_tokens": 425,
+              "reasoning_output_tokens": 222,
+              "total_tokens": 24942
+            },
+            "last_token_usage": {
+              "input_tokens": 24517,
+              "cached_input_tokens": 23296,
+              "output_tokens": 425,
+              "reasoning_output_tokens": 222,
+              "total_tokens": 24942
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

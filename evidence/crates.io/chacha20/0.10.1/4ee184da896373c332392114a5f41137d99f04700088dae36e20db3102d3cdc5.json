@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590732",
+  "latest_reviewed_at": "1784060046",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -336,50 +342,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 5,
-      "file_record_count": 19,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 2,
-      "file_record_count": 6,
-      "file_record_count_with_metrics": 6
+      "review_count": 8,
+      "file_record_count": 30,
+      "file_record_count_with_metrics": 30
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 25,
-    "file_records_with_metrics": 6,
-    "file_records_without_metrics": 19,
-    "duration_ms_total": 172330,
-    "attempts_total": 6,
+    "reviewed_file_records": 30,
+    "file_records_with_metrics": 30,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 534216,
+    "attempts_total": 30,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 6,
-    "last_token_usage_records": 6,
+    "total_token_usage_records": 30,
+    "last_token_usage_records": 30,
     "total_token_usage": {
-      "input_tokens": 408369,
-      "cached_input_tokens": 355328,
-      "output_tokens": 6934,
-      "reasoning_output_tokens": 4000,
-      "total_tokens": 415303
+      "input_tokens": 1205350,
+      "cached_input_tokens": 1038976,
+      "output_tokens": 19139,
+      "reasoning_output_tokens": 10364,
+      "total_tokens": 1224489
     },
     "last_token_usage": {
-      "input_tokens": 408369,
-      "cached_input_tokens": 355328,
-      "output_tokens": 6934,
-      "reasoning_output_tokens": 4000,
-      "total_tokens": 415303
+      "input_tokens": 1205350,
+      "cached_input_tokens": 1038976,
+      "output_tokens": 19139,
+      "reasoning_output_tokens": 10364,
+      "total_tokens": 1224489
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_57d8e5508b5a41a4bc5ff32d3c9bd41a",
+      "id": "rev_8408374816bd4d0d91b4cbdd540541eb",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -387,112 +385,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782847131",
+      "created_at": "1784052603",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/backends/avx2.rs`, which is an AVX2 ChaCha20 backend implementing SIMD quarter-round and counter increment logic for cipher and RNG paths. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise patterns in this file.\nReviewed `src/rng.rs`, which implements ChaCha8/12/20 RNG seeding, state accessors, serialization/deserialization, and backend dispatch for x86/aarch64/soft paths. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/backends/sse2.rs`, which is a SIMD ChaCha20 backend implementing SSE2 quarter-round and block generation logic for cipher/RNG paths. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/kats.rs`, which is a pure test module for ChaCha20, XChaCha20, and legacy ChaCha20 vector checks using static constants and in-process keystream/application assertions. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.\nReviewed this crate metadata file for install-time hooks, build scripts, hidden subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. It is a normalized Cargo manifest for a RustCrypto ChaCha20 library with no `build.rs`, no package scripts, and no suspicious dependency or feature wiring in this file.",
       "files": [
         {
-          "file_path": "src/backends/avx2.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "1be550c8682102ad77478761fefba4a4bb8b3e741436f7129ab4376f4b6dd4aa"
+            "value": "e9f62f428ad6ad7695c3ee6818923277412f9f3c1828c00ff12430f34a78d930"
           },
-          "summary": "Reviewed `src/backends/avx2.rs`, which is an AVX2 ChaCha20 backend implementing SIMD quarter-round and counter increment logic for cipher and RNG paths. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise patterns in this file.",
+          "summary": "Reviewed the Cargo VCS metadata in `.cargo_vcs_info.json`, which only records the upstream git SHA1 and path-in-vcs for the `chacha20` crate. I found no concrete signs of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/rng.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7162cf6c4ee70cfbda86aff16eb23b72729f3e4971fe9f221e1da3dbb6b92f16"
+          "agent_run_metrics": {
+            "duration_ms": 13011,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052538916,
+            "finished_at_unix_ms": 1784052551928,
+            "total_token_usage": {
+              "input_tokens": 24100,
+              "cached_input_tokens": 21248,
+              "output_tokens": 342,
+              "reasoning_output_tokens": 145,
+              "total_tokens": 24442
+            },
+            "last_token_usage": {
+              "input_tokens": 24100,
+              "cached_input_tokens": 21248,
+              "output_tokens": 342,
+              "reasoning_output_tokens": 145,
+              "total_tokens": 24442
+            }
           },
-          "summary": "Reviewed `src/rng.rs`, which implements ChaCha8/12/20 RNG seeding, state accessors, serialization/deserialization, and backend dispatch for x86/aarch64/soft paths. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/sse2.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "84ba151e9576636a927089ba0c8441c9b40a75adff55a8007dc3e8bae9890070"
-          },
-          "summary": "Reviewed `src/backends/sse2.rs`, which is a SIMD ChaCha20 backend implementing SSE2 quarter-round and block generation logic for cipher/RNG paths. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation/packing, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/kats.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c655cdec4745bbc59e0c01d836b365c98efd8ae6abf0a5718ad2644ced5bbab7"
-          },
-          "summary": "Reviewed `tests/kats.rs`, which is a pure test module for ChaCha20, XChaCha20, and legacy ChaCha20 vector checks using static constants and in-process keystream/application assertions. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cbefb47da22fe6b436161e512839dd94c7f9e02c95db2d575b4816698cd99b41"
-          },
-          "summary": "Reviewed this crate metadata file for install-time hooks, build scripts, hidden subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. It is a normalized Cargo manifest for a RustCrypto ChaCha20 library with no `build.rs`, no package scripts, and no suspicious dependency or feature wiring in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_6f1297f0b9274ba0803929e1e65e39b3",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782847052",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/backends/neon.rs`, a NEON-optimized ChaCha20 backend that performs local SIMD block generation and counter updates. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/lib.rs`, which is the crate root for the ChaCha core, feature-gated backend dispatch, state initialization, zeroization on drop, and the quarter-round primitive. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution paths, and found no concrete malicious or supply-chain indicators.\nReviewed the changelog entries in CHANGELOG.md for signs of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators. The file is a plain release history with version notes and GitHub PR links only; no concrete malicious or hidden-behavior indicators were found.",
-      "files": [
-        {
-          "file_path": "src/backends/neon.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7f4c9847b536a76ed85abee057447665f36423e525d8472e270d1ee58cd00d7b"
-          },
-          "summary": "Reviewed `src/backends/neon.rs`, a NEON-optimized ChaCha20 backend that performs local SIMD block generation and counter updates. I checked for install-time execution, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c58a5d7dc8656a84e6ed011dfc1ad767bb4ba044be2474492ead1c90ea694f37"
-          },
-          "summary": "Reviewed `src/lib.rs`, which is the crate root for the ChaCha core, feature-gated backend dispatch, state initialization, zeroization on drop, and the quarter-round primitive. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -502,9 +429,528 @@
             "algorithm": "blake3",
             "value": "e601bccef5594bb28b5862fcf795c06cae26aae6bc2fdc8f3fa31a343c5da4af"
           },
-          "summary": "Reviewed the changelog entries in CHANGELOG.md for signs of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain indicators. The file is a plain release history with version notes and GitHub PR links only; no concrete malicious or hidden-behavior indicators were found.",
+          "summary": "Reviewed the changelog entries in `CHANGELOG.md`, which list version history and feature notes for `chacha20` releases. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17162,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052551929,
+            "finished_at_unix_ms": 1784052569091,
+            "total_token_usage": {
+              "input_tokens": 26464,
+              "cached_input_tokens": 21248,
+              "output_tokens": 438,
+              "reasoning_output_tokens": 248,
+              "total_tokens": 26902
+            },
+            "last_token_usage": {
+              "input_tokens": 26464,
+              "cached_input_tokens": 21248,
+              "output_tokens": 438,
+              "reasoning_output_tokens": 248,
+              "total_tokens": 26902
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cbefb47da22fe6b436161e512839dd94c7f9e02c95db2d575b4816698cd99b41"
+          },
+          "summary": "Reviewed the crate manifest in `Cargo.toml` for install-time execution, build scripts, hidden downloads, credential access, dynamic code loading, obfuscation, and persistence. The file appears to be a standard RustCrypto package manifest with feature flags, dependencies, tests, benches, and lint settings, and I found no concrete supply-chain or malicious indicators in the manifest itself.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11601,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052569092,
+            "finished_at_unix_ms": 1784052580694,
+            "total_token_usage": {
+              "input_tokens": 25006,
+              "cached_input_tokens": 21248,
+              "output_tokens": 388,
+              "reasoning_output_tokens": 192,
+              "total_tokens": 25394
+            },
+            "last_token_usage": {
+              "input_tokens": 25006,
+              "cached_input_tokens": 21248,
+              "output_tokens": 388,
+              "reasoning_output_tokens": 192,
+              "total_tokens": 25394
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "fb40e64f403c43bba746f92ec7fdcfa6f07ed42fd8d478c9d2efa0017c5422f3"
+          },
+          "summary": "Reviewed README.md only. It contains crate documentation, a usage example, feature/configuration notes, and links; I found no concrete malicious or supply-chain indicators and no evidence of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10877,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052580695,
+            "finished_at_unix_ms": 1784052591572,
+            "total_token_usage": {
+              "input_tokens": 25534,
+              "cached_input_tokens": 23296,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 196,
+              "total_tokens": 25915
+            },
+            "last_token_usage": {
+              "input_tokens": 25534,
+              "cached_input_tokens": 23296,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 196,
+              "total_tokens": 25915
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0db7c35fc925bfb93936c641a3c1c9fd0d2762c23645f05d929aef16115c4da9"
+          },
+          "summary": "Reviewed `benches/mod.rs`, which contains only benchmark macro invocations for `ChaCha8`, `ChaCha12`, and `ChaCha20` over fixed buffer sizes. I checked for install-time hooks, subprocesses, network or exfiltration paths, credential access, dynamic code loading, obfuscation, and persistence behavior, and found none in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11588,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052591573,
+            "finished_at_unix_ms": 1784052603161,
+            "total_token_usage": {
+              "input_tokens": 24290,
+              "cached_input_tokens": 21248,
+              "output_tokens": 411,
+              "reasoning_output_tokens": 204,
+              "total_tokens": 24701
+            },
+            "last_token_usage": {
+              "input_tokens": 24290,
+              "cached_input_tokens": 21248,
+              "output_tokens": 411,
+              "reasoning_output_tokens": 204,
+              "total_tokens": 24701
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_9be3112bb586444a8defc0ff05aca8c5",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046573",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e9f62f428ad6ad7695c3ee6818923277412f9f3c1828c00ff12430f34a78d930"
+          },
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the crate's source-control SHA and `path_in_vcs` metadata. I found no concrete indicators of install-time execution, network or credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10610,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046513550,
+            "finished_at_unix_ms": 1784046524160,
+            "total_token_usage": {
+              "input_tokens": 24122,
+              "cached_input_tokens": 21248,
+              "output_tokens": 363,
+              "reasoning_output_tokens": 183,
+              "total_tokens": 24485
+            },
+            "last_token_usage": {
+              "input_tokens": 24122,
+              "cached_input_tokens": 21248,
+              "output_tokens": 363,
+              "reasoning_output_tokens": 183,
+              "total_tokens": 24485
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "e601bccef5594bb28b5862fcf795c06cae26aae6bc2fdc8f3fa31a343c5da4af"
+          },
+          "summary": "Reviewed the changelog entries for chacha20 0.10.1, which only document version history, feature flags, backend changes, and links to upstream pull requests. I found no concrete signs of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14160,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046524161,
+            "finished_at_unix_ms": 1784046538321,
+            "total_token_usage": {
+              "input_tokens": 26861,
+              "cached_input_tokens": 21760,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 182,
+              "total_tokens": 27242
+            },
+            "last_token_usage": {
+              "input_tokens": 26861,
+              "cached_input_tokens": 21760,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 182,
+              "total_tokens": 27242
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cbefb47da22fe6b436161e512839dd94c7f9e02c95db2d575b4816698cd99b41"
+          },
+          "summary": "This normalized Cargo manifest defines the `chacha20` crate's metadata, features, dependencies, tests, and lint settings. I checked this file for install hooks, build scripts, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13030,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046538322,
+            "finished_at_unix_ms": 1784046551353,
+            "total_token_usage": {
+              "input_tokens": 25047,
+              "cached_input_tokens": 21248,
+              "output_tokens": 494,
+              "reasoning_output_tokens": 302,
+              "total_tokens": 25541
+            },
+            "last_token_usage": {
+              "input_tokens": 25047,
+              "cached_input_tokens": 21248,
+              "output_tokens": 494,
+              "reasoning_output_tokens": 302,
+              "total_tokens": 25541
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "fb40e64f403c43bba746f92ec7fdcfa6f07ed42fd8d478c9d2efa0017c5422f3"
+          },
+          "summary": "Reviewed README.md, which is a standard RustCrypto ChaCha20 documentation file covering cipher usage, feature flags, security warnings, and licensing. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11389,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046551353,
+            "finished_at_unix_ms": 1784046562743,
+            "total_token_usage": {
+              "input_tokens": 25554,
+              "cached_input_tokens": 21248,
+              "output_tokens": 436,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 25990
+            },
+            "last_token_usage": {
+              "input_tokens": 25554,
+              "cached_input_tokens": 21248,
+              "output_tokens": 436,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 25990
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0db7c35fc925bfb93936c641a3c1c9fd0d2762c23645f05d929aef16115c4da9"
+          },
+          "summary": "Reviewed `benches/mod.rs`, which only defines three basic `stream_cipher_bench!` benchmark groups for `ChaCha8`, `ChaCha12`, and `ChaCha20`. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10808,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046562743,
+            "finished_at_unix_ms": 1784046573551,
+            "total_token_usage": {
+              "input_tokens": 24272,
+              "cached_input_tokens": 21248,
+              "output_tokens": 349,
+              "reasoning_output_tokens": 144,
+              "total_tokens": 24621
+            },
+            "last_token_usage": {
+              "input_tokens": 24272,
+              "cached_input_tokens": 21248,
+              "output_tokens": 349,
+              "reasoning_output_tokens": 144,
+              "total_tokens": 24621
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_a0134bd470734638b198c337cac33f28",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058750",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c58a5d7dc8656a84e6ed011dfc1ad767bb4ba044be2474492ead1c90ea694f37"
+          },
+          "summary": "Reviewed `src/lib.rs`, which defines the crate-level ChaCha core, round markers, backend dispatch, and optional zeroization support. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17348,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058662654,
+            "finished_at_unix_ms": 1784058680002,
+            "total_token_usage": {
+              "input_tokens": 41822,
+              "cached_input_tokens": 35456,
+              "output_tokens": 621,
+              "reasoning_output_tokens": 333,
+              "total_tokens": 42443
+            },
+            "last_token_usage": {
+              "input_tokens": 41822,
+              "cached_input_tokens": 35456,
+              "output_tokens": 621,
+              "reasoning_output_tokens": 333,
+              "total_tokens": 42443
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/rng.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7162cf6c4ee70cfbda86aff16eb23b72729f3e4971fe9f221e1da3dbb6b92f16"
+          },
+          "summary": "src/rng.rs defines the ChaCha-based RNG core and wrapper types, including backend selection for soft/AVX2/SSE2/NEON paths plus state serialization/deserialization and optional zeroization. I checked for install-time hooks, subprocess or network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19946,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058680003,
+            "finished_at_unix_ms": 1784058699949,
+            "total_token_usage": {
+              "input_tokens": 41554,
+              "cached_input_tokens": 35456,
+              "output_tokens": 760,
+              "reasoning_output_tokens": 461,
+              "total_tokens": 42314
+            },
+            "last_token_usage": {
+              "input_tokens": 41554,
+              "cached_input_tokens": 35456,
+              "output_tokens": 760,
+              "reasoning_output_tokens": 461,
+              "total_tokens": 42314
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/variants.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7f7e9a0e5aac676e39f407d5b3858a38f48dbada3aadce63929f392218035f93"
+          },
+          "summary": "Reviewed the ChaCha variant trait and IETF/Legacy counter helpers in src/variants.rs; it only defines sealed variant configuration and block-position conversion logic. I found no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other concrete supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13769,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058699950,
+            "finished_at_unix_ms": 1784058713719,
+            "total_token_usage": {
+              "input_tokens": 24689,
+              "cached_input_tokens": 21248,
+              "output_tokens": 567,
+              "reasoning_output_tokens": 376,
+              "total_tokens": 25256
+            },
+            "last_token_usage": {
+              "input_tokens": 24689,
+              "cached_input_tokens": 21248,
+              "output_tokens": 567,
+              "reasoning_output_tokens": 376,
+              "total_tokens": 25256
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/xchacha.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9c666a499077ea6bfa81de53b3d3129909cab7e2a3dc67ab4e4e497c1d44854d"
+          },
+          "summary": "`src/xchacha.rs` implements XChaCha20/XChaCha12/XChaCha8 core setup plus the HChaCha derivation and a test-vector check. I reviewed it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators, and found no concrete malicious signals.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16815,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058713719,
+            "finished_at_unix_ms": 1784058730535,
+            "total_token_usage": {
+              "input_tokens": 42316,
+              "cached_input_tokens": 36992,
+              "output_tokens": 595,
+              "reasoning_output_tokens": 291,
+              "total_tokens": 42911
+            },
+            "last_token_usage": {
+              "input_tokens": 42316,
+              "cached_input_tokens": 36992,
+              "output_tokens": 595,
+              "reasoning_output_tokens": 291,
+              "total_tokens": 42911
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/kats.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c655cdec4745bbc59e0c01d836b365c98efd8ae6abf0a5718ad2644ced5bbab7"
+          },
+          "summary": "`tests/kats.rs` contains deterministic ChaCha20, XChaCha20, and legacy ChaCha20 test vectors plus unit tests that verify keystream and encryption output. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20156,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058730535,
+            "finished_at_unix_ms": 1784058750692,
+            "total_token_usage": {
+              "input_tokens": 27347,
+              "cached_input_tokens": 23296,
+              "output_tokens": 560,
+              "reasoning_output_tokens": 356,
+              "total_tokens": 27907
+            },
+            "last_token_usage": {
+              "input_tokens": 27347,
+              "cached_input_tokens": 23296,
+              "output_tokens": 560,
+              "reasoning_output_tokens": 356,
+              "total_tokens": 27907
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_a0168005273548b2800cacf71d49f728",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784060046",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/rng.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4c45c51a02e05b26f151a5805bfaa76c68277173b6517b17796146ec27e25a3f"
+          },
+          "summary": "Reviewed `tests/rng.rs`, which is a ChaCha RNG test suite covering known test vectors, counter wrapping, stream/nonce handling, and serde round-trips. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 23149,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060023015,
+            "finished_at_unix_ms": 1784060046165,
+            "total_token_usage": {
+              "input_tokens": 62852,
+              "cached_input_tokens": 53248,
+              "output_tokens": 553,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 63405
+            },
+            "last_token_usage": {
+              "input_tokens": 62852,
+              "cached_input_tokens": 53248,
+              "output_tokens": 553,
+              "reasoning_output_tokens": 167,
+              "total_tokens": 63405
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -520,7 +966,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590732",
       "thirdpass_version": "0.6.0",
@@ -560,7 +1006,7 @@
       ]
     },
     {
-      "id": "rev_a40e74176fff4f12a469a1b53553be74",
+      "id": "rev_a9423049ceec4a00a7126e788757086d",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -568,22 +1014,137 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782847252",
+      "created_at": "1784057097",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/backends.rs`, which only contains compile-time `cfg_if!` backend selection for Chacha20 implementations (`soft`, `avx2`, `avx512`, `sse2`, `neon`). I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\n`src/legacy.rs` is a small Rust wrapper that defines the legacy ChaCha20 type aliases and the `KeyIvInit`/size trait impls needed to construct the cipher from a key and 64-bit nonce. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `benches/mod.rs`, which only defines benchmark harnesses for `ChaCha8`, `ChaCha12`, and `ChaCha20` via `cipher::stream_cipher_bench!`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nReviewed `.cargo_vcs_info.json`, which only records a VCS commit SHA and the package path in source control. No concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence were present in this target file.",
       "files": [
         {
-          "file_path": "src/backends.rs",
+          "file_path": "src/backends/neon.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "ed61af65788bba5d899dcbe37838256f90fa4d4ea858eb764ac559c03db635c4"
+            "value": "7f4c9847b536a76ed85abee057447665f36423e525d8472e270d1ee58cd00d7b"
           },
-          "summary": "Reviewed `src/backends.rs`, which only contains compile-time `cfg_if!` backend selection for Chacha20 implementations (`soft`, `avx2`, `avx512`, `sse2`, `neon`). I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/backends/neon.rs`, which is aarch64 NEON-accelerated ChaCha20 backend that expands keystream blocks and writes them into caller-provided buffers. I checked the file for install-time execution, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, persistence, and other hidden payload patterns, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14065,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057018963,
+            "finished_at_unix_ms": 1784057033029,
+            "total_token_usage": {
+              "input_tokens": 43855,
+              "cached_input_tokens": 36480,
+              "output_tokens": 579,
+              "reasoning_output_tokens": 261,
+              "total_tokens": 44434
+            },
+            "last_token_usage": {
+              "input_tokens": 43855,
+              "cached_input_tokens": 36480,
+              "output_tokens": 579,
+              "reasoning_output_tokens": 261,
+              "total_tokens": 44434
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/soft.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1622d60efd5a1c0b8615b064ad78d2e328b5b05c10329358850b35a604dd0646"
+          },
+          "summary": "`src/backends/soft.rs` is a portable ChaCha backend that generates keystream blocks and advances the counter for cipher and RNG use. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17090,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057033029,
+            "finished_at_unix_ms": 1784057050120,
+            "total_token_usage": {
+              "input_tokens": 24921,
+              "cached_input_tokens": 21248,
+              "output_tokens": 495,
+              "reasoning_output_tokens": 300,
+              "total_tokens": 25416
+            },
+            "last_token_usage": {
+              "input_tokens": 24921,
+              "cached_input_tokens": 21248,
+              "output_tokens": 495,
+              "reasoning_output_tokens": 300,
+              "total_tokens": 25416
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/sse2.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "84ba151e9576636a927089ba0c8441c9b40a75adff55a8007dc3e8bae9890070"
+          },
+          "summary": "Reviewed the SSE2 ChaCha backend in `src/backends/sse2.rs` for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. The file only implements CPU feature-gated SIMD state loading, quarter-round transforms, and block generation for ChaCha, with no concrete malicious or supply-chain indicators found.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20556,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057050120,
+            "finished_at_unix_ms": 1784057070677,
+            "total_token_usage": {
+              "input_tokens": 42879,
+              "cached_input_tokens": 35968,
+              "output_tokens": 645,
+              "reasoning_output_tokens": 344,
+              "total_tokens": 43524
+            },
+            "last_token_usage": {
+              "input_tokens": 42879,
+              "cached_input_tokens": 35968,
+              "output_tokens": 645,
+              "reasoning_output_tokens": 344,
+              "total_tokens": 43524
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/chacha.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "afd218fe00b68f311cb736c086ec1f8face3bdc84177b2a7865a230847bf3d55"
+          },
+          "summary": "Reviewed src/chacha.rs, which only defines ChaCha key/nonce aliases and thin trait impls that forward directly into ChaChaCore::new_internal. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13644,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057070678,
+            "finished_at_unix_ms": 1784057084322,
+            "total_token_usage": {
+              "input_tokens": 24398,
+              "cached_input_tokens": 21248,
+              "output_tokens": 448,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24846
+            },
+            "last_token_usage": {
+              "input_tokens": 24398,
+              "cached_input_tokens": 21248,
+              "output_tokens": 448,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24846
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -593,33 +1154,29 @@
             "algorithm": "blake3",
             "value": "cff5680ed0d5bb627db3adb6d06da256b290c22c4cde687277140d3358209f39"
           },
-          "summary": "`src/legacy.rs` is a small Rust wrapper that defines the legacy ChaCha20 type aliases and the `KeyIvInit`/size trait impls needed to construct the cipher from a key and 64-bit nonce. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "`src/legacy.rs` is a small Rust wrapper that defines legacy ChaCha20 nonce/type aliases and forwards initialization into `ChaChaCore::new_internal`; I checked it for install-time execution, subprocesses, network or exfiltration paths, secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0db7c35fc925bfb93936c641a3c1c9fd0d2762c23645f05d929aef16115c4da9"
+          "agent_run_metrics": {
+            "duration_ms": 13248,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057084322,
+            "finished_at_unix_ms": 1784057097571,
+            "total_token_usage": {
+              "input_tokens": 24351,
+              "cached_input_tokens": 23296,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 285,
+              "total_tokens": 24836
+            },
+            "last_token_usage": {
+              "input_tokens": 24351,
+              "cached_input_tokens": 23296,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 285,
+              "total_tokens": 24836
+            }
           },
-          "summary": "Reviewed `benches/mod.rs`, which only defines benchmark harnesses for `ChaCha8`, `ChaCha12`, and `ChaCha20` via `cipher::stream_cipher_bench!`. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e9f62f428ad6ad7695c3ee6818923277412f9f3c1828c00ff12430f34a78d930"
-          },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records a VCS commit SHA and the package path in source control. No concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence were present in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }
@@ -635,7 +1192,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590663",
       "thirdpass_version": "0.6.0",
@@ -803,7 +1360,7 @@
       ]
     },
     {
-      "id": "rev_dee476979c6448c9af88c41bc525807a",
+      "id": "rev_f3a058a9037a46279027677c971c3dab",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -811,112 +1368,105 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782847195",
+      "created_at": "1784055106",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/xchacha.rs`, which implements XChaCha stream-cipher types and the HChaCha subkey derivation plus a test vector. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden control transfer, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the README for this RustCrypto ChaCha20 crate and found only project documentation: cipher overview, hazard warning, feature flags, examples, and license links. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior in the target file and found no concrete malicious or supply-chain indicators.\nReviewed `src/backends/soft.rs`, which contains the portable ChaCha backend and keystream generation logic using local state updates and the round function only. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.\nReviewed `src/variants.rs`, which only defines sealed ChaCha variant traits and the IETF/Legacy counter layout helpers. I found no concrete malicious or supply-chain indicators in this file: no install-time hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed src/chacha.rs, which only defines ChaCha8/12/20 type aliases and trait impls that forward key/nonce initialization to ChaChaCore::new_internal. I checked for install-time hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "src/xchacha.rs",
+          "file_path": "src/backends.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "9c666a499077ea6bfa81de53b3d3129909cab7e2a3dc67ab4e4e497c1d44854d"
+            "value": "ed61af65788bba5d899dcbe37838256f90fa4d4ea858eb764ac559c03db635c4"
           },
-          "summary": "Reviewed `src/xchacha.rs`, which implements XChaCha stream-cipher types and the HChaCha subkey derivation plus a test vector. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden control transfer, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/backends.rs`, which only selects platform-specific ChaCha20 backend modules (`soft`, `avx512`, `avx2`, `sse2`, `neon`) behind compile-time `cfg` gates. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13891,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055058569,
+            "finished_at_unix_ms": 1784055072461,
+            "total_token_usage": {
+              "input_tokens": 37441,
+              "cached_input_tokens": 33408,
+              "output_tokens": 539,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 37980
+            },
+            "last_token_usage": {
+              "input_tokens": 37441,
+              "cached_input_tokens": 33408,
+              "output_tokens": 539,
+              "reasoning_output_tokens": 235,
+              "total_tokens": 37980
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "README.md",
+          "file_path": "src/backends/avx2.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "fb40e64f403c43bba746f92ec7fdcfa6f07ed42fd8d478c9d2efa0017c5422f3"
+            "value": "1be550c8682102ad77478761fefba4a4bb8b3e741436f7129ab4376f4b6dd4aa"
           },
-          "summary": "Reviewed the README for this RustCrypto ChaCha20 crate and found only project documentation: cipher overview, hazard warning, feature flags, examples, and license links. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior in the target file and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed the AVX2 ChaCha20 backend in `src/backends/avx2.rs`, which is a SIMD implementation of quarter-round, counter, and block-generation routines. I found no concrete indicators of install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence/tampering in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16150,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055072461,
+            "finished_at_unix_ms": 1784055088612,
+            "total_token_usage": {
+              "input_tokens": 43401,
+              "cached_input_tokens": 38016,
+              "output_tokens": 609,
+              "reasoning_output_tokens": 293,
+              "total_tokens": 44010
+            },
+            "last_token_usage": {
+              "input_tokens": 43401,
+              "cached_input_tokens": 38016,
+              "output_tokens": 609,
+              "reasoning_output_tokens": 293,
+              "total_tokens": 44010
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
-        {
-          "file_path": "src/backends/soft.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1622d60efd5a1c0b8615b064ad78d2e328b5b05c10329358850b35a604dd0646"
-          },
-          "summary": "Reviewed `src/backends/soft.rs`, which contains the portable ChaCha backend and keystream generation logic using local state updates and the round function only. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence mechanisms.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/variants.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7f7e9a0e5aac676e39f407d5b3858a38f48dbada3aadce63929f392218035f93"
-          },
-          "summary": "Reviewed `src/variants.rs`, which only defines sealed ChaCha variant traits and the IETF/Legacy counter layout helpers. I found no concrete malicious or supply-chain indicators in this file: no install-time hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/chacha.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "afd218fe00b68f311cb736c086ec1f8face3bdc84177b2a7865a230847bf3d55"
-          },
-          "summary": "Reviewed src/chacha.rs, which only defines ChaCha8/12/20 type aliases and trait impls that forward key/nonce initialization to ChaChaCore::new_internal. I checked for install-time hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_f72cbdd28fa2486786adb83ffab52cd8",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782846999",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/backends/avx512.rs`, which implements AVX-512/AVX2/128-bit ChaCha block generation and state permutation logic for the cipher backend. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden payload behavior; none were present in this file.\nReviewed `tests/rng.rs`, which is a Chacha RNG test suite covering deterministic output vectors, counter/stream wrapping, and serde round-trips. I found no concrete malicious or supply-chain indicators in this target file: there are no install hooks, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.",
-      "files": [
         {
           "file_path": "src/backends/avx512.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "1f7d32980081e160fb9716f82f9bda5b519ff1d149049e146d0cb7dbd33c83f5"
           },
-          "summary": "Reviewed `src/backends/avx512.rs`, which implements AVX-512/AVX2/128-bit ChaCha block generation and state permutation logic for the cipher backend. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden payload behavior; none were present in this file.",
+          "summary": "Reviewed `src/backends/avx512.rs`, which is a low-level AVX-512/AVX2/128-bit ChaCha20 block-generation backend with SIMD round and transpose routines. I found no concrete signs of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/rng.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4c45c51a02e05b26f151a5805bfaa76c68277173b6517b17796146ec27e25a3f"
+          "agent_run_metrics": {
+            "duration_ms": 17823,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055088613,
+            "finished_at_unix_ms": 1784055106437,
+            "total_token_usage": {
+              "input_tokens": 63905,
+              "cached_input_tokens": 53248,
+              "output_tokens": 766,
+              "reasoning_output_tokens": 364,
+              "total_tokens": 64671
+            },
+            "last_token_usage": {
+              "input_tokens": 63905,
+              "cached_input_tokens": 53248,
+              "output_tokens": 766,
+              "reasoning_output_tokens": 364,
+              "total_tokens": 64671
+            }
           },
-          "summary": "Reviewed `tests/rng.rs`, which is a Chacha RNG test suite covering deterministic output vectors, counter/stream wrapping, and serde round-trips. I found no concrete malicious or supply-chain indicators in this target file: there are no install hooks, network or exfiltration paths, credential/secret access, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         }

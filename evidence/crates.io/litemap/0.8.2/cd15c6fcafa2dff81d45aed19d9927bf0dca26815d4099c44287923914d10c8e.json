@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589276",
+  "latest_reviewed_at": "1784060016",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -315,50 +321,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 5,
-      "file_record_count": 20,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 3
+      "review_count": 7,
+      "file_record_count": 28,
+      "file_record_count_with_metrics": 28
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 23,
-    "file_records_with_metrics": 3,
-    "file_records_without_metrics": 20,
-    "duration_ms_total": 46173,
-    "attempts_total": 3,
+    "reviewed_file_records": 28,
+    "file_records_with_metrics": 28,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 442270,
+    "attempts_total": 28,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 3,
-    "last_token_usage_records": 3,
+    "total_token_usage_records": 28,
+    "last_token_usage_records": 28,
     "total_token_usage": {
-      "input_tokens": 110125,
-      "cached_input_tokens": 85888,
-      "output_tokens": 1743,
-      "reasoning_output_tokens": 893,
-      "total_tokens": 111868
+      "input_tokens": 914369,
+      "cached_input_tokens": 785792,
+      "output_tokens": 13220,
+      "reasoning_output_tokens": 6477,
+      "total_tokens": 927589
     },
     "last_token_usage": {
-      "input_tokens": 110125,
-      "cached_input_tokens": 85888,
-      "output_tokens": 1743,
-      "reasoning_output_tokens": 893,
-      "total_tokens": 111868
+      "input_tokens": 914369,
+      "cached_input_tokens": 785792,
+      "output_tokens": 13220,
+      "reasoning_output_tokens": 6477,
+      "total_tokens": 927589
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_2311ece52f17477db208675f36cff4f1",
+      "id": "rev_11004f33e6614693a22f7ec9e8ce1498",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -366,65 +364,176 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782839725",
+      "created_at": "1784058643",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/store/vec_impl.rs`, which implements `Vec<(K, V)>` storage traits, iteration, mutation, sorting, and deduplication helpers for litemap. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential or environment access, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.\nReviewed `src/testing.rs`, which contains pure Rust test helpers and deterministic `LiteMap` equivalence checks for iterator, insert/extend, remove, retain, and clear behavior. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/serde.rs`, which only implements Serde serialization/deserialization for `LiteMap` plus round-trip tests. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution and found no concrete malicious or supply-chain indicators.\nReviewed `benches/litemap.rs`, which is a Criterion benchmark harness for `LiteMap` serialization, lookup, insertion, and extend behavior using static sample data and `postcard`. I checked for install-time execution, network or exfiltration paths, credential or environment access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
-        {
-          "file_path": "src/store/vec_impl.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5a3ed519186b0ee74b6240d2524e0f762b74fde8b478efa267a00e2c82fed2f4"
-          },
-          "summary": "Reviewed `src/store/vec_impl.rs`, which implements `Vec<(K, V)>` storage traits, iteration, mutation, sorting, and deduplication helpers for litemap. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential or environment access, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/testing.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c6472a071cde611a32bb48c6eec419aad77f0c7aa005008dcdc0429dcaba37df"
-          },
-          "summary": "Reviewed `src/testing.rs`, which contains pure Rust test helpers and deterministic `LiteMap` equivalence checks for iterator, insert/extend, remove, retain, and clear behavior. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": "src/serde.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "43e5c4e30723d372c6d8fbb8092a12638ebf2cd2775399666e411621ff690a9c"
           },
-          "summary": "Reviewed `src/serde.rs`, which only implements Serde serialization/deserialization for `LiteMap` plus round-trip tests. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/serde.rs`, which implements `Serialize`/`Deserialize` for `LiteMap` and includes round-trip tests. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, network or exfiltration calls, credential or secret access, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16047,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058555083,
+            "finished_at_unix_ms": 1784058571130,
+            "total_token_usage": {
+              "input_tokens": 26277,
+              "cached_input_tokens": 21248,
+              "output_tokens": 383,
+              "reasoning_output_tokens": 187,
+              "total_tokens": 26660
+            },
+            "last_token_usage": {
+              "input_tokens": 26277,
+              "cached_input_tokens": 21248,
+              "output_tokens": 383,
+              "reasoning_output_tokens": 187,
+              "total_tokens": 26660
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "benches/litemap.rs",
+          "file_path": "src/serde_helpers.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "525a4de0662f261e6e0d1b8d366d99488f28812725175b2e2654e3f5abd3de3d"
+            "value": "da4a2a2b2a347e3a2f6bfef79c17d214ca85bf0d005d1123b765f37e8f79bb71"
           },
-          "summary": "Reviewed `benches/litemap.rs`, which is a Criterion benchmark harness for `LiteMap` serialization, lookup, insertion, and extend behavior using static sample data and `postcard`. I checked for install-time execution, network or exfiltration paths, credential or environment access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/serde_helpers.rs`, which defines a Serde dry-run serializer helper to classify keys as numeric or string-like. I found no concrete supply-chain or malicious indicators: there are no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21429,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058571131,
+            "finished_at_unix_ms": 1784058592560,
+            "total_token_usage": {
+              "input_tokens": 25490,
+              "cached_input_tokens": 21248,
+              "output_tokens": 424,
+              "reasoning_output_tokens": 228,
+              "total_tokens": 25914
+            },
+            "last_token_usage": {
+              "input_tokens": 25490,
+              "cached_input_tokens": 21248,
+              "output_tokens": 424,
+              "reasoning_output_tokens": 228,
+              "total_tokens": 25914
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/store/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d8facc16092201fbebfdc2b8e11419af6f496435a45ee3377e3d8c9e466dd0c4"
+          },
+          "summary": "Reviewed src/store/mod.rs, which only defines LiteMap store traits and a few small default helper methods for length, lookup, iteration, insertion, and extension. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks; none are present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15421,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058592560,
+            "finished_at_unix_ms": 1784058607982,
+            "total_token_usage": {
+              "input_tokens": 39467,
+              "cached_input_tokens": 34944,
+              "output_tokens": 590,
+              "reasoning_output_tokens": 306,
+              "total_tokens": 40057
+            },
+            "last_token_usage": {
+              "input_tokens": 39467,
+              "cached_input_tokens": 34944,
+              "output_tokens": 590,
+              "reasoning_output_tokens": 306,
+              "total_tokens": 40057
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/store/slice_impl.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b70eddad151c19d8ed81d3d5a0b82701073bdddf4c23601ff26d2227e2a3deb8"
+          },
+          "summary": "Reviewed `src/store/slice_impl.rs`, which only adds slice-backed implementations for the crate's `Store`, `StoreSlice`, and `StoreIterable` traits and simple accessor helpers. I found no concrete malicious or supply-chain indicators in this file; it contains no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14210,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058607983,
+            "finished_at_unix_ms": 1784058622193,
+            "total_token_usage": {
+              "input_tokens": 24585,
+              "cached_input_tokens": 23296,
+              "output_tokens": 533,
+              "reasoning_output_tokens": 330,
+              "total_tokens": 25118
+            },
+            "last_token_usage": {
+              "input_tokens": 24585,
+              "cached_input_tokens": 23296,
+              "output_tokens": 533,
+              "reasoning_output_tokens": 330,
+              "total_tokens": 25118
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/store/vec_impl.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5a3ed519186b0ee74b6240d2524e0f762b74fde8b478efa267a00e2c82fed2f4"
+          },
+          "summary": "Reviewed `src/store/vec_impl.rs`, which is a `Vec<(K, V)>` storage backend implementing store, mutation, iteration, bulk extend, and deduplication helpers. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21549,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058622194,
+            "finished_at_unix_ms": 1784058643743,
+            "total_token_usage": {
+              "input_tokens": 41740,
+              "cached_input_tokens": 37504,
+              "output_tokens": 675,
+              "reasoning_output_tokens": 381,
+              "total_tokens": 42415
+            },
+            "last_token_usage": {
+              "input_tokens": 41740,
+              "cached_input_tokens": 37504,
+              "output_tokens": 675,
+              "reasoning_output_tokens": 381,
+              "total_tokens": 42415
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_5781b56bee1f42cdb02272d870799570",
+      "id": "rev_286c615ec03746e49759f99ff09b8467",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -432,46 +541,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782839883",
+      "created_at": "1784052317",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/store/slice_impl.rs`, which is a small slice-backed store adapter implementing length, lookup, range, and iteration helpers over `&[(K, V)]`. I checked for install-time execution, subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `examples/litemap_bincode.rs`, which is a small ICU4X example that defines a static bincode payload, optionally regenerates it with `bincode::serialize`, and deserializes it into a `LiteMap` before asserting one lookup. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, hidden downloads, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `examples/litemap_postcard.rs`, which is a small ICU4X example that serializes a fixed language map with `postcard`, then deserializes a static byte array and asserts a lookup result. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `README.md`, which is plain crate documentation for `litemap` describing the `LiteMap` data structure, performance tradeoffs, const construction, and links to project info. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none in this file.\nReviewed `src/databake.rs`, which only implements `databake::Bake` for `LiteMap` and contains a small unit test that emits Rust code using `from_sorted_store_unchecked` for code generation. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic loading, obfuscation, persistence, or hidden subprocess execution.",
       "files": [
         {
-          "file_path": "src/store/slice_impl.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "b70eddad151c19d8ed81d3d5a0b82701073bdddf4c23601ff26d2227e2a3deb8"
+            "value": "f801ae5cf0da18bc7af962b66b67c653c3009a83e5aafd3d363c71538f58a14a"
           },
-          "summary": "Reviewed `src/store/slice_impl.rs`, which is a small slice-backed store adapter implementing length, lookup, range, and iteration helpers over `&[(K, V)]`. I checked for install-time execution, subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "This file is a small Cargo VCS metadata record containing a Git SHA-1 and the source path within the repository. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13420,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052242935,
+            "finished_at_unix_ms": 1784052256356,
+            "total_token_usage": {
+              "input_tokens": 24071,
+              "cached_input_tokens": 21248,
+              "output_tokens": 328,
+              "reasoning_output_tokens": 140,
+              "total_tokens": 24399
+            },
+            "last_token_usage": {
+              "input_tokens": 24071,
+              "cached_input_tokens": 21248,
+              "output_tokens": 328,
+              "reasoning_output_tokens": 140,
+              "total_tokens": 24399
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "examples/litemap_bincode.rs",
+          "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "a0be10c83f0b7c16193013e6982b68ad92aab25eef863351d44da72142697eba"
+            "value": "06efd3343e48e1894d1201a5c297e596004def7061a16b14fb35915015bf6ac2"
           },
-          "summary": "Reviewed `examples/litemap_bincode.rs`, which is a small ICU4X example that defines a static bincode payload, optionally regenerates it with `bincode::serialize`, and deserializes it into a `LiteMap` before asserting one lookup. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, hidden downloads, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed the normalized Cargo.toml for litemap 0.8.2, focusing on package metadata, features, dependencies, and any install-time or runtime hooks. It only declares standard Rust crate configuration and dependency metadata; I found no indicators of install scripts, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/litemap_postcard.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "51b1e6c97f7cf9aa7b99b536caddab1f9d10aea01c0d339068af7128b803f72f"
+          "agent_run_metrics": {
+            "duration_ms": 14263,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052256356,
+            "finished_at_unix_ms": 1784052270620,
+            "total_token_usage": {
+              "input_tokens": 25280,
+              "cached_input_tokens": 21248,
+              "output_tokens": 463,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 25743
+            },
+            "last_token_usage": {
+              "input_tokens": 25280,
+              "cached_input_tokens": 21248,
+              "output_tokens": 463,
+              "reasoning_output_tokens": 269,
+              "total_tokens": 25743
+            }
           },
-          "summary": "Reviewed `examples/litemap_postcard.rs`, which is a small ICU4X example that serializes a fixed language map with `postcard`, then deserializes a static byte array and asserts a lookup result. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -481,9 +617,206 @@
             "algorithm": "blake3",
             "value": "01158629234b513879378629d95c4e908297b24006c4c3be05550af658d08da9"
           },
-          "summary": "Reviewed `README.md`, which is plain crate documentation for `litemap` describing the `LiteMap` data structure, performance tradeoffs, const construction, and links to project info. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, persistence, and other hidden execution indicators, and found none in this file.",
+          "summary": "Reviewed README.md, which is a plain project overview for the `litemap` Rust crate describing its flat-map data structure, performance characteristics, and documentation links. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16504,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052270621,
+            "finished_at_unix_ms": 1784052287126,
+            "total_token_usage": {
+              "input_tokens": 25131,
+              "cached_input_tokens": 21760,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 25560
+            },
+            "last_token_usage": {
+              "input_tokens": 25131,
+              "cached_input_tokens": 21760,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 25560
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/litemap.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "525a4de0662f261e6e0d1b8d366d99488f28812725175b2e2654e3f5abd3de3d"
+          },
+          "summary": "Reviewed `benches/litemap.rs`, which is a Criterion benchmark for constructing, serializing, deserializing, and looking up entries in `LiteMap` using local in-memory data. I checked for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation/deobfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14925,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052287126,
+            "finished_at_unix_ms": 1784052302052,
+            "total_token_usage": {
+              "input_tokens": 26438,
+              "cached_input_tokens": 21248,
+              "output_tokens": 513,
+              "reasoning_output_tokens": 306,
+              "total_tokens": 26951
+            },
+            "last_token_usage": {
+              "input_tokens": 26438,
+              "cached_input_tokens": 21248,
+              "output_tokens": 513,
+              "reasoning_output_tokens": 306,
+              "total_tokens": 26951
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/language_names_hash_map.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a45137195f7b8956f086e262dff6d2cba1d6d0fe2b4d3dada9cb9709dd679549"
+          },
+          "summary": "Reviewed `examples/language_names_hash_map.rs`, a small Rust example that builds a `HashMap` from static language-name pairs and performs a few assertions. I found no concrete supply-chain or malicious indicators in the target file: there are no install hooks, subprocess launches, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15541,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052302053,
+            "finished_at_unix_ms": 1784052317594,
+            "total_token_usage": {
+              "input_tokens": 38119,
+              "cached_input_tokens": 34432,
+              "output_tokens": 482,
+              "reasoning_output_tokens": 188,
+              "total_tokens": 38601
+            },
+            "last_token_usage": {
+              "input_tokens": 38119,
+              "cached_input_tokens": 34432,
+              "output_tokens": 482,
+              "reasoning_output_tokens": 188,
+              "total_tokens": 38601
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_3b3edc2a20f64223a566f1d1c7898d24",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054906",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "examples/language_names_lite_map.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2c30f4accf3446f7a6c1bc48dfb1c4eb63010131f6e34fd6488a2be3d5ab7651"
+          },
+          "summary": "Reviewed this Rust example, which builds a `LiteMap<Language, &str>` from a static in-file language-name table and runs a few lookup/assertion checks. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain abuse in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12167,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054846487,
+            "finished_at_unix_ms": 1784054858655,
+            "total_token_usage": {
+              "input_tokens": 24386,
+              "cached_input_tokens": 19200,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 24815
+            },
+            "last_token_usage": {
+              "input_tokens": 24386,
+              "cached_input_tokens": 19200,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 229,
+              "total_tokens": 24815
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/litemap_bincode.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a0be10c83f0b7c16193013e6982b68ad92aab25eef863351d44da72142697eba"
+          },
+          "summary": "Reviewed this example-only Rust file, which hardcodes a bincode byte array for a LiteMap and deserializes it locally to verify the data. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11400,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054858656,
+            "finished_at_unix_ms": 1784054870057,
+            "total_token_usage": {
+              "input_tokens": 25306,
+              "cached_input_tokens": 21248,
+              "output_tokens": 439,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 25745
+            },
+            "last_token_usage": {
+              "input_tokens": 25306,
+              "cached_input_tokens": 21248,
+              "output_tokens": 439,
+              "reasoning_output_tokens": 238,
+              "total_tokens": 25745
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/litemap_postcard.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "51b1e6c97f7cf9aa7b99b536caddab1f9d10aea01c0d339068af7128b803f72f"
+          },
+          "summary": "Reviewed `examples/litemap_postcard.rs`, which is a small ICU4X example that builds a `LiteMap`, serializes it to postcard bytes, and deserializes a fixed embedded byte array for a simple assertion. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12182,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054870058,
+            "finished_at_unix_ms": 1784054882240,
+            "total_token_usage": {
+              "input_tokens": 24783,
+              "cached_input_tokens": 23296,
+              "output_tokens": 403,
+              "reasoning_output_tokens": 194,
+              "total_tokens": 25186
+            },
+            "last_token_usage": {
+              "input_tokens": 24783,
+              "cached_input_tokens": 23296,
+              "output_tokens": 403,
+              "reasoning_output_tokens": 194,
+              "total_tokens": 25186
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -493,9 +826,61 @@
             "algorithm": "blake3",
             "value": "810cfce14e8eaf476be89845a56009907baa610b27d062bcb4032fa7189110b6"
           },
-          "summary": "Reviewed `src/databake.rs`, which only implements `databake::Bake` for `LiteMap` and contains a small unit test that emits Rust code using `from_sorted_store_unchecked` for code generation. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic loading, obfuscation, persistence, or hidden subprocess execution.",
+          "summary": "`src/databake.rs` is a small `databake` integration for `LiteMap` that emits a `litemap::LiteMap::from_sorted_store_unchecked(...)` token stream and includes a couple of bake tests. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11222,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054882240,
+            "finished_at_unix_ms": 1784054893463,
+            "total_token_usage": {
+              "input_tokens": 24706,
+              "cached_input_tokens": 21248,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 197,
+              "total_tokens": 25113
+            },
+            "last_token_usage": {
+              "input_tokens": 24706,
+              "cached_input_tokens": 21248,
+              "output_tokens": 407,
+              "reasoning_output_tokens": 197,
+              "total_tokens": 25113
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6a762a064b199ec783c2be95ffe988b1ada9ecf45595aba05a4b8c9a28d116a1"
+          },
+          "summary": "Reviewed the crate root `src/lib.rs`, which only defines `no_std`/lint attributes, declares feature-gated internal modules (`map`, `serde`, `databake_impls`, `store`, `testing`), and re-exports `LiteMap` types. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13256,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054893464,
+            "finished_at_unix_ms": 1784054906721,
+            "total_token_usage": {
+              "input_tokens": 24902,
+              "cached_input_tokens": 21248,
+              "output_tokens": 441,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 25343
+            },
+            "last_token_usage": {
+              "input_tokens": 24902,
+              "cached_input_tokens": 21248,
+              "output_tokens": 441,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 25343
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -511,7 +896,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589276",
       "thirdpass_version": "0.6.0",
@@ -615,7 +1000,7 @@
       ]
     },
     {
-      "id": "rev_887a6f691fa7466c9415e337ac1adb18",
+      "id": "rev_75c1c7cfc08a4602ab4af71f48e380e1",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -623,58 +1008,90 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782839797",
+      "created_at": "1784056897",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed this Cargo manifest for install-time execution, build scripts, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. It describes a normal Rust library crate with optional feature-gated dependencies and no concrete malicious or supply-chain indicators in the target file.\nReviewed `src/serde_helpers.rs`, which is a small serde key-classification helper that defines a custom `Serializer` dry run to decide whether a key serializes as a number or string. I checked for install-time hooks, subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/store.rs`, which is a benign test helper that wraps `Vec` to exercise `litemap` store trait implementations and runs `check_store_full`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed `src/store/mod.rs`, which defines `LiteMap` store traits and a couple of default iterator-based helper methods. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, or hidden subprocess execution.\n`tests/rkyv.rs` is a unit test that builds a `LiteMap<String, String>`, serializes it with `rkyv`, and verifies archived and deserialized access against a fixed byte fixture. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
       "files": [
         {
-          "file_path": "Cargo.toml",
+          "file_path": "src/map.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "06efd3343e48e1894d1201a5c297e596004def7061a16b14fb35915015bf6ac2"
+            "value": "95470d80f0e75d45e01add1851721a24b362f71f58ce5e70d67b318f392784cd"
           },
-          "summary": "Reviewed this Cargo manifest for install-time execution, build scripts, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. It describes a normal Rust library crate with optional feature-gated dependencies and no concrete malicious or supply-chain indicators in the target file.",
+          "summary": "Reviewed src/map.rs, which implements the LiteMap data structure, its iteration and entry APIs, and const lookup helpers. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none were present in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 29968,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056867094,
+            "finished_at_unix_ms": 1784056897063,
+            "total_token_usage": {
+              "input_tokens": 113269,
+              "cached_input_tokens": 96512,
+              "output_tokens": 762,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 114031
+            },
+            "last_token_usage": {
+              "input_tokens": 113269,
+              "cached_input_tokens": 96512,
+              "output_tokens": 762,
+              "reasoning_output_tokens": 207,
+              "total_tokens": 114031
+            }
+          },
           "comment_count": 0,
           "comments": []
-        },
+        }
+      ]
+    },
+    {
+      "id": "rev_9f25db580d594f80a0ef421d3cd00228",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784060016",
+      "thirdpass_version": "0.6.0",
+      "files": [
         {
-          "file_path": "src/serde_helpers.rs",
+          "file_path": "src/testing.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "da4a2a2b2a347e3a2f6bfef79c17d214ca85bf0d005d1123b765f37e8f79bb71"
+            "value": "c6472a071cde611a32bb48c6eec419aad77f0c7aa005008dcdc0429dcaba37df"
           },
-          "summary": "Reviewed `src/serde_helpers.rs`, which is a small serde key-classification helper that defines a custom `Serializer` dry run to decide whether a key serializes as a number or string. I checked for install-time hooks, subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/testing.rs`, which contains LiteMap test helpers and trait-behavior checks for insertion, removal, iteration, and extension semantics. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and other supply-chain indicators, and found no concrete malicious or suspicious behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/store.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "68e8cb7b047439a172ce160b79d78fc5f24bcbaba5488ee837ab3ce05400b99c"
+          "agent_run_metrics": {
+            "duration_ms": 23780,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059934839,
+            "finished_at_unix_ms": 1784059958620,
+            "total_token_usage": {
+              "input_tokens": 41418,
+              "cached_input_tokens": 35456,
+              "output_tokens": 415,
+              "reasoning_output_tokens": 125,
+              "total_tokens": 41833
+            },
+            "last_token_usage": {
+              "input_tokens": 41418,
+              "cached_input_tokens": 35456,
+              "output_tokens": 415,
+              "reasoning_output_tokens": 125,
+              "total_tokens": 41833
+            }
           },
-          "summary": "Reviewed `tests/store.rs`, which is a benign test helper that wraps `Vec` to exercise `litemap` store trait implementations and runs `check_store_full`. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/store/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d8facc16092201fbebfdc2b8e11419af6f496435a45ee3377e3d8c9e466dd0c4"
-          },
-          "summary": "Reviewed `src/store/mod.rs`, which defines `LiteMap` store traits and a couple of default iterator-based helper methods. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -684,63 +1101,29 @@
             "algorithm": "blake3",
             "value": "4a58b8a8fe7189e006f6fcff197d4326ef5a481ff1d202fef1cefbb21182bd27"
           },
-          "summary": "`tests/rkyv.rs` is a unit test that builds a `LiteMap<String, String>`, serializes it with `rkyv`, and verifies archived and deserialized access against a fixed byte fixture. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `tests/rkyv.rs`, which is a deterministic rkyv serialization/archiving test for `LiteMap<String, String>` using a fixed byte buffer and round-trip assertions. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_b98595e414b54ffcb399bce4380a544b",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782839957",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is a crate root for `litemap` that only declares `no_std`/feature gates, module wiring, and public re-exports. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed this example benchmark file, which only builds a small `HashMap<Language, &str>` from static language-name data and asserts lookup behavior. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.\nReviewed `examples/language_names_lite_map.rs`, which is a small Rust example that builds a `LiteMap` from static language-name data and performs a couple of lookup assertions. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/serde.rs`, which is a small serde round-trip test for `litemap::LiteMap` that serializes a map to JSON and deserializes it back. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.\nReviewed .cargo_vcs_info.json, which only records the crate's git commit SHA1 and original path in the upstream repository. I found no concrete malicious or supply-chain indicators in this target file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6a762a064b199ec783c2be95ffe988b1ada9ecf45595aba05a4b8c9a28d116a1"
+          "agent_run_metrics": {
+            "duration_ms": 12124,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059958621,
+            "finished_at_unix_ms": 1784059970745,
+            "total_token_usage": {
+              "input_tokens": 25824,
+              "cached_input_tokens": 23296,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 204,
+              "total_tokens": 26225
+            },
+            "last_token_usage": {
+              "input_tokens": 25824,
+              "cached_input_tokens": 23296,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 204,
+              "total_tokens": 26225
+            }
           },
-          "summary": "Reviewed `src/lib.rs`, which is a crate root for `litemap` that only declares `no_std`/feature gates, module wiring, and public re-exports. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/language_names_hash_map.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a45137195f7b8956f086e262dff6d2cba1d6d0fe2b4d3dada9cb9709dd679549"
-          },
-          "summary": "Reviewed this example benchmark file, which only builds a small `HashMap<Language, &str>` from static language-name data and asserts lookup behavior. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators, and found none.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/language_names_lite_map.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2c30f4accf3446f7a6c1bc48dfb1c4eb63010131f6e34fd6488a2be3d5ab7651"
-          },
-          "summary": "Reviewed `examples/language_names_lite_map.rs`, which is a small Rust example that builds a `LiteMap` from static language-name data and performs a couple of lookup assertions. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -750,28 +1133,68 @@
             "algorithm": "blake3",
             "value": "2116a554342fa940d813618b9aa1462f56c460c6bf469de1fd71c8db43e94db4"
           },
-          "summary": "Reviewed `tests/serde.rs`, which is a small serde round-trip test for `litemap::LiteMap` that serializes a map to JSON and deserializes it back. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `tests/serde.rs`, which is a small serde round-trip test for `LiteMap` JSON serialization and deserialization. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 23457,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059970746,
+            "finished_at_unix_ms": 1784059994203,
+            "total_token_usage": {
+              "input_tokens": 24239,
+              "cached_input_tokens": 23296,
+              "output_tokens": 344,
+              "reasoning_output_tokens": 156,
+              "total_tokens": 24583
+            },
+            "last_token_usage": {
+              "input_tokens": 24239,
+              "cached_input_tokens": 23296,
+              "output_tokens": 344,
+              "reasoning_output_tokens": 156,
+              "total_tokens": 24583
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "tests/store.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "f801ae5cf0da18bc7af962b66b67c653c3009a83e5aafd3d363c71538f58a14a"
+            "value": "68e8cb7b047439a172ce160b79d78fc5f24bcbaba5488ee837ab3ce05400b99c"
           },
-          "summary": "Reviewed .cargo_vcs_info.json, which only records the crate's git commit SHA1 and original path in the upstream repository. I found no concrete malicious or supply-chain indicators in this target file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed a Rust test module that defines a `Vec` wrapper and trait impls to exercise `litemap` store behavior. I checked the file for install-time hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22503,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059994203,
+            "finished_at_unix_ms": 1784060016707,
+            "total_token_usage": {
+              "input_tokens": 40827,
+              "cached_input_tokens": 36480,
+              "output_tokens": 592,
+              "reasoning_output_tokens": 290,
+              "total_tokens": 41419
+            },
+            "last_token_usage": {
+              "input_tokens": 40827,
+              "cached_input_tokens": 36480,
+              "output_tokens": 592,
+              "reasoning_output_tokens": 290,
+              "total_tokens": 41419
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_f4fc3ae061c342dd9d4f561dac0a688d",
+      "id": "rev_fe4dcb8c564e4ebaa62593fc0ee3a073",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -779,22 +1202,169 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782839650",
+      "created_at": "1784046291",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the Rust `LiteMap` implementation in `src/map.rs`, including constructors, lookup/mutation APIs, const search helpers, iterators, and extension logic. No concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence were found in this file.",
       "files": [
         {
-          "file_path": "src/map.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "95470d80f0e75d45e01add1851721a24b362f71f58ce5e70d67b318f392784cd"
+            "value": "f801ae5cf0da18bc7af962b66b67c653c3009a83e5aafd3d363c71538f58a14a"
           },
-          "summary": "Reviewed the Rust `LiteMap` implementation in `src/map.rs`, including constructors, lookup/mutation APIs, const search helpers, iterators, and extension logic. No concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence were found in this file.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the crate's VCS commit SHA and repository path metadata. It contains no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12594,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046230779,
+            "finished_at_unix_ms": 1784046243373,
+            "total_token_usage": {
+              "input_tokens": 24088,
+              "cached_input_tokens": 21248,
+              "output_tokens": 357,
+              "reasoning_output_tokens": 182,
+              "total_tokens": 24445
+            },
+            "last_token_usage": {
+              "input_tokens": 24088,
+              "cached_input_tokens": 21248,
+              "output_tokens": 357,
+              "reasoning_output_tokens": 182,
+              "total_tokens": 24445
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "06efd3343e48e1894d1201a5c297e596004def7061a16b14fb35915015bf6ac2"
+          },
+          "summary": "Reviewed the generated Cargo.toml for litemap 0.8.2. It defines a normal library manifest with feature flags, test/bench targets, and dependency declarations; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10657,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046243373,
+            "finished_at_unix_ms": 1784046254031,
+            "total_token_usage": {
+              "input_tokens": 25239,
+              "cached_input_tokens": 21248,
+              "output_tokens": 393,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 25632
+            },
+            "last_token_usage": {
+              "input_tokens": 25239,
+              "cached_input_tokens": 21248,
+              "output_tokens": 393,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 25632
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "01158629234b513879378629d95c4e908297b24006c4c3be05550af658d08da9"
+          },
+          "summary": "Reviewed the README for the `litemap` crate, which documents a small flat-map implementation, its performance characteristics, backend options, and const construction. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found no concrete malicious or supply-chain signals in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13089,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046254031,
+            "finished_at_unix_ms": 1784046267120,
+            "total_token_usage": {
+              "input_tokens": 24719,
+              "cached_input_tokens": 21248,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 25148
+            },
+            "last_token_usage": {
+              "input_tokens": 24719,
+              "cached_input_tokens": 21248,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 25148
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/litemap.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "525a4de0662f261e6e0d1b8d366d99488f28812725175b2e2654e3f5abd3de3d"
+          },
+          "summary": "Reviewed `benches/litemap.rs`, which contains Criterion benchmarks for `LiteMap` deserialization, lookup, iteration, and extension using static in-memory test data and postcard-encoded fixtures. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11075,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046267121,
+            "finished_at_unix_ms": 1784046278196,
+            "total_token_usage": {
+              "input_tokens": 26427,
+              "cached_input_tokens": 21248,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 176,
+              "total_tokens": 26806
+            },
+            "last_token_usage": {
+              "input_tokens": 26427,
+              "cached_input_tokens": 21248,
+              "output_tokens": 379,
+              "reasoning_output_tokens": 176,
+              "total_tokens": 26806
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/language_names_hash_map.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a45137195f7b8956f086e262dff6d2cba1d6d0fe2b4d3dada9cb9709dd679549"
+          },
+          "summary": "Reviewed this Rust example program, which builds a small `HashMap<Language, &str>` from static language-name pairs and asserts a few lookups. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload indicators, and found none in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13314,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046278197,
+            "finished_at_unix_ms": 1784046291511,
+            "total_token_usage": {
+              "input_tokens": 37513,
+              "cached_input_tokens": 35456,
+              "output_tokens": 466,
+              "reasoning_output_tokens": 163,
+              "total_tokens": 37979
+            },
+            "last_token_usage": {
+              "input_tokens": 37513,
+              "cached_input_tokens": 35456,
+              "output_tokens": 466,
+              "reasoning_output_tokens": 163,
+              "total_tokens": 37979
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

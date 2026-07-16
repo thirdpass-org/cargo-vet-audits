@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590375",
+  "latest_reviewed_at": "1784058352",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -313,50 +319,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 4,
-      "file_record_count": 18,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 5
+      "review_count": 6,
+      "file_record_count": 28,
+      "file_record_count_with_metrics": 28
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 23,
-    "file_records_with_metrics": 5,
-    "file_records_without_metrics": 18,
-    "duration_ms_total": 62539,
-    "attempts_total": 5,
+    "reviewed_file_records": 28,
+    "file_records_with_metrics": 28,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 448662,
+    "attempts_total": 28,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 5,
-    "last_token_usage_records": 5,
+    "total_token_usage_records": 28,
+    "last_token_usage_records": 28,
     "total_token_usage": {
-      "input_tokens": 106517,
-      "cached_input_tokens": 88320,
-      "output_tokens": 1897,
-      "reasoning_output_tokens": 934,
-      "total_tokens": 108414
+      "input_tokens": 763608,
+      "cached_input_tokens": 652544,
+      "output_tokens": 13201,
+      "reasoning_output_tokens": 6960,
+      "total_tokens": 776809
     },
     "last_token_usage": {
-      "input_tokens": 106517,
-      "cached_input_tokens": 88320,
-      "output_tokens": 1897,
-      "reasoning_output_tokens": 934,
-      "total_tokens": 108414
+      "input_tokens": 763608,
+      "cached_input_tokens": 652544,
+      "output_tokens": 13201,
+      "reasoning_output_tokens": 6960,
+      "total_tokens": 776809
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_0c07dc0795704136a827b8e4b3461af2",
+      "id": "rev_0556e4a12ea540d5adbd25b8b1d00517",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -364,22 +362,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782819326",
+      "created_at": "1784045852",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/error.rs`, which is a small Rust error-wrapper module for the `autocfg` crate. It only defines an `Error` type, maps I/O, parse, UTF-8, process-exit, and static-string errors into displayable variants, and I found no concrete malicious or supply-chain indicators such as install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.\nReviewed the normalized Cargo manifest for `autocfg` 1.5.1. It only declares package metadata, a library target, examples, and tests; I found no install hooks, network or exfiltration settings, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `src/version.rs`, which defines a small `Version` type and parses `rustc --version --verbose` output to extract `major.minor.patch` for comparisons. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/tests.rs`, which contains only unit tests for version ordering and target-directory path matching. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/rustflags.rs`, a Rust test that mutates `RUSTFLAGS`, `CARGO_ENCODED_RUSTFLAGS`, and `HOST` to verify `autocfg` respects compiler flag precedence when probing sysroot crates. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in the target file.",
       "files": [
         {
-          "file_path": "src/error.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "df0b6e2a941b23c393b068d917e4fd015c64d65d91f7d7825daf8b4411c870d6"
+            "value": "95566d70a985b380e53bee77c0440f2bddaf766c106c881009a3eb8699c76e3a"
           },
-          "summary": "Reviewed `src/error.rs`, which is a small Rust error-wrapper module for the `autocfg` crate. It only defines an `Error` type, maps I/O, parse, UTF-8, process-exit, and static-string errors into displayable variants, and I found no concrete malicious or supply-chain indicators such as install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
+          "summary": "I reviewed .cargo_vcs_info.json, which only contains VCS provenance metadata (a git SHA1 and an empty path_in_vcs). I found no concrete malicious or supply-chain indicators in this file, and there were no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior to review here.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12105,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045755732,
+            "finished_at_unix_ms": 1784045767838,
+            "total_token_usage": {
+              "input_tokens": 24016,
+              "cached_input_tokens": 21248,
+              "output_tokens": 388,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 24404
+            },
+            "last_token_usage": {
+              "input_tokens": 24016,
+              "cached_input_tokens": 21248,
+              "output_tokens": 388,
+              "reasoning_output_tokens": 190,
+              "total_tokens": 24404
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -389,165 +406,29 @@
             "algorithm": "blake3",
             "value": "dd7ba7260ed01f3d027a4278f1f8d65b37fe3d6d466ec80ab82db2515c5664ce"
           },
-          "summary": "Reviewed the normalized Cargo manifest for `autocfg` 1.5.1. It only declares package metadata, a library target, examples, and tests; I found no install hooks, network or exfiltration settings, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed the crate manifest in `Cargo.toml` for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. The file only declares normal package metadata, library/test/example targets, and no build script or other hooks that would execute code during install.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/version.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5aa8b0b2bb4b5552135ada0aaa5023db7455faca8e430002b127d7fe44ee8920"
+          "agent_run_metrics": {
+            "duration_ms": 12093,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045767838,
+            "finished_at_unix_ms": 1784045779932,
+            "total_token_usage": {
+              "input_tokens": 24380,
+              "cached_input_tokens": 21248,
+              "output_tokens": 368,
+              "reasoning_output_tokens": 182,
+              "total_tokens": 24748
+            },
+            "last_token_usage": {
+              "input_tokens": 24380,
+              "cached_input_tokens": 21248,
+              "output_tokens": 368,
+              "reasoning_output_tokens": 182,
+              "total_tokens": 24748
+            }
           },
-          "summary": "Reviewed `src/version.rs`, which defines a small `Version` type and parses `rustc --version --verbose` output to extract `major.minor.patch` for comparisons. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/tests.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "954529688b8ede4e473a91a62dc1bb4ba67d1c7f3bb13eccc4b992ecdbce106d"
-          },
-          "summary": "Reviewed `src/tests.rs`, which contains only unit tests for version ordering and target-directory path matching. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/rustflags.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "99efbcf069f892b36e51b75ebe075a1f5614412259509e6d1e6013746371d093"
-          },
-          "summary": "Reviewed `tests/rustflags.rs`, a Rust test that mutates `RUSTFLAGS`, `CARGO_ENCODED_RUSTFLAGS`, and `HOST` to verify `autocfg` respects compiler flag precedence when probing sysroot crates. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_990d7591e2f14c4b975e24e85cb4201b",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782819415",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/no_std.rs`, which is a small Rust test that clears the `TARGET` environment variable and exercises `autocfg::AutoCfg` probing for `std` versus `core` behavior under `#![no_std]`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\n`examples/traits.rs` is a small Rust example that creates an `autocfg::AutoCfg` helper pointing at a local `target` directory and emits feature flags for several standard-library traits. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `examples/paths.rs`, which is a small Rust example that constructs `autocfg::AutoCfg` and emits compile-time path probes for standard library types. I checked it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/support/mod.rs`, which only provides small test helpers for locating the test binary directory and choosing an output directory from compile-time or local environment state. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators.\nReviewed `examples/nightly.rs`, a small Rust example that uses `autocfg::AutoCfg::with_dir(\"target\")` and `probe_raw` to compile-test the `slice_group_by` nightly feature before emitting a cfg flag. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
-      "files": [
-        {
-          "file_path": "tests/no_std.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b943001859666dd0c109d9cfa14beaf50141442240fa974afd0db13330d3f7cd"
-          },
-          "summary": "Reviewed `tests/no_std.rs`, which is a small Rust test that clears the `TARGET` environment variable and exercises `autocfg::AutoCfg` probing for `std` versus `core` behavior under `#![no_std]`. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/traits.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "98cc4f69024d323b1416940ed031224e436bb5316a057e296f32ffe41bfb958f"
-          },
-          "summary": "`examples/traits.rs` is a small Rust example that creates an `autocfg::AutoCfg` helper pointing at a local `target` directory and emits feature flags for several standard-library traits. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/paths.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4486a50385510f22510cd17164b49fa0f678b25d09bd414d00cf4707d6934ce5"
-          },
-          "summary": "Reviewed `examples/paths.rs`, which is a small Rust example that constructs `autocfg::AutoCfg` and emits compile-time path probes for standard library types. I checked it for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/support/mod.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c96046cf41a7002f0ddf0d7a517e92e03f80660e85aac748ca7b4328aa8356b2"
-          },
-          "summary": "Reviewed `tests/support/mod.rs`, which only provides small test helpers for locating the test binary directory and choosing an output directory from compile-time or local environment state. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/nightly.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d8089652a5edc5a7cecaedb5ac476790766a3c252d8e27b6ae009b70eabe9094"
-          },
-          "summary": "Reviewed `examples/nightly.rs`, a small Rust example that uses `autocfg::AutoCfg::with_dir(\"target\")` and `probe_raw` to compile-test the `slice_group_by` nightly feature before emitting a cfg flag. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_a1355e39111541139e6e98d9551f442c",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782819250",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/lib.rs` is a Rust build-helper library that probes `rustc` by spawning it with generated snippets, then emits Cargo `cfg` directives based on compiler feature support. I reviewed the file for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this target file.\n`tests/tests.rs` is a Rust test suite for `autocfg` that exercises compiler feature probes, edition handling, raw snippet compilation, and temporary directory cleanup. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.\nReviewed `README.md`, which documents the `autocfg` Rust build-time feature-detection library and its usage, release notes, and licensing. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise signals in this file.\n`src/rustc.rs` is a small helper for constructing and probing `rustc` command invocations, including optional `RUSTC_WRAPPER` and `RUSTC_WORKSPACE_WRAPPER` handling from the environment. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/wrappers.rs`, which is a test harness for `autocfg` wrapper handling: it sets `RUSTC_WRAPPER`/`RUSTC_WORKSPACE_WRAPPER`, exercises `probe_type` and `probe_rustc_version`, and simulates a no-op wrapper via `current_exe()`. I found no concrete malicious or supply-chain indicators in this file; there are no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors here.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "91170b19e60c3bfff86f2487eea0cd2b1276cf41027ee1b411c8a0415bd7b7f0"
-          },
-          "summary": "`src/lib.rs` is a Rust build-helper library that probes `rustc` by spawning it with generated snippets, then emits Cargo `cfg` directives based on compiler feature support. I reviewed the file for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/tests.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a2481331bc01a685da38398b5aaf177ae810831a12d595cdfcf76ab6bd83a4d6"
-          },
-          "summary": "`tests/tests.rs` is a Rust test suite for `autocfg` that exercises compiler feature probes, edition handling, raw snippet compilation, and temporary directory cleanup. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -557,33 +438,270 @@
             "algorithm": "blake3",
             "value": "3e087f7a88bece9917c540b5a6ae649d1e45b473bf91d52896880aef07377f48"
           },
-          "summary": "Reviewed `README.md`, which documents the `autocfg` Rust build-time feature-detection library and its usage, release notes, and licensing. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise signals in this file.",
+          "summary": "Reviewed the crate README, which documents the `autocfg` build-helper API, usage in `build.rs`, and release notes. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 44338,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045779932,
+            "finished_at_unix_ms": 1784045824271,
+            "total_token_usage": {
+              "input_tokens": 25081,
+              "cached_input_tokens": 21248,
+              "output_tokens": 322,
+              "reasoning_output_tokens": 135,
+              "total_tokens": 25403
+            },
+            "last_token_usage": {
+              "input_tokens": 25081,
+              "cached_input_tokens": 21248,
+              "output_tokens": 322,
+              "reasoning_output_tokens": 135,
+              "total_tokens": 25403
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/rustc.rs",
+          "file_path": "examples/integers.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "7445c2c39862f60de13b464ef736a01dd2318898366da329988d7c3be30026e6"
+            "value": "53c0f8f196fbae5f3b51d510b16f66b5d8b238cf0aebeb96822d1d2a9fbf201f"
           },
-          "summary": "`src/rustc.rs` is a small helper for constructing and probing `rustc` command invocations, including optional `RUSTC_WRAPPER` and `RUSTC_WORKSPACE_WRAPPER` handling from the environment. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "summary": "This example program instantiates `autocfg::AutoCfg` against the local `target` directory and emits `has_type` checks for integer types from `i8` through `i128`; I found no evidence in this file of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12580,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045824272,
+            "finished_at_unix_ms": 1784045836852,
+            "total_token_usage": {
+              "input_tokens": 24019,
+              "cached_input_tokens": 13568,
+              "output_tokens": 532,
+              "reasoning_output_tokens": 327,
+              "total_tokens": 24551
+            },
+            "last_token_usage": {
+              "input_tokens": 24019,
+              "cached_input_tokens": 13568,
+              "output_tokens": 532,
+              "reasoning_output_tokens": 327,
+              "total_tokens": 24551
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/wrappers.rs",
+          "file_path": "examples/nightly.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "58203e5bc03ad1cfd30a5de167fdce79e5ca8eefb54adff0398a7d1619ead48d"
+            "value": "d8089652a5edc5a7cecaedb5ac476790766a3c252d8e27b6ae009b70eabe9094"
           },
-          "summary": "Reviewed `tests/wrappers.rs`, which is a test harness for `autocfg` wrapper handling: it sets `RUSTC_WRAPPER`/`RUSTC_WORKSPACE_WRAPPER`, exercises `probe_type` and `probe_rustc_version`, and simulates a no-op wrapper via `current_exe()`. I found no concrete malicious or supply-chain indicators in this file; there are no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors here.",
+          "summary": "Reviewed `examples/nightly.rs`, an example binary that probes a Rust nightly feature by compiling a small inline snippet with `autocfg` and emitting a cfg flag on success. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15691,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045836853,
+            "finished_at_unix_ms": 1784045852544,
+            "total_token_usage": {
+              "input_tokens": 50337,
+              "cached_input_tokens": 38400,
+              "output_tokens": 644,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 50981
+            },
+            "last_token_usage": {
+              "input_tokens": 50337,
+              "cached_input_tokens": 38400,
+              "output_tokens": 644,
+              "reasoning_output_tokens": 265,
+              "total_tokens": 50981
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_5556200cdcf7439285ac1e09d733c4e2",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054569",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "examples/paths.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4486a50385510f22510cd17164b49fa0f678b25d09bd414d00cf4707d6934ce5"
+          },
+          "summary": "Reviewed `examples/paths.rs`, which is a small example binary that constructs `autocfg::AutoCfg` and emits feature cfgs for a handful of standard-library paths. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16255,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054494778,
+            "finished_at_unix_ms": 1784054511034,
+            "total_token_usage": {
+              "input_tokens": 24285,
+              "cached_input_tokens": 21248,
+              "output_tokens": 478,
+              "reasoning_output_tokens": 282,
+              "total_tokens": 24763
+            },
+            "last_token_usage": {
+              "input_tokens": 24285,
+              "cached_input_tokens": 21248,
+              "output_tokens": 478,
+              "reasoning_output_tokens": 282,
+              "total_tokens": 24763
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/traits.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "98cc4f69024d323b1416940ed031224e436bb5316a057e296f32ffe41bfb958f"
+          },
+          "summary": "Reviewed `examples/traits.rs`, a small example program that constructs an `autocfg::AutoCfg` and emits trait-detection cfgs for standard library traits. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13839,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054511035,
+            "finished_at_unix_ms": 1784054524874,
+            "total_token_usage": {
+              "input_tokens": 24883,
+              "cached_input_tokens": 21760,
+              "output_tokens": 522,
+              "reasoning_output_tokens": 223,
+              "total_tokens": 25405
+            },
+            "last_token_usage": {
+              "input_tokens": 24883,
+              "cached_input_tokens": 21760,
+              "output_tokens": 522,
+              "reasoning_output_tokens": 223,
+              "total_tokens": 25405
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/versions.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "35453ecea45a93205d68c9d290a9eea14e7a33ffef7f3fdb15390c0e36644af0"
+          },
+          "summary": "The target file is a small example program that constructs `autocfg::AutoCfg` with a local `target` directory and repeatedly calls `emit_rustc_version`; I checked it for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13212,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054524874,
+            "finished_at_unix_ms": 1784054538087,
+            "total_token_usage": {
+              "input_tokens": 24152,
+              "cached_input_tokens": 21248,
+              "output_tokens": 436,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 24588
+            },
+            "last_token_usage": {
+              "input_tokens": 24152,
+              "cached_input_tokens": 21248,
+              "output_tokens": 436,
+              "reasoning_output_tokens": 237,
+              "total_tokens": 24588
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/error.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "df0b6e2a941b23c393b068d917e4fd015c64d65d91f7d7825daf8b4411c870d6"
+          },
+          "summary": "Reviewed `src/error.rs`, which defines the `autocfg` crate's `Error` wrapper, its `ErrorKind` variants, and helper constructors for I/O, parse, UTF-8, and process-exit failures. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess behavior beyond formatting an exit-status error.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12653,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054538088,
+            "finished_at_unix_ms": 1784054550741,
+            "total_token_usage": {
+              "input_tokens": 24601,
+              "cached_input_tokens": 21248,
+              "output_tokens": 481,
+              "reasoning_output_tokens": 259,
+              "total_tokens": 25082
+            },
+            "last_token_usage": {
+              "input_tokens": 24601,
+              "cached_input_tokens": 21248,
+              "output_tokens": 481,
+              "reasoning_output_tokens": 259,
+              "total_tokens": 25082
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "91170b19e60c3bfff86f2487eea0cd2b1276cf41027ee1b411c8a0415bd7b7f0"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a build-script helper for probing `rustc` capabilities and emitting Cargo cfg directives. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, persistence, and hidden payload execution, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18623,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054550742,
+            "finished_at_unix_ms": 1784054569366,
+            "total_token_usage": {
+              "input_tokens": 61287,
+              "cached_input_tokens": 52224,
+              "output_tokens": 743,
+              "reasoning_output_tokens": 340,
+              "total_tokens": 62030
+            },
+            "last_token_usage": {
+              "input_tokens": 61287,
+              "cached_input_tokens": 52224,
+              "output_tokens": 743,
+              "reasoning_output_tokens": 340,
+              "total_tokens": 62030
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -599,7 +717,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590375",
       "thirdpass_version": "0.6.0",
@@ -767,7 +885,7 @@
       ]
     },
     {
-      "id": "rev_f64fe1e5dd45440392bb2591cb51a311",
+      "id": "rev_bbb394e3c5f44802afc9c92723df4d60",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -775,46 +893,459 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782819451",
+      "created_at": "1784051811",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `examples/integers.rs`, which is a small example program that instantiates `autocfg::AutoCfg` with a local `target` directory and emits type-detection flags for a few integer widths. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence-related actions, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `examples/versions.rs`, which is a small example program that constructs `autocfg::AutoCfg` with a local `target` directory and emits Rust compiler version checks in a loop. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.\nReviewed the `.cargo_vcs_info.json` metadata file, which only records the package git SHA1 and an empty `path_in_vcs`. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
       "files": [
-        {
-          "file_path": "examples/integers.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "53c0f8f196fbae5f3b51d510b16f66b5d8b238cf0aebeb96822d1d2a9fbf201f"
-          },
-          "summary": "Reviewed `examples/integers.rs`, which is a small example program that instantiates `autocfg::AutoCfg` with a local `target` directory and emits type-detection flags for a few integer widths. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence-related actions, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "examples/versions.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "35453ecea45a93205d68c9d290a9eea14e7a33ffef7f3fdb15390c0e36644af0"
-          },
-          "summary": "Reviewed `examples/versions.rs`, which is a small example program that constructs `autocfg::AutoCfg` with a local `target` directory and emits Rust compiler version checks in a loop. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "95566d70a985b380e53bee77c0440f2bddaf766c106c881009a3eb8699c76e3a"
           },
-          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the package git SHA1 and an empty `path_in_vcs`. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package git SHA and an empty VCS path. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10954,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051740379,
+            "finished_at_unix_ms": 1784051751333,
+            "total_token_usage": {
+              "input_tokens": 24114,
+              "cached_input_tokens": 21248,
+              "output_tokens": 333,
+              "reasoning_output_tokens": 150,
+              "total_tokens": 24447
+            },
+            "last_token_usage": {
+              "input_tokens": 24114,
+              "cached_input_tokens": 21248,
+              "output_tokens": 333,
+              "reasoning_output_tokens": 150,
+              "total_tokens": 24447
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dd7ba7260ed01f3d027a4278f1f8d65b37fe3d6d466ec80ab82db2515c5664ce"
+          },
+          "summary": "I reviewed the normalized Cargo.toml for autocfg 1.5.1 and found only package metadata, library/example/test declarations, and standard crate fields. I checked for install hooks, network or exfiltration settings, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14218,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051751334,
+            "finished_at_unix_ms": 1784051765552,
+            "total_token_usage": {
+              "input_tokens": 24526,
+              "cached_input_tokens": 21248,
+              "output_tokens": 416,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 24942
+            },
+            "last_token_usage": {
+              "input_tokens": 24526,
+              "cached_input_tokens": 21248,
+              "output_tokens": 416,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 24942
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3e087f7a88bece9917c540b5a6ae649d1e45b473bf91d52896880aef07377f48"
+          },
+          "summary": "Reviewed README.md, a plain usage and release-notes document for the autocfg crate. I checked for install hooks, hidden execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20391,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051765553,
+            "finished_at_unix_ms": 1784051785944,
+            "total_token_usage": {
+              "input_tokens": 25763,
+              "cached_input_tokens": 23296,
+              "output_tokens": 571,
+              "reasoning_output_tokens": 389,
+              "total_tokens": 26334
+            },
+            "last_token_usage": {
+              "input_tokens": 25763,
+              "cached_input_tokens": 23296,
+              "output_tokens": 571,
+              "reasoning_output_tokens": 389,
+              "total_tokens": 26334
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/integers.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "53c0f8f196fbae5f3b51d510b16f66b5d8b238cf0aebeb96822d1d2a9fbf201f"
+          },
+          "summary": "Reviewed `examples/integers.rs`, which is a small example `main` that constructs `autocfg::AutoCfg` in `target` and emits `has_type` checks for the integer types `i8` through `i128`. I found no concrete indicators of install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13020,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051785944,
+            "finished_at_unix_ms": 1784051798965,
+            "total_token_usage": {
+              "input_tokens": 24176,
+              "cached_input_tokens": 21248,
+              "output_tokens": 449,
+              "reasoning_output_tokens": 234,
+              "total_tokens": 24625
+            },
+            "last_token_usage": {
+              "input_tokens": 24176,
+              "cached_input_tokens": 21248,
+              "output_tokens": 449,
+              "reasoning_output_tokens": 234,
+              "total_tokens": 24625
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/nightly.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d8089652a5edc5a7cecaedb5ac476790766a3c252d8e27b6ae009b70eabe9094"
+          },
+          "summary": "Reviewed `examples/nightly.rs`, which is a small `autocfg` example that probes whether `slice_group_by` is available and emits a cfg flag if the probe compiles. I checked it for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behaviors, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12072,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051798965,
+            "finished_at_unix_ms": 1784051811038,
+            "total_token_usage": {
+              "input_tokens": 24636,
+              "cached_input_tokens": 21760,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 240,
+              "total_tokens": 25079
+            },
+            "last_token_usage": {
+              "input_tokens": 24636,
+              "cached_input_tokens": 21760,
+              "output_tokens": 443,
+              "reasoning_output_tokens": 240,
+              "total_tokens": 25079
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_df50b608f78c4637aed8fd3dd1518c4d",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056633",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/rustc.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7445c2c39862f60de13b464ef736a01dd2318898366da329988d7c3be30026e6"
+          },
+          "summary": "`src/rustc.rs` only constructs `rustc` commands from the `RUSTC`, `RUSTC_WRAPPER`, and `RUSTC_WORKSPACE_WRAPPER` environment variables and probes the compiler version with a few wrapper combinations. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18846,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056555498,
+            "finished_at_unix_ms": 1784056574344,
+            "total_token_usage": {
+              "input_tokens": 24751,
+              "cached_input_tokens": 21248,
+              "output_tokens": 666,
+              "reasoning_output_tokens": 451,
+              "total_tokens": 25417
+            },
+            "last_token_usage": {
+              "input_tokens": 24751,
+              "cached_input_tokens": 21248,
+              "output_tokens": 666,
+              "reasoning_output_tokens": 451,
+              "total_tokens": 25417
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/tests.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "954529688b8ede4e473a91a62dc1bb4ba67d1c7f3bb13eccc4b992ecdbce106d"
+          },
+          "summary": "`src/tests.rs` contains unit tests for version ordering and target-directory path matching in `autocfg`, and I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence. No concrete malicious or supply-chain indicators were found in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12112,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056574344,
+            "finished_at_unix_ms": 1784056586457,
+            "total_token_usage": {
+              "input_tokens": 24519,
+              "cached_input_tokens": 21248,
+              "output_tokens": 454,
+              "reasoning_output_tokens": 266,
+              "total_tokens": 24973
+            },
+            "last_token_usage": {
+              "input_tokens": 24519,
+              "cached_input_tokens": 21248,
+              "output_tokens": 454,
+              "reasoning_output_tokens": 266,
+              "total_tokens": 24973
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/version.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5aa8b0b2bb4b5552135ada0aaa5023db7455faca8e430002b127d7fe44ee8920"
+          },
+          "summary": "`src/version.rs` defines a small `Version` helper that shells out to a caller-supplied `Command` with `--version --verbose` and parses the `release:` line into semantic version components. I checked this file for install-time execution, network or credential access, hidden downloads, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15457,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056586458,
+            "finished_at_unix_ms": 1784056601915,
+            "total_token_usage": {
+              "input_tokens": 24572,
+              "cached_input_tokens": 23296,
+              "output_tokens": 548,
+              "reasoning_output_tokens": 354,
+              "total_tokens": 25120
+            },
+            "last_token_usage": {
+              "input_tokens": 24572,
+              "cached_input_tokens": 23296,
+              "output_tokens": 548,
+              "reasoning_output_tokens": 354,
+              "total_tokens": 25120
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/no_std.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b943001859666dd0c109d9cfa14beaf50141442240fa974afd0db13330d3f7cd"
+          },
+          "summary": "Reviewed `tests/no_std.rs`, which is a small unit test for `autocfg`'s `no_std` probing behavior. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10326,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056601915,
+            "finished_at_unix_ms": 1784056612242,
+            "total_token_usage": {
+              "input_tokens": 24247,
+              "cached_input_tokens": 21248,
+              "output_tokens": 371,
+              "reasoning_output_tokens": 179,
+              "total_tokens": 24618
+            },
+            "last_token_usage": {
+              "input_tokens": 24247,
+              "cached_input_tokens": 21248,
+              "output_tokens": 371,
+              "reasoning_output_tokens": 179,
+              "total_tokens": 24618
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/rustflags.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "99efbcf069f892b36e51b75ebe075a1f5614412259509e6d1e6013746371d093"
+          },
+          "summary": "Reviewed `tests/rustflags.rs`, which is a unit test that sets and clears `RUSTFLAGS`, `CARGO_ENCODED_RUSTFLAGS`, and `HOST` to verify autocfg's rustc flag handling and sysroot crate probing. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence tampering.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21286,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056612243,
+            "finished_at_unix_ms": 1784056633529,
+            "total_token_usage": {
+              "input_tokens": 24503,
+              "cached_input_tokens": 23296,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 275,
+              "total_tokens": 24996
+            },
+            "last_token_usage": {
+              "input_tokens": 24503,
+              "cached_input_tokens": 23296,
+              "output_tokens": 493,
+              "reasoning_output_tokens": 275,
+              "total_tokens": 24996
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_fbfdeabef6f94e9ab2ecaefffebcaf27",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058352",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/support/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c96046cf41a7002f0ddf0d7a517e92e03f80660e85aac748ca7b4328aa8356b2"
+          },
+          "summary": "`tests/support/mod.rs` is a small test helper that derives the test binary directory from `std::env::current_exe()` and selects an output directory from `CARGO_TARGET_TMPDIR`, `TESTS_TARGET_DIR`, or the binary path. I checked it for install-time hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 26480,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058286739,
+            "finished_at_unix_ms": 1784058313220,
+            "total_token_usage": {
+              "input_tokens": 37025,
+              "cached_input_tokens": 33408,
+              "output_tokens": 555,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 37580
+            },
+            "last_token_usage": {
+              "input_tokens": 37025,
+              "cached_input_tokens": 33408,
+              "output_tokens": 555,
+              "reasoning_output_tokens": 245,
+              "total_tokens": 37580
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/tests.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a2481331bc01a685da38398b5aaf177ae810831a12d595cdfcf76ab6bd83a4d6"
+          },
+          "summary": "Reviewed `tests/tests.rs`, which is a Rust test suite exercising `autocfg` probing behavior across traits, types, expressions, constants, editions, and cleanup. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 26140,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058313220,
+            "finished_at_unix_ms": 1784058339361,
+            "total_token_usage": {
+              "input_tokens": 42125,
+              "cached_input_tokens": 34944,
+              "output_tokens": 567,
+              "reasoning_output_tokens": 276,
+              "total_tokens": 42692
+            },
+            "last_token_usage": {
+              "input_tokens": 42125,
+              "cached_input_tokens": 34944,
+              "output_tokens": 567,
+              "reasoning_output_tokens": 276,
+              "total_tokens": 42692
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/wrappers.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "58203e5bc03ad1cfd30a5de167fdce79e5ca8eefb54adff0398a7d1619ead48d"
+          },
+          "summary": "Reviewed `tests/wrappers.rs`, which implements a test-only wrapper binary that either runs wrapper-behavior tests on Unix or behaves like a no-op `rustc` shim by printing a fixed version string and draining stdin. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13432,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058339361,
+            "finished_at_unix_ms": 1784058352794,
+            "total_token_usage": {
+              "input_tokens": 25093,
+              "cached_input_tokens": 23296,
+              "output_tokens": 524,
+              "reasoning_output_tokens": 319,
+              "total_tokens": 25617
+            },
+            "last_token_usage": {
+              "input_tokens": 25093,
+              "cached_input_tokens": 23296,
+              "output_tokens": 524,
+              "reasoning_output_tokens": 319,
+              "total_tokens": 25617
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

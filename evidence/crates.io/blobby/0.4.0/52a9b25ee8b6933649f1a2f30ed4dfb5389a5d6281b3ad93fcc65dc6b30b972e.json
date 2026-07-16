@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590856",
+  "latest_reviewed_at": "1784055377",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -215,50 +221,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 2,
-      "file_record_count": 10,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 7,
+      "file_record_count": 34,
+      "file_record_count_with_metrics": 34
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 14,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 10,
-    "duration_ms_total": 69361,
-    "attempts_total": 4,
+    "reviewed_file_records": 34,
+    "file_records_with_metrics": 34,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 525125,
+    "attempts_total": 34,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 34,
+    "last_token_usage_records": 34,
     "total_token_usage": {
-      "input_tokens": 106096,
-      "cached_input_tokens": 90880,
-      "output_tokens": 1702,
-      "reasoning_output_tokens": 781,
-      "total_tokens": 107798
+      "input_tokens": 923219,
+      "cached_input_tokens": 797824,
+      "output_tokens": 17656,
+      "reasoning_output_tokens": 10361,
+      "total_tokens": 940875
     },
     "last_token_usage": {
-      "input_tokens": 106096,
-      "cached_input_tokens": 90880,
-      "output_tokens": 1702,
-      "reasoning_output_tokens": 781,
-      "total_tokens": 107798
+      "input_tokens": 923219,
+      "cached_input_tokens": 797824,
+      "output_tokens": 17656,
+      "reasoning_output_tokens": 10361,
+      "total_tokens": 940875
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_3ed1aad5a7184045907bdceb4d6cee41",
+      "id": "rev_228c335040b549ce8e4548d39731a502",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -266,22 +264,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782857187",
+      "created_at": "1784053004",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the normalized `Cargo.toml` for `blobby` 0.4.0. It contains only package metadata, a single optional `alloc` feature, explicit library/bin targets, and `build = false`; I found no install hooks, dependency fetches, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `CHANGELOG.md`, which is a plain release-history document for `blobby` 0.1.0 through 0.4.0. It contains only version notes and source links; I found no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.\nReviewed `src/lib.rs`, the crate root for a `no_std` Rust library that only declares internal `decode`/`encode` modules, re-exports parsing/encoding APIs, and defines a small `Error` enum. I found no concrete indicators in this file of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.\nReviewed `tests/mod.rs`, which contains an `alloc`-gated roundtrip test for `blobby::encode_blobs`, `parse_into_array`, and `parse_into_vec` using fixed in-memory byte slices and size assertions. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in the target file.\nReviewed `.cargo_vcs_info.json`, which is a small Cargo source-control metadata file containing the upstream Git SHA1 and `path_in_vcs`. It does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or other executable behavior.",
       "files": [
         {
-          "file_path": "Cargo.toml",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "604f153a07d844fa85b4770c440221d8908767363cbc47af1811f9441d38678c"
+            "value": "8bc05615500e59c7555e58c7232f4c74f403088ad0c0f36e3698c6f68e6385b8"
           },
-          "summary": "Reviewed the normalized `Cargo.toml` for `blobby` 0.4.0. It contains only package metadata, a single optional `alloc` feature, explicit library/bin targets, and `build = false`; I found no install hooks, dependency fetches, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "summary": "Reviewed the crate VCS metadata in `.cargo_vcs_info.json`, which only records the source git commit SHA and `path_in_vcs` entry. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18319,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052921182,
+            "finished_at_unix_ms": 1784052939501,
+            "total_token_usage": {
+              "input_tokens": 24129,
+              "cached_input_tokens": 21248,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 24533
+            },
+            "last_token_usage": {
+              "input_tokens": 24129,
+              "cached_input_tokens": 21248,
+              "output_tokens": 404,
+              "reasoning_output_tokens": 209,
+              "total_tokens": 24533
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -291,45 +308,125 @@
             "algorithm": "blake3",
             "value": "9a1230ab9687f46e54e4b4d51101067e423567c67e06c0ac979f4eeaca710319"
           },
-          "summary": "Reviewed `CHANGELOG.md`, which is a plain release-history document for `blobby` 0.1.0 through 0.4.0. It contains only version notes and source links; I found no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.",
+          "summary": "Reviewed this changelog entry file and found only release notes for versions 0.1.0 through 0.4.0, including edition/MSRV changes and storage-format updates. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in the target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15627,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052939502,
+            "finished_at_unix_ms": 1784052955129,
+            "total_token_usage": {
+              "input_tokens": 24508,
+              "cached_input_tokens": 21248,
+              "output_tokens": 446,
+              "reasoning_output_tokens": 252,
+              "total_tokens": 24954
+            },
+            "last_token_usage": {
+              "input_tokens": 24508,
+              "cached_input_tokens": 21248,
+              "output_tokens": 446,
+              "reasoning_output_tokens": 252,
+              "total_tokens": 24954
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/lib.rs",
+          "file_path": "Cargo.toml",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "487d1b87ca789b8412c466e72582f2f08e341951b6549d314ab51ded3bd1572b"
+            "value": "604f153a07d844fa85b4770c440221d8908767363cbc47af1811f9441d38678c"
           },
-          "summary": "Reviewed `src/lib.rs`, the crate root for a `no_std` Rust library that only declares internal `decode`/`encode` modules, re-exports parsing/encoding APIs, and defines a small `Error` enum. I found no concrete indicators in this file of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
+          "summary": "Reviewed the normalized Cargo.toml for package metadata, features, library/bin targets, and any install-time or runtime hooks. It only declares the blobby crate, two local binaries, and a test target; no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence were present.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15517,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052955130,
+            "finished_at_unix_ms": 1784052970647,
+            "total_token_usage": {
+              "input_tokens": 24413,
+              "cached_input_tokens": 21248,
+              "output_tokens": 681,
+              "reasoning_output_tokens": 485,
+              "total_tokens": 25094
+            },
+            "last_token_usage": {
+              "input_tokens": 24413,
+              "cached_input_tokens": 21248,
+              "output_tokens": 681,
+              "reasoning_output_tokens": 485,
+              "total_tokens": 25094
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/mod.rs",
+          "file_path": "README.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "1c80340d9a35b558f035556e38a701ef3891ba33d2c44d4a33e6972255f31c62"
+            "value": "6db64deb6d9d46c723ec438c031bc4a054697136d1cb2f52d691a5600d35345a"
           },
-          "summary": "Reviewed `tests/mod.rs`, which contains an `alloc`-gated roundtrip test for `blobby::encode_blobs`, `parse_into_array`, and `parse_into_vec` using fixed in-memory byte slices and size assertions. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise behavior in the target file.",
+          "summary": "README.md documents the Blobby crate, including example usage and cargo-based encode/decode commands for the file format. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19437,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052970648,
+            "finished_at_unix_ms": 1784052990086,
+            "total_token_usage": {
+              "input_tokens": 26096,
+              "cached_input_tokens": 21248,
+              "output_tokens": 580,
+              "reasoning_output_tokens": 394,
+              "total_tokens": 26676
+            },
+            "last_token_usage": {
+              "input_tokens": 26096,
+              "cached_input_tokens": 21248,
+              "output_tokens": 580,
+              "reasoning_output_tokens": 394,
+              "total_tokens": 26676
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": ".cargo_vcs_info.json",
+          "file_path": "src/bin/decode.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "8bc05615500e59c7555e58c7232f4c74f403088ad0c0f36e3698c6f68e6385b8"
+            "value": "874cc16b1b9d9929a3ff18633c1fcc8664f428a1cef9ba50ac80377579596d8d"
           },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which is a small Cargo source-control metadata file containing the upstream Git SHA1 and `path_in_vcs`. It does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or other executable behavior.",
+          "summary": "Reviewed the `decode` CLI in `src/bin/decode.rs`: it reads a local blb input file, decodes blobs with `blobby::parse_into_vec`, hex-encodes each blob, and writes the results to an output file. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14149,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052990086,
+            "finished_at_unix_ms": 1784053004236,
+            "total_token_usage": {
+              "input_tokens": 24476,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 185,
+              "total_tokens": 24877
+            },
+            "last_token_usage": {
+              "input_tokens": 24476,
+              "cached_input_tokens": 21248,
+              "output_tokens": 401,
+              "reasoning_output_tokens": 185,
+              "total_tokens": 24877
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -345,7 +442,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590856",
       "thirdpass_version": "0.6.0",
@@ -481,7 +578,7 @@
       ]
     },
     {
-      "id": "rev_6c4ad8e7f4e440c682f38340f12c133d",
+      "id": "rev_a0cdc89c6df847be9705d6d31eb0a1f3",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -489,34 +586,105 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782857108",
+      "created_at": "1784046967",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/decode.rs`, which implements deterministic VLQ/header parsing plus slice/vector decoding and two compile-time macros for turning a blob archive into slices or structs. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/encode.rs`, which implements VLQ encoding and blob deduplication for the package's `.blb` format, along with unit tests. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the README for the `blobby` crate, which documents a binary blob encoding/decoding format, usage examples, and CLI commands for `cargo run --bin encode` and `decode`. I found no concrete malicious or supply-chain indicators in the README: no install hooks, hidden subprocesses, credential access, network/exfiltration, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/bin/encode.rs`, a small feature-gated CLI that reads hex-encoded lines from an input file, converts them into blobs, and writes encoded output to a destination file. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/bin/decode.rs`, a small feature-gated CLI that reads a local `.blb` file, decodes it with `blobby::parse_into_vec`, hex-encodes each record, and writes the results to a chosen output file. I checked for install-time hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution; none were present.",
       "files": [
         {
-          "file_path": "src/decode.rs",
+          "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "c14a0995eade9ab018f2ac0807985f09f60917f6691c6fceeccc1c72019914e9"
+            "value": "8bc05615500e59c7555e58c7232f4c74f403088ad0c0f36e3698c6f68e6385b8"
           },
-          "summary": "Reviewed `src/decode.rs`, which implements deterministic VLQ/header parsing plus slice/vector decoding and two compile-time macros for turning a blob archive into slices or structs. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "This file is Cargo provenance metadata containing the source git SHA and `path_in_vcs` for the `blobby` crate. I found no evidence of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14130,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046897305,
+            "finished_at_unix_ms": 1784046911435,
+            "total_token_usage": {
+              "input_tokens": 24170,
+              "cached_input_tokens": 21248,
+              "output_tokens": 613,
+              "reasoning_output_tokens": 421,
+              "total_tokens": 24783
+            },
+            "last_token_usage": {
+              "input_tokens": 24170,
+              "cached_input_tokens": 21248,
+              "output_tokens": 613,
+              "reasoning_output_tokens": 421,
+              "total_tokens": 24783
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/encode.rs",
+          "file_path": "CHANGELOG.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "2e75b712228ebcc3a8584c8a4a2a830cb15370fb682b7d0b825a9c3327e60cfe"
+            "value": "9a1230ab9687f46e54e4b4d51101067e423567c67e06c0ac979f4eeaca710319"
           },
-          "summary": "Reviewed `src/encode.rs`, which implements VLQ encoding and blob deduplication for the package's `.blb` format, along with unit tests. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed the changelog entries for versions 0.4.0 through 0.1.0. It only documents release history and upstream pull-request links, with no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11774,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046911436,
+            "finished_at_unix_ms": 1784046923210,
+            "total_token_usage": {
+              "input_tokens": 24432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24872
+            },
+            "last_token_usage": {
+              "input_tokens": 24432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24872
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "604f153a07d844fa85b4770c440221d8908767363cbc47af1811f9441d38678c"
+          },
+          "summary": "Reviewed the normalized Cargo manifest for blobby 0.4.0. It only declares package metadata, a library crate, two CLI binaries, and one test target; I found no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16469,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046923211,
+            "finished_at_unix_ms": 1784046939681,
+            "total_token_usage": {
+              "input_tokens": 24872,
+              "cached_input_tokens": 21760,
+              "output_tokens": 690,
+              "reasoning_output_tokens": 496,
+              "total_tokens": 25562
+            },
+            "last_token_usage": {
+              "input_tokens": 24872,
+              "cached_input_tokens": 21760,
+              "output_tokens": 690,
+              "reasoning_output_tokens": 496,
+              "total_tokens": 25562
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -526,21 +694,29 @@
             "algorithm": "blake3",
             "value": "6db64deb6d9d46c723ec438c031bc4a054697136d1cb2f52d691a5600d35345a"
           },
-          "summary": "Reviewed the README for the `blobby` crate, which documents a binary blob encoding/decoding format, usage examples, and CLI commands for `cargo run --bin encode` and `decode`. I found no concrete malicious or supply-chain indicators in the README: no install hooks, hidden subprocesses, credential access, network/exfiltration, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "The target file is a normal project README describing the Blobby encoding/decoding format, example usage, and CLI commands. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/bin/encode.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "dc29a4eb689e72aafe984cbdc737b455ec792a71aecd52a28560329fa48a0d36"
+          "agent_run_metrics": {
+            "duration_ms": 13935,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046939681,
+            "finished_at_unix_ms": 1784046953616,
+            "total_token_usage": {
+              "input_tokens": 25432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 25917
+            },
+            "last_token_usage": {
+              "input_tokens": 25432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 25917
+            }
           },
-          "summary": "Reviewed `src/bin/encode.rs`, a small feature-gated CLI that reads hex-encoded lines from an input file, converts them into blobs, and writes encoded output to a destination file. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -550,9 +726,737 @@
             "algorithm": "blake3",
             "value": "874cc16b1b9d9929a3ff18633c1fcc8664f428a1cef9ba50ac80377579596d8d"
           },
-          "summary": "Reviewed `src/bin/decode.rs`, a small feature-gated CLI that reads a local `.blb` file, decodes it with `blobby::parse_into_vec`, hex-encodes each record, and writes the results to a chosen output file. I checked for install-time hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution; none were present.",
+          "summary": "Reviewed `src/bin/decode.rs`, a small CLI that reads a `.blb` input file, decodes it with `blobby::parse_into_vec`, hex-encodes each blob, and writes the results to an output text file. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14175,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046953617,
+            "finished_at_unix_ms": 1784046967793,
+            "total_token_usage": {
+              "input_tokens": 24492,
+              "cached_input_tokens": 21248,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 170,
+              "total_tokens": 24878
+            },
+            "last_token_usage": {
+              "input_tokens": 24492,
+              "cached_input_tokens": 21248,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 170,
+              "total_tokens": 24878
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_acbdb1d767fe48c9865cec06c2cc827d",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046967",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8bc05615500e59c7555e58c7232f4c74f403088ad0c0f36e3698c6f68e6385b8"
+          },
+          "summary": "This file is Cargo provenance metadata containing the source git SHA and `path_in_vcs` for the `blobby` crate. I found no evidence of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14130,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046897305,
+            "finished_at_unix_ms": 1784046911435,
+            "total_token_usage": {
+              "input_tokens": 24170,
+              "cached_input_tokens": 21248,
+              "output_tokens": 613,
+              "reasoning_output_tokens": 421,
+              "total_tokens": 24783
+            },
+            "last_token_usage": {
+              "input_tokens": 24170,
+              "cached_input_tokens": 21248,
+              "output_tokens": 613,
+              "reasoning_output_tokens": 421,
+              "total_tokens": 24783
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9a1230ab9687f46e54e4b4d51101067e423567c67e06c0ac979f4eeaca710319"
+          },
+          "summary": "Reviewed the changelog entries for versions 0.4.0 through 0.1.0. It only documents release history and upstream pull-request links, with no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11774,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046911436,
+            "finished_at_unix_ms": 1784046923210,
+            "total_token_usage": {
+              "input_tokens": 24432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24872
+            },
+            "last_token_usage": {
+              "input_tokens": 24432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24872
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "604f153a07d844fa85b4770c440221d8908767363cbc47af1811f9441d38678c"
+          },
+          "summary": "Reviewed the normalized Cargo manifest for blobby 0.4.0. It only declares package metadata, a library crate, two CLI binaries, and one test target; I found no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16469,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046923211,
+            "finished_at_unix_ms": 1784046939681,
+            "total_token_usage": {
+              "input_tokens": 24872,
+              "cached_input_tokens": 21760,
+              "output_tokens": 690,
+              "reasoning_output_tokens": 496,
+              "total_tokens": 25562
+            },
+            "last_token_usage": {
+              "input_tokens": 24872,
+              "cached_input_tokens": 21760,
+              "output_tokens": 690,
+              "reasoning_output_tokens": 496,
+              "total_tokens": 25562
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6db64deb6d9d46c723ec438c031bc4a054697136d1cb2f52d691a5600d35345a"
+          },
+          "summary": "The target file is a normal project README describing the Blobby encoding/decoding format, example usage, and CLI commands. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13935,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046939681,
+            "finished_at_unix_ms": 1784046953616,
+            "total_token_usage": {
+              "input_tokens": 25432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 25917
+            },
+            "last_token_usage": {
+              "input_tokens": 25432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 25917
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/bin/decode.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "874cc16b1b9d9929a3ff18633c1fcc8664f428a1cef9ba50ac80377579596d8d"
+          },
+          "summary": "Reviewed `src/bin/decode.rs`, a small CLI that reads a `.blb` input file, decodes it with `blobby::parse_into_vec`, hex-encodes each blob, and writes the results to an output text file. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14175,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046953617,
+            "finished_at_unix_ms": 1784046967793,
+            "total_token_usage": {
+              "input_tokens": 24492,
+              "cached_input_tokens": 21248,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 170,
+              "total_tokens": 24878
+            },
+            "last_token_usage": {
+              "input_tokens": 24492,
+              "cached_input_tokens": 21248,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 170,
+              "total_tokens": 24878
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_c86b8f2fb32441e998d2701f8d6f7ee3",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046967",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8bc05615500e59c7555e58c7232f4c74f403088ad0c0f36e3698c6f68e6385b8"
+          },
+          "summary": "This file is Cargo provenance metadata containing the source git SHA and `path_in_vcs` for the `blobby` crate. I found no evidence of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14130,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046897305,
+            "finished_at_unix_ms": 1784046911435,
+            "total_token_usage": {
+              "input_tokens": 24170,
+              "cached_input_tokens": 21248,
+              "output_tokens": 613,
+              "reasoning_output_tokens": 421,
+              "total_tokens": 24783
+            },
+            "last_token_usage": {
+              "input_tokens": 24170,
+              "cached_input_tokens": 21248,
+              "output_tokens": 613,
+              "reasoning_output_tokens": 421,
+              "total_tokens": 24783
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9a1230ab9687f46e54e4b4d51101067e423567c67e06c0ac979f4eeaca710319"
+          },
+          "summary": "Reviewed the changelog entries for versions 0.4.0 through 0.1.0. It only documents release history and upstream pull-request links, with no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11774,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046911436,
+            "finished_at_unix_ms": 1784046923210,
+            "total_token_usage": {
+              "input_tokens": 24432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24872
+            },
+            "last_token_usage": {
+              "input_tokens": 24432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24872
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "604f153a07d844fa85b4770c440221d8908767363cbc47af1811f9441d38678c"
+          },
+          "summary": "Reviewed the normalized Cargo manifest for blobby 0.4.0. It only declares package metadata, a library crate, two CLI binaries, and one test target; I found no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16469,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046923211,
+            "finished_at_unix_ms": 1784046939681,
+            "total_token_usage": {
+              "input_tokens": 24872,
+              "cached_input_tokens": 21760,
+              "output_tokens": 690,
+              "reasoning_output_tokens": 496,
+              "total_tokens": 25562
+            },
+            "last_token_usage": {
+              "input_tokens": 24872,
+              "cached_input_tokens": 21760,
+              "output_tokens": 690,
+              "reasoning_output_tokens": 496,
+              "total_tokens": 25562
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6db64deb6d9d46c723ec438c031bc4a054697136d1cb2f52d691a5600d35345a"
+          },
+          "summary": "The target file is a normal project README describing the Blobby encoding/decoding format, example usage, and CLI commands. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13935,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046939681,
+            "finished_at_unix_ms": 1784046953616,
+            "total_token_usage": {
+              "input_tokens": 25432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 25917
+            },
+            "last_token_usage": {
+              "input_tokens": 25432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 25917
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/bin/decode.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "874cc16b1b9d9929a3ff18633c1fcc8664f428a1cef9ba50ac80377579596d8d"
+          },
+          "summary": "Reviewed `src/bin/decode.rs`, a small CLI that reads a `.blb` input file, decodes it with `blobby::parse_into_vec`, hex-encodes each blob, and writes the results to an output text file. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14175,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046953617,
+            "finished_at_unix_ms": 1784046967793,
+            "total_token_usage": {
+              "input_tokens": 24492,
+              "cached_input_tokens": 21248,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 170,
+              "total_tokens": 24878
+            },
+            "last_token_usage": {
+              "input_tokens": 24492,
+              "cached_input_tokens": 21248,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 170,
+              "total_tokens": 24878
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_d84a62c7d93b432896c110feae7745ac",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046967",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8bc05615500e59c7555e58c7232f4c74f403088ad0c0f36e3698c6f68e6385b8"
+          },
+          "summary": "This file is Cargo provenance metadata containing the source git SHA and `path_in_vcs` for the `blobby` crate. I found no evidence of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14130,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046897305,
+            "finished_at_unix_ms": 1784046911435,
+            "total_token_usage": {
+              "input_tokens": 24170,
+              "cached_input_tokens": 21248,
+              "output_tokens": 613,
+              "reasoning_output_tokens": 421,
+              "total_tokens": 24783
+            },
+            "last_token_usage": {
+              "input_tokens": 24170,
+              "cached_input_tokens": 21248,
+              "output_tokens": 613,
+              "reasoning_output_tokens": 421,
+              "total_tokens": 24783
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9a1230ab9687f46e54e4b4d51101067e423567c67e06c0ac979f4eeaca710319"
+          },
+          "summary": "Reviewed the changelog entries for versions 0.4.0 through 0.1.0. It only documents release history and upstream pull-request links, with no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11774,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046911436,
+            "finished_at_unix_ms": 1784046923210,
+            "total_token_usage": {
+              "input_tokens": 24432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24872
+            },
+            "last_token_usage": {
+              "input_tokens": 24432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 440,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24872
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "604f153a07d844fa85b4770c440221d8908767363cbc47af1811f9441d38678c"
+          },
+          "summary": "Reviewed the normalized Cargo manifest for blobby 0.4.0. It only declares package metadata, a library crate, two CLI binaries, and one test target; I found no install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16469,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046923211,
+            "finished_at_unix_ms": 1784046939681,
+            "total_token_usage": {
+              "input_tokens": 24872,
+              "cached_input_tokens": 21760,
+              "output_tokens": 690,
+              "reasoning_output_tokens": 496,
+              "total_tokens": 25562
+            },
+            "last_token_usage": {
+              "input_tokens": 24872,
+              "cached_input_tokens": 21760,
+              "output_tokens": 690,
+              "reasoning_output_tokens": 496,
+              "total_tokens": 25562
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6db64deb6d9d46c723ec438c031bc4a054697136d1cb2f52d691a5600d35345a"
+          },
+          "summary": "The target file is a normal project README describing the Blobby encoding/decoding format, example usage, and CLI commands. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13935,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046939681,
+            "finished_at_unix_ms": 1784046953616,
+            "total_token_usage": {
+              "input_tokens": 25432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 25917
+            },
+            "last_token_usage": {
+              "input_tokens": 25432,
+              "cached_input_tokens": 21248,
+              "output_tokens": 485,
+              "reasoning_output_tokens": 294,
+              "total_tokens": 25917
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/bin/decode.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "874cc16b1b9d9929a3ff18633c1fcc8664f428a1cef9ba50ac80377579596d8d"
+          },
+          "summary": "Reviewed `src/bin/decode.rs`, a small CLI that reads a `.blb` input file, decodes it with `blobby::parse_into_vec`, hex-encodes each blob, and writes the results to an output text file. I checked for install-time hooks, network or credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14175,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046953617,
+            "finished_at_unix_ms": 1784046967793,
+            "total_token_usage": {
+              "input_tokens": 24492,
+              "cached_input_tokens": 21248,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 170,
+              "total_tokens": 24878
+            },
+            "last_token_usage": {
+              "input_tokens": 24492,
+              "cached_input_tokens": 21248,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 170,
+              "total_tokens": 24878
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_f4643f58f24d49d3875b65e1607a91cc",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784055377",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/bin/encode.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "dc29a4eb689e72aafe984cbdc737b455ec792a71aecd52a28560329fa48a0d36"
+          },
+          "summary": "Reviewed the `encode` binary in `src/bin/encode.rs`: it reads hex-encoded lines from a local input file, converts them into blobs with `blobby::encode_blobs`, and writes the encoded output to a local file. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15504,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055287197,
+            "finished_at_unix_ms": 1784055302701,
+            "total_token_usage": {
+              "input_tokens": 38500,
+              "cached_input_tokens": 33920,
+              "output_tokens": 602,
+              "reasoning_output_tokens": 284,
+              "total_tokens": 39102
+            },
+            "last_token_usage": {
+              "input_tokens": 38500,
+              "cached_input_tokens": 33920,
+              "output_tokens": 602,
+              "reasoning_output_tokens": 284,
+              "total_tokens": 39102
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/decode.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c14a0995eade9ab018f2ac0807985f09f60917f6691c6fceeccc1c72019914e9"
+          },
+          "summary": "Reviewed `src/decode.rs`, which implements blobby VLQ decoding, header parsing, and macros that turn embedded byte slices into arrays, vectors, or typed structs at compile time. I checked for install-time hooks, subprocess spawning, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22890,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055302702,
+            "finished_at_unix_ms": 1784055325592,
+            "total_token_usage": {
+              "input_tokens": 73919,
+              "cached_input_tokens": 65920,
+              "output_tokens": 865,
+              "reasoning_output_tokens": 390,
+              "total_tokens": 74784
+            },
+            "last_token_usage": {
+              "input_tokens": 73919,
+              "cached_input_tokens": 65920,
+              "output_tokens": 865,
+              "reasoning_output_tokens": 390,
+              "total_tokens": 74784
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/encode.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2e75b712228ebcc3a8584c8a4a2a830cb15370fb682b7d0b825a9c3327e60cfe"
+          },
+          "summary": "Reviewed `src/encode.rs`, which implements VLQ encoding and blob deduplication for the `.blb` format. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21702,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055325594,
+            "finished_at_unix_ms": 1784055347296,
+            "total_token_usage": {
+              "input_tokens": 25762,
+              "cached_input_tokens": 21248,
+              "output_tokens": 471,
+              "reasoning_output_tokens": 274,
+              "total_tokens": 26233
+            },
+            "last_token_usage": {
+              "input_tokens": 25762,
+              "cached_input_tokens": 21248,
+              "output_tokens": 471,
+              "reasoning_output_tokens": 274,
+              "total_tokens": 26233
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "487d1b87ca789b8412c466e72582f2f08e341951b6549d314ab51ded3bd1572b"
+          },
+          "summary": "Reviewed the crate root in src/lib.rs, which is a small no_std library entrypoint exporting decode/encode APIs and an Error enum. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14222,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055347296,
+            "finished_at_unix_ms": 1784055361519,
+            "total_token_usage": {
+              "input_tokens": 37442,
+              "cached_input_tokens": 31360,
+              "output_tokens": 616,
+              "reasoning_output_tokens": 338,
+              "total_tokens": 38058
+            },
+            "last_token_usage": {
+              "input_tokens": 37442,
+              "cached_input_tokens": 31360,
+              "output_tokens": 616,
+              "reasoning_output_tokens": 338,
+              "total_tokens": 38058
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/mod.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1c80340d9a35b558f035556e38a701ef3891ba33d2c44d4a33e6972255f31c62"
+          },
+          "summary": "Reviewed tests/mod.rs, which contains a small alloc-gated roundtrip test for blobby::encode_blobs and the decode paths over fixed in-memory byte slices. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16465,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055361519,
+            "finished_at_unix_ms": 1784055377984,
+            "total_token_usage": {
+              "input_tokens": 24286,
+              "cached_input_tokens": 21248,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 233,
+              "total_tokens": 24718
+            },
+            "last_token_usage": {
+              "input_tokens": 24286,
+              "cached_input_tokens": 21248,
+              "output_tokens": 432,
+              "reasoning_output_tokens": 233,
+              "total_tokens": 24718
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783589759",
+  "latest_reviewed_at": "1784061964",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -412,50 +418,42 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 6,
-      "file_record_count": 27,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 5
+      "review_count": 7,
+      "file_record_count": 32,
+      "file_record_count_with_metrics": 32
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 32,
-    "file_records_with_metrics": 5,
-    "file_records_without_metrics": 27,
-    "duration_ms_total": 102248,
-    "attempts_total": 5,
+    "file_records_with_metrics": 32,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 596432,
+    "attempts_total": 32,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 5,
-    "last_token_usage_records": 5,
+    "total_token_usage_records": 32,
+    "last_token_usage_records": 32,
     "total_token_usage": {
-      "input_tokens": 105853,
-      "cached_input_tokens": 89856,
-      "output_tokens": 2505,
-      "reasoning_output_tokens": 1518,
-      "total_tokens": 108358
+      "input_tokens": 971048,
+      "cached_input_tokens": 824448,
+      "output_tokens": 16312,
+      "reasoning_output_tokens": 8316,
+      "total_tokens": 987360
     },
     "last_token_usage": {
-      "input_tokens": 105853,
-      "cached_input_tokens": 89856,
-      "output_tokens": 2505,
-      "reasoning_output_tokens": 1518,
-      "total_tokens": 108358
+      "input_tokens": 971048,
+      "cached_input_tokens": 824448,
+      "output_tokens": 16312,
+      "reasoning_output_tokens": 8316,
+      "total_tokens": 987360
     },
     "model_context_windows": []
   },
   "reviews": [
     {
-      "id": "rev_11044739a12245b1935cbacfef561aba",
+      "id": "rev_25ef65a9e543479b854ef53c9c599641",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -463,190 +461,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783195425",
+      "created_at": "1784059680",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/cshake.rs`, which is a small Rust implementation of cSHAKE initialization and the `Hasher`/`Xof` trait adapters. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed `src/kmac.rs`, which implements the KMAC/KMACXOF wrapper around `CShake` using SP800-185 encodings and output-length finalization. I checked for install-time execution, network or exfiltration, credential access, hidden dynamic loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.\n`src/tuple_hash.rs` implements the SP800-185 TupleHash and TupleHashXOF APIs by wrapping an internal `CShake` state, prefixing each input with length encodings, and finalizing or squeezing output. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess use; none were present.\nReviewed the Travis CI configuration in `.travis.yml`, including its install and test steps. It only installs `cross`, sources the Cargo environment, and runs the test matrix; I found no concrete indicators of install-time abuse, secret harvesting, hidden downloads beyond normal dependency installation, dynamic code loading, obfuscation, or persistence.\nReviewed the target README for supply-chain indicators and found a standard crate description for Keccak-derived hash functions, feature flags, usage, and benchmarks. I checked for install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
-        {
-          "file_path": "src/cshake.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "cb5ce2ad50e0b0323b179e3a372e7635619c2cebb905a57c680cb8b9339bd248"
-          },
-          "summary": "Reviewed `src/cshake.rs`, which is a small Rust implementation of cSHAKE initialization and the `Hasher`/`Xof` trait adapters. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/kmac.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1f2c0f5ec52a3f9bc70e7c39e43804233c3aa4e9fa4f4fe072668814918b78f9"
-          },
-          "summary": "Reviewed `src/kmac.rs`, which implements the KMAC/KMACXOF wrapper around `CShake` using SP800-185 encodings and output-length finalization. I checked for install-time execution, network or exfiltration, credential access, hidden dynamic loading, obfuscation, persistence, and other supply-chain indicators, and found no concrete malicious behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/tuple_hash.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f70043f183aa8cf15c4f13dcea9829c2d0a4e8d541e8cd38a663970d7ddca2ea"
-          },
-          "summary": "`src/tuple_hash.rs` implements the SP800-185 TupleHash and TupleHashXOF APIs by wrapping an internal `CShake` state, prefixing each input with length encodings, and finalizing or squeezing output. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess use; none were present.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".travis.yml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2d764c5cb3a0b2a8d1e22eaed3c867657e7601d890ae65028dbd9dc365776304"
-          },
-          "summary": "Reviewed the Travis CI configuration in `.travis.yml`, including its install and test steps. It only installs `cross`, sources the Cargo environment, and runs the test matrix; I found no concrete indicators of install-time abuse, secret harvesting, hidden downloads beyond normal dependency installation, dynamic code loading, obfuscation, or persistence.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "e9300511c2b1e971e10063829b82eeff95854b0946bafa77c55c7abdaca16993"
-          },
-          "summary": "Reviewed the target README for supply-chain indicators and found a standard crate description for Keccak-derived hash functions, feature flags, usage, and benchmarks. I checked for install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_631c8a8b10c54beeb631126ece6d4174",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783195266",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/lib.rs`, which is a `no_std` Rust implementation of Keccak-family hashing traits, constants, and permutation helpers with feature-gated exports plus a small test module. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/kmac.rs`, which contains only deterministic KMAC test vectors and assertions using `tiny_keccak` APIs. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\n`src/parallel_hash.rs` implements the `ParallelHash` and `ParallelHashXof` SP800-185 hashing logic on top of `CShake`, with block buffering and finalization only. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/parallel_hash.rs`, which contains deterministic unit tests for `tiny_keccak::ParallelHash` over fixed inputs and expected digests. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.\nReviewed `tests/cshake.rs`, which contains deterministic cSHAKE test vectors and simple hash/XOF assertions. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "444cb5ab419161112029f862881d85a4f0249300f7fc42c31974e7d960301a71"
-          },
-          "summary": "Reviewed `src/lib.rs`, which is a `no_std` Rust implementation of Keccak-family hashing traits, constants, and permutation helpers with feature-gated exports plus a small test module. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/kmac.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8e52fa7429a7702ee323953caf13179765f599b53ba7f4d8133b8a2854cc139c"
-          },
-          "summary": "Reviewed `tests/kmac.rs`, which contains only deterministic KMAC test vectors and assertions using `tiny_keccak` APIs. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": "src/parallel_hash.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "a9c606441d7f4afec0ad362a118fbb691fe3f96d89c6cb80a875cb1f46c474f7"
           },
-          "summary": "`src/parallel_hash.rs` implements the `ParallelHash` and `ParallelHashXof` SP800-185 hashing logic on top of `CShake`, with block buffering and finalization only. I checked this file for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `src/parallel_hash.rs`, which implements the SP800-185 ParallelHash and ParallelHashXOF wrapper around CShake, including block buffering and finalization logic. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/parallel_hash.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "85ef7c20ec83b2521f7402e6df9c41878b75fa9ebf111dc53d5cc1ea9e9a2ca1"
+          "agent_run_metrics": {
+            "duration_ms": 17054,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059585407,
+            "finished_at_unix_ms": 1784059602461,
+            "total_token_usage": {
+              "input_tokens": 41850,
+              "cached_input_tokens": 36992,
+              "output_tokens": 695,
+              "reasoning_output_tokens": 386,
+              "total_tokens": 42545
+            },
+            "last_token_usage": {
+              "input_tokens": 41850,
+              "cached_input_tokens": 36992,
+              "output_tokens": 695,
+              "reasoning_output_tokens": 386,
+              "total_tokens": 42545
+            }
           },
-          "summary": "Reviewed `tests/parallel_hash.rs`, which contains deterministic unit tests for `tiny_keccak::ParallelHash` over fixed inputs and expected digests. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/cshake.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "200dffa76727d5cf1618f1e97fcb10b3508bce82c35e1a3742027b8488530473"
-          },
-          "summary": "Reviewed `tests/cshake.rs`, which contains deterministic cSHAKE test vectors and simple hash/XOF assertions. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_90793b3a40474eb9aa5836612a32ce60",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783195499",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `benches/keccak.rs`, which contains three Rust benchmark functions for `Keccak::v256()` and `keccakf` over fixed in-memory buffers. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\n`src/keccak.rs` is a small, deterministic Keccak hasher implementation that only wraps state initialization, input absorption, and finalization. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\n`src/sha3.rs` is a small SHA3 wrapper that constructs fixed-output hashers (224/256/384/512) and forwards `update`/`finalize` into `KeccakState` with the SHA3 delimiter. I checked this file for install hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\n`src/keccakf.rs` is a small Keccak-f[1600, 24] wrapper that defines round constants and forwards a buffer into the generated permutation implementation. I checked it for install hooks, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `src/shake.rs`, which is a small SHAKE XOF wrapper over `KeccakState`/`KeccakF` with fixed domain separation and simple delegation for `update`, `finalize`, and `squeeze`. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "benches/keccak.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "781d92fc7df677925c6c68114abf2bc302449e410aa77a5a45526825af9f045b"
-          },
-          "summary": "Reviewed `benches/keccak.rs`, which contains three Rust benchmark functions for `Keccak::v256()` and `keccakf` over fixed in-memory buffers. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/keccak.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "2c7469c53d54bf69a02874dae45c8cef3466c87e7edd64b787994b76361eb6af"
-          },
-          "summary": "`src/keccak.rs` is a small, deterministic Keccak hasher implementation that only wraps state initialization, input absorption, and finalization. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -656,21 +505,29 @@
             "algorithm": "blake3",
             "value": "5884e045c46cd5fefd5b5b556ebecd997bb2e55e1dc82b8e204d436b189af662"
           },
-          "summary": "`src/sha3.rs` is a small SHA3 wrapper that constructs fixed-output hashers (224/256/384/512) and forwards `update`/`finalize` into `KeccakState` with the SHA3 delimiter. I checked this file for install hooks, network or exfiltration behavior, credential/secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "summary": "`src/sha3.rs` is a straightforward SHA3 wrapper that defines the `Sha3` hasher variants and delegates `update`/`finalize` to the internal Keccak state. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/keccakf.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "5ba6605d2c7acb6218520b90c53173644dc47497e8d455a9696cd911f9c1b5b0"
+          "agent_run_metrics": {
+            "duration_ms": 16783,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059602462,
+            "finished_at_unix_ms": 1784059619246,
+            "total_token_usage": {
+              "input_tokens": 24983,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 252,
+              "total_tokens": 25448
+            },
+            "last_token_usage": {
+              "input_tokens": 24983,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 252,
+              "total_tokens": 25448
+            }
           },
-          "summary": "`src/keccakf.rs` is a small Keccak-f[1600, 24] wrapper that defines round constants and forwards a buffer into the generated permutation implementation. I checked it for install hooks, hidden subprocesses, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -680,16 +537,100 @@
             "algorithm": "blake3",
             "value": "5db4888c62c40ecb591c6144705fefd3981567573674a5d4fd23a0e09ba1538a"
           },
-          "summary": "Reviewed `src/shake.rs`, which is a small SHAKE XOF wrapper over `KeccakState`/`KeccakF` with fixed domain separation and simple delegation for `update`, `finalize`, and `squeeze`. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/shake.rs`, which is a small SHAKE XOF wrapper over the internal Keccak state with fixed domain-separation and update/finalize/squeeze forwarding. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess execution.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19083,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059619246,
+            "finished_at_unix_ms": 1784059638330,
+            "total_token_usage": {
+              "input_tokens": 38105,
+              "cached_input_tokens": 34432,
+              "output_tokens": 650,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 38755
+            },
+            "last_token_usage": {
+              "input_tokens": 38105,
+              "cached_input_tokens": 34432,
+              "output_tokens": 650,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 38755
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/tuple_hash.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f70043f183aa8cf15c4f13dcea9829c2d0a4e8d541e8cd38a663970d7ddca2ea"
+          },
+          "summary": "Reviewed src/tuple_hash.rs, which implements TupleHash and TupleHashXof as thin wrappers over CShake with SP800-185 length encoding. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 27695,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059638330,
+            "finished_at_unix_ms": 1784059666026,
+            "total_token_usage": {
+              "input_tokens": 24926,
+              "cached_input_tokens": 21248,
+              "output_tokens": 506,
+              "reasoning_output_tokens": 318,
+              "total_tokens": 25432
+            },
+            "last_token_usage": {
+              "input_tokens": 24926,
+              "cached_input_tokens": 21248,
+              "output_tokens": 506,
+              "reasoning_output_tokens": 318,
+              "total_tokens": 25432
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/cshake.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "200dffa76727d5cf1618f1e97fcb10b3508bce82c35e1a3742027b8488530473"
+          },
+          "summary": "`tests/cshake.rs` contains deterministic test vectors for the `tiny_keccak::CShake` API, exercising cSHAKE-128/256 output and a SHAKE-like squeeze path. I reviewed it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14930,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059666026,
+            "finished_at_unix_ms": 1784059680956,
+            "total_token_usage": {
+              "input_tokens": 26213,
+              "cached_input_tokens": 21248,
+              "output_tokens": 408,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 26621
+            },
+            "last_token_usage": {
+              "input_tokens": 26213,
+              "cached_input_tokens": 21248,
+              "output_tokens": 408,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 26621
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
       ]
     },
     {
-      "id": "rev_9510e961ad5c4f6c975c9fbec963785a",
+      "id": "rev_6e35614b414f462083e82cda0b9f8b5b",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -697,22 +638,41 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1783195565",
+      "created_at": "1784060912",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/shake.rs`, which contains straightforward unit tests for `tiny_keccak::Shake` output verification. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/keccak.rs`, which contains only deterministic unit tests for Keccak-256 output verification. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.\nReviewed `src/keccakp.rs`, which is a small Rust permutation wrapper defining Keccak-p[1600,12] round constants and delegating execution through `Permutation::execute`. I found no concrete indicators of install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.\nReviewed `build.rs`, which is a minimal compile-time gate that emits a `compile_error!` unless at least one hash-function feature is enabled, and otherwise does nothing at build time. I checked for install hooks, subprocess execution, network or credential access, dynamic code loading, obfuscation, and persistence behavior; none were present.\nReviewed `benches/kangaroo.rs`, which is a small benchmark harness that instantiates `KangarooTwelve`, hashes a fixed 32-byte zero buffer, and measures throughput. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
       "files": [
         {
-          "file_path": "tests/shake.rs",
+          "file_path": "tests/kangaroo.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "710187a55619e8f296aa8548cb50f63bd1d30a7f55029fc573eb30df5b337c30"
+            "value": "a1660b13f7befb7422653b0d5f175b455eceaa0e8bbff81a5fdeef876606c86a"
           },
-          "summary": "Reviewed `tests/shake.rs`, which contains straightforward unit tests for `tiny_keccak::Shake` output verification. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `tests/kangaroo.rs`, which contains deterministic KangarooTwelve test-vector helpers and unit tests over fixed inputs and expected digests. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload execution, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18343,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060812583,
+            "finished_at_unix_ms": 1784060830926,
+            "total_token_usage": {
+              "input_tokens": 25145,
+              "cached_input_tokens": 13568,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 25602
+            },
+            "last_token_usage": {
+              "input_tokens": 25145,
+              "cached_input_tokens": 13568,
+              "output_tokens": 457,
+              "reasoning_output_tokens": 249,
+              "total_tokens": 25602
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -722,129 +682,93 @@
             "algorithm": "blake3",
             "value": "97ab84a19b79a75eafe4f95825757de874483fbc45f3812c88384eaacb7ad780"
           },
-          "summary": "Reviewed `tests/keccak.rs`, which contains only deterministic unit tests for Keccak-256 output verification. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
+          "summary": "Reviewed `tests/keccak.rs`, which contains two straightforward Keccak test cases for empty input and a 5-byte message. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16712,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060830927,
+            "finished_at_unix_ms": 1784060847639,
+            "total_token_usage": {
+              "input_tokens": 24524,
+              "cached_input_tokens": 23296,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 176,
+              "total_tokens": 24905
+            },
+            "last_token_usage": {
+              "input_tokens": 24524,
+              "cached_input_tokens": 23296,
+              "output_tokens": 381,
+              "reasoning_output_tokens": 176,
+              "total_tokens": 24905
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "src/keccakp.rs",
+          "file_path": "tests/kmac.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "7273491f145be5bd75f76d6e7b403d8fc0e2c0317410a671af050fc2e0b29783"
+            "value": "8e52fa7429a7702ee323953caf13179765f599b53ba7f4d8133b8a2854cc139c"
           },
-          "summary": "Reviewed `src/keccakp.rs`, which is a small Rust permutation wrapper defining Keccak-p[1600,12] round constants and delegating execution through `Permutation::execute`. I found no concrete indicators of install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this file.",
+          "summary": "This file is a pure Rust test module containing fixed KMAC known-answer vectors for `Kmac::v128`/`v256` finalize and XOF output. I checked for install hooks, subprocesses, network or exfiltration behavior, secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 29447,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060847640,
+            "finished_at_unix_ms": 1784060877087,
+            "total_token_usage": {
+              "input_tokens": 57797,
+              "cached_input_tokens": 39552,
+              "output_tokens": 772,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 58569
+            },
+            "last_token_usage": {
+              "input_tokens": 57797,
+              "cached_input_tokens": 39552,
+              "output_tokens": 772,
+              "reasoning_output_tokens": 255,
+              "total_tokens": 58569
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "build.rs",
+          "file_path": "tests/parallel_hash.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "496d4e0ed87666ff128635bb9ac113fd4d557a89f0822baa78cd069abc29f0a8"
+            "value": "85ef7c20ec83b2521f7402e6df9c41878b75fa9ebf111dc53d5cc1ea9e9a2ca1"
           },
-          "summary": "Reviewed `build.rs`, which is a minimal compile-time gate that emits a `compile_error!` unless at least one hash-function feature is enabled, and otherwise does nothing at build time. I checked for install hooks, subprocess execution, network or credential access, dynamic code loading, obfuscation, and persistence behavior; none were present.",
+          "summary": "Reviewed `tests/parallel_hash.rs`, which contains deterministic unit tests for `ParallelHash::v128` and `ParallelHash::v256` using fixed inputs, split-update coverage, and expected digest comparisons. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "benches/kangaroo.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a7167d62e99b5a95f67b27d11e3a17d5d0af62d57e4c62c06ddfcb7cfc0d8f5a"
+          "agent_run_metrics": {
+            "duration_ms": 17925,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060877088,
+            "finished_at_unix_ms": 1784060895014,
+            "total_token_usage": {
+              "input_tokens": 26211,
+              "cached_input_tokens": 21248,
+              "output_tokens": 355,
+              "reasoning_output_tokens": 150,
+              "total_tokens": 26566
+            },
+            "last_token_usage": {
+              "input_tokens": 26211,
+              "cached_input_tokens": 21248,
+              "output_tokens": 355,
+              "reasoning_output_tokens": 150,
+              "total_tokens": 26566
+            }
           },
-          "summary": "Reviewed `benches/kangaroo.rs`, which is a small benchmark harness that instantiates `KangarooTwelve`, hashes a fixed 32-byte zero buffer, and measures throughput. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_9e99b1cbd844442a9cb2c46bbc456a73",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783195588",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `examples/sha3.rs`, a small SHA3 example that hashes the string `hello world` and asserts the expected digest. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `.cargo_vcs_info.json`, which only records the package git SHA1 provenance metadata. I found no concrete malicious or supply-chain indicators in this target file, and it contains no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
-      "files": [
-        {
-          "file_path": "examples/sha3.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "4eebb175b5023517387ddadbab4a118ae620d4bd2daf9a6190f4524a991f6ccf"
-          },
-          "summary": "Reviewed `examples/sha3.rs`, a small SHA3 example that hashes the string `hello world` and asserts the expected digest. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "84b4811393820e8915beaed6b6b5b11290c9c7fe4484341ba0056c0be5f96ede"
-          },
-          "summary": "Reviewed `.cargo_vcs_info.json`, which only records the package git SHA1 provenance metadata. I found no concrete malicious or supply-chain indicators in this target file, and it contains no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_9ea4d3c5e1f54de5afc634ffeb64f076",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1783195345",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/k12.rs`, which implements the KangarooTwelve hash/XOF logic with chunk handling and finalization. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nI reviewed tests/tuple_hash.rs, which is a small unit-test module for `TupleHash` with hardcoded input/output vectors and local hashing calls. I checked for install hooks, subprocesses, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.\nReviewed `tests/sha3.rs`, which contains straightforward SHA3 test vectors and hash assertions. No concrete malicious or supply-chain indicators were found in this file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed the crate manifest in Cargo.toml. It only declares package metadata, feature flags, examples/tests/benches, and a single library dependency; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.\nReviewed `tests/kangaroo.rs`, which is a pure test module for `KangarooTwelve` vectors and helper data generation. I checked for install hooks, network or exfiltration, credential or environment access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
-      "files": [
-        {
-          "file_path": "src/k12.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ebd14d1e8e518d5802e27fe5f4e43ea110033b2c864803beccd06cc1f7ee2e34"
-          },
-          "summary": "Reviewed `src/k12.rs`, which implements the KangarooTwelve hash/XOF logic with chunk handling and finalization. I checked for install-time hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/tuple_hash.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "d77b5fff0b23b2254ccb847ec79a9674d79024d0da5090f70bf1149b135f315a"
-          },
-          "summary": "I reviewed tests/tuple_hash.rs, which is a small unit-test module for `TupleHash` with hardcoded input/output vectors and local hashing calls. I checked for install hooks, subprocesses, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -854,9 +778,191 @@
             "algorithm": "blake3",
             "value": "9dd465ad27521d81dd07ab9426457068ed4c1eb3a149f84d186d3f102ed5b87b"
           },
-          "summary": "Reviewed `tests/sha3.rs`, which contains straightforward SHA3 test vectors and hash assertions. No concrete malicious or supply-chain indicators were found in this file: there are no install hooks, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "`tests/sha3.rs` is a unit test module that exercises `tiny_keccak::Sha3` with fixed SHA3-256 and SHA3-512 vectors, including incremental updates split across inputs. I reviewed it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17276,
+            "attempts": 1,
+            "started_at_unix_ms": 1784060895015,
+            "finished_at_unix_ms": 1784060912291,
+            "total_token_usage": {
+              "input_tokens": 40788,
+              "cached_input_tokens": 36480,
+              "output_tokens": 590,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 41378
+            },
+            "last_token_usage": {
+              "input_tokens": 40788,
+              "cached_input_tokens": 36480,
+              "output_tokens": 590,
+              "reasoning_output_tokens": 280,
+              "total_tokens": 41378
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_84efebc4fc0d4e78b83da1a8ec01e1b2",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784061964",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "tests/shake.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "710187a55619e8f296aa8548cb50f63bd1d30a7f55029fc573eb30df5b337c30"
+          },
+          "summary": "Reviewed `tests/shake.rs`, which contains two deterministic SHAKE/XOF test cases that exercise `Shake::v128()`, repeated `update`, and `squeeze` calls against fixed expected outputs. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20854,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061931598,
+            "finished_at_unix_ms": 1784061952452,
+            "total_token_usage": {
+              "input_tokens": 24369,
+              "cached_input_tokens": 21248,
+              "output_tokens": 306,
+              "reasoning_output_tokens": 106,
+              "total_tokens": 24675
+            },
+            "last_token_usage": {
+              "input_tokens": 24369,
+              "cached_input_tokens": 21248,
+              "output_tokens": 306,
+              "reasoning_output_tokens": 106,
+              "total_tokens": 24675
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/tuple_hash.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d77b5fff0b23b2254ccb847ec79a9674d79024d0da5090f70bf1149b135f315a"
+          },
+          "summary": "Reviewed `tests/tuple_hash.rs`, which contains deterministic unit tests for `TupleHash::v128` and `TupleHash::v256` against fixed byte vectors. I checked for install-time execution, network or exfiltration, credential or environment access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12138,
+            "attempts": 1,
+            "started_at_unix_ms": 1784061952453,
+            "finished_at_unix_ms": 1784061964592,
+            "total_token_usage": {
+              "input_tokens": 25684,
+              "cached_input_tokens": 23296,
+              "output_tokens": 360,
+              "reasoning_output_tokens": 154,
+              "total_tokens": 26044
+            },
+            "last_token_usage": {
+              "input_tokens": 25684,
+              "cached_input_tokens": 23296,
+              "output_tokens": 360,
+              "reasoning_output_tokens": 154,
+              "total_tokens": 26044
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_91514e9b04bc428bba8c5aec01f4a0f6",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054369",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "84b4811393820e8915beaed6b6b5b11290c9c7fe4484341ba0056c0be5f96ede"
+          },
+          "summary": "Reviewed .cargo_vcs_info.json, which only records the package's upstream git SHA and contains no executable code or runtime logic. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence indicators, and found none in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12134,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054289656,
+            "finished_at_unix_ms": 1784054301790,
+            "total_token_usage": {
+              "input_tokens": 24114,
+              "cached_input_tokens": 21248,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 221,
+              "total_tokens": 24526
+            },
+            "last_token_usage": {
+              "input_tokens": 24114,
+              "cached_input_tokens": 21248,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 221,
+              "total_tokens": 24526
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": ".travis.yml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2d764c5cb3a0b2a8d1e22eaed3c867657e7601d890ae65028dbd9dc365776304"
+          },
+          "summary": "Reviewed the Travis CI configuration in `.travis.yml`, which defines a Rust build matrix and runs `cross test` across several targets and feature combinations. I checked for install hooks, secret access, network exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21002,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054301791,
+            "finished_at_unix_ms": 1784054322794,
+            "total_token_usage": {
+              "input_tokens": 24529,
+              "cached_input_tokens": 21248,
+              "output_tokens": 618,
+              "reasoning_output_tokens": 425,
+              "total_tokens": 25147
+            },
+            "last_token_usage": {
+              "input_tokens": 24529,
+              "cached_input_tokens": 21248,
+              "output_tokens": 618,
+              "reasoning_output_tokens": 425,
+              "total_tokens": 25147
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -866,21 +972,447 @@
             "algorithm": "blake3",
             "value": "77e8a93822794e2af3981e6092f46a74409ffa2103301569e2d0042ed2837175"
           },
-          "summary": "Reviewed the crate manifest in Cargo.toml. It only declares package metadata, feature flags, examples/tests/benches, and a single library dependency; I found no install hooks, build scripts, network/exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this target file.",
+          "summary": "I reviewed the package manifest in Cargo.toml for install-time hooks, hidden subprocess execution, network or credential access, dynamic code loading, obfuscation, and persistence mechanisms. The file is a standard Rust crate manifest with metadata, feature flags, test/bench entries, and a normal dependency declaration, and I found no concrete malicious or supply-chain indicators.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12776,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054322795,
+            "finished_at_unix_ms": 1784054335571,
+            "total_token_usage": {
+              "input_tokens": 24657,
+              "cached_input_tokens": 23296,
+              "output_tokens": 540,
+              "reasoning_output_tokens": 342,
+              "total_tokens": 25197
+            },
+            "last_token_usage": {
+              "input_tokens": 24657,
+              "cached_input_tokens": 23296,
+              "output_tokens": 540,
+              "reasoning_output_tokens": 342,
+              "total_tokens": 25197
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "tests/kangaroo.rs",
+          "file_path": "README.md",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "a1660b13f7befb7422653b0d5f175b455eceaa0e8bbff81a5fdeef876606c86a"
+            "value": "e9300511c2b1e971e10063829b82eeff95854b0946bafa77c55c7abdaca16993"
           },
-          "summary": "Reviewed `tests/kangaroo.rs`, which is a pure test module for `KangarooTwelve` vectors and helper data generation. I checked for install hooks, network or exfiltration, credential or environment access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
+          "summary": "Reviewed README.md, which is standard project documentation for the tiny-keccak Keccak/SHA3 implementation, including features, usage, examples, benchmarks, and external reference links. I found no concrete indicators of install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain malicious behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13691,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054335572,
+            "finished_at_unix_ms": 1784054349264,
+            "total_token_usage": {
+              "input_tokens": 24861,
+              "cached_input_tokens": 21248,
+              "output_tokens": 528,
+              "reasoning_output_tokens": 334,
+              "total_tokens": 25389
+            },
+            "last_token_usage": {
+              "input_tokens": 24861,
+              "cached_input_tokens": 21248,
+              "output_tokens": 528,
+              "reasoning_output_tokens": 334,
+              "total_tokens": 25389
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "benches/kangaroo.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a7167d62e99b5a95f67b27d11e3a17d5d0af62d57e4c62c06ddfcb7cfc0d8f5a"
+          },
+          "summary": "Reviewed `benches/kangaroo.rs`, a Rust benchmark that hashes a fixed 32-byte buffer with `KangarooTwelve` and measures the result. I found no concrete supply-chain indicators in this file: no install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20608,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054349264,
+            "finished_at_unix_ms": 1784054369873,
+            "total_token_usage": {
+              "input_tokens": 24202,
+              "cached_input_tokens": 21248,
+              "output_tokens": 396,
+              "reasoning_output_tokens": 197,
+              "total_tokens": 24598
+            },
+            "last_token_usage": {
+              "input_tokens": 24202,
+              "cached_input_tokens": 21248,
+              "output_tokens": 396,
+              "reasoning_output_tokens": 197,
+              "total_tokens": 24598
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_a12c7d3f7dca4eb986df9bd2e2534482",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784056464",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "benches/keccak.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "781d92fc7df677925c6c68114abf2bc302449e410aa77a5a45526825af9f045b"
+          },
+          "summary": "Reviewed `benches/keccak.rs`, which contains only Rust benchmark functions for `Keccak::v256` and `keccakf` performance measurement. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration behavior, credential or secret access, dynamic code loading, obfuscation, or persistence logic.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12971,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056389587,
+            "finished_at_unix_ms": 1784056402559,
+            "total_token_usage": {
+              "input_tokens": 24397,
+              "cached_input_tokens": 21248,
+              "output_tokens": 455,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24852
+            },
+            "last_token_usage": {
+              "input_tokens": 24397,
+              "cached_input_tokens": 21248,
+              "output_tokens": 455,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24852
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "build.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "496d4e0ed87666ff128635bb9ac113fd4d557a89f0822baa78cd069abc29f0a8"
+          },
+          "summary": "Reviewed `build.rs`, which only enforces a compile-time feature gate with `compile_error!` if no hash-function feature is enabled, and otherwise runs an empty `main()`. I found no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10786,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056402559,
+            "finished_at_unix_ms": 1784056413345,
+            "total_token_usage": {
+              "input_tokens": 24215,
+              "cached_input_tokens": 19200,
+              "output_tokens": 354,
+              "reasoning_output_tokens": 156,
+              "total_tokens": 24569
+            },
+            "last_token_usage": {
+              "input_tokens": 24215,
+              "cached_input_tokens": 19200,
+              "output_tokens": 354,
+              "reasoning_output_tokens": 156,
+              "total_tokens": 24569
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "examples/sha3.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4eebb175b5023517387ddadbab4a118ae620d4bd2daf9a6190f4524a991f6ccf"
+          },
+          "summary": "Reviewed `examples/sha3.rs`, which is a straightforward SHA3-256 example that hashes `hello world` with `tiny_keccak` and checks the digest against a fixed expected value. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19520,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056413346,
+            "finished_at_unix_ms": 1784056432866,
+            "total_token_usage": {
+              "input_tokens": 24232,
+              "cached_input_tokens": 21248,
+              "output_tokens": 380,
+              "reasoning_output_tokens": 173,
+              "total_tokens": 24612
+            },
+            "last_token_usage": {
+              "input_tokens": 24232,
+              "cached_input_tokens": 21248,
+              "output_tokens": 380,
+              "reasoning_output_tokens": 173,
+              "total_tokens": 24612
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/cshake.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "cb5ce2ad50e0b0323b179e3a372e7635619c2cebb905a57c680cb8b9339bd248"
+          },
+          "summary": "This file implements the `CShake` hash/XOF wrapper for SP800-185, including domain separation setup, absorb/finalize, and squeeze forwarding into the Keccak state. I checked this target file for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20098,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056432866,
+            "finished_at_unix_ms": 1784056452965,
+            "total_token_usage": {
+              "input_tokens": 24691,
+              "cached_input_tokens": 21248,
+              "output_tokens": 441,
+              "reasoning_output_tokens": 240,
+              "total_tokens": 25132
+            },
+            "last_token_usage": {
+              "input_tokens": 24691,
+              "cached_input_tokens": 21248,
+              "output_tokens": 441,
+              "reasoning_output_tokens": 240,
+              "total_tokens": 25132
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/k12.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ebd14d1e8e518d5802e27fe5f4e43ea110033b2c864803beccd06cc1f7ee2e34"
+          },
+          "summary": "Reviewed `src/k12.rs`, which implements the KangarooTwelve hash/XOF state machine, chunking, and finalization logic using in-crate Keccak state primitives. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise patterns in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11677,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056452966,
+            "finished_at_unix_ms": 1784056464643,
+            "total_token_usage": {
+              "input_tokens": 25420,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 261,
+              "total_tokens": 25885
+            },
+            "last_token_usage": {
+              "input_tokens": 25420,
+              "cached_input_tokens": 21248,
+              "output_tokens": 465,
+              "reasoning_output_tokens": 261,
+              "total_tokens": 25885
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_b83f8d0eec7346f5a8846279e462205b",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058212",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/keccak.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "2c7469c53d54bf69a02874dae45c8cef3466c87e7edd64b787994b76361eb6af"
+          },
+          "summary": "Reviewed `src/keccak.rs`, which only defines the `Keccak` hasher constructors and forwards `update`/`finalize` into `KeccakState` with a fixed delimiter. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11610,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058101354,
+            "finished_at_unix_ms": 1784058112965,
+            "total_token_usage": {
+              "input_tokens": 24708,
+              "cached_input_tokens": 21248,
+              "output_tokens": 426,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 25134
+            },
+            "last_token_usage": {
+              "input_tokens": 24708,
+              "cached_input_tokens": 21248,
+              "output_tokens": 426,
+              "reasoning_output_tokens": 224,
+              "total_tokens": 25134
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/keccakf.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "5ba6605d2c7acb6218520b90c53173644dc47497e8d455a9696cd911f9c1b5b0"
+          },
+          "summary": "Reviewed `src/keccakf.rs`, which only defines the 24-round Keccak-f[1600] round constants and exposes them through a `Permutation` implementation that forwards to `keccakf(buffer.words())`. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16242,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058112965,
+            "finished_at_unix_ms": 1784058129208,
+            "total_token_usage": {
+              "input_tokens": 24587,
+              "cached_input_tokens": 21248,
+              "output_tokens": 536,
+              "reasoning_output_tokens": 203,
+              "total_tokens": 25123
+            },
+            "last_token_usage": {
+              "input_tokens": 24587,
+              "cached_input_tokens": 21248,
+              "output_tokens": 536,
+              "reasoning_output_tokens": 203,
+              "total_tokens": 25123
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/keccakp.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7273491f145be5bd75f76d6e7b403d8fc0e2c0317410a671af050fc2e0b29783"
+          },
+          "summary": "`src/keccakp.rs` only defines the Keccak-p[1600,12] round constants and a small `Permutation` wrapper that forwards a mutable buffer into the local keccak permutation macro. I checked this file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence/tampering and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 38875,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058129208,
+            "finished_at_unix_ms": 1784058168084,
+            "total_token_usage": {
+              "input_tokens": 65900,
+              "cached_input_tokens": 60288,
+              "output_tokens": 921,
+              "reasoning_output_tokens": 414,
+              "total_tokens": 66821
+            },
+            "last_token_usage": {
+              "input_tokens": 65900,
+              "cached_input_tokens": 60288,
+              "output_tokens": 921,
+              "reasoning_output_tokens": 414,
+              "total_tokens": 66821
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/kmac.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1f2c0f5ec52a3f9bc70e7c39e43804233c3aa4e9fa4f4fe072668814918b78f9"
+          },
+          "summary": "Reviewed `src/kmac.rs`, which implements the KMAC and KMACXOF wrappers on top of `CShake` with standard SP800-185 byte-encoding and squeezing logic. I checked for install hooks, subprocess launches, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other supply-chain indicators; none were present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19439,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058168085,
+            "finished_at_unix_ms": 1784058187524,
+            "total_token_usage": {
+              "input_tokens": 39905,
+              "cached_input_tokens": 34432,
+              "output_tokens": 575,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 40480
+            },
+            "last_token_usage": {
+              "input_tokens": 39905,
+              "cached_input_tokens": 34432,
+              "output_tokens": 575,
+              "reasoning_output_tokens": 260,
+              "total_tokens": 40480
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "444cb5ab419161112029f862881d85a4f0249300f7fc42c31974e7d960301a71"
+          },
+          "summary": "src/lib.rs contains the crate's core Keccak implementation: round constants, permutation macros, encoding helpers, the buffered absorb/squeeze state machine, and public hashing/XOF traits. I checked it for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found no concrete supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24515,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058187525,
+            "finished_at_unix_ms": 1784058212040,
+            "total_token_usage": {
+              "input_tokens": 84182,
+              "cached_input_tokens": 71040,
+              "output_tokens": 815,
+              "reasoning_output_tokens": 318,
+              "total_tokens": 84997
+            },
+            "last_token_usage": {
+              "input_tokens": 84182,
+              "cached_input_tokens": 71040,
+              "output_tokens": 815,
+              "reasoning_output_tokens": 318,
+              "total_tokens": 84997
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
@@ -896,7 +1428,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783589759",
       "thirdpass_version": "0.6.0",

@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590601",
+  "latest_reviewed_at": "1784051569",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -107,48 +113,605 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 1,
-      "file_record_count": 3,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 1,
-      "file_record_count_with_metrics": 1
+      "review_count": 8,
+      "file_record_count": 22,
+      "file_record_count_with_metrics": 22
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 4,
-    "file_records_with_metrics": 1,
-    "file_records_without_metrics": 3,
-    "duration_ms_total": 17582,
-    "attempts_total": 1,
+    "reviewed_file_records": 22,
+    "file_records_with_metrics": 22,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 274359,
+    "attempts_total": 22,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 1,
-    "last_token_usage_records": 1,
+    "total_token_usage_records": 22,
+    "last_token_usage_records": 22,
     "total_token_usage": {
-      "input_tokens": 42892,
-      "cached_input_tokens": 38912,
-      "output_tokens": 744,
-      "reasoning_output_tokens": 303,
-      "total_tokens": 43636
+      "input_tokens": 576537,
+      "cached_input_tokens": 373760,
+      "output_tokens": 9469,
+      "reasoning_output_tokens": 4506,
+      "total_tokens": 586006
     },
     "last_token_usage": {
-      "input_tokens": 42892,
-      "cached_input_tokens": 38912,
-      "output_tokens": 744,
-      "reasoning_output_tokens": 303,
-      "total_tokens": 43636
+      "input_tokens": 576537,
+      "cached_input_tokens": 373760,
+      "output_tokens": 9469,
+      "reasoning_output_tokens": 4506,
+      "total_tokens": 586006
     },
     "model_context_windows": []
   },
   "reviews": [
+    {
+      "id": "rev_0860786cec6b4b088c801cc8c17a480f",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784044482",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d6a3865b225a66f926b8f2c39dea5da5047b2e87dec7731de11191f5683cc1db"
+          },
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the package's git SHA1 and the original path in the upstream VCS. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11106,
+            "attempts": 1,
+            "started_at_unix_ms": 1784044448789,
+            "finished_at_unix_ms": 1784044459895,
+            "total_token_usage": {
+              "input_tokens": 24104,
+              "cached_input_tokens": 13568,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24490
+            },
+            "last_token_usage": {
+              "input_tokens": 24104,
+              "cached_input_tokens": 13568,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24490
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f53f32593b04e883f7c4fc63ff9cb4055848e76f81afdbb2f66c6f18fadd32d1"
+          },
+          "summary": "Reviewed this Cargo manifest for install-time hooks, script execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. It only declares a minimal library package for `rustc-std-workspace-core` with no build script, no binaries, and no dependency or script metadata that would indicate supply-chain compromise.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12199,
+            "attempts": 1,
+            "started_at_unix_ms": 1784044459896,
+            "finished_at_unix_ms": 1784044472096,
+            "total_token_usage": {
+              "input_tokens": 24265,
+              "cached_input_tokens": 13056,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 24677
+            },
+            "last_token_usage": {
+              "input_tokens": 24265,
+              "cached_input_tokens": 13056,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 24677
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "344662e8490411fb192e887f1ee252587cd08a706f8ce0f706bfcdf522766ed9"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a minimal `no_std` shim that aliases and re-exports `core` as `the_core`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10393,
+            "attempts": 1,
+            "started_at_unix_ms": 1784044472096,
+            "finished_at_unix_ms": 1784044482490,
+            "total_token_usage": {
+              "input_tokens": 24013,
+              "cached_input_tokens": 13568,
+              "output_tokens": 311,
+              "reasoning_output_tokens": 101,
+              "total_tokens": 24324
+            },
+            "last_token_usage": {
+              "input_tokens": 24013,
+              "cached_input_tokens": 13568,
+              "output_tokens": 311,
+              "reasoning_output_tokens": 101,
+              "total_tokens": 24324
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_3af8a0ffa788447997ecf1db024ebf29",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784045565",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d6a3865b225a66f926b8f2c39dea5da5047b2e87dec7731de11191f5683cc1db"
+          },
+          "summary": "Reviewed the package VCS metadata in .cargo_vcs_info.json, which only records the upstream git SHA1 and the source path inside the repository. I found no concrete malicious or supply-chain indicators in this file, and there are no install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence behaviors present here.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11718,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045529051,
+            "finished_at_unix_ms": 1784045540770,
+            "total_token_usage": {
+              "input_tokens": 24172,
+              "cached_input_tokens": 13568,
+              "output_tokens": 403,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 24575
+            },
+            "last_token_usage": {
+              "input_tokens": 24172,
+              "cached_input_tokens": 13568,
+              "output_tokens": 403,
+              "reasoning_output_tokens": 191,
+              "total_tokens": 24575
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f53f32593b04e883f7c4fc63ff9cb4055848e76f81afdbb2f66c6f18fadd32d1"
+          },
+          "summary": "Reviewed the crate manifest for `rustc-std-workspace-core` 1.0.1. It is a minimal library-only `Cargo.toml` with no build script, no dependency declarations, and no install-time, network, credential-access, dynamic-loading, obfuscation, or persistence hooks present in the target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12508,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045540770,
+            "finished_at_unix_ms": 1784045553278,
+            "total_token_usage": {
+              "input_tokens": 24310,
+              "cached_input_tokens": 23296,
+              "output_tokens": 468,
+              "reasoning_output_tokens": 266,
+              "total_tokens": 24778
+            },
+            "last_token_usage": {
+              "input_tokens": 24310,
+              "cached_input_tokens": 23296,
+              "output_tokens": 468,
+              "reasoning_output_tokens": 266,
+              "total_tokens": 24778
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "344662e8490411fb192e887f1ee252587cd08a706f8ce0f706bfcdf522766ed9"
+          },
+          "summary": "src/lib.rs is a minimal `no_std` shim that aliases `core` as `the_core` and re-exports it wholesale. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11852,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045553279,
+            "finished_at_unix_ms": 1784045565131,
+            "total_token_usage": {
+              "input_tokens": 24021,
+              "cached_input_tokens": 13056,
+              "output_tokens": 433,
+              "reasoning_output_tokens": 223,
+              "total_tokens": 24454
+            },
+            "last_token_usage": {
+              "input_tokens": 24021,
+              "cached_input_tokens": 13056,
+              "output_tokens": 433,
+              "reasoning_output_tokens": 223,
+              "total_tokens": 24454
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_50ca55b666d84e67bafd64d555ae518b",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784044482",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d6a3865b225a66f926b8f2c39dea5da5047b2e87dec7731de11191f5683cc1db"
+          },
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the package's git SHA1 and the original path in the upstream VCS. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11106,
+            "attempts": 1,
+            "started_at_unix_ms": 1784044448789,
+            "finished_at_unix_ms": 1784044459895,
+            "total_token_usage": {
+              "input_tokens": 24104,
+              "cached_input_tokens": 13568,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24490
+            },
+            "last_token_usage": {
+              "input_tokens": 24104,
+              "cached_input_tokens": 13568,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24490
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f53f32593b04e883f7c4fc63ff9cb4055848e76f81afdbb2f66c6f18fadd32d1"
+          },
+          "summary": "Reviewed this Cargo manifest for install-time hooks, script execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. It only declares a minimal library package for `rustc-std-workspace-core` with no build script, no binaries, and no dependency or script metadata that would indicate supply-chain compromise.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12199,
+            "attempts": 1,
+            "started_at_unix_ms": 1784044459896,
+            "finished_at_unix_ms": 1784044472096,
+            "total_token_usage": {
+              "input_tokens": 24265,
+              "cached_input_tokens": 13056,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 24677
+            },
+            "last_token_usage": {
+              "input_tokens": 24265,
+              "cached_input_tokens": 13056,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 24677
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "344662e8490411fb192e887f1ee252587cd08a706f8ce0f706bfcdf522766ed9"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a minimal `no_std` shim that aliases and re-exports `core` as `the_core`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10393,
+            "attempts": 1,
+            "started_at_unix_ms": 1784044472096,
+            "finished_at_unix_ms": 1784044482490,
+            "total_token_usage": {
+              "input_tokens": 24013,
+              "cached_input_tokens": 13568,
+              "output_tokens": 311,
+              "reasoning_output_tokens": 101,
+              "total_tokens": 24324
+            },
+            "last_token_usage": {
+              "input_tokens": 24013,
+              "cached_input_tokens": 13568,
+              "output_tokens": 311,
+              "reasoning_output_tokens": 101,
+              "total_tokens": 24324
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_5e3b4703fe8b47cf8d05a937a1b25211",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784044482",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d6a3865b225a66f926b8f2c39dea5da5047b2e87dec7731de11191f5683cc1db"
+          },
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the package's git SHA1 and the original path in the upstream VCS. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11106,
+            "attempts": 1,
+            "started_at_unix_ms": 1784044448789,
+            "finished_at_unix_ms": 1784044459895,
+            "total_token_usage": {
+              "input_tokens": 24104,
+              "cached_input_tokens": 13568,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24490
+            },
+            "last_token_usage": {
+              "input_tokens": 24104,
+              "cached_input_tokens": 13568,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24490
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f53f32593b04e883f7c4fc63ff9cb4055848e76f81afdbb2f66c6f18fadd32d1"
+          },
+          "summary": "Reviewed this Cargo manifest for install-time hooks, script execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. It only declares a minimal library package for `rustc-std-workspace-core` with no build script, no binaries, and no dependency or script metadata that would indicate supply-chain compromise.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12199,
+            "attempts": 1,
+            "started_at_unix_ms": 1784044459896,
+            "finished_at_unix_ms": 1784044472096,
+            "total_token_usage": {
+              "input_tokens": 24265,
+              "cached_input_tokens": 13056,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 24677
+            },
+            "last_token_usage": {
+              "input_tokens": 24265,
+              "cached_input_tokens": 13056,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 24677
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "344662e8490411fb192e887f1ee252587cd08a706f8ce0f706bfcdf522766ed9"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a minimal `no_std` shim that aliases and re-exports `core` as `the_core`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10393,
+            "attempts": 1,
+            "started_at_unix_ms": 1784044472096,
+            "finished_at_unix_ms": 1784044482490,
+            "total_token_usage": {
+              "input_tokens": 24013,
+              "cached_input_tokens": 13568,
+              "output_tokens": 311,
+              "reasoning_output_tokens": 101,
+              "total_tokens": 24324
+            },
+            "last_token_usage": {
+              "input_tokens": 24013,
+              "cached_input_tokens": 13568,
+              "output_tokens": 311,
+              "reasoning_output_tokens": 101,
+              "total_tokens": 24324
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_969fa1b30fe9476798385caad84127c2",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784044482",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d6a3865b225a66f926b8f2c39dea5da5047b2e87dec7731de11191f5683cc1db"
+          },
+          "summary": "Reviewed the `.cargo_vcs_info.json` metadata file, which only records the package's git SHA1 and the original path in the upstream VCS. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11106,
+            "attempts": 1,
+            "started_at_unix_ms": 1784044448789,
+            "finished_at_unix_ms": 1784044459895,
+            "total_token_usage": {
+              "input_tokens": 24104,
+              "cached_input_tokens": 13568,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24490
+            },
+            "last_token_usage": {
+              "input_tokens": 24104,
+              "cached_input_tokens": 13568,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24490
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f53f32593b04e883f7c4fc63ff9cb4055848e76f81afdbb2f66c6f18fadd32d1"
+          },
+          "summary": "Reviewed this Cargo manifest for install-time hooks, script execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence. It only declares a minimal library package for `rustc-std-workspace-core` with no build script, no binaries, and no dependency or script metadata that would indicate supply-chain compromise.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12199,
+            "attempts": 1,
+            "started_at_unix_ms": 1784044459896,
+            "finished_at_unix_ms": 1784044472096,
+            "total_token_usage": {
+              "input_tokens": 24265,
+              "cached_input_tokens": 13056,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 24677
+            },
+            "last_token_usage": {
+              "input_tokens": 24265,
+              "cached_input_tokens": 13056,
+              "output_tokens": 412,
+              "reasoning_output_tokens": 208,
+              "total_tokens": 24677
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "344662e8490411fb192e887f1ee252587cd08a706f8ce0f706bfcdf522766ed9"
+          },
+          "summary": "Reviewed `src/lib.rs`, which is a minimal `no_std` shim that aliases and re-exports `core` as `the_core`. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10393,
+            "attempts": 1,
+            "started_at_unix_ms": 1784044472096,
+            "finished_at_unix_ms": 1784044482490,
+            "total_token_usage": {
+              "input_tokens": 24013,
+              "cached_input_tokens": 13568,
+              "output_tokens": 311,
+              "reasoning_output_tokens": 101,
+              "total_tokens": 24324
+            },
+            "last_token_usage": {
+              "input_tokens": 24013,
+              "cached_input_tokens": 13568,
+              "output_tokens": 311,
+              "reasoning_output_tokens": 101,
+              "total_tokens": 24324
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
     {
       "id": "rev_c434cc828cb247b59c4721c3dae579c2",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -159,7 +722,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590601",
       "thirdpass_version": "0.6.0",
@@ -199,7 +762,7 @@
       ]
     },
     {
-      "id": "rev_f9c39fb559af4acda1b0421449ef83da",
+      "id": "rev_c920e2e9eced4ef2ac607c61ec189d23",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -207,34 +770,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782745125",
+      "created_at": "1784040265",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed the crate manifest in `Cargo.toml`, which only declares a small library package (`rustc-std-workspace-core`) with metadata and a `src/lib.rs` entry point. I checked for install-time hooks, build scripts, network/exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the target `.cargo_vcs_info.json`, which only records a Git commit SHA and the package path in the upstream VCS. I found no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed src/lib.rs, which is a minimal no_std re-export of the core crate (`extern crate core as the_core; pub use the_core::*;`). I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
       "files": [
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f53f32593b04e883f7c4fc63ff9cb4055848e76f81afdbb2f66c6f18fadd32d1"
-          },
-          "summary": "Reviewed the crate manifest in `Cargo.toml`, which only declares a small library package (`rustc-std-workspace-core`) with metadata and a `src/lib.rs` entry point. I checked for install-time hooks, build scripts, network/exfiltration, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": ".cargo_vcs_info.json",
           "file_hash": {
             "algorithm": "blake3",
             "value": "d6a3865b225a66f926b8f2c39dea5da5047b2e87dec7731de11191f5683cc1db"
           },
-          "summary": "Reviewed the target `.cargo_vcs_info.json`, which only records a Git commit SHA and the package path in the upstream VCS. I found no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "summary": "Reviewed `.cargo_vcs_info.json`, which contains only source-control provenance metadata (`git.sha1` and `path_in_vcs`) for the crate. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14187,
+            "attempts": 1,
+            "started_at_unix_ms": 1784040221902,
+            "finished_at_unix_ms": 1784040236090,
+            "total_token_usage": {
+              "input_tokens": 24511,
+              "cached_input_tokens": 14080,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 184,
+              "total_tokens": 24897
+            },
+            "last_token_usage": {
+              "input_tokens": 24511,
+              "cached_input_tokens": 14080,
+              "output_tokens": 386,
+              "reasoning_output_tokens": 184,
+              "total_tokens": 24897
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f53f32593b04e883f7c4fc63ff9cb4055848e76f81afdbb2f66c6f18fadd32d1"
+          },
+          "summary": "`Cargo.toml` is a minimal Rust crate manifest for `rustc-std-workspace-core` 1.0.1, defining package metadata and a single library target in `src/lib.rs`. I checked it for install hooks, hidden subprocesses, network or exfiltration settings, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14367,
+            "attempts": 1,
+            "started_at_unix_ms": 1784040236090,
+            "finished_at_unix_ms": 1784040250458,
+            "total_token_usage": {
+              "input_tokens": 24284,
+              "cached_input_tokens": 13056,
+              "output_tokens": 492,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 24776
+            },
+            "last_token_usage": {
+              "input_tokens": 24284,
+              "cached_input_tokens": 13056,
+              "output_tokens": 492,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 24776
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -244,9 +846,142 @@
             "algorithm": "blake3",
             "value": "344662e8490411fb192e887f1ee252587cd08a706f8ce0f706bfcdf522766ed9"
           },
-          "summary": "Reviewed src/lib.rs, which is a minimal no_std re-export of the core crate (`extern crate core as the_core; pub use the_core::*;`). I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "`src/lib.rs` is a minimal `no_std` shim that aliases the standard `core` crate as `the_core` and re-exports it wholesale. I checked the file for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, and other hidden payload behavior, and found none.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15294,
+            "attempts": 1,
+            "started_at_unix_ms": 1784040250458,
+            "finished_at_unix_ms": 1784040265753,
+            "total_token_usage": {
+              "input_tokens": 24040,
+              "cached_input_tokens": 21248,
+              "output_tokens": 414,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 24454
+            },
+            "last_token_usage": {
+              "input_tokens": 24040,
+              "cached_input_tokens": 21248,
+              "output_tokens": 414,
+              "reasoning_output_tokens": 212,
+              "total_tokens": 24454
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_da2ae9cbc40a4faf9546c42a83fa255f",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784051569",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "d6a3865b225a66f926b8f2c39dea5da5047b2e87dec7731de11191f5683cc1db"
+          },
+          "summary": "Reviewed the crate VCS metadata in `.cargo_vcs_info.json`, which only records the source git SHA and the path in the upstream repository. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12141,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051527520,
+            "finished_at_unix_ms": 1784051539661,
+            "total_token_usage": {
+              "input_tokens": 24181,
+              "cached_input_tokens": 13056,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 232,
+              "total_tokens": 24610
+            },
+            "last_token_usage": {
+              "input_tokens": 24181,
+              "cached_input_tokens": 13056,
+              "output_tokens": 429,
+              "reasoning_output_tokens": 232,
+              "total_tokens": 24610
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f53f32593b04e883f7c4fc63ff9cb4055848e76f81afdbb2f66c6f18fadd32d1"
+          },
+          "summary": "Reviewed the normalized Cargo.toml for rustc-std-workspace-core 1.0.1. It contains only package and lib metadata, with no build scripts, install hooks, dependencies, network or exfiltration logic, dynamic code loading, obfuscation, or persistence mechanisms present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19820,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051539661,
+            "finished_at_unix_ms": 1784051559482,
+            "total_token_usage": {
+              "input_tokens": 50482,
+              "cached_input_tokens": 39424,
+              "output_tokens": 904,
+              "reasoning_output_tokens": 503,
+              "total_tokens": 51386
+            },
+            "last_token_usage": {
+              "input_tokens": 50482,
+              "cached_input_tokens": 39424,
+              "output_tokens": 904,
+              "reasoning_output_tokens": 503,
+              "total_tokens": 51386
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "344662e8490411fb192e887f1ee252587cd08a706f8ce0f706bfcdf522766ed9"
+          },
+          "summary": "`src/lib.rs` is a minimal `no_std` shim that re-exports the `core` crate as `the_core`; I checked it for install-time hooks, network or credential access, dynamic code loading, obfuscation, and persistence, and found no concrete supply-chain or malicious behavior indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 10098,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051559482,
+            "finished_at_unix_ms": 1784051569581,
+            "total_token_usage": {
+              "input_tokens": 24116,
+              "cached_input_tokens": 23296,
+              "output_tokens": 360,
+              "reasoning_output_tokens": 164,
+              "total_tokens": 24476
+            },
+            "last_token_usage": {
+              "input_tokens": 24116,
+              "cached_input_tokens": 23296,
+              "output_tokens": 360,
+              "reasoning_output_tokens": 164,
+              "total_tokens": 24476
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

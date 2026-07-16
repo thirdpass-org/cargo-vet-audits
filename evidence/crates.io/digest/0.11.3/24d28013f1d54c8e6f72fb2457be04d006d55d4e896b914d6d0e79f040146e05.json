@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590155",
+  "latest_reviewed_at": "1784059822",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -347,126 +353,40 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 5,
-      "file_record_count": 21,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 5,
-      "file_record_count_with_metrics": 5
+      "review_count": 7,
+      "file_record_count": 31,
+      "file_record_count_with_metrics": 31
     }
   ],
   "agent_run_metrics_summary": {
-    "reviewed_file_records": 26,
-    "file_records_with_metrics": 5,
-    "file_records_without_metrics": 21,
-    "duration_ms_total": 87667,
-    "attempts_total": 5,
+    "reviewed_file_records": 31,
+    "file_records_with_metrics": 31,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 484539,
+    "attempts_total": 31,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 5,
-    "last_token_usage_records": 5,
+    "total_token_usage_records": 31,
+    "last_token_usage_records": 31,
     "total_token_usage": {
-      "input_tokens": 157102,
-      "cached_input_tokens": 122624,
-      "output_tokens": 3335,
-      "reasoning_output_tokens": 1980,
-      "total_tokens": 160437
+      "input_tokens": 966197,
+      "cached_input_tokens": 817664,
+      "output_tokens": 16157,
+      "reasoning_output_tokens": 8704,
+      "total_tokens": 982354
     },
     "last_token_usage": {
-      "input_tokens": 157102,
-      "cached_input_tokens": 122624,
-      "output_tokens": 3335,
-      "reasoning_output_tokens": 1980,
-      "total_tokens": 160437
+      "input_tokens": 966197,
+      "cached_input_tokens": 817664,
+      "output_tokens": 16157,
+      "reasoning_output_tokens": 8704,
+      "total_tokens": 982354
     },
     "model_context_windows": []
   },
   "reviews": [
-    {
-      "id": "rev_0bbc2d2a7347429e80eb620ab4be3a75",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782834441",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/xof_fixed.rs`, which is a thin generic wrapper that adapts `ExtendableOutput` hash types to fixed-output and state-serialization traits. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/dev/mac.rs`, which defines MAC test helpers and a macro that loads local test vectors, initializes MAC instances, updates them with in-memory input, and verifies tags. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution paths and found no concrete malicious or supply-chain indicators.\nReviewed `src/dev.rs`, which contains development-only test macros, local test-vector loading via `include_bytes!`, and a helper that feeds pseudorandom bytes from an internal RNG into a hasher. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed the normalized Rust package manifest for `digest` 0.11.3. It declares a library crate with `build = false`, no install hooks or wrappers, and only optional dependencies/features for hash-related functionality; I found no concrete indicators of hidden execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.\nReviewed `tests/dummy_fixed.rs`, which defines a small test-only XOR-based hash core and several `digest::buffer_fixed!` wrappers plus optional zeroize checks. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this target file.",
-      "files": [
-        {
-          "file_path": "src/xof_fixed.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ee6e32e710316d2bd7a71dc1b35dfb2d981561c0c15448cc4fc52963ceb2d302"
-          },
-          "summary": "Reviewed `src/xof_fixed.rs`, which is a thin generic wrapper that adapts `ExtendableOutput` hash types to fixed-output and state-serialization traits. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/dev/mac.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "eaed328b5654f835af9497ff1388bd4f905527e4c87a074a6318f3b08ceca68e"
-          },
-          "summary": "Reviewed `src/dev/mac.rs`, which defines MAC test helpers and a macro that loads local test vectors, initializes MAC instances, updates them with in-memory input, and verifies tags. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other hidden execution paths and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/dev.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6e95d8e9c404403f0cbdf482b76cc8937fa18f49741d96546a660cdc8f09010d"
-          },
-          "summary": "Reviewed `src/dev.rs`, which contains development-only test macros, local test-vector loading via `include_bytes!`, and a helper that feeds pseudorandom bytes from an internal RNG into a hasher. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "8803b853bb301bc7e2ab8d69a449734508b4d2592f95d50d3793f5d554326447"
-          },
-          "summary": "Reviewed the normalized Rust package manifest for `digest` 0.11.3. It declares a library crate with `build = false`, no install hooks or wrappers, and only optional dependencies/features for hash-related functionality; I found no concrete indicators of hidden execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "tests/dummy_fixed.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "1b9f060fdbc94d5be62ddcd9350ec0dea6664a9df5e1a7e2c9ea1ce922c874d1"
-          },
-          "summary": "Reviewed `tests/dummy_fixed.rs`, which defines a small test-only XOR-based hash core and several `digest::buffer_fixed!` wrappers plus optional zeroize checks. I found no concrete indicators of install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain behavior in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
     {
       "id": "rev_0c325200ed0242feae2c6e24ba4e3572",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -477,7 +397,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590155",
       "thirdpass_version": "0.6.0",
@@ -645,7 +565,7 @@
       ]
     },
     {
-      "id": "rev_6d8d0049ed304e94a86f36dba5bac7b9",
+      "id": "rev_1bf31d93166d4550bc7deb4b3740b6dd",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -653,232 +573,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782834361",
+      "created_at": "1784056805",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/mac.rs`, which implements the `Mac` trait helpers, constant-time `CtOutput` wrapper, and `MacError` display/error plumbing for digest/MAC verification. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess behavior.\nReviewed `src/buffer_macros/variable.rs`, which defines a Rust macro for generating buffer-wrapped digest types and their trait impls, including compile-time output-size checks and serialization support. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/block_api/ct_variable.rs`, a small compile-time output-size wrapper around `VariableOutputCore` that delegates hashing, truncation, reset, customization, serialization, and debug naming to the inner core. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess use, and found no concrete malicious or supply-chain indicators.\n`src/digest.rs` is a pure Rust trait and blanket-implementation module for digest/hash functionality, defining `Digest`, `DynDigest`, and related OID helper traits. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.\n`src/lib.rs` is a `no_std` Rust library module that defines digest/XOF traits, error types, and feature-gated re-exports; I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators. The only external URLs are documentation metadata for the crate logo/favicon, not runtime execution paths.",
       "files": [
-        {
-          "file_path": "src/mac.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "27b766b4af810d4ea53a3229e7cdc545abe96ed92289ff23ec05c79e7b97bf0e"
-          },
-          "summary": "Reviewed `src/mac.rs`, which implements the `Mac` trait helpers, constant-time `CtOutput` wrapper, and `MacError` display/error plumbing for digest/MAC verification. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network/exfiltration calls, credential access, dynamic code loading, obfuscation, persistence, or hidden subprocess behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/buffer_macros/variable.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "50af5c9ba5f1eaafaaac27291fb9adab28432f1da1d82a0f2c052eba887bb1ba"
-          },
-          "summary": "Reviewed `src/buffer_macros/variable.rs`, which defines a Rust macro for generating buffer-wrapped digest types and their trait impls, including compile-time output-size checks and serialization support. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/block_api/ct_variable.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7ecc88f5c5601f9edb8986af4561d430e2ab314fe6a93de9df8be196d1ecc775"
-          },
-          "summary": "Reviewed `src/block_api/ct_variable.rs`, a small compile-time output-size wrapper around `VariableOutputCore` that delegates hashing, truncation, reset, customization, serialization, and debug naming to the inner core. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess use, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/digest.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "11e81f2bd4103b1cdb0bee40bf6d948475f3cb5d87d71f1efc47ade25193d32b"
-          },
-          "summary": "`src/digest.rs` is a pure Rust trait and blanket-implementation module for digest/hash functionality, defining `Digest`, `DynDigest`, and related OID helper traits. I checked it for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "33f8e95f1982d86a702847101c328db7cc81785b2a600ca2b67e8b026fb86ca6"
-          },
-          "summary": "`src/lib.rs` is a `no_std` Rust library module that defines digest/XOF traits, error types, and feature-gated re-exports; I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators. The only external URLs are documentation metadata for the crate logo/favicon, not runtime execution paths.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_83bff68b5a24438e931e0fbfbb2d400d",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782834278",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/buffer_macros/fixed.rs`, which is a Rust macro file that generates fixed-output buffering wrappers and trait impls for digest/MAC types. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none were present in this target file.\nReviewed `src/buffer_macros/xof.rs`, which is a Rust macro definition file for generating buffered extendable-output-function wrappers and their trait impls. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `CHANGELOG.md`, which is a release history for the `digest` crate listing version notes, yanked releases, and GitHub PR references. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this target file.",
-      "files": [
-        {
-          "file_path": "src/buffer_macros/fixed.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "0ec5cec04f60572156d4272dddf31941572d0b77daf255ba22c0f3b45082cf2d"
-          },
-          "summary": "Reviewed `src/buffer_macros/fixed.rs`, which is a Rust macro file that generates fixed-output buffering wrappers and trait impls for digest/MAC types. I checked it for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none were present in this target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": "src/buffer_macros/xof.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "9ff81bf285d23cb8a40348fe0418437e3fd16b3fe06a5227530d6f47fbcd032f"
           },
-          "summary": "Reviewed `src/buffer_macros/xof.rs`, which is a Rust macro definition file for generating buffered extendable-output-function wrappers and their trait impls. I checked for install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/buffer_macros/xof.rs`, which defines Rust macros for generating buffered extendable-output hash/XOF wrapper types and their trait implementations, including reset, serialization, and reader support. I checked for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20731,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056726591,
+            "finished_at_unix_ms": 1784056747322,
+            "total_token_usage": {
+              "input_tokens": 40801,
+              "cached_input_tokens": 34944,
+              "output_tokens": 557,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 41358
+            },
+            "last_token_usage": {
+              "input_tokens": 40801,
+              "cached_input_tokens": 34944,
+              "output_tokens": 557,
+              "reasoning_output_tokens": 250,
+              "total_tokens": 41358
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
         {
-          "file_path": "CHANGELOG.md",
+          "file_path": "src/dev.rs",
           "file_hash": {
             "algorithm": "blake3",
-            "value": "4a7dda292ecc6b3c6dbbd0d475823b35cecba800a749c36a99b30d89a81839ea"
+            "value": "6e95d8e9c404403f0cbdf482b76cc8937fa18f49741d96546a660cdc8f09010d"
           },
-          "summary": "Reviewed `CHANGELOG.md`, which is a release history for the `digest` crate listing version notes, yanked releases, and GitHub PR references. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this target file.",
+          "summary": "Reviewed `src/dev.rs`, which contains development-only test and benchmark helpers, macros for hash test vectors and serialization checks, and a helper that feeds pseudorandom bytes into a digest state. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
           "security_summary": "none",
           "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_dadd8b739dac4f88915b8a4a060747ce",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782834560",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/dev/rng.rs`, which contains a small xorshift PRNG used for tests and a buffer-filling helper. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present.\n.cargo_vcs_info.json is a small provenance metadata file containing only a git SHA1 and the VCS path for the crate. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload indicators, and found none in the target file.\nReviewed `src/buffer_macros.rs`, which only declares three internal modules (`fixed`, `variable`, `xof`) and contains no executable logic. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence indicators in the target file and found none.",
-      "files": [
-        {
-          "file_path": "src/dev/rng.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "77f02d95ad719f1e74263a3e84add62a63432c96e58e0512a6897dc9c7d1c6da"
+          "agent_run_metrics": {
+            "duration_ms": 14712,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056747323,
+            "finished_at_unix_ms": 1784056762035,
+            "total_token_usage": {
+              "input_tokens": 25162,
+              "cached_input_tokens": 21248,
+              "output_tokens": 368,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 25530
+            },
+            "last_token_usage": {
+              "input_tokens": 25162,
+              "cached_input_tokens": 21248,
+              "output_tokens": 368,
+              "reasoning_output_tokens": 175,
+              "total_tokens": 25530
+            }
           },
-          "summary": "Reviewed `src/dev/rng.rs`, which contains a small xorshift PRNG used for tests and a buffer-filling helper. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "976acafdb6df71512e73c9d32122536431348bfe75eb90466cd1166d4b9749e1"
-          },
-          "summary": ".cargo_vcs_info.json is a small provenance metadata file containing only a git SHA1 and the VCS path for the crate. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other payload indicators, and found none in the target file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/buffer_macros.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7f978efef1815d0b1bc915d93ab5d39ba5c51a8b35ca5e862ac481ad23f6e7ba"
-          },
-          "summary": "Reviewed `src/buffer_macros.rs`, which only declares three internal modules (`fixed`, `variable`, `xof`) and contains no executable logic. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence indicators in the target file and found none.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_ff52b30eaa824450b1753ebd211a5a8d",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782834518",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/block_api.rs` is a pure Rust trait/interface module for block-based hash cores and wrappers (`UpdateCore`, `FixedOutputCore`, `ExtendableOutputCore`, `VariableOutputCore`, `CoreProxy`) plus a `TruncSide` enum. I checked it for install-time execution, hidden subprocesses, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed README.md, which is a normal project overview for RustCrypto digest traits and usage examples. I checked for install-time execution, hidden subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence cues, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/dev/variable.rs`, which contains helper tests for variable-length digest output and reset behavior using in-memory buffers and repeated chunked updates. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `src/dev/fixed.rs`, which contains digest test helpers that exercise `FixedOutput`/`FixedOutputReset` implementations by feeding test vectors in whole and chunked forms. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed `src/dev/xof.rs`, a small test helper that exercises resettable XOF hashing by cloning a hasher, updating it with an input vector, finalizing into a fixed buffer, and comparing against expected output. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators in this file.",
-      "files": [
-        {
-          "file_path": "src/block_api.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "7647849370ae203f062877221ce40d03efa23060640957df3dbb87450c65c0ab"
-          },
-          "summary": "`src/block_api.rs` is a pure Rust trait/interface module for block-based hash cores and wrappers (`UpdateCore`, `FixedOutputCore`, `ExtendableOutputCore`, `VariableOutputCore`, `CoreProxy`) plus a `TruncSide` enum. I checked it for install-time execution, hidden subprocesses, network or exfiltration logic, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "6e88b26c2203cc0e1e415384ecbcd6b89de1b556f624fd1dce4a0ebaf0032fa2"
-          },
-          "summary": "Reviewed README.md, which is a normal project overview for RustCrypto digest traits and usage examples. I checked for install-time execution, hidden subprocesses, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence cues, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/dev/variable.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "33d24217e48da60fd7bfdfc4ffb72204b9cf1d34d5dc2f4fc8581bc962ff7df3"
-          },
-          "summary": "Reviewed `src/dev/variable.rs`, which contains helper tests for variable-length digest output and reset behavior using in-memory buffers and repeated chunked updates. I found no concrete malicious or supply-chain indicators: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
           "comment_count": 0,
           "comments": []
         },
@@ -888,9 +649,577 @@
             "algorithm": "blake3",
             "value": "81f500864eb2bd59620cafd5cde1b6d9f5f0e5be9fc215a384d518daec2a6952"
           },
-          "summary": "Reviewed `src/dev/fixed.rs`, which contains digest test helpers that exercise `FixedOutput`/`FixedOutputReset` implementations by feeding test vectors in whole and chunked forms. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "summary": "Reviewed `src/dev/fixed.rs`, which contains pure test helpers for fixed-output and resettable digest implementations by hashing provided vectors and comparing the results to expected outputs. I found no concrete signs of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16973,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056762036,
+            "finished_at_unix_ms": 1784056779010,
+            "total_token_usage": {
+              "input_tokens": 38076,
+              "cached_input_tokens": 33920,
+              "output_tokens": 568,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 38644
+            },
+            "last_token_usage": {
+              "input_tokens": 38076,
+              "cached_input_tokens": 33920,
+              "output_tokens": 568,
+              "reasoning_output_tokens": 287,
+              "total_tokens": 38644
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/dev/mac.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "eaed328b5654f835af9497ff1388bd4f905527e4c87a074a6318f3b08ceca68e"
+          },
+          "summary": "Reviewed `src/dev/mac.rs`, which defines MAC test-vector helpers and a `new_mac_test!` macro for verifying keyed MAC implementations against bundled blob data. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence hooks, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12061,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056779010,
+            "finished_at_unix_ms": 1784056791071,
+            "total_token_usage": {
+              "input_tokens": 25361,
+              "cached_input_tokens": 21248,
+              "output_tokens": 376,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 25737
+            },
+            "last_token_usage": {
+              "input_tokens": 25361,
+              "cached_input_tokens": 21248,
+              "output_tokens": 376,
+              "reasoning_output_tokens": 181,
+              "total_tokens": 25737
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/dev/rng.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "77f02d95ad719f1e74263a3e84add62a63432c96e58e0512a6897dc9c7d1c6da"
+          },
+          "summary": "Reviewed `src/dev/rng.rs`, which contains a small xorshift RNG implementation used only for tests and a fixed seeded state. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14247,
+            "attempts": 1,
+            "started_at_unix_ms": 1784056791072,
+            "finished_at_unix_ms": 1784056805319,
+            "total_token_usage": {
+              "input_tokens": 24374,
+              "cached_input_tokens": 21248,
+              "output_tokens": 371,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24745
+            },
+            "last_token_usage": {
+              "input_tokens": 24374,
+              "cached_input_tokens": 21248,
+              "output_tokens": 371,
+              "reasoning_output_tokens": 180,
+              "total_tokens": 24745
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_1eed46c512134ffd8ddc1aceabac2af2",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784046061",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "976acafdb6df71512e73c9d32122536431348bfe75eb90466cd1166d4b9749e1"
+          },
+          "summary": "Reviewed the crate's `.cargo_vcs_info.json`, which only records the source VCS commit (`2fb9ed8922e244117040bb037a7d141a6a2b8228`) and the path in VCS (`digest`). No concrete malicious or supply-chain indicators were found in this file, and it contains no install hooks, network/exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12698,
+            "attempts": 1,
+            "started_at_unix_ms": 1784045991766,
+            "finished_at_unix_ms": 1784046004464,
+            "total_token_usage": {
+              "input_tokens": 24001,
+              "cached_input_tokens": 21248,
+              "output_tokens": 369,
+              "reasoning_output_tokens": 149,
+              "total_tokens": 24370
+            },
+            "last_token_usage": {
+              "input_tokens": 24001,
+              "cached_input_tokens": 21248,
+              "output_tokens": 369,
+              "reasoning_output_tokens": 149,
+              "total_tokens": 24370
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4a7dda292ecc6b3c6dbbd0d475823b35cecba800a749c36a99b30d89a81839ea"
+          },
+          "summary": "`CHANGELOG.md` is a plain release-history document for digest versions 0.1.0 through 0.11.3, listing feature, change, and yank notes with release links. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15475,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046004465,
+            "finished_at_unix_ms": 1784046019941,
+            "total_token_usage": {
+              "input_tokens": 26687,
+              "cached_input_tokens": 21248,
+              "output_tokens": 477,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 27164
+            },
+            "last_token_usage": {
+              "input_tokens": 26687,
+              "cached_input_tokens": 21248,
+              "output_tokens": 477,
+              "reasoning_output_tokens": 272,
+              "total_tokens": 27164
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8803b853bb301bc7e2ab8d69a449734508b4d2592f95d50d3793f5d554326447"
+          },
+          "summary": "Reviewed the normalized `Cargo.toml` for `digest` 0.11.3. It only declares package metadata, feature flags, and dependencies for a cryptographic traits crate, and I found no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14264,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046019942,
+            "finished_at_unix_ms": 1784046034207,
+            "total_token_usage": {
+              "input_tokens": 24743,
+              "cached_input_tokens": 21248,
+              "output_tokens": 413,
+              "reasoning_output_tokens": 221,
+              "total_tokens": 25156
+            },
+            "last_token_usage": {
+              "input_tokens": 24743,
+              "cached_input_tokens": 21248,
+              "output_tokens": 413,
+              "reasoning_output_tokens": 221,
+              "total_tokens": 25156
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6e88b26c2203cc0e1e415384ecbcd6b89de1b556f624fd1dce4a0ebaf0032fa2"
+          },
+          "summary": "The target file is a crate README describing the RustCrypto digest trait API, usage examples, and license/link metadata. I checked it for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11360,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046034207,
+            "finished_at_unix_ms": 1784046045568,
+            "total_token_usage": {
+              "input_tokens": 25000,
+              "cached_input_tokens": 23296,
+              "output_tokens": 341,
+              "reasoning_output_tokens": 158,
+              "total_tokens": 25341
+            },
+            "last_token_usage": {
+              "input_tokens": 25000,
+              "cached_input_tokens": 23296,
+              "output_tokens": 341,
+              "reasoning_output_tokens": 158,
+              "total_tokens": 25341
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/block_api.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7647849370ae203f062877221ce40d03efa23060640957df3dbb87450c65c0ab"
+          },
+          "summary": "Reviewed `src/block_api.rs`, which defines block-oriented hashing traits, buffer wrappers, truncation helpers, and proxy interfaces. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15742,
+            "attempts": 1,
+            "started_at_unix_ms": 1784046045569,
+            "finished_at_unix_ms": 1784046061311,
+            "total_token_usage": {
+              "input_tokens": 41089,
+              "cached_input_tokens": 34432,
+              "output_tokens": 566,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 41655
+            },
+            "last_token_usage": {
+              "input_tokens": 41089,
+              "cached_input_tokens": 34432,
+              "output_tokens": 566,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 41655
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_411b9d47ad534598953459742ac974df",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784059822",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/xof_fixed.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ee6e32e710316d2bd7a71dc1b35dfb2d981561c0c15448cc4fc52963ceb2d302"
+          },
+          "summary": "Reviewed `src/xof_fixed.rs`, a thin Rust wrapper that adapts `ExtendableOutput` hash types to a fixed output size and forwards reset, update, finalization, customization, and serialization calls to the inner hasher. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14339,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059795564,
+            "finished_at_unix_ms": 1784059809904,
+            "total_token_usage": {
+              "input_tokens": 25208,
+              "cached_input_tokens": 21248,
+              "output_tokens": 406,
+              "reasoning_output_tokens": 197,
+              "total_tokens": 25614
+            },
+            "last_token_usage": {
+              "input_tokens": 25208,
+              "cached_input_tokens": 21248,
+              "output_tokens": 406,
+              "reasoning_output_tokens": 197,
+              "total_tokens": 25614
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/dummy_fixed.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "1b9f060fdbc94d5be62ddcd9350ec0dea6664a9df5e1a7e2c9ea1ce922c874d1"
+          },
+          "summary": "Reviewed `tests/dummy_fixed.rs`, which defines a small XOR-based test hash and related macro-generated wrappers for serialization, OID handling, and optional zeroization checks. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and other hidden execution paths; none are present in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12544,
+            "attempts": 1,
+            "started_at_unix_ms": 1784059809904,
+            "finished_at_unix_ms": 1784059822449,
+            "total_token_usage": {
+              "input_tokens": 24881,
+              "cached_input_tokens": 21248,
+              "output_tokens": 330,
+              "reasoning_output_tokens": 128,
+              "total_tokens": 25211
+            },
+            "last_token_usage": {
+              "input_tokens": 24881,
+              "cached_input_tokens": 21248,
+              "output_tokens": 330,
+              "reasoning_output_tokens": 128,
+              "total_tokens": 25211
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_43f7fc8237b0438488fc41babaf1c075",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784052058",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "976acafdb6df71512e73c9d32122536431348bfe75eb90466cd1166d4b9749e1"
+          },
+          "summary": "The target file is only Cargo VCS metadata, recording the upstream git SHA and path-in-vcs for the `digest` crate. I checked it for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13409,
+            "attempts": 1,
+            "started_at_unix_ms": 1784051994370,
+            "finished_at_unix_ms": 1784052007779,
+            "total_token_usage": {
+              "input_tokens": 24133,
+              "cached_input_tokens": 21248,
+              "output_tokens": 444,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24577
+            },
+            "last_token_usage": {
+              "input_tokens": 24133,
+              "cached_input_tokens": 21248,
+              "output_tokens": 444,
+              "reasoning_output_tokens": 253,
+              "total_tokens": 24577
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "4a7dda292ecc6b3c6dbbd0d475823b35cecba800a749c36a99b30d89a81839ea"
+          },
+          "summary": "Reviewed the changelog for digest 0.11.3, which is a release history listing version notes and links to upstream RustCrypto pull requests. I found no concrete malicious or supply-chain indicators in this file, and no evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence logic.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11449,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052007780,
+            "finished_at_unix_ms": 1784052019229,
+            "total_token_usage": {
+              "input_tokens": 26660,
+              "cached_input_tokens": 21248,
+              "output_tokens": 316,
+              "reasoning_output_tokens": 121,
+              "total_tokens": 26976
+            },
+            "last_token_usage": {
+              "input_tokens": 26660,
+              "cached_input_tokens": 21248,
+              "output_tokens": 316,
+              "reasoning_output_tokens": 121,
+              "total_tokens": 26976
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "8803b853bb301bc7e2ab8d69a449734508b4d2592f95d50d3793f5d554326447"
+          },
+          "summary": "`Cargo.toml` is a normal Cargo manifest for the `digest` crate, defining package metadata, feature flags, dependencies, and lint settings. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13104,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052019230,
+            "finished_at_unix_ms": 1784052032335,
+            "total_token_usage": {
+              "input_tokens": 24895,
+              "cached_input_tokens": 23296,
+              "output_tokens": 495,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 25390
+            },
+            "last_token_usage": {
+              "input_tokens": 24895,
+              "cached_input_tokens": 23296,
+              "output_tokens": 495,
+              "reasoning_output_tokens": 303,
+              "total_tokens": 25390
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "6e88b26c2203cc0e1e415384ecbcd6b89de1b556f624fd1dce4a0ebaf0032fa2"
+          },
+          "summary": "Reviewed the README for the digest crate. It is a standard usage and licensing document describing RustCrypto digest traits and example API usage; I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13006,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052032337,
+            "finished_at_unix_ms": 1784052045344,
+            "total_token_usage": {
+              "input_tokens": 25166,
+              "cached_input_tokens": 21248,
+              "output_tokens": 415,
+              "reasoning_output_tokens": 222,
+              "total_tokens": 25581
+            },
+            "last_token_usage": {
+              "input_tokens": 25166,
+              "cached_input_tokens": 21248,
+              "output_tokens": 415,
+              "reasoning_output_tokens": 222,
+              "total_tokens": 25581
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/block_api.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7647849370ae203f062877221ce40d03efa23060640957df3dbb87450c65c0ab"
+          },
+          "summary": "Reviewed `src/block_api.rs`, which defines hash block/core traits, buffer wrappers, truncation helpers, and re-exports for block-buffer integration. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration calls, credential/secret access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12715,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052045345,
+            "finished_at_unix_ms": 1784052058061,
+            "total_token_usage": {
+              "input_tokens": 25502,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 326,
+              "total_tokens": 26025
+            },
+            "last_token_usage": {
+              "input_tokens": 25502,
+              "cached_input_tokens": 21248,
+              "output_tokens": 523,
+              "reasoning_output_tokens": 326,
+              "total_tokens": 26025
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_474059aa37bd4e8787417ed991378fff",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784058510",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/dev/variable.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "33d24217e48da60fd7bfdfc4ffb72204b9cf1d34d5dc2f4fc8581bc962ff7df3"
+          },
+          "summary": "This file defines test helpers for variable-output digest/reset behavior, exercising hasher creation, chunked updates, cloning/reset, and output verification. I checked it for install hooks, subprocess or network activity, secret access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16361,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058413903,
+            "finished_at_unix_ms": 1784058430265,
+            "total_token_usage": {
+              "input_tokens": 24757,
+              "cached_input_tokens": 21248,
+              "output_tokens": 545,
+              "reasoning_output_tokens": 355,
+              "total_tokens": 25302
+            },
+            "last_token_usage": {
+              "input_tokens": 24757,
+              "cached_input_tokens": 21248,
+              "output_tokens": 545,
+              "reasoning_output_tokens": 355,
+              "total_tokens": 25302
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -900,9 +1229,270 @@
             "algorithm": "blake3",
             "value": "51f8867b28e8af7f80187848b5a8dced10d21cc915726f8817f71f12893ef9f2"
           },
-          "summary": "Reviewed `src/dev/xof.rs`, a small test helper that exercises resettable XOF hashing by cloning a hasher, updating it with an input vector, finalizing into a fixed buffer, and comparing against expected output. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/dev/xof.rs`, a small Rust test helper that exercises resettable XOF implementations by hashing a test vector in whole-message and chunked forms and comparing the derived output against the expected bytes. I checked for install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 22406,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058430266,
+            "finished_at_unix_ms": 1784058452672,
+            "total_token_usage": {
+              "input_tokens": 37790,
+              "cached_input_tokens": 33408,
+              "output_tokens": 543,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 38333
+            },
+            "last_token_usage": {
+              "input_tokens": 37790,
+              "cached_input_tokens": 33408,
+              "output_tokens": 543,
+              "reasoning_output_tokens": 236,
+              "total_tokens": 38333
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/digest.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "11e81f2bd4103b1cdb0bee40bf6d948475f3cb5d87d71f1efc47ade25193d32b"
+          },
+          "summary": "Reviewed `src/digest.rs`, which defines the `Digest` and `DynDigest` trait APIs plus blanket implementations for fixed-output hashers. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, secret-access paths, hidden dynamic loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16924,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058452672,
+            "finished_at_unix_ms": 1784058469597,
+            "total_token_usage": {
+              "input_tokens": 39603,
+              "cached_input_tokens": 34944,
+              "output_tokens": 578,
+              "reasoning_output_tokens": 292,
+              "total_tokens": 40181
+            },
+            "last_token_usage": {
+              "input_tokens": 39603,
+              "cached_input_tokens": 34944,
+              "output_tokens": 578,
+              "reasoning_output_tokens": 292,
+              "total_tokens": 40181
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "33f8e95f1982d86a702847101c328db7cc81785b2a600ca2b67e8b026fb86ca6"
+          },
+          "summary": "Reviewed src/lib.rs, which defines the crate's digest traits, error types, and reexports for a no_std hashing library. I checked for install-time hooks, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17250,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058469598,
+            "finished_at_unix_ms": 1784058486848,
+            "total_token_usage": {
+              "input_tokens": 40616,
+              "cached_input_tokens": 35456,
+              "output_tokens": 786,
+              "reasoning_output_tokens": 512,
+              "total_tokens": 41402
+            },
+            "last_token_usage": {
+              "input_tokens": 40616,
+              "cached_input_tokens": 35456,
+              "output_tokens": 786,
+              "reasoning_output_tokens": 512,
+              "total_tokens": 41402
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/mac.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "27b766b4af810d4ea53a3229e7cdc545abe96ed92289ff23ec05c79e7b97bf0e"
+          },
+          "summary": "Reviewed `src/mac.rs`, which defines MAC helper traits, constant-time `CtOutput` comparison, and optional zeroization on drop. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 24059,
+            "attempts": 1,
+            "started_at_unix_ms": 1784058486848,
+            "finished_at_unix_ms": 1784058510908,
+            "total_token_usage": {
+              "input_tokens": 40522,
+              "cached_input_tokens": 35456,
+              "output_tokens": 585,
+              "reasoning_output_tokens": 311,
+              "total_tokens": 41107
+            },
+            "last_token_usage": {
+              "input_tokens": 40522,
+              "cached_input_tokens": 35456,
+              "output_tokens": 585,
+              "reasoning_output_tokens": 311,
+              "total_tokens": 41107
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_ed3f516578324077a6555d7c4fc612f8",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784054753",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/block_api/ct_variable.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7ecc88f5c5601f9edb8986af4561d430e2ab314fe6a93de9df8be196d1ecc775"
+          },
+          "summary": "Reviewed `src/block_api/ct_variable.rs`, which is a compile-time output-size wrapper around a variable-output digest core, with trait forwarding for hashing, truncation, reset, serialization, and optional `zeroize`/`mac` integration. I found no concrete malicious or supply-chain indicators in this file: no install hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16489,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054692218,
+            "finished_at_unix_ms": 1784054708707,
+            "total_token_usage": {
+              "input_tokens": 41772,
+              "cached_input_tokens": 34944,
+              "output_tokens": 622,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 42394
+            },
+            "last_token_usage": {
+              "input_tokens": 41772,
+              "cached_input_tokens": 34944,
+              "output_tokens": 622,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 42394
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/buffer_macros.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "7f978efef1815d0b1bc915d93ab5d39ba5c51a8b35ca5e862ac481ad23f6e7ba"
+          },
+          "summary": "src/buffer_macros.rs only declares three internal modules (`fixed`, `variable`, and `xof`) and contains no executable logic. I checked this target file for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12388,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054708708,
+            "finished_at_unix_ms": 1784054721096,
+            "total_token_usage": {
+              "input_tokens": 24063,
+              "cached_input_tokens": 21248,
+              "output_tokens": 537,
+              "reasoning_output_tokens": 344,
+              "total_tokens": 24600
+            },
+            "last_token_usage": {
+              "input_tokens": 24063,
+              "cached_input_tokens": 21248,
+              "output_tokens": 537,
+              "reasoning_output_tokens": 344,
+              "total_tokens": 24600
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/buffer_macros/fixed.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "0ec5cec04f60572156d4272dddf31941572d0b77daf255ba22c0f3b45082cf2d"
+          },
+          "summary": "Reviewed `src/buffer_macros/fixed.rs`, a `macro_rules!` helper that generates fixed-output wrapper structs and trait impls for hashing/MAC types, including initialization, reset, serialization, and optional zeroization. I found no concrete indicators of install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17324,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054721097,
+            "finished_at_unix_ms": 1784054738421,
+            "total_token_usage": {
+              "input_tokens": 44808,
+              "cached_input_tokens": 35968,
+              "output_tokens": 671,
+              "reasoning_output_tokens": 374,
+              "total_tokens": 45479
+            },
+            "last_token_usage": {
+              "input_tokens": 44808,
+              "cached_input_tokens": 35968,
+              "output_tokens": 671,
+              "reasoning_output_tokens": 374,
+              "total_tokens": 45479
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/buffer_macros/variable.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "50af5c9ba5f1eaafaaac27291fb9adab28432f1da1d82a0f2c052eba887bb1ba"
+          },
+          "summary": "Reviewed `src/buffer_macros/variable.rs`, which defines the `buffer_ct_variable!` macro for generating buffered digest wrapper types and, in the second arm, `SerializableState` support by serializing/deserializing the wrapped core plus buffer. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14842,
+            "attempts": 1,
+            "started_at_unix_ms": 1784054738422,
+            "finished_at_unix_ms": 1784054753265,
+            "total_token_usage": {
+              "input_tokens": 43425,
+              "cached_input_tokens": 37504,
+              "output_tokens": 620,
+              "reasoning_output_tokens": 293,
+              "total_tokens": 44045
+            },
+            "last_token_usage": {
+              "input_tokens": 43425,
+              "cached_input_tokens": 37504,
+              "output_tokens": 620,
+              "reasoning_output_tokens": 293,
+              "total_tokens": 44045
+            }
+          },
           "comment_count": 0,
           "comments": []
         }

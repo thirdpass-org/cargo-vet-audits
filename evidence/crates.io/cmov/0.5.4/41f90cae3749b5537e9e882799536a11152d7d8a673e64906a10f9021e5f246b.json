@@ -1,8 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "criterion": "thirdpass-full-crate-archive-reviewed/v1",
   "coverage_type": "thirdpass full-crate byte coverage",
-  "method": "Generated from approved Thirdpass reviews. A crate version is emitted when the public package summary reports an authoritative package manifest and active reviewed bytes equal total bytes with zero pending and unreviewed work.",
+  "method": "Generated from approved Thirdpass reviews matching review_scope=target_file_full, agent_name=codex, agent_model=gpt-5.4-mini, agent_reasoning_effort=high. A crate version is emitted when the matching review records cover every regular file in the authoritative crates.io package archive manifest, measured by bytes, with zero pending and unreviewed manifest work.",
+  "review_filter": {
+    "review_scope": "target_file_full",
+    "agent_name": "codex",
+    "agent_model": "gpt-5.4-mini",
+    "agent_reasoning_effort": "high"
+  },
   "procedure": {
     "id": "file-focused-review",
     "version": "v1",
@@ -48,7 +54,7 @@
     }
   },
   "highest_severity": "none",
-  "latest_reviewed_at": "1783590257",
+  "latest_reviewed_at": "1784057306",
   "latest_agent_name": "codex",
   "latest_agent_model": "gpt-5.4-mini",
   "latest_agent_reasoning_effort": "high",
@@ -270,44 +276,36 @@
     {
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_count": 4,
-      "file_record_count": 15,
-      "file_record_count_with_metrics": 0
-    },
-    {
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_count": 1,
-      "file_record_count": 4,
-      "file_record_count_with_metrics": 4
+      "review_count": 4,
+      "file_record_count": 19,
+      "file_record_count_with_metrics": 19
     }
   ],
   "agent_run_metrics_summary": {
     "reviewed_file_records": 19,
-    "file_records_with_metrics": 4,
-    "file_records_without_metrics": 15,
-    "duration_ms_total": 67410,
-    "attempts_total": 4,
+    "file_records_with_metrics": 19,
+    "file_records_without_metrics": 0,
+    "duration_ms_total": 312820,
+    "attempts_total": 19,
     "failed_attempt_duration_ms_total": 0,
     "retry_wait_ms_total": 0,
     "retry_reason_count": 0,
-    "total_token_usage_records": 4,
-    "last_token_usage_records": 4,
+    "total_token_usage_records": 19,
+    "last_token_usage_records": 19,
     "total_token_usage": {
-      "input_tokens": 120276,
-      "cached_input_tokens": 99072,
-      "output_tokens": 1863,
-      "reasoning_output_tokens": 934,
-      "total_tokens": 122139
+      "input_tokens": 662390,
+      "cached_input_tokens": 560000,
+      "output_tokens": 10410,
+      "reasoning_output_tokens": 5490,
+      "total_tokens": 672800
     },
     "last_token_usage": {
-      "input_tokens": 120276,
-      "cached_input_tokens": 99072,
-      "output_tokens": 1863,
-      "reasoning_output_tokens": 934,
-      "total_tokens": 122139
+      "input_tokens": 662390,
+      "cached_input_tokens": 560000,
+      "output_tokens": 10410,
+      "reasoning_output_tokens": 5490,
+      "total_tokens": 672800
     },
     "model_context_windows": []
   },
@@ -322,7 +320,7 @@
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
       "agent_reasoning_effort": "high",
-      "review_strategy": "package-release/v1",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
       "created_at": "1783590257",
       "thirdpass_version": "0.6.0",
@@ -458,7 +456,7 @@
       ]
     },
     {
-      "id": "rev_337d3cf67c774d0ca54d808b91ee2a39",
+      "id": "rev_474ee5815cf34c228992bca2620397cf",
       "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
       "reviewer": {
         "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
@@ -466,232 +464,73 @@
       },
       "agent_name": "codex",
       "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
       "review_scope": "target_file_full",
-      "created_at": "1782857666",
+      "created_at": "1784057306",
       "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `tests/proptests.rs`, which contains proptest-based unit tests for `cmov` integer and fixed-size byte-array conditional move behavior. I checked for install hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.\nReviewed README.md, which documents the cmov crate’s constant-time conditional-move intrinsics, supported architectures, MSRV policy, and security warnings about cryptographic correctness. I found no concrete supply-chain indicators in this file: there are no install hooks, network or exfiltration instructions, credential access, dynamic code loading, obfuscation, or persistence behavior.\nReviewed the Cargo.toml manifest for the `cmov` Rust crate. It is a normal library manifest for a constant-time CPU intrinsics helper with explicit lib/test targets and a single dev-dependency, and I found no concrete indicators of install hooks, build scripts, network or credential access, dynamic code loading, obfuscation, or persistence behavior in this file.\nReviewed `src/macros.rs`, which defines a `masknz!` macro and its unit tests for producing an all-ones mask from nonzero unsigned inputs. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation beyond the documented `black_box` codegen hint, and persistence, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `tests/regression.rs`, which contains unit tests for `cmov` comparison/conditional-move edge cases using `black_box` to avoid compile-time constant folding. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.",
       "files": [
-        {
-          "file_path": "tests/proptests.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a389d975f29027864deafe42c23185d9ee11ae15cea1f6fc8a781a7f7dff9c82"
-          },
-          "summary": "Reviewed `tests/proptests.rs`, which contains proptest-based unit tests for `cmov` integer and fixed-size byte-array conditional move behavior. I checked for install hooks, network or exfiltration, credential/secret access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "README.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "f601c45f6e641f0a2378e6703de1ea030ea2b7a627e0e1f7eab118723e64cdf2"
-          },
-          "summary": "Reviewed README.md, which documents the cmov crate’s constant-time conditional-move intrinsics, supported architectures, MSRV policy, and security warnings about cryptographic correctness. I found no concrete supply-chain indicators in this file: there are no install hooks, network or exfiltration instructions, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "Cargo.toml",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b1ef264c5cc05355f28faad6e2d50d0e59bbd5d2c71f75d85c08bced9cb9fc05"
-          },
-          "summary": "Reviewed the Cargo.toml manifest for the `cmov` Rust crate. It is a normal library manifest for a constant-time CPU intrinsics helper with explicit lib/test targets and a single dev-dependency, and I found no concrete indicators of install hooks, build scripts, network or credential access, dynamic code loading, obfuscation, or persistence behavior in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
         {
           "file_path": "src/macros.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "04cd3d2550798980223874b588a19727657eab2e0b7b13e6ceb63d913ed9b513"
           },
-          "summary": "Reviewed `src/macros.rs`, which defines a `masknz!` macro and its unit tests for producing an all-ones mask from nonzero unsigned inputs. I checked for install hooks, network/exfiltration, credential access, dynamic code loading, obfuscation beyond the documented `black_box` codegen hint, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/macros.rs`, which defines the `masknz!` macro and its unit tests for generating an all-ones mask from non-zero unsigned inputs. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation beyond the documented `black_box` codegen hint, and persistence, and found no concrete malicious or supply-chain indicators in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 17312,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057222643,
+            "finished_at_unix_ms": 1784057239955,
+            "total_token_usage": {
+              "input_tokens": 38364,
+              "cached_input_tokens": 31872,
+              "output_tokens": 686,
+              "reasoning_output_tokens": 381,
+              "total_tokens": 39050
+            },
+            "last_token_usage": {
+              "input_tokens": 38364,
+              "cached_input_tokens": 31872,
+              "output_tokens": 686,
+              "reasoning_output_tokens": 381,
+              "total_tokens": 39050
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
-        {
-          "file_path": "tests/regression.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "ed96a118db5cf0105f6cbde62a6236b0849db8c9476deda3dd240501da171a4b"
-          },
-          "summary": "Reviewed `tests/regression.rs`, which contains unit tests for `cmov` comparison/conditional-move edge cases using `black_box` to avoid compile-time constant folding. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, and hidden subprocess execution; none are present in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_3d47a8de41a6427292aea0dfc36e3b11",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782857706",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/array.rs`, which only defines generic `Cmov` and `CmovEq` implementations for arrays by delegating to slice methods. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.\nReviewed `src/backends.rs`, which only declares compile-time backend modules for `aarch64`, `x86`/`x86_64`, and a portable `soft` fallback under `cfg` gates. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\n.cargo_vcs_info.json is a small provenance metadata file containing only a git commit SHA1 and the source path in VCS. I found no concrete malicious or supply-chain indicators in this target file, and it does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-      "files": [
-        {
-          "file_path": "src/array.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c17e9fce63a474b6b87614b42ccb84f9b4f891eb9c9755a944cd0c140e3aef29"
-          },
-          "summary": "Reviewed `src/array.rs`, which only defines generic `Cmov` and `CmovEq` implementations for arrays by delegating to slice methods. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "3b7a813094a35aeb2ddee0cc70c7d295496eaeb69d19b8912747813431eed944"
-          },
-          "summary": "Reviewed `src/backends.rs`, which only declares compile-time backend modules for `aarch64`, `x86`/`x86_64`, and a portable `soft` fallback under `cfg` gates. I checked for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": ".cargo_vcs_info.json",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "205e448037c0dd36c350031a45e382337710f93268511486f2d4d020f4e2f828"
-          },
-          "summary": ".cargo_vcs_info.json is a small provenance metadata file containing only a git commit SHA1 and the source path in VCS. I found no concrete malicious or supply-chain indicators in this target file, and it does not contain install hooks, network/exfiltration logic, credential access, dynamic code loading, obfuscation, or persistence behavior.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_736d30aaa041484ab3c80cd6cdfe1b00",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782857594",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "`src/lib.rs` is a `no_std` Rust library implementing constant-time conditional-move traits and blanket impls for integers, `NonZero*` types, and `Ordering`. I checked for install-time hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed `src/backends/soft.rs`, which implements portable constant-time `Cmov`/`CmovEq` helpers for integer types plus a small amount of platform-specific `asm!` mask generation and unit tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential or secret access, dynamic code loading, obfuscation/deobfuscation pipelines, or persistence/environment tampering.\nReviewed `src/backends/x86.rs`, which is a small x86/x86_64 backend implementing `Cmov` and `CmovEq` with inline `asm!` for conditional moves. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering logic.\nReviewed `src/backends/aarch64.rs`, which implements AArch64 inline-assembly backends for conditional move and equality operations on integer types. I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.\nReviewed the changelog entries and release notes in `CHANGELOG.md` for evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise signals. The file is a plain version history for the crate, and I found no concrete malicious or suspicious indicators in the documented changes.",
-      "files": [
-        {
-          "file_path": "src/lib.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "59d31ae302c8fc1f445c35c26548292d4f82a89b8297cec05ec8761c08352ed3"
-          },
-          "summary": "`src/lib.rs` is a `no_std` Rust library implementing constant-time conditional-move traits and blanket impls for integers, `NonZero*` types, and `Ordering`. I checked for install-time hooks, network or exfiltration code, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/soft.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "9b0f26c09465f7171549fab0c6153b3339a928e4b85911c6e4bc7e589d083fbe"
-          },
-          "summary": "Reviewed `src/backends/soft.rs`, which implements portable constant-time `Cmov`/`CmovEq` helpers for integer types plus a small amount of platform-specific `asm!` mask generation and unit tests. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration code, credential or secret access, dynamic code loading, obfuscation/deobfuscation pipelines, or persistence/environment tampering.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/x86.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "c6ab523bf57e227a347dc7f8798f830c697e42986b04a133ddc9af299e9964f5"
-          },
-          "summary": "Reviewed `src/backends/x86.rs`, which is a small x86/x86_64 backend implementing `Cmov` and `CmovEq` with inline `asm!` for conditional moves. I found no concrete malicious or supply-chain indicators in the file: there are no install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation/deobfuscation, or persistence/tampering logic.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "src/backends/aarch64.rs",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "b014689eb8e88eee06bf24be42a1b5244ce69e2e5f4a03704c32f46d79ea3a6f"
-          },
-          "summary": "Reviewed `src/backends/aarch64.rs`, which implements AArch64 inline-assembly backends for conditional move and equality operations on integer types. I checked for install hooks, subprocess execution, network/exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        },
-        {
-          "file_path": "CHANGELOG.md",
-          "file_hash": {
-            "algorithm": "blake3",
-            "value": "a188b85fd7abbe4ce6d580ebb656988e2ba720fcffb1b42753ed547bd2fc964f"
-          },
-          "summary": "Reviewed the changelog entries and release notes in `CHANGELOG.md` for evidence of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain compromise signals. The file is a plain version history for the crate, and I found no concrete malicious or suspicious indicators in the documented changes.",
-          "security_summary": "none",
-          "confidence": "high",
-          "comment_count": 0,
-          "comments": []
-        }
-      ]
-    },
-    {
-      "id": "rev_c1e6d3f1900f44ab84ddc175c12e1875",
-      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-      "reviewer": {
-        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
-        "official": true
-      },
-      "agent_name": "codex",
-      "agent_model": "gpt-5.4-mini",
-      "agent_reasoning_effort": "medium",
-      "review_strategy": "package-release/v1",
-      "review_scope": "target_file_full",
-      "created_at": "1782857473",
-      "thirdpass_version": "0.6.0",
-      "agent_summary": "Reviewed `src/slice.rs`, which implements constant-time slice `Cmov`/`CmovEq` operations plus chunking and byte/word conversion helpers. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, hidden subprocess execution, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.\n`tests/core_impls.rs` is a conventional Rust test module exercising `Cmov`/`CmovEq` behavior across integers, `Ordering`, arrays, and slices. I checked it for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
-      "files": [
         {
           "file_path": "src/slice.rs",
           "file_hash": {
             "algorithm": "blake3",
             "value": "6235ecd88f75632932bdf936bb523faac81fc38b7347d737b7985eacd1797b43"
           },
-          "summary": "Reviewed `src/slice.rs`, which implements constant-time slice `Cmov`/`CmovEq` operations plus chunking and byte/word conversion helpers. I checked for install hooks, network or exfiltration logic, credential access, dynamic code loading, obfuscation, hidden subprocess execution, and persistence tampering, and found no concrete malicious or supply-chain indicators in this file.",
+          "summary": "Reviewed `src/slice.rs`, which implements constant-time `Cmov`/`CmovEq` behavior for slice types using chunking, casts, and small vendored helpers. I checked for install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence tampering, and hidden subprocess execution; none were present in this file.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 18907,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057239955,
+            "finished_at_unix_ms": 1784057258863,
+            "total_token_usage": {
+              "input_tokens": 61122,
+              "cached_input_tokens": 52224,
+              "output_tokens": 701,
+              "reasoning_output_tokens": 316,
+              "total_tokens": 61823
+            },
+            "last_token_usage": {
+              "input_tokens": 61122,
+              "cached_input_tokens": 52224,
+              "output_tokens": 701,
+              "reasoning_output_tokens": 316,
+              "total_tokens": 61823
+            }
+          },
           "comment_count": 0,
           "comments": []
         },
@@ -701,9 +540,447 @@
             "algorithm": "blake3",
             "value": "95b7555f657da3d55890be3efb6d3c14480fa4e21e109fa0567632a363d89c49"
           },
-          "summary": "`tests/core_impls.rs` is a conventional Rust test module exercising `Cmov`/`CmovEq` behavior across integers, `Ordering`, arrays, and slices. I checked it for install hooks, network or exfiltration, credential access, dynamic code loading, obfuscation/deobfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators.",
+          "summary": "Reviewed `tests/core_impls.rs`, which is a pure Rust test module exercising `Cmov` and `CmovEq` behavior across integers, `Ordering`, fixed arrays, and slices. I found no concrete malicious or supply-chain indicators in this file: there are no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
           "security_summary": "none",
           "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 20465,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057258864,
+            "finished_at_unix_ms": 1784057279329,
+            "total_token_usage": {
+              "input_tokens": 91530,
+              "cached_input_tokens": 76160,
+              "output_tokens": 757,
+              "reasoning_output_tokens": 264,
+              "total_tokens": 92287
+            },
+            "last_token_usage": {
+              "input_tokens": 91530,
+              "cached_input_tokens": 76160,
+              "output_tokens": 757,
+              "reasoning_output_tokens": 264,
+              "total_tokens": 92287
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/proptests.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a389d975f29027864deafe42c23185d9ee11ae15cea1f6fc8a781a7f7dff9c82"
+          },
+          "summary": "Reviewed `tests/proptests.rs`, which contains proptest-based coverage for `cmov` integer and byte-array behaviors. I checked for install-time hooks, network or exfiltration logic, credential/secret access, dynamic code loading, obfuscation, and persistence tampering, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15537,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057279331,
+            "finished_at_unix_ms": 1784057294868,
+            "total_token_usage": {
+              "input_tokens": 24900,
+              "cached_input_tokens": 19200,
+              "output_tokens": 488,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 25388
+            },
+            "last_token_usage": {
+              "input_tokens": 24900,
+              "cached_input_tokens": 19200,
+              "output_tokens": 488,
+              "reasoning_output_tokens": 298,
+              "total_tokens": 25388
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "tests/regression.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "ed96a118db5cf0105f6cbde62a6236b0849db8c9476deda3dd240501da171a4b"
+          },
+          "summary": "Reviewed `tests/regression.rs`, which contains four unit tests for conditional-move behavior regressions using `black_box` to prevent constant folding. I checked for install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 11642,
+            "attempts": 1,
+            "started_at_unix_ms": 1784057294869,
+            "finished_at_unix_ms": 1784057306511,
+            "total_token_usage": {
+              "input_tokens": 24485,
+              "cached_input_tokens": 21248,
+              "output_tokens": 352,
+              "reasoning_output_tokens": 159,
+              "total_tokens": 24837
+            },
+            "last_token_usage": {
+              "input_tokens": 24485,
+              "cached_input_tokens": 21248,
+              "output_tokens": 352,
+              "reasoning_output_tokens": 159,
+              "total_tokens": 24837
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_5e9a235f95f248e5a26c8bd49c272886",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784053015",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": ".cargo_vcs_info.json",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "205e448037c0dd36c350031a45e382337710f93268511486f2d4d020f4e2f828"
+          },
+          "summary": "Reviewed the package VCS metadata in `.cargo_vcs_info.json`, which only records the source git SHA and path-in-vcs for `cmov`. I found no concrete indicators of install-time execution, network/exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this target file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14045,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052943573,
+            "finished_at_unix_ms": 1784052957619,
+            "total_token_usage": {
+              "input_tokens": 24178,
+              "cached_input_tokens": 21248,
+              "output_tokens": 454,
+              "reasoning_output_tokens": 268,
+              "total_tokens": 24632
+            },
+            "last_token_usage": {
+              "input_tokens": 24178,
+              "cached_input_tokens": 21248,
+              "output_tokens": 454,
+              "reasoning_output_tokens": 268,
+              "total_tokens": 24632
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "CHANGELOG.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "a188b85fd7abbe4ce6d580ebb656988e2ba720fcffb1b42753ed547bd2fc964f"
+          },
+          "summary": "Reviewed the changelog entries for cmov 0.1.0 through 0.5.4 and checked for any sign of install-time hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence. The file is plain release-note text describing API, optimization, and security-fix history, with no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 13476,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052957620,
+            "finished_at_unix_ms": 1784052971096,
+            "total_token_usage": {
+              "input_tokens": 25965,
+              "cached_input_tokens": 21248,
+              "output_tokens": 511,
+              "reasoning_output_tokens": 309,
+              "total_tokens": 26476
+            },
+            "last_token_usage": {
+              "input_tokens": 25965,
+              "cached_input_tokens": 21248,
+              "output_tokens": 511,
+              "reasoning_output_tokens": 309,
+              "total_tokens": 26476
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "Cargo.toml",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b1ef264c5cc05355f28faad6e2d50d0e59bbd5d2c71f75d85c08bced9cb9fc05"
+          },
+          "summary": "Reviewed the normalized Cargo manifest for `cmov` 0.5.4. It defines a no-std library crate with tests and lint settings, and I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15669,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052971096,
+            "finished_at_unix_ms": 1784052986766,
+            "total_token_usage": {
+              "input_tokens": 24917,
+              "cached_input_tokens": 21760,
+              "output_tokens": 536,
+              "reasoning_output_tokens": 342,
+              "total_tokens": 25453
+            },
+            "last_token_usage": {
+              "input_tokens": 24917,
+              "cached_input_tokens": 21760,
+              "output_tokens": 536,
+              "reasoning_output_tokens": 342,
+              "total_tokens": 25453
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "README.md",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "f601c45f6e641f0a2378e6703de1ea030ea2b7a627e0e1f7eab118723e64cdf2"
+          },
+          "summary": "Reviewed README.md, which describes the cmov crate as constant-time CPU conditional-move wrappers for x86/x86_64, arm, aarch64, and riscv with a portable fallback. I checked for install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence mechanisms, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 15635,
+            "attempts": 1,
+            "started_at_unix_ms": 1784052986766,
+            "finished_at_unix_ms": 1784053002402,
+            "total_token_usage": {
+              "input_tokens": 25762,
+              "cached_input_tokens": 21760,
+              "output_tokens": 408,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 26170
+            },
+            "last_token_usage": {
+              "input_tokens": 25762,
+              "cached_input_tokens": 21760,
+              "output_tokens": 408,
+              "reasoning_output_tokens": 202,
+              "total_tokens": 26170
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/array.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c17e9fce63a474b6b87614b42ccb84f9b4f891eb9c9755a944cd0c140e3aef29"
+          },
+          "summary": "`src/array.rs` contains two small generic trait implementations for `[T; N]` that forward constant-time conditional-move operations to slice methods. I checked this file for install-time execution, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 12628,
+            "attempts": 1,
+            "started_at_unix_ms": 1784053002403,
+            "finished_at_unix_ms": 1784053015031,
+            "total_token_usage": {
+              "input_tokens": 24323,
+              "cached_input_tokens": 23296,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 24806
+            },
+            "last_token_usage": {
+              "input_tokens": 24323,
+              "cached_input_tokens": 23296,
+              "output_tokens": 483,
+              "reasoning_output_tokens": 286,
+              "total_tokens": 24806
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "rev_97a7f08d73b04e7caa4267563c52ca71",
+      "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+      "reviewer": {
+        "public_user_id": "d7d85a95-49ea-818b-aa46-7dff97fe9263",
+        "official": true
+      },
+      "agent_name": "codex",
+      "agent_model": "gpt-5.4-mini",
+      "agent_reasoning_effort": "high",
+      "review_strategy": "file-focused-review/v1",
+      "review_scope": "target_file_full",
+      "created_at": "1784055399",
+      "thirdpass_version": "0.6.0",
+      "files": [
+        {
+          "file_path": "src/backends.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "3b7a813094a35aeb2ddee0cc70c7d295496eaeb69d19b8912747813431eed944"
+          },
+          "summary": "Reviewed `src/backends.rs`, which only selects architecture-specific backend modules at compile time (`aarch64`, `x86`, or `soft`) via `cfg` gates. I found no concrete supply-chain or malicious indicators in this file: no install hooks, network or exfiltration paths, credential access, dynamic code loading, obfuscation, or persistence behavior.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 16186,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055308933,
+            "finished_at_unix_ms": 1784055325119,
+            "total_token_usage": {
+              "input_tokens": 36935,
+              "cached_input_tokens": 33408,
+              "output_tokens": 543,
+              "reasoning_output_tokens": 242,
+              "total_tokens": 37478
+            },
+            "last_token_usage": {
+              "input_tokens": 36935,
+              "cached_input_tokens": 33408,
+              "output_tokens": 543,
+              "reasoning_output_tokens": 242,
+              "total_tokens": 37478
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/aarch64.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "b014689eb8e88eee06bf24be42a1b5244ce69e2e5f4a03704c32f46d79ea3a6f"
+          },
+          "summary": "`src/backends/aarch64.rs` contains AArch64 inline-assembly backends for constant-time conditional move and equality-selection over `u16`, `u32`, and `u64`. I checked it for install-time execution, network or exfiltration behavior, secret or environment access, dynamic code loading, obfuscation, and persistence, and found no concrete malicious or supply-chain indicators.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19011,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055325123,
+            "finished_at_unix_ms": 1784055344134,
+            "total_token_usage": {
+              "input_tokens": 26319,
+              "cached_input_tokens": 21248,
+              "output_tokens": 558,
+              "reasoning_output_tokens": 339,
+              "total_tokens": 26877
+            },
+            "last_token_usage": {
+              "input_tokens": 26319,
+              "cached_input_tokens": 21248,
+              "output_tokens": 558,
+              "reasoning_output_tokens": 339,
+              "total_tokens": 26877
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/soft.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "9b0f26c09465f7171549fab0c6153b3339a928e4b85911c6e4bc7e589d083fbe"
+          },
+          "summary": "Reviewed `src/backends/soft.rs`, which implements portable `Cmov`/`CmovEq` mask-selection logic for integer types plus architecture-specific `asm!` fast paths for non-zero mask generation and unit tests. I found no concrete indicators of install-time execution, network or exfiltration, credential access, dynamic code loading, obfuscation, or persistence in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 14145,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055344134,
+            "finished_at_unix_ms": 1784055358280,
+            "total_token_usage": {
+              "input_tokens": 44222,
+              "cached_input_tokens": 39040,
+              "output_tokens": 596,
+              "reasoning_output_tokens": 283,
+              "total_tokens": 44818
+            },
+            "last_token_usage": {
+              "input_tokens": 44222,
+              "cached_input_tokens": 39040,
+              "output_tokens": 596,
+              "reasoning_output_tokens": 283,
+              "total_tokens": 44818
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/backends/x86.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "c6ab523bf57e227a347dc7f8798f830c697e42986b04a133ddc9af299e9964f5"
+          },
+          "summary": "Reviewed the x86 backend in `src/backends/x86.rs`, which implements `cmov`/`cmoveq` for integer types using inline assembly on x86 and x86_64. I checked for install-time hooks, network or exfiltration, credential access, dynamic code loading, obfuscation, and persistence behavior, and found no concrete malicious or supply-chain indicators in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 19095,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055358280,
+            "finished_at_unix_ms": 1784055377376,
+            "total_token_usage": {
+              "input_tokens": 27219,
+              "cached_input_tokens": 21760,
+              "output_tokens": 670,
+              "reasoning_output_tokens": 358,
+              "total_tokens": 27889
+            },
+            "last_token_usage": {
+              "input_tokens": 27219,
+              "cached_input_tokens": 21760,
+              "output_tokens": 670,
+              "reasoning_output_tokens": 358,
+              "total_tokens": 27889
+            }
+          },
+          "comment_count": 0,
+          "comments": []
+        },
+        {
+          "file_path": "src/lib.rs",
+          "file_hash": {
+            "algorithm": "blake3",
+            "value": "59d31ae302c8fc1f445c35c26548292d4f82a89b8297cec05ec8761c08352ed3"
+          },
+          "summary": "Reviewed src/lib.rs, which implements no_std constant-time conditional-move traits for primitive integers, NonZero integers, and Ordering, with a small amount of documented unsafe for valid type reconstitution. I found no concrete indicators of install hooks, network or exfiltration behavior, credential access, dynamic code loading, obfuscation, persistence, or other supply-chain malware behavior in this file.",
+          "security_summary": "none",
+          "confidence": "high",
+          "agent_run_metrics": {
+            "duration_ms": 21657,
+            "attempts": 1,
+            "started_at_unix_ms": 1784055377377,
+            "finished_at_unix_ms": 1784055399034,
+            "total_token_usage": {
+              "input_tokens": 41873,
+              "cached_input_tokens": 35456,
+              "output_tokens": 804,
+              "reasoning_output_tokens": 509,
+              "total_tokens": 42677
+            },
+            "last_token_usage": {
+              "input_tokens": 41873,
+              "cached_input_tokens": 35456,
+              "output_tokens": 804,
+              "reasoning_output_tokens": 509,
+              "total_tokens": 42677
+            }
+          },
           "comment_count": 0,
           "comments": []
         }
