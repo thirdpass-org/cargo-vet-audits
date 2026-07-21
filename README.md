@@ -7,8 +7,8 @@ the authoritative crates.io package manifest.
 The audit criterion published by this repository is
 `thirdpass-full-crate-archive-reviewed/v1`.
 
-This criterion means the crate archive was reviewed by Thirdpass with 100% byte
-coverage. It records Thirdpass review evidence. It is not cargo-vet
+This criterion means every file in the crate archive manifest was reviewed by
+Thirdpass. It records Thirdpass review evidence. It is not cargo-vet
 `safe-to-run` or `safe-to-deploy` unless an importing project chooses to map it
 to one of those meanings.
 

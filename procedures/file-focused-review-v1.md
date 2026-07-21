@@ -13,9 +13,9 @@ metadata, and agent provenance.
 
 The cargo-vet export composes accepted file-focused review records into a
 package-level audit only when those records cover every regular file in the
-authoritative crates.io package manifest. Coverage is reported as reviewed
-bytes. A crate version is included only when active approved Thirdpass reviews
-cover 100% of package bytes with no pending or unreviewed manifest work.
+authoritative crates.io package manifest. A crate version is included only when
+accepted Thirdpass reviews cover every manifest file with 100% file, line, and
+byte coverage and no pending or unreviewed manifest work.
 
 The cargo-vet audit criterion records Thirdpass review coverage. It does not by
 itself assert cargo-vet safe-to-run or safe-to-deploy unless an importing project
