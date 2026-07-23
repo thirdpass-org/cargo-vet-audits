@@ -26,9 +26,40 @@ review records reported them.
 
 ## Using this repository
 
-Add this repository as a cargo-vet import source, then decide in your own
-project policy how to treat the
-`thirdpass-full-crate-archive-reviewed/v1` criterion.
+Add this repository as a cargo-vet import source in your project's
+`supply-chain/config.toml`:
+
+```toml
+[imports.thirdpass]
+url = "https://raw.githubusercontent.com/thirdpass-org/cargo-vet-audits/main/audits.toml"
+```
+
+The Thirdpass audits use a custom cargo-vet criterion. Cargo-vet's
+[`criteria-map` documentation](https://mozilla.github.io/cargo-vet/config.html#criteria-map)
+says unmapped custom criteria are discarded during import, so add a
+`criteria-map` for the Thirdpass criterion if you want these audits to be
+imported.
+
+A conservative setup keeps the Thirdpass claim separate from cargo-vet's built-in
+`safe-to-run` and `safe-to-deploy` criteria.
+
+In `supply-chain/audits.toml`:
+
+```toml
+[criteria."thirdpass-full-crate-archive-reviewed/v1"]
+description = "Every file in the crate archive manifest was reviewed by Thirdpass."
+```
+
+In `supply-chain/config.toml`:
+
+```toml
+[imports.thirdpass.criteria-map]
+"thirdpass-full-crate-archive-reviewed/v1" = "thirdpass-full-crate-archive-reviewed/v1"
+```
+
+Only map the Thirdpass criterion to `safe-to-run`, `safe-to-deploy`, or another
+local criterion if your project policy intentionally treats Thirdpass review
+evidence as satisfying that criterion.
 
 The audits are generated from Thirdpass coverage data. Manual edits to generated
 files may be overwritten by the next export.
