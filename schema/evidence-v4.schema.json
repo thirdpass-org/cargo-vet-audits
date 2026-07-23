@@ -1,0 +1,653 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/thirdpass-org/cargo-vet-audits/main/schema/evidence-v4.schema.json",
+  "title": "Thirdpass cargo-vet evidence v4",
+  "description": "Schema for Thirdpass cargo-vet audit evidence files with schema_version 4.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "criterion",
+    "coverage_type",
+    "method",
+    "procedure",
+    "exporter",
+    "review_page_url",
+    "package",
+    "coverage",
+    "highest_severity",
+    "latest_reviewed_at",
+    "latest_agent_name",
+    "latest_agent_model",
+    "latest_agent_reasoning_effort",
+    "manifest",
+    "reviewed_files",
+    "agent_runs",
+    "agent_run_metrics_summary",
+    "reviews"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 4
+    },
+    "criterion": {
+      "const": "thirdpass-full-crate-archive-reviewed/v1"
+    },
+    "coverage_type": {
+      "const": "thirdpass full crate archive manifest coverage"
+    },
+    "method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review_filter": {
+      "$ref": "#/definitions/reviewFilter"
+    },
+    "procedure": {
+      "$ref": "#/definitions/procedure"
+    },
+    "exporter": {
+      "$ref": "#/definitions/exporter"
+    },
+    "review_page_url": {
+      "type": "string",
+      "pattern": "^https?://.+"
+    },
+    "package": {
+      "$ref": "#/definitions/reviewTarget"
+    },
+    "coverage": {
+      "$ref": "#/definitions/packageCoverage"
+    },
+    "highest_severity": {
+      "$ref": "#/definitions/securitySummary"
+    },
+    "latest_reviewed_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "latest_agent_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "latest_agent_model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "latest_agent_reasoning_effort": {
+      "type": "string",
+      "minLength": 1
+    },
+    "manifest": {
+      "$ref": "#/definitions/manifest"
+    },
+    "reviewed_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "agent_runs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/agentRunSummary"
+      }
+    },
+    "agent_run_metrics_summary": {
+      "$ref": "#/definitions/agentRunMetricsSummary"
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/review"
+      }
+    }
+  },
+  "definitions": {
+    "agentRunMetrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["duration_ms", "attempts"],
+      "properties": {
+        "duration_ms": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "attempts": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "started_at_unix_ms": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "finished_at_unix_ms": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "total_token_usage": {
+          "$ref": "#/definitions/tokenUsage"
+        },
+        "last_token_usage": {
+          "$ref": "#/definitions/tokenUsage"
+        },
+        "model_context_window": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "failed_attempt_duration_ms": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "retry_wait_ms": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "retry_reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "agentRunMetricsSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewed_file_records",
+        "file_records_with_metrics",
+        "file_records_without_metrics",
+        "duration_ms_total",
+        "attempts_total",
+        "failed_attempt_duration_ms_total",
+        "retry_wait_ms_total",
+        "retry_reason_count",
+        "total_token_usage_records",
+        "last_token_usage_records",
+        "model_context_windows"
+      ],
+      "properties": {
+        "reviewed_file_records": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "file_records_with_metrics": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "file_records_without_metrics": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "duration_ms_total": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "attempts_total": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "failed_attempt_duration_ms_total": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "retry_wait_ms_total": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "retry_reason_count": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "total_token_usage_records": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "last_token_usage_records": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "total_token_usage": {
+          "$ref": "#/definitions/tokenUsage"
+        },
+        "last_token_usage": {
+          "$ref": "#/definitions/tokenUsage"
+        },
+        "model_context_windows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nonNegativeInteger"
+          }
+        }
+      }
+    },
+    "agentRunSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent_name",
+        "agent_model",
+        "agent_reasoning_effort",
+        "review_count",
+        "file_record_count",
+        "file_record_count_with_metrics"
+      ],
+      "properties": {
+        "agent_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent_model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent_reasoning_effort": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_count": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "file_record_count": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "file_record_count_with_metrics": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        }
+      }
+    },
+    "coverageMetric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "reviewed", "pending", "unreviewed", "reviewed_percent"],
+      "properties": {
+        "total": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "reviewed": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "pending": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "unreviewed": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "reviewed_percent": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "exporter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "source_api_base"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_api_base": {
+          "type": "string",
+          "pattern": "^https?://.+"
+        }
+      }
+    },
+    "fileHash": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "value"],
+      "properties": {
+        "algorithm": {
+          "const": "blake3"
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authoritative", "files"],
+      "properties": {
+        "authoritative": {
+          "type": "boolean"
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/manifestFile"
+          }
+        }
+      }
+    },
+    "manifestFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "size_bytes"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "file_hash": {
+          "$ref": "#/definitions/fileHash"
+        },
+        "size_bytes": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "extension": {
+          "type": "string"
+        },
+        "line_count": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/nonNegativeInteger"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "nonNegativeInteger": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "packageCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["has_authoritative_manifest", "files", "lines", "bytes"],
+      "properties": {
+        "has_authoritative_manifest": {
+          "type": "boolean"
+        },
+        "files": {
+          "$ref": "#/definitions/coverageMetric"
+        },
+        "lines": {
+          "$ref": "#/definitions/coverageMetric"
+        },
+        "bytes": {
+          "$ref": "#/definitions/coverageMetric"
+        }
+      }
+    },
+    "position": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["line", "character"],
+      "properties": {
+        "line": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "character": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        }
+      }
+    },
+    "priority": {
+      "enum": ["critical", "medium", "low"]
+    },
+    "procedure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "reference", "name", "file", "docs_url"],
+      "properties": {
+        "id": {
+          "const": "file-focused-review"
+        },
+        "version": {
+          "const": "v1"
+        },
+        "reference": {
+          "const": "file-focused-review/v1"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "docs_url": {
+          "type": "string",
+          "pattern": "^https?://.+"
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "public_user_id",
+        "reviewer",
+        "agent_name",
+        "agent_model",
+        "agent_reasoning_effort",
+        "review_strategy",
+        "review_scope",
+        "created_at",
+        "thirdpass_version",
+        "files"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "public_user_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewer": {
+          "$ref": "#/definitions/reviewer"
+        },
+        "agent_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent_model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent_reasoning_effort": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_strategy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_scope": {
+          "$ref": "#/definitions/reviewScope"
+        },
+        "created_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "thirdpass_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent_summary": {
+          "type": "string"
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reviewFile"
+          }
+        }
+      }
+    },
+    "reviewComment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["comment", "security", "complexity"],
+      "properties": {
+        "comment": {
+          "type": "string",
+          "minLength": 1
+        },
+        "security": {
+          "$ref": "#/definitions/priority"
+        },
+        "complexity": {
+          "$ref": "#/definitions/priority"
+        },
+        "selection": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/selection"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["public_user_id", "official"],
+      "properties": {
+        "public_user_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "official": {
+          "type": "boolean"
+        }
+      }
+    },
+    "reviewFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file_path", "comment_count", "comments"],
+      "properties": {
+        "file_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "file_hash": {
+          "$ref": "#/definitions/fileHash"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "security_summary": {
+          "$ref": "#/definitions/securitySummary"
+        },
+        "confidence": {
+          "$ref": "#/definitions/reviewConfidence"
+        },
+        "agent_run_metrics": {
+          "$ref": "#/definitions/agentRunMetrics"
+        },
+        "comment_count": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reviewComment"
+          }
+        }
+      }
+    },
+    "reviewConfidence": {
+      "enum": ["high", "medium", "low"]
+    },
+    "reviewFilter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["review_scope"],
+      "properties": {
+        "review_scope": {
+          "$ref": "#/definitions/reviewScope"
+        },
+        "agent_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent_model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "agent_reasoning_effort": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "reviewScope": {
+      "enum": ["target_file_full", "target_file_partial"]
+    },
+    "reviewTarget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["registry_host", "package_name", "package_version", "package_hash"],
+      "properties": {
+        "registry_host": {
+          "type": "string",
+          "minLength": 1
+        },
+        "package_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "package_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "package_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "securitySummary": {
+      "enum": ["critical", "medium", "low", "none"]
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": {
+          "$ref": "#/definitions/position"
+        },
+        "end": {
+          "$ref": "#/definitions/position"
+        }
+      }
+    },
+    "tokenUsage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_tokens",
+        "cached_input_tokens",
+        "output_tokens",
+        "reasoning_output_tokens",
+        "total_tokens"
+      ],
+      "properties": {
+        "input_tokens": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "cached_input_tokens": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "output_tokens": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "reasoning_output_tokens": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        },
+        "total_tokens": {
+          "$ref": "#/definitions/nonNegativeInteger"
+        }
+      }
+    }
+  }
+}
