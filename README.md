@@ -19,6 +19,7 @@ to one of those meanings.
 - `procedures/file-focused-review-v1.md` explains the review procedure used to
   produce the underlying review records.
 - `schema/evidence-v4.schema.json` describes the evidence JSON format.
+- `scripts/validate.py` validates the audit metadata and evidence bundle.
 
 Each audit note links to its evidence JSON file. Evidence includes the crate
 target, package hash, manifest inventory, coverage counts, review records,

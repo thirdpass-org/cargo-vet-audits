@@ -1,0 +1,40 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust builds
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install cargo-vet
+        run: cargo install cargo-vet --locked --version 0.10.1
+
+      - name: Validate audit repository
+        run: python scripts/validate.py --cargo-vet-import
+
+      - name: Validate evidence JSON schema
+        run: npx --yes ajv-cli validate -s schema/evidence-v4.schema.json -d 'evidence/**/*.json'
